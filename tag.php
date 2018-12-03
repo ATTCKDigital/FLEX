@@ -22,7 +22,7 @@
     $pageTitle = 'Archive' //Set the title of the page
     $postType = 'post' //Set the post type
 
-    echo Utils::render_template("inc/templates/archive-feed.php", array(
+    echo Utils::render_template("components/component_archive-feed.php", array(
         "title"         => $pageTitle,
         "maxPages"      => $maxPages,
         "term"          => $term,

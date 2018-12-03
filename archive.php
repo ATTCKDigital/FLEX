@@ -21,7 +21,7 @@
     $maxPages = $archiveQuery->max_num_pages; //Find the max number of pages for the query, necessary for "Load More"
     $pageTitle = 'Archive' //Set the title of the page
 
-    echo Utils::render_template("inc/templates/archive-feed.php", array(
+    echo Utils::render_template("components/component_archive-feed.php", array(
         "title"         => $pageTitle,
         "maxPages"      => $maxPages,
         "term"          => '', //leave blank
