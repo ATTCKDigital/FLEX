@@ -15,3 +15,11 @@ How to "enable" existing components
 How to "add" new component
 
 How to enable/disable various configs (stuff that gets put into functions.php)
+
+### wp-admin Settings
+General settings
+Reading settings
+Media settings
+Discussion settings
+Permalink settings
+Privacy settings
