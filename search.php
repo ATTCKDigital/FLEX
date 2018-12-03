@@ -1,7 +1,7 @@
 <?php
 /**
  * Template: Search results
- * Description: Wordpress template for all news posts
+ * Description: Wordpress template for search results
  *
  */
 	get_header();
@@ -34,7 +34,7 @@
 			<div class="column pure-u-lg-4-12 pure-u-md-4-12 mobile-hidden"></div>
 			<div class="column pure-u-lg-7-12 pure-u-md-7-12 pure-u-sm-12-12">
 				<?php 
-					echo Utils::render_template("inc/templates/search-form.php", array(
+					echo Utils::render_template("components/component_search-form.php", array(
 						"searchTerm" => $searchQuery
 					));
 				?>

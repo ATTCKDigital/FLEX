@@ -22,7 +22,7 @@ define('THEME_DIR', get_template_directory());
 
 
 // Generic utilities.
-include_once(THEME_DIR . '/config/Utils.class.php'); //Extended php file includer
+include_once(THEME_DIR . '/config/Utils.class.php'); //Extended php file includer. REQUIRED.
 
 /**
  * Theme functions and definitions

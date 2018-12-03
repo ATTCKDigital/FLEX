@@ -1,7 +1,7 @@
 <?php
 /**
  * Template: Default
- * Description: Wordpress template for a plain page
+ * Description: Wordpress template for a plain page.
  *
  */
     get_header();

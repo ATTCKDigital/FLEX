@@ -1,7 +1,7 @@
 <?php
 /**
  * Template: Single
- * Description: Wordpress template for a plain page
+ * Description: Wordpress template for a single post page. Copy template and rename single-customposttype.php to create different templates for CPTs.
  *
  */
     get_header();

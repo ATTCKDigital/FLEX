@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Name: Layout
- * Description: Wordpress template for a layout page
+ * Description: Wordpress template for an ACF generated dynamic layout page
  *
  */
 	get_header();
