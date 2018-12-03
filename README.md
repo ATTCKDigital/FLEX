@@ -24,6 +24,12 @@ These should serve as the basis for a functioning theme. Changes should be made 
 The boilerplate theme has a variety of existing javascript functions (nav animation, parallax, scroll detection, etc). These can be leveraged from any component using ES6 impoprt. See `Available Global JS Components` below for detailed information on each function.
 
 ## Naming Conventions
+Component Folders: `component_component-name`
+Component Markup: `component_component-name.php`
+Component SCSS: `_component_component-name.scss`
+Component JS: `_component_component-name.js`
+Component ReadMe: `README_component_component-name.md`
+Component ACF: `component_acf_component-name.php`
 
 ## Available Global JS Components
 List of global js
