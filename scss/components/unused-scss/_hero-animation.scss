@@ -1,0 +1,181 @@
+.component-hero-animation {
+	opacity: 1;
+	top: 12vh;
+
+	@include mediaquery(phone) {
+		top: 25vh;
+	}
+
+	@include mediaquery(desktop) {
+		top: 20vh;
+	}
+
+	@include transition(opacity 1s);
+
+	> div {
+		position: relative;
+		z-index: 2;
+	}
+
+	.cta-contact .fade-me-in {
+		&:hover {
+			transition-delay: 0s;
+		}
+	}
+
+	.fade-me-in {
+		transition-delay: 5s;
+	}
+
+	.intro {
+		transition-delay: 0s;
+		z-index: 1;
+
+		@include animation(fadeinout 5s linear forwards);
+	}
+
+	.showContactModal & {
+		opacity: .1;
+		@include transition(opacity .5s);
+	}
+}
+
+@include keyframes('fadeinout') {
+	0%, 100% {
+		opacity: 0;
+	} // Animation is invisible at 1 and 100 in the timeline
+
+	20%, 100% {
+		opacity: 0;
+	}
+
+	40%, 70% {
+		opacity: 1;
+	}
+}
+
+.sub-header,
+.intro {
+	line-height: 1;
+	text-align: center;
+	text-transform: uppercase;
+
+	.site-title {
+		color: $white;
+		font-size: 16px;
+		letter-spacing: 8px;
+		margin-bottom: 15px;
+
+		@include mediaquery(tablet-portrait) {
+			font-size: 30px;
+			letter-spacing: 12px;
+			margin-bottom: 30px;
+			margin-left: 2%;
+			@include sans-serif-light;
+		}
+
+		@include mediaquery(desktop) {
+			font-size: 36px;
+			letter-spacing: 15px;
+		}
+	}
+
+	.site-description {
+		color: $white;
+		display: block;
+		font-size: 10px;
+		letter-spacing: 0.4rem;
+		margin-bottom: 50px;
+		margin-left: 2%;
+		@include sans-serif-light;
+
+		@include mediaquery(tablet-portrait) {
+			font-size: 15px;
+			letter-spacing: 6px;
+		}
+
+		@include mediaquery(desktop) {
+			font-size: 18px;
+			letter-spacing: 7.5px;
+		}
+	}
+
+	.site-intro {
+		color: $white;
+		letter-spacing: 6px;
+		left: 50%;
+		font-size: 25px;
+		position: fixed;
+		text-align: center;
+		top: 40%;
+		transform: translate(-50%, -50%);
+
+		@include mediaquery(tablet-portrait) {
+			color: $white;
+			display: block;
+			letter-spacing: 6px;
+			@include sans-serif-light;
+		}
+
+		@include mediaquery(desktop) {
+			font-size: 20px;
+			letter-spacing: 7.5px;
+			top: 50%;
+		}
+	}
+
+	.occupancy, .site-address {
+		color: $white;
+		display: block;
+		font-size: 12px;
+		letter-spacing: 2px;
+		margin-top: $gap;
+		@include mediaquery(tablet-portrait) {
+			font-size: 15px;
+			margin-top: $gap*2;
+		}
+		a {
+			letter-spacing: 2px;
+			&:hover {
+				text-decoration: underline;
+			}
+			@include mediaquery(tablet-portrait) {
+				font-size: 15px;
+			}
+		}
+	}
+	.site-address {
+		@include mediaquery(tablet-portrait) {
+			margin-top: $gap;
+		}
+	}
+
+	&.thank-you {
+		.site-description {
+			font-size: 1.2rem;
+			line-height: 1.6rem;
+			margin: 0 auto;
+			padding: 0;
+			width: 90%;
+
+    		@include mediaquery(tablet-portrait) {
+				font-size: 12px;
+				letter-spacing: 0.4rem;
+			}
+		}
+
+		.site-title {
+			font-size: 23px;
+			letter-spacing: 0.8rem;
+
+    		@include mediaquery(tablet-portrait) {
+				font-size: 31px;
+				letter-spacing: 1.3rem;
+			}
+		}
+	}
+}
+
+// Video converted using ffmpeg
+// https://gist.github.com/Vestride/278e13915894821e1d6f
+

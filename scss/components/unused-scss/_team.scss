@@ -1,0 +1,62 @@
+// team component
+.component-team {
+	width: calc(100% - 40px);
+	margin: 0 auto;
+	padding: $gap*2 0 0 0;
+	border-top: 1px solid white;
+
+	@include mediaquery(tablet-portrait) {
+		width: 73%;
+		max-width: 1050px;
+	}
+
+	.sans-serif20, .sans-serif14 {
+		letter-spacing: 4px;
+		line-height: 1.2;
+	}
+
+	.sans-serif20 {
+		font-size: 16px;
+	}
+
+	.sans-serif14 {
+		font-size: 12px;
+		padding-bottom: $gap*.75;
+	}
+
+	.team-items {
+		padding: 0 $gap;
+
+		@include mediaquery(tablet-portrait) {
+			@include flexbox(flex);
+			@include flexbox-align-items(flex-start);
+			@include flexbox-wrap(wrap);
+			@include flexbox-justify-content(space-between);
+			padding: 0 0 0 $gap*3;
+		}
+
+		@include mediaquery(desktop) {
+			padding: 0 0 0 $gap*4;
+		}
+
+		.team-item {
+			margin-bottom: $gap*2;
+
+			@include mediaquery(tablet-portrait) {
+				width: 57%;
+				padding-right: $gap;
+				margin-bottom: $gap;
+
+				&:nth-child(even) {
+					width: 43%;
+					padding-right: 0;
+				}
+			}
+
+			.sans-serif20 {
+				margin-bottom: $gap*.25;
+			}
+		}
+	}
+}
+

@@ -1,0 +1,37 @@
+// page nav
+
+.component-page-nav {
+	&.page-nav-next {
+		text-align: right;
+	}
+
+	a {
+		display: inline-block;
+		vertical-align: middle;
+
+		@include desktop {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}	
+
+	.prev {
+		margin-right: $gap;
+		width: 50px;
+	}
+
+	.next {
+		margin-left: $gap;
+		width: 50px;
+	}
+
+	.eyebrow {
+		display: none;
+
+		@include tablet-portrait {
+			display: inline-block;
+			width: calc(100% - 75px);
+		}
+	}
+}

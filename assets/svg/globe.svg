@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="14px" viewBox="0 0 15 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.1 (67048) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Navigation" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Nav-Dropdown---Regions" transform="translate(-1022.000000, -25.000000)" stroke-width="1.2">
+            <g id="Group-3">
+                <g id="Group-2" transform="translate(993.000000, 0.000000)">
+                    <g id="Group" transform="translate(30.000000, 25.000000)">
+                        <path d="M0.553016925,6.99888841 C0.553016925,3.5203713 3.37832834,0.699762859 6.8626454,0.699762859 C10.3469625,0.699762859 13.1722739,3.5203713 13.1722739,6.99888841 C13.1722739,10.4774055 10.3469625,13.298014 6.8626454,13.298014 C3.37832834,13.298014 0.553016925,10.4774055 0.553016925,6.99888841 Z" id="Stroke-1"></path>
+                        <path d="M3.70783116,6.99888841 C3.70783116,3.5203713 5.1197858,0.699762859 6.8626454,0.699762859 C8.60410285,0.699762859 10.0174596,3.5203713 10.0174596,6.99888841 C10.0174596,10.4774055 8.60410285,13.298014 6.8626454,13.298014 C5.1197858,13.298014 3.70783116,10.4774055 3.70783116,6.99888841 Z" id="Stroke-3"></path>
+                        <path d="M6.8626454,0.699762859 L6.8626454,13.298014" id="Stroke-5"></path>
+                        <path d="M13.1722739,6.99888841 L0.553016925,6.99888841" id="Stroke-7"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

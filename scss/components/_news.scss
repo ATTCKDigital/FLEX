@@ -1,0 +1,242 @@
+/****** NEWS COMPONENT ******/
+.component-news {
+	padding: 0 $gap;
+	margin-bottom: $gap*2;
+
+	@include mediaquery(tablet-landscape) {
+		padding: 0;
+		margin-bottom: $gap*3;
+	}
+
+	.news-items-wrapper {
+
+		.news-item {
+			margin-bottom: 2px;
+			position: relative;
+			overflow: hidden;
+			left: 0;
+			z-index: 1;
+			@include transition(left .5s ease-in-out);
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			&:after {
+				content: '\2192';
+				font-size: 26px;
+				height: 100%;
+				margin-left: $gap*.5;
+				position: absolute;
+				right: 15px;
+				top: 0;
+				@include verticalCenter;
+				@include sans-serif-bold;
+				@include transition(right .7s ease-in-out)
+
+				@include mediaquery(tablet-landscape) {
+					font-size: 40px;
+					right: 30px;
+				}
+			}
+
+			&:before {
+				content: '';
+				display: block;
+				position: absolute;
+				top: 0;
+				left: -101%;
+				height: 100%;
+				width: 101%;
+				z-index: -1;
+				opacity: 0;
+				background: color('gradients', 'orange-horiz');
+				@include transition(left .7s ease-in-out, opacity .7s ease-in-out);
+			}
+
+			@include mediaquery(desktop) {
+				&:hover {
+					left: -10px;
+
+					&:before {
+						left: 0;
+						opacity: 1;
+					}
+
+					&:after {
+						right: 10px;
+					}
+				}
+			}
+
+		}
+
+	}
+
+	&.component-news-small-black {
+
+		.news-items-wrapper {
+			
+			.news-item {
+				background-color: $black;
+
+				padding: 17px 45px 17px 23px;
+
+				@include mediaquery(tablet-landscape) {
+					padding: $gap*1.5 85px $gap*1.5 85px;
+				}
+
+				&:after {
+					color: $white;
+				}
+				
+				h3 {
+					color: $white;
+				}
+
+				&:before {
+					display: none;
+				}
+			}
+		}
+	}
+
+	&.component-news-small {
+		@include mediaquery(tablet-landscape) {
+			margin-top: -65px;
+		}
+
+		.news-items-wrapper {
+			
+			.news-item {
+				padding: 17px 45px 17px 23px;
+
+				@include mediaquery(tablet-landscape) {
+					padding: $gap*1.5 $gap*4.3 $gap*1.5 $gap*1.5;
+				}
+				
+			}
+		}
+	}
+
+	&.component-news-medium {
+
+		.news-items {
+			@include mediaquery(tablet-landscape) {
+				@include flexbox(flex);
+				@include flexbox-wrap(wrap);
+				@include flexbox-align-items(stretch);
+			}
+
+
+			.news-item {
+				padding: 17px 45px 17px 23px;
+
+				@include mediaquery(tablet-landscape) {
+					padding: $gap*1.5 $gap*4.3 $gap*1.5 $gap*1.5;
+					width: calc(50% - 1px);
+				}
+
+				&:nth-child(odd) {
+					
+					@include mediaquery(tablet-landscape) {
+						margin-right: 2px;
+					}
+				}
+
+				&:last-child {
+					@include mediaquery(tablet-landscape) {
+						margin-bottom: 2px;
+					}
+				}
+
+				@include mediaquery(desktop) {
+					&:hover {
+						left: 0px;
+					}
+				}
+			}
+		}
+
+		.cta-tab {
+			@include mediaquery(tablet-landscape) {
+				width: calc(50% - 1px);
+				float:right;
+				margin-top: -2px;
+			}
+		}
+	}
+
+
+	&.component-news-large {
+
+		.news-items-wrapper {
+
+			.news-item {
+				padding: $gap*1.25 $gap*2.25 $gap*1.25 $gap*1.25;
+				position: relative;
+				width: 100%;
+
+				@include mediaquery(tablet-landscape) {
+					padding: $gap*1.75 $gap*4.3;
+					width: calc(100% - 85px);
+				}
+
+				&:nth-child(odd) {
+					
+					@include mediaquery(tablet-landscape) {
+						margin-left: 85px;
+					}
+				}
+
+
+				&.no-indent {
+					margin-left: 0;
+					
+					@include mediaquery(tablet-landscape) {
+						margin-left: 85px;
+					}
+				}
+			}
+
+			.cta-tab {
+				@include mediaquery(tablet-landscape) {
+					margin-left: 85px;
+				}
+			}
+
+			.featured {
+				.news-item {
+
+
+
+					&:nth-child(odd) {
+						@include mediaquery(tablet-landscape) {
+							margin-left: 0;
+						}
+						
+					}
+
+					&:nth-child(2n) {
+						
+						@include mediaquery(tablet-landscape) {
+							margin-left: 85px;
+						}
+					}
+					
+					&:first-child {
+						background-color: $black;
+						color: white;
+						@include mediaquery(tablet-landscape) {
+							margin-left: 85px;
+						}
+
+						&:after {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+}

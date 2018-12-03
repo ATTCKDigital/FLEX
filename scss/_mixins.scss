@@ -1,0 +1,445 @@
+@mixin coverImage {
+	display: block;
+	height: 100%;
+	object-fit: cover;
+	object-position: center center;
+	width: 100%;
+}
+
+@function px-to-rem($size) {
+	$remSize: $size / 16px;
+	@return #{$remSize}rem;
+}
+
+@mixin linearGradient($top, $bottom) {
+	background: $top; /* Old browsers */
+	background: -moz-linear-gradient(-45deg,  $top 0%, $bottom 100%); /* FF3.6+ */
+	background: -webkit-gradient(-45deg, color-stop(0%,$top), color-stop(100%,$bottom)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(-45deg,  $top 0%,$bottom 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(-45deg,  $top 0%,$bottom 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(-45deg,  $top 0%,$bottom 100%); /* IE10+ */
+	background: linear-gradient(135deg,  $top 0%,$bottom 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+}
+
+@mixin shadow($shadow){
+	-moz-box-shadow: $shadow;
+	-webkit-box-shadow: $shadow;
+	box-shadow: $shadow;
+}
+
+@mixin transform-rotate($degree) {
+	-ms-transform: rotate($degree); /* IE 9 */
+	-webkit-transform: rotate($degree); /* Chrome, Safari, Opera */
+	transform: rotate($degree);
+}
+
+@mixin transform-origin($x-axis, $y-axis, $z-axis) {
+	-ms-transform-origin: $x-axis $y-axis $z-axis; /* IE 9 */
+	-webkit-transform-origin: $x-axis $y-axis $z-axis; /* Chrome, Safari, Opera */
+	transform-origin: $x-axis $y-axis $z-axis;
+}
+
+@mixin transition($transition...) {
+	-webkit-transition: $transition; /* Chrome, Safari, Opera */
+	transition: $transition;
+}
+
+@mixin transform($transform) {
+	-webkit-transform: $transform;
+	-moz-transform: $transform;
+	transform: $transform;
+}
+
+@mixin transform-origin($origin){
+	-webkit-transform-origin: $origin;
+	-moz-transform-origin: $origin;
+	transform-origin: $origin;
+}
+
+@mixin flexbox($flex) {
+	display:-ms-$flex;
+	display:-webkit-$flex;
+	display: $flex;
+}
+
+@mixin flexbox-align-items($align) {
+	-ms-align-items: $align;
+	-webkit-box-align: $align;
+	-webkit-flex-align: $align;
+	-webkit-align-items: $align;
+	align-items: $align;
+}
+
+@mixin flexbox-direction($direction) {
+	-ms-align-items: $direction;
+	-webkit-align-items: $direction;
+	align-items: $direction;
+}
+
+@mixin flexbox-align-content($content) {
+	-ms-align-content: $content;
+	-webkit-align-content: $content;
+	align-content: $content;
+}
+
+@mixin flexbox-justify-content($justify) {
+	-ms-justify-content: $justify;
+	-webkit-justify-content: $justify;
+	justify-content: $justify;
+}
+
+
+@mixin verticalCenter() {
+	@include flexbox(flex);
+	@include flexbox-align-items(center);
+}
+@mixin transform-style($style) {
+	-webkit-transform-style: $style;
+	transform-style: $style;
+}
+
+
+@mixin flexbox-wrap($wrap) {
+	-ms-flex-wrap: $wrap;
+	-webkit-flex-wrap: $wrap;
+	flex-wrap: $wrap;
+}
+
+@mixin flexbox-direction($direction) {
+	-ms-flex-direction: $direction;
+	-webkit-flex-direction: $direction;
+	flex-direction: $direction;
+}
+
+@mixin blur($blur) {
+	-webkit-filter: blur($blur);
+	-moz-filter: blur($blur);
+	-o-filter: blur($blur);
+	-ms-filter: blur($blur);
+	filter: blur($blur);
+}
+
+@mixin brightness ($brightness) {
+	-webkit-filter: $brightness;
+	-moz-filter: $brightness;
+	-o-filter: $brightness;
+	-ms-filter: $brightness;
+	filter: $brightness;
+}
+
+@mixin appearance($appearance) {
+	-webkit-appearance: $appearance;
+	-moz-appearance: $appearance;
+	appearance: $appearance;
+}
+
+@mixin box-shadow($shadow) {
+	-webkit-box-shadow: $shadow;
+	-moz-box-shadow: $shadow;
+	box-shadow: $shadow;
+}
+
+@mixin animation($animate...) {
+	$max: length($animate);
+	$animations: '';
+
+	@for $i from 1 through $max {
+		$animations: #{$animations + nth($animate, $i)};
+
+		@if $i < $max {
+			$animations: #{$animations + ", "};
+		}
+	}
+	-webkit-animation: $animations;
+	-moz-animation:	$animations;
+	-o-animation:	  $animations;
+	animation:		 $animations;
+}
+
+@mixin keyframes($animationName) {
+	@-webkit-keyframes #{$animationName} {
+		@content;
+	}
+
+	@-moz-keyframes #{$animationName} {
+		@content;
+	}
+
+	@-o-keyframes #{$animationName} {
+		@content;
+	}
+
+	@keyframes #{$animationName} {
+		@content;
+	}
+}
+
+@mixin direction($direction) {
+	-webkit-animation-fill-mode:$direction;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+	-moz-animation-fill-mode:$direction;
+	animation-fill-mode:$direction;
+}
+
+@mixin columns($columns, $gap, $break) {
+	-webkit-column-count: $columns; /* Chrome, Safari, Opera */
+	-moz-column-count: $columns; /* Firefox */
+	column-count:$columns;
+	-webkit-column-gap: $gap; /* Chrome, Safari, Opera */
+	-moz-column-gap: $gap; /* Firefox */
+	column-gap: $gap;
+	-webkit-column-break-inside: $break; /* Chrome, Safari, Opera */
+	page-break-inside: $break; /* Firefox */
+	break-inside: $break;
+}
+
+@mixin placeholder($color) {
+	&::-webkit-input-placeholder {
+		color: $color;
+	}
+
+	&:-moz-placeholder { /* Firefox 18- */
+		color: $color;  
+	}
+
+	&::-moz-placeholder {  /* Firefox 19+ */
+		color: $color;  
+	}
+
+	&:-ms-input-placeholder {  
+		color: $color;  
+	}
+}
+
+// Use to clear a wrapper element instead of a separate html 
+// element with clear: both;
+@mixin clearRow {
+	&:after {
+		clear: both;
+		content: '';
+		display: block;
+		height: 0;
+		width: 100%;
+	}
+}
+
+// Media queries
+
+// TODO: (DP) Find out whether this is necessary and how to replace/remove it if not
+@mixin nav-break {
+	@media screen and (min-width: $nav-breakpoint) {
+		@content;
+	}
+}
+
+
+// Keyframes
+@-webkit-keyframes moveUp {
+	0% { }
+	100% { -webkit-transform: translateY(0); opacity: 1; }
+}
+
+@keyframes moveUp {
+	0% { }
+	100% { -webkit-transform: translateY(0); transform: translateY(0); opacity: 1; }
+}
+
+@mixin font-size($fs-map) {
+	@each $fs-breakpoint, $fs-font-size in $fs-map {
+		@if $fs-breakpoint == null {
+			font-size: $fs-font-size;
+		} @else {
+			@media screen and (min-width: $fs-breakpoint) {
+				font-size: $fs-font-size;
+			}
+		}
+	}
+}
+
+/**
+ * Allow the passed-in selectors to be used by headings without being overridden by default heading styles.
+ *
+ * @param  {selectors} $selectors a SCSS "list" of selectors.
+ */
+@mixin heading-extend($selectors) {
+	@each $selector in $selectors {
+		h1, h2, h3, h4, h5, h6 {
+			&#{$selector} {
+				@extend #{$selector};
+			}
+		}
+	}
+}
+
+$mediaQueries: (
+	'mobile': '0px',
+	'iPhone6': '375px',
+	'phone': '569px',
+	'tablet-portrait': '768px',
+	'tablet-landscape': '1024px',
+	'desktop': '1200px',
+	'xl': '1350px',
+	'2xl': '1440px',
+	'3xl': '1500px',
+	'4xl': '1700px'
+);
+
+$maxMediaQueries: (
+	'phone': '568px',
+	'tablet-portrait': '767px',
+	'tablet-landscape': '1023px',
+	'desktop': '1199px',
+	'xl': '1349px',
+);
+
+$minDeviceHeightMediaQueries: (
+	'iPhone4': '480px',
+	'iPhone5': '568px',
+	'Android': '569px',
+	'iPhone6': '667px',
+	'iPad': '737px',
+	'desktop': '1025px'
+);
+
+/**
+ * _get()
+ * A more terse way of retrieving data from sass maps
+ */
+@function _get($map, $key, $subKey: false){
+	// Check to see if the passed map exists
+	// @if (not global-variable-exists($map)) {
+	// 	@warn "#{$map} doesn't exist.";
+	// 	@return false;
+	// }
+
+	// Check to see if the property key passed resolves to a value
+	@if (map-has-key($map, $key)) {
+		@if ($subKey) {
+			//$subMap: map-get($map, key);
+			@return map-get(map-get($map, $key), $subKey);
+		}
+
+		@else {
+			@return map-get($map, $key);
+		}
+	}
+
+	@else {
+		@warn "#{$key} doesn't exist in #{$map}. Current font property options for #{$map} are: #{map-keys($map)}.";
+		@return false;
+	}
+}
+
+// Short versions
+$mediaquery-phone: _get($mediaQueries, 'phone');
+$mediaquery-tablet-portrait: _get($mediaQueries, 'tablet-portrait');
+$mediaquery-tablet-landscape: _get($mediaQueries, 'tablet-landscape');
+$mediaquery-desktop: _get($mediaQueries, 'desktop');
+$mediaquery-xl: _get($mediaQueries, 'xl');
+
+@mixin mediaquery($breakpoint) {
+	@media only screen and (min-width: _get($mediaQueries, #{$breakpoint})) {
+		@content;
+	}
+}
+
+@mixin mediaquery-max-device-width($breakpoint) {
+	@media only screen and (max-device-width: _get($maxMediaQueries, #{$breakpoint})) {
+		@content;
+	}
+}
+
+@mixin mediaquery-min-device-height($breakpoint) {
+	@media only screen and (min-device-height: _get($minDeviceHeightMediaQueries, #{$breakpoint})) {
+		@content;
+	}
+}
+
+@mixin mediaquery-max($breakpoint) {
+	@media only screen and (max-width: _get($maxMediaQueries, #{$breakpoint})) {
+		@content;
+	}
+}
+
+// // iPhone 4
+// @media only screen and (min-device-height: 480px) {
+// 	// background: red;
+// }
+
+// // iPhone 5
+// @media only screen and (min-device-height: 568px) {
+// 	// background: orange;
+// }
+
+// // Android
+// @media only screen and (min-device-height: 569px) {
+// 	// background: pink;
+// }
+
+// // iPhone 6
+// @media only screen and (min-device-height: 667px) {
+// 	// background: yellow
+// }
+
+// // iPad
+// @media only screen and (min-device-height: 737px) {
+// 	// background: green;
+// }
+
+// // Desktop
+// @media only screen and (min-device-height: 1025px) {
+// 	// background: blue;
+// }
+
+// Allows JS to access CSS breakpoints
+.breakpoint {
+	display: none;
+	height: 0;
+	position: absolute;
+	width: 0;
+}
+
+body {
+	// NOTE: (DP) For debugging only. 
+	border-bottom: 0px solid red;
+
+	@include mediaquery(phone) {
+		border-color: green;
+
+		.breakpoint.phone {
+			display: block;
+		}
+	}
+
+	@include mediaquery(tablet-portrait) {
+		border-color: blue;
+
+		.breakpoint.tablet-portrait {
+			display: block;
+		}
+	}
+
+	@include mediaquery(tablet-landscape) {
+		border-color: purple;
+
+		.breakpoint.tablet-landscape {
+			display: block;
+		}
+	}
+
+	@include mediaquery(desktop) {
+		border-color: orange;
+
+		.breakpoint.desktop {
+			display: block;
+		}
+	}
+
+	@include mediaquery(xl) {
+		border-color: yellow;
+
+		.breakpoint.xl {
+			display: block;
+		}
+	}
+}

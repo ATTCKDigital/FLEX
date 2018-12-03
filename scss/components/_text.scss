@@ -1,0 +1,14 @@
+.component-text{
+	@include mediaquery-max(tablet-landscape) {
+		padding: $gap $gap 0 $gap;
+	}
+
+	.additional-links-wrapper {
+		border-top: 1px solid color('accent', 'gray-border');
+
+	}
+
+	.page-template-page-contact & {
+		margin-top: 2px;
+	}
+}

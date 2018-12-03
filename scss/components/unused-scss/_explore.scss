@@ -1,0 +1,38 @@
+.explore-cta {
+	display: none;
+
+	@include mediaquery(desktop) {
+		display: block;
+		height: 300px;
+		left: 0;
+		position: absolute;
+		top: 889px;
+		z-index: 90;
+	}
+
+	.pure-u-lg-1-1 {
+		height: 100%;
+	}
+}
+
+.component-explore {
+	display: none;
+
+	@include mediaquery(desktop) {
+		display: block;
+		left: 15%;
+		position: absolute;
+		top: 0;
+	}
+
+	h6 {
+		margin-bottom: $gap*1.25;
+	}
+
+	.explore-line {
+		display: block;
+		height: 203px;
+		margin: 0 auto;
+		width: 20px;
+	}
+}

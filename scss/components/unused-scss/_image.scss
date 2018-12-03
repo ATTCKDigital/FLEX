@@ -1,0 +1,15 @@
+.component-image {
+	.component-alignment-stretch & {
+		height: 100%;
+		overflow: hidden;
+
+		.content-wrapper {
+			height: 100%;
+
+			img {
+				height: 100%;
+				width: auto;
+			}
+		}
+	}
+}

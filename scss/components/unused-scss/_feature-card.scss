@@ -1,0 +1,64 @@
+// feature card component
+.component-feature-card {
+	background-color: white;
+	margin-left: -25px;
+	width: calc(100% + 50px);
+
+	@include tablet-portrait {
+		margin-left: 25px;
+		width: auto;
+	}
+
+	@include tablet-landscape {
+		margin-left: calc(100% - 414px);
+		width: 100%;
+		max-width: 414px;
+	}
+
+	.feature-card-cta {
+		padding: $gap*3 $gap*2 $gap*2; 
+	}
+
+	.body-text {
+		background-color:color('ground', 'blue');
+		padding: $gap*2 $gap $gap*1.5;
+
+		a, .fa {
+			color: white;
+			font-weight: 500;
+		}
+
+		.fa {
+			margin-right: $gap*.5;
+		}
+
+		p {
+			margin-bottom: $gap*.25;
+			font-weight: 500;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+//custom class added to component row
+.feature-card {
+	min-height: 550px;
+	height: auto;
+	padding-bottom:0;
+
+	@include tablet-portrait {
+		height: 550px;
+		padding-bottom: $gap*2;
+	}
+
+	.component-text {
+		padding: 150px 0;
+
+		@include tablet-portrait {
+			padding: inherit;
+		}
+	}
+}

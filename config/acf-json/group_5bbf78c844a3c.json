@@ -1,0 +1,57 @@
+{
+    "key": "group_5bbf78c844a3c",
+    "title": "Page Background Color",
+    "fields": [
+        {
+            "key": "field_5bbf78cef760b",
+            "label": "Background Color",
+            "name": "background_color",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "gray": "Gray",
+                "pink-blue": "Pink\/Blue Gradient",
+                "orange": "Orange Gradient",
+                "blue": "Blue Gradient"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "gray",
+            "layout": "vertical",
+            "return_format": "value",
+            "save_other_choice": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "expertise"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1541712133
+}

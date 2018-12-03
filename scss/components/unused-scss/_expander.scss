@@ -1,0 +1,1808 @@
+.component-expander {
+	height: 100%;
+	overflow: hidden;
+
+	.content-wrapper {
+		height: 100%;
+	
+		@include mediaquery(tablet-landscape) {
+			max-height: 1024px;
+		}
+	}
+
+	.expander-image-wrapper {
+		background-color: color('global', 'navy');
+		width: 100%;
+		height: 47.4%;
+		overflow: hidden;
+		position: relative;
+
+		@include mediaquery(tablet-portrait) {
+			margin-left: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	.expander-image {
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		height: 100%;
+		padding-bottom: 76.6%;
+		position: relative;
+
+		@include mediaquery(tablet-portrait) {
+			padding-bottom: 71.1%;
+			height: 0;
+		}
+	}
+
+	.expander-wrapper {
+		height: 52.6%;
+		z-index: 10;
+		@include transform(translateX(0));
+
+		@include mediaquery(tablet-portrait) {
+			height: 100%;
+			left: -50%;
+			position: absolute;
+			top: 0;
+			width: calc(50% + 103px);
+			@include transition(left .4s ease-out);
+
+		}
+
+		@include mediaquery(tablet-landscape) {
+			left: -41.5%;
+			width: calc(41.5% + 150px);
+		}
+
+		@include mediaquery(desktop) {
+			left: -37.5%;
+			width: calc(37.5% + 150px);
+		}
+	}
+
+	.expander-tab {
+		height: 100%;
+		padding: $gap*2 0;
+		@include flexbox(flex);
+		@include flexbox-align-items(center);
+		@include flexbox-justify-content(center);
+
+		@include mediaquery(tablet-portrait) {
+			left: 0;
+			margin: 0 auto;
+			padding: 0;
+			position: absolute;
+			top: 0;
+			width: 60%;
+			@include transition(left .4s ease-out);
+		}
+
+
+		@include mediaquery(tablet-landscape) {
+			width: 60%;
+		}
+
+		@include mediaquery(desktop) {
+			width: 66%;
+		}
+
+	}
+
+	.expander-content {
+		max-width: 360px;
+		padding: 0 $gap*.5;
+
+		@include mediaquery(tablet-portrait) {
+			padding: 0;
+		}
+
+		@include mediaquery(desktop) {
+			max-width: 450px;
+		}
+	}
+
+
+	.expander-video-wrapper {
+		position: absolute;
+	    top: 0;
+	    right: 0;
+	    height: 0;
+	    padding-bottom: 56.25%;
+        width: 100%;
+        overflow: hidden;
+        z-index: -1;
+        opacity: 0;
+        @include transition(opacity .4s ease-out, z-index .4s ease-out);
+
+        @include mediaquery(tablet-portrait) {
+        	width: calc(100% - 103px);
+        	height: 100%;
+        	padding-bottom: 0;
+        }
+
+        @include mediaquery(tablet-landscape) {
+        	width: calc(100% - 150px);
+        }
+
+		&.playVideo {
+			opacity: 1;
+			z-index: 10;
+		}
+
+		.expander-video {
+			left: 0;
+			margin: 0 auto;
+			position: absolute;
+			right: 0;
+			width: 100%;
+			z-index: 10;
+			height: 100%;
+
+			video, iframe {
+				bottom: 0;
+				height: 100%;
+				left: 0;
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: 100%;
+			}
+
+			iframe {
+				@include mediaquery(tablet-portrait) {
+					width: 100vw;
+					height: 56.25vw;
+					min-height: 100vh;
+					min-width: 177.77vh;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					@include transform(translate(-50%, -50%));
+				}
+
+				@include mediaquery(desktop) {
+					top: 0;
+					@include transform(translate(-50%, 0%));
+				}
+			}
+
+		}
+
+		&.fullScreen {
+        	position: fixed;
+        	top: 0;
+        	left: 0;
+        	right: 0;
+        	bottom: 0;
+        	background-color: black;
+        	z-index: 100;
+        	width: 100%;
+        	@include flexbox(flex);
+        	@include flexbox-align-items(center);
+
+        	.expander-video {
+        		width: 100%;
+        		height: 0;
+        		overflow: hidden;
+        		padding-bottom: 56.25%;
+
+        		iframe, video {
+        			width: 100%;
+					height: 100%;
+					left: 0;
+					right: 0;
+					margin: 0 auto;
+					min-width: 0;
+					min-height: 0;
+					top: 0;
+					transform: none;
+        		}
+        	}
+        }
+
+		.close {
+			right: $gap*.5;
+			top: $gap*.5;
+
+			@include mediaquery(tablet-portrait) {
+				right: $gap*1.5;
+				top: 28px;
+			}
+		}
+
+		.full-screen {
+			right: $gap*.5;
+			bottom: $gap*.5;
+
+			@include mediaquery(tablet-portrait) {
+				right: $gap*1.5;
+				bottom: 28px;
+			}
+		}
+	}
+
+	.arrow-wrapper {
+		display: none;
+		cursor: pointer;
+		width: 16px;
+		height: 28px;
+
+		@include mediaquery(tablet-portrait) {
+			display: block;
+			position: absolute;
+			top: calc(50% - 14px);
+			z-index: 100;
+			@include transition(left .3s ease-out);
+		}
+
+		@include mediaquery(tablet-landscape) {
+			left: 65px;
+			right: auto;
+		}
+
+		.arrow-svg {
+			width: 16px;
+			left: 41px;
+			height: 28px;
+			fill: color('global', 'navy');
+			@include transform-rotate(180deg);
+		}
+	}
+
+	.body-text {
+		margin: 14px auto 0;
+		max-width: 450px;
+		text-align: center;
+
+		@include mediaquery-max(tablet-portrait) {
+			padding: 0 $gap;
+		}
+
+		@include mediaquery(tablet-portrait) {
+			margin: 28px auto 0;
+		}
+
+		p {
+			font-size: 12px;
+
+			@include mediaquery(tablet-portrait) {
+				font-size: 14px;
+				margin-bottom: $gap*1.5;
+			}
+
+			@include mediaquery(3xl) {
+				font-size: 16px;
+			}
+		
+		} 
+
+		address {
+			display: none;
+			padding: 11px 0 0 0;
+		}
+
+
+		.openGallery {
+			cursor: pointer;
+			@include sans-serif-medium;
+		}
+	}
+
+	.follow {
+		bottom: 20px;
+		left: 0;
+		position: absolute;
+
+		@include mediaquery(tablet-landscape) {
+			bottom: 60px;
+		}
+	}
+
+	.play {
+		right: 0;
+		left: 0;
+		top: 13%;
+
+		@include mediaquery(tablet-portrait) {
+			right: calc(46% - 40px);
+			left: auto;
+			top: calc(50% - 40px);
+			@include transition(all .4s ease-out);
+		}
+
+		@include mediaquery(desktop) {
+			right: calc(46% - 80px);
+			top: calc(50% - 80px);
+
+		}
+	}
+
+	.address {
+		cursor: pointer;
+		min-height: 36px;
+	}
+
+	.map-icon {
+		display: block;
+		height: 36px;
+		margin: 0 auto;
+		width: 21px;
+		stroke: #BCBDBC;
+	}
+
+	.showAddress {
+		.map-icon {
+			display: none;
+
+		}
+
+		address {
+			display: block;
+		}
+	}
+
+
+
+
+
+	&.expanded {
+		.expander-wrapper {
+			left: 0;
+			z-index: 11;
+
+			@include mediaquery(tablet-portrait) {
+				left: -103px;
+			}
+
+			@include mediaquery(tablet-landscape) {
+				left: -150px;
+			}
+		}
+
+		.expander-tab {
+			left: 10%;
+
+			@include mediaquery(tablet-portrait) {
+				left: 29%;
+			}
+
+			@include mediaquery(tablet-landscape) {
+				left: calc(20% + 75px);
+			}
+
+			@include mediaquery(desktop) {
+				left: calc(17% + 75px);
+			}
+
+		}
+
+		.arrow-wrapper {
+			left: 63%;
+
+			@include mediaquery(tablet-portrait) {
+				left: 53%;
+			}
+
+			@include mediaquery(tablet-landscape) {
+				left: 43%;
+			}
+
+			@include mediaquery(desktop) {
+				left: 39%;
+			}
+
+			.arrow-svg {
+				fill: white;
+				@include transform-rotate(0deg);
+			}
+		}
+
+
+		.play {
+
+			right: 0;
+			left: 0;
+			margin: 0 auto;
+
+			@include mediaquery(tablet-portrait) {
+				right: 14%;
+				left: auto;
+			}
+
+			@include mediaquery(tablet-landscape) {
+				right: 27%;
+			}
+
+			.play-button {
+
+			}
+		}
+
+	}
+
+	&.peekTab {
+
+		.expander-wrapper {
+
+			@include mediaquery(tablet-portrait) {
+				@include animation('peek 1s 1');
+			}
+
+		}
+		
+	}
+
+	&.hasVideo {
+		.expander-image {
+			@include mediaquery-max(tablet-portrait) {
+				padding-bottom: 54.6%;
+			}
+		}
+	}
+}
+
+.component-amenities {
+	//amenity map version of expander
+
+
+	@include mediaquery-max(tablet-landscape) {
+		background-color: color('global', 'navy');
+		height: 100vh;
+	}
+
+	@include mediaquery(desktop) {
+		// height: 1024px;
+	}
+
+	.content-wrapper {
+		background-color: color('global', 'navy');
+
+		@include mediaquery-max(tablet-landscape) {
+			height: 100vh;
+		}
+
+		@include mediaquery(tablet-landscape) {
+			height: 768px;
+		}
+
+		@include mediaquery(2xl) {
+			height: 1024px;
+		}
+	}
+
+	.amenities {
+		bottom: 0;
+		height: 100%;
+		position: absolute;
+		right: 0;
+		width: 100%;
+
+		@include mediaquery(tablet-landscape) {
+			left: 0;
+			right: auto;
+			width: 100%;
+		}
+	}
+
+
+	.amenity{
+		display: none;
+		height: 100%;
+		max-width: none;
+		width: 100%;
+
+		&.activeAmenity {
+			display: block;
+			z-index: 10;
+		}
+	}
+
+	.amenity-map {
+		background-color: color('global', 'navy');
+		padding: $gap*4 $gap $gap*2;
+		height: 100%;
+		width: 80%;
+		max-height: 1024px;
+
+		
+
+
+		@include mediaquery-max(tablet-landscape) {
+			padding: 0 0 50%;
+			height: 0;
+			margin-top: 60px;
+			position: relative;
+			overflow: hidden;
+		}
+
+		@media only screen and (max-width: 800px) {
+			//special mediaquery for in between portrait and landscape
+			margin-top: 60px;
+			padding: 0;
+			width: 85%;
+			height: auto;
+		}
+
+		@include mediaquery(tablet-landscape) {
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+			width: 90%;
+			bottom: 0;
+			padding: 0 $gap;
+			@include flexbox(flex);
+			@include flexbox-align-items(center);
+		}
+
+		@include mediaquery(2xl) {
+			left: 0;
+			width: 90%;
+		}
+
+		@include mediaquery(4xl) {
+			width: 75%;
+		}
+
+		.map-base {
+
+			display: block;
+			height: auto;
+			margin: 0 auto;
+
+			@include mediaquery-max(tablet-landscape) {
+				width: auto;
+			    position: absolute;
+			    height: 100%;
+			    left: 0;
+			    right: 0;
+			}
+
+			@media only screen and (max-width: 800px) {
+			//special mediaquery for in between portrait and landscape
+				width: 100%;
+				margin: 0;
+				height: auto;
+				position: relative;
+
+			}
+
+		}
+
+
+
+		.map-points {
+			height:0;
+			left: 0;
+			margin: 0 auto;
+			position: absolute;
+			right: 0;
+			top: 0px;
+			padding-bottom: 70.4%;
+
+			@include mediaquery-max(tablet-landscape) {
+				width: 85%;
+			}
+
+			@media only screen and (max-width: 800px) {
+				//special mediaquery for in between portrait and landscape
+				width: 100%;
+				padding-bottom: 74.4%;
+
+
+			}
+
+			@include mediaquery(tablet-landscape) {
+				//ipad 
+				height: 0;
+				padding-bottom: 69.2%;
+				top: 50%;
+				width: calc(100% - 40px);
+				@include transform(translateY(-50%));
+			}
+
+			@include mediaquery(4xl) {
+				padding-bottom: 71%;
+			}
+
+		}
+
+		.map-point {
+			position: absolute;
+			left: -99999em;
+			top: -99999em;
+
+			&[data-amenity-id="amenity-lounge"] {
+				left: 19%;
+				top: 61%;
+				
+				@media only screen and (min-width: 415px) {
+					left: 19%;
+					top: 66%; 
+				}
+
+				@include mediaquery(tablet-portrait) {
+					top: 60%;
+				}
+
+				@include mediaquery(tablet-landscape) {
+					top: 63%;
+				}
+			}
+
+			&[data-amenity-id="amenity-gaming"] {
+				left: 23%;
+				top: 72%;
+				
+				@include mediaquery(tablet-landscape) {
+					top: 74%;
+				}
+
+				@include mediaquery(desktop) {
+					top: 75%;
+				}
+			}
+
+			&[data-amenity-id="amenity-media"] {
+				left: 37%;
+				top: 63%;
+				
+				@include mediaquery(tablet-landscape) {
+					top: 64%;
+				}
+
+			}
+
+			&[data-amenity-id="amenity-concierge"] {
+				left: 49%;
+				top: 47%;
+				
+				@media only screen and (min-width: 415px) {
+					left: 49%;
+					top: 47%; 
+				}
+
+				@include mediaquery(tablet-landscape) {
+					top: 45%;
+				}
+			}
+
+			&[data-amenity-id="amenity-cowork"] {
+				left: 63%;
+				top: 44%;
+				
+				@media only screen and (min-width: 415px) {
+					left: 63%;
+					top: 44%; 
+				}
+
+				@include mediaquery(tablet-landscape) {
+					top: 42%;
+				}
+			}
+
+			&[data-amenity-id="amenity-terrace"] {
+				left: 63%;
+				top: 67%;
+				
+				@media only screen and (min-width: 415px) {
+					left: 63%;
+					top:72%; 
+				}
+
+				@include mediaquery(tablet-landscape) {
+					top: 72%;
+				}
+			}
+
+			&[data-amenity-id="amenity-kitchen"] {
+				left: 88%;
+				top: 67%;
+				
+				@media only screen and (min-width: 415px) {
+					left: 88%;
+					top: 67%; 
+				}
+
+				@include mediaquery(tablet-landscape) {
+
+				}
+			}
+
+			&[data-amenity-id="amenity-yoga"] {
+				left: 90%;
+				top: 28%;
+				
+				@media only screen and (min-width: 415px) {
+					left: 90%;
+					top: 26%; 
+				}
+
+				@include mediaquery(tablet-landscape) {
+					left: 88%;
+					top: 26%;
+				}
+			}
+
+			&[data-amenity-id="amenity-fitness"] {
+				left: 74%;
+				top: 21%;
+				
+				@media only screen and (min-width: 415px) {
+					left: 74%;
+					top: 21%; 
+				}
+
+				@include mediaquery(tablet-landscape) {
+					top: 18%;
+				}
+			}
+
+			&[data-amenity-id="amenity-playroom"] {
+				left: 56%;
+				top: 24%;
+				
+				@media only screen and (min-width: 415px) {
+					left: 56%;
+					top: 24%; 
+				}
+
+				@include mediaquery(tablet-landscape) {
+					top: 24%;
+				}
+			}
+
+			&[data-amenity-id="amenity-leasing"] {
+				left: 38%;
+				top: 35%;
+				display: none;
+				
+				@media only screen and (min-width: 415px) {
+					left: 38%;
+					top: 35%; 
+				}
+
+				@include mediaquery(tablet-landscape) {
+					@include flexbox(flex);
+				}
+
+				@include mediaquery(desktop) {
+					top: 37%;
+				}
+			}
+
+			&[data-amenity-id="amenity-bar"] {
+				left: 5%;
+				top: 58%;
+				
+				@media only screen and (min-width: 415px) {
+					left: 5%;
+					top: 58%; 
+				}
+			
+				@include mediaquery(tablet-landscape) {
+					left: 5%;
+					top: 59%;
+				}
+			}
+
+			&[data-amenity-id="amenity-events"] {
+				left: 23%;
+				top: 47%;
+				
+				@media only screen and (min-width: 415px) {
+					left: 23%;
+					top: 47%; 
+				}
+
+				@include mediaquery(tablet-landscape) {
+
+				}
+			}
+
+			&.activeAmenity {
+				background-color: white;
+				border-color: color('global', 'navy');
+				color: color('global', 'navy');
+				z-index: 1;
+				@include transform(scale(1.3));
+
+				span {
+					display: block;
+				}
+
+			}
+		}
+	}
+
+	.amenity-list {
+		text-align: center;
+		position: absolute;
+		bottom: 80px;
+
+		@include mediaquery(tablet-landscape) {
+			display: none;
+		}
+
+		.map-point-item {
+			color: white;
+			font-size: 15px;
+			display: inline-block;
+			margin: 0 $gap*.5 $gap 0;
+			padding-right: $gap*.5;
+			border-right: 1px solid white;
+
+			@include mediaquery(tablet-portrait) {
+				font-size: 18px;
+			}
+
+			&:last-child {
+				margin-right: 0;
+				padding-right: 0;
+				border-right: 0;
+				
+			}
+
+			&[data-amenity-id="amenity-leasing"] {
+				display: none;
+			}
+		}
+	}
+
+
+	.gallery-teaser {
+		display: none;
+
+		@include mediaquery-max(tablet-landscape) {
+			display: none
+		}
+
+		@include mediaquery(tablet-landscape) {
+			width: 100%;
+			height: 55%;
+			overflow: hidden;
+			position: relative;
+			display: block;
+		}
+
+		@include mediaquery(desktop) {
+			height: 60%;
+		}
+
+		img {
+			bottom: 0;
+			height: 100%;
+			left: -50%;
+			margin: 0 auto;
+			min-width: 100%;
+			position: absolute;
+			right: -50%;
+			top: 0;
+			width: auto;
+		}
+
+	}
+	
+	.openGallery {
+		bottom: 30px;
+		color: white;
+		cursor: pointer;
+		display: block;
+		left: 0;
+		margin: 0 auto;
+		position: absolute;
+		right: 0;
+		text-align: center;
+		cursor: pointer;
+		@include sans-serif-medium;
+
+		@include mediaquery(tablet-landscape) {
+			bottom: 80px;
+			left: 150px;
+		}
+
+		@include mediaquery(desktop) {
+			bottom: 60px;
+		}
+
+		@include mediaquery(xl) {
+			bottom: 0px;
+		}
+
+		@include mediaquery(2xl) {
+			bottom: 60px;
+		}
+
+		@include mediaquery(4xl) {
+			bottom: 40px;
+		}
+
+	}
+
+	.arrow-wrapper {
+		display: none;
+
+		@include mediaquery(tablet-landscape) {
+			display: block;
+		}
+	}
+
+	.expander-wrapper {
+
+		@include mediaquery-max(tablet-landscape) {
+			bottom: -40vh;
+			height: 40vh;
+			left: 0;
+			overflow: hidden;
+			position: absolute;
+			top: auto;
+			width: 100%;
+			@include transition(bottom .4s ease-out);
+
+		}
+ 
+		@include mediaquery-max(tablet-portrait) {
+			bottom: -45vh;
+			height: 45vh;
+		}
+
+		overflow: hidden;
+	}
+
+	.additional-amenities {
+		letter-spacing: 2px;
+		padding-top: 5px;
+		@include sans-serif-medium;
+	}
+
+	.expander-image-wrapper {
+		@include mediaquery-max(tablet-landscape) {
+			width: 100%;
+			margin: 0;
+			padding:0;
+			position: relative;
+			overflow: hidden;
+			height: 100vh;
+			@include transition(height .4s ease-out);
+			@include flexbox(flex);
+			@include flexbox-align-items(start);
+			@include flexbox-justify-content(center);
+			@include flexbox-wrap(wrap);
+		}
+
+		@include mediaquery(tablet-landscape) {
+			height: 100%;
+			width: calc(100% - 250px);
+			margin-left: 200px;
+		}
+
+
+	}
+
+	.expander-tab {
+
+		@include mediaquery-max(tablet-landscape) {
+			height: 0;
+			width: 100%;
+			padding: 0;
+			overflow: hidden;
+			position: relative;
+			left: 0;
+		}
+
+		@include mediaquery(tablet-landscape) {
+			padding: 0;
+			height: 100%;
+			width: 100%;
+			left: -170px;
+			@include flexbox-align-items(flex-start);
+			@include flexbox-wrap(wrap);
+			@include flexbox-justify-content(center);
+		}
+	}
+
+
+	.expander-content {
+		height: 100%;
+		margin: 0 auto;
+		max-width: none;
+		padding: 0 $gap;
+		@include flexbox(flex);
+		@include flexbox-align-items(center);
+		@include flexbox-justify-content(center);
+
+	
+		@media only screen and (max-width: 374px) {
+			padding: $gap;
+			@include flexbox-align-items(flex-start);
+		}
+
+		@include mediaquery(tablet-landscape) {
+			height: 45%;
+			max-width: 360px;
+			padding: 0 $gap;
+			width: 100%;
+		}
+
+		@include mediaquery(desktop) {
+			padding: 0;
+			height: 40%;
+		}
+
+		.body-text{
+			margin: 0 auto;
+
+			p {
+				margin-bottom: $gap*.5;
+			}
+
+		}
+	}
+
+	&.expanded {
+		//when expander is open
+
+		.expander-image-wrapper {
+
+			@include mediaquery-max(tablet-landscape) {
+				height: 100%;
+				@include flexbox-align-items(flex-start);
+			}
+
+			@include mediaquery(tablet-landscape) {
+
+				width: 58.5%;
+				margin-left: 41.5%;
+			}
+
+			@include mediaquery(2xl) {
+				margin-left: 37.5%;
+				width: 62.5%;
+			}
+			
+			.amenity-map {
+
+				@include mediaquery(tablet-landscape) {
+					width: 90%;
+					left: 0%;
+				}
+
+				@include mediaquery(desktop) {
+					width: 90%;
+					left: 0;
+				}
+
+				.map-points {
+					@include mediaquery(tablet-landscape) {
+
+						.map-point {
+							@include transform(scale(0.8) translateX(-11%) translateY(-22%));
+
+							&.activeAmenity {
+								@include transform(scale(1.1));
+
+							}
+
+						}
+					}
+
+					@include mediaquery(4xl) {
+						.map-point {
+							@include transform(initial);
+
+							&.activeAmenity {
+								@include transform(scale(1.3));
+
+							}
+						}
+					}
+
+				}
+			}
+
+		}
+
+		.openGallery {
+
+			@include mediaquery(tablet-landscape) {
+				left: 41.5%;
+				bottom: 80px;
+			}
+
+			@include mediaquery(2xl) {
+				left: 37.5%;
+				bottom: 120px;
+			}
+
+
+			@include mediaquery(4xl) {
+				bottom: 80px;
+			}
+		}
+
+		.expander-tab {
+			@include mediaquery-max(tablet-landscape) {
+				height: 100%;
+				left: 0px;
+			}
+			
+			@include mediaquery(tablet-landscape) {
+				left: 75px;
+			}
+
+			@include mediaquery(desktop) {
+				left: 75px;
+			}
+
+		}
+
+		.expander-wrapper {
+
+			@include mediaquery-max(tablet-landscape) {
+				bottom: 0;
+				left: 0;
+			}
+
+
+			@include mediaquery(tablet-landscape) {
+				height: 100%;
+				left: -150px;
+				margin-top: 0;
+			}
+
+			@include mediaquery(desktop) {
+				left: -150px;
+			}
+
+		}
+
+		.arrow-wrapper {
+
+		    @include mediaquery-max(tablet-landscape) {
+				left: 0;
+			    right: 0;
+			    margin: 0 auto;
+			    transform: rotate(-90deg);		   
+			    display: block;
+		    	bottom: 41vh;
+		    	top: auto;
+		    	position: absolute;
+		    }
+
+			@include mediaquery-max(tablet-portrait) {
+				bottom: 47vh;
+			}
+
+		}
+
+		.no-image {
+			@include mediaquery-max(tablet-landscape) {
+				padding: $gap 0 $gap*2;
+				overflow: scroll;
+				width: calc(100% + 20px);
+				height: calc(100% + 20px);
+
+			}
+			.expander-content {
+				height: 100%;
+				width: 100%;
+				max-width: none;
+				// @include flexbox-align-items(flex-start);
+
+
+				@include mediaquery(tablet-portrait) {
+					width: calc(90% - 150px);
+				}
+
+				@include mediaquery(tablet-landscape) {
+					@include flexbox-align-items(center);
+				}
+			}
+
+			.expander-content-positioning {
+
+				@include mediaquery-max(tablet-portrait) {
+					margin-left: -20px;
+				}
+			}
+
+			.body-text {
+				max-width: none;
+				padding: 0 $gap*1.5;
+
+				@include mediaquery(desktop) {
+					padding: 0 $gap*1.5;
+				}
+
+				p {
+					margin-bottom: $gap;
+
+					&:last-child {
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+.component-map {
+
+	.content-wrapper {
+		overflow: hidden;
+		background-color: #b6b8ba;
+		height: calc(100vh - 55px);
+
+		@include mediaquery(tablet-landscape) {
+			// height: calc(100vh - 150px);
+			height: 100vh;
+		}
+
+		// .map-portrait & {
+		// 	height: 0;
+		// 	padding-bottom: 70.91%;
+
+		// }
+
+	}
+
+	.activeLayer {
+		.circle-button:before {
+			background-color: rgba(color('global', 'navy'), 1);
+		}
+	}
+
+	.expander-image-wrapper {
+		background-color: white;
+		overflow: hidden;
+		position: absolute;
+		width: calc(100% - 10px);
+		margin-left: 0;
+		top: 5px;
+		right: 5px;
+		height: calc(100% - 10px);
+	}
+
+	.expander-image {
+		width: 100%;
+		height: auto;
+		padding-bottom: 0;
+
+		.map-portrait & {
+			height: 100%;
+		}
+
+		@include mediaquery-max(tablet-landscape) {
+			@include transform(translateX(-30%));
+
+		}
+
+		.map-base {
+			.map-portrait & {
+				height: 100%;
+				width: auto;
+			}
+		}
+	}
+
+	.expander-wrapper {
+		@include mediaquery-max(tablet-landscape) {
+			width: 46%;
+			height: 100%;
+		}
+
+		@include mediaquery-max(tablet-portrait) {
+			width: calc(30% + 40px);
+			position: absolute;
+			left: calc((30% + 40px) * -1);
+			@include transition(left .4s ease-out);
+		}
+	}
+
+
+	.zoom-layer {
+		position: absolute;
+		bottom: 65px;
+		right: 15px;
+		z-index: 10;
+		width: 46px;
+		height: 80px;
+
+		@include mediaquery(tablet-landscape) {
+			right: 30px;
+			bottom: 30px;
+			height: 104px;
+		}
+
+		.zoom-in {
+			top: 0;
+			right: 0;
+		}
+
+		.zoom-out {
+			bottom: 0;
+			right: 0;
+		}
+
+		&.safariBarGone {
+			@include mediaquery-max(tablet-landscape) {
+				bottom: 30px;
+			}
+		}
+	}
+
+	.close-map {
+		right: 15px;
+		top: 15px;
+		width: 40px;
+		height: 40px;
+		position: absolute;
+
+		@include mediaquery(tablet-landscape) {
+			width: 66px;
+			height: 66px;
+			right: $gap*1.5;
+			top: $gap*1.5;
+		}
+	}
+
+	.map-layer-level {
+		margin-bottom: $gap*1.5;
+
+		@include mediaquery(tablet-portrait) {
+			margin-bottom: $gap*2.5;
+		}
+
+		@include mediaquery(tablet-landscape) {
+			margin-bottom: $gap*4;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		&.legend {
+			img {
+				width: 100px;
+				margin: 0 auto;
+				display: block;
+		
+				@include mediaquery(tablet-landscape) {
+					width: 120px;
+				}
+			}
+		}
+	}
+
+	.map-points {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: 100%;
+		width: 100%;
+		z-index: 1;
+
+		.map-layer {
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			z-index: 1;
+
+			&#map-boxes {
+				z-index: 5;
+			}
+
+			.map-location {
+				position: absolute;
+				width: 27px;
+				height: 27px;
+				pointer-events: none;
+
+				&[data-layer-id="map-transit"] {
+					right: 0;
+					top: 0;
+					width: 100%;
+					height: 100%;
+					z-index: 1;
+
+					@include mediaquery(desktop) {
+						// height: 1015px;
+						// width: 840px;
+					}
+
+					.transit-layer {
+						width: 100%;
+						height: auto;
+						position: absolute;
+						top: 0;
+						right: 0;
+
+						// .orientation-portrait & {
+						// 	height: 100%;
+						// 	width: auto;
+						// }
+					}
+				}
+
+				opacity: 0;
+				@include transition(opacity .4s ease-out);
+
+				&.activeLayer {
+					opacity: 1;
+					pointer-events: initial;
+				}
+			}
+
+		}
+	}
+
+	.map-boxes {
+		width: 100%;
+		height: 100%;
+	}
+
+	.map-box {
+		position: absolute;
+		top: 0;
+		right: 0;
+		cursor: pointer;
+
+		&[data-map-id='map-restaurants-1'] {
+			top: auto;
+			bottom: 2%;
+			right: 15%;
+		}
+
+		&[data-map-id='map-restaurants-2'] {
+			top: 45%;
+			right: 32%;
+		}
+
+		&[data-map-id='map-restaurants-4'] {
+			top: 34%;
+			right: 26%;
+		}
+
+		&[data-map-id='map-shops-5'] {
+			top: 59%;
+			right: 32.4%;
+		}
+
+		&[data-map-id='map-restaurants-8'] {
+			top: 52.5%;
+			right: 24%;
+		}
+
+		&[data-map-id='map-restaurants-10'] {
+			top: 23%;
+			right: 27.1%;
+		}
+
+		&[data-map-id='map-restaurants-11'] {
+			top: 25%;
+			right: 23.5%;
+		}
+
+		&[data-map-id='map-restaurants-12'] {
+			top: 33%;
+			right: 23.3%;
+		}
+
+		&[data-map-id='map-restaurants-13'] {
+			top: 33%;
+			right: 22.9%;
+		}
+
+		&[data-map-id='map-restaurants-14'] {
+			top: 24%;
+			right: 18.7%;
+		}
+
+		&[data-map-id='map-restaurants-15'] {
+			top: 33.5%;
+			right: 25.7%;
+		}
+
+		&[data-map-id='map-restaurants-16'] {
+			top: 52.5%;
+			right: 32.9%;
+		}
+
+		&[data-map-id='map-restaurants-17'] {
+			top: 38.7%;
+			right: 25%;
+		}
+
+		&[data-map-id='map-restaurants-18'] {
+			top: 75.3%;
+			right: 34%;
+		}
+
+		&[data-map-id='map-restaurants-19'] {
+			top: 75.3%;
+			right: 36%;
+		}
+
+
+		&[data-map-id='map-restaurants-20'] {
+			top: 73.5%;
+			right: 39%;
+		}
+
+		&[data-map-id='map-restaurants-21'] {
+			top: 60.2%;
+			right: 23.5%;
+		}
+
+		&[data-map-id='map-restaurants-22'] {
+			top: 73.8%;
+			right: 40%;
+		}
+
+
+		&[data-map-id='map-bars-9'] {
+			top: 57.8%;
+			right: 32.4%;
+		}
+
+		&[data-map-id='map-bars-13'] {
+			top: 77%;
+			right: 19%;
+		}
+
+
+		&[data-map-id='map-bars-23'] {
+			top: 49.8%;
+			right: 35.6%;
+		}
+
+		&[data-map-id='map-bars-24'] {
+			top: 53.5%;
+			right: 38.6%;
+		}
+
+		&[data-map-id='map-bars-25'] {
+			top: 62.5%;
+			right: 34.5%;
+		}
+
+		&[data-map-id='map-bars-26'] {
+			top: 72.5%;
+			right: 33%;
+		}
+
+		&[data-map-id='map-bars-27'] {
+			top: 75%;
+			right: 33.4%;
+		}
+
+		&[data-map-id='map-bars-28'] {
+			top: 70.6%;
+			right: 33.5%;
+		}
+
+		&[data-map-id='map-bars-29'] {
+			top: 73.5%;
+			right: 40%;
+		}
+
+		&[data-map-id='map-bars-30'] {
+			top: 78.5%;
+			right: 38.7%;
+		}
+
+		&[data-map-id='map-bars-31'] {
+			top: 88.5%;
+			right: 21.5%;
+		}
+
+		&[data-map-id='map-shops-3'] {
+			top: 75%;
+			right: 32.9%;
+		}
+
+		&[data-map-id='map-shops-6'] {
+			top: 53.5%;
+			right: 32.6%;
+		}
+
+		&[data-map-id='map-shops-7'] {
+			top: 43.5%;
+			right: 33.6%;
+		}
+
+		&[data-map-id='map-shops-14'] {
+			top: 77%;
+			right: 18.3%;
+		}
+
+		&[data-map-id='map-shops-32'] {
+			top: 20%;
+			right: 26.1%;
+		}
+
+		&[data-map-id='map-shops-33'] {
+			top: 57%;
+			right: 32.6%;
+		}
+
+		&[data-map-id='map-shops-34'] {
+			top: 62%;
+			right: 34.6%;
+		}
+
+		&[data-map-id='map-shops-35'] {
+			top: 66%;
+			right: 31.6%;
+		}
+
+		&[data-map-id='map-shops-36'] {
+			top: 71%;
+			right: 31.2%;
+		}
+
+		&[data-map-id='map-shops-37'] {
+			top: 79.5%;
+			right: 30.4%;
+		}
+
+		&[data-map-id='map-shops-38'] {
+			top: 80.9%;
+			right: 30.4%;
+		}
+
+		&[data-map-id='map-shops-39'] {
+			top: 84.4%;
+			right: 32.8%;
+		}
+
+		&[data-map-id='map-shops-40'] {
+			top: 84.4%;
+			right: 35.8%;
+		}
+
+		&[data-map-id='map-shops-41'] {
+			top: 86%;
+			right: 32.8%;
+		}
+
+		&[data-map-id='map-shops-42'] {
+			top: 89%;
+			right: 29.4%;
+		}
+	}
+
+	.map-spot {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 27px;
+		height: 27px;
+		display: block;
+
+		&.map-restaurants {
+			background: url('../images/map-restaurant.png') no-repeat center center;
+			background-size: contain;
+		}
+
+		&.map-bars {
+			background: url('../images/map-bar.png') no-repeat center center;
+			background-size: contain;
+		}
+
+		&.map-shops {
+			background: url('../images/map-shop.png') no-repeat center center;
+			background-size: contain;
+		}
+
+	}
+
+	.map-details {
+		position: absolute;
+		width: 100%;
+		left: -1400px;
+		right: 0;
+		margin: 0 auto;
+		top: 0;
+		bottom: 0;
+		background-color: white;
+		@include transition(left .4s ease-out);
+		@include flexbox(flex);
+		@include flexbox-align-items(center);
+
+		&.openBox {
+
+			@include mediaquery(tablet-landscape) {
+				left: 0;
+			}
+		}
+
+		.map-details-positioning {
+			width: 100%;
+		}
+
+		.mapMenu {
+			display: block;
+			cursor: pointer;
+			margin-top: 20px;
+			@include sans-serif-medium;
+		}
+	}
+
+	.body-text {
+		margin: 0 auto;
+		padding-top: $gap*2.5;
+
+		&:before {
+			top: 18px;
+		}
+
+		address {
+			display: block;
+			padding-top: $gap*2.5;
+		}
+	}
+
+	.arrow-wrapper {
+
+		@include mediaquery-max(tablet-landscape) {
+			display: block;
+			right: auto;
+			left: 45px;
+			top: 50%;
+		}
+	}
+
+	&.expanded {
+		.arrow-wrapper {
+			@include mediaquery-max(tablet-landscape) {
+				left: 35%;
+				right: auto;
+			}
+
+			@include mediaquery-max(tablet-portrait) {
+				left: calc(35% + 40px);
+			}
+
+		}
+
+		.expander-tab {
+			left: 34%;
+
+			@include mediaquery(tablet-landscape) {
+				left: 26.5%;
+			}
+		}
+
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

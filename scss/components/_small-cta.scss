@@ -1,0 +1,13 @@
+/****** SMALL CTA COMPONENT ******/
+.component-small-cta {
+	@include mediaquery-max(tablet-landscape) {
+		padding: 0 $gap;
+		margin: $gap*2 0;
+	}
+
+	.header-tab.header-tab-small, .header-tab.header-tab-small .header-tab-inner, .cta-tab, .cta-tab .cta-tab-inner {
+		@include mediaquery-max(tablet-landscape) {
+			width: 100%;
+		}
+	}
+}

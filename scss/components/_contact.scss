@@ -1,0 +1,12 @@
+/****** CONTACT COMPONENT ******/
+.component-contact {
+	@include mediaquery-max(tablet-landscape) {
+		padding: 0 $gap 0 $gap;
+	}
+
+	.message {
+		@include mediaquery-max(tablet-landscape) {
+			margin: $gap 0;
+		}
+	}
+}

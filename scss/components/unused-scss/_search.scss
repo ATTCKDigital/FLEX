@@ -1,0 +1,196 @@
+// Search form
+.component-search-form {
+	position: relative;
+	z-index: 1;
+	
+	form {
+		h1 {
+			@include sans-serif-medium;
+			font-size: 2rem;
+			margin-bottom: $gap;
+			margin-top: -25px;
+			text-transform: uppercase;
+		}
+			
+		h2 {
+			margin-top: -25px;
+		}
+	}
+
+	.searchButton {
+		clear: none;
+		display: block;
+		margin-bottom: $gap*1.25;
+		margin-right: $gap;
+		width: 158px;
+	}
+
+	label {
+		float: none;
+		margin-bottom: $gap*1.25;
+	}
+
+	.less-options {
+		position: relative;
+	}
+
+	.filter-section {
+		margin-bottom: $gap*2;
+		padding: 0 $gap;
+
+		@include mediaquery(tablet-landscape) {
+			margin-bottom: $gap*4;
+			padding: 0;
+		}
+	}
+
+	.optionsToggle {
+		&:after {
+			@include transform-rotate(-90deg);
+
+			@include mediaquery(tablet-landscape) {
+				@include transform-rotate(0);
+			}
+		}
+	}
+
+	.more-options {
+	    background: white;
+		display:none;
+	    height: 100vh;
+	    left: 0;
+	    overflow: scroll;
+	    padding: $gap*4 0 $gap*4;
+		position: fixed;
+	    right: 0;
+	    top: 0;
+	    z-index: 10000;
+
+		@include mediaquery(tablet-landscape) {
+			clear: both;
+			left: auto;
+			height: auto;
+			max-height: 0;
+			overflow: hidden;
+			padding: 0;
+			position: relative;
+			right: auto;
+			top: auto;
+			width: 100%;
+			z-index: 0;
+			@include transition(max-height .3s ease-in);
+		}
+
+		.sans-serif18 {
+			margin-bottom: $gap*1.25;
+			position:relative;
+
+			&:after {
+				background-color: color('global', 'dark-border');
+				bottom: -5px;
+				content: '';
+				display: block;
+				height: 1px;
+				position: absolute;
+				width: 100%;
+
+				@include mediaquery(tablet-landscape) {
+					display: none;
+				}
+			}
+		}
+
+		.close-reset {
+			background-color: $white;
+			border-bottom: 1px solid color('global', 'border');
+			height: 48px;
+			left: 0;
+			margin-bottom: $gap*2;
+			padding-bottom: $gap*.5;
+			position: fixed;
+			right: 0;
+			top: 0;
+			z-index: 10;
+
+			.close {
+				height: 46px;
+				left: $gap;
+				width: 22px;
+			}
+
+			.resetOptions {
+				cursor: pointer;
+				font-size: 14px;
+				position: absolute;
+				right: $gap;
+				top: 15px;
+			}
+
+			@include mediaquery(tablet-landscape) {
+				display: none;
+			}
+		}
+
+		.toggleList {
+			margin-top: $gap;
+
+			@include mediaquery(tablet-landscape) {
+				display: none;
+			}
+		}
+	}
+
+	.expandOptions {
+		.toggleList.arrow:after {
+			@include transform-rotate(-180deg);
+		}
+	}
+
+	&.openOptions {
+		z-index: 1001;
+
+		@include mediaquery(tablet-landscape) {
+			z-index: 1;
+		}
+		
+		.optionsToggle {
+			&:after {
+				@include transform-rotate(90deg);
+
+				@include mediaquery(tablet-landscape) {
+					@include transform-rotate(-180deg);
+				}
+			}
+		}
+
+		.more-options {
+			display: block;
+
+			@include mediaquery(tablet-portrait) {
+				max-height: 99999px;
+				overflow: inherit;
+				padding-top: $gap*1.75;
+			}
+		}
+	}
+
+	.main-header & {
+		display: none;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 85px;
+		background-color: $white;
+		padding: $gap*2;
+		@include shadow(0 7px 13px 0 rgba(29, 29, 29, 0.5));
+	}
+
+	.showSearch & {
+		display: block;
+	}
+
+	&.component-search-form-nav {
+		height: auto;
+		overflow: visible;
+	}
+}

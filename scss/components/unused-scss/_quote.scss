@@ -1,0 +1,49 @@
+// quote component
+.component-quote {
+	.quote-text {
+		border-left: 4px solid color('global', 'black');
+		padding-left: $gap*1.5;
+
+		p {
+			margin-top: -20px;
+			margin-bottom: $gap;
+		}
+
+		cite {
+			display: block;
+			margin-bottom: $gap*.5;
+		}
+
+		small {
+			display: block;
+		}
+
+
+	}
+
+	img {
+		display: block;
+		width: 259px;
+		margin: $gap*2 auto 0;
+
+		@include mediaquery(tablet-landscape) {
+			margin:0;
+		}
+	}
+
+	.has-image {
+		@include mediaquery(tablet-landscape) {
+			@include flexbox(flex);
+			@include flexbox-align-items(center);
+			@include flexbox-justify-content(space-between);
+		}
+
+		.quote-text {
+			@include mediaquery(tablet-landscape) {
+				width: calc(100% - 259px);
+				padding-right: $gap*1.5;
+			}
+		}
+	}
+
+}

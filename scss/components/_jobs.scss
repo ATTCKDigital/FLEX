@@ -1,0 +1,187 @@
+ /*** JOBS STYLES FROM VENDOR ***/
+ /* general styles */
+
+.accolo_bodybold { 
+	font-size:14px;
+	padding: $gap*.5 $gap*.5 0 $gap*.5;
+	@include sans-serif-semi;
+
+	&:nth-child(2) {
+		padding-left: 0;
+		@include sans-serif-regular;
+	}
+}
+
+.accolo_text, .accolo_joblink {
+	font-size: 12px;
+	@include sans-serif-regular;
+}
+
+ /* link and text styles */
+.accolo_textStyle { 
+	@include sans-serif-regular;
+}
+.accolo_selectStyle {  }
+.accolo_linkText:link { 
+ } 
+.accolo_linkText:hover { 
+ }
+.accolo_joblink:link { 
+  } 
+.accolo_joblink:hover { 
+ }
+
+ .accolo_linkText {
+ 	font-size:12px;
+ 	text-decoration: underline;
+ 	@include sans-serif-regular;
+	@include transition(opacity .4s ease-out);
+
+	@include mediaquery(desktop) {
+		&:hover {
+			opacity: .4;
+		}
+	}
+ }
+
+/* table styles */
+.accolo_result_table { padding: 5px; }
+
+.accolo_regrow, .accolo_altrow {
+	background: $white;
+	border:0;
+	border-bottom: 1px solid color('standard', 'gray');
+	vertical-align: middle;
+	line-height:30px;
+	@include transition(background .4s ease-out);
+
+	td {
+		padding: $gap*.5;
+		border: 0;
+	}
+
+	&:hover {
+		background: $black;
+		color: $white;
+	}
+
+}
+
+ .accolo_joblocation {
+	font-size: 14px;
+	vertical-align: middle;
+}
+
+
+ .accolo_wrap_table {
+ 	td {
+ 		vertical-align: bottom;
+ 	}
+ }
+
+ .accolo_search_table {
+ 	.accolo_search_form {
+ 		margin: $gap !important;
+ 		padding: $gap !important;
+
+ 		input[type="text"] {
+ 			border-bottom: 1px solid $black;
+ 			border-radius: 0;
+ 			height: 40px;
+ 		}
+
+ 		tr td {
+ 			padding-bottom: $gap*.5;
+ 		}
+ 	
+ 		select {
+ 			font-size: 12px;
+ 		}
+ 	}
+ }
+
+ .accolo_result_table {
+ 	margin-top: $gap;
+ }
+
+ td.accolo_tableheader {
+ 	font-size: 14px;
+	color: $black;
+	background-color: $white;
+	height: 64px;
+	text-align: left;
+	vertical-align: middle;
+	padding: 10px;
+ 	position: relative;
+ 	border-top: 1px solid color('accent', 'gray-border');
+ 	border-bottom: 1px solid color('accent', 'gray-border');
+ 	@include sans-serif-regular;
+
+
+ 	&:nth-child(2n) {
+ 		padding-right: 0;
+
+ 		&:before {
+ 			left: 0;
+ 		}
+
+ 		// .accolo_img_ascending {
+ 		// 	background-color: fuchsia;
+ 		// }
+
+ 		// .accolo_img_descending {
+ 		// 	background-color: tomato;
+ 		// }
+
+ 		.accolo_img_ascending, .accolo_img_descending {
+ 			position: relative;
+ 			width: 15px;
+		    height: 100%;
+		    float: right;
+
+ 			&:after {
+	 			content: '\2192';
+	 			display: block;
+			    font-size: 16px;
+			    position: absolute;
+			    top: 13px;
+			    right: 6px;
+	 			@include transform(rotate(90deg));
+ 			}
+ 		}
+
+ 		.accolo_img_ascending {
+ 			&:after {
+ 				top: 13px;
+ 				right: 4px;
+ 				@include transform(rotate(-90deg));
+ 			}
+ 		}
+
+ 		.accolo_img_descending {
+ 			display: none;
+ 		}
+ 	}
+
+ 	&:last-child {
+ 		&:before {
+ 			width: calc(100% - 10px);
+ 			right: 14px;
+ 		}
+
+ 		.accolo_img_ascending {
+ 			margin-right: 7px;
+ 		}
+ 	}
+}
+
+ .accolo_button {
+ 	@extend .button;
+ 	display: inline-block;
+ 	margin-left: -10px;
+
+ }
+
+ .accolo_wrap_table {
+ 	background-color: $white;
+ }

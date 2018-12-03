@@ -1,0 +1,29 @@
+
+.component-trending-topics {
+	border-top: 1px solid color('misc', 'border');
+	padding-top:$gap*2;
+	padding-bottom: 28px;
+	
+	.eyebrow-regular {
+		color: color('misc', 'text-black');
+		font-weight: 600;
+		margin-right: $gap;
+		margin-bottom: $gap*.5;
+
+		@include tablet-portrait {
+			display: inline-block;
+			margin-bottom: 0;
+		}
+	}
+
+	.text-link {
+		display: inline-block;
+		cursor: pointer;
+		margin-right: $gap;
+		margin-bottom: $gap*.5;
+
+		&:last-child {
+			margin: 0;
+		}
+	}
+}

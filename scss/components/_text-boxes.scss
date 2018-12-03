@@ -1,0 +1,71 @@
+/****** TEXT BOXES COMPONENT ******/
+.component-text-boxes {
+	margin-bottom: $gap*2;
+	padding: 0 $gap 0 $gap;
+
+	@include mediaquery(tablet-landscape) {
+		margin-bottom: $gap*3;
+		padding: 0;
+	}
+
+	.text-box {
+		margin-bottom: 2px;
+	
+		&:nth-child(odd) {
+			@include mediaquery(tablet-landscape) {
+				padding-right: 2px;
+			}
+		}
+		
+		.text-box-inner {
+			height: 100%;
+			@include flexbox(flex);
+			@include flexbox-align-items(flex-start);
+		}
+
+		.text-box-icon {
+			width: 65px;
+			margin-right: $gap;			
+		}
+
+		&.layout-three {
+			&:nth-child(odd) {
+				@include mediaquery(tablet-landscape) {
+					padding-right: 0;
+				}
+			}
+
+			&:nth-child(2n) {
+				@include mediaquery(tablet-landscape) {
+					padding: 0 2px;
+				}
+			}
+		}
+
+		.text-box-content.has-icon {
+			width: calc(100% - 65px);
+		}
+
+		@include mediaquery(desktop) {
+			&:hover {
+				.cta-link-small {
+					@include mediaquery(desktop) {
+						&:before {
+							left: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.component-row[data-row-info="images_text"] + .component-row[data-row-info="text_boxes"] {
+	//if textboxes are next to an image/text component, do not have borders
+	.component-text-boxes {
+		.text-box {
+			margin: 0;
+			padding: 0;
+		}
+	}
+}

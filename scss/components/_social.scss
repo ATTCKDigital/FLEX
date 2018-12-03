@@ -1,0 +1,10 @@
+/****** SOCIAL COMPONENT ******/
+.component-social {
+	@include mediaquery-max(tablet-landscape) {
+		padding: $gap $gap 2px $gap;
+	}
+
+	.social-inner {
+		@include flexbox-justify-content(space-between);
+	}
+}

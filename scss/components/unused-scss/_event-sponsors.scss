@@ -1,0 +1,83 @@
+// event sponsors component
+.component-event-sponsors {
+	@include clearRow;
+
+	.headline2 {
+		font-size: 36px;
+
+		@include tablet-portrait {
+			font-size: 60px;
+		}
+	}
+
+	.tier {
+		padding-bottom: $gap*3;
+		text-align: center;
+
+	}
+
+	.logos {
+		@include flexbox(flex !important);
+		@include flexbox-align-items(stretch);
+		@include flexbox-justify-content(center);
+		@include flexbox-wrap(wrap);
+
+		p {
+			color: color('ground', 'navy');
+		}
+
+
+		.logo {
+			background-color: white;
+			padding: $gap;
+			height: 190px;
+			width: 280px;
+			margin: 0 0 $gap*2 0;
+			@include flexbox(flex !important);
+			@include flexbox-align-items(center);
+			@include flexbox-justify-content(center);
+
+			@include tablet-portrait {
+				margin:0 $gap $gap*2;
+			}
+
+			@include tablet-landscape {
+				margin:0 $gap $gap*2 $gap;
+			}
+
+
+			img {
+				height: auto;
+				max-height: 150px;
+				max-width: 240px;
+				width: auto;
+			}
+
+			&.tier-medium {
+				height: 150px;
+				width: 240px;
+
+				img {
+					max-height: 110px;
+					max-width: 200px;
+				}
+			}
+
+			&.tier-small {
+				height: 100px;
+				width: 200px;
+
+				img {
+					max-height: 60px;
+					max-width: 160px;
+				}
+			}
+
+			&.text-only {
+				height: auto;
+				min-height: 100px;
+			}
+
+		}
+	}
+}

@@ -1,0 +1,124 @@
+/****** STAFF COMPONENT ******/
+.component-staff {
+	padding: 0 $gap;
+	margin-bottom: $gap*2;
+
+	@include mediaquery(tablet-landscape) {
+		margin-bottom: $gap*3;
+		padding: 0;
+	}
+
+	.staff-content {
+		padding: $gap*.6 $gap;
+	}
+
+	.staff-content-item {
+		cursor: pointer;
+
+		.staff-content-item-inner {
+			margin-right: 2px;
+			margin-bottom: 2px;
+		}
+
+		.staff-image {
+			height: 0;
+			position: relative;
+			overflow: hidden;
+			padding-bottom: 100%;
+		}
+		
+	}
+
+	.staff-popup {
+		background-color: rgba(0, 0, 0, .7);
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 1001;
+		height: 100vh;
+		display: none;
+		// @include verticalCenter;
+		// @include flexbox-justify-content(center);
+		@include mediaquery-max(tablet-landscape) {
+			overflow: scroll;
+			padding: $gap*3 0;
+		}
+		
+		&.openStaff {
+			display: block;
+
+			@include mediaquery(tablet-landscape) {
+				@include verticalCenter;
+			}
+		}
+
+		.staff-popup-inner {
+			width: 300px;
+			position: relative;
+			margin: 0 auto;
+
+			@include mediaquery(tablet-landscape) {
+				width: 1024px;
+				@include flexbox(flex);
+				@include flexbox-align-content(stretch);
+			}
+
+			.staff-image {
+				width: 100%;
+				height: 0;
+				padding-bottom: 100%;
+				overflow: hidden;
+				position: relative;
+
+				@include mediaquery(tablet-landscape) {
+					width: 30%;
+					padding-bottom: 30%;
+				}
+				
+				img {
+					position: absolute;
+					top: 0;
+					left: -50%;
+					right:  -50%;
+					height: 100%;
+					width: auto;
+					display: block;
+					margin: 0 auto;
+				}
+			}
+
+			.staff-content {
+				padding: $gap*1.5;
+				background-color: $white;
+
+				@include mediaquery(tablet-landscape) {
+					width: 70%;
+				}
+
+				.button {
+					display: inline-block;
+					text-align: center;
+
+					@include mediaquery(tablet-landscape) {
+						width: 126px;
+					}
+				}
+
+				.staff-bio {
+					margin-bottom: $gap;
+				}
+
+
+				.staff-bio-inner {
+					@include mediaquery-max(tablet-landscape) {
+						overflow: scroll;
+						height: calc(100% + 40px);
+						width: calc(100% + 20px);
+						padding-bottom: $gap;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,21 @@
+// text expander component
+.component-text-expander {
+	position: relative;
+	
+	.content-wrapper {
+		border-top: 1px solid white;
+		height: 100%;
+		margin: 0 auto;
+		padding: $gap*2 $gap*.5 0;
+		width: calc(100% - 40px);
+
+		@include mediaquery(tablet-landscape) {
+			width: 73%;
+			max-width: 1050px;
+			padding: $gap*2 $gap*3 0;
+		}
+	}
+
+
+}
+

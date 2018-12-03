@@ -1,0 +1,27 @@
+.component-preloader {
+	background-image: linear-gradient(to right, #1d1d42, #371c3c);
+	background-repeat: no-repeat;
+	height: 100%;
+	left: 0;
+	min-height: 3220px;
+	position: fixed;
+	top: 0;
+	width:100%;
+	z-index: 1001;
+	@include transition(opacity .5s)
+
+	.preloader-logo {
+		display: block;
+		left: 50%;
+		margin-top: -50px;
+		position: absolute;
+		top: 50vh;
+		transform: translateX(-50%);
+		width: 80px;
+		z-index: 2;
+	}
+
+	.hide-preloader & {
+		opacity: 0;
+	}
+}

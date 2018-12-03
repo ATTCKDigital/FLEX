@@ -1,0 +1,41 @@
+/*
+ * Set of utility classes.
+ */
+
+.pb-25 {
+  padding-bottom: 25px;
+}
+
+.pl-10 {
+  padding-left: 10px;
+}
+
+.pr-10 {
+  padding-right: 10px;
+}
+
+.pl-12 {
+  padding-left: 12px;
+}
+
+.pr-12 {
+  padding-right: 12px;
+}
+
+@include mediaquery(tablet-portrait) {
+  .pl-md-0 {
+    padding-left: 0;
+  }
+
+  .pb-md-0 {
+    padding-bottom: 0;
+  }
+
+  .pr-md-10 {
+    padding-right: 10px;
+  }
+
+  .pl-md-10 {
+    padding-left: 10px;
+  }
+}

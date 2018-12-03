@@ -1,0 +1,117 @@
+// drop down
+.component-drop-down{
+	z-index: 500;
+	width: auto;
+	display:inline-block;
+	position: relative;
+	@include transition(all 0.3s ease-in-out);
+
+	.button {
+		@include transition(all 0.3s ease-in-out);
+		
+		.icon-chevron {
+			fill:#fff;
+			width:8px;
+			height: 15px;
+			margin-left: $gap;
+			position: relative;
+			top: 2px;
+			@include transform-rotate(90deg);
+			@include transition(all 0.3s ease-in-out);
+
+			@include desktop {
+				&:hover {
+					opacity: .5;
+				}
+			}
+		}
+
+		@include desktop {
+			&:hover {
+				.icon-chevron {
+					opacity: .5;
+				}
+			}
+		}
+	}
+
+	// dropdown popup
+	ul {
+		background: color('misc', 'bg-white');
+		border-bottom-right-radius: $gap;
+		border-bottom-left-radius: $gap;
+		left: 0;
+		margin-left: 0;
+		max-height: 0px;
+		min-width: 220px;
+		overflow: hidden;
+		position: absolute;
+		top: 34px;
+		width: 100%;
+		z-index: 100;
+		@include shadow(0 2px 20px 0 rgba(0,0,0,0.10));
+		@include transition(all 0.3s ease-in-out);
+
+		li {
+			display: block;
+			padding: 0 $gap;
+
+			&:first-child {
+				padding-top: $gap;
+			}
+			&:last-child {
+				padding-bottom: $gap;
+
+				a {
+					margin-bottom: 0;
+				}
+			}
+		}
+
+		a {
+			color: color('misc', 'text-black');
+			display: block;
+			margin-bottom: $gap/2;
+			text-align: left;
+			text-decoration: none;
+			@include font-size($font-size-p-small);
+
+			&:hover,
+			&:active {
+				color: color('ground', 'blue');
+			}
+
+			.row-text-white & {
+				color: color('misc', 'text-black');
+
+				&:hover,
+				&:active {
+					color: color('ground', 'blue');
+				}
+			}
+		}
+
+	}
+
+	&.openDropdown {
+		background: color('misc', 'bg-white');
+		border-radius: $gap;
+		ul {
+			max-height: 2000px;
+			@include shadow(0 2px 0px 0 rgba(0,0,0,0.10));
+		}
+
+		.button {
+			color: color('misc', 'text-black');
+			background: color('misc', 'bg-white');
+			border: transparent;
+
+			.icon-chevron {
+				fill: color('misc', 'text-black');
+				@include transform-rotate(-90deg);
+			}
+		}		
+	}
+
+
+}

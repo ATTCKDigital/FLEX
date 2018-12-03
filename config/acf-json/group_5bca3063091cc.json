@@ -1,0 +1,177 @@
+{
+    "key": "group_5bca3063091cc",
+    "title": "Events",
+    "fields": [
+        {
+            "key": "field_5bca311554248",
+            "label": "Note",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Events will automatically move to \"Past\" once the event date has passed. Events will also be sorted automatically by closest to furthest from today's date.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_5bc4e92e86089",
+            "label": "Events",
+            "name": "events",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_5bc62c191015d",
+            "min": 0,
+            "max": 0,
+            "layout": "row",
+            "button_label": "Add Event",
+            "sub_fields": [
+                {
+                    "key": "field_5bc62b9e1015b",
+                    "label": "Event Start Date",
+                    "name": "event_start_date",
+                    "type": "date_picker",
+                    "instructions": "If 1 day event, put same date in End Date field",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "F j, Y",
+                    "return_format": "M d Y",
+                    "first_day": 1
+                },
+                {
+                    "key": "field_5bc62bfa1015c",
+                    "label": "Event End Date",
+                    "name": "event_end_date",
+                    "type": "date_picker",
+                    "instructions": "If 1 day event, put same date in End Date field",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "F j, Y",
+                    "return_format": "M d Y",
+                    "first_day": 1
+                },
+                {
+                    "key": "field_5bc62c191015d",
+                    "label": "Event Title",
+                    "name": "event_title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5bc62c261015e",
+                    "label": "Event Description",
+                    "name": "event_description",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_5bc62c2e1015f",
+                    "label": "Event CTA Text",
+                    "name": "event_cta_text",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5bc62c3510160",
+                    "label": "Event CTA External link",
+                    "name": "event_cta_external_link",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-events.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "discussion",
+        "comments",
+        "format",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1541108137
+}

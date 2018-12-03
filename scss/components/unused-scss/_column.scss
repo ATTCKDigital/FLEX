@@ -1,0 +1,35 @@
+.column-for-titles {
+	margin-bottom: -30px;
+	padding-top: 80px;
+	position: relative;
+	z-index: 1;
+
+	.italic78 {
+		font-size: 48px;
+		font-weight: normal;
+		line-height: 1em;
+
+		@include mediaquery(tablet-portrait) {
+			font-size: 58px;
+		}
+
+		@include mediaquery(tablet-landscape) {
+			font-size: 92px;
+			margin-left: 100px;
+		}
+	}
+
+	@include mediaquery-max(desktop) {
+		margin-bottom: -20px;
+		padding-top: 60px;
+	}
+}
+
+.column-mobile-overlap {
+	margin-top: -2em;
+	z-index: 1;
+
+	@include mediaquery(tablet-portrait) {
+		margin-top: 0;
+	}
+}

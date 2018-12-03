@@ -1,0 +1,30 @@
+//Padding vars
+//creates classes based on variables
+//adding a screensize of mobile will start at 0px wide. if the padding is the same across screensizes, use "mobile"
+
+//sets paddig for all 4 directions
+@each $padding in $paddings{
+	@each $screensize in $screensizes{
+	    .padding-#{$screensize}-#{$padding}{ 
+
+	    	@include mediaquery(#{$screensize}) {
+	    		padding: #{$padding}px;
+	    	}
+	    }
+	}
+}
+
+
+//individual paddings, will override the direction from above
+@each $position in $positions{
+  @each $padding in $paddings{
+  	@each $screensize in $screensizes{
+	    .padding-#{$screensize}-#{$position}-#{$padding}{ 
+
+	    	@include mediaquery(#{$screensize}) {
+	    		padding-#{$position}: #{$padding}px;
+	    	}
+	    }
+	}
+  }
+}

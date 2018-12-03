@@ -1,0 +1,54 @@
+.component-conferences {
+	.conference-item {
+		background-color: white;
+		width: 100%;
+		margin-bottom: $gap;
+		position: relative;
+		vertical-align: top;
+
+		@include tablet-portrait {
+			display: inline-block;
+			width: 47.8%;
+			margin-right: 4%;
+
+			&:nth-child(2n) {
+				margin-right: 0;
+			}
+		}
+
+		@include tablet-landscape {
+			display: inline-block;
+			width: 30.8%;
+			margin-right: 3.5%;
+
+			&:nth-child(2n) {
+				margin-right: 3.5%;
+			}			
+
+			&:nth-child(3n) {
+				margin-right: 0;
+			}	
+		}
+
+		.conference-logo {
+			padding-bottom: 63%;
+		}
+
+		.conference-content {
+			background-color: white;
+			padding: $gap*1.25 $gap*1.5 $gap;
+		}
+
+		.conference-link {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 10;
+			text-indent: -9999em;
+			overflow: hidden;
+		}
+	}
+}

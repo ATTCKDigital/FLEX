@@ -1,0 +1,34 @@
+/****** DOWNLOADS COMPONENT ******/
+.component-downloads {
+	margin-bottom: $gap*2;
+	padding: 0 $gap 0 $gap;
+
+	@include mediaquery(tablet-landscape) {
+		margin-bottom: $gap*3;
+		padding: 0;
+	}
+
+	.download {
+		margin-bottom: 2px;
+		
+		.download-inner {
+			height: 100%;
+			@include verticalCenter;
+			@include flexbox-justify-content(space-between);
+		}
+	
+		&:nth-child(odd) {
+			@include mediaquery(tablet-landscape) {
+				padding-right: 2px;
+			}
+		}
+	}
+
+	.complete-message {
+		.button {
+			display: inline-block;
+			margin-top: $gap;
+		}
+	}
+
+}

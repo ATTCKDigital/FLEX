@@ -1,0 +1,74 @@
+/****** CARDS COMPONENT ******/
+.component-cards {
+	margin-bottom: $gap*2;
+	padding: 0 $gap;
+
+	@include mediaquery(tablet-landscape) {
+		margin-bottom: $gap*3;
+		padding: 0;
+	}
+
+	.main-content-item {
+		padding: $gap;
+		margin-bottom: 2px;
+		@include verticalCenter;
+	
+		@include mediaquery(tablet-landscape) {
+			padding: $gap*3 $gap*1.5;
+		}
+	}
+
+	.main-image {
+		width: 50px;
+		margin-right: 30px;
+
+		@include mediaquery(tablet-landscape) {
+			width: 87px;
+		}
+	}
+
+	.main-content {
+		width: calc(100% - 117px);
+	}
+
+	.content-items {
+		@include mediaquery(tablet-landscape) {
+			@include flexbox-justify-content(flex-start);
+		}
+	}
+
+	.small-content-item {
+		padding: 0 1px 2px ;
+
+		@include mediaquery(tablet-landscape) {
+			min-height: 189px;
+		}
+
+		&:first-child, &:nth-child(4) {
+			// padding-left: 0;
+		}
+
+		.small-content-inner {
+			background-color: $white;
+			height: 100%;
+			padding: $gap;
+			
+			@include mediaquery(tablet-landscape) {
+				padding: $gap $gap*1.5;
+			}
+		}
+
+		@include mediaquery(desktop) {
+			&:hover {
+				.cta-link-small {
+					@include mediaquery(desktop) {
+						&:before {
+							left: 0;
+						}
+					}
+				}
+			}
+		}
+
+	}
+}

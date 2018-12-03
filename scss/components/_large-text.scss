@@ -1,0 +1,14 @@
+.component-large-text{
+	@include mediaquery-max(tablet-landscape) {
+		padding: $gap $gap 0 $gap;
+	}
+
+	.text {
+		@include verticalCenter;
+
+		@include mediaquery(tablet-landscape) {
+			height: auto;
+		}
+	}
+
+}

@@ -1,0 +1,35 @@
+
+.component-subnav {
+	padding:$gap*1.5 0 18px;
+	border-bottom: 1px solid rgba(color('misc', 'text-dk-gray'), .3);
+
+	@include tablet-portrait {
+		padding-bottom: 28px;
+	}
+
+	.eyebrow {
+		color: color('misc', 'text-black');
+		cursor: pointer;
+		display: inline-block;
+		font-weight: 500;
+		margin: 0 $gap*.5 $gap*.5;
+		position: relative;
+		line-height: 35px;
+
+		@include tablet-portrait {
+			margin: 0 $gap 0 0;
+		}
+		&.activeSubnav {
+			color: color('ground', 'blue');
+
+		}
+
+		@include desktop {
+			&:hover {
+				color: color('ground', 'blue');
+
+			}
+		}
+	}
+
+}

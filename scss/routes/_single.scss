@@ -1,0 +1,75 @@
+.component-single {
+	.single-header {
+		.headline2 {
+			margin-bottom: $gap;
+
+			@include mediaquery(tablet-landscape) {
+				max-width: 680px;
+			}
+		}
+
+		.date {
+			display: block;
+			margin-bottom: $gap;
+		}
+
+		.body {
+			display: block;
+			margin-bottom: $gap*.5;
+
+			a {
+				text-decoration: underline;
+				@include transition(opacity .4s ease-out);
+
+				@include mediaquery(desktop) {
+					&:hover {
+						opacity: .4;
+					}
+				}
+			}
+		}
+	}
+	
+	.body-text {
+		@include mediaquery(tablet-landscape) {
+			max-width: 680px;
+		}
+	}
+
+	&.margin-mobile-left-20, &.margin-mobile-right-20 {
+		@include mediaquery(tablet-landscape) {
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+
+
+}
+
+.component-post-navigation {
+	.button {
+		display: block;
+		text-align: center;
+		height: 30px;
+		font-size: 11px;
+		width: 100%;
+		padding-top: 7px;
+		@include transition(background-color .4s ease-out, color .4s ease-out);
+
+		@include mediaquery(tablet-landscape) {
+			height: 61px;
+			padding-top: 21px;
+			font-size: 16px;
+		}
+
+	}
+}
+
+
+.single {
+	background-color: color('standard', 'gray');
+}
+
+.error404 {
+	// @include orangeGradient;
+}

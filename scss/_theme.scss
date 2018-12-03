@@ -1,0 +1,106 @@
+/*** Theme Settings ***/
+
+
+//theme colors
+.component-theme-default {
+	background-color: transparent;
+}
+
+.component-theme-black {
+	background-color: color('standard', 'black');
+}
+
+.component-theme-white {
+	background-color: color('standard', 'white');
+}
+
+
+//Theme colors are set in vars "Colors" section
+
+.component-theme-background {
+	background-size: cover;
+	background-position: right center;
+	background-repeat: no-repeat;
+}
+
+.component-theme-background-position-left {
+	background-position: left center;
+}
+
+//Border classes
+
+@each $position in $positions{
+	.component-theme-#{$position}-border {
+		border-#{$position}: 1px solid color('accent', 'gray-border');
+	}
+
+	.component-theme-#{$position}-border-white {
+		border-#{$position}: 1px solid color('accent', 'white');
+	}
+
+	.component-theme-#{$position}-border-mobile {
+		@include mediaquery-max(tablet-portrait) {
+			border-#{$position}: 1px solid color('accent', 'gray-border');
+		}
+	}
+
+	.component-theme-#{$position}-border-tablet-desktop {
+		@include mediaquery(tablet-portrait) {
+			border-#{$position}: 1px solid color('accent', 'gray-border');
+		}
+	}
+}
+
+
+//overlay
+.overlay {
+	background-color: rgba(0, 0, 0, .3);
+	height: 100%;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+
+//hero heights
+.tall-hero {
+	height: 500px;
+	transition: all 0.1s;
+	z-index: 2;
+
+	@include mediaquery(tablet-portrait) {
+		height: 720px;
+	}
+
+}
+
+.medium-hero {
+	height: 250px;
+
+	@include mediaquery(tablet-portrait) {
+		height: 400px;
+
+	}
+
+	.video-wrapper {
+		padding-bottom: 31.25%;
+		max-height: 450px;
+		min-height: 450px;
+
+		iframe, video {
+			max-height: 450px;
+			min-height: 450px;
+		}
+	}
+}
+
+.small-hero {
+	height: 350px;
+
+	@include mediaquery(tablet-portrait) {
+		height: 375px;
+
+	}
+
+}
