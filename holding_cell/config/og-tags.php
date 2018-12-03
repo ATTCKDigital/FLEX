@@ -78,3 +78,14 @@
 
 
 	?>
+	<meta name="description" content="<?= $excerpt;?>">
+	<meta property="og:title" content="<?= $title; ?>"/>
+	<meta property="og:url" content="<?= $link;?>"/>
+	<meta property="og:image" content="<?= $image;?>"/>
+	<meta property="og:site_name" content="<?= get_site_url();?>"/>
+	<meta property="og:description" content="<?= $excerpt;?>"/>
+
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:site" content="<?= get_site_url();?>" />
+	<meta name="twitter:creator" content="@<?= $twitterHandle;?>" />
+	<meta name="twitter:image" content="<?= $twitterImage;?>" />

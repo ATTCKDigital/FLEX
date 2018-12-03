@@ -52,6 +52,8 @@ How to run and use
 ### Hubspot
 ### Site info (address, email, social media urls, etc)
 ### Favicon
+To set a favicon (what you see in browser tabs, bookmark bars, and within the WordPress mobile apps). To add a custom Favicon, go to Appearance > Customize > Site Identity and upload an icon to "Site Icon". Site Icons should be square and at least 512 × 512 pixels.
+
 ### Site logo
 ### Site colors
 
