@@ -1,7 +1,7 @@
 <?php
 /**
- * Template: Tag Archive
- * Description: Wordpress template for a category archive page. Copy and re-name to tag-termname.php for category specific archives.
+ * Template: Taxonomy Archive
+ * Description: Wordpress template for a taxonomy archive page. Copy and re-name to taxonomy-taxonomyname-termname.php for taxonomy specific archives.
  *
  */
     get_header();

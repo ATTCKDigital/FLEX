@@ -1,28 +1,34 @@
 <?php
 /**
  * Template: Category Archive
- * Description: Wordpress template for category index page
+ * Description: Wordpress template for a category archive page. Copy and re-name to category-termname.php for category specific archives.
  *
  */
     get_header();
 
-    $term = get_queried_object();
+    $term = get_queried_object(); 
+    //If archive is a category or a tag, find out the term.
+    //https://codex.wordpress.org/Function_Reference/get_queried_object
 
-    $maxPages = $wp_query->max_num_pages;
-    $count = $wp_query->post_count;
+    $taxonomy = ''; //Set taxonomy if using custom tax
+
+    //The archive Query. Add arguments to produce the needed query.
+    $args = array(
+        'post_type' => 'post',
+    );
+    $archiveQuery = new WP_Query($args);
+
+    $maxPages = $archiveQuery->max_num_pages; //Find the max number of pages for the query, necessary for "Load More"
+    $pageTitle = 'Archive' //Set the title of the page
+    $postType = 'post' //Set the post type
 
     echo Utils::render_template("inc/templates/archive-feed.php", array(
-        "title"         => $term->name,
+        "title"         => $pageTitle,
         "maxPages"      => $maxPages,
-        "category"      => $term->term_id,
-        "pageType"      => 'category',
-        "filterType"    => 'year',
-        "filterType2"    => '',
-        "query"         => $wp_query,
-        "postType"      => 'post',
-        "count"         => $count,
-        "search"        => '',
-        "authorID"      => ''
+        "term"          => $term,
+        "taxonomy"      => $taxonomy,
+        "postType"      => $postType,
+        "query"         => $archiveQuery,
     ));
 
     get_footer();

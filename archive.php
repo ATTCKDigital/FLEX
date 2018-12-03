@@ -1,13 +1,13 @@
 <?php
 /**
- * Template: Tag Archive
- * Description: Wordpress template for a category archive page. Copy and re-name to tag-termname.php for category specific archives.
+ * Template Name: Archive
+ * Description: Wordpress template for an archive page. Copy and re-name to archive-customposttype.php for each custom post type. If no specific archive is created, this will serve as the default.
  *
  */
     get_header();
 
-    $term = get_queried_object(); 
-    //If archive is a category or a tag, find out the term.
+    $postType = get_queried_object(); 
+    //Returns the post type.
     //https://codex.wordpress.org/Function_Reference/get_queried_object
 
     $taxonomy = ''; //Set taxonomy if using custom tax
@@ -20,13 +20,12 @@
 
     $maxPages = $archiveQuery->max_num_pages; //Find the max number of pages for the query, necessary for "Load More"
     $pageTitle = 'Archive' //Set the title of the page
-    $postType = 'post' //Set the post type
 
     echo Utils::render_template("inc/templates/archive-feed.php", array(
         "title"         => $pageTitle,
         "maxPages"      => $maxPages,
-        "term"          => $term,
-        "taxonomy"      => $taxonomy,
+        "term"          => '', //leave blank
+        "taxonomy"      => '', //leave blank
         "postType"      => $postType,
         "query"         => $archiveQuery,
     ));
