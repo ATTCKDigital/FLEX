@@ -1,0 +1,112 @@
+/**** Fonts ****/
+// Remove and add for project
+
+@font-face {
+	font-family: 'MaisonNeue-Book';
+	src: 	url('../fonts/MaisonNeue-Book.woff') format('woff'),
+			url('../fonts/MaisonNeue-Book.woff2') format('woff2'); 
+}
+
+@font-face {
+	font-family: 'MaisonNeue-BookItalic';
+	src: 	url('../fonts/MaisonNeue-BookItalic.woff') format('woff'),
+			url('../fonts/MaisonNeue-BookItalic.woff2') format('woff2'); 
+}
+
+@font-face {
+	font-family: 'MaisonNeueExtended-Bold';
+	src: 	url('../fonts/MaisonNeueExtended-Bold.woff') format('woff'),
+			url('../fonts/MaisonNeueExtended-Bold.woff2') format('woff2'); 
+}
+
+@font-face {
+	font-family: 'MaisonNeueMono-Regular';
+	src: 	url('../fonts/MaisonNeueMono-Regular.woff') format('woff'),
+			url('../fonts/MaisonNeueMono-Regular.woff2') format('woff2'); 
+}
+
+@font-face {
+	font-family: 'MaisonNeue-Bold';
+	src: 	url('../fonts/MaisonNeue-Bold.woff') format('woff'),
+			url('../fonts/MaisonNeue-Bold.woff2') format('woff2'); 
+}
+
+/** Font Mixins **/
+// Basic set of font styles. Add and adjust as needed.
+@mixin sans-serif-light {
+	font-family: "MaisonNeue-Book", Helvetica, Arial, sans-serif;
+	font-style: normal;
+	font-weight: normal;
+}
+
+@mixin sans-serif-regular {
+	font-family: "MaisonNeue-Book", Helvetica, Arial, sans-serif;
+	font-style: normal;
+	font-weight: normal;
+}
+
+@mixin sans-serif-medium {
+	font-family: "MaisonNeue-Book", Helvetica, Arial, sans-serif;
+	font-style: normal;
+	font-weight: normal;
+}
+
+@mixin sans-serif-italic {
+	font-family: "MaisonNeue-BookItalic", Helvetica, Arial, sans-serif;
+	font-style: normal;
+	font-weight: normal;
+}
+
+@mixin sans-serif-semi {
+	font-family: "MaisonNeue-Bold", Helvetica, Arial, sans-serif;
+	font-style: normal;
+	font-weight: normal;
+}
+
+@mixin sans-serif-bold {
+	font-family: "MaisonNeueExtended-Bold", Helvetica, Arial, sans-serif;
+	font-style: normal;
+	font-weight: normal;
+}
+
+@mixin sans-serif-mono {
+	font-family: "MaisonNeueMono-Regular", Helvetica, Arial, sans-serif;
+	font-style: normal;
+	font-weight: normal;
+}
+
+@mixin serif-light {
+	font-family: "MaisonNeue-Book", Helvetica, Arial, serif;
+	font-style: normal;
+	font-weight: normal;
+}
+
+@mixin serif-regular {
+	font-family: "MaisonNeue-Book", Helvetica, Arial, serif;
+	font-style: normal;
+	font-weight: normal;
+}
+
+@mixin serif-medium {
+	font-family: "MaisonNeue-Book", Helvetica, Arial, serif;
+	font-style: normal;
+	font-weight: normal;
+}
+
+@mixin serif-italic {
+	font-family: "MaisonNeue-BookItalic", Helvetica, Arial, serif;
+	font-style: normal;
+	font-weight: normal;
+}
+
+@mixin serif-semi {
+	font-family: "MaisonNeue-Bold", Helvetica, Arial, serif;
+	font-style: normal;
+	font-weight: normal;
+}
+
+@mixin serif-bold {
+	font-family: "MaisonNeueExtended-Bold", Helvetica, Arial, serif;
+	font-style: normal;
+	font-weight: normal;
+}

@@ -1,0 +1,66 @@
+/**** Interactions & Animations ****/
+
+/** Fade Me In **/
+// Set initial styles before "faded-in" class added
+.fade-me-in {
+	opacity: 0;
+	@include transform(scale(.9));
+	@include transition(transform .7s, opacity .7s);
+
+	&.faded-in {
+		opacity: 1;
+		@include transition(transform .7s, opacity .7s);
+		@include transform(scale(1));
+	}
+}
+
+
+
+// Helper class for load-more script animations. Newly ajaxed in elements have this class on load
+// Class is removed after elements loaded
+.new-elements {
+	opacity: 0;
+}
+
+//Helper class to Slide In an element
+.slideIn {
+	animation: moveUp 0.65s ease forwards;
+	opacity: 1;
+	transform: translateY(200px);
+}
+
+@keyframes moveUp {
+	0% {}
+
+	100% {
+		opacity: 1;
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+}
+
+//Helper class to Fade In an element
+.fadeIn {
+	animation: fadeIn .7s ease forwards;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+		@include transform(scale(.8));
+	}
+
+	100% {
+		
+		opacity: 1;
+		@include transform(scale(1));
+	}
+}
+
+// Apply to a row or column, and makes the component
+// overlap whatever is above it by 100px;
+.slide-up-component {
+	.component {
+		margin-top: -100px;
+	}
+}

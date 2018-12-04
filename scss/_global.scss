@@ -1,0 +1,80 @@
+/**** FADE ME IN - Prevents flashing for fade me in transition
+*	(js adds opacity 1 once loaded)
+*	Add elements or classes that are present BEFORE js and are affected by the Fade In script
+* 	okatodo: rename "Fade In";
+****/
+// .component-fade {
+// 	opacity: 0;
+
+// 	&.dont-fade-me-in {
+// 		opacity: 1;
+// 	}
+// }
+
+body {
+	font-smoothing: antialiased;
+	color: $defaultTextColor;
+	font-size: px-to-rem(10px);
+	height: 100%;
+	min-height: 100vh;
+	overflow-x: hidden;
+	@include sans-serif-regular;
+
+	&.popupOpen {
+		//prevents background from scrolling when PopUp is activated, optional 
+		@include mediaquery-max(tablet-portrait) {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+		}
+	}
+}
+
+.content-container {
+	min-height: calc(100vh - 150px);
+	padding-top: $navMobileHeight;
+
+	@include mediaquery(desktop) {
+		padding-top: $navHeight;
+	}
+
+}
+
+main.content {
+	width: 100%;
+}
+
+.pure-g {
+	align-content: inherit;
+	letter-spacing: inherit;
+}
+
+//===
+// Clearfix: contain floats
+//
+// For modern browsers
+// 1. The space content is one way to avoid an Opera bug when the
+//	`contenteditable` attribute is included anywhere else in the document.
+//	Otherwise it causes space to appear at the top and bottom of elements
+//	that receive the `clearfix` class.
+// 2. The use of `table` rather than `block` is only necessary if using
+//	`:before` to contain the top-margins of child elements.
+//
+.clearfix:before,
+.clearfix:after {
+	content: " "; // 1
+	display: table; // 2
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+/**** Misc ****/
+
+// SVG sprite is hidden from the screen
+.svg-sprite {
+	height: 0;
+	overflow: hidden;
+}

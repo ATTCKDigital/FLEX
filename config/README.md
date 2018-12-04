@@ -22,7 +22,7 @@ Config files: `config/admin-configs`
 - `remove-comments-column`: Remove comments column from post lists. 👍🏻**recommended**
 - `sidebars`: Register our sidebars and widgetized areas.
 - `svg-uploads`: Allow SVGs to be uploaded via WordPress Media Uploader. 👍🏻**recommended**
-- `unwrap-images`: Unwraps p/a tags around img. 🔒**required**
+- `unwrap-images`: Unwraps p/a tags around img. Additionally adds custom classes to images uploaded to post WYSIWYG. 🔒**required**
 
 ### Theme Configs
 Config files: `config/theme-configs`
@@ -46,3 +46,6 @@ Config files: `config/theme-includes`
 - `og-tags`: Code to create OG meta tags based on page info OR overridden by ACF Social Media Settings. Included in `header.php`. 🔒**required**
 - `svg-sprite`: Adds the compiled SVG Sprite to the site. Included in `header.php`. 🔒**required**
 - `svg`: Template for outputting an SVG on the front end. 
+
+Created 12/4/2018 by okadots for ATTCK
+
