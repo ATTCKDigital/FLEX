@@ -37,11 +37,11 @@ List of global js
 
 ### Naming Conventions
 - Component Folders: `component_component-name`
-- Component Markup: `component_component-name.php`
-- Component SCSS: `_component_component-name.scss`
-- Component JS: `_component_component-name.js`
-- Component ReadMe: `README_component_component-name.md`
-- Component ACF: `component_acf_component-name.php`
+- Component Markup: `component-name.php`
+- Component SCSS: `_component-name.scss`
+- Component JS: `_component-name.js`
+- Component ReadMe: `README_component-name.md`
+- Component ACF: `acf_component-name.php`
 
 ## Required Plugins
 Advanced Custom Fields Pro - https://www.advancedcustomfields.com/

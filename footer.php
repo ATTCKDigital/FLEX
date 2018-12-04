@@ -2,7 +2,7 @@
 </div> <!-- Close content-container div -->
 <footer class="page-footer dont-fade-me-in">
 	<div class="footer-wrapper">
-		<?php include 'componers/component_footer-inner.php'; ?>
+		<?php include 'components/component_footer-inner/footer-inner.php'; ?>
 	</div>
 </footer>
 

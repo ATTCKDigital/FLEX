@@ -11,7 +11,6 @@
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri() . "/dist/css/print.css"; ?>" type="text/css" media="print" />
 	<?php include_once 'config/theme-includes/google-tag-manager-header.php'; ?>
 	<?php wp_head(); ?>
-
 </head>
 <body <?php body_class();?>>
 	<?php include_once 'config/theme-includes/google-tag-manager-body.php'; ?>
@@ -24,7 +23,7 @@
 	<div class="breakpoint desktop"></div>
 	<div class="breakpoint xl"></div>
 
-	<?php include_once(get_template_directory() . "config/theme-includes/svg-sprite.php"); ?>
-	<?php include_once 'components/component_nav.php'; ?>
+	<?php include_once(get_template_directory() . "/config/theme-includes/svg-sprite.php"); ?>
+	<?php include_once 'components/component_nav/nav.php'; ?>
 		<div class="content-container component">
 			<main class="content">
