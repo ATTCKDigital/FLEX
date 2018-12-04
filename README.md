@@ -61,12 +61,12 @@ This theme uses ACF to allow for dynamic layouts as well as global settings that
 These options can be enabled/disabled in `functions.php`
 
 ### ACF Configs (`config/acf-configs`)
-- `acf-json`: Folder where the ACF json files are stored and synced from *_required_*
+- `acf-json`: Folder where the ACF json files are stored and synced from <span style="color:red">*required*</span>
 - `acf-css`: Customize the ACF user facing css
 - `acf-field-values`: Allows creation of predefined select/radio button options if specific field names are being used
-- `acf-options-page`: Enables a custom settings page in the admin interface *_required_*
-- `acf-row-names`: Displays specific field names in the collapsed state of the layout tool *_recommended_*
-- `acf-sync`: Syncs ACF fields across environments based on the json files. Does NOT override individual component ACF field files. *_required_*
+- `acf-options-page`: Enables a custom settings page in the admin interface <span style="color:red">*required*</span>
+- `acf-row-names`: Displays specific field names in the collapsed state of the layout tool <span style="color:blue">*recommended*</span>
+- `acf-sync`: Syncs ACF fields across environments based on the json files. Does NOT override individual component ACF field files. <span style="color:red">*required*</span>
 - `acf-wpml-options`: Creates a globalized ACF output so that settings entered into "Global Settings" for the default language can be used universally.
 
 ### Admin Configs (`config/admin-configs`)
@@ -75,10 +75,11 @@ These options can be enabled/disabled in `functions.php`
 
 ### Theme Configs (`config/theme-configs`)
 - `constants`: Sets some global PHP constants
-- `google-tag-manager-body`: Adds Google Tag Manager to the theme. Included in `header.php`. *_required_*
-- `google-tag-manager-header`: Adds Google Tag Manager to the theme. Included in `header.php`. *_required_*
-- `svg-sprite`: Adds the compiled SVG Sprite to the site. Included in `header.php`. *_required_*
-
+- `google-tag-manager-body`: Adds Google Tag Manager to the theme. Included in `header.php`. <span style="color:red">*required*</span>
+- `google-tag-manager-header`: Adds Google Tag Manager to the theme. Included in `header.php`. <span style="color:red">*required*</span>
+- `svg-sprite`: Adds the compiled SVG Sprite to the site. Included in `header.php`. <span style="color:red">*required*</span>
+- `custom-post-types`: Create and register custom post types (CPT) and custom taxonomies.
+- `disable-tax-archive`: In some instances a Custom Taxonomy will NOT require an archive page. Enable config to disable custom tax archive.
 
 
 ## WordPress Settings
