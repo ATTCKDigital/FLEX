@@ -41,24 +41,52 @@ JSON files: `config/acf-configs/acf-json`
 - **Site Settings** (`group_5b4cd9e72d68d.json`): Found in "Global Settings", allows the user to update globally displayed content such as address, email and social media links. These settings can be tailored to the individual project. A default set of options has been included. 
 - **Google Tag Manager ID** (`group_5b4cd6926e1bb.json`): Found in "Global Settings", allows the user to insert their own GTM Container ID. 
 - **Social Media Sharing** (`group_5b16e72af37f3.json`): Added to all posts, CPTs and pages so user can override default generated OG meta tags. 
+- **Site Logo** (`group_5c06cd1fa1248.json`): Found in "Global Settings", allows user to upload 2 logo versions.
 
 ## Configs
 See detailed README.md in `config` folder.
 
 ## WordPress Settings
-### General settings
-### Reading settings
-### Media settings
-### Discussion settings
-### Permalink settings
-### Privacy settings
+This is _not_ a complete list of all WordPress native settings. It is a list of commonly adjusted settings relevant to the _boilerplate_.
 
-### Site info (address, email, social media urls, etc)
+### General settings
+From wp-admin: Settings > General
+
+- Control basic site settings such as site title and description. 
+- Set date & time format.
+
+### Reading settings
+From wp-admin: Settings > Reading
+
+- Set which page will function as the home page. In most cases, a "Home" page will be created and selected here. The "Posts" page can be used as a blog landing page. Ok to leave blank if unneeded.
+- Set Search Engine Visibility.  Should be checked until site is made live.
+
+### Media settings
+From wp-admin: Settings > Media
+
+- Set crop sizes for native WordPress crops
+- Set file upload location.  RECOMMENDED: Uncheck "_Organize my uploads into month- and year-based folders_"
+
+
+### Permalink settings
+From wp-admin: Settings > Permalinks
+
+- Set the default behavior for permalinks. _Post name_ is recommended for SEO. 
+- After adding a Custom Post Type, re-save permalinks to flush permalinks cache.
+
+### Site info 
+From wp-admin: Global Settings > Site Settings
+
+- Globally available contact and social media info.
+
 ### Favicon
-To set a favicon (what you see in browser tabs, bookmark bars, and within the WordPress mobile apps). To add a custom Favicon, go to Appearance > Customize > Site Identity and upload an icon to "Site Icon". Site Icons should be square and at least 512 × 512 pixels.
+To set a favicon (what you see in browser tabs, bookmark bars, and within the WordPress mobile apps), go to Appearance > Customize > Site Identity and upload an icon to "Site Icon". Site Icons should be square and at least 512 × 512 pixels.
 
 ### Site logo
+Allows user to upload 2 logo versions.
+
 ### Site colors
+WIP
 
 
 
