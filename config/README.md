@@ -1,7 +1,8 @@
 ## Configs
 These options can be enabled/disabled in `functions.php`
 
-### ACF Configs (`config/acf-configs`)
+### ACF Configs 
+Config files: `config/acf-configs`
 - `acf-css`: Customize the ACF user facing css
 - `acf-field-values`: Allows creation of predefined select/radio button options if specific field names are being used
 - `acf-json`: Folder where the ACF json files are stored and synced from 🔒**required**
@@ -11,7 +12,8 @@ These options can be enabled/disabled in `functions.php`
 - `acf-sync`: Syncs ACF fields across environments based on the json files. Does NOT override individual component ACF field files. 🔒**required**
 - `acf-wpml-options`: Creates a globalized ACF output so that settings entered into "Global Settings" for the default language can be used universally.
 
-### Admin Configs (`config/admin-configs`)
+### Admin Configs 
+Config files: `config/admin-configs`
 - `admin-wysiwyg`: Set predefined styles and colors in TinyMCE. Edit as needed for project. 👍🏻**recommended**
 - `change-post-labels`: In some instances, "Posts" will need to be renamed. This file allows for that.
 - `custom-exceprts`: Creates an excerpt function that allows for customized lengths per location it is used. 🔒**required**
@@ -22,7 +24,8 @@ These options can be enabled/disabled in `functions.php`
 - `svg-uploads`: Allow SVGs to be uploaded via WordPress Media Uploader. 👍🏻**recommended**
 - `unwrap-images`: Unwraps p/a tags around img. 🔒**required**
 
-### Theme Configs (`config/theme-configs`)
+### Theme Configs
+Config files: `config/theme-configs`
 - `body-classes`: Creates a body class based on the page slug. 🔒**required**
 - `constants`: Sets some global PHP constants
 - `custom-nav-classes`: Customize the "current" menu item class.
@@ -35,6 +38,7 @@ These options can be enabled/disabled in `functions.php`
 - `wpml-language-switcher`: Custom language switcher for WPML. Requires WPML.
 
 ### Theme Includes
+Config files: `config/theme-includes`
 - `enqueue-scripts-styles`: Enqueus our scripts and styles. REQUIRED!! You can also deregister any unneeded plugin scripts/styles here. 🔒**required**
 - `google-tag-manager-body`: Adds Google Tag Manager to the theme. Included in `header.php`. 🔒**required**
 - `google-tag-manager-header`: Adds Google Tag Manager to the theme. Included in `header.php`. 🔒**required**
