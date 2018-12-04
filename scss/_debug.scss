@@ -1,0 +1,84 @@
+// okatodo: talk to dp about debug breakpoint util;
+
+// // iPhone 4
+// @media only screen and (min-device-height: 480px) {
+// 	// background: red;
+// }
+
+// // iPhone 5
+// @media only screen and (min-device-height: 568px) {
+// 	// background: orange;
+// }
+
+// // Android
+// @media only screen and (min-device-height: 569px) {
+// 	// background: pink;
+// }
+
+// // iPhone 6
+// @media only screen and (min-device-height: 667px) {
+// 	// background: yellow
+// }
+
+// // iPad
+// @media only screen and (min-device-height: 737px) {
+// 	// background: green;
+// }
+
+// // Desktop
+// @media only screen and (min-device-height: 1025px) {
+// 	// background: blue;
+// }
+
+// Allows JS to access CSS breakpoints
+.breakpoint {
+	display: none;
+	height: 0;
+	position: absolute;
+	width: 0;
+}
+
+body {
+	// NOTE: (DP) For debugging only. 
+	border-bottom: 0px solid red;
+
+	@include mediaquery(phone) {
+		border-color: green;
+
+		.breakpoint.phone {
+			display: block;
+		}
+	}
+
+	@include mediaquery(tablet-portrait) {
+		border-color: blue;
+
+		.breakpoint.tablet-portrait {
+			display: block;
+		}
+	}
+
+	@include mediaquery(tablet-landscape) {
+		border-color: purple;
+
+		.breakpoint.tablet-landscape {
+			display: block;
+		}
+	}
+
+	@include mediaquery(desktop) {
+		border-color: orange;
+
+		.breakpoint.desktop {
+			display: block;
+		}
+	}
+
+	@include mediaquery(xl) {
+		border-color: yellow;
+
+		.breakpoint.xl {
+			display: block;
+		}
+	}
+}

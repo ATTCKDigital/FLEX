@@ -1,21 +1,21 @@
-/*** Theme Settings ***/
+/*** Row Theme Settings ***/
 
 
-//theme colors
+// row theme colors
 .component-theme-default {
 	background-color: transparent;
 }
 
 .component-theme-black {
-	background-color: color('standard', 'black');
+	background-color: $white;
 }
 
 .component-theme-white {
-	background-color: color('standard', 'white');
+	background-color: $black;
 }
 
 
-//Theme colors are set in vars "Colors" section
+//Theme colors are set in "colors" 
 
 .component-theme-background {
 	background-size: cover;
@@ -31,22 +31,22 @@
 
 @each $position in $positions{
 	.component-theme-#{$position}-border {
-		border-#{$position}: 1px solid color('accent', 'gray-border');
+		border-#{$position}: 1px solid $borderColor;
 	}
 
 	.component-theme-#{$position}-border-white {
-		border-#{$position}: 1px solid color('accent', 'white');
+		border-#{$position}: 1px solid $white;
 	}
 
 	.component-theme-#{$position}-border-mobile {
 		@include mediaquery-max(tablet-portrait) {
-			border-#{$position}: 1px solid color('accent', 'gray-border');
+			border-#{$position}: 1px solid $borderColor;
 		}
 	}
 
 	.component-theme-#{$position}-border-tablet-desktop {
 		@include mediaquery(tablet-portrait) {
-			border-#{$position}: 1px solid color('accent', 'gray-border');
+			border-#{$position}: 1px solid $borderColor;
 		}
 	}
 }
@@ -63,44 +63,31 @@
 }
 
 
-//hero heights
-.tall-hero {
-	height: 500px;
-	transition: all 0.1s;
-	z-index: 2;
+//Fixed row heights
 
-	@include mediaquery(tablet-portrait) {
-		height: 720px;
-	}
+.small-row-height {
+	height: $small-row-mobile;
 
-}
+	@include mediaquery(medium) {
+		height: $small-row;
 
-.medium-hero {
-	height: 250px;
-
-	@include mediaquery(tablet-portrait) {
-		height: 400px;
-
-	}
-
-	.video-wrapper {
-		padding-bottom: 31.25%;
-		max-height: 450px;
-		min-height: 450px;
-
-		iframe, video {
-			max-height: 450px;
-			min-height: 450px;
-		}
 	}
 }
 
-.small-hero {
-	height: 350px;
+.medium-row-height {
+	height: $medium-row-mobile;
 
-	@include mediaquery(tablet-portrait) {
-		height: 375px;
+	@include mediaquery(medium) {
+		height: $medium-row;
 
 	}
+}
 
+.large-row-height {
+	height: $large-row-mobile;
+
+	@include mediaquery(medium) {
+		height: $large-row;
+
+	}
 }

@@ -1,3 +1,106 @@
-$modalColor = 
-$popupColor = 
-$defaultTextColor = 
+/**** Colors ****/
+
+// Default Colors
+$modalColor: #ffffff;
+$popupColor: rgba(0, 0, 0, .7); 
+$defaultTextColor: #000000; 
+$borderColor: #dddddd;
+$white: #FFFFFF;
+$black: #000000;
+
+
+// Colors
+$brand-color-key: 'red' !default;
+$brand-colors: (
+	'debug': (
+		'red': 				#f00
+	),
+	'primary': (
+		'black': 			#000000,
+		'white':			#ffffff,
+		'gray': 			#DDDDDD,
+		'light-gray': 		rgba(0, 0, 0, .4),
+	),
+	'accent':(
+		'red':				#f84d01,
+		'gray-border':		#dddddd,
+		'dark-border':		#979797
+	),
+	'social':(
+		'facebook':			#3b5998,
+		'twitter':			#1da1f2
+	),
+	'gradients': (
+		 'pink-blue':			linear-gradient(to bottom, #ee21a3 0%,#35139f 100%),
+		 'pink-blue-horiz':		linear-gradient(to left, #ee21a3 0%,#35139f 100%),
+		 'orange':				linear-gradient(to bottom, #ffc027 0%,#ee21a3 100%),
+		 'orange-horiz':		linear-gradient(to right, #ffc027 0%,#ee21a3 100%),
+		 'blue':				linear-gradient(to bottom, #21aaf3 0%,#35139f 100%),
+		 'blue-horiz':			linear-gradient(to right, #21aaf3 0%,#35139f 100%),
+		 'light-pink-blue':		linear-gradient(to bottom, #ee21a3 0%,#21aaf3 100%),
+		 'light-pink-blue-horiz': linear-gradient(to right, #ee21a3 0%,#21aaf3 100%),
+	)
+);
+
+// Generate colors 
+@function color($key: 'debug', $variant: $brand-color-key) {
+	$color: null;
+	$color-spectrum: map-get($brand-colors, $key);
+
+	@if $color-spectrum {
+			$color: map-get($color-spectrum, $variant);
+	}
+
+	@return $color;
+}
+
+// Generate color classes
+@each $key, $map in $brand-colors {
+	@each $variant, $color in $map {
+		.background-#{$variant} {
+			background-color: #{$color};
+		}
+
+		.component-theme-#{$variant} {
+			background: #{$color};
+		}
+
+		.body-theme-#{$variant} {
+			background: #{$color};
+		}
+
+		.color-#{$key}-#{$variant} {
+			color: #{$color};
+		}
+
+		.row-text-white, .row-text-black {
+			.color-#{$key}-#{$variant} {
+				color: #{$color};
+			}
+
+			.background-#{$key}-#{$variant} {
+				background-color: #{$color};
+			}
+		}
+	}
+}
+
+
+// Mixin for placeholder color
+@mixin placeholder($color) {
+	&::-webkit-input-placeholder {
+		color: $color;
+	}
+
+	&:-moz-placeholder { /* Firefox 18- */
+		color: $color;  
+	}
+
+	&::-moz-placeholder {  /* Firefox 19+ */
+		color: $color;  
+	}
+
+	&:-ms-input-placeholder {  
+		color: $color;  
+	}
+}

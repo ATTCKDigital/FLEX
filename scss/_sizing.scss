@@ -1,0 +1,35 @@
+/**** Variables related to heights and widths ****/
+
+$gap						: 20px;
+$siteWidth					: 1024px;
+$navMobileHeight			: 115px;
+$navHeightScrolled			: 75px;
+$navHeight					: 170px;
+
+// Breakpoints
+$small-breakpoint			: 0px;
+$medium-breakpoint			: 768px;
+$large-breakpoint			: 1024px;
+$xl-breakpoint				: 1100px;
+$2xl-breakpoint				: 1280px;
+$3xl-breakpoint				: 1440px;
+$4xl-breakpoint				: 1500px;
+$5xl-breakpoint				: 1700px;
+
+// Max width breakpoints
+$max-small-breakpoint			: 568px;
+$max-medium-breakpoint			: 767px;
+$max-large-breakpoint			: 1023px;
+$max-xl-breakpoint				: 1099px;
+$max-2xl-breakpoint				: 1279px;
+$max-3xl-breakpoint				: 1439px;
+$max-4xl-breakpoint				: 1499px;
+$max-5xl-breakpoint				: 1699px;
+
+//Fixed row heights
+$small-row-mobile	: 100vh;
+$small-row			: 250px;
+$medium-row-mobile	: 100vh;
+$medium-row			: 250px;
+$large-row-mobile	: 100vh;
+$large-row			: 250px;

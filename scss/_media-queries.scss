@@ -1,0 +1,69 @@
+/**** Media Queries ****/
+
+$mediaQueries: (
+	'small'		: $small-breakpoint,
+	'iPhone6'	: '375px',
+	'medium'	: $medium-breakpoint,
+	'large'		: $large-breakpoint,
+	'xl'		: $xl-breakpoint,
+	'2xl'		: $2xl-breakpoint,
+	'3xl'		: $3xl-breakpoint,
+	'4xl'		: $4xl-breakpoint,
+	'5xl'		: $5xl-breakpoint
+);
+
+$maxMediaQueries: (
+	'small'		: $max-small-breakpoint,
+	'medium'	: $max-medium-breakpoint,
+	'large'		: $max-large-breakpoint,
+	'xl'		: $max-xl-breakpoint,
+	'2xl'		: $max-2xl-breakpoint,
+	'3xl'		: $max-3xl-breakpoint,
+	'4xl'		: $max-4xl-breakpoint,
+	'5xl'		: $max-5xl-breakpoint
+
+);
+
+$minDeviceHeightMediaQueries: (
+	'iPhone4'	: '480px',
+	'iPhone5'	: '568px',
+	'Android'	: '569px',
+	'iPhone6'	: '667px',
+	'iPad'		: '737px',
+	'desktop'	: '1025px'
+);
+
+// Short versions
+$mediaquery-phone	: _get($mediaQueries, 'phone');
+$mediaquery-small	: _get($mediaQueries, 'small');
+$mediaquery-medium	: _get($mediaQueries, 'medium');
+$mediaquery-large	: _get($mediaQueries, 'large');
+$mediaquery-xl		: _get($mediaQueries, 'xl');
+$mediaquery-2xl		: _get($mediaQueries, '2xl');
+$mediaquery-3xl		: _get($mediaQueries, '3xl');
+$mediaquery-4xl		: _get($mediaQueries, '4xl');
+$mediaquery-5xl		: _get($mediaQueries, '5xl');
+
+@mixin mediaquery($breakpoint) {
+	@media only screen and (min-width: _get($mediaQueries, #{$breakpoint})) {
+		@content;
+	}
+}
+
+@mixin mediaquery-max-device-width($breakpoint) {
+	@media only screen and (max-device-width: _get($maxMediaQueries, #{$breakpoint})) {
+		@content;
+	}
+}
+
+@mixin mediaquery-min-device-height($breakpoint) {
+	@media only screen and (min-device-height: _get($minDeviceHeightMediaQueries, #{$breakpoint})) {
+		@content;
+	}
+}
+
+@mixin mediaquery-max($breakpoint) {
+	@media only screen and (max-width: _get($maxMediaQueries, #{$breakpoint})) {
+		@content;
+	}
+}
