@@ -16,5 +16,5 @@ List of base components
 - Component ReadMe: `README_component-name.md`
 - Component ACF: `acf_component-name.php`
 
-#### Available Global JS Components
+### Available Global JS Components
 List of global js
