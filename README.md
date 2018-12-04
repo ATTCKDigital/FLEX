@@ -62,6 +62,4 @@ To set a favicon (what you see in browser tabs, bookmark bars, and within the Wo
 
 
 
-
-
 Created 12/3/2018 by okadots for ATTCK
