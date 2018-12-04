@@ -37,9 +37,10 @@ List of plugins
 This theme uses ACF to allow for dynamic layouts as well as global settings that can be adjusted by an admin.
 
 #### Global Fields (always include)
-- Site Settings (`group_5b4cd9e72d68d.json`): Found in "Global Settings", allows the user to update globally displayed content such as address, email and social media links. These settings can be tailored to the individual project. A default set of options has been included. 
-- Google Tag Manager ID (`group_5b4cd6926e1bb.json`): Found in "Global Settings", allows the user to insert their own GTM Container ID. 
-- Social Media Sharing (`group_5b16e72af37f3.json`): Added to all posts, CPTs and pages so user can override default generated OG meta tags. 
+JSON files: `config/acf-configs/acf-json`
+- **Site Settings** (`group_5b4cd9e72d68d.json`): Found in "Global Settings", allows the user to update globally displayed content such as address, email and social media links. These settings can be tailored to the individual project. A default set of options has been included. 
+- **Google Tag Manager ID** (`group_5b4cd6926e1bb.json`): Found in "Global Settings", allows the user to insert their own GTM Container ID. 
+- **Social Media Sharing** (`group_5b16e72af37f3.json`): Added to all posts, CPTs and pages so user can override default generated OG meta tags. 
 
 ## Configs
 See detailed README.md in `config` folder.
