@@ -1,6 +1,3 @@
-## boilerplate
-A boilerplate theme for ATTCK WordPress projects
-
 ## GET STARTED
 1. Install WordPress and copy the "boilerplate" theme to `wp-content/themes`
 2. Copy `.env` and `wp-config.php` into the WordPress root

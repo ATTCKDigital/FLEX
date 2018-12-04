@@ -57,7 +57,7 @@ This theme uses ACF to allow for dynamic layouts as well as global settings that
 - Social Media Sharing (`group_5b16e72af37f3.json`): Added to all posts, CPTs and pages so user can override default generated OG meta tags. 
 
 ## Configs
-See detailed read me in `config` folder.
+See detailed README.md in `config` folder.
 
 ## WordPress Settings
 ### General settings
