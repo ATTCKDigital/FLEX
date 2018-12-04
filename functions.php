@@ -5,38 +5,34 @@ define('THEME_DIR', get_template_directory());
 // for details on each config file
 
 /*** ACF Configs ***/
-include_once(THEME_DIR . '/config/acf-configs/acf-css.php');
-include_once(THEME_DIR . '/config/acf-configs/acf-row-names.php');
-include_once(THEME_DIR . '/config/acf-configs/acf-sync.php'); //required
-include_once(THEME_DIR . '/config/acf-configs/acf-options-page.php'); //required
 // include_once(THEME_DIR . '/config/acf-configs/acf-field-values.php');
 // include_once(THEME_DIR . '/config/acf-configs/acf-wpml-options.php');
+include_once(THEME_DIR . '/config/acf-configs/acf-css.php');
+include_once(THEME_DIR . '/config/acf-configs/acf-options-page.php'); //REQUIRED
+include_once(THEME_DIR . '/config/acf-configs/acf-row-names.php');
+include_once(THEME_DIR . '/config/acf-configs/acf-sync.php'); //REQUIRED
 
 /*** WP-Admin Configs ***/
+include_once(THEME_DIR . '/config/admin-configs/admin-wysiwyg.php');
 // include_once(THEME_DIR . '/config/admin-configs/change-post-labels.php');
 // include_once(THEME_DIR . '/config/admin-configs/image-crops.php');
 
 /*** Theme Configs ***/
-include_once(THEME_DIR . '/config/theme-configs/constants.php'); //required
+include_once(THEME_DIR . '/config/theme-configs/constants.php'); //REQUIRED
+// include_once(THEME_DIR . '/config/theme-configs/custom-nav-classes.php');
 // include_once(THEME_DIR . '/config/theme-configs/custom-post-types.php');
 // include_once(THEME_DIR . '/config/theme-configs/disable-tax-archive.php');
+// include_once(THEME_DIR . '/config/theme-configs/geotarget.php');
+// include_once(THEME_DIR . '/config/theme-configs/hubspot-tracking-code.php');
+include_once(THEME_DIR . '/config/theme-configs/nav-walker.php'); //REQUIRED
+include_once(THEME_DIR . '/config/theme-configs/Utils.class.php'); //REQUIRED
+// include_once(THEME_DIR . '/config/theme-configs/wpml-language-switcher.php');
 
 // include_once(THEME_DIR . '/config/conf.php');
-// include_once(THEME_DIR . '/config/constants.php');
-// include_once(THEME_DIR . '/config/custom-post-types.php');
 // include_once(THEME_DIR . '/config/load-more.php');
-// include_once(THEME_DIR . '/config/nav-walker.php');
 // include_once(THEME_DIR . '/config/wysiwyg.php');
 // include_once(THEME_DIR . '/config/cropper.php');
 // include_once(THEME_DIR . '/config/search.php');
-// include_once(THEME_DIR . '/config/language-switcher.php');
-// include_once(THEME_DIR . '/config/acf-wpml-options.php');
-// include_once(THEME_DIR . '/config/geotarget.php');
-
-
-
-// Generic utilities.
-include_once(THEME_DIR . '/config/Utils.class.php'); //Extended php file includer. REQUIRED.
 
 /**
  * Theme functions and definitions

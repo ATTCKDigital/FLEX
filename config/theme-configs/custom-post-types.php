@@ -1,8 +1,8 @@
 <?php
-add_action('init', 'attck_create_post_type');
+add_action('init', 'attck_create_cpt_tax');
 
 // Register custom post types and taxonomies here.
-function attck_create_post_type() {
+function attck_create_cpt_tax() {
 	register_taxonomy('press_tag', array('press'),
 		array(
 			'hierarchical' => false,

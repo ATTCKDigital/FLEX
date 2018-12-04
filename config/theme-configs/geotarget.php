@@ -1,12 +1,6 @@
 <?php
-/*
-Plugin Name: John Gamboa's GeoTarget Redirect Example
-Description: Redirecting visitor traffic based on geo-location using the WPEngine GeoTarget feature
-Version: 1.1
-License: GPLv2
-*/
-	
-function geo_target() {
+// Redirect user based on country location. Requires WP Engine GeoTarget and WPML	
+function attck_geo_target() {
 	//get the country we are in
 	// global $wp_query;
 	$country = getenv('HTTP_GEOIP_COUNTRY_CODE');
@@ -66,7 +60,7 @@ function geo_target() {
 		return;
 	}
 }
-add_action( 'template_redirect', 'geo_target');
+add_action( 'template_redirect', 'attck_geo_target');
 
 
 

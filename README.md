@@ -56,31 +56,8 @@ This theme uses ACF to allow for dynamic layouts as well as global settings that
 - Google Tag Manager ID (`group_5b4cd6926e1bb.json`): Found in "Global Settings", allows the user to insert their own GTM Container ID. 
 - Social Media Sharing (`group_5b16e72af37f3.json`): Added to all posts, CPTs and pages so user can override default generated OG meta tags. 
 
-
 ## Configs
-These options can be enabled/disabled in `functions.php`
-
-### ACF Configs (`config/acf-configs`)
-- `acf-json`: Folder where the ACF json files are stored and synced from 🔒_required_
-- `acf-css`: Customize the ACF user facing css
-- `acf-field-values`: Allows creation of predefined select/radio button options if specific field names are being used
-- `acf-options-page`: Enables a custom settings page in the admin interface 🔒_required_
-- `acf-row-names`: Displays specific field names in the collapsed state of the layout tool 👍🏻*recommended*
-- `acf-sync`: Syncs ACF fields across environments based on the json files. Does NOT override individual component ACF field files. 🔒_required_
-- `acf-wpml-options`: Creates a globalized ACF output so that settings entered into "Global Settings" for the default language can be used universally.
-
-### Admin Configs (`config/admin-configs`)
-- `change-post-labels`: In some instances, "Posts" will need to be renamed. This file allows for that.
-- `image-crops`: Set custom crop sizes and custom default Featured Image size. Image will be cropped as defined on upload. 
-
-### Theme Configs (`config/theme-configs`)
-- `constants`: Sets some global PHP constants
-- `google-tag-manager-body`: Adds Google Tag Manager to the theme. Included in `header.php`. 🔒_required_
-- `google-tag-manager-header`: Adds Google Tag Manager to the theme. Included in `header.php`. 🔒_required_
-- `svg-sprite`: Adds the compiled SVG Sprite to the site. Included in `header.php`. 🔒_required_
-- `custom-post-types`: Create and register custom post types (CPT) and custom taxonomies.
-- `disable-tax-archive`: In some instances a Custom Taxonomy will NOT require an archive page. Enable config to disable custom tax archive.
-
+See detailed read me in `config` folder.
 
 ## WordPress Settings
 ### General settings

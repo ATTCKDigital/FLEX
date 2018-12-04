@@ -2,7 +2,7 @@
 // okatodo: update to accommodate new field names
 // If field 'row_display_name' is added to a layout, it will be used to 
 // rename the row to a more user-friendly name
-function my_acf_flexible_content_layout_title( $title, $field, $layout, $i ) {
+function attck_layout_title( $title, $field, $layout, $i ) {
 	// Remove layout title from text
 	// Load text sub field
 	if ($field = get_sub_field('row_display_name')) {
@@ -25,6 +25,6 @@ function my_acf_flexible_content_layout_title( $title, $field, $layout, $i ) {
 }
 
 // Name
-add_filter('acf/fields/flexible_content/layout_title/name=layout', 'my_acf_flexible_content_layout_title', 10, 4);
-add_filter('acf/fields/flexible_content/layout_title/name=column', 'my_acf_flexible_content_layout_title', 10, 4);
+add_filter('acf/fields/flexible_content/layout_title/name=layout', 'attck_layout_title', 10, 4);
+add_filter('acf/fields/flexible_content/layout_title/name=column', 'attck_layout_title', 10, 4);
 ?>

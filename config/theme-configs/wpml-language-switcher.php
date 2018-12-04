@@ -1,5 +1,6 @@
 <?php
-//current language
+// Get current language 
+// Usage: current_language();
 function current_language() {
 	if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
 		$current_language = ICL_LANGUAGE_CODE;
@@ -9,8 +10,8 @@ function current_language() {
 
 
 
-//custom language switcher nav
-function languages_list_nav(){
+// Custom language switcher nav
+function attck_language_switcher(){
 	//show all languages
 	$languages =  apply_filters('wpml_active_languages', null, array('skip_missing' => 0 ));
 

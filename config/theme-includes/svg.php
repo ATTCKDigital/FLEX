@@ -1,4 +1,5 @@
 <?php
+	// template for outputting an SVG on the front end
 	$classes = ($this->classes) ? $this->classes: '';
 	$data = ($this->data) ? $this->data: '';
 	$id = ($this->id) ? $this->id: '';

@@ -1,5 +1,7 @@
-<?php // https://gist.github.com/gerbenvandijk/5253921
-function custom_active_item_classes($classes = array(), $menu_item = false) {
+<?php 
+// Customize the "current" menu item class
+// https://gist.github.com/gerbenvandijk/5253921
+function attck_nav_active_classes($classes = array(), $menu_item = false) {
 	global $post;
 
 	// Get post ID, if nothing found set to NULL
@@ -13,4 +15,4 @@ function custom_active_item_classes($classes = array(), $menu_item = false) {
 	return $classes;
 }
 
-add_filter('nav_menu_css_class', 'custom_active_item_classes', 10, 2);
+add_filter('nav_menu_css_class', 'attck_nav_active_classes', 10, 2);

@@ -1,7 +1,7 @@
 <?php
-// customizes the admin css and js when ACF is installed and active
-function my_acf_admin_head() {
-	?>
+	// customizes the admin css and js when ACF is installed and active
+	function attck_acf_styles() {
+?>
 	<style type='text/css'>
 		.acf-flexible-content .layout {
 			background-color: #ffe48f;
@@ -127,8 +127,8 @@ function my_acf_admin_head() {
 			background: transparent;
 		}
 	</style>
-	<?php
-}
+<?php
+	}
 
-add_action('acf/input/admin_head', 'my_acf_admin_head');
+	add_action('acf/input/admin_head', 'attck_acf_styles');
 ?>

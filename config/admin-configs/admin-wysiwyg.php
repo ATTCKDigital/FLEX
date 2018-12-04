@@ -1,13 +1,7 @@
 <?php
-// Creating the style selector stayed the same
-function my_mce_buttons($buttons) {
-	array_unshift($buttons, 'styleselect');
-	array_push($buttons, 'hr');
-	return $buttons;
-}
-add_filter('mce_buttons', 'my_mce_buttons');
+// okatodo: test with Guttenberg
 
-function mce_mod($init) {
+function attck_mce_mod($init) {
 	// $init['style_formats']	doesn't work - instead you have to use tinymce style selectors
 	$style_formats = array(
 
@@ -98,9 +92,10 @@ function mce_mod($init) {
 
 	return $init;
 }
-add_filter('tiny_mce_before_init', 'mce_mod');
+add_filter('tiny_mce_before_init', 'attck_mce_mod');
 
-function my_mce4_options($init) {
+// Add predefined colors to the TinyMCE editor
+function attck_mce4_options($init) {
 	$custom_colours =	'"231f20", "Black",
 						"ac574d", "Brick Red",
 						"777777", "Dark Gray",
@@ -116,4 +111,4 @@ function my_mce4_options($init) {
 
 	return $init;
 }
-add_filter('tiny_mce_before_init', 'my_mce4_options');
+add_filter('tiny_mce_before_init', 'attck_mce4_options');

@@ -1,8 +1,8 @@
 <?php
 
-add_filter('acf/settings/save_json', 'my_acf_json_save_point');
+add_filter('acf/settings/save_json', 'attck_acf_json_save_point');
 
-function my_acf_json_save_point( $path ) {
+function attck_acf_json_save_point( $path ) {
 
     // update path
     $path = get_stylesheet_directory() . '/config/acf-configs/acf-json';
@@ -13,9 +13,9 @@ function my_acf_json_save_point( $path ) {
 
 }
 
-add_filter('acf/settings/load_json', 'my_acf_json_load_point');
+add_filter('acf/settings/load_json', 'attck_acf_json_load_point');
 
-function my_acf_json_load_point( $paths ) {
+function attck_acf_json_load_point( $paths ) {
 
     // remove original path (optional)
     unset($paths[0]);
@@ -33,9 +33,9 @@ function my_acf_json_load_point( $paths ) {
 /**
  * Update ACF settings.
  */
-function my_acf_init() {
+function attck_acf_init() {
 	// Save field changes to database (set to to 'false'). Only for Dev environment
 	acf_update_setting('json', true);
 }
 
-add_action('acf/init', 'my_acf_init');
+add_action('acf/init', 'attck_acf_init');
