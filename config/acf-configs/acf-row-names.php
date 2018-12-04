@@ -1,4 +1,5 @@
 <?php
+// okatodo: update to accommodate new field names
 // If field 'row_display_name' is added to a layout, it will be used to 
 // rename the row to a more user-friendly name
 function my_acf_flexible_content_layout_title( $title, $field, $layout, $i ) {

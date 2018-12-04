@@ -9,17 +9,11 @@ A boilerplate theme for ATTCK WordPress projects
 5. From the command line, navigate to the boilerplate theme and run `npm install`.  This will install all of the associated node modules.
 6. To compile css, js and assets, run `gulp watch` from inside the boilerplate theme
 
-### Adding components
-How to "enable" existing components
+## Gulp & Node
+How to run and use
 
-How to "add" new component
+## Deployment
+How to deploy - WPEngine instructions and generic FTP instructions
 
-How to enable/disable various configs (stuff that gets put into functions.php)
-
-### wp-admin Settings
-General settings
-Reading settings
-Media settings
-Discussion settings
-Permalink settings
-Privacy settings
+## Settings
+See main README.md for detailed information on WordPress admin, config  and plugin settings.

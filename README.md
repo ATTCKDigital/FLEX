@@ -4,8 +4,6 @@ A boilerplate theme for ATTCK WordPress projects
 See the README in `__GET_STARTED_HERE` to get started on your project!
 
 ## Theme Structure
-### Assets
-Assets include fonts, images and svgs. SVGs are compiled by gulp into a global SVG file. SVGs should be used wherever possible.
 
 ### Components Structure
 Components are the pieces of the theme.  Each component folder contains the following, specific to the component:
@@ -15,6 +13,19 @@ Components are the pieces of the theme.  Each component folder contains the foll
 - readme.md specific to component
 - acf field generator (the fields specific to the component are generated via this file)
 
+#### Availale Components
+List of base components
+
+#### Adding components
+How to "enable" existing components
+
+How to "add" new component
+
+How to enable/disable various configs (stuff that gets put into functions.php)
+
+### Assets
+Assets include fonts, images and svgs. SVGs are compiled by gulp into a global SVG file. SVGs should be used wherever possible.
+
 ### Global CSS
 The `scss` folder holds all of the globally available styles for the site. Things such as grids, headline styles, layout styles, etc. 
 
@@ -23,7 +34,7 @@ These should serve as the basis for a functioning theme. Changes should be made 
 ### Global JS
 The boilerplate theme has a variety of existing javascript functions (nav animation, parallax, scroll detection, etc). These can be leveraged from any component using ES6 impoprt. See `Available Global JS Components` below for detailed information on each function.
 
-## Naming Conventions
+### Naming Conventions
 - Component Folders: `component_component-name`
 - Component Markup: `component_component-name.php`
 - Component SCSS: `_component_component-name.scss`
@@ -31,30 +42,49 @@ The boilerplate theme has a variety of existing javascript functions (nav animat
 - Component ReadMe: `README_component_component-name.md`
 - Component ACF: `component_acf_component-name.php`
 
-## Available Global JS Components
+### Available Global JS Components
 List of global js
-
-## Availale Components
-List of base components
 
 ## Required Plugins
 Advanced Custom Fields Pro - https://www.advancedcustomfields.com/
 List of plugins
 
-## Gulp & Node
-How to run and use
+## Plugin Settings
+### Advanced Custom Fields (ACF)
+This theme uses ACF to allow for dynamic layouts as well as global settings that can be adjusted by an admin.
 
-## Deployment
+#### Global Fields (always include)
+- Site Settings: Found in "Global Settings", allows the user to update globally displayed content such as address, email and social media links. These settings can be tailored to the individual project. A default set of options has been included. `group_5b4cd9e72d68d.json`
+- Google Tag Manager ID: Found in "Global Settings", allows the user to insert their own GTM Container ID. `group_5b4cd6926e1bb.json`
+- Social Media Sharing: Added to all posts, cpts and pages so user can override default generated OG meta tags. `group_5b16e72af37f3.json`
 
+#### ACF Config Options
+These options can be enabled/disabled in `functions.php`
+- `acf-json`: Folder where the ACF json files are stored and synced from *required*
+- `acf-css`: Customize the ACF user facing css
+- `acf-field-values`: Allows creation of predefined select/radio button options if specific field names are being used
+- `acf-options-page`: Enables a custom settings page in the admin interface *required*
+- `acf-row-names`: Displays specific field names in the collapsed state of the layout tool *recommended*
+- `acf-sync`: Syncs ACF fields across environments based on the json files. Does NOT override individual component ACF field files. *required*
+- `acf-wpml-options`: Creates a globalized ACF output so that settings entered into "Global Settings" for the default language can be used universally.
 
-## Global Settings
-### GTM
-### Hubspot
+## WordPress Settings
+### General settings
+### Reading settings
+### Media settings
+### Discussion settings
+### Permalink settings
+### Privacy settings
+
 ### Site info (address, email, social media urls, etc)
 ### Favicon
 To set a favicon (what you see in browser tabs, bookmark bars, and within the WordPress mobile apps). To add a custom Favicon, go to Appearance > Customize > Site Identity and upload an icon to "Site Icon". Site Icons should be square and at least 512 × 512 pixels.
 
 ### Site logo
 ### Site colors
+
+
+
+
 
 Created 12/3/2018 by okadots for ATTCK

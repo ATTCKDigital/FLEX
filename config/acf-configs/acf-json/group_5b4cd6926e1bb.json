@@ -1,32 +1,13 @@
 {
     "key": "group_5b4cd6926e1bb",
-    "title": "Google Tag Manager Tags",
+    "title": "Google Tag Manager ID",
     "fields": [
         {
             "key": "field_5b4cd69992327",
-            "label": "GTM Header Tag",
-            "name": "gtm_header_tag",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": ""
-        },
-        {
-            "key": "field_5b4cd6b092328",
-            "label": "GTM Body Tag",
-            "name": "gtm_body_tag",
-            "type": "textarea",
-            "instructions": "",
+            "label": "Google Tag Manager Container ID",
+            "name": "gtm_ID",
+            "type": "text",
+            "instructions": "Enter your Tag Manager container ID",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {

@@ -1,18 +1,21 @@
 <?php
 define('THEME_DIR', get_template_directory());
 
-// WP functions are split out into individual files for clarity. Disable/Enable files by commenting out here. 
-// include_once(THEME_DIR . '/config/acf-css.php');
-// include_once(THEME_DIR . '/config/acf-field-values.php');
-// include_once(THEME_DIR . '/config/acf-row-names.php');
+// WP functions are split out into individual files for clarity. Disable/Enable files by commenting out here. See README.md 
+// for details on each config file
+include_once(THEME_DIR . '/config/acf-configs/acf-css.php');
+include_once(THEME_DIR . '/config/acf-configs/acf-row-names.php');
+include_once(THEME_DIR . '/config/acf-configs/acf-sync.php');
+include_once(THEME_DIR . '/config/acf-configs/acf-options-page.php');
+// include_once(THEME_DIR . '/config/acf-configs/acf-field-values.php');
+// include_once(THEME_DIR . '/config/acf-configs/acf-wpml-options.php');
+
 // include_once(THEME_DIR . '/config/conf.php');
 // include_once(THEME_DIR . '/config/constants.php');
 // include_once(THEME_DIR . '/config/custom-post-types.php');
 // include_once(THEME_DIR . '/config/load-more.php');
 // include_once(THEME_DIR . '/config/nav-walker.php');
-// include_once(THEME_DIR . '/config/options.php');
 // include_once(THEME_DIR . '/config/wysiwyg.php');
-// include_once(THEME_DIR . '/config/acf-sync.php');
 // include_once(THEME_DIR . '/config/cropper.php');
 // include_once(THEME_DIR . '/config/search.php');
 // include_once(THEME_DIR . '/config/language-switcher.php');
