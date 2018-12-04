@@ -9,30 +9,34 @@ define('THEME_DIR', get_template_directory());
 // include_once(THEME_DIR . '/config/acf-configs/acf-wpml-options.php');
 include_once(THEME_DIR . '/config/acf-configs/acf-css.php');
 include_once(THEME_DIR . '/config/acf-configs/acf-options-page.php'); //REQUIRED
-include_once(THEME_DIR . '/config/acf-configs/acf-row-names.php');
+include_once(THEME_DIR . '/config/acf-configs/acf-row-names.php'); //RECOMMENDED
+include_once(THEME_DIR . '/config/acf-configs/acf-search.php'); //RECOMMENDED
 include_once(THEME_DIR . '/config/acf-configs/acf-sync.php'); //REQUIRED
 
 /*** WP-Admin Configs ***/
-include_once(THEME_DIR . '/config/admin-configs/admin-wysiwyg.php');
+include_once(THEME_DIR . '/config/admin-configs/admin-wysiwyg.php'); //RECOMMENDED
 // include_once(THEME_DIR . '/config/admin-configs/change-post-labels.php');
-// include_once(THEME_DIR . '/config/admin-configs/image-crops.php');
+include_once(THEME_DIR . '/config/admin-configs/custom-exceprts.php'); //REQUIRED
+include_once(THEME_DIR . '/config/admin-configs/embed-wrapper.php'); //RECOMMENDED
+// include_once(THEME_DIR . '/config/admin-configs/image-crops.php'); //RECOMMENDED
+include_once(THEME_DIR . '/config/admin-configs/remove-comments-column.php'); //RECOMMENDED
+include_once(THEME_DIR . '/config/admin-configs/svg-uploads.php'); //RECOMMENDED
+include_once(THEME_DIR . '/config/admin-configs/unwrap-images.php'); //REQUIRED
 
 /*** Theme Configs ***/
+include_once(THEME_DIR . '/config/theme-configs/body-classes.php'); //REQUIRED
 include_once(THEME_DIR . '/config/theme-configs/constants.php'); //REQUIRED
 // include_once(THEME_DIR . '/config/theme-configs/custom-nav-classes.php');
 // include_once(THEME_DIR . '/config/theme-configs/custom-post-types.php');
+include_once(THEME_DIR . '/config/theme-configs/enqueue-scripts-styles.php'); //REQUIRED
 // include_once(THEME_DIR . '/config/theme-configs/disable-tax-archive.php');
 // include_once(THEME_DIR . '/config/theme-configs/geotarget.php');
-// include_once(THEME_DIR . '/config/theme-configs/hubspot-tracking-code.php');
-include_once(THEME_DIR . '/config/theme-configs/nav-walker.php'); //REQUIRED
+include_once(THEME_DIR . '/config/theme-configs/load-more.php'); //RECOMMENDED
+include_once(THEME_DIR . '/config/theme-configs/nav-walker.php'); //RECOMMENDED
+// include_once(THEME_DIR . '/config/theme-configs/password-protection.php');
 include_once(THEME_DIR . '/config/theme-configs/Utils.class.php'); //REQUIRED
 // include_once(THEME_DIR . '/config/theme-configs/wpml-language-switcher.php');
 
-// include_once(THEME_DIR . '/config/conf.php');
-// include_once(THEME_DIR . '/config/load-more.php');
-// include_once(THEME_DIR . '/config/wysiwyg.php');
-// include_once(THEME_DIR . '/config/cropper.php');
-// include_once(THEME_DIR . '/config/search.php');
 
 /**
  * Theme functions and definitions
@@ -86,20 +90,3 @@ if (!function_exists('_theme_setup')) {
 
 
 
-/**
- * REMOVE WP EMOJI
- * https://www.denisbouquet.com/remove-wordpress-emoji-code/
- */
-remove_action('wp_head', 'print_emoji_detection_script', 7);
-remove_action('wp_print_styles', 'print_emoji_styles');
-remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-remove_action( 'admin_print_styles', 'print_emoji_styles' );
-
-/** okatodo: discuss with sq and dp about whether or not we should have this feature
- * Remove WP embedded js
- * https://wordpress.stackexchange.com/questions/211701/what-does-wp-embed-min-js-do-in-wordpress-4-4
- */
-// function my_deregister_scripts(){
-// 	wp_deregister_script('wp-embed');
-// }
-// add_action('wp_footer', 'my_deregister_scripts');
