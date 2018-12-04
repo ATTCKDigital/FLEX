@@ -3,12 +3,23 @@ define('THEME_DIR', get_template_directory());
 
 // WP functions are split out into individual files for clarity. Disable/Enable files by commenting out here. See README.md 
 // for details on each config file
+
+/*** ACF Configs ***/
 include_once(THEME_DIR . '/config/acf-configs/acf-css.php');
 include_once(THEME_DIR . '/config/acf-configs/acf-row-names.php');
-include_once(THEME_DIR . '/config/acf-configs/acf-sync.php');
-include_once(THEME_DIR . '/config/acf-configs/acf-options-page.php');
+include_once(THEME_DIR . '/config/acf-configs/acf-sync.php'); //required
+include_once(THEME_DIR . '/config/acf-configs/acf-options-page.php'); //required
 // include_once(THEME_DIR . '/config/acf-configs/acf-field-values.php');
 // include_once(THEME_DIR . '/config/acf-configs/acf-wpml-options.php');
+
+/*** WP-Admin Configs ***/
+// include_once(THEME_DIR . '/config/admin-configs/change-post-labels.php');
+// include_once(THEME_DIR . '/config/admin-configs/image-crops.php');
+
+/*** Theme Configs ***/
+include_once(THEME_DIR . '/config/theme-configs/constants.php'); //required
+// include_once(THEME_DIR . '/config/theme-configs/custom-post-types.php');
+// include_once(THEME_DIR . '/config/theme-configs/disable-tax-archive.php');
 
 // include_once(THEME_DIR . '/config/conf.php');
 // include_once(THEME_DIR . '/config/constants.php');

@@ -9,13 +9,13 @@
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri() . "/dist/css/style.css"; ?>" type="text/css" media="screen" />
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri() . "/dist/css/print.css"; ?>" type="text/css" media="print" />
-	<?php include_once 'config/google-tag-manager-header.php'; ?>
+	<?php include_once 'config/theme-configs/google-tag-manager-header.php'; ?>
 	<?php wp_head(); ?>
 
 </head>
 <body <?php body_class();?>>
-	<?php include_once 'config/google-tag-manager-body.php'; ?>
-	<?php include_once 'config/hubspot-tracking-code.php'; ?>
+	<?php include_once 'config/theme-configs/google-tag-manager-body.php'; ?>
+	<?php include_once 'config/theme-configs/hubspot-tracking-code.php'; ?>
 
 	<?php //see app.js for usage ?>
 	<div class="breakpoint phone"></div>
@@ -24,7 +24,7 @@
 	<div class="breakpoint desktop"></div>
 	<div class="breakpoint xl"></div>
 
-	<?php include_once(get_template_directory() . "config/svg-sprite.php"); ?>
+	<?php include_once(get_template_directory() . "config/theme-configs/svg-sprite.php"); ?>
 	<?php include_once 'components/component_nav.php'; ?>
 		<div class="content-container component">
 			<main class="content">
