@@ -1,0 +1,339 @@
+/**** General Typography ****/
+
+/** Convert px to rem **/
+@function px-to-rem($size) {
+	$remSize: $size / 10px;
+	@return #{$remSize}rem;
+}
+
+/** Responsive Font Size Map **/
+// Add as many as needed.
+// Add fonts sizes for each break point. Font sizes will be converted to rems. 
+// Usage:  @include font-size($font-size)
+$font-size-headline1: (
+	'null'  	: 48px,
+	'small'		: 48px,
+	'medium'	: 48px,
+	'large'		: 48px,
+	'xl'		: 48px,
+	'2xl'		: 48px,
+	'3xl'		: 48px,
+	'4xl'		: 48px,
+	'5xl'
+);
+
+@mixin font-size($fs-map) {
+	@each $fs-breakpoint, $fs-font-size in $fs-map {
+		@if $fs-breakpoint == null {
+			font-size: @include px-to-rem($fs-font-size);
+		} @else {
+			@include mediaquery($fs-breakpoint) {
+				font-size: @include px-to-rem($fs-font-size);
+			}
+		}
+	}
+}
+
+/** Global Text Styles **/
+address {
+
+}
+
+a {
+	color: inherit;
+	cursor: pointer;
+	text-decoration: none;
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	line-height: inherit;
+	letter-spacing: inherit;
+
+	@include mediaquery(desktop) {
+		&:hover {
+		}
+	}
+
+}
+
+mark {
+	background-color: transparent;
+}
+
+
+
+em, i {
+	color: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	font-family: inherit;
+	@include sans-serif-italic;
+}
+
+hr {
+	background: color('accent', 'gray-border');
+	border: 0;
+	height: 1px;
+	margin: 25px auto;
+}
+
+p, .body {
+	font-size: 11px;
+	line-height: 1.3;
+	margin-bottom: $gap;
+	letter-spacing: -0.1px;
+	@include sans-serif-regular;
+
+	@include mediaquery(tablet-landscape) {
+		font-size: 16px;
+		letter-spacing: -0.15px;
+	}
+
+	a {
+		text-decoration: none;
+		@include transition(color .3s ease-out);
+
+		@include mediaquery(desktop) {
+			&:hover {
+			}
+		}
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+span {
+	color: inherit;
+	font-family: inherit;
+	font-size: inherit;
+	font-style: inherit;
+}
+
+u {
+	color: inherit;
+	font-family: inherit;
+	font-size: inherit;
+	font-style: inherit;
+}
+
+strong, b {
+	color: inherit;
+	font-family: inherit;
+	font-size: inherit;
+	letter-spacing: inherit;
+	line-height: inherit;
+	@include sans-serif-semi;
+}
+
+th, tr, td {
+	color: inherit;
+}
+
+
+/** Error & Message Styles **/
+.error {
+	@extend .body;
+	color: red;
+}
+
+/** Helper Classes **/
+.align-center {
+	text-align: center;
+}
+
+.align-left {
+	text-align: left;
+}
+
+.align-right {
+	text-align: right;
+}
+
+.underline {
+	// for use in WYSIWYG as <u></u> was deprecated in 4.7+
+	color:inherit;
+	display: inline;
+	font-family: inherit;
+	font-size:inherit;
+	font-style:inherit;
+	font-weight:inherit;
+	line-height: inherit;
+	text-decoration:underline;
+}
+
+.lowercase {
+	text-transform: lowercase;
+}
+
+.nocase {
+	text-transform: none;
+}
+
+.uppercase {
+	text-transform: uppercase;
+}
+
+.display-block {
+	display: block;
+}
+
+/** Body Copy **/
+// Styles for content within a WYSIWYG.
+// All WYSIWYG content should be wrapped in a "body-text" div
+.body-text {
+
+	.wp-caption {
+		&.aligncenter, &.none, &.alignnone {
+			display: block;
+			margin: 0 auto $gap*5;
+			max-width: 100%;
+			width: auto;
+		}
+
+		&.alignleft {
+			display: block;
+			margin: 0 auto $gap*5;
+			max-width: 100%;
+			width: auto;
+
+			@include mediaquery(medium) {
+				clear: left;
+				float: left;
+				margin: 0 $gap*2.5 $gap*2.5 0;
+			}
+		}
+
+		&.alignright {
+			display: block;
+			margin: 0 auto $gap*5;
+			max-width: 100%;
+			width: auto;
+
+			@include mediaquery(medium) {
+				clear: right;
+				float: right;
+				margin: 0 0 $gap*2.5 $gap*2.5;
+			}
+		}
+		
+		.wp-caption-text {
+			@extend .body;
+			margin-top: $gap*.5;
+		}
+	}
+
+	blockquote {
+		padding: 0 $gap*2;
+
+		@include mediaquery(large) {
+			padding: 0 $gap*3;
+		}
+	}
+
+	cite {
+		@extend .body;
+		font-style: italic;
+		font-size: 12px;
+	}
+
+	table {
+		td {
+			@extend .body;
+			border: 1px solid $borderColor;
+			padding: $gap*.5;
+		}
+	}
+
+	//ctas and links
+	& + a {
+		margin-top: $gap*1.5;
+	}
+
+	+ .ctas {
+		// Add margin to ctas if it's next to a .body-text div
+		margin-top: $gap*1.5;
+	}
+
+	.button a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	a, p a, ul li a, ol li a {
+		text-decoration: underline;
+		transition: opacity .4s ease-out;
+
+		@include mediaquery(xl) {
+			&:hover {
+				opacity: .4;
+			}
+		}
+	}
+
+	//list styles
+	ul, ol {
+		margin-left: $gap*.75;
+		margin-bottom: $gap;
+
+		@include mediaquery(tablet-landscape) {
+			margin-left: 85px;
+		}
+
+		li {
+			@extend .body;
+			color: inherit;
+			margin-bottom: $gap*.5;
+		}
+	}
+
+	ul {
+		li {
+			list-style-type: disc;
+		}
+	}
+
+	ol {
+		li {
+			list-style-type: decimal;
+		}
+	}
+
+	h1 {
+		@extend .headline2;
+		margin-bottom: $gap;
+		padding-top: $gap;
+	}
+
+	h2 {
+		@extend .headline3;
+		margin-bottom: $gap;
+		padding-top: $gap;
+	}
+
+	h3 {
+		@extend .headline3;
+		margin-bottom: $gap;
+		padding-top: $gap;
+	}
+
+	h4 {
+		@extend .headline4;
+		margin-bottom: $gap;
+		padding-top: $gap;
+	}
+
+	h5 {
+		@extend .headline5;
+		margin-bottom: $gap;
+		padding-top: $gap;
+	}
+
+	h6 {
+		@extend .headline6;
+		margin-bottom: $gap;
+		padding-top: $gap;
+	}
+}
+

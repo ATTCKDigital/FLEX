@@ -9,7 +9,7 @@ add_filter('the_content', 'attck_filter_tags_on_images');
 // alignment modifier
 function attck_post_img_add_class($class, $id, $align, $size) {
 	$classes = ['post-img'];
-	$classes[] = 'post-img-' . $align . ' ' . $id;
+	$classes[] = $align;
 
 	return implode(' ', $classes);
 }

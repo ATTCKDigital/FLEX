@@ -42,19 +42,32 @@ $brand-colors: (
 	)
 );
 
-// Generate colors 
+/** Generate colors **/
 @function color($key: 'debug', $variant: $brand-color-key) {
 	$color: null;
 	$color-spectrum: map-get($brand-colors, $key);
 
 	@if $color-spectrum {
-			$color: map-get($color-spectrum, $variant);
+		$color: map-get($color-spectrum, $variant);
 	}
 
 	@return $color;
 }
 
-// Generate color classes
+/** Generate color classes **/
+// Use dynamically generated color classes as follows:
+//
+// Classes:
+//
+// 		.background-key-variant
+// 		.color-color-key-variant
+//
+// For example:
+//
+// 		.background-accent-blue
+// 		.color-accent-blue
+//
+
 @each $key, $map in $brand-colors {
 	@each $variant, $color in $map {
 		.background-#{$variant} {
@@ -86,7 +99,7 @@ $brand-colors: (
 }
 
 
-// Mixin for placeholder color
+/** Mixin for placeholder color **/
 @mixin placeholder($color) {
 	&::-webkit-input-placeholder {
 		color: $color;

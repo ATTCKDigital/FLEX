@@ -6,8 +6,10 @@ These should serve as the basis for a functioning theme. Changes should be made 
 
 ### Required SCSS Files
 - `_animations.scss`: Common animations. 
+- `_buttons.scss`: All button styles.
 - `_colors.scss`: Sets the colors available for the site. //okatodo: make colors editable from wp-admin 
 - `_component.scss`: Basic component styles. 
+- `_debug.scss`: Styles for debugging breakpoints using js debug utility.
 - `_fonts.scss`: All font settings.
 - `_forms.scss`: Global form styles.  All form field styling should be done here.
 - `_global.scss`: Contains truly global elements. 
@@ -15,13 +17,16 @@ These should serve as the basis for a functioning theme. Changes should be made 
 - `_hidden.scss`: Basic styles for hiding elements based on screen size. 
 - `_iconography.scss`: Styles for icons (ie. hamburger, close button, play button).
 - `_images.scss`: Basic styles for images. 
+- `_layout.scss`: Mixins useful for standard layout paradigms.
 - `_media-queries.scss`: Standard media queries. Set the break points in `sizing`.
 - `_popups-overlays.scss`: Basic styles for popups and overlays.
 - `_reset.scss`: Meyerweb css reset.
 - `_sizing.scss`: Variables related to heights and widths (gap, site width, breakpoints).
-- `_layout.scss`: Mixins useful for standard layout paradigms.
-- `_debug.scss`: Styles for debugging breakpoints using js debug utility.
 - `_theme.scss`: Component background defaults and border classes. //okatodo: rename to more sensical name
+- `_typography-base.scss`: Base typography styles and font size maps.
+- `_typography.scss`: Project specific type styles.
+- `_headlines.scss`: Headline styles.
+
 
 **Files below are used to import for compilation**
 - `print.scss`: If any print only styles, include them here.
