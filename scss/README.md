@@ -14,18 +14,22 @@ These should serve as the basis for a functioning theme. Changes should be made 
 - `_forms.scss`: Global form styles.  All form field styling should be done here.
 - `_global.scss`: Contains truly global elements. 
 - `_grid.scss`: Pure Grid classes and styles. 
+- `_headlines.scss`: Headline styles.
 - `_hidden.scss`: Basic styles for hiding elements based on screen size. 
 - `_iconography.scss`: Styles for icons (ie. hamburger, close button, play button).
 - `_images.scss`: Basic styles for images. 
 - `_layout.scss`: Mixins useful for standard layout paradigms.
+- `_margin.scss`: Margin classes.
 - `_media-queries.scss`: Standard media queries. Set the break points in `sizing`.
+- `_padding.scss`: Padding classes.
 - `_popups-overlays.scss`: Basic styles for popups and overlays.
 - `_reset.scss`: Meyerweb css reset.
+- `_sass-utils.scss`: SASS utilities.
 - `_sizing.scss`: Variables related to heights and widths (gap, site width, breakpoints).
+- `_styleguide.scss`: Styles for the styleguide page.
 - `_theme.scss`: Component background defaults and border classes. //okatodo: rename to more sensical name
 - `_typography-base.scss`: Base typography styles and font size maps.
 - `_typography.scss`: Project specific type styles.
-- `_headlines.scss`: Headline styles.
 
 
 **Files below are used to import for compilation**
