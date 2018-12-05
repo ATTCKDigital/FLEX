@@ -50,7 +50,7 @@
 
 //CF7 styles
 .wpcf7-checkbox {
-	@include mediaquery(tablet-portrait) {
+	@include mediaquery(medium) {
 		width: 50%;
 	}
 

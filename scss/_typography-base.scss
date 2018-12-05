@@ -11,7 +11,6 @@
 // Add fonts sizes for each break point. Font sizes will be converted to rems. 
 // Usage:  @include font-size($font-size)
 $font-size-headline1: (
-	'null'  	: 48px,
 	'small'		: 48px,
 	'medium'	: 48px,
 	'large'		: 48px,
@@ -23,7 +22,6 @@ $font-size-headline1: (
 );
 
 $font-size-headline2: (
-	'null'  	: 36px,
 	'small'		: 36px,
 	'medium'	: 36px,
 	'large'		: 36px,
@@ -35,7 +33,6 @@ $font-size-headline2: (
 );
 
 $font-size-headline3: (
-	'null'  	: 32px,
 	'small'		: 32px,
 	'medium'	: 32px,
 	'large'		: 32px,
@@ -47,7 +44,6 @@ $font-size-headline3: (
 );
 
 $font-size-headline4: (
-	'null'  	: 28px,
 	'small'		: 28px,
 	'medium'	: 28px,
 	'large'		: 28px,
@@ -59,7 +55,6 @@ $font-size-headline4: (
 );
 
 $font-size-headline5: (
-	'null'  	: 20px,
 	'small'		: 20px,
 	'medium'	: 20px,
 	'large'		: 20px,
@@ -71,7 +66,6 @@ $font-size-headline5: (
 );
 
 $font-size-headline6: (
-	'null'  	: 18px,
 	'small'		: 18px,
 	'medium'	: 18px,
 	'large'		: 18px,
@@ -84,12 +78,8 @@ $font-size-headline6: (
 
 @mixin font-size($fs-map) {
 	@each $fs-breakpoint, $fs-font-size in $fs-map {
-		@if $fs-breakpoint == null {
+		@include mediaquery($fs-breakpoint) {
 			font-size: px-to-rem($fs-font-size);
-		} @else {
-			@include mediaquery($fs-breakpoint) {
-				font-size: px-to-rem($fs-font-size);
-			}
 		}
 	}
 }
