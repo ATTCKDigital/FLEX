@@ -29,8 +29,8 @@
 		
 		@include mediaquery(xl) {
 			&:hover {
-				color: $black;
-				background: $white;
+				color: $white;
+				background: $black;
 			}
 		}
 	}

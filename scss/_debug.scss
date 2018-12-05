@@ -42,42 +42,66 @@ body {
 	// NOTE: (DP) For debugging only. 
 	border-bottom: 0px solid red;
 
-	@include mediaquery(phone) {
+	@include mediaquery(small) {
 		border-color: green;
 
-		.breakpoint.phone {
+		.breakpoint.small {
 			display: block;
 		}
 	}
 
-	@include mediaquery(tablet-portrait) {
+	@include mediaquery(medium) {
 		border-color: blue;
 
-		.breakpoint.tablet-portrait {
+		.breakpoint.medium {
 			display: block;
 		}
 	}
 
-	@include mediaquery(tablet-landscape) {
+	@include mediaquery(large) {
 		border-color: purple;
 
-		.breakpoint.tablet-landscape {
-			display: block;
-		}
-	}
-
-	@include mediaquery(desktop) {
-		border-color: orange;
-
-		.breakpoint.desktop {
+		.breakpoint.large {
 			display: block;
 		}
 	}
 
 	@include mediaquery(xl) {
-		border-color: yellow;
+		border-color: orange;
 
 		.breakpoint.xl {
+			display: block;
+		}
+	}
+
+	@include mediaquery(2xl) {
+		border-color: yellow;
+
+		.breakpoint.2xl {
+			display: block;
+		}
+	}
+
+	@include mediaquery(3xl) {
+		border-color: yellow;
+
+		.breakpoint.2xl {
+			display: block;
+		}
+	}
+
+	@include mediaquery(4xl) {
+		border-color: yellow;
+
+		.breakpoint.2xl {
+			display: block;
+		}
+	}
+
+	@include mediaquery(5xl) {
+		border-color: yellow;
+
+		.breakpoint.2xl {
 			display: block;
 		}
 	}

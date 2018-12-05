@@ -20,9 +20,9 @@ $positions: top, left, right, bottom;
 
 // okatodo: add more options
 
-@mixin cssColumns($columns, $gap, $break) {
+@mixin cssColumns($columns, $colGap, $break) {
 	column-count:$columns;
-	column-gap: $gap;
+	column-gap: $colGap;
 	page-break-inside: $break; /* Firefox */
 	break-inside: $break;
 }

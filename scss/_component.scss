@@ -44,11 +44,12 @@
 	@include clearRow;
 	z-index: 2;
 
-	@include mediaquery-max(tablet-portrait) {
+	@include mediaquery-max(medium) {
 		// reverse media query to avoid extra css
 		.row-reverse-mobile {
-			@include flexbox-direction(column-reverse);
-			@include flexbox(flex);
+			display: flex;
+			flex-direction: column-reverse;
+			
 			&:after {
 				display: none;
 			}

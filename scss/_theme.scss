@@ -38,14 +38,14 @@
 		border-#{$position}: 1px solid $white;
 	}
 
-	.component-theme-#{$position}-border-mobile {
-		@include mediaquery-max(tablet-portrait) {
+	.component-theme-#{$position}-border-small {
+		@include mediaquery-max(medium) {
 			border-#{$position}: 1px solid $borderColor;
 		}
 	}
 
-	.component-theme-#{$position}-border-tablet-desktop {
-		@include mediaquery(tablet-portrait) {
+	.component-theme-#{$position}-border-medium-up {
+		@include mediaquery(medium) {
 			border-#{$position}: 1px solid $borderColor;
 		}
 	}

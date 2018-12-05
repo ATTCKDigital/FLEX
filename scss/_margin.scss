@@ -1,18 +1,26 @@
-$positions: top, bottom, left, right;
-$paddings: 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 130, 170;
-$screensizes: mobile, tablet-portrait, tablet-landscape, desktop, xl, 2xl;
+/**** Margins ****/
 
-//Margin vars
-//creates classes based on variables
-//adding a screensize of mobile will start at 0px wide. if the margin is the same across screensizes, use "mobile"
+$positions: top, left, bottom, right;
+$sizes: 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 130, 170;
+$screensizes: global, small, medium, large, xl, 2xl, 3xl, 4xl, 5xl;
+
+// Creates classes based on variables
+// Use class "margin-position-size" for margins used in all screen sizes
 @each $position in $positions{
-  @each $padding in $paddings{
-  	@each $screensize in $screensizes{
-	    .margin-#{$screensize}-#{$position}-#{$padding}{ 
-	    	@include mediaquery(#{$screensize}) {
-	    		margin-#{$position}: #{$padding}px;
-	    	}
-	    }
+  	@each $size in $sizes{
+		@each $screensize in $screensizes{
+			
+			@if $screensize == global {
+				.margin-#{$position}-#{$size} { 
+					margin-#{$position}: #{$size}px;
+				}
+			} @else {
+				.margin-#{$screensize}-#{$position}-#{$size} { 
+					@include mediaquery-max(#{$screensize}) {
+						margin-#{$position}: #{$size}px;
+					}
+				}
+			}
+		}
 	}
-  }
 }

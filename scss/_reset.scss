@@ -24,7 +24,6 @@ time, mark, audio, video, input, textarea {
 	box-sizing:border-box;
 	letter-spacing: 0;
 	-webkit-font-smoothing: antialiased;
-	@include sans-serif-regular;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,

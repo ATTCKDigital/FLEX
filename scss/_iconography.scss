@@ -4,13 +4,16 @@
 .share-button {
 	border-radius: 4px;
 	color: $white;
+	cursor: pointer;
 	display: inline-block;
 	height: 56px;
-	padding: 14px $gap*14 0;
+	padding: 18px $gap 0;
 	font-size: 14px;
+	text-align: center;
 	transition: opacity .3s ease-out;
+	width: 100px;
 
-	@include mediaquery(desktop) {
+	@include mediaquery(xl) {
 		&:hover {
 			opacity: .8;
 		}
@@ -22,19 +25,24 @@
 
 	&.share-twitter {
 		background-color: color('social', 'twitter');
+		padding-top: $gap 0;
+	}
+
+	.fab {
+		font-size: px-to-rem(18px);
 	}
 }
 
 // social media icons
 .social-icon {
-	font-size: 19px;
+	font-size: px-to-rem(18px);
 
 	a {
 		display: inline-block;
 		opacity: 1;
 		transition: opacity .3s ease-out;
 
-		@include mediaquery(tablet-landscape) {
+		@include mediaquery(large) {
 			&:hover {
 				opacity: .7;
 			}
@@ -74,7 +82,7 @@
 	z-index: 100;
 	transition: background-color .2s ease-in, border-radius .2s ease-in;
 
-	@include mediaquery(desktop) {
+	@include mediaquery(xl) {
 		display: none;
 	}
 
@@ -171,42 +179,14 @@
 		right: 0;
 		font-size: 30px;
 		@include sans-serif-bold;
-		@include transform-rotate(90deg);
-		@include transition(top .4s ease-out);
+		transform: rotate(90deg);
+		transition: top .4s ease-out;
 	}
 
-	@include mediaquery(desktop) {
+	@include mediaquery(xl) {
 		&:hover:before {
 			top: 3px;
 		}
 	}
 }
 
-
-
-.download-inner {
-	cursor: pointer;
-	
-	@include mediaquery(desktop) {
-		&:hover {
-			.arrow-link {
-				left: 3px;
-			}
-			
-			.pdf:before {
-				top: 3px;
-			}
-		}
-	}
-}
-// Accessibility trick to hide span nearby with aria values
-.sr-only {
-    border: 0;
-    clip: rect(0, 0, 0, 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-	position: absolute;
-    width: 1px;
-}

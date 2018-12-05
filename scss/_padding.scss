@@ -1,30 +1,26 @@
-//Padding vars
-//creates classes based on variables
-//adding a screensize of mobile will start at 0px wide. if the padding is the same across screensizes, use "mobile"
+/**** Margins ****/
 
-//sets paddig for all 4 directions
-@each $padding in $paddings{
-	@each $screensize in $screensizes{
-	    .padding-#{$screensize}-#{$padding}{ 
+$positions: top, left, bottom, right;
+$sizes: 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 130, 170;
+$screensizes: global, small, medium, large, xl, 2xl, 3xl, 4xl, 5xl;
 
-	    	@include mediaquery(#{$screensize}) {
-	    		padding: #{$padding}px;
-	    	}
-	    }
-	}
-}
-
-
-//individual paddings, will override the direction from above
+// Creates classes based on variables
+// Use class "padding-position-size" for paddings used in all screen sizes
 @each $position in $positions{
-  @each $padding in $paddings{
-  	@each $screensize in $screensizes{
-	    .padding-#{$screensize}-#{$position}-#{$padding}{ 
-
-	    	@include mediaquery(#{$screensize}) {
-	    		padding-#{$position}: #{$padding}px;
-	    	}
-	    }
+  	@each $size in $sizes{
+		@each $screensize in $screensizes{
+			
+			@if $screensize == global {
+				.padding-#{$position}-#{$size} { 
+					padding-#{$position}: #{$size}px;
+				}
+			} @else {
+				.padding-#{$screensize}-#{$position}-#{$size} { 
+					@include mediaquery-max(#{$screensize}) {
+						padding-#{$position}: #{$size}px;
+					}
+				}
+			}
+		}
 	}
-  }
 }

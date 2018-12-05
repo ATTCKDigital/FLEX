@@ -22,7 +22,7 @@ body {
 
 	&.popupOpen {
 		//prevents background from scrolling when PopUp is activated, optional 
-		@include mediaquery-max(tablet-portrait) {
+		@include mediaquery-max(medium) {
 			position: fixed;
 			top: 0;
 			left: 0;
@@ -35,7 +35,7 @@ body {
 	min-height: calc(100vh - 150px);
 	padding-top: $navMobileHeight;
 
-	@include mediaquery(desktop) {
+	@include mediaquery(xl) {
 		padding-top: $navHeight;
 	}
 
@@ -56,5 +56,18 @@ main.content {
 .svg-sprite {
 	height: 0;
 	overflow: hidden;
+}
+
+
+// Accessibility trick to hide span nearby with aria values
+.sr-only {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+	position: absolute;
+    width: 1px;
 }
 

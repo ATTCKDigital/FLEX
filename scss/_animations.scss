@@ -4,13 +4,9 @@
 // Set initial styles before "faded-in" class added
 .fade-me-in {
 	opacity: 0;
-	@include transform(scale(.9));
-	@include transition(transform .7s, opacity .7s);
 
 	&.faded-in {
 		opacity: 1;
-		@include transition(transform .7s, opacity .7s);
-		@include transform(scale(1));
 	}
 }
 
@@ -47,13 +43,11 @@
 @keyframes fadeIn {
 	0% {
 		opacity: 0;
-		@include transform(scale(.8));
 	}
 
 	100% {
 		
 		opacity: 1;
-		@include transform(scale(1));
 	}
 }
 

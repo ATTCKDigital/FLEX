@@ -1,39 +1,39 @@
 /*** Hide classes ***/
 
 .mobile-hidden {
-	@include mediaquery-max(tablet-portrait) {
+	@include mediaquery-max(medium) {
 		display: none;
 	}
 
-	@include mediaquery(tablet-portrait) {
+	@include mediaquery(medium) {
 		display: inherit;
 	}
 }
 
-.tablet-portrait-hidden {
-	@include mediaquery-max(tablet-portrait) {
+.medium-hidden {
+	@include mediaquery-max(medium) {
 		display: inherit;
 	}
 
-	@include mediaquery(tablet-portrait) {
+	@include mediaquery(medium) {
 		display: none;
 	}
 }
 
-.tablet-landscape-hidden {
-	@include mediaquery-max(tablet-landscape) {
+.large-hidden {
+	@include mediaquery-max(large) {
 		display: inherit;
 	}
 
-	@include mediaquery(tablet-landscape) {
+	@include mediaquery(large) {
 		display: none;
 	}
 }
 
-.desktop-hidden {
+.xl-hidden {
 	display: inherit;
 
-	@include mediaquery(desktop) {
+	@include mediaquery(xl) {
 		display: none;
 	}
 

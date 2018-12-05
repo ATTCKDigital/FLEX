@@ -11,25 +11,25 @@ $small-breakpoint			: 0px;
 $medium-breakpoint			: 768px;
 $large-breakpoint			: 1024px;
 $xl-breakpoint				: 1100px;
-$2xl-breakpoint				: 1280px;
-$3xl-breakpoint				: 1440px;
-$4xl-breakpoint				: 1500px;
-$5xl-breakpoint				: 1700px;
+$xl2-breakpoint				: 1280px;
+$xl3-breakpoint				: 1440px;
+$xl4-breakpoint				: 1500px;
+$xl5-breakpoint				: 1700px;
 
 // Max width breakpoints
-$max-small-breakpoint			: 568px;
-$max-medium-breakpoint			: 767px;
-$max-large-breakpoint			: 1023px;
-$max-xl-breakpoint				: 1099px;
-$max-2xl-breakpoint				: 1279px;
-$max-3xl-breakpoint				: 1439px;
-$max-4xl-breakpoint				: 1499px;
-$max-5xl-breakpoint				: 1699px;
+$max-small-breakpoint		: 568px;
+$max-medium-breakpoint		: 767px;
+$max-large-breakpoint		: 1023px;
+$max-xl-breakpoint			: 1099px;
+$max-2xl-breakpoint			: 1279px;
+$max-3xl-breakpoint			: 1439px;
+$max-4xl-breakpoint			: 1499px;
+$max-5xl-breakpoint			: 1699px;
 
 //Fixed row heights
-$small-row-mobile	: 100vh;
-$small-row			: 250px;
-$medium-row-mobile	: 100vh;
-$medium-row			: 250px;
-$large-row-mobile	: 100vh;
-$large-row			: 250px;
+$small-row-mobile			: 100vh;
+$small-row					: 250px;
+$medium-row-mobile			: 100vh;
+$medium-row					: 250px;
+$large-row-mobile			: 100vh;
+$large-row					: 250px;

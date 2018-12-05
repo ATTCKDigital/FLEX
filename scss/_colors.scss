@@ -31,18 +31,12 @@ $brand-colors: (
 		'twitter':			#1da1f2
 	),
 	'gradients': (
-		 'pink-blue':			linear-gradient(to bottom, #ee21a3 0%,#35139f 100%),
-		 'pink-blue-horiz':		linear-gradient(to left, #ee21a3 0%,#35139f 100%),
-		 'orange':				linear-gradient(to bottom, #ffc027 0%,#ee21a3 100%),
-		 'orange-horiz':		linear-gradient(to right, #ffc027 0%,#ee21a3 100%),
-		 'blue':				linear-gradient(to bottom, #21aaf3 0%,#35139f 100%),
-		 'blue-horiz':			linear-gradient(to right, #21aaf3 0%,#35139f 100%),
-		 'light-pink-blue':		linear-gradient(to bottom, #ee21a3 0%,#21aaf3 100%),
-		 'light-pink-blue-horiz': linear-gradient(to right, #ee21a3 0%,#21aaf3 100%),
+		'blue-horiz':			linear-gradient(to right, #21aaf3 0%,#35139f 100%),
 	)
 );
 
 /** Generate colors **/
+// Usage: color('key', 'variant');
 @function color($key: 'debug', $variant: $brand-color-key) {
 	$color: null;
 	$color-spectrum: map-get($brand-colors, $key);
@@ -53,51 +47,6 @@ $brand-colors: (
 
 	@return $color;
 }
-
-/** Generate color classes **/
-// Use dynamically generated color classes as follows:
-//
-// Classes:
-//
-// 		.background-key-variant
-// 		.color-color-key-variant
-//
-// For example:
-//
-// 		.background-accent-blue
-// 		.color-accent-blue
-//
-
-@each $key, $map in $brand-colors {
-	@each $variant, $color in $map {
-		.background-#{$variant} {
-			background-color: #{$color};
-		}
-
-		.component-theme-#{$variant} {
-			background: #{$color};
-		}
-
-		.body-theme-#{$variant} {
-			background: #{$color};
-		}
-
-		.color-#{$key}-#{$variant} {
-			color: #{$color};
-		}
-
-		.row-text-white, .row-text-black {
-			.color-#{$key}-#{$variant} {
-				color: #{$color};
-			}
-
-			.background-#{$key}-#{$variant} {
-				background-color: #{$color};
-			}
-		}
-	}
-}
-
 
 /** Mixin for placeholder color **/
 @mixin placeholder($color) {
@@ -115,5 +64,45 @@ $brand-colors: (
 
 	&:-ms-input-placeholder {  
 		color: $color;  
+	}
+}
+
+/**** Color classes ****/
+// Use dynamically generated color classes as follows:
+//
+// Classes:
+//
+// 		.background-key-variant
+// 		.color-color-key-variant
+//
+// For example:
+//
+// 		.background-accent-blue
+// 		.color-accent-blue
+//
+
+@each $key, $map in $brand-colors {
+	@each $variant, $color in $map {
+		.component-theme-#{$key}-#{$variant} {
+			background: #{$color};
+		}
+
+		.body-theme-#{$key}-#{$variant} {
+			background: #{$color};
+		}
+
+		.color-#{$key}-#{$variant} {
+			color: #{$color};
+		}
+
+		.row-text-white, .row-text-black {
+			.color-#{$key}-#{$variant} {
+				color: #{$color};
+			}
+
+			.background-#{$key}-#{$variant} {
+				background-color: #{$color};
+			}
+		}
 	}
 }

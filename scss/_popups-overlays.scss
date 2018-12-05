@@ -23,7 +23,6 @@
 }
 
 
-
 /** Pop ups **/
 .video-popup, .image-popup {
 	height: 100vh;
@@ -37,7 +36,7 @@
 	left: 0;
 
 	iframe {
-		@include mediaquery(tablet-landscape) {
+		@include mediaquery(large) {
 			bottom: 0;
 			height: 100%;
 			left: 0;
@@ -54,7 +53,7 @@
 		margin: 0 auto;
 		position: relative;
 
-		@include mediaquery(tablet-landscape) {
+		@include mediaquery(large) {
 			max-width: 70%;
 		}
 	}
@@ -65,7 +64,7 @@
 	overflow: hidden;
 	position: fixed;
 	width: 100%;
-	background-color: color('misc', 'black-opacity');
+	background-color: $popupColor;
 	z-index: 1000;
 	display: none;
 	top: 0;
@@ -78,14 +77,13 @@
 		width: 90%;
 		padding: 40px;
 
-		@include mediaquery(tablet-landscape) {
+		@include mediaquery(large) {
 			padding: 85px;
 		}
 	}
 
 	.popupOpen & {
-		@include verticalCenter;
-		@include flexbox-justify-content(center);
+		@include allCenter;
 	}
 }
 
@@ -99,15 +97,9 @@
 	display: none;
 	top: 0;
 	left: 0;
-	// @include verticalCenter();
-	// @include flexbox-justify-content(center);
 
 	.searchOpen & {
-		@include verticalCenter();
-
-		@include mediaquery-max(desktop) {
-			// z-index: 1000;
-		}
+		@include allCenter();
 	}
 
 	form {
@@ -128,21 +120,16 @@
 	right: 0;
 	top: 0;
 	z-index: 2;
-	@include transition(opacity .5s);
+	transition: opacity .5s linear;
 
 	&.visible {
 		opacity: 1;
-		@include transition(opacity .5s);
+		transition: opacity .5s linear;
 	}
 
 	.show-blackout-modal & {
 		display: block;
 	}
-
-	// .page-legal & {
-		display: block;
-		opacity: 1;
-	// }
 
 	.dom-loaded & {
 		opacity: 0;
