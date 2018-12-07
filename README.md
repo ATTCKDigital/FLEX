@@ -28,13 +28,27 @@ The boilerplate theme has a variety of existing javascript functions (nav animat
 
 See detailed README.md in `components` folder.
 
-## Required Plugins
+## Plugins
+
+### Required Plugins
 Advanced Custom Fields Pro - https://www.advancedcustomfields.com/
+Classic Editor (for WP 5.0+) - https://wordpress.org/plugins/classic-editor/
+
+### Optional Plugins (as needed per project)
+WPML - https://wpml.org/
 List of plugins
 
-## Plugin Settings
+## Plugin Settings/Info
 ### Advanced Custom Fields (ACF)
 This theme uses ACF to allow for dynamic layouts as well as global settings that can be adjusted by an admin.
+
+Download the latest version from ACF using the ATTCK login (see LastPass for login info).
+
+### Classic Editor
+Allows the option to use a plain WYSIWYG editor on any page, CPT or post when WordPress version is 5.0+.
+
+### WPML
+WPML is a plugin used for creating a multilingual or multiregional site.  Requires a purchased license. 
 
 #### Global Fields (always include)
 JSON files: `config/acf-configs/acf-json`
