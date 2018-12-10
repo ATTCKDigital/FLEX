@@ -74,6 +74,11 @@ To the end of the file add: `127.0.0.1 dev.project.com` (domain used for Virtual
 6. From the command line, navigate to the boilerplate theme and run `npm install`.  This will install all of the associated node modules.
 7. To compile css, js and assets, run `gulp watch` from inside the boilerplate theme
 
+### Ideas for improvements to set up process
+
+1. Install script? Included in this folder is one that could be adapted for more generic use. (See `vhosts-attck.sh`)
+2. Maybe even better, a Docker image?
+
 ## Gulp & Node
 How to run and use
 
