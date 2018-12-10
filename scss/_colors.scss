@@ -91,12 +91,16 @@ $brand-colors: (
 			background: #{$color};
 		}
 
-		.color-#{$key}-#{$variant} {
+		.has-#{$key}-#{$variant}-background-color {
+			color: #{$color};
+		}
+
+		.has-#{$key}-#{$variant}-color {
 			color: #{$color};
 		}
 
 		.row-text-white, .row-text-black {
-			.color-#{$key}-#{$variant} {
+			.has-#{$key}-#{$variant}-color {
 				color: #{$color};
 			}
 

@@ -17,6 +17,7 @@ Config files: `config/admin-configs`
 - `admin-wysiwyg`: Set predefined styles and colors in TinyMCE. Edit as needed for project. 👍🏻**recommended**
 - `change-post-labels`: In some instances, "Posts" will need to be renamed. This file allows for that.
 - `custom-exceprts`: Creates an excerpt function that allows for customized lengths per location it is used. 🔒**required**
+- `disable-custom-colors`: Disables the custom color picker in Gutenberg. Prevents client from straying off brand. 🔒**required**
 - `embed-wrapper`: Adds a custom class to every youtube or vimeo video inserted into a post using just a url, to allow for responsive video. 👍🏻**recommended**
 - `image-crops`: Set custom crop sizes and custom default Featured Image size. Image will be cropped as defined on upload. 👍🏻**recommended**
 - `remove-comments-column`: Remove comments column from post lists. 👍🏻**recommended**

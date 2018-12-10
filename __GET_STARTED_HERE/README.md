@@ -67,11 +67,12 @@ To the end of the file add: `127.0.0.1 dev.project.com` (domain used for Virtual
 ### Installing Wordpress and this theme
 
 1. Install [WordPress](https://wordpress.org/download/) in your project directory and copy the "boilerplate" theme to `wp-content/themes`
-2. Copy `.env`, `.gitignore` and `wp-config.php` into the WordPress root
-3. Go to https://api.wordpress.org/secret-key/1.1/salt/ and get new Authentication Unique Keys and Salts. Paste the generated snippet into `lines 67-74` of `wp-config.php` in the WordPress root
-4. Change the variables in the `.env` folder to match your local development settings. Once you have changed the variables, you will need to `restart apache`.
-5. From the command line, navigate to the boilerplate theme and run `npm install`.  This will install all of the associated node modules.
-6. To compile css, js and assets, run `gulp watch` from inside the boilerplate theme
+2. Install necessary plugins (see list in main README.md)
+3. Copy `.env`, `.gitignore` and `wp-config.php` into the WordPress root
+4. Go to https://api.wordpress.org/secret-key/1.1/salt/ and get new Authentication Unique Keys and Salts. Paste the generated snippet into `lines 67-74` of `wp-config.php` in the WordPress root
+5. Change the variables in the `.env` folder to match your local development settings. Once you have changed the variables, you will need to `restart apache`.
+6. From the command line, navigate to the boilerplate theme and run `npm install`.  This will install all of the associated node modules.
+7. To compile css, js and assets, run `gulp watch` from inside the boilerplate theme
 
 ## Gulp & Node
 How to run and use
