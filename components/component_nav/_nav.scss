@@ -1,460 +1,460 @@
 .main-header {
-	background-color: $white;
-	border-bottom: 1px solid color('accent', 'gray-border');
-	height: 64px;
-	left: 0;
-	padding: 0 $gap;
-	position: fixed;
-	top: 0;
-	width: 100%;
-	z-index: 1000;
-	@include transition(top .3s ease-out);
-
-	@include mediaquery(desktop) {
-		padding: 0;
-		border: 0;
-	}
-
-	.noConsent & {
-		top: 73px;
-
-		@include mediaquery(tablet-portrait) {
-			top: 50px;
-		}
-	}
-
-	.logo-wrapper {
-		height: 42px;
-		width: 139px;
-
-		@include mediaquery(desktop) {
-			height: 51px;
-			width: 170px;
-			display: inline-block;
-		}
-
-		a {
-			display: block;
-
-		}
-
-		svg {
-			height: 42px;
-			width: 139px;
-			margin-top: 12px;
-
-			@include mediaquery(desktop) {
-				height: 51px;
-				width: 170px;
-				margin-top: 6px;
-			}
-		}
-
-		span {
-			display: block;
-			height: 0;
-			overflow: hidden;
-			text-indent: -99999em;
-		}
-	}
-
-	.header-inner {
-		margin: 0 auto;
-		max-width: $site-width;
-
-		@include mediaquery(desktop) {
-			@include flexbox(flex);
-			@include flexbox-align-items(flex-start);
-			@include flexbox-justify-content(space-between);
-		}
-	}
-
-	.hamburger-wrapper {
-		height: 64px;
-		position: absolute;
-		right: 0;
-		top: 0;
-		width: 64px;
-		z-index: 10;
-	}
-
-	.main-nav {
-		@include mediaquery-max(desktop) {
-			background-color: $white;
-			left: 0;
-			max-height: 0;
-			overflow: hidden;
-			position: absolute;
-			top: 64px;
-			width: 100%;
-			@include transition(max-height .4s ease-out);
-
-			.navOpen & {
-				max-height: 100vh;
-				height: 100vh;
-			}
-		}
-
-		@include mediaquery(desktop) {
-			display: inline-block;
-			width: calc(100% - 170px);
-			@include clearRow;
-		}
-
-		.language-wrapper {
-			@include mediaquery-max(desktop) {
-				padding:0 $gap;
-				border-bottom: 1px solid color('accent', 'gray-border');
-				width: 100%;
-			}
-		}
-	}
-
-	.menu-items {
-		@include mediaquery(desktop) {
-			width: 600px;
-			float: right;
-			padding-left: 4px;
-			@include clearRow;
-
-			@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {  
-			   /* IE10+ specific styles go here */  
-			   width: 604px;
-			}
-		}
-
-		& > .menu-item {
-			font-size: 16px;
-			line-height: 1.3;
-			text-transform: uppercase;
-			overflow: hidden;	
-			position: relative;
-			@include sans-serif-bold;
-			
-			@include mediaquery-max(desktop) {
-				border-bottom: 1px solid color('accent', 'gray-border');
-				max-height:40px;
-				padding: 0 $gap;
-				@include transition(max-height .4s ease-out);
-
-				&.openSubNav {
-					max-height: 1000px;
-				}
-			}
-
-			@include mediaquery(desktop) {
-				display: block;
-				float:left;
-				background-color: $white;
-				height: 64px;
-				@include transition(color .4s ease-out, background-color .4s ease-out);
-
-				&:hover, &.openSubNav, &.current-menu-item, &.current-menu-ancestor, &.current-menu-parent {
-					color: $white;
-					background-color: $black;
-
-					.globe {
-						stroke: $white;
-					}
-				}
-
-				&.openSubNav {
-					overflow: inherit;
-				}
-
-				.searchOpen & {
-					&.current-menu-item, &.current-menu-ancestor, &.current-menu-parent {
-						color: $black;
-						background-color: $white;
-					}
-				}
-			}
-
-
-			&.desktop-hidden {
-				padding: 11px $gap $gap*.5;
-
-				@include mediaquery(desktop) {
-					display: none;
-				}
-			}
-
-
-			& > a {
-				@include mediaquery-max(desktop) {
-					display: block;
-					padding: 11px 0 $gap*.5;
-					position: relative;
-
-				}
-
-				@include mediaquery(desktop) {
-					display: block;
-					padding: $gap*1.1 $gap;
-				}
-			}
-
-			&.menu-item-has-children > a {
-
-				@include mediaquery(desktop) {
-					padding-right: 33px;
-				}
-			
-				&:after {
-					content: '\2192';
-					position: absolute;
-					right: 0;
-					top: 9px;
-					width: 11px;
-					@include transform(rotate(90deg));
-
-					@include mediaquery(desktop) {
-						top: 21px;
-						right: 15px;
-					}
-				}
-			}
-
-
-		}
-
-		
-
-		.sub-menu {
-			padding-bottom: $gap*.5;
-
-			@include mediaquery(desktop) {
-				position: absolute;
-				overflow: hidden;
-				max-height: 0;
-				padding: 0;
-			}
-
-			.menu-item {
-				font-size: 14px;
-				line-height: 1.6;
-				text-transform: none;
-				margin-bottom: 2px;
-				color: $black;
-
-				&:last-child {
-					margin-bottom: 0;
-				}
-
-				a {
-					display: block;
-
-					&:after {
-						content: '\2192';
-						display: inline-block;
-						margin-left: 2px;
-						@include transition(margin-left .2s ease-out);
-					}
-				}
-
-				&.parent-cat {
-					margin-top: 8px;
-					@include sans-serif-bold;
-
-					> a {
-						&:after {
-							display: none;
-						}
-					}
-
-					.sub-menu {
-						padding-bottom: 5px;
-					}
-				}
-
-				&.language {
-
-					a:after {
-						display: none;
-					}
-				}
-
-				&.current-menu-item {
-					@include sans-serif-semi;
-				}
-
-				@include mediaquery(desktop) {
-					&:hover > a {
-						&:after {
-							margin-left: 4px;
-						}
-					}
-				}
-			}
-
-
-		}
-
-		.menu-item { 
-			& > .sub-menu {
-				@include mediaquery(desktop) {
-					background-color: $white;
-					border:1px solid color('accent', 'gray-border');
-					border-top: 0;
-					max-height: 0;
-					overflow: hidden;
-					padding: 0;
-					position: absolute;
-					top: 64px;
-					white-space:nowrap;
-					padding: 0 $gap*2 0 $gap;
-					@include transition(max-height .4s ease-out, padding-top .4s ease-out);
-
-					.sub-menu {
-						border: 0;
-						position: relative;
-						max-height: none;
-						top: auto;
-						background-color: transparent;
-						overflow: initial;
-						padding: 0;
-						@include transition(none);
-					}
-				}
-			}
-
-
-			&.openSubNav {
-				& > .sub-menu {
-					@include mediaquery(desktop) {
-						opacity: 1;
-						max-height: 1000px;
-						padding: $gap $gap*2 $gap $gap;
-					}
-				}
-
-				& > a:after {
-					color: $white;
-				}
-
-			}
-		}
-		
-		&.languages {
-			@include mediaquery(desktop) {
-				padding-left: 0;
-			}
-
-			.globe {
-				display: none;
-
-				@include mediaquery(desktop) {
-					display: inline-block;
-					stroke: $black;
-					width: 14px;
-					height: 14px;
-					vertical-align: -3px;
-    				margin-right: 4px;
-    				@include transition(stroke .4s ease-out);
-				}
-			}
-
-			@include mediaquery-max(desktop) {
-				.menu-item {
-					border: 0;
-					padding: 7px 0 0 0;
-					display: inline-block;
-					margin-right: $gap;
-					font-size: 11px;
-					color: rgba(color('standard', 'black'), .3);
-					text-transform: none;
-					@include sans-serif-bold;
-
-					&.activeLanguage {
-						color: color('standard', 'black');
-					}
-
-					> a:after {
-						display: none;
-					}
-				}
-
-				.menu-item-has-children {
-					> a {
-						display: none;
-					}
-				}
-			}
-
-			> .menu-item {
-				@include mediaquery(desktop) {
-					font-size: 11px;
-					text-transform: none;
-
-					& > a {
-						padding-top: 24px;
-
-						&:after {
-							top: 24px;
-						}
-					}
-				}
-			}
-
-			.sub-menu {
-				@include mediaquery(desktop) {
-					padding: 0 $gap;
-					min-width: 64px;
-				}
-			}
-
-			.openSubNav .sub-menu {
-				@include mediaquery(desktop) {
-					padding: $gap;
-				}
-			}
-		}
-
-
-	}
-
-
-
-	.search-regions {
-		display: none;
-
-		@include mediaquery(desktop) {
-			height: 64px;
-			float: right;
-			@include verticalCenter;
-			@include flexbox-justify-content(flex-end);
-		}
-
-		.search-icon {
-			width: 22px;
-			height: 22px;
-			stroke: $black;
-		}
-
-		.languages {
-			width: auto;
-		}
-		
-		.search-wrapper {
-			cursor: pointer;
-			padding: $gap $gap*1.25;
-			height: 64px;
-			width: 73px;
-			background-color: $white;
-			@include transition(background .4s ease-out);
-
-			@include mediaquery(desktop) {
-
-				&:hover, .searchOpen & {
-					background-color: $black;
-
-					.search-icon {
-						stroke: $white;
-					}
-				}
-			}
-		}
-
-
-	}
+  background-color: $white;
+  border-bottom: 1px solid color('accent', 'gray-border');
+  height: 64px;
+  left: 0;
+  padding: 0 $gap;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: top .3s ease-out;
+
+  @include mediaquery(desktop) {
+    padding: 0;
+    border: 0;
+  }
+
+  .noConsent & {
+    top: 73px;
+
+    @include mediaquery(tablet-portrait) {
+      top: 50px;
+    }
+  }
+
+  .logo-wrapper {
+    height: 42px;
+    width: 139px;
+
+    @include mediaquery(desktop) {
+      height: 51px;
+      width: 170px;
+      display: inline-block;
+    }
+
+    a {
+      display: block;
+
+    }
+
+    svg {
+      height: 42px;
+      width: 139px;
+      margin-top: 12px;
+
+      @include mediaquery(desktop) {
+        height: 51px;
+        width: 170px;
+        margin-top: 6px;
+      }
+    }
+
+    span {
+      display: block;
+      height: 0;
+      overflow: hidden;
+      text-indent: -99999em;
+    }
+  }
+
+  .header-inner {
+    margin: 0 auto;
+    max-width: $siteWidth;
+
+    @include mediaquery(desktop) {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+  }
+
+  .hamburger-wrapper {
+    height: 64px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 64px;
+    z-index: 10;
+  }
+
+  .main-nav {
+    @include mediaquery-max(desktop) {
+      background-color: $white;
+      left: 0;
+      max-height: 0;
+      overflow: hidden;
+      position: absolute;
+      top: 64px;
+      width: 100%;
+      transition: max-height .4s ease-out;
+
+      .navOpen & {
+        max-height: 100vh;
+        height: 100vh;
+      }
+    }
+
+    @include mediaquery(desktop) {
+      display: inline-block;
+      width: calc(100% - 170px);
+      @include clearRow;
+    }
+
+    .language-wrapper {
+      @include mediaquery-max(desktop) {
+        padding:0 $gap;
+        border-bottom: 1px solid color('accent', 'gray-border');
+        width: 100%;
+      }
+    }
+  }
+
+  .menu-items {
+    @include mediaquery(desktop) {
+      width: 600px;
+      float: right;
+      padding-left: 4px;
+      @include clearRow;
+
+      @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+         /* IE10+ specific styles go here */
+         width: 604px;
+      }
+    }
+
+    & > .menu-item {
+      font-size: 16px;
+      line-height: 1.3;
+      text-transform: uppercase;
+      overflow: hidden;
+      position: relative;
+      @include sans-serif-bold;
+
+      @include mediaquery-max(desktop) {
+        border-bottom: 1px solid color('accent', 'gray-border');
+        max-height:40px;
+        padding: 0 $gap;
+        transition: max-height .4s ease-out;
+
+        &.openSubNav {
+          max-height: 1000px;
+        }
+      }
+
+      @include mediaquery(desktop) {
+        display: block;
+        float:left;
+        background-color: $white;
+        height: 64px;
+        transition: color .4s ease-out, background-color .4s ease-out;
+
+        &:hover, &.openSubNav, &.current-menu-item, &.current-menu-ancestor, &.current-menu-parent {
+          color: $white;
+          background-color: $black;
+
+          .globe {
+            stroke: $white;
+          }
+        }
+
+        &.openSubNav {
+          overflow: inherit;
+        }
+
+        .searchOpen & {
+          &.current-menu-item, &.current-menu-ancestor, &.current-menu-parent {
+            color: $black;
+            background-color: $white;
+          }
+        }
+      }
+
+
+      &.desktop-hidden {
+        padding: 11px $gap $gap*.5;
+
+        @include mediaquery(desktop) {
+          display: none;
+        }
+      }
+
+
+      & > a {
+        @include mediaquery-max(desktop) {
+          display: block;
+          padding: 11px 0 $gap*.5;
+          position: relative;
+
+        }
+
+        @include mediaquery(desktop) {
+          display: block;
+          padding: $gap*1.1 $gap;
+        }
+      }
+
+      &.menu-item-has-children > a {
+
+        @include mediaquery(desktop) {
+          padding-right: 33px;
+        }
+
+        &:after {
+          content: '\2192';
+          position: absolute;
+          right: 0;
+          top: 9px;
+          width: 11px;
+          transform: rotate(90deg);
+
+          @include mediaquery(desktop) {
+            top: 21px;
+            right: 15px;
+          }
+        }
+      }
+
+
+    }
+
+
+
+    .sub-menu {
+      padding-bottom: $gap*.5;
+
+      @include mediaquery(desktop) {
+        position: absolute;
+        overflow: hidden;
+        max-height: 0;
+        padding: 0;
+      }
+
+      .menu-item {
+        font-size: 14px;
+        line-height: 1.6;
+        text-transform: none;
+        margin-bottom: 2px;
+        color: $black;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        a {
+          display: block;
+
+          &:after {
+            content: '\2192';
+            display: inline-block;
+            margin-left: 2px;
+            transition: margin-left .2s ease-out;
+          }
+        }
+
+        &.parent-cat {
+          margin-top: 8px;
+          @include sans-serif-bold;
+
+          > a {
+            &:after {
+              display: none;
+            }
+          }
+
+          .sub-menu {
+            padding-bottom: 5px;
+          }
+        }
+
+        &.language {
+
+          a:after {
+            display: none;
+          }
+        }
+
+        &.current-menu-item {
+          @include sans-serif-semi;
+        }
+
+        @include mediaquery(desktop) {
+          &:hover > a {
+            &:after {
+              margin-left: 4px;
+            }
+          }
+        }
+      }
+
+
+    }
+
+    .menu-item {
+      & > .sub-menu {
+        @include mediaquery(desktop) {
+          background-color: $white;
+          border:1px solid color('accent', 'gray-border');
+          border-top: 0;
+          max-height: 0;
+          overflow: hidden;
+          padding: 0;
+          position: absolute;
+          top: 64px;
+          white-space:nowrap;
+          padding: 0 $gap*2 0 $gap;
+          transition: max-height .4s ease-out, padding-top .4s ease-out;
+
+          .sub-menu {
+            border: 0;
+            position: relative;
+            max-height: none;
+            top: auto;
+            background-color: transparent;
+            overflow: initial;
+            padding: 0;
+            transition: none;
+          }
+        }
+      }
+
+
+      &.openSubNav {
+        & > .sub-menu {
+          @include mediaquery(desktop) {
+            opacity: 1;
+            max-height: 1000px;
+            padding: $gap $gap*2 $gap $gap;
+          }
+        }
+
+        & > a:after {
+          color: $white;
+        }
+
+      }
+    }
+
+    &.languages {
+      @include mediaquery(desktop) {
+        padding-left: 0;
+      }
+
+      .globe {
+        display: none;
+
+        @include mediaquery(desktop) {
+          display: inline-block;
+          stroke: $black;
+          width: 14px;
+          height: 14px;
+          vertical-align: -3px;
+            margin-right: 4px;
+            transition: stroke .4s ease-out;
+        }
+      }
+
+      @include mediaquery-max(desktop) {
+        .menu-item {
+          border: 0;
+          padding: 7px 0 0 0;
+          display: inline-block;
+          margin-right: $gap;
+          font-size: 11px;
+          color: $black;
+          text-transform: none;
+          @include sans-serif-bold;
+
+          &.activeLanguage {
+            color: color('standard', 'black');
+          }
+
+          > a:after {
+            display: none;
+          }
+        }
+
+        .menu-item-has-children {
+          > a {
+            display: none;
+          }
+        }
+      }
+
+      > .menu-item {
+        @include mediaquery(desktop) {
+          font-size: 11px;
+          text-transform: none;
+
+          & > a {
+            padding-top: 24px;
+
+            &:after {
+              top: 24px;
+            }
+          }
+        }
+      }
+
+      .sub-menu {
+        @include mediaquery(desktop) {
+          padding: 0 $gap;
+          min-width: 64px;
+        }
+      }
+
+      .openSubNav .sub-menu {
+        @include mediaquery(desktop) {
+          padding: $gap;
+        }
+      }
+    }
+
+
+  }
+
+
+
+  .search-regions {
+    display: none;
+
+    @include mediaquery(desktop) {
+      height: 64px;
+      float: right;
+      @include verticalCenter;
+      justify-content: flex-end;
+    }
+
+    .search-icon {
+      width: 22px;
+      height: 22px;
+      stroke: $black;
+    }
+
+    .languages {
+      width: auto;
+    }
+
+    .search-wrapper {
+      cursor: pointer;
+      padding: $gap $gap*1.25;
+      height: 64px;
+      width: 73px;
+      background-color: $white;
+      transition:background .4s ease-out;
+
+      @include mediaquery(desktop) {
+
+        &:hover, .searchOpen & {
+          background-color: $black;
+
+          .search-icon {
+            stroke: $white;
+          }
+        }
+      }
+    }
+
+
+  }
 }

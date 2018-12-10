@@ -1,154 +1,151 @@
 .page-footer {
-	padding: $gap;
+  padding: $gap;
 
-	@include mediaquery(tablet-landscape) {
-		padding: $gap*1.75 0;
-	}
+  @include mediaquery(tablet-landscape) {
+    padding: $gap*1.75 0;
+  }
 
-	.logo-wrapper {
-		@include mediaquery-max(tablet-landscape) {
-			margin-bottom: $gap*1.5;
-		}
-		
-		svg {
-			width: 85px;
-			height: 21px;
-			fill: white;
-		}
+  .logo-wrapper {
+    @include mediaquery-max(tablet-landscape) {
+      margin-bottom: $gap*1.5;
+    }
 
-		a {
-			display: block;
+    svg {
+      width: 85px;
+      height: 21px;
+      fill: white;
+    }
 
-		}
+    a {
+      display: block;
 
-		span {
-			display: block;
-			height: 0;
-			overflow: hidden;
-			text-indent: -99999em;
-		}
+    }
 
-	}
+    span {
+      display: block;
+      height: 0;
+      overflow: hidden;
+      text-indent: -99999em;
+    }
+
+  }
 
 
 
-	.footer-menu {
-		.menu-item {
-			display: block;
-			font-size: 14px;
-			line-height: 1.6;
-			text-transform: uppercase;
-			@include sans-serif-bold;
+  .footer-menu {
+    .menu-item {
+      display: block;
+      font-size: 14px;
+      line-height: 1.6;
+      text-transform: uppercase;
+      @include sans-serif-bold;
 
-			&.menu-item-has-children {
-				margin-bottom: $gap*1.25;
-			}
+      &.menu-item-has-children {
+        margin-bottom: $gap*1.25;
+      }
 
-			&.tablet-hidden {
-				@include mediaquery(tablet-landscape) {
-					display: none;
-				}
-			}
+      &.tablet-hidden {
+        @include mediaquery(tablet-landscape) {
+          display: none;
+        }
+      }
 
-			&.desktop-hidden {
-				@include mediaquery(desktop) {
-					display: none;
-				}
-			}
+      &.desktop-hidden {
+        @include mediaquery(desktop) {
+          display: none;
+        }
+      }
 
-			a {
-				position: relative;
-				@include transition(opacity .2s ease-out);
+      a {
+        position: relative;
+        transition: opacity .2s ease-out;
 
-				&:after {
-					content: '\2192';
-					display: inline-block;
-					margin-left: $gap*.5;
-				}
+        &:after {
+          content: '\2192';
+          display: inline-block;
+          margin-left: $gap*.5;
+        }
 
-				@include mediaquery(desktop) {
-					&:hover {
-						opacity: .4;
-					}
-				}
-			}
+        @include mediaquery(desktop) {
+          &:hover {
+            opacity: .4;
+          }
+        }
+      }
 
-			.sub-menu {
-				.menu-item {
-					text-transform: none;
-					@include sans-serif-regular;
-					
-					&.menu-item-has-children {
-						margin-top: $gap*1.25;
-						text-transform: none;
-						@include sans-serif-bold;
+      .sub-menu {
+        .menu-item {
+          text-transform: none;
+          @include sans-serif-regular;
 
-						> a:after {
-							display: none;
-						}
-					}
-					
-				}
-			}
+          &.menu-item-has-children {
+            margin-top: $gap*1.25;
+            text-transform: none;
+            @include sans-serif-bold;
 
-			&.footer-left {
-				@include mediaquery-max(tablet-landscape) {
-					margin-bottom: 25px;
-				}
-			}
-		}
-	}
+            > a:after {
+              display: none;
+            }
+          }
 
-	.footer-bottom {
-		.menu-item {
-			display: inline-block;
-			font-size: 12px;
-			line-height: 1.8;
-			margin-right: 16px;
+        }
+      }
 
-			&:last-child {
-				margin-right: 0;
-			}
+      &.footer-left {
+        @include mediaquery-max(tablet-landscape) {
+          margin-bottom: 25px;
+        }
+      }
+    }
+  }
 
-			@extend .color-standard-gray;
+  .footer-bottom {
+    .menu-item {
+      display: inline-block;
+      font-size: 12px;
+      line-height: 1.8;
+      margin-right: 16px;
 
-			a {
-				@include mediaquery(desktop) {
-					&:hover {
-						opacity: .4;
-					}
-				}		
+      &:last-child {
+        margin-right: 0;
+      }
 
-			}
-		}
-	}
+      a {
+        @include mediaquery(desktop) {
+          &:hover {
+            opacity: .4;
+          }
+        }
 
-	.footer-copyright {
-		width: 100%;
-		display: block;
+      }
+    }
+  }
 
-		@include mediaquery(tablet-landscape) {
-			text-align: right;
-		}
-	}
+  .footer-copyright {
+    width: 100%;
+    display: block;
 
-	.newsletter {
-		.button {
-			display: inline-block;
-			color: $black;
-		}
-	}
+    @include mediaquery(tablet-landscape) {
+      text-align: right;
+    }
+  }
 
-	.newsletter-note {
-		a {
-			text-decoration: underline;
+  .newsletter {
+    .button {
+      display: inline-block;
+      color: $black;
+    }
+  }
 
-			@include mediaquery(desktop) {
-				&:hover {
-					opacity: .4;
-				}
-			}
-		}
-	}
+  .newsletter-note {
+    a {
+      text-decoration: underline;
+
+      @include mediaquery(desktop) {
+        &:hover {
+          opacity: .4;
+        }
+      }
+    }
+  }
 }
-
