@@ -24,9 +24,8 @@ The `scss` folder holds all of the globally available styles for the site. Thing
 These should serve as the basis for a functioning theme. Changes should be made to the files that set parameters/vars only (colors, fonts, general typography and iconography). Some items have variables that can be changed (such as the padding and margins sass files). 
 
 ### Global JS
-The boilerplate theme has a variety of existing javascript functions (nav animation, parallax, scroll detection, etc). These can be leveraged from any component using ES6 impoprt. See `Available Global JS Components` below for detailed information on each function.
+The boilerplate theme has a variety of existing javascript functions (nav animation, parallax, scroll detection, etc). These can be leveraged from any component using ES6 impoprt. See `Available Global JS Components` in `js` folder for detailed information on each function.
 
-See detailed README.md in `components` folder.
 
 ## Plugins
 
