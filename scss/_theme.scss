@@ -2,20 +2,20 @@
 
 
 //Background position classes
-.component-theme-background {
+.component-background {
 	background-size: cover;
 	background-position: right center;
 	background-repeat: no-repeat;
 }
 
 $yPositions: top, center, bottom;
-$xPositions: left, right;
+$xPositions: left, right, center;
 
 @each $yPosition in $yPositions{
   	@each $xPosition in $xPositions{
 
-		.component-theme-background-#{$yPosition}-#{$xPosition} { 
-			background-position: #{$yPosition} #{$xPosition};
+		.component-background-#{$xPosition}-#{$yPosition} { 
+			background-position: #{$xPosition} #{$yPosition};
 		}
 	}
 }
