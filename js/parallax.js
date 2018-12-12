@@ -1,7 +1,7 @@
 /**
  * Parallax component
  */
-import $$ from './cached-dom-elements';
+import $$ from 'cached-dom-elements';
 
 function Parallax($el, params={}) {
 	const defaults = {};

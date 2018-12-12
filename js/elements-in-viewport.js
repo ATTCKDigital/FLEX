@@ -1,11 +1,11 @@
 /**
- * Fade In Elements component
- * Fades in hidden elements when user scrolls them far enough into view
- */
-import ATTCK from 'attck';
-import $$ from './cached-dom-elements';
+ * Element in Viewport
+ * Tracks when an element is in the view port.
+ * Default behavior is to fade in specific elements (fadeInElements), use elementInView to extend for other transformations/manipulations
+ **/
+import $$ from 'cached-dom-elements';
 
-function FadeInElements($el) {
+function ElementsInViewport($el) {
 	var _fadedElementsOffsetIndex = [];
 	var _scrollstopTimer = 0;
 	var _currentScrollTop = $(window).scrollTop();
@@ -108,4 +108,4 @@ function FadeInElements($el) {
 	return this.init($el);
 }
 
-export default FadeInElements;
+export default ElementsInViewport;
