@@ -715,6 +715,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 __webpack_provided_window_dot_jQuery = _jquery2.default;
 
 // Import jQuery and make it a global object
+//oka todo: jquery from node modules, test if we need the 3 lines of code below.
 
 window.$ = _jquery2.default;
 // window.lodash = _.noConflict(); // remove lodash underscore conflict

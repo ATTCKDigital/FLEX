@@ -35,7 +35,7 @@ Config files: `config/theme-configs`
 - `geotarget`: A function for redirecting users based on location. Requires WPML & WP Engine Geo IP. Can be customized for specific countries and parameters
 - `load-more`: Function load more content via AJAX. Can be customized to suit project needs. Requires `load-more.js`. 👍🏻**recommended**
 - `nav-walker`: Custom Nav Walker with custom markup for nested menu items. Use as when outputting a menu `'walker' => new Nav_Walker_Nav_Menu,` 👍🏻**recommended**
-- `password-protection`: Settings for password protected pages. 
+- `password-protection`: Markup for password protected page password form. 
 - `wpml-language-switcher`: Custom language switcher for WPML. Requires WPML.
 
 ### Theme Includes

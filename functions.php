@@ -14,7 +14,7 @@ include_once(THEME_DIR . '/config/acf-configs/acf-search.php'); //RECOMMENDED
 include_once(THEME_DIR . '/config/acf-configs/acf-sync.php'); //REQUIRED
 
 /*** WP-Admin Configs ***/
-include_once(THEME_DIR . '/config/admin-configs/admin-wysiwyg.php'); //RECOMMENDED
+include_once(THEME_DIR . '/config/admin-configs/admin-wysiwyg.php'); //REQUIRED
 // include_once(THEME_DIR . '/config/admin-configs/change-post-labels.php');
 include_once(THEME_DIR . '/config/admin-configs/custom-exceprts.php'); //REQUIRED
 include_once(THEME_DIR . '/config/admin-configs/disable-custom-colors.php'); //REQUIRED
