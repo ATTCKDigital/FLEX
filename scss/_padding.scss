@@ -1,26 +1,27 @@
-/**** Margins ****/
+/**** Padding ****/
 
 $positions: top, left, bottom, right;
-$sizes: 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 130, 170;
 $screensizes: global, small, medium, large, xl, 2xl, 3xl, 4xl, 5xl;
-
+$spacer: 5;
 // Creates classes based on variables
 // Use class "padding-position-size" for paddings used in all screen sizes
 @each $position in $positions{
-  	@each $size in $sizes{
-		@each $screensize in $screensizes{
-			
-			@if $screensize == global {
-				.padding-#{$position}-#{$size} { 
-					padding-#{$position}: #{$size}px;
-				}
-			} @else {
-				.padding-#{$screensize}-#{$position}-#{$size} { 
-					@include mediaquery-max(#{$screensize}) {
-						padding-#{$position}: #{$size}px;
+	@each $screensize in $screensizes{
+		@for $i from 1 through 200 {
+			@if $i % $spacer == 0 {
+				@if $screensize == global {
+					.padding-#{$position}-#{$i} { 
+						padding-#{$position}: #{$i}px;
+					}
+				} @else {
+					.padding-#{$screensize}-#{$position}-#{$i} { 
+						@include mediaquery-max(#{$screensize}) {
+							padding-#{$position}: #{$i}px;
+						}
 					}
 				}
 			}
 		}
 	}
 }
+

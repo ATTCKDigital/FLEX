@@ -1,31 +1,26 @@
 /*** Row Theme Settings ***/
 
 
-// row theme colors
-.component-theme-default {
-	background-color: transparent;
-}
-
-.component-theme-black {
-	background-color: $white;
-}
-
-.component-theme-white {
-	background-color: $black;
-}
-
-
-//Theme colors are set in "colors" 
-
-.component-theme-background {
+//Background position classes
+.component-background {
 	background-size: cover;
 	background-position: right center;
 	background-repeat: no-repeat;
 }
 
-.component-theme-background-position-left {
-	background-position: left center;
+$yPositions: top, center, bottom;
+$xPositions: left, right, center;
+
+@each $yPosition in $yPositions{
+  	@each $xPosition in $xPositions{
+
+		.component-background-#{$xPosition}-#{$yPosition} { 
+			background-position: #{$xPosition} #{$yPosition};
+		}
+	}
 }
+
+
 
 //Border classes
 

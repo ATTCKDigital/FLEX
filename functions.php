@@ -4,6 +4,7 @@ define('THEME_DIR', get_template_directory());
 /*** Global Variables ***/
 // These define globally available variables, and must be included first
 include_once(THEME_DIR . '/config/global-variables/colors.php');
+include_once(THEME_DIR . '/config/global-variables/nav-menus.php');
 
 // WP functions are split out into individual files for clarity. Disable/Enable files by commenting out here. See README.md
 // for details on each config file
@@ -26,6 +27,8 @@ include_once(THEME_DIR . '/config/theme-configs/custom-nav-classes.php'); //REQU
 include_once(THEME_DIR . '/config/theme-configs/customizer-colors.php'); //REQUIRED
 include_once(THEME_DIR . '/config/theme-configs/enqueue-scripts-styles.php'); //REQUIRED
 include_once(THEME_DIR . '/config/theme-configs/nav-walker.php'); //REQUIRED
+include_once(THEME_DIR . '/config/theme-configs/register-nav-menus.php'); //REQUIRED
+include_once(THEME_DIR . '/config/theme-configs/theme-setup.php'); //REQUIRED
 include_once(THEME_DIR . '/config/theme-configs/Utils.class.php'); //REQUIRED
 
 
