@@ -1,6 +1,6 @@
 <?php
 
-// Add predefined colors to the TinyMCE editor
+// Add global colors to the TinyMCE editor
 function attck_mce_colors($init) {
 	$colors = ATTCK_COLORS;
 	$custom_colors = "";
