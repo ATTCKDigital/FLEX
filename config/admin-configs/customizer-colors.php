@@ -84,23 +84,11 @@ function tabor_gutenberg_colors() {
     $colorSlug = $color['slug'];
     $colorValue = esc_attr( get_theme_mod($colorSlug, $color['default']) );
     $css .= ":root { --{$colorSlug}: {$colorValue}; }";
-    $css .= ".has-{$colorSlug}-color { color: var(--{$colorSlug}) !important; }";
-    $css .= ".has-{$colorSlug}-background-color { background-color: var(--{$colorSlug}) !important; }";
+    // $css .= ".has-{$colorSlug}-color { color: var(--{$colorSlug}) !important; }";
+    // $css .= ".has-{$colorSlug}-background-color { background-color: var(--{$colorSlug}) !important; }";
   }
   return wp_strip_all_tags( $css );
 }
-
-/**
- * Enqueue theme styles within Gutenberg.
- */
-function tabor_gutenberg_styles() {
-  // Load the theme styles within Gutenberg.
-  wp_enqueue_style( 'tabor-gutenberg', get_theme_file_uri( '/assets/css/gutenberg.css' ), false, '@@pkg.version', 'all' );
-  // Add custom colors to Gutenberg.
-  wp_add_inline_style( 'tabor-gutenberg', tabor_gutenberg_colors() );
-}
-add_action( 'enqueue_block_editor_assets', 'tabor_gutenberg_styles' );
-
 
 /**
  * Enqueue theme styles.

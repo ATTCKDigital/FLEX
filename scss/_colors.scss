@@ -84,30 +84,12 @@ $brand-colors: (
 
 @each $key, $map in $brand-colors {
   @each $variant, $color in $map {
-    .component-theme-#{$key}-#{$variant} {
-      background: #{$color};
-    }
-
-    .body-theme-#{$key}-#{$variant} {
-      background: #{$color};
-    }
-
     .has-#{$key}-#{$variant}-background-color {
-      color: #{$color};
+      background-color: #{$color};
     }
 
     .has-#{$key}-#{$variant}-color {
       color: #{$color};
-    }
-
-    .row-text-white, .row-text-black {
-      .has-#{$key}-#{$variant}-color {
-        color: #{$color};
-      }
-
-      .background-#{$key}-#{$variant} {
-        background-color: #{$color};
-      }
     }
   }
 }
