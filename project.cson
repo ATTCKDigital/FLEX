@@ -1,0 +1,11 @@
+{
+  title: 'ATTCK Boilerplate'
+  group: 'ATTCK'
+  paths: [
+    '/Users/sarah/Code/attckboilerplate/wp-content/themes/boilerplate/'
+  ]
+  devMode: true
+  settings:
+    'editor.tabLength': 4
+    'editor.showInvisibles': false
+}

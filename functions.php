@@ -1,7 +1,11 @@
 <?php
 define('THEME_DIR', get_template_directory());
 
-// WP functions are split out into individual files for clarity. Disable/Enable files by commenting out here. See README.md 
+/*** Global Variables ***/
+// These define globally available variables, and must be included first
+include_once(THEME_DIR . '/config/global-variables/colors.php');
+
+// WP functions are split out into individual files for clarity. Disable/Enable files by commenting out here. See README.md
 // for details on each config file
 
 /*** ACF Configs ***/
@@ -11,8 +15,7 @@ include_once(THEME_DIR . '/config/acf-configs/acf-sync.php'); //REQUIRED
 
 /*** WP-Admin Configs ***/
 include_once(THEME_DIR . '/config/admin-configs/admin-wysiwyg.php'); //REQUIRED
-include_once(THEME_DIR . '/config/admin-configs/custom-exceprts.php'); //REQUIRED
-include_once(THEME_DIR . '/config/admin-configs/disable-custom-colors.php'); //REQUIRED
+include_once(THEME_DIR . '/config/admin-configs/custom-excerpts.php'); //REQUIRED
 include_once(THEME_DIR . '/config/admin-configs/embed-wrapper.php'); //REQUIRED
 include_once(THEME_DIR . '/config/admin-configs/svg-uploads.php'); //REQUIRED
 include_once(THEME_DIR . '/config/admin-configs/unwrap-images.php'); //REQUIRED
@@ -21,6 +24,7 @@ include_once(THEME_DIR . '/config/admin-configs/unwrap-images.php'); //REQUIRED
 include_once(THEME_DIR . '/config/theme-configs/body-classes.php'); //REQUIRED
 include_once(THEME_DIR . '/config/theme-configs/constants.php'); //REQUIRED
 include_once(THEME_DIR . '/config/theme-configs/custom-nav-classes.php'); //REQUIRED
+include_once(THEME_DIR . '/config/theme-configs/customizer-colors.php'); //REQUIRED
 include_once(THEME_DIR . '/config/theme-configs/enqueue-scripts-styles.php'); //REQUIRED
 include_once(THEME_DIR . '/config/theme-configs/nav-walker.php'); //RECOMMENDED
 include_once(THEME_DIR . '/config/theme-configs/Utils.class.php'); //REQUIRED
@@ -75,6 +79,3 @@ if (!function_exists('_theme_setup')) {
 		));
 	}
 }
-
-
-

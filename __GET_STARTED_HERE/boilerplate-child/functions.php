@@ -1,7 +1,14 @@
 <?php
+define('CHILD_THEME_DIR', get_stylesheet_directory());
+
+/*** Global Variables ***/
+// These define globally available variables, and must be included first
+include_once(CHILD_THEME_DIR . '/config/global-variables/colors.php');
+
+
 define('THEME_DIR', get_template_directory());
 
-// WP functions are split out into individual files for clarity. Disable/Enable files by commenting out here. See README.md 
+// WP functions are split out into individual files for clarity. Disable/Enable files by commenting out here. See README.md
 // for details on each config file
 
 /*** ACF Configs ***/
@@ -88,6 +95,3 @@ if (!function_exists('_theme_setup')) {
 		));
 	}
 }
-
-
-
