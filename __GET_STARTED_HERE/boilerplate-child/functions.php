@@ -14,7 +14,6 @@ include_once(CHILD_THEME_DIR . '/config/global-variables/colors.php');
 // include_once(CHILD_THEME_DIR . '/config/acf-configs/acf-wpml-options.php');
 include_once(CHILD_THEME_DIR . '/config/acf-configs/acf-options-page.php'); //REQUIRED
 include_once(CHILD_THEME_DIR . '/config/acf-configs/acf-search.php'); //RECOMMENDED
-include_once(CHILD_THEME_DIR . '/config/acf-configs/acf-sync.php'); //REQUIRED
 
 /*** WP-Admin Configs ***/
 // include_once(CHILD_THEME_DIR . '/config/admin-configs/change-post-labels.php');
