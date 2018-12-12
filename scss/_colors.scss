@@ -13,26 +13,30 @@ $black: #000000;
 $brand-color-key: 'red' !default;
 $brand-colors: (
   'debug': (
-    'red': 				#f00
+    'red': #f00
   ),
   'primary': (
-    'black': 			#000000,
-    'white':			#ffffff,
-    'gray': 			#DDDDDD,
-    'light-gray': 		rgba(0, 0, 0, .4),
-    'primary-color': var(--primary-color),
+    'color-1': var(--primary-color-1),
   ),
-  'accent':(
-    'red':				#f84d01,
-    'gray-border':		#dddddd,
-    'dark-border':		#979797
+  'secondary':(
+    'color-1': var(--secondary-color-1),
+    'color-2': var(--secondary-color-2),
+  ),
+  'background': (
+    'color-1': var(--background-color-1),
+    'color-2': var(--background-color-2),
+    'color-3': var(--background-color-3),
+  ),
+  'text': (
+    'color-1': var(--text-color-1),
+    'color-2': var(--text-color-2),
+    'color-3': var(--text-color-3),
   ),
   'social':(
-    'facebook':			#3b5998,
-    'twitter':			#1da1f2
+    'facebook': #3b5998,
+    'twitter': #1da1f2
   ),
   'gradients': (
-    'blue-horiz':			linear-gradient(to right, #21aaf3 0%,#35139f 100%),
   )
 );
 

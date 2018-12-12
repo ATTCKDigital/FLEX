@@ -1,27 +1,12 @@
 <?php
 
-$colors = array(
-  array(
-    'default'     => '#ff0000',
-    'description' => 'Add a color to use within the Gutenberg editor color palette.',
-    'label'       => 'Primary Color',
-    'slug'        => 'primary-color',
-  ),
-  array(
-    'default'     => '#fff000',
-    'description' => 'Add a color to use within the Gutenberg editor color palette.',
-    'label'       => 'Secondary Color',
-    'slug'        => 'secondary-color',
-  ),
-);
-
 /**
  * Customizer.
  *
  * @param WP_Customize_Manager $wp_customize the Customizer object.
  */
 function tabor_customize_register( $wp_customize ) {
-  global $colors;
+  $colors = ATTCK_COLORS;
   foreach ($colors as $color) {
     $wp_customize->add_setting(
       $color['slug'], array(
@@ -53,6 +38,7 @@ function tabor_gutenberg_color_palette() {
    *
    * @link https://wordpress.org/gutenberg/handbook/reference/theme-support/
    */
+  $colors = ATTCK_COLORS;
 
   $themeColors = array();
   global $colors;
@@ -77,7 +63,7 @@ add_action( 'after_setup_theme', 'tabor_gutenberg_color_palette' );
  * Add custom colors to Gutenberg.
  */
 function tabor_gutenberg_colors() {
-  global $colors;
+  $colors = ATTCK_COLORS;
   // Build styles.
   $css  = "";
   foreach ($colors as $color) {

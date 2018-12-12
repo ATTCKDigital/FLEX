@@ -1,6 +1,11 @@
 <?php
 define('THEME_DIR', get_template_directory());
 
+/*** Settings ***/
+// These define globally available variables, and must be included first
+include_once(THEME_DIR . '/config/global-variables/colors.php');
+
+
 // WP functions are split out into individual files for clarity. Disable/Enable files by commenting out here. See README.md
 // for details on each config file
 
