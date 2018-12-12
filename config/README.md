@@ -14,7 +14,7 @@ Config files: `config/acf-configs`
 
 ### Admin Configs 
 Config files: `config/admin-configs`
-- `admin-wysiwyg`: Set predefined styles and colors in TinyMCE. Edit as needed for project. 👍🏻**recommended**
+- `admin-wysiwyg`: Sets colors in TinyMCE. Edit as needed for project. 👍🏻**required**
 - `change-post-labels`: In some instances, "Posts" will need to be renamed. This file allows for that.
 - `custom-exceprts`: Creates an excerpt function that allows for customized lengths per location it is used. 🔒**required**
 - `disable-custom-colors`: Disables the custom color picker in Gutenberg. Prevents client from straying off brand. 🔒**required**
@@ -50,3 +50,4 @@ Config files: `config/theme-includes`
 
 Created 12/4/2018 by okadots for ATTCK
 
+//okatodo: note which files are edited in the child theme
