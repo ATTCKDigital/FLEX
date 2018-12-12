@@ -7,6 +7,9 @@
  * do not carry over to child theme color values, if using instead.
  * @param		Array $color Array with details of color to generate settingId for
  * @return	String Id of Customizer Setting for color
+ *
+ * Sarah TODO: maybe there's a smarter way to manage this
+ * because you now have to use this function any time you use colors from the customizer
  */
 function colorSettingId($color) {
 	$settingId = $color['slug'];

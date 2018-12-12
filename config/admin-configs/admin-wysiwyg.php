@@ -5,7 +5,8 @@ function attck_mce_colors($init) {
 	$colors = ATTCK_COLORS;
 	$custom_colors = "";
 	foreach ($colors as $color) {
-		$colorValue = ltrim(esc_attr( get_theme_mod($color['slug'], $color['default']) ), '#');
+		$settingId = colorSettingId($color); // Sarah TODO: function used here is defined in `/config/theme-configs/customizer-colors.php/` - should it be somewhere else??
+		$colorValue = ltrim(esc_attr( get_theme_mod($settingId, $color['default']) ), '#');
 		$custom_colors .= "\"{$colorValue}\", \"{$color['label']}\",\n";
 	}
 
