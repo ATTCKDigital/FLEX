@@ -10,23 +10,23 @@ include_once(CHILD_THEME_DIR . '/config/global-variables/colors.php');
 // See README.md in parent theme for details on each config file
 
 /*** ACF Configs ***/
-// include_once(THEME_DIR . '/config/acf-configs/acf-field-values.php');
-// include_once(THEME_DIR . '/config/acf-configs/acf-wpml-options.php');
-include_once(THEME_DIR . '/config/acf-configs/acf-options-page.php'); //REQUIRED
-include_once(THEME_DIR . '/config/acf-configs/acf-search.php'); //RECOMMENDED
-include_once(THEME_DIR . '/config/acf-configs/acf-sync.php'); //REQUIRED
+// include_once(CHILD_THEME_DIR . '/config/acf-configs/acf-field-values.php');
+// include_once(CHILD_THEME_DIR . '/config/acf-configs/acf-wpml-options.php');
+include_once(CHILD_THEME_DIR . '/config/acf-configs/acf-options-page.php'); //REQUIRED
+include_once(CHILD_THEME_DIR . '/config/acf-configs/acf-search.php'); //RECOMMENDED
+include_once(CHILD_THEME_DIR . '/config/acf-configs/acf-sync.php'); //REQUIRED
 
 /*** WP-Admin Configs ***/
-// include_once(THEME_DIR . '/config/admin-configs/change-post-labels.php');
-// include_once(THEME_DIR . '/config/admin-configs/image-crops.php'); //RECOMMENDED
-include_once(THEME_DIR . '/config/admin-configs/remove-comments-column.php'); //RECOMMENDED
-// include_once(THEME_DIR . '/config/admin-configs/sidebarsphp');
+// include_once(CHILD_THEME_DIR . '/config/admin-configs/change-post-labels.php');
+// include_once(CHILD_THEME_DIR . '/config/admin-configs/image-crops.php'); //RECOMMENDED
+include_once(CHILD_THEME_DIR . '/config/admin-configs/remove-comments-column.php'); //RECOMMENDED
+// include_once(CHILD_THEME_DIR . '/config/admin-configs/sidebarsphp');
 
 /*** Theme Configs ***/
-// include_once(THEME_DIR . '/config/theme-configs/custom-post-types.php');
-// include_once(THEME_DIR . '/config/theme-configs/disable-tax-archive.php');
-// include_once(THEME_DIR . '/config/theme-configs/geotarget.php');
-include_once(THEME_DIR . '/config/theme-configs/load-more.php'); //RECOMMENDED
-// include_once(THEME_DIR . '/config/theme-configs/password-protection.php');
-// include_once(THEME_DIR . '/config/theme-configs/wpml-language-switcher.php');
+// include_once(CHILD_THEME_DIR . '/config/theme-configs/custom-post-types.php');
+// include_once(CHILD_THEME_DIR . '/config/theme-configs/disable-tax-archive.php');
+// include_once(CHILD_THEME_DIR . '/config/theme-configs/geotarget.php');
+include_once(CHILD_THEME_DIR . '/config/theme-configs/load-more.php'); //RECOMMENDED
+// include_once(CHILD_THEME_DIR . '/config/theme-configs/password-protection.php');
+// include_once(CHILD_THEME_DIR . '/config/theme-configs/wpml-language-switcher.php');
 
