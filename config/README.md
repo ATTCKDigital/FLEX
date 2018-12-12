@@ -1,41 +1,52 @@
 ## Configs
-These options can be enabled/disabled in `functions.php`
+These options can be enabled/disabled in `functions.php`. In most cases, you will be enabling/disabling non-required functions in the child theme.
+
+### Global Variables
+Global variables are used to set things such as available colors in the admin and sass and fonts.  A default set of variables is included, these variables can be overridden in the child theme.
 
 ### ACF Configs 
 Config files: `config/acf-configs`
-- `acf-css`: Customize the ACF user facing css
-- `acf-field-values`: Allows creation of predefined select/radio button options if specific field names are being used
-- `acf-json`: Folder where the ACF json files are stored and synced from 🔒**required**
-- `acf-options-page`: Enables a custom settings page in the admin interface 🔒**required**
-- `acf-row-names`: Displays specific field names in the collapsed state of the layout tool 👍🏻**recommended**
-- `acf-search`: Extend WordPress search to include custom fields 👍🏻**recommended**
+- `acf-css`: Customize the ACF user facing css 🔒**required**
+- `acf-json`: Folder where the required, default ACF json files are stored and synced from (OG tags, GTM, etc) 🔒**required**
 - `acf-sync`: Syncs ACF fields across environments based on the json files. Does NOT override individual component ACF field files. 🔒**required**
-- `acf-wpml-options`: Creates a globalized ACF output so that settings entered into "Global Settings" for the default language can be used universally.
+
+#### Child Theme
+Config files: `/boilerplate-child/config/acf-configs`
+- `acf-field-values`: Allows creation of predefined select/radio button options if specific field names are being used
+- `acf-options-page`: Enables a custom settings page in the admin interface. Multiple option pages can be added. 🔒**required**
+- `acf-search`: Extend WordPress search to include custom fields 👍🏻**recommended**
+- `acf-wpml-options`: Creates a globalized ACF output so that settings entered into "Global Settings" for the default language can be used universally. Requires WPML.
 
 ### Admin Configs 
 Config files: `config/admin-configs`
-- `admin-wysiwyg`: Set predefined styles and colors in TinyMCE. Edit as needed for project. 👍🏻**recommended**
-- `change-post-labels`: In some instances, "Posts" will need to be renamed. This file allows for that.
+- `admin-wysiwyg`: Sets colors in TinyMCE. Edit as needed for project. Uses global variables. 👍🏻**required**
 - `custom-exceprts`: Creates an excerpt function that allows for customized lengths per location it is used. 🔒**required**
 - `disable-custom-colors`: Disables the custom color picker in Gutenberg. Prevents client from straying off brand. 🔒**required**
-- `embed-wrapper`: Adds a custom class to every youtube or vimeo video inserted into a post using just a url, to allow for responsive video. 👍🏻**recommended**
+- `embed-wrapper`: Adds a custom wrapper div `video-wrapper` to every youtube or vimeo video inserted into a post using just a url, to allow for responsive video. 👍🏻**required**
+- `svg-uploads`: Allow SVGs to be uploaded via WordPress Media Uploader. 👍🏻**recommended**
+- `unwrap-images`: Unwraps p/a tags around img. Additionally adds custom classes to images uploaded to post WYSIWYG. 🔒**required**
+
+#### Child Theme
+Config files: `/boilerplate-child/config/admin-configs`
+- `change-post-labels`: In some instances, "Posts" will need to be renamed. This file allows for that.
 - `image-crops`: Set custom crop sizes and custom default Featured Image size. Image will be cropped as defined on upload. 👍🏻**recommended**
 - `remove-comments-column`: Remove comments column from post lists. 👍🏻**recommended**
 - `sidebars`: Register our sidebars and widgetized areas.
-- `svg-uploads`: Allow SVGs to be uploaded via WordPress Media Uploader. 👍🏻**recommended**
-- `unwrap-images`: Unwraps p/a tags around img. Additionally adds custom classes to images uploaded to post WYSIWYG. 🔒**required**
 
 ### Theme Configs
 Config files: `config/theme-configs`
 - `body-classes`: Creates a body class based on the page slug. 🔒**required**
 - `constants`: Sets some global PHP constants
 - `custom-nav-classes`: Customize the "current" menu item class.
+- `nav-walker`: Custom Nav Walker with custom markup for nested menu items. Use as when outputting a menu `'walker' => new Nav_Walker_Nav_Menu,` 👍🏻**recommended**
+
+#### Child Theme
+Config files: `/boilerplate-child/config/theme-configs`
 - `custom-post-types`: Create and register custom post types (CPT) and custom taxonomies.
 - `disable-tax-archive`: In some instances a Custom Taxonomy will NOT require an archive page. Enable config to disable custom tax archive.
-- `geotarget`: A function for redirecting users based on location. Requires WPML & WP Engine Geo IP. Can be customized for specific countries and parameters
 - `load-more`: Function load more content via AJAX. Can be customized to suit project needs. Requires `load-more.js`. 👍🏻**recommended**
-- `nav-walker`: Custom Nav Walker with custom markup for nested menu items. Use as when outputting a menu `'walker' => new Nav_Walker_Nav_Menu,` 👍🏻**recommended**
-- `password-protection`: Settings for password protected pages. 
+- `geotarget`: A function for redirecting users based on location. Requires WPML & WP Engine Geo IP. Can be customized for specific countries and parameters.
+- `password-protection`: Markup for password protected page password form. 
 - `wpml-language-switcher`: Custom language switcher for WPML. Requires WPML.
 
 ### Theme Includes

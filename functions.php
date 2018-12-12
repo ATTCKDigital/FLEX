@@ -5,44 +5,30 @@ define('THEME_DIR', get_template_directory());
 // These define globally available variables, and must be included first
 include_once(THEME_DIR . '/config/global-variables/colors.php');
 
-
 // WP functions are split out into individual files for clarity. Disable/Enable files by commenting out here. See README.md
 // for details on each config file
 
 /*** ACF Configs ***/
-// include_once(THEME_DIR . '/config/acf-configs/acf-field-values.php');
-// include_once(THEME_DIR . '/config/acf-configs/acf-wpml-options.php');
-include_once(THEME_DIR . '/config/acf-configs/acf-css.php');
-include_once(THEME_DIR . '/config/acf-configs/acf-options-page.php'); //REQUIRED
-include_once(THEME_DIR . '/config/acf-configs/acf-row-names.php'); //RECOMMENDED
-include_once(THEME_DIR . '/config/acf-configs/acf-search.php'); //RECOMMENDED
+include_once(THEME_DIR . '/config/acf-configs/acf-css.php');  //REQUIRED
+include_once(THEME_DIR . '/config/acf-configs/acf-json.php'); //REQUIRED
 include_once(THEME_DIR . '/config/acf-configs/acf-sync.php'); //REQUIRED
 
 /*** WP-Admin Configs ***/
-include_once(THEME_DIR . '/config/admin-configs/admin-wysiwyg.php'); //RECOMMENDED
-// include_once(THEME_DIR . '/config/admin-configs/change-post-labels.php');
+include_once(THEME_DIR . '/config/admin-configs/admin-wysiwyg.php'); //REQUIRED
 include_once(THEME_DIR . '/config/admin-configs/custom-excerpts.php'); //REQUIRED
-include_once(THEME_DIR . '/config/admin-configs/disable-custom-colors.php'); //REQUIRED
 include_once(THEME_DIR . '/config/admin-configs/customizer-colors.php'); //REQUIRED
-include_once(THEME_DIR . '/config/admin-configs/embed-wrapper.php'); //RECOMMENDED
-// include_once(THEME_DIR . '/config/admin-configs/image-crops.php'); //RECOMMENDED
-include_once(THEME_DIR . '/config/admin-configs/remove-comments-column.php'); //RECOMMENDED
-include_once(THEME_DIR . '/config/admin-configs/svg-uploads.php'); //RECOMMENDED
+include_once(THEME_DIR . '/config/admin-configs/disable-custom-colors.php'); //REQUIRED
+include_once(THEME_DIR . '/config/admin-configs/embed-wrapper.php'); //REQUIRED
+include_once(THEME_DIR . '/config/admin-configs/svg-uploads.php'); //REQUIRED
 include_once(THEME_DIR . '/config/admin-configs/unwrap-images.php'); //REQUIRED
 
 /*** Theme Configs ***/
 include_once(THEME_DIR . '/config/theme-configs/body-classes.php'); //REQUIRED
 include_once(THEME_DIR . '/config/theme-configs/constants.php'); //REQUIRED
-// include_once(THEME_DIR . '/config/theme-configs/custom-nav-classes.php');
-// include_once(THEME_DIR . '/config/theme-configs/custom-post-types.php');
+include_once(THEME_DIR . '/config/theme-configs/custom-nav-classes.php'); //REQUIRED
 include_once(THEME_DIR . '/config/theme-configs/enqueue-scripts-styles.php'); //REQUIRED
-// include_once(THEME_DIR . '/config/theme-configs/disable-tax-archive.php');
-// include_once(THEME_DIR . '/config/theme-configs/geotarget.php');
-include_once(THEME_DIR . '/config/theme-configs/load-more.php'); //RECOMMENDED
 include_once(THEME_DIR . '/config/theme-configs/nav-walker.php'); //RECOMMENDED
-// include_once(THEME_DIR . '/config/theme-configs/password-protection.php');
 include_once(THEME_DIR . '/config/theme-configs/Utils.class.php'); //REQUIRED
-// include_once(THEME_DIR . '/config/theme-configs/wpml-language-switcher.php');
 
 
 /**
