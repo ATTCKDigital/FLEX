@@ -1,0 +1,43 @@
+/**** Headline Styles ****/
+
+.headline1 {
+	line-height: 1.1;
+	letter-spacing: 0;
+	@include sans-serif-bold;
+	@include font-size($font-size-headline1);
+}	
+
+.headline2 {
+	line-height: 1.1;
+	letter-spacing: 0;
+	@include sans-serif-bold;
+	@include font-size($font-size-headline2);
+}	
+
+.headline3 {
+	line-height: 1.1;
+	letter-spacing: 0;
+	@include sans-serif-bold;
+	@include font-size($font-size-headline3);
+}
+
+.headline4 {
+	line-height: 1.1;
+	letter-spacing: 0;
+	@include sans-serif-bold;
+	@include font-size($font-size-headline4);
+}	
+
+.headline5 {
+	line-height: 1.1;
+	letter-spacing: 0;
+	@include sans-serif-bold;
+	@include font-size($font-size-headline5);
+}
+
+.headline6 {
+	line-height: 1.1;
+	letter-spacing: 0;
+	@include sans-serif-bold;
+	@include font-size($font-size-headline6);
+}

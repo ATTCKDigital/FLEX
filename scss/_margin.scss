@@ -1,26 +1,27 @@
 /**** Margins ****/
 
 $positions: top, left, bottom, right;
-$sizes: 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 130, 170;
 $screensizes: global, small, medium, large, xl, 2xl, 3xl, 4xl, 5xl;
-
+$spacer: 5;
 // Creates classes based on variables
-// Use class "margin-position-size" for margins used in all screen sizes
+// Use class "margins-position-size" for marginss used in all screen sizes
 @each $position in $positions{
-  	@each $size in $sizes{
-		@each $screensize in $screensizes{
-			
-			@if $screensize == global {
-				.margin-#{$position}-#{$size} { 
-					margin-#{$position}: #{$size}px;
-				}
-			} @else {
-				.margin-#{$screensize}-#{$position}-#{$size} { 
-					@include mediaquery-max(#{$screensize}) {
-						margin-#{$position}: #{$size}px;
+	@each $screensize in $screensizes{
+		@for $i from 1 through 200 {
+			@if $i % $spacer == 0 {
+				@if $screensize == global {
+					.margins-#{$position}-#{$i} { 
+						margins-#{$position}: #{$i}px;
+					}
+				} @else {
+					.margins-#{$screensize}-#{$position}-#{$i} { 
+						@include mediaquery-max(#{$screensize}) {
+							margins-#{$position}: #{$i}px;
+						}
 					}
 				}
 			}
 		}
 	}
 }
+
