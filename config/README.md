@@ -39,6 +39,8 @@ Config files: `config/theme-configs`
 - `constants`: Sets some global PHP constants
 - `custom-nav-classes`: Customize the "current" menu item class.
 - `nav-walker`: Custom Nav Walker with custom markup for nested menu items. Use as when outputting a menu `'walker' => new Nav_Walker_Nav_Menu,` 👍🏻**recommended**
+- `register-nav-menus`: Registers and enables 2 default menus, editable via admin. 🔒**required**
+- `theme-setup`: Adds featured image to posts/pages and automatic rss links to the head. 🔒**required**
 
 #### Child Theme
 Config files: `/boilerplate-child/config/theme-configs`
