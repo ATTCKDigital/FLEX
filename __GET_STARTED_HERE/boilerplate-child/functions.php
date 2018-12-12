@@ -4,6 +4,7 @@ define('CHILD_THEME_DIR', get_stylesheet_directory());
 /*** Global Variables ***/
 // These define globally available variables, and must be included first
 include_once(CHILD_THEME_DIR . '/config/global-variables/colors.php');
+include_once(CHILD_THEME_DIR . '/config/global-variables/nav-menus.php');
 
 
 // WP functions are split out into individual files for clarity. Disable/Enable files by commenting out here. 
