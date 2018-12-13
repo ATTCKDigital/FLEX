@@ -1,19 +1,10 @@
 	<?php
 		// OG Meta tags
-		global $wp;
 
-		if(is_home()) {
-			$ID = get_option( 'page_for_posts' );
-		} elseif(is_404() || is_category() || is_search() || is_archive()) {
-			$ID = '';
-		} else {
-			$ID = $post->ID;
-		}
-
-		$title = get_field('og_title', $ID);
-		$image = get_field('og_facebook_image', $ID)['url'];
-		$twitterImage = get_field('og_twitter_image', $ID)['url'];
-		$link = home_url( $wp->request );
+		$title = get_field('og_title', $this->ID);
+		$image = get_field('og_facebook_image', $this->ID)['url'];
+		$twitterImage = get_field('og_twitter_image', $this->ID)['url'];
+		$link = home_url( $this->wp->request );
 		$excerpt = get_bloginfo('description');
 
 		$twitterHandle = get_field('twitter_url', 'options');
@@ -24,7 +15,7 @@
 		} elseif(is_archive()) {
 			$image = '';
 		} elseif(has_post_thumbnail()) {
-			$image = get_the_post_thumbnail_url($ID, 'full');
+			$image = get_the_post_thumbnail_url($this->ID, 'full');
 		} else {
 			$image = '';
 		}
@@ -34,7 +25,7 @@
 		} elseif(is_archive()) {
 			$twitterImage = '';
 		} elseif(has_post_thumbnail()) {
-			$twitterImage = get_the_post_thumbnail_url($ID, 'full');
+			$twitterImage = get_the_post_thumbnail_url($this->ID, 'full');
 		} else {
 			$twitterImage = '';
 		}
@@ -58,13 +49,13 @@
 			$title = wp_title( '|', false, 'right' ).get_bloginfo('name');
 		} else {
 			if($title) {
-				$title = get_field('og_title', $ID).' | '.get_bloginfo('name');
+				$title = get_field('og_title', $this->ID).' | '.get_bloginfo('name');
 			} else {
 				$title = get_the_title().' | '.get_bloginfo('name');
 			}
 		}
 
-		$backgroundColor = get_field('background_color', $ID);
+		$backgroundColor = get_field('background_color', $this->ID);
 
 		if(is_search()) {
 			$backgroundColor = 'body-theme-gray';

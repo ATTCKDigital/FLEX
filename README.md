@@ -23,13 +23,6 @@ The `Utils::render_template()` function should be used to include all files.
 See example of how to include a template in the README.md in `components` folder.
 
 
-For example, you would want to include the `nav.php` component in the `header.php` file. However, the default `nav.php` in the parent theme may not have the markup you need in your project. In this case, you would copy the nav component folder into the child theme (preserving the file structure) to override it. 
-
-We then use the WordPress function `locate_template()` to find the correct template. This [function](https://codex.wordpress.org/Function_Reference/locate_template) first checks for the template in the child theme (the path you check for should be relative), if it can't find it in the child theme, it looks to the parent. 
-
-The parent theme is already set up using `locate_template()` for any files that might need to be overridden.
-
-
 ### Assets
 Assets include fonts, images and svgs. SVGs are compiled by gulp into a global SVG file. SVGs should be used wherever possible.
 

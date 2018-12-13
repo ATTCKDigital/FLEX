@@ -7,6 +7,13 @@ List of base components
 #### How to "enable" existing components
 
 #### How to "add" new component
+To include a component in a front end template:
+Include it where needed:
+`echo Utils::render_template('components/component_name/component-name.php', array());`
+
+Values/variables can be passed into the component template in the array in the `Utils::render_template` function.  To use them in the component template, `$this->varName`.
+
+
 To add JS to a new component:
 - In the component markup, on the outer most div, add `data-component-name="JSComponentName"`
 - If it's an existing component, use the existing function name.  If it's a new component, create a new JS file and place in the component folder. 
