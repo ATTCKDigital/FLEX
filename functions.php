@@ -26,6 +26,7 @@ include_once(THEME_DIR . '/config/theme-configs/constants.php'); //REQUIRED
 include_once(THEME_DIR . '/config/theme-configs/custom-nav-classes.php'); //REQUIRED
 include_once(THEME_DIR . '/config/theme-configs/customizer-colors.php'); //REQUIRED
 include_once(THEME_DIR . '/config/theme-configs/enqueue-scripts-styles.php'); //REQUIRED
+include_once(THEME_DIR . '/config/theme-configs/enable-gutenberg-blocks.php'); //REQUIRED
 include_once(THEME_DIR . '/config/theme-configs/nav-walker.php'); //REQUIRED
 include_once(THEME_DIR . '/config/theme-configs/register-nav-menus.php'); //REQUIRED
 include_once(THEME_DIR . '/config/theme-configs/theme-setup.php'); //REQUIRED
