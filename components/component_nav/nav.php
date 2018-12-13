@@ -20,23 +20,9 @@
 			<?php
 				//Default is 'primary' nav. 
 				//To use another nav, create one in /config/theme-configs/register-nav-menus.php and change variable below.
-				$navMenu = 'primary';
-				if (has_nav_menu($navMenu)) {
-					$navArgs = array(
-						'theme_location' => $navMenu,
-						'container' => false,
-						'menu_id' => false,
-						'echo' => true,
-						'fallback_cb' => false,
-						'link_before' => '',
-						'link_after' => '',
-						'items_wrap' => '%3$s',
-						'walker' => new Nav_Walker_Nav_Menu,
-						'depth' => 0,
-					);
-
-					wp_nav_menu($navArgs);
-				}
+				echo Utils::render_template('config/theme-includes/menu.php', array(
+					'menuLocation' => 'primary',
+				));
 			?>		
 		</ul>
 	</nav>
