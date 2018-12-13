@@ -2,7 +2,6 @@
 	//Global Nav 
 	$siteLogo = get_field('site_logo', 'options');
 	$siteLogoAlt = get_field('site_logo_alt', 'options');
-
 ?>
 
 <header class="global-header">
@@ -19,11 +18,12 @@
 	<nav>
 		<ul class="menu-items">
 			<?php
-				//Deafult is 'primary' nav. 
-				//To use another nav, create one in /config/theme-configs/register-nav-menus.php and change values below.
-				if (has_nav_menu('primary')) {
+				//Default is 'primary' nav. 
+				//To use another nav, create one in /config/theme-configs/register-nav-menus.php and change variable below.
+				$navMenu = 'primary';
+				if (has_nav_menu($navMenu)) {
 					$navArgs = array(
-						'theme_location' => 'primary',
+						'theme_location' => $navMenu,
 						'container' => false,
 						'menu_id' => false,
 						'echo' => true,
