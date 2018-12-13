@@ -12,64 +12,70 @@ $black: #000000;
 // Colors
 $brand-color-key: 'red' !default;
 $brand-colors: (
-  'debug': (
-    'red': #f00
-  ),
-  'primary': (
-    'color-1': var(--primary-color-1),
-  ),
-  'secondary':(
-    'color-1': var(--secondary-color-1),
-    'color-2': var(--secondary-color-2),
-  ),
-  'background': (
-    'color-1': var(--background-color-1),
-    'color-2': var(--background-color-2),
-    'color-3': var(--background-color-3),
-  ),
-  'text': (
-    'color-1': var(--text-color-1),
-    'color-2': var(--text-color-2),
-    'color-3': var(--text-color-3),
-  ),
-  'social':(
-    'facebook': #3b5998,
-    'twitter': #1da1f2
-  ),
-  'gradients': (
-  )
+	'debug': (
+		'red': #f00
+	),
+	'primary': (
+		'color-1': var(--primary-color-1),
+		'color-1-hover': var(--primary-color-1-hover),
+	),
+	'secondary':(
+		'color-1': var(--secondary-color-1),
+		'color-1-hover': var(--secondary-color-1-hover),
+		'color-2': var(--secondary-color-2),
+		'color-2-hover': var(--secondary-color-2-hover),
+	),
+	'background': (
+		'color-1': var(--background-color-1),
+		'color-2': var(--background-color-2),
+		'color-3': var(--background-color-3),
+	),
+	'text': (
+		'color-1': var(--text-color-1),
+		'color-1-hover': var(--text-color-1-hover),
+		'color-2': var(--text-color-2),
+		'color-2-hover': var(--text-color-2-hover),
+		'color-3': var(--text-color-3),
+		'color-3-hover': var(--text-color-3-hover),
+	),
+	'social':(
+		'facebook': #3b5998,
+		'twitter': #1da1f2
+	),
+	'gradients': (
+	)
 );
 
 /** Generate colors **/
 // Usage: color('key', 'variant');
 @function color($key: 'debug', $variant: $brand-color-key) {
-  $color: null;
-  $color-spectrum: map-get($brand-colors, $key);
+	$color: null;
+	$color-spectrum: map-get($brand-colors, $key);
 
-  @if $color-spectrum {
-    $color: map-get($color-spectrum, $variant);
-  }
+	@if $color-spectrum {
+		$color: map-get($color-spectrum, $variant);
+	}
 
-  @return $color;
+	@return $color;
 }
 
 /** Mixin for placeholder color **/
 @mixin placeholder($color) {
-  &::-webkit-input-placeholder {
-    color: $color;
-  }
+	&::-webkit-input-placeholder {
+		color: $color;
+	}
 
-  &:-moz-placeholder { /* Firefox 18- */
-    color: $color;
-  }
+	&:-moz-placeholder { /* Firefox 18- */
+		color: $color;
+	}
 
-  &::-moz-placeholder {  /* Firefox 19+ */
-    color: $color;
-  }
+	&::-moz-placeholder {  /* Firefox 19+ */
+		color: $color;
+	}
 
-  &:-ms-input-placeholder {
-    color: $color;
-  }
+	&:-ms-input-placeholder {
+		color: $color;
+	}
 }
 
 /**** Color classes ****/
@@ -87,13 +93,13 @@ $brand-colors: (
 //
 
 @each $key, $map in $brand-colors {
-  @each $variant, $color in $map {
-    .has-#{$key}-#{$variant}-background-color {
-      background-color: #{$color};
-    }
+	@each $variant, $color in $map {
+		.has-#{$key}-#{$variant}-background-color {
+			background-color: #{$color};
+		}
 
-    .has-#{$key}-#{$variant}-color {
-      color: #{$color};
-    }
-  }
+		.has-#{$key}-#{$variant}-color {
+			color: #{$color};
+		}
+	}
 }
