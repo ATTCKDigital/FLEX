@@ -1,9 +1,9 @@
 <?php 
 /**** Default nav walker include ****/
 // Set desired menu location (primary, footer, etc) using Utils::render_template() function
-if (has_nav_menu($menuLocation)) {
+if (has_nav_menu($this->menuLocation)) {
 	$navArgs = array(
-		'theme_location' => $menuLocation,
+		'theme_location' => $this->menuLocation,
 		'container' => false,
 		'menu_id' => false,
 		'echo' => true,
