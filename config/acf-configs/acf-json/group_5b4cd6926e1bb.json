@@ -17,9 +17,9 @@
             },
             "default_value": "",
             "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": ""
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -39,5 +39,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1537811008
+    "modified": 1545077354
 }

@@ -7,13 +7,15 @@ define('THEME_DIR', get_template_directory()); // use when there are files that 
 // These define globally available variables, and must be included first
 include_once(locate_template('config/global-variables/colors.php'));
 include_once(locate_template('config/global-variables/nav-menus.php'));
+include_once(locate_template('config/global-variables/blocks.php'));
 
 // WP functions are split out into individual files for clarity. Disable/Enable files by commenting out here. See README.md
 // for details on each config file
 
 /*** ACF Configs ***/
 include_once(locate_template('config/acf-configs/acf-css.php'));  //REQUIRED
-// include_once(locate_template('config/acf-configs/acf-sync.php')); //REQUIRED
+include_once(locate_template('config/acf-configs/acf-sync.php')); //REQUIRED
+include_once(locate_template('config/acf-configs/register-acf-blocks.php')); //REQUIRED
 
 /*** WP-Admin Configs ***/
 include_once(locate_template('config/admin-configs/admin-wysiwyg.php')); //REQUIRED
@@ -35,9 +37,5 @@ include_once(locate_template('config/theme-configs/theme-setup.php')); //REQUIRE
 include_once(locate_template('config/theme-configs/Utils.class.php')); //REQUIRED
 
 
-
-
-
-include_once(locate_template('components/component_test/acf_test.php')); 
 
 

@@ -4,7 +4,7 @@
 List of base components
 
 ### Adding components
-To create a new acf component, duplicate `components/component_template` in the `components` folder and rename as per naming conventions below. Once the component is created, enable it in `config/global-variables/blocks.php`. (More info in `boilerplate-child/README.md`)
+To create a new acf component, duplicate `components/component_template` in the `components` folder and rename as per naming conventions below. Once the component is created, register and enable it in `config/global-variables/blocks.php`. (More info in `boilerplate-child/README.md`)
 
 #### How to use a component in a front end template:
 To include a component in a front end template:
@@ -24,6 +24,7 @@ To add JS to a new component:
 - Component SCSS: `_component-name.scss`
 - Component JS: `_component-name.js`
 - Component ReadMe: `README_component-name.md`
-- Component ACF: `acf_component-name.php`
+- Component ACF Fields: `acf_component-name.php`
+- Component Register ACF Fields: `register_component-name.php` (to be placed in a folder called `acf-json` within the component folder)
 
 Created 12/4/2018 by okadots for ATTCK

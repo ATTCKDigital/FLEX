@@ -1,5 +1,6 @@
 <?php
 //Template for creating and registering an acf block.
+//Additional details: https://www.advancedcustomfields.com/blog/acf-5-8-introducing-acf-blocks-for-gutenberg/
 
 add_action('acf/init', 'my_acf_init');
 function my_acf_init() {
