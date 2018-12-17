@@ -76,6 +76,8 @@ To the end of the file add: `127.0.0.1 dev.project.com` (domain used for Virtual
 8. Copy the boilerplate-child theme into the themes folder.  Majority of the coding done will be done in the child theme. Any file added to the child theme with the same name as in the parent, will override the parent; EXCLUDING existing functions.
 9. Edit the WordPress `style.css` file to reflect the project specifics.
 10. Replace `screenshot.png` with a project relevant theme screenshot.
+11. Enable/disable Gutenberg blocks and set global variables for the project.  See child theme `README.md` for details.
+12. Review child theme `functions.php` and enable/disable functions needed for project.
 
 ### Ideas for improvements to set up process
 

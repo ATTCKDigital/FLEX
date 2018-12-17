@@ -57,9 +57,9 @@ Config files: `config/theme-includes`
 - `google-tag-manager-body`: Adds Google Tag Manager to the theme. Included in `header.php`. 🔒**required**
 - `google-tag-manager-header`: Adds Google Tag Manager to the theme. Included in `header.php`. 🔒**required**
 - `hubspot-tracking-code`: Add the tracking code for hubspot to site header. Requires an ACF field called `hubspot_tracking_code` and uncommenting in `header.php`
+- `menu`: The code snippet for outputting a menu.  Use `Utils::render_template()` and set `menuLocation` to the desired menu location.
 - `og-tags`: Code to create OG meta tags based on page info OR overridden by ACF Social Media Settings. Included in `header.php`. 🔒**required**
 - `svg-sprite`: Adds the compiled SVG Sprite to the site. Included in `header.php`. 🔒**required**
 - `svg`: Template for outputting an SVG on the front end. 
-
 Created 12/4/2018 by okadots for ATTCK
 

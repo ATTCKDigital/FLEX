@@ -15,6 +15,14 @@ Components are the pieces of the theme.  Each component folder contains the foll
 
 See detailed README.md in `components` folder.
 
+#### Component Includes
+Components can be included in any template file. 
+
+The `Utils::render_template()` function should be used to include all files. 
+
+See example of how to include a template in the README.md in `components` folder.
+
+
 ### Assets
 Assets include fonts, images and svgs. SVGs are compiled by gulp into a global SVG file. SVGs should be used wherever possible.
 

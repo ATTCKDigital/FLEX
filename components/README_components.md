@@ -4,9 +4,16 @@
 List of base components
 
 ### Adding components
-#### How to "enable" existing components
+To create a new acf component, duplicate `components/component_template` in the `components` folder and rename as per naming conventions below. Once the component is created, enable it in `config/global-variables/blocks.php`. (More info in `README_child-theme.md`)
 
-#### How to "add" new component
+#### How to use a component in a front end template:
+To include a component in a front end template:
+Include it where needed:
+`echo Utils::render_template('components/component_name/component-name.php', array());`
+
+Values/variables can be passed into the component template in the array in the `Utils::render_template` function.  To use them in the component template, `$this->varName`.
+
+
 To add JS to a new component:
 - In the component markup, on the outer most div, add `data-component-name="JSComponentName"`
 - If it's an existing component, use the existing function name.  If it's a new component, create a new JS file and place in the component folder. 

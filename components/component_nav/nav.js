@@ -1,4 +1,3 @@
-import ATTCK from 'attck';
 
 function Nav($el) {
 	//cache the body
