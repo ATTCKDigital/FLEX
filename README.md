@@ -39,6 +39,7 @@ The boilerplate theme has a variety of existing javascript functions (nav animat
 
 ### Required Plugins
 Advanced Custom Fields Pro - https://www.advancedcustomfields.com/
+ACF Local JSON Manager  - https://github.com/khromov/acf-local-json-manager
 Classic Editor (for WP 5.0+) - https://wordpress.org/plugins/classic-editor/
 
 ### Optional Plugins (as needed per project)
@@ -50,6 +51,11 @@ List of plugins
 This theme uses ACF to allow for dynamic layouts as well as global settings that can be adjusted by an admin.
 
 Download the latest version from ACF using the ATTCK login (see LastPass for login info).
+
+### ACF Local JSON Manager
+This allows syncing of json files from within each component. Once installed and activated, no changes should need to be made.
+
+Once installed, a dropdown will appear in the admin (in the toolbar at the top). When you create or edit ACF fields, select the registered component from the drop down to ensure that the fields save in the correct locations. To edit or add global ACF fields, select "disable overrides".
 
 ### Classic Editor
 Allows the option to use a plain WYSIWYG editor on any page, CPT or post when WordPress version is 5.0+.
