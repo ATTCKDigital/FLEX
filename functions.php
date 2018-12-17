@@ -13,7 +13,7 @@ include_once(locate_template('config/global-variables/nav-menus.php'));
 
 /*** ACF Configs ***/
 include_once(locate_template('config/acf-configs/acf-css.php'));  //REQUIRED
-include_once(locate_template('config/acf-configs/acf-sync.php')); //REQUIRED
+// include_once(locate_template('config/acf-configs/acf-sync.php')); //REQUIRED
 
 /*** WP-Admin Configs ***/
 include_once(locate_template('config/admin-configs/admin-wysiwyg.php')); //REQUIRED
@@ -33,5 +33,11 @@ include_once(locate_template('config/theme-configs/nav-walker.php')); //REQUIRED
 include_once(locate_template('config/theme-configs/register-nav-menus.php')); //REQUIRED
 include_once(locate_template('config/theme-configs/theme-setup.php')); //REQUIRED
 include_once(locate_template('config/theme-configs/Utils.class.php')); //REQUIRED
+
+
+
+
+
+include_once(locate_template('components/component_test/acf_test.php')); 
 
 

@@ -510,10 +510,7 @@ exports.default = _attck2.default.Loader;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_attck__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_attck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_attck__);
-
-
+/* WEBPACK VAR INJECTION */(function($) {
 function Nav($el) {
 	//cache the body
 	var $body = $('body');

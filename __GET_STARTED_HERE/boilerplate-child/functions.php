@@ -23,7 +23,7 @@ include_once(locate_template('config/acf-configs/acf-search.php')); //RECOMMENDE
 // include_once(locate_template('config/admin-configs/change-post-labels.php'));
 // include_once(locate_template('config/admin-configs/image-crops.php')); //RECOMMENDED
 include_once(locate_template('config/admin-configs/remove-comments-column.php')); //RECOMMENDED
-// include_once(locate_template('config/admin-configs/sidebarsphp'));
+// include_once(locate_template('config/admin-configs/sidebars.php'));
 
 /*** Theme Configs ***/
 // include_once(locate_template('config/theme-configs/custom-post-types.php'));
