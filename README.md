@@ -69,6 +69,7 @@ JSON files: `config/acf-configs/acf-json`
 - **Google Tag Manager ID** (`group_5b4cd6926e1bb.json`): Found in "Global Settings", allows the user to insert their own GTM Container ID. 
 - **Social Media Sharing** (`group_5b16e72af37f3.json`): Added to all posts, CPTs and pages so user can override default generated OG meta tags. 
 - **Site Logo** (`group_5c06cd1fa1248.json`): Found in "Global Settings", allows user to upload 2 logo versions.
+//okatodo: potentially change site logo to be part of customizer instead of an acf field?
 
 ## Configs
 See detailed README.md in `config` folder.
