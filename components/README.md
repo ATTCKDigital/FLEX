@@ -4,7 +4,7 @@
 List of base components
 
 ### Adding components
-To create a new acf component, duplicate `components/component_template` in the `components` folder and rename as per naming conventions below. Once the component is created, enable it in `config/global-variables/blocks.php`. (More info in `README_child-theme.md`)
+To create a new acf component, duplicate `components/component_template` in the `components` folder and rename as per naming conventions below. Once the component is created, enable it in `config/global-variables/blocks.php`. (More info in `boilerplate-child/README.md`)
 
 #### How to use a component in a front end template:
 To include a component in a front end template:
