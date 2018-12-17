@@ -25,6 +25,6 @@ To add JS to a new component:
 - Component JS: `_component-name.js`
 - Component ReadMe: `README_component-name.md`
 - Component ACF Fields: `acf_component-name.php`
-- Component Register ACF Fields: `register_component-name.php` (to be placed in a folder called `acf-json` within the component folder)
+- Component Register ACF Fields: `register_component-name.php`
 
 Created 12/4/2018 by okadots for ATTCK
