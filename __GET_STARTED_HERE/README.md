@@ -29,7 +29,7 @@ To set up your project database from the command line:
 3. Grant appropriate permissions:  
 `GRANT ALL on database_name.* to database_name@localhost IDENTIFIED BY 'database_name';`
 
-You can do also do all the above via a GUI such as [MySQLWorkbench](https://www.mysql.com/products/workbench/).
+You can do also do all the above via a GUI such as [SequelPro](https://www.sequelpro.com/) or [MySQLWorkbench](https://www.mysql.com/products/workbench/).
 
 ### Project virtual host
 
@@ -66,18 +66,19 @@ To the end of the file add: `127.0.0.1 dev.project.com` (domain used for Virtual
 
 ### Installing Wordpress and this theme
 
-1. Install [WordPress](https://wordpress.org/download/) in your project directory and copy the "boilerplate" theme to `wp-content/themes`
+1. Download [WordPress](https://wordpress.org/download/) into your project directory and copy the "boilerplate" theme to `wp-content/themes`
 2. Install necessary plugins (see list in main README.md)
 3. Copy `.env`, `.gitignore` and `wp-config.php` into the WordPress root
 4. Go to https://api.wordpress.org/secret-key/1.1/salt/ and get new Authentication Unique Keys and Salts. Paste the generated snippet into `lines 67-74` of `wp-config.php` in the WordPress root
-5. Change the variables in the `.env` folder to match your local development settings. Once you have changed the variables, you will need to `restart apache`.
-6. From the command line, navigate to the boilerplate PARENT theme and run `npm install`.  This will install all of the associated node modules.
-7. To compile css, js and assets, run `gulp watch` from inside the boilerplate PARENT theme
-8. Copy the boilerplate-child theme into the themes folder.  Majority of the coding done will be done in the child theme. Any file added to the child theme with the same name as in the parent, will override the parent; EXCLUDING existing functions.
-9. Edit the WordPress `style.css` file to reflect the project specifics.
-10. Replace `screenshot.png` with a project relevant theme screenshot.
-11. Enable/disable Gutenberg blocks and set global variables for the project.  See child theme `README.md` for details.
-12. Review child theme `functions.php` and enable/disable functions needed for project.
+5. Change the `$table_prefix` variable in `wp-config.php` from `wp_` to a namespaced value, ie `attck_`.  This is a security measure.
+6. Change the variables in the `.env` folder to match your local development settings. Once you have changed the variables, you will need to `restart apache`. From this point, you should be able to navigate to the local project url in the browser and finish the WordPress Install process. 
+7. From the command line, navigate to the boilerplate PARENT theme and run `npm install`.  This will install all of the associated node modules.
+8. To compile css, js and assets, run `gulp watch` from inside the boilerplate PARENT theme
+9. Copy the boilerplate-child theme into the themes folder.  Majority of the coding done will be done in the child theme. Any file added to the child theme with the same name as in the parent, will override the parent; EXCLUDING existing functions.
+10. Edit the WordPress `style.css` file to reflect the project specifics.
+11. Replace `screenshot.png` with a project relevant theme screenshot.
+12. Enable/disable Gutenberg blocks and set global variables for the project.  See child theme `README.md` for details.
+13. Review child theme `functions.php` and enable/disable functions needed for project.
 
 ### Ideas for improvements to set up process
 
