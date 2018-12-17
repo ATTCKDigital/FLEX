@@ -1,4 +1,5 @@
 <?php
+//Template for creating and registering an acf block.
 
 add_action('acf/init', 'my_acf_init');
 function my_acf_init() {
