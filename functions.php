@@ -1,5 +1,6 @@
 <?php
 define('THEME_DIR', get_template_directory()); // use when there are files that should ONLY be from the parent theme.
+
 // Use locate_template() to include files.  This function first checks the child theme for the file and if there is none, uses the parent theme.
 // Allows us to override main functions in the child theme without changing the parent.
 
@@ -18,6 +19,7 @@ include_once(locate_template('config/acf-configs/acf-sync.php')); //REQUIRED
 include_once(locate_template('config/acf-configs/register-acf-blocks.php')); //REQUIRED
 
 /*** WP-Admin Configs ***/
+include_once(locate_template('config/admin-configs/admin-theme.php')); //REQUIRED
 include_once(locate_template('config/admin-configs/admin-wysiwyg.php')); //REQUIRED
 include_once(locate_template('config/admin-configs/custom-excerpts.php')); //REQUIRED
 include_once(locate_template('config/admin-configs/embed-wrapper.php')); //REQUIRED

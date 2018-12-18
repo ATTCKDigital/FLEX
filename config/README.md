@@ -19,6 +19,7 @@ Config files: `/boilerplate-child/config/acf-configs`
 
 ### Admin Configs 
 Config files: `config/admin-configs`
+- `admin-themes`: Sets the admin color scheme based on the `env` variable in `.env`. 👍🏻**required**
 - `admin-wysiwyg`: Sets colors in TinyMCE. Edit as needed for project. Uses global variables. 👍🏻**required**
 - `custom-exceprts`: Creates an excerpt function that allows for customized lengths per location it is used. 🔒**required**
 - `disable-custom-colors`: Disables the custom color picker in Gutenberg. Prevents client from straying off brand. 🔒**required**
