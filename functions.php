@@ -37,6 +37,7 @@ include_once(locate_template('config/theme-configs/enable-gutenberg-blocks.php')
 include_once(locate_template('config/theme-configs/nav-walker.php')); //REQUIRED
 include_once(locate_template('config/theme-configs/register-nav-menus.php')); //REQUIRED
 include_once(locate_template('config/theme-configs/theme-setup.php')); //REQUIRED
+include_once(locate_template('config/theme-configs/site-logo.php')); //REQUIRED
 include_once(locate_template('config/theme-configs/Utils.class.php')); //REQUIRED
 
 

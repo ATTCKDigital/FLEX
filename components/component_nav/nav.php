@@ -1,18 +1,15 @@
 <?php 
 	//Global Nav 
-	$siteLogo = get_field('site_logo', 'options');
-	$siteLogoAlt = get_field('site_logo_alt', 'options');
 ?>
 
 <header class="global-header">
 	<div class="header-inner">
 		<a href="" class="logo-wrapper">
-			<?php if($siteLogo){ ?>
-				<img src="<?= $siteLogo['url'];?>" class="nav-logo" alt="<?= bloginfo('name');?>" title="<?= bloginfo('name');?>" />
-			<? } ?>
-			<?php if($siteLogoAlt){ ?>
-				<img src="<?= $siteLogoAlt['url'];?>" class="nav-logo nav-logo-alt" alt="<?= bloginfo('name');?>" title="<?= bloginfo('name');?>" />
-			<? } ?>
+			<?php 
+				$customLogoID = get_theme_mod( 'custom_logo' );
+				$customLogoURL = wp_get_attachment_image_url( $customLogoID , 'full' );
+			?>
+			<img src="<?= $customLogoURL;?>" class="nav-logo" alt="<?= bloginfo('name');?>" title="<?= bloginfo('name');?>" />
 		</a>
 	</div>
 	<nav>
