@@ -50,3 +50,21 @@ function admin_color_scheme() {
 
 }
 add_action('admin_head', 'admin_color_scheme');
+
+
+//Change the color of the admin bar on the front end if it is displayed
+
+function change_bar_color() {
+$env = $_SERVER['env'];
+
+	if($env == 'prod') {
+		$barColor = 'red';
+	} else if($env == 'staging') {
+		$barColor = 'DeepSkyBlue';
+	} else {
+		$barColor = 'green';
+	}
+	echo '<style> #wpadminbar{ background: '.$barColor.' !important; } #wp-admin-bar-environment .ab-empty-item {font-weight: bold;}</style>';
+}
+add_action('wp_head', 'change_bar_color');
+add_action('admin_head', 'change_bar_color');
