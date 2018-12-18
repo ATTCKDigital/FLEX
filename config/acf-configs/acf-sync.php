@@ -4,7 +4,7 @@ add_filter('acf/settings/save_json', 'attck_acf_json_save_point');
 
 function attck_acf_json_save_point( $path ) {
 	// update path
-	$path = get_stylesheet_directory().'/config/acf-configs/acf-json';
+	$path = THEME_DIR.'/config/acf-configs/acf-json';
 	
 	// return
 	return $path;
@@ -18,7 +18,7 @@ function attck_acf_json_load_point( $paths ) {
 	unset($paths[0]);
 
 	// append path
-	$path = get_stylesheet_directory().'/config/acf-configs/acf-json';
+	$path = THEME_DIR.'/config/acf-configs/acf-json';
 
 	// return
 	return $paths;
