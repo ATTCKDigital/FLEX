@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_5c06ab847b0f2",
-            "label": "Social Media Links",
+            "label": "Social Media",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -36,8 +36,8 @@
         },
         {
             "key": "field_5c06ac0b9cb37",
-            "label": "Instagram URL",
-            "name": "instagram_url",
+            "label": "Instagram Username",
+            "name": "instagram_username",
             "type": "url",
             "instructions": "",
             "required": 0,
@@ -83,10 +83,10 @@
             "placeholder": ""
         },
         {
-            "key": "field_5b6c9d7b10cfc",
-            "label": "Twitter URL",
-            "name": "twitter_url",
-            "type": "url",
+            "key": "field_5c1959c291da5",
+            "label": "Pinterest Username",
+            "name": "pinterest_username",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -96,7 +96,29 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": ""
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5b6c9d7b10cfc",
+            "label": "Twitter Username",
+            "name": "twitter_username",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
             "key": "field_5c06ab7d7b0f1",
@@ -113,6 +135,49 @@
             },
             "default_value": "",
             "placeholder": ""
+        },
+        {
+            "key": "field_5c195b3bd453b",
+            "label": "Fallback Image",
+            "name": "fallback_image",
+            "type": "image",
+            "instructions": "An image to be used as the fallback for Open Graph Meta Tags.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5c195b9a29847",
+            "label": "Fallback Image Alt",
+            "name": "fallback_image_alt",
+            "type": "text",
+            "instructions": "A text description of the fallback image conveying the essential nature of an image to users who are visually impaired. Maximum 420 characters.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": 420
         },
         {
             "key": "field_5c06ac359cb39",
@@ -243,5 +308,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1543941275
+    "modified": 1545165832
 }

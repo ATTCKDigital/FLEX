@@ -43,6 +43,7 @@ Config files: `config/theme-configs`
 - `nav-walker`: Custom Nav Walker with custom markup for nested menu items. Use as when outputting a menu `'walker' => new Nav_Walker_Nav_Menu,` 👍🏻**recommended**
 - `register-nav-menus`: Registers and enables 2 default menus, editable via admin. 🔒**required**
 - `theme-setup`: Adds featured image to posts/pages and automatic rss links to the head. 🔒**required**
+- `site-logo`: Adds site logo to customizer. 🔒**required**
 
 #### Child Theme
 Config files: `/boilerplate-child/config/theme-configs`
@@ -56,11 +57,13 @@ Config files: `/boilerplate-child/config/theme-configs`
 ### Theme Includes
 Config files: `config/theme-includes`
 - `enqueue-scripts-styles`: Enqueus our scripts and styles. REQUIRED!! You can also deregister any unneeded plugin scripts/styles here. 🔒**required**
-- `google-tag-manager-body`: Adds Google Tag Manager to the theme. Included in `header.php`. 🔒**required**
-- `google-tag-manager-header`: Adds Google Tag Manager to the theme. Included in `header.php`. 🔒**required**
-- `hubspot-tracking-code`: Add the tracking code for hubspot to site header. Requires an ACF field called `hubspot_tracking_code` and uncommenting in `header.php`
+- `google-tag-manager-body`: Adds Google Tag Manager to the theme. Included in `header.php`. Requires an ACF field called `gtm_ID`. 🔒**required**
+- `google-tag-manager-header`: Adds Google Tag Manager to the theme. Included in `header.php`. Requires an ACF field called `gtm_ID`. 🔒**required**
+- `facebook-pixel`: Adds Facebook Pixel to the theme. Included in `header.php`. Requires an ACF field called `facebook_pixel_id`.
+- `hubspot-tracking-code`: Add the tracking code for hubspot to site header. Requires an ACF field called `hubspot_tracking_code`.
 - `menu`: The code snippet for outputting a menu.  Use `Utils::render_template()` and set `menuLocation` to the desired menu location.
-- `og-tags`: Code to create OG meta tags based on page info OR overridden by ACF Social Media Settings. Included in `header.php`. 🔒**required**
+- `meta-tags`: Code to create OG meta tags, meta description and title tags based on page info OR overridden by ACF Social Media Settings. Included in `header.php`. 🔒**required**
+- `pinterest-verify`: Adds Pinterest Business ID to verify website. Requires an ACF field called `pinterest_id`. Included in `header.php`. 
 - `svg-sprite`: Adds the compiled SVG Sprite to the site. Included in `header.php`. 🔒**required**
 - `svg`: Template for outputting an SVG on the front end. 
 Created 12/4/2018 by okadots for ATTCK

@@ -1,115 +1,153 @@
 {
-		"key": "group_5b16e72af37f3",
-		"title": "Social Media Sharing",
-		"fields": [
-				{
-						"key": "field_5b16e77a1d9a3",
-						"label": "OG Tags",
-						"name": "",
-						"type": "message",
-						"instructions": "",
-						"required": 0,
-						"conditional_logic": 0,
-						"wrapper": {
-								"width": "",
-								"class": "",
-								"id": ""
-						},
-						"message": "Override the default OG tags.  If no images are selected, the featured image will be used. For the description, add an excerpt.",
-						"new_lines": "wpautop",
-						"esc_html": 0
-				},
-				{
-						"key": "field_5b16e72f3f132",
-						"label": "OG Title",
-						"name": "og_title",
-						"type": "text",
-						"instructions": "",
-						"required": 0,
-						"conditional_logic": 0,
-						"wrapper": {
-								"width": "",
-								"class": "",
-								"id": ""
-						},
-						"default_value": "",
-						"placeholder": "",
-						"prepend": "",
-						"append": "",
-						"maxlength": ""
-				},
-				{
-						"key": "field_5b16e73b3f133",
-						"label": "OG Facebook Image",
-						"name": "og_facebook_image",
-						"type": "image",
-						"instructions": "",
-						"required": 0,
-						"conditional_logic": 0,
-						"wrapper": {
-								"width": "",
-								"class": "",
-								"id": ""
-						},
-						"return_format": "array",
-						"preview_size": "thumbnail",
-						"library": "all",
-						"min_width": "",
-						"min_height": "",
-						"min_size": "",
-						"max_width": "",
-						"max_height": "",
-						"max_size": "",
-						"mime_types": ""
-				},
-				{
-						"key": "field_5b16e7493f134",
-						"label": "OG Twitter Image",
-						"name": "og_twitter_image",
-						"type": "image",
-						"instructions": "",
-						"required": 0,
-						"conditional_logic": 0,
-						"wrapper": {
-								"width": "",
-								"class": "",
-								"id": ""
-						},
-						"return_format": "array",
-						"preview_size": "thumbnail",
-						"library": "all",
-						"min_width": "",
-						"min_height": "",
-						"min_size": "",
-						"max_width": "",
-						"max_height": "",
-						"max_size": "",
-						"mime_types": ""
-				}
-		],
-		"location": [
-				[
-						{
-								"param": "post_type",
-								"operator": "==",
-								"value": "post"
-						}
-				],
-				[
-						{
-								"param": "post_type",
-								"operator": "==",
-								"value": "page"
-						}
-				]
-		],
-		"menu_order": 10,
-		"position": "side",
-		"style": "default",
-		"label_placement": "top",
-		"instruction_placement": "label",
-		"hide_on_screen": "",
-		"active": 1,
-		"description": "",
-		"modified": 1538673450
+    "key": "group_5b16e72af37f3",
+    "title": "Social Media Sharing",
+    "fields": [
+        {
+            "key": "field_5b16e77a1d9a3",
+            "label": "Open Graph Meta Tags",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Override the generated default OG tags.",
+            "new_lines": "br",
+            "esc_html": 0
+        },
+        {
+            "key": "field_5b16e72f3f132",
+            "label": "og:title",
+            "name": "og_title",
+            "type": "text",
+            "instructions": "Override the page title.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5c19576c7901a",
+            "label": "og:type",
+            "name": "og_type",
+            "type": "text",
+            "instructions": "Override the og:type, defaults to \"website\". \r\n<br\/>\r\nSee <a href=\"http:\/\/ogp.me\/#types\" target=\"_blank\">documentation<\/a> for list of types.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5b16e73b3f133",
+            "label": "og:image",
+            "name": "og_facebook_image",
+            "type": "image",
+            "instructions": "1200 x 630 pixels. \r\n<br \/>\r\nIf no image is selected, the featured image will be used.  If no featured image, the site logo will be used.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5b16e7493f134",
+            "label": "twitter:image",
+            "name": "og_twitter_image",
+            "type": "image",
+            "instructions": "800 x 418 pixels (1.91:1 aspect ratio)\r\n<br \/>\r\nIf no image is selected, the featured image will be used.  If no featured image, the site logo will be used.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5c195a93f0ca9",
+            "label": "twitter:creator",
+            "name": "og_twitter_creator",
+            "type": "text",
+            "instructions": "The Twitter username of the creator of the page content. <br \/>\r\nIf left blank, will default to the site's twitter username.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 10,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1545167484
 }
