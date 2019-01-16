@@ -1,8 +1,8 @@
 <?php
 /**
- * Block Name: Template
+ * Block Name: Testimonial
  *
- * This is a sample front end output for an acf block.
+ * This is the template that displays the testimonial block.
  */
 
 // get image field (array)
