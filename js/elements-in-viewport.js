@@ -6,31 +6,31 @@
 import $$ from 'cached-dom-elements';
 
 function ElementsInViewport($el) {
-	var _fadedElementsOffsetIndex = [];
+	var _iinviewElementsOffsetIndex = [];
 	var _scrollstopTimer = 0;
 	var _currentScrollTop = $(window).scrollTop();
 	var _viewportHeight = $(window).outerHeight();
 
 	function bindEvents() {
 		$(document.body).on('ATTCK.scroll', function (e, data) {
-			// Reset timer to trigger fadeInElements
+			// Reset timer to trigger ElementsInViewport
 			_scrollstopTimer = 0;
 
 			_currentScrollTop = data.currentScrollTop;
 
 			// Check the current scroll offset against the DOM element offset array
-			fadeInElements();
+			inViewElements();
 		});
 
 		// Include check for page resize as well since that
 		// can potentially cause the page to scroll
 		$(document.body).on('ATTCK.resize', function () {
-			// Reset timer to trigger fadeInElements
+			// Reset timer to trigger ElementsInViewport
 			_scrollstopTimer = 0;
 
 			_viewportHeight = $(window).outerHeight();
 
-			indexAllFadedElements();
+			indexAllElements();
 		});
 	}
 
@@ -38,7 +38,7 @@ function ElementsInViewport($el) {
 		// Check if user stopped scrolling for more than two seconds and show anything that
 		// would be visible but hasn't hit the vertical scroll threshold yet
 		if (_scrollstopTimer > 500 && _scrollstopTimer !== 1) {
-			fadeInElements(_viewportHeight);
+			inviewElements(_viewportHeight);
 
 			// Stop the timer once it runs once, until the next time the user scrolls
 			// which will trigger this again
@@ -49,44 +49,47 @@ function ElementsInViewport($el) {
 		}
 	}
 
-	function fadeInElements(scrollThreshold) {
+	function inViewElements(scrollThreshold) {
 		// Set Default scroll threshold
 		if (typeof scrollThreshold === 'undefined') {
 			scrollThreshold = _viewportHeight*.8;
 		}
 
-		$.each($$('.fade-me-in'), function (index, value) {
+		$.each($$('.inview-element'), function (index, value) {
 			var verticalScrollThreshold = (_currentScrollTop + scrollThreshold);
 			var thisElementOffset = $(this).offset().top;
 
-			// Fade in elements once they are halfway up the screen
+			// Add class to elements once they are halfway up the screen
 			if (thisElementOffset < verticalScrollThreshold) {
-				$(this).addClass('faded-in');
+				$(this).addClass('element-is-inview');
 			}
 		});
 	}
 
 	function hideAllElements() {
 		// First, hide all elements
-		// $('body').find('h1, h2, h3, h4, h5, p, span').addClass('fade-me-in');
+		// Add elements that need to be manipulated here:
+
+		// $('body').find('h1, h2, h3, h4, h5, p, span').addClass('inview-element');
 		
-		$('body').find('.component-fade').each(function (index, value) {
-			if (!$(this).hasClass('dont-fade-me-in')) {
-				$(this).addClass('fade-me-in');
+		// Add elements that need to be manipulated here:
+		$('body').find('h1, h2, h3, h4, h5, p, span').each(function (index, value) {
+			if (!$(this).hasClass('dont-inview-element')) {
+				$(this).addClass('inview-element');
 			}
 		});
 
 		// Show protected areas
-		$('.main-header').css('opacity', 1);
-		$('.page-footer').css('opacity', 1);
+		$('.main-header').addClass('dont-inview-element');
+		$('.page-footer').addClass('dont-inview-element');
 
 		indexAllFadedElements();
 	}
 
-	function indexAllFadedElements() {
-		$('.fade-me-in').each(function () {
+	function indexAllElements() {
+		$('.inview-element').each(function () {
 			// Convert offset values to strings since they're floats and not a valid array ID
-			_fadedElementsOffsetIndex.push({
+			_inviewElementsOffsetIndex.push({
 				'offset': $(this).offset().top,
 				'element': $(this)
 			});

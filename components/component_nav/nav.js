@@ -36,7 +36,7 @@ function Nav($el) {
 	}
 	
 	function userScrolled() {
-		//check if user is scrolled on page load (for refresh)
+		//check if user is scrolled on page load so that the nav is hidden when they refresh the page
 		if ($(window).scrollTop() >= 10) {
 			$('body').addClass('hideNav');
 		}
@@ -66,8 +66,6 @@ function Nav($el) {
 	function logoColor($el) {
 
 		// change the logo color as you scroll down the page.
-		var $body = $('body');
-
 		var row = $('.component-row');
 
 		var footer = $('footer.page-footer').offset().top

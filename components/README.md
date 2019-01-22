@@ -16,7 +16,7 @@ Include it where needed:
 Values/variables can be passed into the component template in the array in the `Utils::render_template` function.  To use them in the component template, `$this->varName`.
 
 
-To add JS to a new component:
+#### To add JS to a new component:
 - In the component markup, on the outer most div, add `data-component-name="JSComponentName"`
 - If it's an existing component, use the existing function name.  If it's a new component, create a new JS file and place in the component folder. 
 
@@ -30,3 +30,5 @@ To add JS to a new component:
 - Component Register ACF Fields: `register_component-name.php`
 
 Created 12/4/2018 by okadots for ATTCK
+
+okatodo: add notes about having an editor and front end stylesheet
