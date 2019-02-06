@@ -46,6 +46,8 @@ $blocks = array(
 	'core/heading',
 	'core/list',
 	'core/shortcode',
+	'attckflex/row',
+
 );
 
 //Additional available embed options

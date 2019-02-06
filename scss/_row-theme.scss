@@ -1,11 +1,30 @@
 /*** Row Theme Settings ***/
 
 
-//Background position classes
+//Background classes
 .component-background {
 	background-size: cover;
 	background-position: right center;
 	background-repeat: no-repeat;
+}
+
+.component-video-background {
+	overflow: hidden;
+	position: relative;
+
+	.video-container {
+		height: 100%;
+		left: 50%;
+		min-height: 100%;
+		min-width: 100%;
+		object-fit: none;
+		object-position: center center;
+		position: absolute;
+		transform: translate(-50%, -50%);
+		top: 50%;
+		width: 100%;
+		z-index: -1;
+	}
 }
 
 $yPositions: top, center, bottom;
@@ -19,6 +38,21 @@ $xPositions: left, right, center;
 		}
 	}
 }
+
+@each $xPosition in $xPositions{
+
+	.component-background-position-x-#{$xPosition} { 
+		background-position-x: #{$xPosition};
+	}
+}
+
+@each $yPosition in $yPositions{
+
+	.component-background-position-y-#{$yPosition} { 
+		background-position-y: #{$yPosition};
+	}
+}
+
 
 
 
