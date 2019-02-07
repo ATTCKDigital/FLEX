@@ -1,4 +1,4 @@
-
+//Global Nav & Header behavior
 function Nav($el) {
 	//cache the body
 	var $body = $('body');
@@ -42,8 +42,8 @@ function Nav($el) {
 		}
 	}
 
-
 	function scrolledNav($el) {
+		console.log('hello')
 		// Bind to scroll
 		$(document.body).bind('ATTCK.scroll', function (e, data) {
 			// Show/hide nav bar background color
@@ -95,12 +95,10 @@ function Nav($el) {
 							}
 						}
 					}
-
 				}
 				if(scrollTop == 0 ) {
 					$body.removeClass('logoDark logoLight');
 				}
-
 
 			});
 
@@ -116,8 +114,8 @@ function Nav($el) {
 	function bindEvents() {
 		$el = $el;
 		$el.find('.hamburger-wrapper').on('click', navToggle);
-		$el.find('.searchToggle').on('click', searchToggle);
 		
+		scrolledNav();		
 
 		if($(window).width() > 1024) {
 			$el.find('.menu-items > .menu-item-has-children').on('mouseenter', openSubNav);

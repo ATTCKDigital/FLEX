@@ -69,3 +69,45 @@
 	width: 100%;
 }
 
+.component-row-full {
+	margin: 0 auto;
+	max-width: none;
+	position: relative;
+	width: 100%;
+}
+
+.component-row-height-none {
+	height: 100%;
+}
+
+.component-row-height-small {
+	height: 150px;
+	overflow: hidden;
+
+	@include mediaquery(medium) {
+		height: 300px;
+	}
+}
+
+.component-row-height-medium {
+	height: 300px;
+	overflow: hidden;
+
+	@include mediaquery(medium) {
+		height: 500px;
+	}
+}
+
+.component-row-height-large {
+	height: 100vh;
+	overflow: hidden;
+
+	@include mediaquery(medium) {
+		height: 700px;
+	}
+}
+
+.component-row-height-full-height {
+	height: 100vh;
+	overflow: hidden;
+}

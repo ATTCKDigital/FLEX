@@ -33,12 +33,12 @@ body {
 
 .content-container {
 	min-height: calc(100vh - 150px);
-	padding-top: $navMobileHeight;
+	padding-top: 0;
+	transition: padding-top .3s ease-in;
 
 	@include mediaquery(xl) {
-		padding-top: $navHeight;
+		padding-top: 0;
 	}
-
 }
 
 main.content {

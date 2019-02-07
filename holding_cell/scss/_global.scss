@@ -142,17 +142,6 @@ main.content {
 	@include clearRow;
 	z-index: 2;
 
-	@include mediaquery-max(tablet-portrait) {
-		// reverse media query to avoid extra css
-		.row-reverse-mobile {
-			@include flexbox-direction(column-reverse);
-			@include flexbox(flex);
-			&:after {
-				display: none;
-			}
-		}
-	}
-
 	&.zindexTop {
 		z-index: 100000;
 	}

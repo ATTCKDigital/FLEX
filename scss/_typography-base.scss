@@ -85,8 +85,12 @@ $font-size-headline6: (
 }
 
 /** Global Text Styles **/
-address {
-
+address, .footer-link {
+	font-size: px-to-rem(14px);
+	display: block;
+	font-style: normal;
+	line-height: 1.4;
+	@include sans-serif-regular;
 }
 
 a {
@@ -106,6 +110,10 @@ a {
 
 }
 
+small {
+	font-size: 12px;
+}
+
 mark {
 	background-color: transparent;
 }
@@ -117,7 +125,7 @@ em, i {
 	font-size: inherit;
 	line-height: inherit;
 	font-family: inherit;
-	@include sans-serif-italic;
+	@include sans-serif-regular-italic;
 }
 
 hr {

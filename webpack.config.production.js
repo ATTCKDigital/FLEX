@@ -15,7 +15,7 @@ module.exports = {
     // Create aliases to import or require certain modules more easily.
     alias: {
       'attck': path.resolve(__dirname, './js/clientNamespace.js'),
-      'jquery': 'jquery/dist/jquery'
+      'jquery': 'jquery/dist/jquery/jquery.min.js'
     },
 
     //   Tell webpack what directories should be searched when resolving modules.
