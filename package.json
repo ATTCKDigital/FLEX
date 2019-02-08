@@ -84,7 +84,7 @@
     "css-vars-ponyfill": "^1.15.3",
     "imagesloaded": "^4.1.2",
     "jquery": "^3.2.1",
-    "jquery-bridget": "^2.0.1",
+    "jquery-bridget": "^2.0.1"
   },
   "husky": {
     "hooks": {
