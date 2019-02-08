@@ -24,8 +24,8 @@ function Feed($el) {
 	 * @return {Function} Returns this Feed instance.
 	 */
 	this.subscribe = function () {
-		$(document).on("ATTCK.feed-toggle.list", this.activateListView.bind(this));
-		$(document).on("ATTCK.feed-toggle.grid", this.activateGridView.bind(this));
+		$(document).on("FLEXLS.feed-toggle.list", this.activateListView.bind(this));
+		$(document).on("FLEXLS.feed-toggle.grid", this.activateGridView.bind(this));
 
 		return this;
 	};
@@ -35,8 +35,8 @@ function Feed($el) {
 	 * @return {Function} Returns this Feed instance.
 	 */
 	this.unsubscribe = function () {
-		$(document).off("ATTCK.feed-toggle.list", this.activateListView.bind(this));
-		$(document).off("ATTCK.feed-toggle.grid", this.activateGridView.bind(this));
+		$(document).off("FLEXLS.feed-toggle.list", this.activateListView.bind(this));
+		$(document).off("FLEXLS.feed-toggle.grid", this.activateGridView.bind(this));
 
 		return this;
 	};

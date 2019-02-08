@@ -16,7 +16,7 @@ function FeedToggle ($el) {
 	};
 
 	this.publish = function ( view ) {
-		$(document).trigger("ATTCK.feed-toggle." + view);
+		$(document).trigger("FLEXLS.feed-toggle." + view);
 	};
 
 	this.init = function ($el) {

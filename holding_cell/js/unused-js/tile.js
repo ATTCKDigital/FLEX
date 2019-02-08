@@ -2,7 +2,7 @@
  * Tile component
  * Keeps tiles in a group at the same vertical height, except on phones
  */
-import ATTCK from 'attck';
+import FLEXLS from 'flexls';
 import $$ from './cached-dom-elements';
 
 function Tile ($el) {
@@ -16,7 +16,7 @@ function Tile ($el) {
 // 		}, 500);
 //
 // 		// and on window resize
-// 		$(document.body).on('ATTCK.resize', function (e, data) {
+// 		$(document.body).on('FLEXLS.resize', function (e, data) {
 // 			// Allows setHeights to run again
 // 			_$closestTileGroup.find('.component-tile').removeClass('height-registered');
 //

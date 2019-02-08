@@ -158,11 +158,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var clientNamespace = {};
-var ATTCK = clientNamespace;
+var FLEXLS = clientNamespace;
 
-ATTCK.Globals = {};
+FLEXLS.Globals = {};
 
-exports.default = ATTCK;
+exports.default = FLEXLS;
 
 
 /***/ }),
@@ -176,9 +176,9 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _attck = __webpack_require__(2);
+var _flexls = __webpack_require__(2);
 
-var _attck2 = _interopRequireDefault(_attck);
+var _flexls2 = _interopRequireDefault(_flexls);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -202,9 +202,9 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _attck = __webpack_require__(2);
+var _flexls = __webpack_require__(2);
 
-var _attck2 = _interopRequireDefault(_attck);
+var _flexls2 = _interopRequireDefault(_flexls);
 
 var _debug = __webpack_require__(3);
 
@@ -212,17 +212,17 @@ var _debug2 = _interopRequireDefault(_debug);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_attck2.default.GlobalEvents = {};
+_flexls2.default.GlobalEvents = {};
 
-_attck2.default.GlobalEvents.initGlobalEvents = function () {
-	var G = _attck2.default.Globals;
+_flexls2.default.GlobalEvents.initGlobalEvents = function () {
+	var G = _flexls2.default.Globals;
 	var $window = $(window);
 	var self = this;
 
 	/*** Detect scrolling and scrolling direction ***/
 	//USAGE
 	// Bind to scroll
-	// $(document.body).bind('ATTCK.scroll', function (e, data) {
+	// $(document.body).bind('FLEXLS.scroll', function (e, data) {
 	// 		// if scroll is past or before x position
 	// 	    if (scroll >= 300) {
 	// 	    	your code here
@@ -248,7 +248,7 @@ _attck2.default.GlobalEvents.initGlobalEvents = function () {
 			return;
 		}
 
-		$(document.body).trigger('ATTCK.scroll', {
+		$(document.body).trigger('FLEXLS.scroll', {
 			'e': e,
 			'currentScrollTop': G.currentScrollTop,
 			'viewportHeight': G.viewportHeight,
@@ -288,7 +288,7 @@ _attck2.default.GlobalEvents.initGlobalEvents = function () {
 	detectOrientation();
 
 	// ...and screen resize
-	$(document.body).on('ATTCK.resize', detectOrientation);
+	$(document.body).on('FLEXLS.resize', detectOrientation);
 
 	// Detect whether body content is taller than viewport
 	function detectViewportHeightRatio() {
@@ -315,7 +315,7 @@ _attck2.default.GlobalEvents.initGlobalEvents = function () {
 	detectViewportHeightRatio();
 
 	// ...and screen resize
-	$(document.body).on('ATTCK.resize', detectViewportHeightRatio);
+	$(document.body).on('FLEXLS.resize', detectViewportHeightRatio);
 
 	// Tag body once page has loaded for one-time page load functions
 	$(window).on('load', function () {
@@ -347,7 +347,7 @@ _attck2.default.GlobalEvents.initGlobalEvents = function () {
 		G.viewportHeight = $window.outerHeight();
 		G.viewportWidth = $window.outerWidth();
 
-		$(document.body).trigger('ATTCK.resize', {
+		$(document.body).trigger('FLEXLS.resize', {
 			'e': e,
 			'viewportHeight': G.viewportHeight,
 			'viewportWidth': G.viewportWidth
@@ -355,10 +355,10 @@ _attck2.default.GlobalEvents.initGlobalEvents = function () {
 	});
 };
 
-// Declares ATTCK.GlobalEvents.xsOnly(), smOnly(), etc for running
+// Declares FLEXLS.GlobalEvents.xsOnly(), smOnly(), etc for running
 // breakpoint-specific functionality.
 $.each(_debug2.default.breakpoints, function (i, val) {
-	_attck2.default.GlobalEvents[val + 'Only'] = function (f) {
+	_flexls2.default.GlobalEvents[val + 'Only'] = function (f) {
 		if (!$$('.breakpoint.' + val).is(':visible')) {
 			return;
 		}
@@ -369,24 +369,24 @@ $.each(_debug2.default.breakpoints, function (i, val) {
 
 // Add debug utilities to the page when Debug.debug is true.
 if (_debug2.default.debug === true) {
-	$(document.body).addClass("debug").on("ATTCK.resize", function () {
-		_attck2.default.GlobalEvents.xsOnly(function () {
+	$(document.body).addClass("debug").on("FLEXLS.resize", function () {
+		_flexls2.default.GlobalEvents.xsOnly(function () {
 			$(".breakpoint-current").show().text("Breakpoint is XS");
 		});
 
-		_attck2.default.GlobalEvents.smOnly(function () {
+		_flexls2.default.GlobalEvents.smOnly(function () {
 			$(".breakpoint-current").show().text("Breakpoint is SM");
 		});
 
-		_attck2.default.GlobalEvents.mdOnly(function () {
+		_flexls2.default.GlobalEvents.mdOnly(function () {
 			$(".breakpoint-current").show().text("Breakpoint is MD");
 		});
 
-		_attck2.default.GlobalEvents.lgOnly(function () {
+		_flexls2.default.GlobalEvents.lgOnly(function () {
 			$(".breakpoint-current").show().text("Breakpoint is LG");
 		});
 
-		_attck2.default.GlobalEvents.xlOnly(function () {
+		_flexls2.default.GlobalEvents.xlOnly(function () {
 			$(".breakpoint-current").show().text("Breakpoint is XL");
 		});
 	});
@@ -396,7 +396,7 @@ if (_debug2.default.debug === true) {
 // for scroll (e.g., initial nav opacity)
 $(window).trigger('resize');
 
-exports.default = _attck2.default.GlobalEvents;
+exports.default = _flexls2.default.GlobalEvents;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
@@ -410,9 +410,9 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _attck = __webpack_require__(2);
+var _flexls = __webpack_require__(2);
 
-var _attck2 = _interopRequireDefault(_attck);
+var _flexls2 = _interopRequireDefault(_flexls);
 
 var _debug = __webpack_require__(3);
 
@@ -445,16 +445,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Import all JS components explicitly.
 
 //Required
-_attck2.default.Components = {
+_flexls2.default.Components = {
 	'Parallax': _parallax2.default,
 	'ElementsInViewport': _elementsInViewport2.default,
 	'Nav': _nav2.default
 };
 
-_attck2.default.Loader = {};
+_flexls2.default.Loader = {};
 
-_attck2.default.Loader.loadComponents = function () {
-	_attck2.default.Loader.loadedComponents = [];
+_flexls2.default.Loader.loadComponents = function () {
+	_flexls2.default.Loader.loadedComponents = [];
 
 	var self = this;
 
@@ -478,10 +478,10 @@ _attck2.default.Loader.loadComponents = function () {
 			var componentName = el;
 			var params = $this.data('component-options') || {};
 			// console.log(componentName);
-			var instance = new _attck2.default.Components[componentName]($this, params);
+			var instance = new _flexls2.default.Components[componentName]($this, params);
 
 			// Save component instance references in a global manifest.
-			if (typeof _attck2.default.Components[componentName] !== 'undefined') {
+			if (typeof _flexls2.default.Components[componentName] !== 'undefined') {
 				self.loadedComponents.push({
 					'instance': instance
 				});
@@ -495,7 +495,7 @@ _attck2.default.Loader.loadComponents = function () {
 	});
 };
 
-exports.default = _attck2.default.Loader;
+exports.default = _flexls2.default.Loader;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
@@ -542,7 +542,7 @@ function Nav($el) {
 	}
 	
 	function userScrolled() {
-		//check if user is scrolled on page load (for refresh)
+		//check if user is scrolled on page load so that the nav is hidden when they refresh the page
 		if ($(window).scrollTop() >= 10) {
 			$('body').addClass('hideNav');
 		}
@@ -551,7 +551,7 @@ function Nav($el) {
 	function scrolledNav($el) {
 		console.log('hello')
 		// Bind to scroll
-		$(document.body).bind('ATTCK.scroll', function (e, data) {
+		$(document.body).bind('FLEXLS.scroll', function (e, data) {
 			// Show/hide nav bar background color
 		    var scroll = data.currentScrollTop;
 
@@ -572,14 +572,12 @@ function Nav($el) {
 	function logoColor($el) {
 
 		// change the logo color as you scroll down the page.
-		var $body = $('body');
-
 		var row = $('.component-row');
 
 		var footer = $('footer.page-footer').offset().top
 
 
-		$(document.body).bind('ATTCK.scroll', function (e, data) {
+		$(document.body).bind('FLEXLS.scroll', function (e, data) {
 			var viewportHeight = data.viewportHeight;
 			var scrollTop = data.currentScrollTop;
 
@@ -721,31 +719,31 @@ var _cachedDomElements2 = _interopRequireDefault(_cachedDomElements);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function ElementsInViewport($el) {
-	var _fadedElementsOffsetIndex = [];
+	var _iinviewElementsOffsetIndex = [];
 	var _scrollstopTimer = 0;
 	var _currentScrollTop = $(window).scrollTop();
 	var _viewportHeight = $(window).outerHeight();
 
 	function bindEvents() {
-		$(document.body).on('ATTCK.scroll', function (e, data) {
-			// Reset timer to trigger fadeInElements
+		$(document.body).on('FLEXLS.scroll', function (e, data) {
+			// Reset timer to trigger ElementsInViewport
 			_scrollstopTimer = 0;
 
 			_currentScrollTop = data.currentScrollTop;
 
 			// Check the current scroll offset against the DOM element offset array
-			fadeInElements();
+			inViewElements();
 		});
 
 		// Include check for page resize as well since that
 		// can potentially cause the page to scroll
-		$(document.body).on('ATTCK.resize', function () {
-			// Reset timer to trigger fadeInElements
+		$(document.body).on('FLEXLS.resize', function () {
+			// Reset timer to trigger ElementsInViewport
 			_scrollstopTimer = 0;
 
 			_viewportHeight = $(window).outerHeight();
 
-			indexAllFadedElements();
+			indexAllElements();
 		});
 	}
 
@@ -753,7 +751,7 @@ function ElementsInViewport($el) {
 		// Check if user stopped scrolling for more than two seconds and show anything that
 		// would be visible but hasn't hit the vertical scroll threshold yet
 		if (_scrollstopTimer > 500 && _scrollstopTimer !== 1) {
-			fadeInElements(_viewportHeight);
+			inviewElements(_viewportHeight);
 
 			// Stop the timer once it runs once, until the next time the user scrolls
 			// which will trigger this again
@@ -764,44 +762,47 @@ function ElementsInViewport($el) {
 		}
 	}
 
-	function fadeInElements(scrollThreshold) {
+	function inViewElements(scrollThreshold) {
 		// Set Default scroll threshold
 		if (typeof scrollThreshold === 'undefined') {
 			scrollThreshold = _viewportHeight * .8;
 		}
 
-		$.each((0, _cachedDomElements2.default)('.fade-me-in'), function (index, value) {
+		$.each((0, _cachedDomElements2.default)('.inview-element'), function (index, value) {
 			var verticalScrollThreshold = _currentScrollTop + scrollThreshold;
 			var thisElementOffset = $(this).offset().top;
 
-			// Fade in elements once they are halfway up the screen
+			// Add class to elements once they are halfway up the screen
 			if (thisElementOffset < verticalScrollThreshold) {
-				$(this).addClass('faded-in');
+				$(this).addClass('element-is-inview');
 			}
 		});
 	}
 
 	function hideAllElements() {
 		// First, hide all elements
-		// $('body').find('h1, h2, h3, h4, h5, p, span').addClass('fade-me-in');
+		// Add elements that need to be manipulated here:
 
-		$('body').find('.component-fade').each(function (index, value) {
-			if (!$(this).hasClass('dont-fade-me-in')) {
-				$(this).addClass('fade-me-in');
+		// $('body').find('h1, h2, h3, h4, h5, p, span').addClass('inview-element');
+
+		// Add elements that need to be manipulated here:
+		$('body').find('h1, h2, h3, h4, h5, p, span').each(function (index, value) {
+			if (!$(this).hasClass('dont-inview-element')) {
+				$(this).addClass('inview-element');
 			}
 		});
 
 		// Show protected areas
-		$('.main-header').css('opacity', 1);
-		$('.page-footer').css('opacity', 1);
+		$('.main-header').addClass('dont-inview-element');
+		$('.page-footer').addClass('dont-inview-element');
 
 		indexAllFadedElements();
 	}
 
-	function indexAllFadedElements() {
-		$('.fade-me-in').each(function () {
+	function indexAllElements() {
+		$('.inview-element').each(function () {
 			// Convert offset values to strings since they're floats and not a valid array ID
-			_fadedElementsOffsetIndex.push({
+			_inviewElementsOffsetIndex.push({
 				'offset': $(this).offset().top,
 				'element': $(this)
 			});
@@ -861,7 +862,7 @@ function Parallax($el) {
 	function bindEvents() {
 		// Start offsetting the background-position-y value 
 		// on scroll when we reach data-scroll-start		
-		$(document.body).on('ATTCK.scroll', parallaxGo);
+		$(document.body).on('FLEXLS.scroll', parallaxGo);
 
 		// Prevent .tall-hero from affecting body height when 
 		// scrolling on mobile, which due to the changing size of the
@@ -1008,4 +1009,3 @@ exports.default = Parallax;
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.js.map

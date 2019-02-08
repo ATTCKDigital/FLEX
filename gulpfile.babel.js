@@ -37,7 +37,7 @@ const PATHS = {
 };
 
 const pkg = {
-  name: "ATTCKWPTemplate",
+  name: "FLEXLSWPTemplate",
   version: "1.0.0"
 };
 
@@ -66,7 +66,7 @@ const ESLINT_CONFIG = {
   "globals": [
     "jQuery",
     "$",
-    "ATTCK"
+    "FLEXLS"
   ]
 };
 

@@ -1,5 +1,5 @@
 // Categories
-import ATTCK from 'attck';
+import FLEXLS from 'flexls';
 
 function Categories ($el) {
 	function categoryOpen() {

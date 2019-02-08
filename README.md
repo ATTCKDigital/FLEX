@@ -1,5 +1,5 @@
-# ATTCK Boilerplate
-A boilerplate theme for ATTCK WordPress projects
+# Flex Layout System Boilerplate
+A boilerplate theme for Flex Layout System WordPress projects
 
 See the README in `__GET_STARTED_HERE` to get started on your project!
 
@@ -41,7 +41,7 @@ The boilerplate theme has a variety of existing javascript functions (nav animat
 Advanced Custom Fields Pro - https://www.advancedcustomfields.com/
 ACF Local JSON Manager  - https://github.com/khromov/acf-local-json-manager
 Classic Editor (for WP 5.0+) - https://wordpress.org/plugins/classic-editor/
-ATTCK Extend Gutenberg - https://github.com/ATTCKDigital/attck-extend-gutenberg
+Flex Layout System - https://github.com/ATTCKDigital/flex-layout-system
 
 ### Optional Plugins (as needed per project)
 WPML - https://wpml.org/
@@ -58,7 +58,7 @@ This allows syncing of json files from within each component. Once installed and
 
 Once installed, a dropdown will appear in the admin (in the toolbar at the top). When you create or edit ACF fields, select the registered component from the drop down to ensure that the fields save in the correct locations. To edit or add global ACF fields, select "disable overrides".
 
-### ATTCK Extend Gutenberg
+### Flex Layout System
 This is a custom plugin written by ATTCK.  It provides modifications to core Gutenberg blocks that allow the row/column structure. It is required.
 
 ### Classic Editor

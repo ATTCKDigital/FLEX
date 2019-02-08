@@ -2,13 +2,13 @@
  * Scroller component
  * Manages top navigation display state on scroll
  */
-import ATTCK from 'attck';
+import FLEXLS from 'flexls';
 
 function Scroller ($el) {
 	function bindEvents() {
 		$el.find('.icon-scroller').on('click', scrollDown);
 
-		$(document.body).on('ATTCK.scroll', function (e, data) {
+		$(document.body).on('FLEXLS.scroll', function (e, data) {
 			console.log('scroller.js > bindEvents > document.body.scroll, e: data:', e, data);
 			// Check the current scroll offset
 			// Check for newly visible elements on page resize as well since that 

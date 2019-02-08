@@ -1,4 +1,4 @@
-import ATTCK from 'attck';
+import FLEXLS from 'flexls';
 
 const Debug = {
 	// Set to true temporarily to enable custom debugging tools.

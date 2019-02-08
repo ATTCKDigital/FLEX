@@ -1,7 +1,7 @@
 // Test Component. Use this as a template for future components.
 //
 // After creating and exporting a component, add an entry for it in utils.js
-// so that it exists in the ATTCK.Components namespace.
+// so that it exists in the FLEXLS.Components namespace.
 
 function TestComponent ($el) {
 	function privateFunction() {

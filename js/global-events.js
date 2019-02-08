@@ -1,17 +1,17 @@
-import ATTCK from 'attck';
+import FLEXLS from 'flexls';
 import Debug from 'debug';
 
-ATTCK.GlobalEvents = {};
+FLEXLS.GlobalEvents = {};
 
-ATTCK.GlobalEvents.initGlobalEvents = function () {
-	var G = ATTCK.Globals;
+FLEXLS.GlobalEvents.initGlobalEvents = function () {
+	var G = FLEXLS.Globals;
 	var $window = $(window);
 	var self = this;
 
 	/*** Detect scrolling and scrolling direction ***/
 	//USAGE
 	// Bind to scroll
-	// $(document.body).bind('ATTCK.scroll', function (e, data) {
+	// $(document.body).bind('FLEXLS.scroll', function (e, data) {
 	// 		// if scroll is past or before x position
 	// 	    if (scroll >= 300) {
 	// 	    	your code here
@@ -37,7 +37,7 @@ ATTCK.GlobalEvents.initGlobalEvents = function () {
 			return;
 		}
 
-		$(document.body).trigger('ATTCK.scroll', {
+		$(document.body).trigger('FLEXLS.scroll', {
 			'e': e,
 			'currentScrollTop': G.currentScrollTop,
 			'viewportHeight':   G.viewportHeight,
@@ -77,7 +77,7 @@ ATTCK.GlobalEvents.initGlobalEvents = function () {
 	detectOrientation();
 
 	// ...and screen resize
-	$(document.body).on('ATTCK.resize', detectOrientation);
+	$(document.body).on('FLEXLS.resize', detectOrientation);
 
 	// Detect whether body content is taller than viewport
 	function detectViewportHeightRatio() {
@@ -104,7 +104,7 @@ ATTCK.GlobalEvents.initGlobalEvents = function () {
 	detectViewportHeightRatio();
 
 	// ...and screen resize
-	$(document.body).on('ATTCK.resize', detectViewportHeightRatio);
+	$(document.body).on('FLEXLS.resize', detectViewportHeightRatio);
 
 	// Tag body once page has loaded for one-time page load functions
 	$(window).on('load', function () {
@@ -138,7 +138,7 @@ ATTCK.GlobalEvents.initGlobalEvents = function () {
 		G.viewportHeight = $window.outerHeight();
 		G.viewportWidth  = $window.outerWidth();
 
-		$(document.body).trigger('ATTCK.resize', {
+		$(document.body).trigger('FLEXLS.resize', {
 			'e': e,
 			'viewportHeight': G.viewportHeight,
 			'viewportWidth': G.viewportWidth
@@ -147,10 +147,10 @@ ATTCK.GlobalEvents.initGlobalEvents = function () {
 
 };
 
-// Declares ATTCK.GlobalEvents.xsOnly(), smOnly(), etc for running
+// Declares FLEXLS.GlobalEvents.xsOnly(), smOnly(), etc for running
 // breakpoint-specific functionality.
 $.each(Debug.breakpoints, function (i, val) {
-	ATTCK.GlobalEvents[val + 'Only'] = function (f) {
+	FLEXLS.GlobalEvents[val + 'Only'] = function (f) {
 		if (!$$('.breakpoint.' + val).is(':visible')) {
 			return;
 		}
@@ -163,24 +163,24 @@ $.each(Debug.breakpoints, function (i, val) {
 if (Debug.debug === true) {
 	$(document.body)
 		.addClass("debug")
-		.on("ATTCK.resize", function () {
-			ATTCK.GlobalEvents.xsOnly(function () {
+		.on("FLEXLS.resize", function () {
+			FLEXLS.GlobalEvents.xsOnly(function () {
 				$(".breakpoint-current").show().text("Breakpoint is XS");
 			});
 
-			ATTCK.GlobalEvents.smOnly(function () {
+			FLEXLS.GlobalEvents.smOnly(function () {
 				$(".breakpoint-current").show().text("Breakpoint is SM");
 			});
 
-			ATTCK.GlobalEvents.mdOnly(function () {
+			FLEXLS.GlobalEvents.mdOnly(function () {
 				$(".breakpoint-current").show().text("Breakpoint is MD");
 			});
 
-			ATTCK.GlobalEvents.lgOnly(function () {
+			FLEXLS.GlobalEvents.lgOnly(function () {
 				$(".breakpoint-current").show().text("Breakpoint is LG");
 			});
 
-			ATTCK.GlobalEvents.xlOnly(function () {
+			FLEXLS.GlobalEvents.xlOnly(function () {
 				$(".breakpoint-current").show().text("Breakpoint is XL");
 			});
 		});
@@ -190,4 +190,4 @@ if (Debug.debug === true) {
 // for scroll (e.g., initial nav opacity)
 $(window).trigger('resize');
 
-export default ATTCK.GlobalEvents;
+export default FLEXLS.GlobalEvents;

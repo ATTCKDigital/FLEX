@@ -45,7 +45,7 @@ function Nav($el) {
 	function scrolledNav($el) {
 		console.log('hello')
 		// Bind to scroll
-		$(document.body).bind('ATTCK.scroll', function (e, data) {
+		$(document.body).bind('FLEXLS.scroll', function (e, data) {
 			// Show/hide nav bar background color
 		    var scroll = data.currentScrollTop;
 
@@ -71,7 +71,7 @@ function Nav($el) {
 		var footer = $('footer.page-footer').offset().top
 
 
-		$(document.body).bind('ATTCK.scroll', function (e, data) {
+		$(document.body).bind('FLEXLS.scroll', function (e, data) {
 			var viewportHeight = data.viewportHeight;
 			var scrollTop = data.currentScrollTop;
 
