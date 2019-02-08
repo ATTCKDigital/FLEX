@@ -19,6 +19,7 @@ Config files: `/boilerplate-child/config/acf-configs`
 
 ### Admin Configs 
 Config files: `config/admin-configs`
+- `admin-robots`: Sets the search engine visibility based on environment. 👍🏻**required**
 - `admin-env`: Shows the environment in the toolbar to let the user know what environment they are in. 👍🏻**required**
 - `admin-themes`: Sets the admin color scheme based on the `env` variable in `.env`. 👍🏻**required**
 - `admin-wysiwyg`: Sets colors in TinyMCE. Edit as needed for project. Uses global variables. 👍🏻**required**

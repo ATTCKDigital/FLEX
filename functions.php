@@ -19,6 +19,7 @@ include_once(locate_template('config/acf-configs/acf-sync.php')); //REQUIRED
 include_once(locate_template('config/acf-configs/register-acf-blocks.php')); //REQUIRED
 
 /*** WP-Admin Configs ***/
+include_once(locate_template('config/admin-configs/admin-robots.php')); //REQUIRED
 include_once(locate_template('config/admin-configs/admin-env.php')); //REQUIRED
 include_once(locate_template('config/admin-configs/admin-theme.php')); //REQUIRED
 include_once(locate_template('config/admin-configs/admin-wysiwyg.php')); //REQUIRED
