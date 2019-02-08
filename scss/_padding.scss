@@ -2,8 +2,8 @@
 
 $positions: top, left, bottom, right;
 $screensizes: global, small, medium, large, xl, 2xl, 3xl, 4xl, 5xl;
-$spacer: 5;
 $increment: 20;
+$increment: 4;
 // Creates classes based on variables
 // Use class "padding-size-position-xx" for paddings used in all screen sizes
 //ie: padding-small-top-1x where the number before x is the multiplier for the increment (avoids having to remember your multiplication tables :) )
@@ -30,4 +30,3 @@ $increment: 20;
 		}
 	}
 }
-

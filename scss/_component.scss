@@ -26,14 +26,17 @@
 //top align elements in a row
 .component-alignment-top {
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
+}
+
+//top align elements in a row
+.component-alignment-bottom {
+	display: flex;
+	align-items: flex-end;
 }
 
 //component row settings
-.component-row,
-.component-row-inner {
-	background-position: center center;
-	background-repeat: no-repeat;
+.component-row {
 	height: auto;
 	position: relative;
 	width: 100%;
@@ -41,12 +44,11 @@
 }
 
 .component-row {
-	@include clearRow;
 	z-index: 2;
 
 	@include mediaquery-max(medium) {
 		// reverse media query to avoid extra css
-		.row-reverse-mobile {
+		.component-row-reverse-mobile {
 			display: flex;
 			flex-direction: column-reverse;
 			
@@ -61,9 +63,9 @@
 	}
 }
 
-// inner component row, bound by site width
+
+// Row block in 2 widths
 .component-row-wide {
-	height: 100%;
 	margin: 0 auto;
 	max-width: $siteWidth;
 	position: relative;
@@ -71,7 +73,6 @@
 }
 
 .component-row-full {
-	height: 100%;
 	margin: 0 auto;
 	max-width: none;
 	position: relative;

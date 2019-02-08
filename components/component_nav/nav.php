@@ -1,7 +1,5 @@
 <?php 
 	//Global Nav 
-	$siteLogo = get_field('site_logo', 'options');
-	$siteLogoAlt = get_field('site_logo_alt', 'options');
 ?>
 
 <header class="global-header component" data-component-name="Nav">

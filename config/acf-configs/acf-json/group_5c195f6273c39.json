@@ -1,10 +1,10 @@
 {
-    "key": "group_5b4cd6926e1bb",
-    "title": "Google Tag Manager ID",
+    "key": "group_5c195f6273c39",
+    "title": "Pinterest Business ID",
     "fields": [
         {
-            "key": "field_5c1817b54be00",
-            "label": "Set up a GTM account",
+            "key": "field_5c195f68f428f",
+            "label": "Set up Pinterest Business ID",
             "name": "",
             "type": "message",
             "instructions": "",
@@ -15,16 +15,16 @@
                 "class": "",
                 "id": ""
             },
-            "message": "<a href=\"https:\/\/support.google.com\/tagmanager\/answer\/6103696?hl=en\" target=\"_blank\">Click here to set up a GTM account<\/a>",
+            "message": "<a href=\"https:\/\/business.pinterest.com\/en\/get-started-how-to-use-pinterest\" target=\"_blank\">Click here to set up a Pinterest Business account.<\/a>",
             "new_lines": "wpautop",
             "esc_html": 0
         },
         {
-            "key": "field_5b4cd69992327",
-            "label": "Google Tag Manager Container ID",
-            "name": "gtm_ID",
+            "key": "field_5c195f95f4290",
+            "label": "Pinterest Business ID",
+            "name": "pinterest_business_id",
             "type": "text",
-            "instructions": "Enter your Google Tag Manager container ID.",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -48,7 +48,7 @@
             }
         ]
     ],
-    "menu_order": 1,
+    "menu_order": 4,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -56,5 +56,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1545164492
+    "modified": 1545166752
 }

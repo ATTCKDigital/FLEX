@@ -39,7 +39,9 @@ The boilerplate theme has a variety of existing javascript functions (nav animat
 
 ### Required Plugins
 Advanced Custom Fields Pro - https://www.advancedcustomfields.com/
+ACF Local JSON Manager  - https://github.com/khromov/acf-local-json-manager
 Classic Editor (for WP 5.0+) - https://wordpress.org/plugins/classic-editor/
+ATTCK Extend Gutenberg - https://github.com/ATTCKDigital/attck-extend-gutenberg
 
 ### Optional Plugins (as needed per project)
 WPML - https://wpml.org/
@@ -50,6 +52,14 @@ List of plugins
 This theme uses ACF to allow for dynamic layouts as well as global settings that can be adjusted by an admin.
 
 Download the latest version from ACF using the ATTCK login (see LastPass for login info).
+
+### ACF Local JSON Manager
+This allows syncing of json files from within each component. Once installed and activated, no changes should need to be made.
+
+Once installed, a dropdown will appear in the admin (in the toolbar at the top). When you create or edit ACF fields, select the registered component from the drop down to ensure that the fields save in the correct locations. To edit or add global ACF fields, select "disable overrides".
+
+### ATTCK Extend Gutenberg
+This is a custom plugin written by ATTCK.  It provides modifications to core Gutenberg blocks that allow the row/column structure. It is required.
 
 ### Classic Editor
 Allows the option to use a plain WYSIWYG editor on any page, CPT or post when WordPress version is 5.0+.
@@ -63,6 +73,7 @@ JSON files: `config/acf-configs/acf-json`
 - **Google Tag Manager ID** (`group_5b4cd6926e1bb.json`): Found in "Global Settings", allows the user to insert their own GTM Container ID. 
 - **Social Media Sharing** (`group_5b16e72af37f3.json`): Added to all posts, CPTs and pages so user can override default generated OG meta tags. 
 - **Site Logo** (`group_5c06cd1fa1248.json`): Found in "Global Settings", allows user to upload 2 logo versions.
+//okatodo: potentially change site logo to be part of customizer instead of an acf field?
 
 ## Configs
 See detailed README.md in `config` folder.
