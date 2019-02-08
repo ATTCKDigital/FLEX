@@ -30,7 +30,7 @@ function colorSettingId($color) {
  * @param WP_Customize_Manager $wp_customize the Customizer object.
  */
 function tabor_customize_register( $wp_customize ) {
-	$colors = ATTCK_COLORS;
+	$colors = FLEXLS_COLORS;
 	foreach ($colors as $color) {
 		$settingId = colorSettingId($color);
 
@@ -64,7 +64,7 @@ function tabor_gutenberg_color_palette() {
 	 *
 	 * @link https://wordpress.org/gutenberg/handbook/reference/theme-support/
 	 */
-	$colors = ATTCK_COLORS;
+	$colors = FLEXLS_COLORS;
 
 	$themeColors = array();
 	foreach ($colors as $color) {
@@ -89,7 +89,7 @@ add_action( 'after_setup_theme', 'tabor_gutenberg_color_palette' );
  * Create custom colors CSS.
  */
 function tabor_gutenberg_colors() {
-	$colors = ATTCK_COLORS;
+	$colors = FLEXLS_COLORS;
 	// Build styles.
 	$css  = "";
 	foreach ($colors as $color) {

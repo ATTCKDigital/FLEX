@@ -1,8 +1,8 @@
 <?php
 
 // Add global colors to the TinyMCE editor
-function attck_mce_colors($init) {
-	$colors = ATTCK_COLORS;
+function flexls_mce_colors($init) {
+	$colors = FLEXLS_COLORS;
 	$custom_colors = "";
 	foreach ($colors as $color) {
 		$settingId = colorSettingId($color); // Sarah TODO: function used here is defined in `/config/theme-configs/customizer-colors.php/` - should it be somewhere else??
@@ -19,4 +19,4 @@ function attck_mce_colors($init) {
 	return $init;
 }
 
-add_filter('tiny_mce_before_init', 'attck_mce_colors');
+add_filter('tiny_mce_before_init', 'flexls_mce_colors');

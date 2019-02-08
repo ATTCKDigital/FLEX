@@ -46,7 +46,7 @@ $blocks = array(
 	'core/heading',
 	'core/list',
 	'core/shortcode',
-	'attckflex/row',
+	'flexls/row',
 
 );
 
@@ -74,8 +74,8 @@ $blocks = array(
 // 'core-embed/videopress',
 // 'core-embed/wordpress-tv',
 
-if(!defined('ATTCK_BLOCKS')) {
-	define('ATTCK_BLOCKS', $blocks);
+if(!defined('FLEXLS_BLOCKS')) {
+	define('FLEXLS_BLOCKS', $blocks);
 }
 
 //Add all of the acf blocks that should be registered. Only put the block name. The components must be named as described in the read me.
@@ -84,6 +84,6 @@ $registerBlocks = array(
 );
 
 
-if(!defined('ATTCK_REGISTER_BLOCKS')) {
-	define('ATTCK_REGISTER_BLOCKS', $registerBlocks);
+if(!defined('FLEXLS_REGISTER_BLOCKS')) {
+	define('FLEXLS_REGISTER_BLOCKS', $registerBlocks);
 }

@@ -18,7 +18,7 @@ function register_block_child() {
 			'category'			=> 'formatting',
 			'icon'				=> 'admin-comments',
 			'keywords'			=> array( 'template', 'quote' ),
-			'parent'			=> ['attckflex/row'], 
+			'parent'			=> ['flexls/row'], 
 		));
 	}
 }

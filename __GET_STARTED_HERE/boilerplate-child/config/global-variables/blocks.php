@@ -46,7 +46,7 @@ $blocks = array(
 	'core/list',
 	'core/shortcode',
 	'acf/testimonial',
-	'attckflex/row',
+	'flexls/row',
 );
 
 //Additional available embed options
@@ -73,7 +73,7 @@ $blocks = array(
 // 'core-embed/videopress',
 // 'core-embed/wordpress-tv',
 
-define('ATTCK_BLOCKS', $blocks);
+define('FLEXLS_BLOCKS', $blocks);
 
 //Add all of the acf blocks that should be registered. 
 $registerBlocks = array(
@@ -81,4 +81,4 @@ $registerBlocks = array(
 );
 
 
-define('ATTCK_REGISTER_BLOCKS', $registerBlocks);
+define('FLEXLS_REGISTER_BLOCKS', $registerBlocks);

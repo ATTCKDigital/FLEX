@@ -1,10 +1,10 @@
 <?php
 	$menus = array(
-		'primary' => __('Primary Navigation', '_attck'),
-		'footer' => __('Footer Navigation', '_attck'),
+		'primary' => __('Primary Navigation', '_flexls'),
+		'footer' => __('Footer Navigation', '_flexls'),
 	);
 
 
-	if(!defined('ATTCK_MENUS')) {
-	  define('ATTCK_MENUS', $menus);
+	if(!defined('FLEXLS_MENUS')) {
+	  define('FLEXLS_MENUS', $menus);
 	}

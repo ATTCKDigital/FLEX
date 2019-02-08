@@ -23,8 +23,8 @@ function _scripts() {
 
 
 // Deregister any unneeded plugin scripts here.
-add_action('wp_print_styles', 'attck_deregister_styles', 100);
-function attck_deregister_styles() {
+add_action('wp_print_styles', 'flexls_deregister_styles', 100);
+function flexls_deregister_styles() {
 	// Remove CF7 styles
 	wp_deregister_style( 'contact-form-7' );
 }
