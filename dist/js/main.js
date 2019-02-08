@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -74,30 +74,6 @@ module.exports = jQuery;
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
-
-/*** IMPORTS FROM imports-loader ***/
-var define = false;
-
-/**
- * Declares the global namespace, and the ns() utility for declaring
- * sub-namespaces.
- */
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var clientNamespace = {};
-var ATTCK = clientNamespace;
-
-ATTCK.Globals = {};
-
-exports.default = ATTCK;
-
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -166,6 +142,30 @@ exports.default = $$;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(0)))
 
 /***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+/*** IMPORTS FROM imports-loader ***/
+var define = false;
+
+/**
+ * Declares the global namespace, and the ns() utility for declaring
+ * sub-namespaces.
+ */
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var clientNamespace = {};
+var ATTCK = clientNamespace;
+
+ATTCK.Globals = {};
+
+exports.default = ATTCK;
+
+
+/***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -176,7 +176,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _attck = __webpack_require__(1);
+var _attck = __webpack_require__(2);
 
 var _attck2 = _interopRequireDefault(_attck);
 
@@ -202,7 +202,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _attck = __webpack_require__(1);
+var _attck = __webpack_require__(2);
 
 var _attck2 = _interopRequireDefault(_attck);
 
@@ -410,7 +410,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _attck = __webpack_require__(1);
+var _attck = __webpack_require__(2);
 
 var _attck2 = _interopRequireDefault(_attck);
 
@@ -418,15 +418,15 @@ var _debug = __webpack_require__(3);
 
 var _debug2 = _interopRequireDefault(_debug);
 
-var _cachedDomElements = __webpack_require__(2);
+var _cachedDomElements = __webpack_require__(1);
 
 var _cachedDomElements2 = _interopRequireDefault(_cachedDomElements);
 
-var _parallax = __webpack_require__(10);
+var _parallax = __webpack_require__(9);
 
 var _parallax2 = _interopRequireDefault(_parallax);
 
-var _elementsInViewport = __webpack_require__(9);
+var _elementsInViewport = __webpack_require__(8);
 
 var _elementsInViewport2 = _interopRequireDefault(_elementsInViewport);
 
@@ -434,28 +434,22 @@ var _nav = __webpack_require__(6);
 
 var _nav2 = _interopRequireDefault(_nav);
 
-var _test = __webpack_require__(7);
-
-var _test2 = _interopRequireDefault(_test);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//Project Specific
 
 // Add your components here so they get loaded.
 // Make sure to import them above first.
-_attck2.default.Components = {
-	'Parallax': _parallax2.default,
-	'ElementsInViewport': _elementsInViewport2.default,
-	'Nav': _nav2.default,
-	'Test': _test2.default
-};
-
-//Project Specific
 
 
 // Import all JS components explicitly.
 
 //Required
-
+_attck2.default.Components = {
+	'Parallax': _parallax2.default,
+	'ElementsInViewport': _elementsInViewport2.default,
+	'Nav': _nav2.default
+};
 
 _attck2.default.Loader = {};
 
@@ -510,7 +504,7 @@ exports.default = _attck2.default.Loader;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function($) {
+/* WEBPACK VAR INJECTION */(function($) {//Global Nav & Header behavior
 function Nav($el) {
 	//cache the body
 	var $body = $('body');
@@ -554,8 +548,8 @@ function Nav($el) {
 		}
 	}
 
-
 	function scrolledNav($el) {
+		console.log('hello')
 		// Bind to scroll
 		$(document.body).bind('ATTCK.scroll', function (e, data) {
 			// Show/hide nav bar background color
@@ -607,12 +601,10 @@ function Nav($el) {
 							}
 						}
 					}
-
 				}
 				if(scrollTop == 0 ) {
 					$body.removeClass('logoDark logoLight');
 				}
-
 
 			});
 
@@ -628,8 +620,8 @@ function Nav($el) {
 	function bindEvents() {
 		$el = $el;
 		$el.find('.hamburger-wrapper').on('click', navToggle);
-		$el.find('.searchToggle').on('click', searchToggle);
 		
+		scrolledNav();		
 
 		if($(window).width() > 1024) {
 			$el.find('.menu-items > .menu-item-has-children').on('mouseenter', openSubNav);
@@ -668,28 +660,6 @@ function Nav($el) {
 
 /***/ }),
 /* 7 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_attck__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_attck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_attck__);
-
-
-function Test($el) {
-
-  this.init = function ($el) {
-    return this;
-  }
-
-  return this.init($el);
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (Test);
-
-
-/***/ }),
-/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -734,7 +704,7 @@ window.onpageshow = function (event) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -744,7 +714,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _cachedDomElements = __webpack_require__(2);
+var _cachedDomElements = __webpack_require__(1);
 
 var _cachedDomElements2 = _interopRequireDefault(_cachedDomElements);
 
@@ -860,7 +830,7 @@ exports.default = ElementsInViewport;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -870,7 +840,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _cachedDomElements = __webpack_require__(2);
+var _cachedDomElements = __webpack_require__(1);
 
 var _cachedDomElements2 = _interopRequireDefault(_cachedDomElements);
 

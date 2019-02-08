@@ -10,7 +10,6 @@ import ElementsInViewport from 'elements-in-viewport.js';
 import Nav from '../components/component_nav/nav.js';
 
 //Project Specific
-import Test from '../components/component_test/test.js';
 
 // Add your components here so they get loaded.
 // Make sure to import them above first.
@@ -18,7 +17,6 @@ ATTCK.Components = {
 	'Parallax': Parallax,
 	'ElementsInViewport': ElementsInViewport,
 	'Nav': Nav,
-	'Test': Test,
 };
 
 ATTCK.Loader = {};

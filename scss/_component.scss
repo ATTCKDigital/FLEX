@@ -62,7 +62,8 @@
 }
 
 // inner component row, bound by site width
-.component-row-standard {
+.component-row-wide {
+	height: 100%;
 	margin: 0 auto;
 	max-width: $siteWidth;
 	position: relative;
@@ -70,6 +71,7 @@
 }
 
 .component-row-full {
+	height: 100%;
 	margin: 0 auto;
 	max-width: none;
 	position: relative;
