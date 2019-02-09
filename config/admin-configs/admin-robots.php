@@ -12,7 +12,5 @@ function admin_robots() {
 		update_option( 'blog_public', '0' );
 	}
 
-	echo $env;
-
 }
 add_action('after_setup_theme', 'admin_robots');
