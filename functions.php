@@ -6,9 +6,10 @@ define('THEME_DIR', get_template_directory()); // use when there are files that 
 
 /*** Global Variables ***/
 // These define globally available variables, and must be included first
-include_once(locate_template('config/global-variables/colors.php'));
-include_once(locate_template('config/global-variables/nav-menus.php'));
-include_once(locate_template('config/global-variables/blocks.php'));
+include_once(locate_template('config/global-variables/colors.php')); //REQUIRED
+include_once(locate_template('config/global-variables/nav-menus.php')); //REQUIRED
+include_once(locate_template('config/global-variables/svg-sprite.php')); //REQUIRED
+include_once(locate_template('config/global-variables/date-format.php')); //REQUIRED
 
 // WP functions are split out into individual files for clarity. Disable/Enable files by commenting out here. See README.md
 // for details on each config file
@@ -31,7 +32,6 @@ include_once(locate_template('config/admin-configs/unwrap-images.php')); //REQUI
 
 /*** Theme Configs ***/
 include_once(locate_template('config/theme-configs/body-classes.php')); //REQUIRED
-include_once(locate_template('config/theme-configs/constants.php')); //REQUIRED
 include_once(locate_template('config/theme-configs/custom-nav-classes.php')); //REQUIRED
 include_once(locate_template('config/theme-configs/customizer-colors.php')); //REQUIRED
 include_once(locate_template('config/theme-configs/enqueue-scripts-styles.php')); //REQUIRED
