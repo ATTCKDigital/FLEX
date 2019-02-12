@@ -30,6 +30,11 @@ function flexls_deregister_styles() {
 	wp_deregister_style( 'contact-form-7' );
 }
 
+// Admin specific styles
+function admin_style() {
+  wp_enqueue_style('admin-styles', get_template_directory_uri().'/dist/css/admin.css');
+}
+add_action('admin_enqueue_scripts', 'admin_style');
 
 // REMOVE WP EMOJI
 // https://www.denisbouquet.com/remove-wordpress-emoji-code/
