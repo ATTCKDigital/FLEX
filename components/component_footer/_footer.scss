@@ -2,6 +2,12 @@
 //Override with custom styles in child theme
 
 .global-footer {
+	padding: 0 $gap;
+
+	@include mediaquery(xl) {
+		padding: 0;
+	}
+
 	.menu-item {
 		display: block;
 		font-size: px-to-rem(16px);

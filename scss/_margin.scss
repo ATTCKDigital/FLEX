@@ -1,8 +1,6 @@
 /**** Margins ****/
 
-$positions: top, left, bottom, right;
-$screensizes: global, small, medium, large, xl, 2xl, 3xl, 4xl, 5xl;
-$increment: 20;
+
 // Creates classes based on variables
 // Use class "margin-size-position-xx" for margins used in all screen sizes
 //ie: margin-small-top-1x where the number before x is the multiplier for the increment (avoids having to remember your multiplication tables :) )
@@ -21,7 +19,7 @@ $increment: 20;
 
 				@if $screensize == global {
 					//creates a global margin class that has no screen size dependency
-					.margin-#{$screensize}-#{$position}-#{$i}x { 
+					.margin-#{$position}-#{$i}x { 
 						margin-#{$position}: #{$i * $increment}px;
 					}
 				} 

@@ -18,11 +18,11 @@ function Parallax($el, params={}) {
 		// on scroll when we reach data-scroll-start		
 		$(document.body).on('FLEXLS.scroll', parallaxGo);
 
-		// Prevent .tall-hero from affecting body height when 
+		// Prevent full height hero from affecting body height when 
 		// scrolling on mobile, which due to the changing size of the
 		// address bar, causes jankyness all the way down the page
 		var viewportHeight = $(window).outerHeight(true);
-		$('.tall-hero').css('height', viewportHeight * .7);
+		$('.component-row-height-full-height').css('height', viewportHeight * .7);
 	}
 
 	function calculateScrollStart() {

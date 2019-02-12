@@ -143,6 +143,26 @@ exports.default = $$;
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var Debug = {
+	// Set to true temporarily to enable custom debugging tools.
+	debug: false,
+
+	breakpoints: ["global", "small", "medium", "large", "xl", "2xl", "3xl", "4xl", "5xl"]
+};
+
+exports.default = Debug;
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports) {
 
 /*** IMPORTS FROM imports-loader ***/
@@ -166,32 +186,6 @@ exports.default = FLEXLS;
 
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _flexls = __webpack_require__(2);
-
-var _flexls2 = _interopRequireDefault(_flexls);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Debug = {
-	// Set to true temporarily to enable custom debugging tools.
-	debug: false,
-
-	breakpoints: ["xs", "sm", "md", "lg", "xl", "2xl", "3xl", "4xl"]
-};
-
-exports.default = Debug;
-
-/***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -202,11 +196,15 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _flexls = __webpack_require__(2);
+var _flexls = __webpack_require__(3);
 
 var _flexls2 = _interopRequireDefault(_flexls);
 
-var _debug = __webpack_require__(3);
+var _cachedDomElements = __webpack_require__(1);
+
+var _cachedDomElements2 = _interopRequireDefault(_cachedDomElements);
+
+var _debug = __webpack_require__(2);
 
 var _debug2 = _interopRequireDefault(_debug);
 
@@ -358,8 +356,8 @@ _flexls2.default.GlobalEvents.initGlobalEvents = function () {
 // Declares FLEXLS.GlobalEvents.xsOnly(), smOnly(), etc for running
 // breakpoint-specific functionality.
 $.each(_debug2.default.breakpoints, function (i, val) {
-	_flexls2.default.GlobalEvents[val + 'Only'] = function (f) {
-		if (!$$('.breakpoint.' + val).is(':visible')) {
+	_flexls2.default.GlobalEvents['only' + val] = function (f) {
+		if (!(0, _cachedDomElements2.default)('.breakpoint.' + val).is(':visible')) {
 			return;
 		}
 
@@ -370,24 +368,37 @@ $.each(_debug2.default.breakpoints, function (i, val) {
 // Add debug utilities to the page when Debug.debug is true.
 if (_debug2.default.debug === true) {
 	$(document.body).addClass("debug").on("FLEXLS.resize", function () {
-		_flexls2.default.GlobalEvents.xsOnly(function () {
-			$(".breakpoint-current").show().text("Breakpoint is XS");
-		});
 
-		_flexls2.default.GlobalEvents.smOnly(function () {
+		_flexls2.default.GlobalEvents.onlysmall(function () {
 			$(".breakpoint-current").show().text("Breakpoint is SM");
 		});
 
-		_flexls2.default.GlobalEvents.mdOnly(function () {
+		_flexls2.default.GlobalEvents.onlymedium(function () {
 			$(".breakpoint-current").show().text("Breakpoint is MD");
 		});
 
-		_flexls2.default.GlobalEvents.lgOnly(function () {
+		_flexls2.default.GlobalEvents.onlylarge(function () {
 			$(".breakpoint-current").show().text("Breakpoint is LG");
 		});
 
-		_flexls2.default.GlobalEvents.xlOnly(function () {
+		_flexls2.default.GlobalEvents.onlyxl(function () {
 			$(".breakpoint-current").show().text("Breakpoint is XL");
+		});
+
+		_flexls2.default.GlobalEvents.only2xl(function () {
+			$(".breakpoint-current").show().text("Breakpoint is 2XL");
+		});
+
+		_flexls2.default.GlobalEvents.only3xl(function () {
+			$(".breakpoint-current").show().text("Breakpoint is 3XL");
+		});
+
+		_flexls2.default.GlobalEvents.only4xl(function () {
+			$(".breakpoint-current").show().text("Breakpoint is 4XL");
+		});
+
+		_flexls2.default.GlobalEvents.only5xl(function () {
+			$(".breakpoint-current").show().text("Breakpoint is 5XL");
 		});
 	});
 }
@@ -410,11 +421,11 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _flexls = __webpack_require__(2);
+var _flexls = __webpack_require__(3);
 
 var _flexls2 = _interopRequireDefault(_flexls);
 
-var _debug = __webpack_require__(3);
+var _debug = __webpack_require__(2);
 
 var _debug2 = _interopRequireDefault(_debug);
 
@@ -511,7 +522,6 @@ function Nav($el) {
 
 	function navToggle() {
 		// Open nav on hamburger click
-
 		$body.toggleClass('navOpen');
 		$el.find('.openNav').removeClass('openSubNav');
 		$el.find('.menu-back').removeClass('openSubNav');
@@ -549,7 +559,6 @@ function Nav($el) {
 	}
 
 	function scrolledNav($el) {
-		console.log('hello')
 		// Bind to scroll
 		$(document.body).bind('FLEXLS.scroll', function (e, data) {
 			// Show/hide nav bar background color
@@ -571,10 +580,10 @@ function Nav($el) {
 
 	function logoColor($el) {
 
-		// change the logo color as you scroll down the page.
+		// Change the logo color as you scroll down the page. Can also be used to change the hamburger color. Make color changes using CSS.
 		var row = $('.component-row');
 
-		var footer = $('footer.page-footer').offset().top
+		var footer = $('.global-footer').offset().top
 
 
 		$(document.body).bind('FLEXLS.scroll', function (e, data) {
@@ -586,18 +595,12 @@ function Nav($el) {
 				var logoColor = $(this).data('logo-color');
 
 				if (rowTop <= scrollTop + 20 ) {
-					if(logoColor == 'row-text-white') {
+					if(logoColor == 'logo-color-white') {
 						$body.addClass('logoLight').removeClass('logoDark');
 					}
 
-					if(logoColor == 'row-text-black') {
+					if(logoColor == 'logo-color-dark') {
 						$body.addClass('logoDark').removeClass('logoLight');
-					
-						if($body.hasClass('page-amenities') && $(this).last()) {
-							if($(window).width() < 1023) {
-								$body.addClass('logoLight').removeClass('logoDark');
-							}
-						}
 					}
 				}
 				if(scrollTop == 0 ) {
@@ -621,6 +624,7 @@ function Nav($el) {
 		
 		scrolledNav();		
 
+		//Use this if subnav is triggered on hover
 		if($(window).width() > 1024) {
 			$el.find('.menu-items > .menu-item-has-children').on('mouseenter', openSubNav);
 
@@ -719,7 +723,7 @@ var _cachedDomElements2 = _interopRequireDefault(_cachedDomElements);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function ElementsInViewport($el) {
-	var _iinviewElementsOffsetIndex = [];
+	var _inViewElementsOffsetIndex = [];
 	var _scrollstopTimer = 0;
 	var _currentScrollTop = $(window).scrollTop();
 	var _viewportHeight = $(window).outerHeight();
@@ -751,7 +755,7 @@ function ElementsInViewport($el) {
 		// Check if user stopped scrolling for more than two seconds and show anything that
 		// would be visible but hasn't hit the vertical scroll threshold yet
 		if (_scrollstopTimer > 500 && _scrollstopTimer !== 1) {
-			inviewElements(_viewportHeight);
+			inViewElements(_viewportHeight);
 
 			// Stop the timer once it runs once, until the next time the user scrolls
 			// which will trigger this again
@@ -768,41 +772,39 @@ function ElementsInViewport($el) {
 			scrollThreshold = _viewportHeight * .8;
 		}
 
-		$.each((0, _cachedDomElements2.default)('.inview-element'), function (index, value) {
+		$.each((0, _cachedDomElements2.default)('.prepare-in-view'), function (index, value) {
 			var verticalScrollThreshold = _currentScrollTop + scrollThreshold;
 			var thisElementOffset = $(this).offset().top;
 
 			// Add class to elements once they are halfway up the screen
 			if (thisElementOffset < verticalScrollThreshold) {
-				$(this).addClass('element-is-inview');
+				$(this).addClass('element-in-view');
 			}
 		});
 	}
 
 	function hideAllElements() {
 		// First, hide all elements
-		// Add elements that need to be manipulated here:
-
-		// $('body').find('h1, h2, h3, h4, h5, p, span').addClass('inview-element');
+		$('body').find('h1, h2, h3, h4, h5, p, span').addClass('prepare-in-view');
 
 		// Add elements that need to be manipulated here:
 		$('body').find('h1, h2, h3, h4, h5, p, span').each(function (index, value) {
-			if (!$(this).hasClass('dont-inview-element')) {
-				$(this).addClass('inview-element');
+			if (!$(this).hasClass('no-element-in-view')) {
+				$(this).addClass('prepare-in-view');
 			}
 		});
 
 		// Show protected areas
-		$('.main-header').addClass('dont-inview-element');
-		$('.page-footer').addClass('dont-inview-element');
+		$('.global-header').addClass('no-element-in-view');
+		$('.global-footer').addClass('no-element-in-view');
 
-		indexAllFadedElements();
+		indexAllElements();
 	}
 
 	function indexAllElements() {
-		$('.inview-element').each(function () {
+		$('.element-in-view').each(function () {
 			// Convert offset values to strings since they're floats and not a valid array ID
-			_inviewElementsOffsetIndex.push({
+			_inViewElementsOffsetIndex.push({
 				'offset': $(this).offset().top,
 				'element': $(this)
 			});
@@ -825,7 +827,7 @@ function ElementsInViewport($el) {
 } /**
    * Element in Viewport
    * Tracks when an element is in the view port.
-   * Default behavior is to fade in specific elements (fadeInElements), use elementInView to extend for other transformations/manipulations
+   * Default behavior is to fade in specific elements - this behavior/animation/transition is handled via css
    **/
 exports.default = ElementsInViewport;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -864,11 +866,11 @@ function Parallax($el) {
 		// on scroll when we reach data-scroll-start		
 		$(document.body).on('FLEXLS.scroll', parallaxGo);
 
-		// Prevent .tall-hero from affecting body height when 
+		// Prevent full height hero from affecting body height when 
 		// scrolling on mobile, which due to the changing size of the
 		// address bar, causes jankyness all the way down the page
 		var viewportHeight = $(window).outerHeight(true);
-		$('.tall-hero').css('height', viewportHeight * .7);
+		$('.component-row-height-full-height').css('height', viewportHeight * .7);
 	}
 
 	function calculateScrollStart() {
@@ -1009,3 +1011,4 @@ exports.default = Parallax;
 
 /***/ })
 /******/ ]);
+//# sourceMappingURL=main.js.map

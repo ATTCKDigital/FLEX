@@ -5,7 +5,6 @@ function Nav($el) {
 
 	function navToggle() {
 		// Open nav on hamburger click
-
 		$body.toggleClass('navOpen');
 		$el.find('.openNav').removeClass('openSubNav');
 		$el.find('.menu-back').removeClass('openSubNav');
@@ -43,7 +42,6 @@ function Nav($el) {
 	}
 
 	function scrolledNav($el) {
-		console.log('hello')
 		// Bind to scroll
 		$(document.body).bind('FLEXLS.scroll', function (e, data) {
 			// Show/hide nav bar background color
@@ -65,10 +63,10 @@ function Nav($el) {
 
 	function logoColor($el) {
 
-		// change the logo color as you scroll down the page.
+		// Change the logo color as you scroll down the page. Can also be used to change the hamburger color. Make color changes using CSS.
 		var row = $('.component-row');
 
-		var footer = $('footer.page-footer').offset().top
+		var footer = $('.global-footer').offset().top
 
 
 		$(document.body).bind('FLEXLS.scroll', function (e, data) {
@@ -80,18 +78,12 @@ function Nav($el) {
 				var logoColor = $(this).data('logo-color');
 
 				if (rowTop <= scrollTop + 20 ) {
-					if(logoColor == 'row-text-white') {
+					if(logoColor == 'logo-color-white') {
 						$body.addClass('logoLight').removeClass('logoDark');
 					}
 
-					if(logoColor == 'row-text-black') {
+					if(logoColor == 'logo-color-dark') {
 						$body.addClass('logoDark').removeClass('logoLight');
-					
-						if($body.hasClass('page-amenities') && $(this).last()) {
-							if($(window).width() < 1023) {
-								$body.addClass('logoLight').removeClass('logoDark');
-							}
-						}
 					}
 				}
 				if(scrollTop == 0 ) {
@@ -115,6 +107,7 @@ function Nav($el) {
 		
 		scrolledNav();		
 
+		//Use this if subnav is triggered on hover
 		if($(window).width() > 1024) {
 			$el.find('.menu-items > .menu-item-has-children').on('mouseenter', openSubNav);
 

@@ -2,10 +2,10 @@
 
 /** Fade Me In **/
 // Set initial styles before "faded-in" class added
-.fade-me-in {
+.prepare-in-view {
 	opacity: 0;
 
-	&.faded-in {
+	&.element-in-view {
 		opacity: 1;
 	}
 }

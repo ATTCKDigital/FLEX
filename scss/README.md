@@ -7,7 +7,7 @@ These should serve as the basis for a functioning theme. Changes should be made 
 ### Required SCSS Files
 - `_animations.scss`: Common animations. 
 - `_buttons.scss`: All button styles.
-- `_colors.scss`: Sets the colors available for the site. //okatodo: make colors editable from wp-admin 
+- `_colors.scss`: Sets the colors available for the site. 
 - `_component.scss`: Basic component styles. 
 - `_debug.scss`: Styles for debugging breakpoints using js debug utility.
 - `_fonts.scss`: All font settings.
@@ -27,7 +27,7 @@ These should serve as the basis for a functioning theme. Changes should be made 
 - `_sass-utils.scss`: SASS utilities.
 - `_sizing.scss`: Variables related to heights and widths (gap, site width, breakpoints).
 - `_styleguide.scss`: Styles for the styleguide page.
-- `_theme.scss`: Component background defaults and border classes. //okatodo: rename to more sensical name
+- `_row-theme.scss`: Component background defaults and border classes. 
 - `_typography-base.scss`: Base typography styles and font size maps.
 - `_typography.scss`: Project specific type styles.
 

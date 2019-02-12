@@ -1,12 +1,12 @@
 /**
  * Element in Viewport
  * Tracks when an element is in the view port.
- * Default behavior is to fade in specific elements (fadeInElements), use elementInView to extend for other transformations/manipulations
+ * Default behavior is to fade in specific elements - this behavior/animation/transition is handled via css
  **/
 import $$ from 'cached-dom-elements';
 
 function ElementsInViewport($el) {
-	var _iinviewElementsOffsetIndex = [];
+	var _inViewElementsOffsetIndex = [];
 	var _scrollstopTimer = 0;
 	var _currentScrollTop = $(window).scrollTop();
 	var _viewportHeight = $(window).outerHeight();
@@ -38,7 +38,7 @@ function ElementsInViewport($el) {
 		// Check if user stopped scrolling for more than two seconds and show anything that
 		// would be visible but hasn't hit the vertical scroll threshold yet
 		if (_scrollstopTimer > 500 && _scrollstopTimer !== 1) {
-			inviewElements(_viewportHeight);
+			inViewElements(_viewportHeight);
 
 			// Stop the timer once it runs once, until the next time the user scrolls
 			// which will trigger this again
@@ -55,41 +55,39 @@ function ElementsInViewport($el) {
 			scrollThreshold = _viewportHeight*.8;
 		}
 
-		$.each($$('.inview-element'), function (index, value) {
+		$.each($$('.prepare-in-view'), function (index, value) {
 			var verticalScrollThreshold = (_currentScrollTop + scrollThreshold);
 			var thisElementOffset = $(this).offset().top;
 
 			// Add class to elements once they are halfway up the screen
 			if (thisElementOffset < verticalScrollThreshold) {
-				$(this).addClass('element-is-inview');
+				$(this).addClass('element-in-view');
 			}
 		});
 	}
 
 	function hideAllElements() {
 		// First, hide all elements
-		// Add elements that need to be manipulated here:
+		$('body').find('h1, h2, h3, h4, h5, p, span').addClass('prepare-in-view');
 
-		// $('body').find('h1, h2, h3, h4, h5, p, span').addClass('inview-element');
-		
 		// Add elements that need to be manipulated here:
 		$('body').find('h1, h2, h3, h4, h5, p, span').each(function (index, value) {
-			if (!$(this).hasClass('dont-inview-element')) {
-				$(this).addClass('inview-element');
+			if (!$(this).hasClass('no-element-in-view')) {
+				$(this).addClass('prepare-in-view');
 			}
 		});
 
 		// Show protected areas
-		$('.main-header').addClass('dont-inview-element');
-		$('.page-footer').addClass('dont-inview-element');
+		$('.global-header').addClass('no-element-in-view');
+		$('.global-footer').addClass('no-element-in-view');
 
-		indexAllFadedElements();
+		indexAllElements();
 	}
 
 	function indexAllElements() {
-		$('.inview-element').each(function () {
+		$('.element-in-view').each(function () {
 			// Convert offset values to strings since they're floats and not a valid array ID
-			_inviewElementsOffsetIndex.push({
+			_inViewElementsOffsetIndex.push({
 				'offset': $(this).offset().top,
 				'element': $(this)
 			});

@@ -1,4 +1,5 @@
 import FLEXLS from 'flexls';
+import $$ from 'cached-dom-elements';
 import Debug from 'debug';
 
 FLEXLS.GlobalEvents = {};
@@ -150,7 +151,7 @@ FLEXLS.GlobalEvents.initGlobalEvents = function () {
 // Declares FLEXLS.GlobalEvents.xsOnly(), smOnly(), etc for running
 // breakpoint-specific functionality.
 $.each(Debug.breakpoints, function (i, val) {
-	FLEXLS.GlobalEvents[val + 'Only'] = function (f) {
+	FLEXLS.GlobalEvents['only' + val] = function (f) {
 		if (!$$('.breakpoint.' + val).is(':visible')) {
 			return;
 		}
@@ -164,24 +165,37 @@ if (Debug.debug === true) {
 	$(document.body)
 		.addClass("debug")
 		.on("FLEXLS.resize", function () {
-			FLEXLS.GlobalEvents.xsOnly(function () {
-				$(".breakpoint-current").show().text("Breakpoint is XS");
-			});
 
-			FLEXLS.GlobalEvents.smOnly(function () {
+			FLEXLS.GlobalEvents.onlysmall(function () {
 				$(".breakpoint-current").show().text("Breakpoint is SM");
 			});
 
-			FLEXLS.GlobalEvents.mdOnly(function () {
+			FLEXLS.GlobalEvents.onlymedium(function () {
 				$(".breakpoint-current").show().text("Breakpoint is MD");
 			});
 
-			FLEXLS.GlobalEvents.lgOnly(function () {
+			FLEXLS.GlobalEvents.onlylarge(function () {
 				$(".breakpoint-current").show().text("Breakpoint is LG");
 			});
 
-			FLEXLS.GlobalEvents.xlOnly(function () {
+			FLEXLS.GlobalEvents.onlyxl(function () {
 				$(".breakpoint-current").show().text("Breakpoint is XL");
+			});
+
+			FLEXLS.GlobalEvents.only2xl(function () {
+				$(".breakpoint-current").show().text("Breakpoint is 2XL");
+			});
+
+			FLEXLS.GlobalEvents.only3xl(function () {
+				$(".breakpoint-current").show().text("Breakpoint is 3XL");
+			});
+
+			FLEXLS.GlobalEvents.only4xl(function () {
+				$(".breakpoint-current").show().text("Breakpoint is 4XL");
+			});
+
+			FLEXLS.GlobalEvents.only5xl(function () {
+				$(".breakpoint-current").show().text("Breakpoint is 5XL");
 			});
 		});
 }
