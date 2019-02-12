@@ -1,5 +1,5 @@
 {
-  "name": "ATTCKWPTemplate",
+  "name": "FLEXLSWPTemplate",
   "version": "1.0.0",
   "description": "All WordPress sites start here.",
   "private": true,
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/ATTCKDigital/BuildTemplateWordPress.git"
   },
-  "author": "ATTCK",
+  "author": "FLEXLS",
   "bugs": {
     "url": "https://github.com/ATTCKDigital/BuildTemplateWordPress/issues"
   },
@@ -84,10 +84,7 @@
     "css-vars-ponyfill": "^1.15.3",
     "imagesloaded": "^4.1.2",
     "jquery": "^3.2.1",
-    "jquery-bridget": "^2.0.1",
-    "mapbox-gl": "^0.42.2",
-    "masonry-layout": "^4.2.0",
-    "slick-carousel": "^1.8.1"
+    "jquery-bridget": "^2.0.1"
   },
   "husky": {
     "hooks": {

@@ -93,4 +93,4 @@ $colors = array(
 	),
 );
 
-define('ATTCK_COLORS', $colors);
+define('FLEXLS_COLORS', $colors);

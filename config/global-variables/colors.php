@@ -113,6 +113,6 @@ $colors = array(
 	),
 );
 
-if(!defined('ATTCK_COLORS')) {
-	define('ATTCK_COLORS', $colors);
+if(!defined('FLEXLS_COLORS')) {
+	define('FLEXLS_COLORS', $colors);
 }

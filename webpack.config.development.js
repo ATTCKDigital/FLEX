@@ -14,8 +14,8 @@ module.exports = {
   resolve: {
     // Create aliases to import or require certain modules more easily.
     alias: {
-      'attck': path.resolve(__dirname, './js/clientNamespace.js'),
-      'jquery': 'jquery/dist/jquery'
+      'flexls': path.resolve(__dirname, './js/clientNamespace.js'),
+      'jquery': 'jquery/dist/jquery.min.js'
     },
 
     //	Tell webpack what directories should be searched when resolving modules.
@@ -41,10 +41,10 @@ module.exports = {
       '$': "jquery",
       'jQuery': "jquery",
       "window.jQuery": "jquery",
-      'ATTCK': 'attck',
-      'window.ATTCK': 'attck',
-      'ATTCK.Utils': 'utils',
-      'ATTCK.Config': 'config',
+      'FLEXLS': 'flexls',
+      'window.FLEXLS': 'flexls',
+      'FLEXLS.Utils': 'utils',
+      'FLEXLS.Config': 'config',
       'Masonry': 'masonry-layout/masonry',
       'window.Masonry': 'masonry-layout/masonry',
       'ImagesLoaded': 'imagesloaded/imagesloaded'

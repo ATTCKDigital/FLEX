@@ -1,11 +1,10 @@
-
+//Global Nav & Header behavior
 function Nav($el) {
 	//cache the body
 	var $body = $('body');
 
 	function navToggle() {
 		// Open nav on hamburger click
-
 		$body.toggleClass('navOpen');
 		$el.find('.openNav').removeClass('openSubNav');
 		$el.find('.menu-back').removeClass('openSubNav');
@@ -36,16 +35,15 @@ function Nav($el) {
 	}
 	
 	function userScrolled() {
-		//check if user is scrolled on page load (for refresh)
+		//check if user is scrolled on page load so that the nav is hidden when they refresh the page
 		if ($(window).scrollTop() >= 10) {
 			$('body').addClass('hideNav');
 		}
 	}
 
-
 	function scrolledNav($el) {
 		// Bind to scroll
-		$(document.body).bind('ATTCK.scroll', function (e, data) {
+		$(document.body).bind('FLEXLS.scroll', function (e, data) {
 			// Show/hide nav bar background color
 		    var scroll = data.currentScrollTop;
 
@@ -65,15 +63,13 @@ function Nav($el) {
 
 	function logoColor($el) {
 
-		// change the logo color as you scroll down the page.
-		var $body = $('body');
-
+		// Change the logo color as you scroll down the page. Can also be used to change the hamburger color. Make color changes using CSS.
 		var row = $('.component-row');
 
-		var footer = $('footer.page-footer').offset().top
+		var footer = $('.global-footer').offset().top
 
 
-		$(document.body).bind('ATTCK.scroll', function (e, data) {
+		$(document.body).bind('FLEXLS.scroll', function (e, data) {
 			var viewportHeight = data.viewportHeight;
 			var scrollTop = data.currentScrollTop;
 
@@ -82,25 +78,17 @@ function Nav($el) {
 				var logoColor = $(this).data('logo-color');
 
 				if (rowTop <= scrollTop + 20 ) {
-					if(logoColor == 'row-text-white') {
+					if(logoColor == 'logo-color-white') {
 						$body.addClass('logoLight').removeClass('logoDark');
 					}
 
-					if(logoColor == 'row-text-black') {
+					if(logoColor == 'logo-color-dark') {
 						$body.addClass('logoDark').removeClass('logoLight');
-					
-						if($body.hasClass('page-amenities') && $(this).last()) {
-							if($(window).width() < 1023) {
-								$body.addClass('logoLight').removeClass('logoDark');
-							}
-						}
 					}
-
 				}
 				if(scrollTop == 0 ) {
 					$body.removeClass('logoDark logoLight');
 				}
-
 
 			});
 
@@ -116,9 +104,10 @@ function Nav($el) {
 	function bindEvents() {
 		$el = $el;
 		$el.find('.hamburger-wrapper').on('click', navToggle);
-		$el.find('.searchToggle').on('click', searchToggle);
 		
+		scrolledNav();		
 
+		//Use this if subnav is triggered on hover
 		if($(window).width() > 1024) {
 			$el.find('.menu-items > .menu-item-has-children').on('mouseenter', openSubNav);
 

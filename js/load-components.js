@@ -1,4 +1,4 @@
-import ATTCK from 'attck';
+import FLEXLS from 'flexls';
 import Debug from 'debug';
 
 // Import all JS components explicitly.
@@ -10,21 +10,19 @@ import ElementsInViewport from 'elements-in-viewport.js';
 import Nav from '../components/component_nav/nav.js';
 
 //Project Specific
-import Test from '../components/component_test/test.js';
 
 // Add your components here so they get loaded.
 // Make sure to import them above first.
-ATTCK.Components = {
+FLEXLS.Components = {
 	'Parallax': Parallax,
 	'ElementsInViewport': ElementsInViewport,
 	'Nav': Nav,
-	'Test': Test,
 };
 
-ATTCK.Loader = {};
+FLEXLS.Loader = {};
 
-ATTCK.Loader.loadComponents = function () {
-	ATTCK.Loader.loadedComponents = [];
+FLEXLS.Loader.loadComponents = function () {
+	FLEXLS.Loader.loadedComponents = [];
 
 	var self = this;
 
@@ -48,10 +46,10 @@ ATTCK.Loader.loadComponents = function () {
 			let componentName = el;
 			let params = $this.data('component-options') || {};
 			// console.log(componentName);
-			let instance = new ATTCK.Components[componentName]($this, params);
+			let instance = new FLEXLS.Components[componentName]($this, params);
 
 			// Save component instance references in a global manifest.
-			if (typeof ATTCK.Components[componentName] !== 'undefined') {
+			if (typeof FLEXLS.Components[componentName] !== 'undefined') {
 				self.loadedComponents.push({
 					'instance': instance
 				});
@@ -66,4 +64,4 @@ ATTCK.Loader.loadComponents = function () {
 };
 
 
-export default ATTCK.Loader;
+export default FLEXLS.Loader;

@@ -1,6 +1,6 @@
 /*** Hide classes ***/
 
-.mobile-hidden {
+.small-hidden {
 	@include mediaquery-max(medium) {
 		display: none;
 	}
@@ -18,6 +18,10 @@
 	@include mediaquery(medium) {
 		display: none;
 	}
+
+	@include mediaquery(large) {
+		display: inherit;
+	}
 }
 
 .large-hidden {
@@ -27,6 +31,10 @@
 
 	@include mediaquery(large) {
 		display: none;
+	}
+
+	@include mediaquery(xl) {
+		display: inherit;
 	}
 }
 

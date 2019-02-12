@@ -1,0 +1,122 @@
+/*** Row Theme Settings ***/
+
+
+//Background classes
+.component-background {
+	background-size: cover;
+	background-position: right center;
+	background-repeat: no-repeat;
+}
+
+.component-video-background {
+	overflow: hidden;
+	position: relative;
+
+	.video-container {
+		height: 100%;
+		left: 50%;
+		min-height: 100%;
+		min-width: 100%;
+		object-fit: none;
+		object-position: center center;
+		position: absolute;
+		transform: translate(-50%, -50%);
+		top: 50%;
+		width: 100%;
+		z-index: -1;
+	}
+}
+
+$yPositions: top, center, bottom;
+$xPositions: left, right, center;
+
+@each $yPosition in $yPositions{
+  	@each $xPosition in $xPositions{
+
+		.component-background-#{$xPosition}-#{$yPosition} { 
+			background-position: #{$xPosition} #{$yPosition};
+		}
+	}
+}
+
+@each $xPosition in $xPositions{
+
+	.component-background-position-x-#{$xPosition} { 
+		background-position-x: #{$xPosition};
+	}
+}
+
+@each $yPosition in $yPositions{
+
+	.component-background-position-y-#{$yPosition} { 
+		background-position-y: #{$yPosition};
+	}
+}
+
+
+
+
+//Border classes
+
+@each $position in $positions{
+	.component-theme-#{$position}-border {
+		border-#{$position}: 1px solid $borderColor;
+	}
+
+	.component-theme-#{$position}-border-white {
+		border-#{$position}: 1px solid $white;
+	}
+
+	.component-theme-#{$position}-border-small {
+		@include mediaquery-max(medium) {
+			border-#{$position}: 1px solid $borderColor;
+		}
+	}
+
+	.component-theme-#{$position}-border-medium-up {
+		@include mediaquery(medium) {
+			border-#{$position}: 1px solid $borderColor;
+		}
+	}
+}
+
+
+//overlay
+.overlay {
+	background-color: rgba(0, 0, 0, .3);
+	height: 100%;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+
+//Fixed row heights
+
+.small-row-height {
+	height: $small-row-mobile;
+
+	@include mediaquery(medium) {
+		height: $small-row;
+
+	}
+}
+
+.medium-row-height {
+	height: $medium-row-mobile;
+
+	@include mediaquery(medium) {
+		height: $medium-row;
+
+	}
+}
+
+.large-row-height {
+	height: $large-row-mobile;
+
+	@include mediaquery(medium) {
+		height: $large-row;
+
+	}
+}

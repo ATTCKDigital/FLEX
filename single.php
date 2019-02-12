@@ -17,11 +17,6 @@
 
 		if (have_posts()) : while (have_posts()) : the_post();
 
-			//Post Header
-			echo Utils::render_template('components/component_post-header/post-header.php', array(
-				'title'	=> get_the_title()
-			));
-
 			//Post Body
 			echo Utils::render_template('components/component_post-body/post-body.php');
 

@@ -13,7 +13,7 @@
 @import 'component';
 @import 'hidden';
 @import 'images';
-@import 'theme'; //okatodo: rename this file
+@import 'row-theme';
 @import 'popups-overlays';
 @import 'animations';
 @import 'padding';
@@ -28,6 +28,5 @@
 @import 'styleguide';
 
 // Components
-@import '../components/component_footer-inner/footer-inner';
+@import '../components/component_footer/footer';
 @import '../components/component_nav/nav';
-@import '../components/component_test/test';

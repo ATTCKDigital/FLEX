@@ -1,15 +1,16 @@
-/**** FADE ME IN - Prevents flashing for fade me in transition
+/**** Element in Viewport - Prevents flashing for Element in Viewport transition
 *	(js adds opacity 1 once loaded)
-*	Add elements or classes that are present BEFORE js and are affected by the Fade In script
-* 	okatodo: rename "Fade In";
+*	Add elements or classes that are present BEFORE js and are affected by the Element in Viewport script
 ****/
-// .component-fade {
-// 	opacity: 0;
 
-// 	&.dont-fade-me-in {
-// 		opacity: 1;
-// 	}
-// }
+h1, h2, h3, h4, h5, h6, p {
+	opacity: 0;
+	transition: opacity .3s ease-in;
+
+	.no-element-in-view &, &.no-element-in-view {
+		opacity: 1;
+	}
+}
 
 body {
 	font-smoothing: antialiased;
@@ -33,12 +34,6 @@ body {
 
 .content-container {
 	min-height: calc(100vh - 150px);
-	padding-top: $navMobileHeight;
-
-	@include mediaquery(xl) {
-		padding-top: $navHeight;
-	}
-
 }
 
 main.content {

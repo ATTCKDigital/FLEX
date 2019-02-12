@@ -1,7 +1,7 @@
 <?php
 
 // Remove comments column from post lists
-function attck_disable_comments() {
+function flexls_disable_comments() {
 	$post_types = get_post_types();
 	foreach ($post_types as $post_type) {
 		if (post_type_supports($post_type,'comments')) {
@@ -10,4 +10,4 @@ function attck_disable_comments() {
 		}
 	}
 }
-add_action('admin_init','attck_disable_comments');
+add_action('admin_init','flexls_disable_comments');

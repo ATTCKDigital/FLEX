@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -74,30 +74,6 @@ module.exports = jQuery;
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
-
-/*** IMPORTS FROM imports-loader ***/
-var define = false;
-
-/**
- * Declares the global namespace, and the ns() utility for declaring
- * sub-namespaces.
- */
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var clientNamespace = {};
-var ATTCK = clientNamespace;
-
-ATTCK.Globals = {};
-
-exports.default = ATTCK;
-
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -166,7 +142,7 @@ exports.default = $$;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(0)))
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -176,20 +152,38 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _attck = __webpack_require__(1);
-
-var _attck2 = _interopRequireDefault(_attck);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 var Debug = {
 	// Set to true temporarily to enable custom debugging tools.
 	debug: false,
 
-	breakpoints: ["xs", "sm", "md", "lg", "xl", "2xl", "3xl", "4xl"]
+	breakpoints: ["global", "small", "medium", "large", "xl", "2xl", "3xl", "4xl", "5xl"]
 };
 
 exports.default = Debug;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+/*** IMPORTS FROM imports-loader ***/
+var define = false;
+
+/**
+ * Declares the global namespace, and the ns() utility for declaring
+ * sub-namespaces.
+ */
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var clientNamespace = {};
+var FLEXLS = clientNamespace;
+
+FLEXLS.Globals = {};
+
+exports.default = FLEXLS;
+
 
 /***/ }),
 /* 4 */
@@ -202,27 +196,31 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _attck = __webpack_require__(1);
+var _flexls = __webpack_require__(3);
 
-var _attck2 = _interopRequireDefault(_attck);
+var _flexls2 = _interopRequireDefault(_flexls);
 
-var _debug = __webpack_require__(3);
+var _cachedDomElements = __webpack_require__(1);
+
+var _cachedDomElements2 = _interopRequireDefault(_cachedDomElements);
+
+var _debug = __webpack_require__(2);
 
 var _debug2 = _interopRequireDefault(_debug);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_attck2.default.GlobalEvents = {};
+_flexls2.default.GlobalEvents = {};
 
-_attck2.default.GlobalEvents.initGlobalEvents = function () {
-	var G = _attck2.default.Globals;
+_flexls2.default.GlobalEvents.initGlobalEvents = function () {
+	var G = _flexls2.default.Globals;
 	var $window = $(window);
 	var self = this;
 
 	/*** Detect scrolling and scrolling direction ***/
 	//USAGE
 	// Bind to scroll
-	// $(document.body).bind('ATTCK.scroll', function (e, data) {
+	// $(document.body).bind('FLEXLS.scroll', function (e, data) {
 	// 		// if scroll is past or before x position
 	// 	    if (scroll >= 300) {
 	// 	    	your code here
@@ -248,7 +246,7 @@ _attck2.default.GlobalEvents.initGlobalEvents = function () {
 			return;
 		}
 
-		$(document.body).trigger('ATTCK.scroll', {
+		$(document.body).trigger('FLEXLS.scroll', {
 			'e': e,
 			'currentScrollTop': G.currentScrollTop,
 			'viewportHeight': G.viewportHeight,
@@ -288,7 +286,7 @@ _attck2.default.GlobalEvents.initGlobalEvents = function () {
 	detectOrientation();
 
 	// ...and screen resize
-	$(document.body).on('ATTCK.resize', detectOrientation);
+	$(document.body).on('FLEXLS.resize', detectOrientation);
 
 	// Detect whether body content is taller than viewport
 	function detectViewportHeightRatio() {
@@ -315,7 +313,7 @@ _attck2.default.GlobalEvents.initGlobalEvents = function () {
 	detectViewportHeightRatio();
 
 	// ...and screen resize
-	$(document.body).on('ATTCK.resize', detectViewportHeightRatio);
+	$(document.body).on('FLEXLS.resize', detectViewportHeightRatio);
 
 	// Tag body once page has loaded for one-time page load functions
 	$(window).on('load', function () {
@@ -347,7 +345,7 @@ _attck2.default.GlobalEvents.initGlobalEvents = function () {
 		G.viewportHeight = $window.outerHeight();
 		G.viewportWidth = $window.outerWidth();
 
-		$(document.body).trigger('ATTCK.resize', {
+		$(document.body).trigger('FLEXLS.resize', {
 			'e': e,
 			'viewportHeight': G.viewportHeight,
 			'viewportWidth': G.viewportWidth
@@ -355,11 +353,11 @@ _attck2.default.GlobalEvents.initGlobalEvents = function () {
 	});
 };
 
-// Declares ATTCK.GlobalEvents.xsOnly(), smOnly(), etc for running
+// Declares FLEXLS.GlobalEvents.xsOnly(), smOnly(), etc for running
 // breakpoint-specific functionality.
 $.each(_debug2.default.breakpoints, function (i, val) {
-	_attck2.default.GlobalEvents[val + 'Only'] = function (f) {
-		if (!$$('.breakpoint.' + val).is(':visible')) {
+	_flexls2.default.GlobalEvents['only' + val] = function (f) {
+		if (!(0, _cachedDomElements2.default)('.breakpoint.' + val).is(':visible')) {
 			return;
 		}
 
@@ -369,25 +367,38 @@ $.each(_debug2.default.breakpoints, function (i, val) {
 
 // Add debug utilities to the page when Debug.debug is true.
 if (_debug2.default.debug === true) {
-	$(document.body).addClass("debug").on("ATTCK.resize", function () {
-		_attck2.default.GlobalEvents.xsOnly(function () {
-			$(".breakpoint-current").show().text("Breakpoint is XS");
-		});
+	$(document.body).addClass("debug").on("FLEXLS.resize", function () {
 
-		_attck2.default.GlobalEvents.smOnly(function () {
+		_flexls2.default.GlobalEvents.onlysmall(function () {
 			$(".breakpoint-current").show().text("Breakpoint is SM");
 		});
 
-		_attck2.default.GlobalEvents.mdOnly(function () {
+		_flexls2.default.GlobalEvents.onlymedium(function () {
 			$(".breakpoint-current").show().text("Breakpoint is MD");
 		});
 
-		_attck2.default.GlobalEvents.lgOnly(function () {
+		_flexls2.default.GlobalEvents.onlylarge(function () {
 			$(".breakpoint-current").show().text("Breakpoint is LG");
 		});
 
-		_attck2.default.GlobalEvents.xlOnly(function () {
+		_flexls2.default.GlobalEvents.onlyxl(function () {
 			$(".breakpoint-current").show().text("Breakpoint is XL");
+		});
+
+		_flexls2.default.GlobalEvents.only2xl(function () {
+			$(".breakpoint-current").show().text("Breakpoint is 2XL");
+		});
+
+		_flexls2.default.GlobalEvents.only3xl(function () {
+			$(".breakpoint-current").show().text("Breakpoint is 3XL");
+		});
+
+		_flexls2.default.GlobalEvents.only4xl(function () {
+			$(".breakpoint-current").show().text("Breakpoint is 4XL");
+		});
+
+		_flexls2.default.GlobalEvents.only5xl(function () {
+			$(".breakpoint-current").show().text("Breakpoint is 5XL");
 		});
 	});
 }
@@ -396,7 +407,7 @@ if (_debug2.default.debug === true) {
 // for scroll (e.g., initial nav opacity)
 $(window).trigger('resize');
 
-exports.default = _attck2.default.GlobalEvents;
+exports.default = _flexls2.default.GlobalEvents;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
@@ -410,23 +421,23 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _attck = __webpack_require__(1);
+var _flexls = __webpack_require__(3);
 
-var _attck2 = _interopRequireDefault(_attck);
+var _flexls2 = _interopRequireDefault(_flexls);
 
-var _debug = __webpack_require__(3);
+var _debug = __webpack_require__(2);
 
 var _debug2 = _interopRequireDefault(_debug);
 
-var _cachedDomElements = __webpack_require__(2);
+var _cachedDomElements = __webpack_require__(1);
 
 var _cachedDomElements2 = _interopRequireDefault(_cachedDomElements);
 
-var _parallax = __webpack_require__(10);
+var _parallax = __webpack_require__(9);
 
 var _parallax2 = _interopRequireDefault(_parallax);
 
-var _elementsInViewport = __webpack_require__(9);
+var _elementsInViewport = __webpack_require__(8);
 
 var _elementsInViewport2 = _interopRequireDefault(_elementsInViewport);
 
@@ -434,33 +445,27 @@ var _nav = __webpack_require__(6);
 
 var _nav2 = _interopRequireDefault(_nav);
 
-var _test = __webpack_require__(7);
-
-var _test2 = _interopRequireDefault(_test);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//Project Specific
 
 // Add your components here so they get loaded.
 // Make sure to import them above first.
-_attck2.default.Components = {
-	'Parallax': _parallax2.default,
-	'ElementsInViewport': _elementsInViewport2.default,
-	'Nav': _nav2.default,
-	'Test': _test2.default
-};
-
-//Project Specific
 
 
 // Import all JS components explicitly.
 
 //Required
+_flexls2.default.Components = {
+	'Parallax': _parallax2.default,
+	'ElementsInViewport': _elementsInViewport2.default,
+	'Nav': _nav2.default
+};
 
+_flexls2.default.Loader = {};
 
-_attck2.default.Loader = {};
-
-_attck2.default.Loader.loadComponents = function () {
-	_attck2.default.Loader.loadedComponents = [];
+_flexls2.default.Loader.loadComponents = function () {
+	_flexls2.default.Loader.loadedComponents = [];
 
 	var self = this;
 
@@ -484,10 +489,10 @@ _attck2.default.Loader.loadComponents = function () {
 			var componentName = el;
 			var params = $this.data('component-options') || {};
 			// console.log(componentName);
-			var instance = new _attck2.default.Components[componentName]($this, params);
+			var instance = new _flexls2.default.Components[componentName]($this, params);
 
 			// Save component instance references in a global manifest.
-			if (typeof _attck2.default.Components[componentName] !== 'undefined') {
+			if (typeof _flexls2.default.Components[componentName] !== 'undefined') {
 				self.loadedComponents.push({
 					'instance': instance
 				});
@@ -501,7 +506,7 @@ _attck2.default.Loader.loadComponents = function () {
 	});
 };
 
-exports.default = _attck2.default.Loader;
+exports.default = _flexls2.default.Loader;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
@@ -510,14 +515,13 @@ exports.default = _attck2.default.Loader;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function($) {
+/* WEBPACK VAR INJECTION */(function($) {//Global Nav & Header behavior
 function Nav($el) {
 	//cache the body
 	var $body = $('body');
 
 	function navToggle() {
 		// Open nav on hamburger click
-
 		$body.toggleClass('navOpen');
 		$el.find('.openNav').removeClass('openSubNav');
 		$el.find('.menu-back').removeClass('openSubNav');
@@ -548,16 +552,15 @@ function Nav($el) {
 	}
 	
 	function userScrolled() {
-		//check if user is scrolled on page load (for refresh)
+		//check if user is scrolled on page load so that the nav is hidden when they refresh the page
 		if ($(window).scrollTop() >= 10) {
 			$('body').addClass('hideNav');
 		}
 	}
 
-
 	function scrolledNav($el) {
 		// Bind to scroll
-		$(document.body).bind('ATTCK.scroll', function (e, data) {
+		$(document.body).bind('FLEXLS.scroll', function (e, data) {
 			// Show/hide nav bar background color
 		    var scroll = data.currentScrollTop;
 
@@ -577,15 +580,13 @@ function Nav($el) {
 
 	function logoColor($el) {
 
-		// change the logo color as you scroll down the page.
-		var $body = $('body');
-
+		// Change the logo color as you scroll down the page. Can also be used to change the hamburger color. Make color changes using CSS.
 		var row = $('.component-row');
 
-		var footer = $('footer.page-footer').offset().top
+		var footer = $('.global-footer').offset().top
 
 
-		$(document.body).bind('ATTCK.scroll', function (e, data) {
+		$(document.body).bind('FLEXLS.scroll', function (e, data) {
 			var viewportHeight = data.viewportHeight;
 			var scrollTop = data.currentScrollTop;
 
@@ -594,25 +595,17 @@ function Nav($el) {
 				var logoColor = $(this).data('logo-color');
 
 				if (rowTop <= scrollTop + 20 ) {
-					if(logoColor == 'row-text-white') {
+					if(logoColor == 'logo-color-white') {
 						$body.addClass('logoLight').removeClass('logoDark');
 					}
 
-					if(logoColor == 'row-text-black') {
+					if(logoColor == 'logo-color-dark') {
 						$body.addClass('logoDark').removeClass('logoLight');
-					
-						if($body.hasClass('page-amenities') && $(this).last()) {
-							if($(window).width() < 1023) {
-								$body.addClass('logoLight').removeClass('logoDark');
-							}
-						}
 					}
-
 				}
 				if(scrollTop == 0 ) {
 					$body.removeClass('logoDark logoLight');
 				}
-
 
 			});
 
@@ -628,9 +621,10 @@ function Nav($el) {
 	function bindEvents() {
 		$el = $el;
 		$el.find('.hamburger-wrapper').on('click', navToggle);
-		$el.find('.searchToggle').on('click', searchToggle);
 		
+		scrolledNav();		
 
+		//Use this if subnav is triggered on hover
 		if($(window).width() > 1024) {
 			$el.find('.menu-items > .menu-item-has-children').on('mouseenter', openSubNav);
 
@@ -668,28 +662,6 @@ function Nav($el) {
 
 /***/ }),
 /* 7 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_attck__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_attck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_attck__);
-
-
-function Test($el) {
-
-  this.init = function ($el) {
-    return this;
-  }
-
-  return this.init($el);
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (Test);
-
-
-/***/ }),
-/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -734,7 +706,7 @@ window.onpageshow = function (event) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -744,38 +716,38 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _cachedDomElements = __webpack_require__(2);
+var _cachedDomElements = __webpack_require__(1);
 
 var _cachedDomElements2 = _interopRequireDefault(_cachedDomElements);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function ElementsInViewport($el) {
-	var _fadedElementsOffsetIndex = [];
+	var _inViewElementsOffsetIndex = [];
 	var _scrollstopTimer = 0;
 	var _currentScrollTop = $(window).scrollTop();
 	var _viewportHeight = $(window).outerHeight();
 
 	function bindEvents() {
-		$(document.body).on('ATTCK.scroll', function (e, data) {
-			// Reset timer to trigger fadeInElements
+		$(document.body).on('FLEXLS.scroll', function (e, data) {
+			// Reset timer to trigger ElementsInViewport
 			_scrollstopTimer = 0;
 
 			_currentScrollTop = data.currentScrollTop;
 
 			// Check the current scroll offset against the DOM element offset array
-			fadeInElements();
+			inViewElements();
 		});
 
 		// Include check for page resize as well since that
 		// can potentially cause the page to scroll
-		$(document.body).on('ATTCK.resize', function () {
-			// Reset timer to trigger fadeInElements
+		$(document.body).on('FLEXLS.resize', function () {
+			// Reset timer to trigger ElementsInViewport
 			_scrollstopTimer = 0;
 
 			_viewportHeight = $(window).outerHeight();
 
-			indexAllFadedElements();
+			indexAllElements();
 		});
 	}
 
@@ -783,7 +755,7 @@ function ElementsInViewport($el) {
 		// Check if user stopped scrolling for more than two seconds and show anything that
 		// would be visible but hasn't hit the vertical scroll threshold yet
 		if (_scrollstopTimer > 500 && _scrollstopTimer !== 1) {
-			fadeInElements(_viewportHeight);
+			inViewElements(_viewportHeight);
 
 			// Stop the timer once it runs once, until the next time the user scrolls
 			// which will trigger this again
@@ -794,44 +766,45 @@ function ElementsInViewport($el) {
 		}
 	}
 
-	function fadeInElements(scrollThreshold) {
+	function inViewElements(scrollThreshold) {
 		// Set Default scroll threshold
 		if (typeof scrollThreshold === 'undefined') {
 			scrollThreshold = _viewportHeight * .8;
 		}
 
-		$.each((0, _cachedDomElements2.default)('.fade-me-in'), function (index, value) {
+		$.each((0, _cachedDomElements2.default)('.prepare-in-view'), function (index, value) {
 			var verticalScrollThreshold = _currentScrollTop + scrollThreshold;
 			var thisElementOffset = $(this).offset().top;
 
-			// Fade in elements once they are halfway up the screen
+			// Add class to elements once they are halfway up the screen
 			if (thisElementOffset < verticalScrollThreshold) {
-				$(this).addClass('faded-in');
+				$(this).addClass('element-in-view');
 			}
 		});
 	}
 
 	function hideAllElements() {
 		// First, hide all elements
-		// $('body').find('h1, h2, h3, h4, h5, p, span').addClass('fade-me-in');
+		$('body').find('h1, h2, h3, h4, h5, p, span').addClass('prepare-in-view');
 
-		$('body').find('.component-fade').each(function (index, value) {
-			if (!$(this).hasClass('dont-fade-me-in')) {
-				$(this).addClass('fade-me-in');
+		// Add elements that need to be manipulated here:
+		$('body').find('h1, h2, h3, h4, h5, p, span').each(function (index, value) {
+			if (!$(this).hasClass('no-element-in-view')) {
+				$(this).addClass('prepare-in-view');
 			}
 		});
 
 		// Show protected areas
-		$('.main-header').css('opacity', 1);
-		$('.page-footer').css('opacity', 1);
+		$('.global-header').addClass('no-element-in-view');
+		$('.global-footer').addClass('no-element-in-view');
 
-		indexAllFadedElements();
+		indexAllElements();
 	}
 
-	function indexAllFadedElements() {
-		$('.fade-me-in').each(function () {
+	function indexAllElements() {
+		$('.element-in-view').each(function () {
 			// Convert offset values to strings since they're floats and not a valid array ID
-			_fadedElementsOffsetIndex.push({
+			_inViewElementsOffsetIndex.push({
 				'offset': $(this).offset().top,
 				'element': $(this)
 			});
@@ -854,13 +827,13 @@ function ElementsInViewport($el) {
 } /**
    * Element in Viewport
    * Tracks when an element is in the view port.
-   * Default behavior is to fade in specific elements (fadeInElements), use elementInView to extend for other transformations/manipulations
+   * Default behavior is to fade in specific elements - this behavior/animation/transition is handled via css
    **/
 exports.default = ElementsInViewport;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -870,7 +843,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _cachedDomElements = __webpack_require__(2);
+var _cachedDomElements = __webpack_require__(1);
 
 var _cachedDomElements2 = _interopRequireDefault(_cachedDomElements);
 
@@ -891,13 +864,13 @@ function Parallax($el) {
 	function bindEvents() {
 		// Start offsetting the background-position-y value 
 		// on scroll when we reach data-scroll-start		
-		$(document.body).on('ATTCK.scroll', parallaxGo);
+		$(document.body).on('FLEXLS.scroll', parallaxGo);
 
-		// Prevent .tall-hero from affecting body height when 
+		// Prevent full height hero from affecting body height when 
 		// scrolling on mobile, which due to the changing size of the
 		// address bar, causes jankyness all the way down the page
 		var viewportHeight = $(window).outerHeight(true);
-		$('.tall-hero').css('height', viewportHeight * .7);
+		$('.component-row-height-full-height').css('height', viewportHeight * .7);
 	}
 
 	function calculateScrollStart() {

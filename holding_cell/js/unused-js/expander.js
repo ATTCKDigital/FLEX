@@ -197,7 +197,7 @@ function Expander ($el) {
 
 
 		// Bind to scroll
-		$(document.body).bind('ATTCK.scroll', function (e, data) {
+		$(document.body).bind('FLEXLS.scroll', function (e, data) {
 		    var scroll = data.currentScrollTop;
 
 			//fixes issue with zoom buttons being covered by the chrome in mobile safari

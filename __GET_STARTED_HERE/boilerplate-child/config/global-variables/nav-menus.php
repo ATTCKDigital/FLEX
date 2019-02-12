@@ -1,7 +1,7 @@
 <?php
 	$menus = array(
-		'primary' => __('Primary Navigation', '_attck'),
-		'footer' => __('Footer Navigation', '_attck'),
+		'primary' => __('Primary Navigation', '_flexls'),
+		'footer' => __('Footer Navigation', '_flexls'),
 	);
 
-	define('ATTCK_MENUS', $menus);
+	define('FLEXFLS_MENUS', $menus);

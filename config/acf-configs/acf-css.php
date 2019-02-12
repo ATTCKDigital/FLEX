@@ -1,6 +1,6 @@
 <?php
 	// customizes the admin css and js when ACF is installed and active
-	function attck_acf_styles() {
+	function flexfls_acf_styles() {
 ?>
 	<style type='text/css'>
 		.acf-flexible-content .layout {
@@ -130,5 +130,5 @@
 <?php
 	}
 
-	add_action('acf/input/admin_head', 'attck_acf_styles');
+	add_action('acf/input/admin_head', 'flexfls_acf_styles');
 ?>

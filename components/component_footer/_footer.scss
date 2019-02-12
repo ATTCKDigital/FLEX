@@ -1,0 +1,25 @@
+/**** Global Footer Styles ****/
+//Override with custom styles in child theme
+
+.global-footer {
+	padding: 0 $gap;
+
+	@include mediaquery(xl) {
+		padding: 0;
+	}
+
+	.menu-item {
+		display: block;
+		font-size: px-to-rem(16px);
+		margin-bottom: $gap;
+		@include sans-serif-bold;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.footer-link {
+		margin-bottom: $gap*.25;
+	}
+}

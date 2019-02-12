@@ -1,6 +1,7 @@
 /**** Media Queries ****/
 
 $mediaQueries: (
+	'global'	: '0',
 	'small'		: $small-breakpoint,
 	'iPhone6'	: '375px',
 	'medium'	: $medium-breakpoint,
@@ -13,6 +14,7 @@ $mediaQueries: (
 );
 
 $maxMediaQueries: (
+	'global'	: 'none',
 	'small'		: $max-small-breakpoint,
 	'medium'	: $max-medium-breakpoint,
 	'large'		: $max-large-breakpoint,

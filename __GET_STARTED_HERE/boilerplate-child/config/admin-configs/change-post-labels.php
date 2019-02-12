@@ -3,7 +3,7 @@
 // https://stackoverflow.com/questions/26145878/renaming-post-to-something-else
 // Replace "Stories" with desired label
 
-function attck_change_post_menu_label() {
+function flexls_change_post_menu_label() {
 	global $menu;
 	global $submenu;
 	$menu[5][0] = 'Stories';
@@ -13,10 +13,10 @@ function attck_change_post_menu_label() {
 	echo '';
 }
 
-add_action('admin_menu', 'attck_change_post_menu_label');
+add_action('admin_menu', 'flexls_change_post_menu_label');
 
 // Change post object labels
-function attck_change_post_object_label() {
+function flexls_change_post_object_label() {
 	global $wp_post_types;
 	$labels = &$wp_post_types['post']->labels;
 	$labels->name = 'Stories';
@@ -31,4 +31,4 @@ function attck_change_post_object_label() {
 	$labels->not_found_in_trash = 'No Stories found in Trash';
 }
 
-add_action('init', 'attck_change_post_object_label');
+add_action('init', 'flexls_change_post_object_label');

@@ -21,19 +21,19 @@
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 // define('DB_NAME', 'edens');
-define('DB_NAME', $_SERVER['ATTCK_DB_NAME']);
+define('DB_NAME', $_SERVER['FLEX_DB_NAME']);
 
 /** MySQL database username */
 // define('DB_USER', 'root');
-define('DB_USER', $_SERVER['ATTCK_USERNAME']);
+define('DB_USER', $_SERVER['FLEX_USERNAME']);
 
 /** MySQL database password */
 // define('DB_PASSWORD', '');
-define('DB_PASSWORD', $_SERVER['ATTCK_PASSWORD']);
+define('DB_PASSWORD', $_SERVER['FLEX_PASSWORD']);
 
 /** MySQL hostname */
 // define('DB_HOST', 'localhost');
-define('DB_HOST', $_SERVER['ATTCK_HOSTNAME']);
+define('DB_HOST', $_SERVER['FLEX_HOSTNAME']);
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8mb4');
@@ -95,7 +95,7 @@ $table_prefix  = 'boiler_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', true);
+define('WP_DEBUG', $_SERVER['DEBUG']);
 define('WP_DEBUG_LOG', true);
 @ini_set('display_errors',0);
 

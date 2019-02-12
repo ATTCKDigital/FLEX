@@ -3,11 +3,28 @@
     "title": "Google Tag Manager ID",
     "fields": [
         {
+            "key": "field_5c1817b54be00",
+            "label": "Set up a GTM account",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "<a href=\"https:\/\/support.google.com\/tagmanager\/answer\/6103696?hl=en\" target=\"_blank\">Click here to set up a GTM account<\/a>",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
             "key": "field_5b4cd69992327",
             "label": "Google Tag Manager Container ID",
             "name": "gtm_ID",
             "type": "text",
-            "instructions": "Enter your Tag Manager container ID",
+            "instructions": "Enter your Google Tag Manager container ID.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -17,9 +34,9 @@
             },
             "default_value": "",
             "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": ""
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -31,7 +48,7 @@
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 1,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -39,5 +56,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1537811008
+    "modified": 1545164492
 }

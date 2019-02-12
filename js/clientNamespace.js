@@ -5,8 +5,8 @@
 "use strict";
 
 var clientNamespace = {};
-var ATTCK = clientNamespace;
+var FLEXLS = clientNamespace;
 
-ATTCK.Globals = {};
+FLEXLS.Globals = {};
 
-export default ATTCK;
+export default FLEXLS;

@@ -1,7 +1,7 @@
 <?php
 // Register our sidebars and widgetized areas.
-// Examples provided below, change as needed.
-function attck_widgets_init() {
+// Example provided below, change as needed.
+function flexls_widgets_init() {
 
 	register_sidebar( 
 		array(
@@ -14,27 +14,5 @@ function attck_widgets_init() {
 		)
 	);
 
-	register_sidebar( 
-		array(
-			'name'          => 'Actions post sidebar',
-			'id'            => 'actions_sidebar',
-			'before_widget' => '<div class="component component-sidebar">',
-			'after_widget'  => '</div>',
-			'before_title'  => '<h2 class="headline6 align-center">',
-			'after_title'   => '</h2>',
-		)
-	);
-
-	register_sidebar(   
-		array(
-			'name'          => 'Resources post sidebar',
-			'id'            => 'resources_sidebar',
-			'before_widget' => '<div class="component component-sidebar">',
-			'after_widget'  => '</div>',
-			'before_title'  => '<h2 class="headline6 align-center">',
-			'after_title'   => '</h2>',
-		)
-	);
-
 }
-add_action( 'widgets_init', 'attck_widgets_init' );
+add_action( 'widgets_init', 'flexls_widgets_init' );

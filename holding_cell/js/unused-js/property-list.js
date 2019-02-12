@@ -15,7 +15,7 @@ function PropertyList ($el) {
 	}
 
 	function initScrollEvents($el) {
-		$(document.body).bind("ATTCK.scroll", function (e, data) {
+		$(document.body).bind("FLEXLS.scroll", function (e, data) {
 			// Make controls sticky on mobile
 		    var scroll = data.currentScrollTop;
 		    var $body = $('body');

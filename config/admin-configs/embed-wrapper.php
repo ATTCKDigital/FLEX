@@ -1,6 +1,6 @@
 <?php
 // Adds a custom class to every youtube or vimeo video inserted into a post using just a url, to allow for responsive video
-function attck_wrap_embed_with_div($html, $url, $attr) {
+function flexls_wrap_embed_with_div($html, $url, $attr) {
 		if (strpos($url, 'youtube') !== false) {
 			return '<div class="video-wrapper">' . $html . '</div>';
 		} elseif (strpos($url, 'vimeo') !== false) {
@@ -9,4 +9,4 @@ function attck_wrap_embed_with_div($html, $url, $attr) {
 			return $html;
 		}
 }
-add_filter('embed_oembed_html', 'attck_wrap_embed_with_div', 10, 3);
+add_filter('embed_oembed_html', 'flexls_wrap_embed_with_div', 10, 3);

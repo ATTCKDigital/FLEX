@@ -8,6 +8,7 @@ function _scripts() {
 		//Deregister included jquery. Latest version will be included in main.js
 		wp_deregister_script('jquery');
 	}
+	wp_enqueue_script("jquery", 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', array(), null, true);
 
 	//Compiled theme js file
 	wp_enqueue_script("afp_script", get_template_directory_uri() . "/dist/js/main.js", array(), null, true);
@@ -23,8 +24,8 @@ function _scripts() {
 
 
 // Deregister any unneeded plugin scripts here.
-add_action('wp_print_styles', 'attck_deregister_styles', 100);
-function attck_deregister_styles() {
+add_action('wp_print_styles', 'flexls_deregister_styles', 100);
+function flexls_deregister_styles() {
 	// Remove CF7 styles
 	wp_deregister_style( 'contact-form-7' );
 }
@@ -37,10 +38,3 @@ remove_action('wp_print_styles', 'print_emoji_styles');
 remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 remove_action( 'admin_print_styles', 'print_emoji_styles' );
 
-// okatodo: discuss with sq and dp about whether or not we should have this feature
-// Remove WP embedded js
-// https://wordpress.stackexchange.com/questions/211701/what-does-wp-embed-min-js-do-in-wordpress-4-4
-// function my_deregister_scripts(){
-// 	wp_deregister_script('wp-embed');
-// }
-// add_action('wp_footer', 'my_deregister_scripts');
