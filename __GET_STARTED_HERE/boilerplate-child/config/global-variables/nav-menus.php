@@ -4,4 +4,4 @@
 		'footer' => __('Footer Navigation', '_flexls'),
 	);
 
-	define('FLEXFLS_MENUS', $menus);
+	define('FLEXLS_MENUS', $menus);
