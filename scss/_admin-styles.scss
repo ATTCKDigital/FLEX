@@ -6,14 +6,9 @@ h1, h2, h3, h4, h5, h6, p {
 
 
 .wp-block-flexls-column {
-	border: 1px dashed tomato;
-	max-width: 610px;
+	border: 2px dotted cornflowerblue;
+	max-width: none;
 	margin: 0 auto;
-
-	.wp-block[data-align=full] & {
-		max-width: none;
-		border: 1px dashed cornflowerblue;
-	}
 }
 
 .wp-admin {
@@ -37,4 +32,24 @@ h1, h2, h3, h4, h5, h6, p {
 	.wp-block {
 		max-width: none;
 	}
+}
+
+
+.wp-block-flexls-row {
+	border: 2px dashed silver;
+	max-width: 610px;
+	margin: 0 auto;
+
+	.wp-block[data-align=full] & {
+		max-width: none;
+		border: 2px dashed gold;
+	}
+}
+
+.components-panel__row {
+	display: block;
+}
+
+.components-range-control .components-base-control__label {
+	max-width: none;
 }
