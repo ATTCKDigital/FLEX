@@ -11,6 +11,7 @@ $blocks = array(
 
 	'flexls/row',
 	'flexls/column',
+	'flexls/heading',
 
 );
 
