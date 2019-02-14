@@ -59,6 +59,9 @@
 	}
 }
 
+.component-column {
+	padding: 0 $gap;
+}
 
 // Row block in 2 widths
 .component-row-wide {
@@ -77,34 +80,71 @@
 	height: 100%;
 }
 
+//Fixed row heights
+
 .component-row-height-none {
 	height: 100%;
 }
 
 .component-row-height-small {
-	height: 150px;
+	height: $small-row-mobile;
 	overflow: hidden;
 
 	@include mediaquery(medium) {
-		height: 300px;
+		height: $small-row;
+
+	}
+
+	.wp-admin & {
+		min-height: $small-row-mobile;
+		height: auto;
+
+		@include mediaquery(medium) {
+			min-height: $small-row;
+			height: auto;
+
+		}
 	}
 }
 
 .component-row-height-medium {
-	height: 300px;
+	height: $medium-row-mobile;
 	overflow: hidden;
 
 	@include mediaquery(medium) {
-		height: 500px;
+		height: $medium-row;
+
+	}
+
+	.wp-admin & {
+		min-height: $medium-row-mobile;
+		height: auto;
+
+		@include mediaquery(medium) {
+			min-height: $medium-row;
+			height: auto;
+
+		}
 	}
 }
 
 .component-row-height-large {
-	height: 100vh;
+	height: $large-row-mobile;
 	overflow: hidden;
 
 	@include mediaquery(medium) {
-		height: 700px;
+		height: $large-row;
+
+	}
+
+	.wp-admin & {
+		min-height: $large-row-mobile;
+		height: auto;
+
+		@include mediaquery(medium) {
+			min-height: $large-row;
+			height: auto;
+		}
 	}
 }
 
@@ -112,3 +152,6 @@
 	height: 100vh;
 	overflow: hidden;
 }
+
+
+

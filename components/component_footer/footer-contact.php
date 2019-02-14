@@ -8,9 +8,9 @@
 
 ?>
 			<div class="footer-contact">
-				<h4 class="headline4 margin-global-1x"><?= $this->displayTitle;?></h4>
+				<h4 class="headline4 margin-global-bottom-1x"><?= $this->displayTitle;?></h4>
 				<?php if($address){ ?>
-					<address class="margin-global-1x">
+					<address class="margin-global-bottom-1x">
 						<?= $address;?>
 					</address>
 				<?php } ?>

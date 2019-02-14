@@ -378,25 +378,25 @@ $fa-font-path: "../fonts";
 @mixin sans-serif-secondary-semi {
 	font-family: "Poppins-Bold", Helvetica, Arial, sans-serif;
 	font-style: normal;
-	font-weight: 700;
+	font-weight: 600;
 }
 
 @mixin sans-serif-secondary-semi-italic {
 	font-family: "Poppins-BoldItalic", Helvetica, Arial, sans-serif;
 	font-style: normal;
-	font-weight: 700;
+	font-weight: 600;
 }
 
 @mixin sans-serif-secondary-bold {
 	font-family: "Poppins-Black", Helvetica, Arial, sans-serif;
 	font-style: normal;
-	font-weight: 900;
+	font-weight: 700;
 }
 
 @mixin sans-serif-secondary-bold-italic {
 	font-family: "Poppins-BlackItalic", Helvetica, Arial, sans-serif;
 	font-style: normal;
-	font-weight: 900;
+	font-weight: 700;
 }
 
 @mixin serif-light {
