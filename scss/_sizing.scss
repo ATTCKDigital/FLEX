@@ -29,9 +29,95 @@ $max-4xl-breakpoint			: 1499px;
 $max-5xl-breakpoint			: 1699px;
 
 //Fixed row heights
-$small-row-mobile			: 100vh;
+$small-row-mobile			: 50vh;
 $small-row					: 250px;
 $medium-row-mobile			: 100vh;
-$medium-row					: 250px;
+$medium-row					: 500px;
 $large-row-mobile			: 100vh;
-$large-row					: 250px;
+$large-row					: 700px;
+
+/** Responsive Font Size Map **/
+// Add as many as needed.
+// Add fonts sizes for each break point. Font sizes will be converted to rems. 
+// Usage:  @include font-size($font-size)
+$font-size-headline1: (
+	'small'		: 64px,
+	'medium'	: 64px,
+	'large'		: 96px,
+	'xl'		: 96px,
+	'2xl'		: 96px,
+	'3xl'		: 96px,
+	'4xl'		: 96px,
+	'5xl'		: 96px
+);
+
+$font-size-headline2: (
+	'small'		: 64px,
+	'medium'	: 64px,
+	'large'		: 48px,
+	'xl'		: 48px,
+	'2xl'		: 48px,
+	'3xl'		: 48px,
+	'4xl'		: 48px,
+	'5xl'		: 48px
+);
+
+$font-size-headline3: (
+	'small'		: 34px,
+	'medium'	: 34px,
+	'large'		: 48px,
+	'xl'		: 48px,
+	'2xl'		: 48px,
+	'3xl'		: 48px,
+	'4xl'		: 48px,
+	'5xl'		: 48px
+);
+
+$font-size-headline4: (
+	'small'		: 24px,
+	'medium'	: 24px,
+	'large'		: 34px,
+	'xl'		: 34px,
+	'2xl'		: 34px,
+	'3xl'		: 34px,
+	'4xl'		: 34px,
+	'5xl'		: 34px
+);
+
+$font-size-headline5: (
+	'small'		: 24px,
+	'medium'	: 24px,
+	'large'		: 20px,
+	'xl'		: 20px,
+	'2xl'		: 20px,
+	'3xl'		: 20px,
+	'4xl'		: 20px,
+	'5xl'		: 20px
+);
+
+$font-size-headline6: (
+	'small'		: 20px,
+	'medium'	: 20px,
+	'large'		: 20px,
+	'xl'		: 20px,
+	'2xl'		: 20px,
+	'3xl'		: 20px,
+	'4xl'		: 20px,
+	'5xl'		: 20px
+);
+
+@mixin font-size($fs-map) {
+	@each $fs-breakpoint, $fs-font-size in $fs-map {
+		@include mediaquery($fs-breakpoint) {
+			font-size: px-to-rem($fs-font-size);
+		}
+	}
+}
+
+/** Convert px to rem **/
+// Usage:  font-size: px-to-rem(12px);
+@function px-to-rem($size) {
+	$remSize: $size / 10px;
+	@return #{$remSize}rem;
+}
+

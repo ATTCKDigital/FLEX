@@ -92,31 +92,3 @@ $xPositions: left, right, center;
 }
 
 
-//Fixed row heights
-
-.small-row-height {
-	height: $small-row-mobile;
-
-	@include mediaquery(medium) {
-		height: $small-row;
-
-	}
-}
-
-.medium-row-height {
-	height: $medium-row-mobile;
-
-	@include mediaquery(medium) {
-		height: $medium-row;
-
-	}
-}
-
-.large-row-height {
-	height: $large-row-mobile;
-
-	@include mediaquery(medium) {
-		height: $large-row;
-
-	}
-}

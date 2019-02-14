@@ -18,7 +18,7 @@
 
 				@if $screensize == global {
 					//creates a global padding class that has no screen size dependency
-					.padding-#{$position}-#{$i}x { 
+					.padding-#{$screensize}-#{$position}-#{$i}x { 
 						padding-#{$position}: #{$i * $increment}px;
 					}
 				} 
