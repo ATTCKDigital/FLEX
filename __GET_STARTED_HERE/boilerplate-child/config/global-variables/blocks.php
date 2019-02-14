@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**** Enable Blocks ****/
 // Select blocks that should be available for the project.
 // Available Blocks
@@ -47,6 +47,7 @@ $blocks = array(
 	'core/shortcode',
 	'acf/testimonial',
 	'flexls/row',
+	'flexls/column',
 );
 
 //Additional available embed options
@@ -75,7 +76,7 @@ $blocks = array(
 
 define('FLEXLS_BLOCKS', $blocks);
 
-//Add all of the acf blocks that should be registered. 
+//Add all of the acf blocks that should be registered.
 $registerBlocks = array(
 	'testimonial'
 );
