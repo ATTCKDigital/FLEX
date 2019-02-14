@@ -6,34 +6,29 @@
 }
 
 //bottom align elements in a row
-.component-alignment-bottom {
+.component-alignment-bottom, .component-alignment-bottom .editor-block-list__layout {
 	display: flex;
 	align-items: flex-end;
 }
 
 //center align elements in a row
-.component-alignment-center {
+.component-alignment-center, .component-alignment-center .editor-block-list__layout {
 	display: flex;
 	align-items: center;
 }
 
 //stretch elements in a row
-.component-alignment-stretch {
+.component-alignment-stretch, .component-alignment-stretch .editor-block-list__layout {
 	display: flex;
 	align-items: stretch;
 }
 
 //top align elements in a row
-.component-alignment-top {
+.component-alignment-top, .component-alignment-top .editor-block-list__layout {
 	display: flex;
 	align-items: flex-start;
 }
 
-//top align elements in a row
-.component-alignment-bottom {
-	display: flex;
-	align-items: flex-end;
-}
 
 //component row settings
 .component-row {

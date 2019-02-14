@@ -1,26 +1,17 @@
 
 // SCSS files to include in admin
 @import 'sass-utils';
-@import 'reset';
 @import 'sizing';
 @import 'media-queries';
 @import 'grid';
-@import 'fonts';
 @import 'colors';
-@import 'debug';
+@import 'fonts';
 @import 'global';
 @import 'layout';
 @import 'component';
 @import 'hidden';
-@import 'images';
 @import 'row-theme';
 @import 'padding';
 @import 'margin';
-
-@import 'typography-base';
-@import 'typography';
-@import 'headlines';
 @import 'buttons';
-@import 'iconography';
-@import 'forms';
 @import 'admin-styles';
