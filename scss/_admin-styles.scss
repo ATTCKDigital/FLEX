@@ -58,3 +58,9 @@ h1, h2, h3, h4, h5, h6, p {
 .components-range-control .components-base-control__label {
 	max-width: none;
 }
+
+.block-editor .component-source .editor-plain-text {
+	padding: $gap*.5;
+	font-family: Courier;
+	min-height: 100px;
+}

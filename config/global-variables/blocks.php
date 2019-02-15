@@ -9,9 +9,12 @@
 
 $blocks = array(
 
-	'flexls/row',
-	'flexls/column',
+	'flexls/row', //REQUIRED
+	'flexls/column', //REQUIRED
+	'flexls/button',
 	'flexls/heading',
+	'flexls/quote',
+	'flexls/source',
 
 );
 
