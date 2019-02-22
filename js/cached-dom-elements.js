@@ -3,6 +3,9 @@
  * Usage: $$({selector}) returned cached element if previously used
  * or caches upon first use.
  */
+
+import $ from 'jquery';
+
 window.cachedDomElements = (function () {
 	var cachedElements = {};
 
@@ -19,7 +22,7 @@ window.cachedDomElements = (function () {
 		// If it's not a jQuery object, assume it should be cached within
 		// the current component context ($EL)
 		if (typeof cachedElements[name] === 'undefined') {
-			if (name instanceof jQuery) {
+			if (name instanceof $) {
 				return set(name, name);
 			} else {
 				return set(name, $EL.find(name));

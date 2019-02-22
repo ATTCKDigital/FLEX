@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 //Change name space on line 4 and line 15
 function Test($el) {
 

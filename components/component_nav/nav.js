@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 //Global Nav & Header behavior
 function Nav($el) {
 	//cache the body
@@ -33,7 +35,7 @@ function Nav($el) {
 		$el.find('.menu-item-has-children').removeClass('openSubNav');
 		$body.removeClass('openSubNav');
 	}
-	
+
 	function userScrolled() {
 		//check if user is scrolled on page load so that the nav is hidden when they refresh the page
 		if ($(window).scrollTop() >= 10) {
@@ -45,19 +47,19 @@ function Nav($el) {
 		// Bind to scroll
 		$(document.body).bind('FLEXLS.scroll', function (e, data) {
 			// Show/hide nav bar background color
-		    var scroll = data.currentScrollTop;
+				var scroll = data.currentScrollTop;
 
-		    // Hide nav entirely once scrolled past a certain distance
-		    if (scroll >= 300) {
-		    	if (!$('body').hasClass('hideNav')) {
-		    		$('body').addClass('hideNav');
-		    	}
-		    }
+				// Hide nav entirely once scrolled past a certain distance
+				if (scroll >= 300) {
+					if (!$('body').hasClass('hideNav')) {
+						$('body').addClass('hideNav');
+					}
+				}
 
-		    // Show again as soon as they start scrolling back up
-		    if (data.scrollDirection === 'up') {
-		    	$('body').removeClass('hideNav');
-		    }
+				// Show again as soon as they start scrolling back up
+				if (data.scrollDirection === 'up') {
+					$('body').removeClass('hideNav');
+				}
 		});
 	}
 
@@ -93,7 +95,7 @@ function Nav($el) {
 			});
 
 			if( scrollTop >= footer ) {
-		    	$body.addClass('logoLight').removeClass('logoDark');
+					$body.addClass('logoLight').removeClass('logoDark');
 			}
 
 		});
@@ -104,8 +106,8 @@ function Nav($el) {
 	function bindEvents() {
 		$el = $el;
 		$el.find('.hamburger-wrapper').on('click', navToggle);
-		
-		scrolledNav();		
+
+		scrolledNav();
 
 		//Use this if subnav is triggered on hover
 		if($(window).width() > 1024) {
@@ -126,7 +128,7 @@ function Nav($el) {
 
 		} else {
 			$el.find('.menu-item-has-children > a').on('click', toggleSubNav);
-			
+
 		}
 	}
 

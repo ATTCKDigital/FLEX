@@ -1,12 +1,13 @@
 /**
  * Parallax component
  */
-import $$ from 'cached-dom-elements';
+import $ from 'jquery';
+import $$ from './cached-dom-elements';
 
 function Parallax($el, params={}) {
 	const defaults = {};
 
-	// Merge any options set on the DOM element with 
+	// Merge any options set on the DOM element with
 	// the component defaults set above
 	var options = $.extend(true, {}, defaults, params);
 	var viewportHeight = $(window).outerHeight();
@@ -14,11 +15,11 @@ function Parallax($el, params={}) {
 	var $elOuterHeight = $el.outerHeight();
 
 	function bindEvents() {
-		// Start offsetting the background-position-y value 
-		// on scroll when we reach data-scroll-start		
+		// Start offsetting the background-position-y value
+		// on scroll when we reach data-scroll-start
 		$(document.body).on('FLEXLS.scroll', parallaxGo);
 
-		// Prevent full height hero from affecting body height when 
+		// Prevent full height hero from affecting body height when
 		// scrolling on mobile, which due to the changing size of the
 		// address bar, causes jankyness all the way down the page
 		var viewportHeight = $(window).outerHeight(true);
@@ -41,7 +42,7 @@ function Parallax($el, params={}) {
 		var distanceScrolled = data.currentScrollTop;
 
 		if (scrollStartThreshold > distanceToViewportTop) {
-			// Determine how much to offset the background position 
+			// Determine how much to offset the background position
 			// based on scroll distance relative to $el height
 			// % per px, need to move 10%
 			var relativePercentOfContainerToViewport = $elOuterHeight / viewportHeight;
@@ -49,7 +50,7 @@ function Parallax($el, params={}) {
 			var totalPixelsScrolledWithinThreshold = scrollStartThreshold - distanceToViewportTop;
 			var offsetPerPxScrolled = $elOuterHeight * .01;
 			var percentOffsetFromScroll = (data.currentScrollTop - scrollStartThreshold) / offsetPerPxScrolled;
-			
+
 			// Set default offset
 			var defaultOffset = 0;
 			var finalOffset = defaultOffset - ((percentToScrollPerPixel * totalPixelsScrolledWithinThreshold) / 2);
@@ -131,7 +132,7 @@ function Parallax($el, params={}) {
 		}
 	}
 
-	// Animations won't apply to elemnents that aren't 
+	// Animations won't apply to elemnents that aren't
 	// positioned with a default top value
 	function setDefaultStyles() {
 		$el.css({
@@ -145,7 +146,7 @@ function Parallax($el, params={}) {
 		calculateScrollStart();
 		// setDefaultStyles();
 
-		// Make sure any visible parallax elements are properly set on 
+		// Make sure any visible parallax elements are properly set on
 		// page load otherwise they jump on first scroll
 		parallaxGo({}, {
 			'currentScrollTop': $(window).scrollTop()

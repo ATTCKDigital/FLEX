@@ -8,7 +8,7 @@ function _scripts() {
 		//Deregister included jquery. Latest version will be included in main.js
 		wp_deregister_script('jquery');
 	}
-	wp_enqueue_script("jquery", 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', array(), null, true);
+	// wp_enqueue_script("jquery", 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', array(), null, true);
 
 	//Compiled theme js file
 	wp_enqueue_script("afp_script", get_template_directory_uri() . "/dist/js/main.js", array(), null, true);
@@ -32,7 +32,7 @@ function flexls_deregister_styles() {
 
 // Admin specific styles
 function admin_style() {
-  wp_enqueue_style('admin-styles', get_template_directory_uri().'/dist/css/admin.css');
+	wp_enqueue_style('admin-styles', get_template_directory_uri().'/dist/css/admin.css');
 }
 add_action('admin_enqueue_scripts', 'admin_style');
 
@@ -42,4 +42,3 @@ remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');
 remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 remove_action( 'admin_print_styles', 'print_emoji_styles' );
-
