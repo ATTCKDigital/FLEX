@@ -33,7 +33,7 @@ module.exports = {
 	entry: path.resolve(__dirname, './js/app.js'),
 	// devtool: 'source-map',
 	// target: 'web',
-	// watch: true,
+	watch: true,
 
 	output: {
 		path: path.resolve(__dirname, './dist/js'),
@@ -82,13 +82,14 @@ module.exports = {
 		new CopyPlugin([
 			{
 				context: path.resolve(__dirname, './assets'),
-				from: '**/*',
+				from: './',
 				to: path.resolve(__dirname, './dist'),
 			},
 		]),
 
 		// Minify Images
 		// Include after plugins that add images, eg. copy-webpack-plugin
+		// TODO: this should likely be configured more highly
 		new ImageminPlugin({
 			test: /\.(jpe?g|png|gif|svg)$/i
 		}),
