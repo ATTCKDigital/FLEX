@@ -13,6 +13,7 @@ $blocks = array(
 	'flexls/column', //REQUIRED
 	'flexls/button',
 	'flexls/heading',
+	'flexls/image',
 	'flexls/quote',
 	'flexls/source',
 

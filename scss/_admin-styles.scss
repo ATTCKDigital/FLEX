@@ -5,6 +5,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 
+//Styles for grid, row and column within editor
 
 .wp-block-flexls-row {
 	.editor-inner-blocks {
@@ -39,7 +40,6 @@ h1, h2, h3, h4, h5, h6, p {
 	}
 }
 
-
 .wp-block-flexls-row {
 	border: 2px dashed silver;
 	max-width: 610px;
@@ -55,6 +55,7 @@ h1, h2, h3, h4, h5, h6, p {
 	display: block;
 }
 
+//Misc styling for elements
 .components-range-control .components-base-control__label {
 	max-width: none;
 }
@@ -63,4 +64,31 @@ h1, h2, h3, h4, h5, h6, p {
 	padding: $gap*.5;
 	font-family: Courier;
 	min-height: 100px;
+}
+
+//Button styles for Gutenberg Editor
+.component-button-editor {
+	.button {
+		@extend .button;
+
+		&.is-style-button-secondary {
+			@extend .button-secondary;
+		}
+
+		&.is-style-button-outline {
+			@extend .button-outline;
+		}
+	}
+
+	.wp-block-button__link {
+		@extend .button;
+		overflow: inherit;
+	}
+
+	.editor-rich-text__tinymce[data-is-placeholder-visible=true].wp-block-button__link {
+		position: absolute;
+		background: transparent;
+		border:0;
+	}
+
 }
