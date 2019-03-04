@@ -12,7 +12,9 @@ $blocks = array(
 	'flexls/heading',
 	'flexls/image',
 	'flexls/quote',
+	'flexls/shortcode',
 	'flexls/source',
+	'flexls/text',
 );
 
 

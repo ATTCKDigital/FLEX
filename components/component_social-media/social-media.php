@@ -11,7 +11,9 @@
 ?>
 
 <div class="component-social-media component">
-	<h4 class="headline4 margin-global-bottom-1x"><?= $this->displayTitle;?></h4>
+	<?php if($this->displayTitle){ ?>
+		<h4 class="headline4 margin-global-bottom-1x"><?= $this->displayTitle;?></h4>
+	<?php } ?>
 	<div class="social-media-list">
 		<?php if($facebook) { ?>
 			<mark class="social-icon margin-global-right-1x margin-global-bottom-1x"><a href="<?= $facebook;?>" target="_blank"><i class="fab fa-facebook-f"></i></a></mark>

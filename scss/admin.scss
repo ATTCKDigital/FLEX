@@ -16,3 +16,7 @@
 @import 'headlines';
 @import 'buttons';
 @import 'admin-styles';
+
+//GB Component Specific Overrides
+@import '../blocks/block_button/button-admin';
+@import '../blocks/block_text/text-admin';
