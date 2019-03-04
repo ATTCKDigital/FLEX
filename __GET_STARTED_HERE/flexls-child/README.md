@@ -7,7 +7,7 @@ There are several global variables that can be overridden from the child theme. 
 To add or enable an ACF block, you must edit the following file in the child theme: `config/global-variables/blocks.php`.  
 
 #### Notes on Flex Layout System
-This plugin has a block called "Row". This is a parent block and the foundation of Flex Layout System. It is a block that allows inner blocks - these inner blocks are a core and ACF blocks who have a parent of "Row".  They are only available inside of the "Row" block. 
+This system has a block called "Row". This is a parent block and the foundation of Flex Layout System. It is a block that allows inner blocks - these inner blocks are a core and ACF blocks who have a parent of "Row".  They are only available inside of the "Row" block. 
 
 Additionally, all core blocks have been extended to have a column number selector. A column number selector should also be available in all ACF blocks.
 
@@ -31,6 +31,5 @@ The boilerplate theme comes with a set of default colors used for typography and
 Some projects will require more than the default available admin editable menus. To add additional menus or change the names of existing, edit `config/global-variables/nav-menus.php`
 
 okatodo:
-## How to create or override a component
 ## How to add/enable/disable functions
 ## How to create a new ACF block (more detailed than the info in the components readme)
