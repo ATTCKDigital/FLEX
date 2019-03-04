@@ -21,12 +21,15 @@
 
 @import 'typography-base';
 @import 'typography';
-@import 'headlines';
-@import 'buttons';
 @import 'iconography';
 @import 'forms';
 @import 'styleguide';
 
+//Blocks
+@import '../blocks/block_button/button'
+@import '../blocks/block_heading/heading'
+
 // Components
 @import '../components/component_footer/footer';
 @import '../components/component_nav/nav';
+
