@@ -12,21 +12,24 @@
 @import 'layout';
 @import 'component';
 @import 'hidden';
-@import 'images';
 @import 'row-theme';
 @import 'popups-overlays';
 @import 'animations';
-@import 'padding';
-@import 'margin';
+@import '../gb-components/gb-component_padding/padding';
+@import '../gb-components/gb-component_margin/margin';
 
 @import 'typography-base';
 @import 'typography';
-@import 'headlines';
-@import 'buttons';
+@import '../blocks/block_image/image';
+@import '../blocks/block_button/button';
+@import '../blocks/block_heading/heading';
 @import 'iconography';
 @import 'forms';
 @import 'styleguide';
 
+//Blocks
+
 // Components
 @import '../components/component_footer/footer';
 @import '../components/component_nav/nav';
+
