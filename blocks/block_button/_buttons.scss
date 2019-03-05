@@ -1,0 +1,56 @@
+/**** Button Styles ****/
+
+.button, .is-style-button-default {
+	background-color: $black;
+	border-color: $black;
+	border-radius: 0;
+	border: 1px solid $black;
+	box-shadow: none;
+	color: $white;
+	cursor: pointer;
+	font-size: px-to-rem(16px);
+	min-height: 50px;
+	overflow: hidden;
+	padding: 10px 25px 9px;
+	position: relative;
+	transition: background .4s ease-out, color .4s ease-out;
+	z-index: 2;
+
+	@include mediaquery(xl){
+		&:hover {
+			color: $black;
+			background: $white;
+		}
+	}
+
+	&.button-inactive {
+		pointer-events: none;
+		opacity: .5;
+	}
+
+	&.button-secondary, &.is-style-button-secondary {
+		color: $black;
+		background: tomato;
+		
+		@include mediaquery(xl) {
+			&:hover {
+				color: $white;
+				background: $black;
+			}
+		}
+	}
+
+	&.button-outline, &.is-style-button-outline {
+		color: $black;
+		background: $white;
+		
+		@include mediaquery(xl) {
+			&:hover {
+				color: $white;
+				background: $black;
+			}
+		}
+	}
+
+}
+

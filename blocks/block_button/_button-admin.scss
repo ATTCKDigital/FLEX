@@ -1,0 +1,26 @@
+//Button styles for Gutenberg Editor
+.component-button-editor {
+	.button {
+		@extend .button;
+
+		&.is-style-button-secondary {
+			@extend .button-secondary;
+		}
+
+		&.is-style-button-outline {
+			@extend .button-outline;
+		}
+	}
+
+	.wp-block-button__link {
+		@extend .button;
+		overflow: inherit;
+	}
+
+	.editor-rich-text__tinymce[data-is-placeholder-visible=true].wp-block-button__link {
+		position: absolute;
+		background: transparent;
+		border:0;
+	}
+
+}

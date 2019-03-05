@@ -5,6 +5,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 
+//Styles for grid, row and column within editor
 
 .wp-block-flexls-row {
 	.editor-inner-blocks {
@@ -39,7 +40,6 @@ h1, h2, h3, h4, h5, h6, p {
 	}
 }
 
-
 .wp-block-flexls-row {
 	border: 2px dashed silver;
 	max-width: 610px;
@@ -55,6 +55,7 @@ h1, h2, h3, h4, h5, h6, p {
 	display: block;
 }
 
+//Misc styling for elements
 .components-range-control .components-base-control__label {
 	max-width: none;
 }
@@ -64,3 +65,4 @@ h1, h2, h3, h4, h5, h6, p {
 	font-family: Courier;
 	min-height: 100px;
 }
+

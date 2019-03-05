@@ -91,7 +91,7 @@ To the end of the file add: `127.0.0.1 dev.project.com` (domain used for Virtual
 1. Install script? Included in this folder is one that could be adapted for more generic use. (See `vhosts-attck.sh`)
 2. Maybe even better, a Docker image?
 
-## Gulp & Node
+## Gulp & Node/Webpack
 How to run and use
 
 ## Deployment
