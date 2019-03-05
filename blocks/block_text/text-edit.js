@@ -12,7 +12,7 @@ const {
 } = wp.editor;
 
 // Import all of our Margin Options requirements.
-import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../gb-components/gb-component_/margin';
+import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../gb-components/gb-component_margin';
 
 
 function isTmceEmpty( editor ) {

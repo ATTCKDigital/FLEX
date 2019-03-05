@@ -3,9 +3,7 @@
 // Select blocks that should be available for the project.
 // Available Blocks
 // Enable your acf created blocks by using acf/block_name
-// Enable core acf created blocks by using core/block_name
-// Paragraph and heading have been removed because they do not have wrapper divs.
-
+// Enable flexls created blocks by using flexls/block_name
 
 $blocks = array(
 

@@ -34,7 +34,7 @@ const {
  * Internal dependencies
  */
 // Import all of our Margin Options requirements.
-import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../gb-components/gb-component_/margin';
+import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../gb-components/gb-component_margin';
 import TextColorOptions, { TextColorAttributes, TextColorClasses } from '../../gb-components/gb-component_/text-colors';
 
 

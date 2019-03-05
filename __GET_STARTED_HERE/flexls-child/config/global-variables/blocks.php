@@ -3,7 +3,7 @@
 // Select blocks that should be available for the project.
 // Available Blocks
 // Enable your acf created blocks by using acf/block_name
-// Enable core acf created blocks by using core/block_name
+// Enable flexls acf created blocks by using flexls/block_name
 
 $blocks = array(
 	'flexls/row', //REQUIRED
