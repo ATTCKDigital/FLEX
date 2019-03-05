@@ -27,7 +27,7 @@ defined('ABSPATH') || exit;
 // Components
 include THEME_DIR . '/gutenberg/components/gb-component_background-options/attributes.php';
 include THEME_DIR . '/gutenberg/components/gb-component_background-options/classes.php';
-include THEME_DIR . '/gutenberg/components/component_background-options/inline-styles.php';
+include THEME_DIR . '/gutenberg/components/gb-component_background-options/inline-styles.php';
 include THEME_DIR . '/gutenberg/components/gb-component_background-options/video.php';
 
 include THEME_DIR . '/gutenberg/components/gb-component_columns/attributes.php';
