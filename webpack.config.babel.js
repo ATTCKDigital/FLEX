@@ -55,9 +55,9 @@ module.exports = {
 	entry: {
 		'/js/main.js': path.resolve(__dirname, './js/app.js'),
 		'/js/admin.js': path.resolve(__dirname, './js/admin.js'),
-		'/css/style.css': path.resolve(__dirname, './scss/style.scss'),
-		'/css/print.css': path.resolve(__dirname, './scss/print.scss'),
-		'/css/admin.css': path.resolve(__dirname, './scss/admin.scss'),
+		'/css/style': path.resolve(__dirname, './scss/style.scss'),
+		'/css/print': path.resolve(__dirname, './scss/print.scss'),
+		'/css/admin': path.resolve(__dirname, './scss/admin.scss'),
 	},
 
 	devtool: 'cheap-eval-source-map',
@@ -75,7 +75,7 @@ module.exports = {
 		},
 		modules: [
 			path.resolve(__dirname, './js'),
-			path.resolve(__dirname, './scss'),
+			// path.resolve(__dirname, './scss'),
 			'node_modules'
 		]
 	},
@@ -105,7 +105,6 @@ module.exports = {
 				use: [
 					MiniCssExtractPlugin.loader,
 					'css-loader',
-					'postcss-loader',
 					{
 						loader: 'postcss-loader',
 						options: {
