@@ -36,15 +36,15 @@ const {
  */
 
 // Import all of our Background Options requirements.
-import BackgroundOptions, { BackgroundOptionsAttributes, BackgroundOptionsClasses, BackgroundOptionsInlineStyles, BackgroundOptionsVideoOutput } from '../../gb-components/gb-component_/background-options';
+import BackgroundOptions, { BackgroundOptionsAttributes, BackgroundOptionsClasses, BackgroundOptionsInlineStyles, BackgroundOptionsVideoOutput } from '../../components/gb-component_background-options';
 // Import all of our Padding Options requirements.
-import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../gb-components/gb-component_/padding';
+import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
 // Import all of our Scroller Options requirements.
-import ScrollerOptions, { ScrollerOptionsAttributes, ScrollerOptionsOutput } from '../../gb-components/gb-component_/scroller';
+import ScrollerOptions, { ScrollerOptionsAttributes, ScrollerOptionsOutput } from '../../components/gb-component_scroller';
 // Import all of our Logo Color Options requirements.
-import LogoColorOptions, { LogoColorOptionsAttributes, LogoColorOptionsDataAttr } from '../../gb-components/gb-component_/logo-color';
+import LogoColorOptions, { LogoColorOptionsAttributes, LogoColorOptionsDataAttr } from '../../components/gb-component_logo-color';
 // Import all of our Row Height Options requirements.
-import RowHeightOptions, { RowHeightOptionsAttributes, RowHeightOptionsClasses } from '../../gb-components/gb-component_/row-height';
+import RowHeightOptions, { RowHeightOptionsAttributes, RowHeightOptionsClasses } from '../../components/gb-component_row-height';
 
 
 

@@ -10,10 +10,11 @@ function _scripts() {
 	}
 	// wp_enqueue_script("jquery", 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', array(), null, true);
 
-	//Flex Layout System JS
-	wp_enqueue_script("flexls_script", get_template_directory_uri() . "/dist/js/flexls.js", array(), null, true);
-	wp_enqueue_script("flexls_filter_script", get_template_directory_uri() . "/dist/js/flexls-filters.js", array(), null, true);
-	
+	if (is_admin()) {
+		//Flex Layout System JS
+		wp_enqueue_script("flexls_script", get_template_directory_uri() . "/dist/js/admin.js", array(), null, true);
+	}
+
 	//Compiled theme js file
 	wp_enqueue_script("afp_script", get_template_directory_uri() . "/dist/js/main.js", array(), null, true);
 

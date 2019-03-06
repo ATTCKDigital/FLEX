@@ -23,7 +23,7 @@ const {
  */
 import MarginOptionsAttributes from './attributes';
 import MarginOptionsClasses from './classes';
-import './editor.scss'; 
+// import './editor.scss';
 
 // Export for ease of importing in individual blocks.
 export {
@@ -42,13 +42,13 @@ function MarginOptions( props ) {
 	const setMarginMediumLeft = value => props.setAttributes( { marginMediumLeft: value } );
 	const setMarginLargeTop = value => props.setAttributes( { marginLargeTop: value } );
 	const setMarginLargeRight = value => props.setAttributes( { marginLargeRight: value } );
-	const setMarginLargeBottom = value => props.setAttributes( { marginLargeBottom: value } );	
+	const setMarginLargeBottom = value => props.setAttributes( { marginLargeBottom: value } );
 	const setMarginLargeLeft = value => props.setAttributes( { marginLargeLeft: value } );
 	const setMarginXLTop = value => props.setAttributes( { marginXLTop: value } );
 	const setMarginXLRight = value => props.setAttributes( { marginXLRight: value } );
 	const setMarginXLBottom = value => props.setAttributes( { marginXLBottom: value } );
 	const setMarginXLLeft = value => props.setAttributes( { marginXLLeft: value } );
-	
+
 	const marginSelect = () => {
 
 		return (

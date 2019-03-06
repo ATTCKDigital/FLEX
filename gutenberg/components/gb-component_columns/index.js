@@ -23,7 +23,7 @@ const {
  */
 import ColumnOptionsAttributes from './attributes';
 import ColumnOptionsClasses from './classes';
-import './editor.scss'; 
+// import './editor.scss';
 
 // Export for ease of importing in individual blocks.
 export {
@@ -37,7 +37,7 @@ function ColumnOptions( props ) {
 	const setColumnMedium = value => props.setAttributes( { columnMedium: value } );
 	const setColumnLarge = value => props.setAttributes( { columnLarge: value } );
 	const setColumnXL = value => props.setAttributes( { columnXL: value } );
-	
+
 	const columnSelect = () => {
 		if ( '12' !== props.attributes.columnCount ) {
 			return '';

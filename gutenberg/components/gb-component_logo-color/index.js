@@ -23,7 +23,7 @@ const {
  */
 import LogoColorOptionsAttributes from './attributes';
 import LogoColorOptionsDataAttr from './data-attributes';
-import './editor.scss'; 
+// import './editor.scss';
 
 // Export for ease of importing in individual blocks.
 export {
@@ -33,7 +33,7 @@ export {
 
 function LogoColorOptions( props ) {
 	const setLogoColor = value => props.setAttributes( { logoColor: value } );
-	
+
 	const logoColorSelect = () => {
 
 		return (

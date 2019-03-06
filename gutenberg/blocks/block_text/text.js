@@ -19,7 +19,7 @@ const {
 } = wp.editor;
 
 // Import all of our Margin Options requirements.
-import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../gb-components/gb-component_margin';
+import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
 
 
 export default registerBlockType(
@@ -27,7 +27,7 @@ export default registerBlockType(
 	{
 		title: __( 'Rich Text', 'block title' ),
 		description: __( 'Use the classic WordPress editor.' ),
-		icon: icons.text,  
+		icon: icons.text,
 		category: 'common',
 		parent: 'column',
 		keywords: [

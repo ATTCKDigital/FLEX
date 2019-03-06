@@ -30,7 +30,7 @@ const {
  * Internal dependencies
  */
 // Import all of our Margin Options requirements.
-import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../gb-components/gb-component_margin';
+import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
 
 
 /**
@@ -42,7 +42,7 @@ export default registerBlockType(
 		title: __( 'Image', 'flexls' ),
 		description: __( 'Upload an image.', 'flexls'),
 		category: 'common',
-		icon: icons.upload,  
+		icon: icons.upload,
 		keywords: [
 			__( 'Image', 'flexls' ),
 			__( 'MediaUpload', 'flexls' ),

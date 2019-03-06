@@ -33,9 +33,9 @@ const {
  * Internal dependencies
  */
 // Import all of our Margin Options requirements.
-import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../gb-components/gb-component_margin';
+import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
 // Import all of our Background Options requirements.
-import BackgroundOptions, { BackgroundOptionsAttributes, BackgroundOptionsClasses, BackgroundOptionsInlineStyles, BackgroundOptionsVideoOutput } from '../../gb-components/gb-component_/background-options';
+import BackgroundOptions, { BackgroundOptionsAttributes, BackgroundOptionsClasses, BackgroundOptionsInlineStyles, BackgroundOptionsVideoOutput } from '../../components/gb-component_background-options';
 
 
 /**
@@ -90,7 +90,7 @@ export default registerBlockType(
 						{ ...props }
 					/>
 				</InspectorControls>,
-				<div 
+				<div
 					className={ classnames(
 						`component-quote`,
 						...MarginOptionsClasses( props ),

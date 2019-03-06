@@ -21,7 +21,7 @@ const {
  */
 import TextColorAttributes from './attributes';
 import TextColorClasses from './classes';
-import './editor.scss';
+// import './editor.scss';
 
 // Export for ease of importing in individual blocks.
 export {

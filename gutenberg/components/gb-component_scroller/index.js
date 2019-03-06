@@ -24,7 +24,7 @@ const {
 import ScrollerOptionsAttributes from './attributes';
 import ScrollerOptionsOutput from './scroller-output';
 
-import './editor.scss'; 
+// import './editor.scss';
 
 // Export for ease of importing in individual blocks.
 export {

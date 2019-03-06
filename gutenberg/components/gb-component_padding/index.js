@@ -23,7 +23,7 @@ const {
  */
 import PaddingOptionsAttributes from './attributes';
 import PaddingOptionsClasses from './classes';
-import './editor.scss'; 
+// import './editor.scss';
 
 // Export for ease of importing in individual blocks.
 export {
@@ -42,13 +42,13 @@ function PaddingOptions( props ) {
 	const setPaddingMediumLeft = value => props.setAttributes( { paddingMediumLeft: value } );
 	const setPaddingLargeTop = value => props.setAttributes( { paddingLargeTop: value } );
 	const setPaddingLargeRight = value => props.setAttributes( { paddingLargeRight: value } );
-	const setPaddingLargeBottom = value => props.setAttributes( { paddingLargeBottom: value } );	
+	const setPaddingLargeBottom = value => props.setAttributes( { paddingLargeBottom: value } );
 	const setPaddingLargeLeft = value => props.setAttributes( { paddingLargeLeft: value } );
 	const setPaddingXLTop = value => props.setAttributes( { paddingXLTop: value } );
 	const setPaddingXLRight = value => props.setAttributes( { paddingXLRight: value } );
 	const setPaddingXLBottom = value => props.setAttributes( { paddingXLBottom: value } );
 	const setPaddingXLLeft = value => props.setAttributes( { paddingXLLeft: value } );
-	
+
 	const paddingSelect = () => {
 
 		return (

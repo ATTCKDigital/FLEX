@@ -24,7 +24,7 @@ import BackgroundOptionsAttributes from './attributes';
 import BackgroundOptionsClasses from './classes';
 import BackgroundOptionsInlineStyles from './inline-styles';
 import BackgroundOptionsVideoOutput from './video';
-import './editor.scss';
+// import './editor.scss';
 
 // Export for ease of importing in individual blocks.
 export {

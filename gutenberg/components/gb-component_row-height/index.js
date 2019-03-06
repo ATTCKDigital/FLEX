@@ -23,7 +23,7 @@ const {
  */
 import RowHeightOptionsAttributes from './attributes';
 import RowHeightOptionsClasses from './classes';
-import './editor.scss'; 
+// import './editor.scss';
 
 // Export for ease of importing in individual blocks.
 export {
@@ -33,7 +33,7 @@ export {
 
 function RowHeightOptions( props ) {
 	const setRowHeight = value => props.setAttributes( { rowHeight: value } );
-	
+
 	const rowHeightSelect = () => {
 
 		return (
