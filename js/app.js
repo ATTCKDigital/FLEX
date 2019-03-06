@@ -1,8 +1,6 @@
 import $ from 'jquery';
 import GlobalEvents from './global-events';
 import Loader from './load-components';
-import '../scss/style.scss';
-import '../scss/print.scss';
 
 // Import jQuery and make it a global object
 //oka todo: jquery from node modules, test if we need the 3 lines of code below.

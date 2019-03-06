@@ -1,6 +1,7 @@
 import CopyPlugin from 'copy-webpack-plugin';
 import ImageminPlugin from 'imagemin-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { sync } from 'glob';
 
 import path from 'path';
 import webpack from 'webpack';
@@ -30,34 +31,15 @@ STATIC ASSETS:
 - compress images
 */
 
-// Configuration for the ExtractTextPlugin.
-const extractConfig = {
-	use: [
-		{
-			loader: 'raw-loader'
-		},
-		{
-			loader: 'postcss-loader',
-			options: {
-				plugins: [ require( 'autoprefixer' ) ],
-			},
-		},
-		{
-			loader: 'sass-loader',
-			query: {
-				outputStyle: 'production' === process.env.NODE_ENV ? 'compressed' : 'nested',
-			},
-		},
-	],
-};
-
 module.exports = {
 	entry: {
 		'/js/main.js': path.resolve(__dirname, './js/app.js'),
 		'/js/admin.js': path.resolve(__dirname, './js/admin.js'),
-		'/css/style': path.resolve(__dirname, './scss/style.scss'),
-		'/css/print': path.resolve(__dirname, './scss/print.scss'),
-		'/css/admin': path.resolve(__dirname, './scss/admin.scss'),
+		'css/style': [
+			path.resolve(__dirname, './scss/style.scss'),
+		].concat(sync('../*/scss/style.scss')),
+		'css/print': path.resolve(__dirname, './scss/print.scss'),
+		'css/admin': path.resolve(__dirname, './scss/admin.scss'),
 	},
 
 	devtool: 'cheap-eval-source-map',
@@ -122,7 +104,8 @@ module.exports = {
 	plugins: [
 		new MiniCssExtractPlugin({
 			filename: "[name].css",
-			chunkFilename: "[id].css"
+			chunkFilename: "[id].css",
+			path: path.resolve(__dirname, './dist/css'),
 		}),
 
 		// Copy contents of ./assets -> ./dist
