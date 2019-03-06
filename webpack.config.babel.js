@@ -121,13 +121,13 @@ module.exports = {
 		}),
 
 		// Copy contents of ./assets -> ./dist
-		// new CopyPlugin([
-		// 	{
-		// 		context: path.resolve(__dirname, './assets/images'),
-		// 		from: './',
-		// 		to: path.resolve(__dirname, './dist/images'),
-		// 	},
-		// ]),
+		new CopyPlugin([
+			{
+				context: path.resolve(__dirname, './assets/server-side-assets'),
+				from: './',
+				to: path.resolve(__dirname, './dist/assets/server-side-assets'),
+			},
+		]),
 
 		// Minify Images
 		// Include after plugins that add images, eg. copy-webpack-plugin
