@@ -1,0 +1,94 @@
+{
+  "name": "FLEXLSWPTemplate",
+  "version": "1.0.0",
+  "description": "All WordPress sites start here.",
+  "private": true,
+  "engines": {
+    "node": ">=0.12.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ATTCKDigital/BuildTemplateWordPress.git"
+  },
+  "author": "FLEXLS",
+  "bugs": {
+    "url": "https://github.com/ATTCKDigital/BuildTemplateWordPress/issues"
+  },
+  "devDependencies": {
+    "async": "^2.0.1",
+    "autoprefixer": "^9.4.2",
+    "babel-core": "^6.18.2",
+    "babel-eslint": "^7.1.0",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.9.0",
+    "beepbeep": "^1.2.0",
+    "bourbon": "^4.3.2",
+    "chalk": "^1.1.3",
+    "colors": "^1.1.2",
+    "del": "^2.2.2",
+    "expose-loader": "^0.7.3",
+    "fitie": "^1.0.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-cache": "^0.4.5",
+    "gulp-clean": "^0.3.2",
+    "gulp-cli": "^1.2.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-debug": "^3.1.0",
+    "gulp-declare": "^0.3.0",
+    "gulp-eslint": "^3.0.1",
+    "gulp-if": "^2.0.1",
+    "gulp-imagemin": "^3.1.0",
+    "gulp-inject": "^4.1.0",
+    "gulp-load-plugins": "^1.4.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-size": "^2.1.0",
+    "gulp-sourcemaps": "^2.2.0",
+    "gulp-svgmin": "^1.2.2",
+    "gulp-svgstore": "^6.0.0",
+    "gulp-useref": "^3.1.2",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.10",
+    "gulp-wrap": "^0.13.0",
+    "husky": "^1.2.0",
+    "imports-loader": "^0.7.1",
+    "node-notifier": "^5.1.2",
+    "opn": "^5.0.0",
+    "run-sequence": "^1.2.2",
+    "uglifyjs-webpack-plugin": "^0.4.3",
+    "webpack": "^4.29.5",
+    "webpack-stream": "^5.2.1"
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "browser": true
+    },
+    "rules": {
+      "quotes": [
+        2,
+        "single"
+      ]
+    }
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.1.0",
+    "@vimeo/player": "^2.6.3",
+    "babel-polyfill": "^6.26.0",
+    "css-vars-ponyfill": "^1.15.3",
+    "imagesloaded": "^4.1.2",
+    "jquery": "^3.2.1",
+    "jquery-bridget": "^2.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "./.githooks/checkfilesize"
+    }
+  }
+}

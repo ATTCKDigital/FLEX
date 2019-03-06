@@ -15,14 +15,14 @@
 @import 'row-theme';
 @import 'popups-overlays';
 @import 'animations';
-@import '../gb-components/gb-component_padding/padding';
-@import '../gb-components/gb-component_margin/margin';
+@import '../gutenberg/components/gb-component_padding/_padding.scss';
+@import '../gutenberg/components/gb-component_margin/_margin.scss';
 
 @import 'typography-base';
 @import 'typography';
-@import '../blocks/block_image/image';
-@import '../blocks/block_button/button';
-@import '../blocks/block_heading/heading';
+@import '../gutenberg/blocks/block_image/_image.scss';
+@import '../gutenberg/blocks/block_button/_buttons.scss';
+@import '../gutenberg/blocks/block_heading/_heading.scss';
 @import 'iconography';
 @import 'forms';
 @import 'styleguide';
@@ -32,4 +32,3 @@
 // Components
 @import '../components/component_footer/footer';
 @import '../components/component_nav/nav';
-

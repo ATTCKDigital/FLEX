@@ -1,13 +1,14 @@
-import FLEXLS from 'flexls';
-import Debug from 'debug';
+import FLEXLS from './clientNamespace';
+import Debug from './debug';
+import $ from 'jquery';
 
 // Import all JS components explicitly.
 
 //Required
-import $$ from 'cached-dom-elements.js';
-import Parallax from 'parallax.js';
-import ElementsInViewport from 'elements-in-viewport.js';
-import Nav from '../components/component_nav/nav.js';
+import $$ from './cached-dom-elements';
+import Parallax from './parallax';
+import ElementsInViewport from './elements-in-viewport';
+import Nav from '../components/component_nav/nav';
 
 //Project Specific
 

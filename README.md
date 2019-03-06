@@ -59,11 +59,6 @@ This allows syncing of json files from within each component. Once installed and
 
 Once installed, a dropdown will appear in the admin (in the toolbar at the top). When you create or edit ACF fields, select the registered component from the drop down to ensure that the fields save in the correct locations. To edit or add global ACF fields, select "disable overrides".
 
-### Flex Layout System
-This is a custom plugin written by ATTCK.  It provides modifications to core Gutenberg blocks that allow the row/column structure. It is required.
-
-*Note*: This plugin should be installed as a git submodule of your project.
-
 ### Classic Editor
 Allows the option to use a plain WYSIWYG editor on any page, CPT or post when WordPress version is 5.0+.
 

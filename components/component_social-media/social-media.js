@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 //Social Media
 function SocialMedia($el) {
 	//cache the body

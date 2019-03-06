@@ -1,6 +1,7 @@
-import FLEXLS from 'flexls';
-import $$ from 'cached-dom-elements';
-import Debug from 'debug';
+import $ from 'jquery';
+import FLEXLS from './clientNamespace';
+import $$ from './cached-dom-elements';
+import Debug from './debug';
 
 FLEXLS.GlobalEvents = {};
 

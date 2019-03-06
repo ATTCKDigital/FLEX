@@ -1,9 +1,9 @@
 {
 	"presets": [
-		"env",
-		"react"
+		"@wordpress/default",
+		"@babel/env",
+		"@babel/react",
 	],
 	"plugins": [
-		"transform-object-rest-spread"
 	]
 }

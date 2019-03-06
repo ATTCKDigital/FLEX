@@ -3,7 +3,8 @@
  * Tracks when an element is in the view port.
  * Default behavior is to fade in specific elements - this behavior/animation/transition is handled via css
  **/
-import $$ from 'cached-dom-elements';
+import $ from 'jquery';
+import $$ from './cached-dom-elements';
 
 function ElementsInViewport($el) {
 	var _inViewElementsOffsetIndex = [];
