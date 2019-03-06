@@ -101,5 +101,13 @@ $brand-colors: (
 		.has-#{$key}-#{$variant}-color {
 			color: #{$color};
 		}
+
+		.component-theme-#{$key}-#{$variant} {
+			background: #{$color};
+		}
+
+		.color-#{$key}-#{$variant} {
+			color: #{$color};
+		}
 	}
 }
