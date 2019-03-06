@@ -7,6 +7,8 @@ import path from 'path';
 import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
 
+const devEnv = 'production' !== process.env.NODE_ENV;
+
 /*
 JS:
 - Load boilerplate scripts..
@@ -35,16 +37,14 @@ module.exports = {
 	entry: {
 		'/js/main.js': path.resolve(__dirname, './js/app.js'),
 		'/js/admin.js': path.resolve(__dirname, './js/admin.js'),
-		'css/style': [
-			path.resolve(__dirname, './scss/style.scss'),
-		].concat(sync('../*/scss/style.scss')),
-		'css/print': path.resolve(__dirname, './scss/print.scss'),
-		'css/admin': path.resolve(__dirname, './scss/admin.scss'),
+		'css/style': sync('../*/scss/style.scss'),
+		'css/print': sync('../*/scss/print.scss'),
+		'css/admin': sync('../*/scss/admin.scss'),
 	},
 
 	devtool: 'cheap-eval-source-map',
-	// target: 'web',
-	watch: 'production' !== process.env.NODE_ENV,
+	target: 'web',
+	watch: devEnv,
 
 	output: {
 		path: path.resolve(__dirname, './dist'),
@@ -85,17 +85,29 @@ module.exports = {
 			{
 				test: /\.(sa|sc|c)ss$/,
 				use: [
+					// 'production' !== process.env.NODE_ENV ? 'style-loader' : MiniCssExtractPlugin.loader,
 					MiniCssExtractPlugin.loader,
-					'css-loader',
+					{
+						loader: 'css-loader',
+						options: {
+							sourceMap: devEnv
+						}
+					},
 					{
 						loader: 'postcss-loader',
 						options: {
 							config: {
 								path: path.resolve(__dirname, './postcss.config.js'),
-							}
+							},
+							sourceMap: devEnv
 						}
 					},
-					'sass-loader',
+					{
+						loader: 'sass-loader',
+						options: {
+							sourceMap: devEnv
+						}
+					},
 				],
 			}
 		]
@@ -104,18 +116,18 @@ module.exports = {
 	plugins: [
 		new MiniCssExtractPlugin({
 			filename: "[name].css",
-			chunkFilename: "[id].css",
+			chunkFilename: "[id].[hash].css",
 			path: path.resolve(__dirname, './dist/css'),
 		}),
 
 		// Copy contents of ./assets -> ./dist
-		new CopyPlugin([
-			{
-				context: path.resolve(__dirname, './assets/images'),
-				from: './',
-				to: path.resolve(__dirname, './dist/images'),
-			},
-		]),
+		// new CopyPlugin([
+		// 	{
+		// 		context: path.resolve(__dirname, './assets/images'),
+		// 		from: './',
+		// 		to: path.resolve(__dirname, './dist/images'),
+		// 	},
+		// ]),
 
 		// Minify Images
 		// Include after plugins that add images, eg. copy-webpack-plugin
