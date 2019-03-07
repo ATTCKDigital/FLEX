@@ -860,7 +860,7 @@ h1, h2, h3, p, li, .caption {
 	table {
 		td {
 			@extend .body;
-			border: 1px solid color('standard', 'gray');
+			border: 1px solid $borderColor;
 			padding: $gap*.5;
 		}
 	}

@@ -39,11 +39,6 @@
 		margin-top: $gap*.5;
 		height: 36px;
 
-		@include mediaquery(xl) {
-			&:hover {
-				background: color('gradients', 'orange-horiz');
-			}
-		}
 	}
 }
 

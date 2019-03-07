@@ -50,7 +50,7 @@
 .accolo_regrow, .accolo_altrow {
 	background: $white;
 	border:0;
-	border-bottom: 1px solid color('standard', 'gray');
+	border-bottom: 1px solid $borderColor;
 	vertical-align: middle;
 	line-height:30px;
 	@include transition(background .4s ease-out);
