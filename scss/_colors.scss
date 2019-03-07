@@ -3,7 +3,7 @@
 // Default Colors
 $modalColor: #ffffff;
 $popupColor: rgba(0, 0, 0, .7);
-$defaultTextColor: #000000;
+$defaultTextColor: var(--primary-text-color, #2F2F2F);
 $borderColor: #dddddd;
 $white: #FFFFFF;
 $black: #000000;
