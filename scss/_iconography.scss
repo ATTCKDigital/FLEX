@@ -197,7 +197,7 @@
 		left: 0;
 		right: 0;
 		font-size: 30px;
-		@include sans-serif-bold;
+		@include primary-bold;
 		transform: rotate(90deg);
 		transition: top .4s ease-out;
 	}
