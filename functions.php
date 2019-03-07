@@ -6,6 +6,7 @@ define('THEME_DIR', get_template_directory()); // use when there are files that 
 
 /*** Global Variables ***/
 // These define globally available variables, and must be included first
+include_once(locate_template('config/global-variables/blocks.php')); //REQUIRED
 include_once(locate_template('config/global-variables/colors.php')); //REQUIRED
 include_once(locate_template('config/global-variables/nav-menus.php')); //REQUIRED
 include_once(locate_template('config/global-variables/svg-sprite.php')); //REQUIRED
