@@ -289,6 +289,41 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
+        },
+        {
+            "key": "field_5c818f12f08ab",
+            "label": "Footer Settings",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5c818e51e8c82",
+            "label": "Footer Copyright",
+            "name": "footer_copyright",
+            "type": "wysiwyg",
+            "instructions": "User [year] to output the current year.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
         }
     ],
     "location": [
@@ -308,5 +343,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1545165832
+    "modified": 1551994713
 }
