@@ -117,7 +117,7 @@ $font-size-headline6: (
 /** Convert px to rem **/
 // Usage:  font-size: px-to-rem(12px);
 @function px-to-rem($size) {
-	$remSize: $size / 10px;
+	$remSize: $size / 13px;
 	@return #{$remSize}rem;
 }
 
