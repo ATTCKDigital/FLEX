@@ -13,17 +13,21 @@ function flexls_acf_json_save_point( $path ) {
 add_filter('acf/settings/load_json', 'flexls_acf_json_load_point');
 
 function flexls_acf_json_load_point( $paths ) {
-
-	// remove original path (optional)
-	unset($paths[0]);
-
 	// append path
-	$path = THEME_DIR.'/config/acf-configs/acf-json';
+	$paths = array(THEME_DIR.'/config/acf-configs/acf-json');
+
+
+	if(is_child_theme())
+	{
+		$paths[] = CHILD_THEME_DIR.'/config/acf-configs/acf-json';
+	}
 
 	// return
 	return $paths;
 
 }
+
+
 
 /**
  * Update ACF settings.
