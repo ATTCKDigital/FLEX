@@ -60,6 +60,12 @@
 		justify-content: center;
 		width: 100%;
 	}
+
+	&.social-icon-plain {
+		background-color: transparent;
+		width: auto;
+		height: auto;
+	}
 }
 
 //pure css play button triangle arrow
