@@ -22,7 +22,7 @@
 		height: 30px;
 		margin-bottom: $gap;
 		letter-spacing: -0.1px;
-		@include sans-serif-regular;
+		@include primary-regular;
 		@include placeholder($black);
 
 		@include mediaquery(large) {
@@ -39,11 +39,6 @@
 		margin-top: $gap*.5;
 		height: 36px;
 
-		@include mediaquery(xl) {
-			&:hover {
-				background: color('gradients', 'orange-horiz');
-			}
-		}
 	}
 }
 
@@ -60,7 +55,7 @@
 		padding-left: $gap*2;
 		position: relative;
 		line-height: 1.4;
-		@include sans-serif-bold;
+		@include primary-bold;
 
 
 		&:before {

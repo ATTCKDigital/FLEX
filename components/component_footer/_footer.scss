@@ -12,7 +12,7 @@
 		display: block;
 		font-size: px-to-rem(16px);
 		margin-bottom: $gap;
-		@include sans-serif-bold;
+		@include primary-bold;
 
 		&:last-child {
 			margin-bottom: 0;

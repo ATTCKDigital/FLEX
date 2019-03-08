@@ -6,6 +6,7 @@ define('THEME_DIR', get_template_directory()); // use when there are files that 
 
 /*** Global Variables ***/
 // These define globally available variables, and must be included first
+include_once(locate_template('config/global-variables/blocks.php')); //REQUIRED
 include_once(locate_template('config/global-variables/colors.php')); //REQUIRED
 include_once(locate_template('config/global-variables/nav-menus.php')); //REQUIRED
 include_once(locate_template('config/global-variables/svg-sprite.php')); //REQUIRED
@@ -17,6 +18,7 @@ include_once(locate_template('config/global-variables/date-format.php')); //REQU
 /*** ACF Configs ***/
 include_once(locate_template('config/acf-configs/acf-css.php'));  //REQUIRED
 include_once(locate_template('config/acf-configs/acf-sync.php')); //REQUIRED
+include_once(locate_template('config/acf-configs/acf-options-page.php')); //REQUIRED
 include_once(locate_template('config/acf-configs/register-acf-blocks.php')); //REQUIRED
 
 /*** WP-Admin Configs ***/
@@ -34,12 +36,13 @@ include_once(locate_template('config/admin-configs/unwrap-images.php')); //REQUI
 include_once(locate_template('config/theme-configs/body-classes.php')); //REQUIRED
 include_once(locate_template('config/theme-configs/custom-nav-classes.php')); //REQUIRED
 include_once(locate_template('config/theme-configs/customizer-colors.php')); //REQUIRED
-include_once(locate_template('config/theme-configs/enqueue-scripts-styles.php')); //REQUIRED
 include_once(locate_template('config/theme-configs/enable-gutenberg-blocks.php')); //REQUIRED
-include_once(locate_template('config/theme-configs/nav-walker.php')); //REQUIRED
-include_once(locate_template('config/theme-configs/register-nav-menus.php')); //REQUIRED
-include_once(locate_template('config/theme-configs/theme-setup.php')); //REQUIRED
-include_once(locate_template('config/theme-configs/site-logo.php')); //REQUIRED
-include_once(locate_template('config/theme-configs/Utils.class.php')); //REQUIRED
+include_once(locate_template('config/theme-configs/enqueue-scripts-styles.php')); //REQUIRED
 include_once(locate_template('config/theme-configs/flex-layout-system.php')); //REQUIRED
 include_once(locate_template('config/theme-configs/flexls-meta-boxes.php')); //REQUIRED
+include_once(locate_template('config/theme-configs/nav-walker.php')); //REQUIRED
+include_once(locate_template('config/theme-configs/register-nav-menus.php')); //REQUIRED
+include_once(locate_template('config/theme-configs/site-logo.php')); //REQUIRED
+include_once(locate_template('config/theme-configs/theme-setup.php')); //REQUIRED
+include_once(locate_template('config/theme-configs/Utils.class.php')); //REQUIRED
+include_once(locate_template('config/theme-configs/year-shortcode.php')); //REQUIRED
