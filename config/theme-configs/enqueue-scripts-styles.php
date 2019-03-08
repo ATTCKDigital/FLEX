@@ -9,7 +9,7 @@ function _scripts() {
 		wp_deregister_script('jquery');
 	}
 	//Compiled theme js file
-	wp_enqueue_script("afp_script", get_template_directory_uri() . "/dist/js/main.js", array(), null, true);
+	wp_enqueue_script("afp_script", get_stylesheet_directory_uri() . "/dist/js/main.js", array(), null, true);
 
 	// Load more vars
 	wp_localize_script('afp_script', 'afp_vars', array(
@@ -30,8 +30,8 @@ function flexls_deregister_styles() {
 
 // Admin specific styles
 function admin_scripts() {
-	wp_enqueue_script("admin_scripts", get_template_directory_uri() . "/dist/js/admin.js", array(), null, true);
-	wp_enqueue_style('admin-styles', get_template_directory_uri().'/dist/css/admin.css');
+	wp_enqueue_script("admin_scripts", get_template_directory_uri() . "/dist/js/admin.js", array(), null, true); //TODO: get these to output right so can serve from child theme
+	wp_enqueue_style('admin-styles', get_stylesheet_directory_uri().'/dist/css/admin.css');
 }
 add_action('admin_enqueue_scripts', 'admin_scripts');
 
