@@ -15,7 +15,11 @@
 	$linkedin = get_field('linkedin_url', 'options');
 	$medium = get_field('medium_url', 'options');
 	$youtube = get_field('youtube_url', 'options');
-	$pinterest = 'https://www.pinterest.com/'.get_field('pinterest_username', 'options');
+	$pinterest = get_field('pinterest_username', 'options');
+
+	if($pinterest) {
+		$pinterest = 'https://www.pinterest.com/'.$pinterest;
+	}
 
 
 
