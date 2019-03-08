@@ -4,12 +4,10 @@
 There are several global variables that can be overridden from the child theme.  Some can be overridden through the WordPress admin, others can via the child theme code. 
 
 ### Blocks
-To add or enable an ACF block, you must edit the following file in the child theme: `config/global-variables/blocks.php`.  
+To add or enable an ACF or FLEX block, you must edit the following file in the child theme: `config/global-variables/blocks.php`.  
 
 #### Notes on Flex Layout System
-This system has a block called "Row". This is a parent block and the foundation of Flex Layout System. It is a block that allows inner blocks - these inner blocks are a core and ACF blocks who have a parent of "Row".  They are only available inside of the "Row" block. 
-
-Additionally, all core blocks have been extended to have a column number selector. A column number selector should also be available in all ACF blocks.
+This system has a block called "Row" and a block called "Column". These are parent blocks and the foundation of the Flex Layout System. When creating a new page, start with a "Row" block and then add "Column" blocks inside and select the widths of the columns.  Once the columns are set up, add your content blocks.
 
 #### blocks.php
 Gutenberg allows for the whitelisting of blocks.  The `blocks.php` file in `config/global-variables` contains the whitelist of blocks. 

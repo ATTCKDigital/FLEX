@@ -4,7 +4,9 @@ h1, h2, h3, h4, h5, h6, p {
 	opacity: 1; //overrides fade in elements
 }
 
-
+body {
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; //overrides theme fonts within admin
+}
 //Styles for grid, row and column within editor
 
 .wp-block-flexls-row {
@@ -66,3 +68,8 @@ h1, h2, h3, h4, h5, h6, p {
 	min-height: 100px;
 }
 
+.wp-core-ui .button, 
+.wp-core-ui .button-primary, 
+.wp-core-ui .button-secondary {
+	min-height: 0;
+}

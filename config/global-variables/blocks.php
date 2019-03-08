@@ -25,7 +25,6 @@ if(!defined('FLEXLS_BLOCKS')) {
 
 //Add all of the acf blocks that should be registered. Only put the block name. The components must be named as described in the read me.
 $registerBlocks = array(
-	'template',
 );
 
 

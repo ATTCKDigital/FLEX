@@ -10,7 +10,7 @@
 	}
 
 	.filter-items {
-		border-top: 1px solid color('standard', 'gray');
+		border-top: 1px solid $borderColor;
 		padding-top: $gap*.75;
 		padding-bottom: $gap*.75;
 

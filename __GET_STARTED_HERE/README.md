@@ -66,21 +66,20 @@ To the end of the file add: `127.0.0.1 dev.project.com` (domain used for Virtual
 
 ### Installing Wordpress and this theme
 
-1. Download [WordPress](https://wordpress.org/download/) into your project directory and copy the "boilerplate" theme to `wp-content/themes`
+1. Download [WordPress](https://wordpress.org/download/) into your project directory and add the "boilerplate" as a submodule in `wp-content/themes`
 2. Use **git submodules**, to add the "boilerplate" theme to `wp-content/themes`.  
 *With ssh*: `git submodule add git@github.com:ATTCKDigital/boilerplate.git`  
 *With HTTPS*: `git submodule add https://github.com/ATTCKDigital/boilerplate.git`
 3. Copy `.env`, `gitignore` (rename `.gitignore`), `.htaccess` and `wp-config.php` into the WordPress root
 4. Go to https://api.wordpress.org/secret-key/1.1/salt/ and get new Authentication Unique Keys and Salts. Paste the generated snippet into `lines 67-74` of `wp-config.php` in the WordPress root
-5. Change the `$table_prefix` variable in `wp-config.php` from `wp_` to a namespaced value, ie `flexls_`.  This is a security measure.
-6. Change the variables in the `.env` folder to match your local development settings. Once you have changed the variables, you will need to `restart apache`. From this point, you should be able to navigate to the local project url in the browser and finish the WordPress Install process. See below for description of each `.env` var.
-7. From the command line, navigate to the boilerplate PARENT theme and run `npm install`.  This will install all of the associated node modules.
-8. To compile css, js and assets, run `gulp watch` from inside the boilerplate PARENT theme
-9. Copy the boilerplate-child theme into the themes folder.  Majority of the coding done will be done in the child theme. Any file added to the child theme with the same name as in the parent, will override the parent; EXCLUDING existing functions.
-10. Edit the WordPress `style.css` file to reflect the project specifics.
-11. Replace `screenshot.png` with a project relevant theme screenshot.
-12. Enable/disable Gutenberg blocks and set global variables for the project.  See child theme `README.md` for details.
-13. Review child theme `functions.php` and enable/disable functions needed for project.
+5. Change the variables in the `.env` folder to match your local development settings. Once you have changed the variables, you will need to `restart apache`. From this point, you should be able to navigate to the local project url in the browser and finish the WordPress Install process. See below for description of each `.env` var.
+6. From the command line, navigate to the boilerplate PARENT theme and run `npm install`.  This will install all of the associated node modules.
+7. To compile css, js and assets, run `npm run dev` from inside the boilerplate PARENT theme
+8. Copy the `flexls-child` theme into the themes folder and rename the theme to a project relevant name.  Majority of the coding done will be done in the child theme. Any file added to the child theme with the same name as in the parent, will override the parent; EXCLUDING existing functions.
+9. Edit the WordPress `style.css` file to reflect the project specifics.
+10. Replace `screenshot.png` with a project relevant theme screenshot.
+11. Enable/disable Gutenberg blocks and set global variables for the project.  See child theme `README.md` for details.
+12. Review child theme `functions.php` and enable/disable functions needed for project.
 
 #### .env Variables
 SetEnv DB_NAME boilerplate --> the name of your local database
@@ -92,15 +91,17 @@ SetEnv S3_UPLOADS_REGION bucket_region --> if using an S3 bucket, the region of 
 SetEnv env dev --> the current env (choose from dev, staging, prod). If working locally, it should be set to `dev`
 SerEnv DEBUG true --> enable/disable debugging.  Debugging should only be true in  `dev` or `staging`
 SetEnv url http://boilerplate.test --> local development url
-SetEnv tablePrefix bp_ --> database table prefix.  This can really be anything.  It is changed for added security (default is wp_ and should NOT be used).
+SetEnv tablePrefix bp_ --> database table prefix.  Change to a namespaced value, ie. `flexls_`.  This is a security measure.
 
 ### Ideas for improvements to set up process
 
 1. Install script? Included in this folder is one that could be adapted for more generic use. (See `vhosts-attck.sh`)
 2. Maybe even better, a Docker image?
 
-## Gulp & Node/Webpack
-How to run and use
+## Webpack
+Webpack is used to compile all of the site assets (fonts, theme images, javascript, css). To use
+1. From the command line, navigate to the boilerplate PARENT theme and run `npm install`.  This will install all of the associated node modules.
+2. To compile css, js and assets, run `npm run dev` from inside the boilerplate PARENT theme
 
 ## Deployment
 How to deploy - WPEngine instructions and generic FTP instructions

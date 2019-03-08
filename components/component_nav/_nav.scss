@@ -90,7 +90,7 @@
 	.menu-item {
 		padding-bottom: 8px;
 		position: relative;
-		@include sans-serif-bold;
+		@include primary-bold;
 
 		@include mediaquery-max(large) {
 			//Mobile only mediaquery so less overrides are necessary

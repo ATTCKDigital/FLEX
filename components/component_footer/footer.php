@@ -29,7 +29,7 @@
 	</div>
 	<div class="pure-g component-row-wide padding-global-bottom-2x padding-small-left-1x padding-small-right-1x padding-xl-left-0x padding-xl-right-0x">
 		<div class="flex-g-xl-12-12 flex-g-lg-12-12 flex-g-md-12-12 flex-g-sm-12-12">
-			<small class="align-center display-block">Copyright <?= date('Y');?> <?= get_bloginfo('name');?></small>
+			<small class="align-center display-block"><?= get_field('footer_copyright', 'options');?></small>
 		</div>
 	</div>
 </section>
