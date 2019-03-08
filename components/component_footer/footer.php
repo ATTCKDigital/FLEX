@@ -1,6 +1,6 @@
 <?php // Global Footer ?>
 
-<section class="component-row-full component-row">
+<section class="component-row-full component-footer component-row">
 	<div class="pure-g component-alignment-top component-row-wide padding-global-top-2x padding-global-bottom-2x padding-small-left-1x padding-small-right-1x padding-xl-left-0x padding-xl-right-0x">
 		<div class="flex-g-xl-3-12 flex-g-lg-3-12 flex-g-md-3-12 flex-g-sm-12-12 padding-small-bottom-2x padding-medium-bottom-0x">
 			<?php
