@@ -37,9 +37,9 @@ module.exports = {
 	entry: {
 		'/js/main.js': path.resolve(__dirname, './js/app.js'),
 		'/js/admin.js': path.resolve(__dirname, './js/admin.js'),
-		'css/style': sync('../*/scss/style.scss'),
-		'css/print': sync('../*/scss/print.scss'),
-		'css/admin': sync('../*/scss/admin.scss'),
+		'css/style': path.resolve(__dirname, './scss/style.scss'),
+    'css/print': path.resolve(__dirname, './scss/print.scss'),
+    'css/admin': path.resolve(__dirname, './scss/admin.scss'),
 	},
 
 	devtool: 'cheap-eval-source-map',
@@ -115,8 +115,8 @@ module.exports = {
 
 	plugins: [
 		new MiniCssExtractPlugin({
-			filename: "[name].css",
-			chunkFilename: "[id].[hash].css",
+			filename: '[name].css',
+			chunkFilename: '[id].[hash].css',
 			path: path.resolve(__dirname, './dist/css'),
 		}),
 

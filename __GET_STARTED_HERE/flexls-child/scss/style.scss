@@ -1,5 +1,45 @@
-
 /**** Override-able SASS files ****/
 
+// General variables and setup
+@import 'flexls/scss/_sass-utils.scss';
+@import 'flexls/scss/_reset.scss';
+@import 'flexls/scss/_sizing.scss';
+@import 'flexls/scss/_media-queries.scss';
+@import 'flexls/scss/_grid.scss';
+// @import 'flexls/scss/_fonts.scss'; TODO: problems with font asset paths from boilerplate in webpack build
+@import 'fonts';
+@import 'flexls/scss/_colors.scss';
+@import 'flexls/scss/_debug.scss';
+@import 'flexls/scss/_global.scss';
+@import 'flexls/scss/_layout.scss';
+@import 'flexls/scss/_component.scss';
+@import 'flexls/scss/_hidden.scss';
+@import 'flexls/scss/_row-theme.scss';
+@import 'flexls/scss/_popups-overlays.scss';
+@import 'flexls/scss/_animations.scss';
+// @import 'animations';
+@import 'flexls/gutenberg/components/gb-component_padding/_padding.scss';
+@import 'flexls/gutenberg/components/gb-component_margin/_margin.scss';
 
+@import 'flexls/scss/_typography-base.scss';
+// @import 'typography-base';
+@import 'flexls/scss/_typography.scss';
+// @import 'typography';
+@import 'flexls/gutenberg/blocks/block_image/_image.scss';
+@import 'flexls/gutenberg/blocks/block_button/_buttons.scss';
+// @import 'buttons';
+@import 'flexls/gutenberg/blocks/block_heading/_heading.scss';
+// @import 'headlines';
+@import 'flexls/scss/_iconography.scss';
+// @import 'iconography';
+@import 'flexls/scss/_forms.scss';
+// @import 'forms';
+@import 'flexls/scss/_styleguide.scss';
+
+//Blocks
+
+// Components
+@import 'flexls/components/component_footer/_footer.scss';
+@import 'flexls/components/component_nav/_nav.scss';
+// @import '../components/component_nav/nav';
 
