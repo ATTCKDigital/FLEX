@@ -61,6 +61,10 @@
 
 .component-column {
 	padding: 0 $gap;
+
+	@include mediaquery(large) {
+		padding: 0;
+	}
 }
 
 // Row block in 2 widths

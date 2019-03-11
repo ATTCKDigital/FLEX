@@ -12,6 +12,10 @@ h1, h2, h3, h4, h5, h6, p {
 	}
 }
 
+html {
+	height: 100%;
+}
+
 body {
 	font-smoothing: antialiased;
 	color: $defaultTextColor;
@@ -38,6 +42,15 @@ body {
 
 main.content {
 	width: 100%;
+	height: 100%;
+
+	.wp-admin & {
+		height: auto;
+	}
+}
+
+article {
+	height: 100%;
 }
 
 .pure-g {
