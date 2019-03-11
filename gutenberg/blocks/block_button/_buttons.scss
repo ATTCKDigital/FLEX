@@ -8,12 +8,14 @@
 	box-shadow: none;
 	color: $white;
 	cursor: pointer;
+	display: inline-block;
 	font-size: px-to-rem(16px);
 	min-height: 50px;
 	overflow: hidden;
 	padding: 10px 25px 9px;
 	position: relative;
 	transition: background .4s ease-out, color .4s ease-out;
+	text-align: center;
 	z-index: 2;
 
 	@include mediaquery(xl){
@@ -40,7 +42,7 @@
 		}
 	}
 
-	&.button-outline, &.is-style-button-outline {
+	&.button-tertiary, &.is-style-button-tertiary {
 		color: $black;
 		background: $white;
 		

@@ -19,7 +19,7 @@ use const FLEX_LAYOUT_SYSTEM\Components\Scroller\SCROLLER_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Scroller\scroller_options_output;
 
 
-add_action( 'plugins_loaded', __NAMESPACE__ . '\register_row_block' );
+add_action( 'init', __NAMESPACE__ . '\register_row_block' );
 /**
  * Register the dynamic block.
  *

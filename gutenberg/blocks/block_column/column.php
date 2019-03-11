@@ -8,7 +8,7 @@ use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
 
 
-add_action( 'plugins_loaded', __NAMESPACE__ . '\register_column_block' );
+add_action( 'init', __NAMESPACE__ . '\register_column_block' );
 /**
  * Register the dynamic block.
  *

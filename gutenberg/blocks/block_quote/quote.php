@@ -9,7 +9,7 @@ use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_video_output;
 
 
-add_action( 'plugins_loaded', __NAMESPACE__ . '\register_quote_block' );
+add_action( 'init', __NAMESPACE__ . '\register_quote_block' );
 /**
  * Register the dynamic block.
  *
