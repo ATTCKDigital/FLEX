@@ -22,7 +22,8 @@
 				//To make this into a share component, change componentType value to "share"
 				echo Utils::render_template('components/component_social-media/social-media.php', array(
 					'componentType' => '',
-					'displayTitle'	=> 'Follow us:'
+					'displayTitle'	=> 'Follow us:',
+					'displayTitleClass' => 'subheadline2 color-text-white '
 				));
 			?>
 		</div>

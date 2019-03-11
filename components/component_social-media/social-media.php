@@ -12,7 +12,7 @@
 
 <div class="component-social-media component">
 	<?php if($this->displayTitle){ ?>
-		<h4 class="headline2 color-text-white margin-global-bottom-2x"><?= $this->displayTitle;?></h4>
+		<h4 class="<?= $this->displayTitleClass;?> margin-global-bottom-2x"><?= $this->displayTitle;?></h4>
 	<?php } ?>
 	<div class="social-media-list">
 		<?php if($twitter) { ?>
