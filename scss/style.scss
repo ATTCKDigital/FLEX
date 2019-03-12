@@ -19,7 +19,6 @@
 @import '../gutenberg/components/gb-component_margin/_margin.scss';
 
 @import 'typography-base';
-@import 'typography';
 @import '../gutenberg/blocks/block_image/_image.scss';
 @import '../gutenberg/blocks/block_button/_buttons.scss';
 @import '../gutenberg/blocks/block_heading/_heading.scss';
@@ -32,3 +31,4 @@
 // Components
 @import '../components/component_footer/footer';
 @import '../components/component_nav/nav';
+@import '../components/component_archive-feed/archive-feed';
