@@ -12,23 +12,18 @@
 
     $taxonomy = ''; //Set taxonomy if using custom tax
 
-    //The archive Query. Add arguments to produce the needed query.
-    $args = array(
-        'post_type' => 'post',
-    );
-    $archiveQuery = new WP_Query($args);
-
-    $maxPages = $archiveQuery->max_num_pages; //Find the max number of pages for the query, necessary for "Load More"
-    $pageTitle = 'Archive'; //Set the title of the page
+    $maxPages = $wp_query->max_num_pages; //Find the max number of pages for the query, necessary for "Load More"
+    $pageTitle = $term->name; //Set the title of the page
     $postType = 'post'; //Set the post type
 
-    echo Utils::render_template("components/component_archive-feed.php", array(
+    echo Utils::render_template("components/component_archive-feed/archive-feed.php", array(
         "title"         => $pageTitle,
         "maxPages"      => $maxPages,
-        "term"          => $term,
-        "taxonomy"      => $taxonomy,
+        "term"          => $term->term_id,
+        "taxonomy"      => 'category',
         "postType"      => $postType,
-        "query"         => $archiveQuery,
+        "query"         => $wp_query,
+        "loadMoreText"  => 'Show More'
     ));
 
     get_footer();
