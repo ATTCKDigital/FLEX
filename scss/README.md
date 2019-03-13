@@ -29,10 +29,10 @@ These should serve as the basis for a functioning theme. Changes should be made 
 - `_styleguide.scss`: Styles for the styleguide page.
 - `_row-theme.scss`: Component background defaults and border classes. 
 - `_typography-base.scss`: Base typography styles and font size maps.
-- `_typography.scss`: Project specific type styles.
 
 
 **Files below are used to import for compilation**
+- `admin.scss`: If any admin only styles, include them here.
 - `print.scss`: If any print only styles, include them here.
 - `style.scss`: Include styles that are being used. Most likely will not have to make changes to this file.
 
