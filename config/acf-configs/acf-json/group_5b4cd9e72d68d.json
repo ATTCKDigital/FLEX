@@ -38,7 +38,7 @@
             "key": "field_5c06ac0b9cb37",
             "label": "Instagram Username",
             "name": "instagram_username",
-            "type": "url",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -48,7 +48,10 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": ""
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
             "key": "field_5b6c9d8810cfd",
@@ -343,5 +346,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1552414622
+    "modified": 1552503031
 }
