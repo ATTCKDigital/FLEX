@@ -1,4 +1,4 @@
-<section class="component-row padding-small-top-7x component" data-component-name="LoadMore">
+<section class="component-row padding-small-top-3x padding-large-top-7x component" data-component-name="LoadMore">
 	<div class="pure-g component-row-wide component-alignment-top">
 		<div class="column flex-g-lg-12-12 flex-g-md-12-12 flex-g-sm-12-12">
 			<div class="component-archive-feed">
