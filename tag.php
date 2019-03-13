@@ -1,34 +1,29 @@
 <?php
 /**
  * Template: Tag Archive
- * Description: Wordpress template for a category archive page. Copy and re-name to tag-termname.php for category specific archives.
+ * Description: Wordpress template for a tag archive page. Copy and re-name to tag-termname.php for tag specific archives.
  *
  */
     get_header();
 
     $term = get_queried_object(); 
-    //If archive is a category or a tag, find out the term.
+    //If archive is a tag or a tag, find out the term.
     //https://codex.wordpress.org/Function_Reference/get_queried_object
 
     $taxonomy = ''; //Set taxonomy if using custom tax
 
-    //The archive Query. Add arguments to produce the needed query.
-    $args = array(
-        'post_type' => 'post',
-    );
-    $archiveQuery = new WP_Query($args);
+    $maxPages = $wp_query->max_num_pages; //Find the max number of pages for the query, necessary for "Load More"
+    $pageTitle = $term->name; //Set the title of the page
+    $postType = 'post'; //Set the post type
 
-    $maxPages = $archiveQuery->max_num_pages; //Find the max number of pages for the query, necessary for "Load More"
-    $pageTitle = 'Archive' //Set the title of the page
-    $postType = 'post' //Set the post type
-
-    echo Utils::render_template("components/component_archive-feed.php", array(
+    echo Utils::render_template("components/component_archive-feed/archive-feed.php", array(
         "title"         => $pageTitle,
         "maxPages"      => $maxPages,
-        "term"          => $term,
-        "taxonomy"      => $taxonomy,
+        "term"          => $term->term_id,
+        "taxonomy"      => 'tag',
         "postType"      => $postType,
-        "query"         => $archiveQuery,
+        "query"         => $wp_query,
+        "loadMoreText"  => 'Show More'
     ));
 
     get_footer();

@@ -1,33 +1,29 @@
 <?php
 /**
- * Template Name: Archive
- * Description: Wordpress template for an archive page. Copy and re-name to archive-customposttype.php for each custom post type. If no specific archive is created, this will serve as the default.
+ * Template: Archive
+ * Description: Wordpress template for a archive page.
  *
  */
     get_header();
 
-    $postType = get_queried_object(); 
-    //Returns the post type.
+    $term = get_queried_object(); 
+    //If archive is a category or a tag, find out the term.
     //https://codex.wordpress.org/Function_Reference/get_queried_object
 
     $taxonomy = ''; //Set taxonomy if using custom tax
 
-    //The archive Query. Add arguments to produce the needed query.
-    $args = array(
-        'post_type' => 'post',
-    );
-    $archiveQuery = new WP_Query($args);
+    $maxPages = $wp_query->max_num_pages; //Find the max number of pages for the query, necessary for "Load More"
+    $pageTitle = 'Archive'; //Set the title of the page
+    $postType = 'post'; //Set the post type
 
-    $maxPages = $archiveQuery->max_num_pages; //Find the max number of pages for the query, necessary for "Load More"
-    $pageTitle = 'Archive' //Set the title of the page
-
-    echo Utils::render_template("components/component_archive-feed.php", array(
+    echo Utils::render_template("components/component_archive-feed/archive-feed.php", array(
         "title"         => $pageTitle,
         "maxPages"      => $maxPages,
-        "term"          => '', //leave blank
-        "taxonomy"      => '', //leave blank
+        "term"          => '',
+        "taxonomy"      => '',
         "postType"      => $postType,
-        "query"         => $archiveQuery,
+        "query"         => $wp_query,
+        "loadMoreText"  => 'Show More'
     ));
 
     get_footer();

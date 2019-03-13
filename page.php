@@ -8,25 +8,31 @@
 
         if (have_posts()) : while (have_posts()) : the_post();
 
+			if ( has_blocks( $post->post_content ) ) {
+				//If the using blocks
+    			the_content();
+			} else {
+				//If using Classic Editor
 ?>
-	<section class="component-row margin-mobile-top-40 margin-tablet-landscape-top-60 margin-mobile-bottom-40 margin-tablet-landscape-bottom-60 padding-mobile-left-20 padding-mobile-right-20 padding-tablet-landscape-left-0 padding-tablet-landscape-right-0">
-		<div class="component-row-inner component-row-standard">
-			<div class="pure-g">
-				<div class="column pure-u-lg-12-12 pure-u-md-12-12 pure-u-sm-12-12">
-					<div class="component-theme-white component-single padding-mobile-20 padding-tablet-landscape-50">
-						<div class="body-text">
-							<?php the_content();?>
+				<section class="component-row padding-small-top-5x padding-small-bottom-7x">
+					<div class="pure-g component-row-wide component-alignment-top">
+						<div class="column flex-g-lg-2-12 flex-g-md-1-12 flex-g-sm-0-12"></div>
+						<div class="column flex-g-lg-8-12 flex-g-md-10-12 flex-g-sm-12-12">
+							<div class="component-single">
+								<header class="single-header margin-small-bottom-3x">
+									<h1 class="headline4 align-center"><?php the_title();?></h1>
+								</header>
+								<div class="body-text">
+									<?php the_content();?>
+								</div>
+							</div>
 						</div>
+						<div class="column flex-g-lg-2-12 flex-g-md-1-12 flex-g-sm-0-12"></div>
 					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
+				</section>
+		
 <?php
-
-
+			} // end Gutenberg check
         endwhile; // endwhile default loop
         else:
 ?>

@@ -79,9 +79,9 @@ export default registerBlockType(
 			...MarginOptionsAttributes
 		},
 		styles: [
-			{ name: 'button-default', label: __( 'Default', 'block style' ), isDefault: true },
-			{ name: 'button-outline', label: __( 'Outline' ) },
+			{ name: 'button-primary', label: __( 'Default', 'block style' ), isDefault: true },
 			{ name: 'button-secondary', label: __( 'Secondary', 'block style' ) },
+			{ name: 'button-tertiary', label: __( 'Tertiary', 'block style' ) },
 		],
 
 		edit: props => {

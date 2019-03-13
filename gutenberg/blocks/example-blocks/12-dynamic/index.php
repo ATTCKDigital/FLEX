@@ -3,7 +3,7 @@
 namespace FLEX_LAYOUT_SYSTEM\Blocks\Dynamic;
 
 
-add_action( 'plugins_loaded', __NAMESPACE__ . '\register_dynamic_block' );
+add_action( 'init', __NAMESPACE__ . '\register_dynamic_block' );
 /**
  * Register the dynamic block.
  *

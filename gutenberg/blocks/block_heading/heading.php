@@ -6,7 +6,8 @@ use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
 use const FLEX_LAYOUT_SYSTEM\Components\TextColors\TEXT_COLOR_ATTRIBUTES;
 
 
-add_action( 'plugins_loaded', __NAMESPACE__ . '\register_heading_block' );
+
+add_action( 'init', __NAMESPACE__ . '\register_heading_block' );
 /**
  * Register the dynamic block.
  *

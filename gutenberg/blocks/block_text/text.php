@@ -4,7 +4,7 @@ namespace FLEX_LAYOUT_SYSTEM\Blocks\Text;
 use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
 
-add_action( 'plugins_loaded', __NAMESPACE__ . '\register_text_block' );
+add_action( 'init', __NAMESPACE__ . '\register_text_block' );
 /**
  * Register the dynamic block.
  *

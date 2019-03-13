@@ -9,6 +9,7 @@ import $$ from './cached-dom-elements';
 import Parallax from './parallax';
 import ElementsInViewport from './elements-in-viewport';
 import Nav from '../components/component_nav/nav';
+import LoadMore from './load-more';
 
 //Project Specific
 
@@ -18,6 +19,7 @@ FLEXLS.Components = {
 	'Parallax': Parallax,
 	'ElementsInViewport': ElementsInViewport,
 	'Nav': Nav,
+	'LoadMore': LoadMore,
 };
 
 FLEXLS.Loader = {};
