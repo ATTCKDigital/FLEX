@@ -5,7 +5,7 @@
 	<div class="pure-g component-row-wide component-alignment-top">
 		<div class="column flex-g-lg-12-12 flex-g-md-12-12 flex-g-sm-12-12">
 			<div class="component-archive-feed">
-				<div class="feed-items padding-small-bottom-3x" data-post-type="<?= $this->postType;?>" data-term="<?= $this->term;?>" data-taxonomy="<?= $this->taxonomy;?>">
+				<div class="feed-items load-items padding-small-bottom-3x" data-post-type="<?= $this->postType;?>" data-term="<?= $this->term;?>" data-taxonomy="<?= $this->taxonomy;?>">
 					<?php 
 						if ($this->query->have_posts()) { 
 							while ($this->query->have_posts()) { 
