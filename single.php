@@ -16,9 +16,15 @@
 	} else {
 
 		if (have_posts()) : while (have_posts()) : the_post();
+			if ( has_blocks( $post->post_content ) ) {
+				the_content();
 
-			//Post Body
-			echo Utils::render_template('components/component_post-body/post-body.php');
+			} else {
+				//If using Classic Editor
+				echo Utils::render_template('components/component_post-body/post-body.php');
+
+
+			} // end Gutenberg check
 
 		endwhile; // endwhile default loop
 		else:
