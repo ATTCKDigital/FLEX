@@ -242,6 +242,10 @@ th, tr, td {
 		}
 	}
 
+	a.button {
+		text-decoration: none;
+	}
+
 	//list styles
 	ul, ol {
 		margin-left: $gap*.75;
