@@ -12,6 +12,10 @@
     $pageTitle = 'Blog Posts Index'; //Set the title of the page
     $postType = 'post';
 
+    echo Utils::render_template("components/component_archive-feed/archive-feed-header.php", array(
+        "title"         => $pageTitle,
+    ));
+
     echo Utils::render_template("components/component_archive-feed/archive-feed.php", array(
         "title"         => $pageTitle,
         "maxPages"      => $maxPages,
