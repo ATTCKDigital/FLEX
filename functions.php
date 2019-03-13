@@ -40,6 +40,7 @@ include_once(locate_template('config/theme-configs/enable-gutenberg-blocks.php')
 include_once(locate_template('config/theme-configs/enqueue-scripts-styles.php')); //REQUIRED
 include_once(locate_template('config/theme-configs/flex-layout-system.php')); //REQUIRED
 include_once(locate_template('config/theme-configs/flexls-meta-boxes.php')); //REQUIRED
+include_once(locate_template('config/theme-configs/load-more.php')); //RECOMMENDED
 include_once(locate_template('config/theme-configs/nav-walker.php')); //REQUIRED
 include_once(locate_template('config/theme-configs/register-nav-menus.php')); //REQUIRED
 include_once(locate_template('config/theme-configs/site-logo.php')); //REQUIRED
