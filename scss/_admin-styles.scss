@@ -9,7 +9,12 @@ body {
 }
 //Styles for grid, row and column within editor
 
+.wp-block {
+	max-width: none;
+}
+
 .wp-block-flexls-row {
+	
 	.editor-inner-blocks {
 		width: 100%;
 	}
@@ -44,7 +49,7 @@ body {
 
 .wp-block-flexls-row {
 	border: 2px dashed silver;
-	max-width: 610px;
+	max-width: $siteWidth;
 	margin: 0 auto;
 
 	.wp-block[data-align=full] & {

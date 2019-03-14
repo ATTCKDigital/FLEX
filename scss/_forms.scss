@@ -22,7 +22,7 @@
 		height: 30px;
 		margin-bottom: $gap;
 		letter-spacing: -0.1px;
-		@include primary-regular;
+		@include secondary-regular;
 		@include placeholder($black);
 
 		@include mediaquery(large) {
@@ -55,7 +55,7 @@
 		padding-left: $gap*2;
 		position: relative;
 		line-height: 1.4;
-		@include primary-bold;
+		@include secondary-regular;
 
 
 		&:before {

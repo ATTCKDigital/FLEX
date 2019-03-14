@@ -47,7 +47,7 @@ function render_text_block($attributes) {
 	$class .= ' '.$attributes['className'];
 	$class .= margin_options_classes($attributes);
 
-	$output = "<div class=\"{$class}\" ><div class=\"body-text\">{$attributes['content']}</div></section>";
+	$output = "<div class=\"{$class}\" ><div class=\"body-text\">{$attributes['content']}</div></div>";
 
 	return $output;
 }
