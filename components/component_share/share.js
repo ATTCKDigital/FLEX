@@ -1,24 +1,36 @@
 import $ from 'jquery';
 
-//Social Media
-function SocialMedia($el) {
-	//cache the body
-	var $body = $('body');
+// Share button
+function Share ($el) {
+		// Opens social share links in new windows
+	function openShareWindow(e) {
+		e.preventDefault();
 
+		// Get href
+		var targetURL = $(this).attr('href');
 
+		// Get target
+		var target = $(this).attr('target');
 
+		// Get options
+		var options = $(this).attr('data-options');
 
-	function bindEvents() {
-		$el = $el;
+		// Open share window
+		window.open(targetURL, target, options);
 	}
 
-	this.init = function ($el) {
-		bindEvents();
+	function expandShareTools(e) {
+		$el.toggleClass('expandShare');
+	}
 
+	this.init = function($el) {
+		$el.find('.shareLink').on('click', openShareWindow);
+		$el.find('.shareExpand').on('click', expandShareTools);
+		
 		return this;
 	}
 
 	return this.init($el);
 }
 
-export default SocialMedia;
+export default Share;

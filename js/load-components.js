@@ -9,6 +9,7 @@ import $$ from './cached-dom-elements';
 import Parallax from './parallax';
 import ElementsInViewport from './elements-in-viewport';
 import Nav from '../components/component_nav/nav';
+import Share from '../components/component_share/share';
 import LoadMore from './load-more';
 
 //Project Specific
@@ -20,6 +21,7 @@ FLEXLS.Components = {
 	'ElementsInViewport': ElementsInViewport,
 	'Nav': Nav,
 	'LoadMore': LoadMore,
+	'Share': Share,
 };
 
 FLEXLS.Loader = {};

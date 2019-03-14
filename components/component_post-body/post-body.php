@@ -2,8 +2,8 @@
 
 <article class="component-row padding-small-top-5x padding-small-bottom-7x">
 	<div class="pure-g component-row-wide component-alignment-top">
-		<div class="column flex-g-lg-2-12 flex-g-md-1-12 flex-g-sm-0-12"></div>
-		<div class="column flex-g-lg-8-12 flex-g-md-10-12 flex-g-sm-12-12">
+		<div class="column flex-g-lg-1-12 flex-g-md-1-12 flex-g-sm-0-12"></div>
+		<div class="column flex-g-lg-10-12 flex-g-md-10-12 flex-g-sm-12-12">
 			<div class="component-post-body">
 				<header class="single-header margin-small-bottom-3x">
 					<span class="caption2 color-text-brown uppercase display-block margin-small-bottom-2x align-center"><?php the_category(', '); ?></span>
