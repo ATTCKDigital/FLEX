@@ -187,7 +187,7 @@
             "label": "Instagram Shortcode",
             "name": "instagram_shortcode",
             "type": "text",
-            "instructions": "If using the SmashBalloon Instagram plugin, paste the shortcode for it here.  This will automatically populate the \"Instagram Block\" with your customized shortcode.",
+            "instructions": "If using an Instagram plugin, paste the shortcode for it here.  This will automatically populate the \"Instagram Block\" with your customized shortcode.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -206,7 +206,7 @@
             "label": "Twitter Shortcode",
             "name": "twitter_shortcode",
             "type": "text",
-            "instructions": "If using the SmashBalloon Twitter plugin, paste the shortcode for it here.  This will automatically populate the \"Twitter Feed Block\" with your customized shortcode.",
+            "instructions": "If using a Twitter plugin, paste the shortcode for it here.  This will automatically populate the \"Twitter Feed Block\" with your customized shortcode.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -438,5 +438,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1552677266
+    "modified": 1552680431
 }
