@@ -46,6 +46,7 @@ add_action('acf/init', 'flexls_acf_init');
 
 
 /** Sync Registered Blocks **/
+// Using Local JSON plugin
 
 add_filter('aljm_save_json', function($folders) {
 	// Get the list of registered blocks and sync the json for each one into it's component folder
