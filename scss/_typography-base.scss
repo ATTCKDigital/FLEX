@@ -153,6 +153,10 @@ th, tr, td {
 // Styles for content within a WYSIWYG.
 // All WYSIWYG content should be wrapped in a "body-text" div
 .body-text {
+	img {
+		width: auto;
+		max-width: 100%;
+	}
 
 	.wp-caption {
 		&.aligncenter, &.none, &.alignnone {
