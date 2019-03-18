@@ -40,6 +40,8 @@ module.exports = {
     'css/style': path.resolve(__dirname, './scss/style.scss'),
     'css/print': path.resolve(__dirname, './scss/print.scss'),
     'css/admin': path.resolve(__dirname, './scss/admin.scss'),
+    'css/wysiwyg': path.resolve(__dirname, './scss/wysiwyg.scss'),
+
   },
 
   devtool: 'cheap-eval-source-map',

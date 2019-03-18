@@ -12,6 +12,18 @@ h1, h2, h3, h4, h5, h6, p {
 	}
 }
 
+.mce-content-body {
+	//inside the WYSIWYG editor, prevent hidden text
+	h1, h2, h3, h4, h5, h6, p {
+		opacity: 1;
+		transition: opacity .3s ease-in;
+
+		.no-element-in-view &, &.no-element-in-view {
+			opacity: 1;
+		}
+	}
+}
+
 html {
 	height: 100%;
 }

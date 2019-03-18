@@ -20,3 +20,20 @@ function flexls_mce_colors($init) {
 }
 
 add_filter('tiny_mce_before_init', 'flexls_mce_colors');
+
+
+function my_mce_buttons( $buttons ) {
+   array_unshift( $buttons, 'styleselect' );
+   return $buttons;
+}
+add_filter('mce_buttons', 'my_mce_buttons');
+
+//Add WYSIWYG Formats dropdown styles 
+function mce_mod( $init ) {
+	$style_formats = FLEXLS_WYSIWYG;
+
+   
+	$init['style_formats'] = json_encode( $style_formats );
+	return $init;
+}
+add_filter('tiny_mce_before_init', 'mce_mod');

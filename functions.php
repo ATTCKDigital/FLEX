@@ -11,6 +11,7 @@ include_once(locate_template('config/global-variables/colors.php')); //REQUIRED
 include_once(locate_template('config/global-variables/nav-menus.php')); //REQUIRED
 include_once(locate_template('config/global-variables/svg-sprite.php')); //REQUIRED
 include_once(locate_template('config/global-variables/date-format.php')); //REQUIRED
+include_once(locate_template('config/global-variables/wysiwyg-formats.php')); //REQUIRED
 
 // WP functions are split out into individual files for clarity. Disable/Enable files by commenting out here. See README.md
 // for details on each config file

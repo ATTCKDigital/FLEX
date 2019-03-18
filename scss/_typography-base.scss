@@ -152,7 +152,7 @@ th, tr, td {
 /** Body Copy **/
 // Styles for content within a WYSIWYG.
 // All WYSIWYG content should be wrapped in a "body-text" div
-.body-text {
+.body-text, .mce-content-body {
 	img {
 		width: auto;
 		max-width: 100%;
