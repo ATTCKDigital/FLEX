@@ -9,11 +9,14 @@
 
 /** ACF Save Point **/
 add_filter('acf/settings/save_json', 'flexls_acf_json_save_point');
-function flexls_acf_json_save_point( $path ) {
-	// Update to custom path
-	$path = THEME_DIR.'/config/acf-configs/acf-json';
-	
-	// return
+function flexls_acf_json_save_point( $path = '' ) {
+	// Update to custom path - fields will always save to the current active theme.  If a change is made to a parent theme field, it will be saved to the child theme and only be applicable to the child.
+	$path = THEME_DIR . '/config/acf-configs/acf-json';
+
+	if ( is_child_theme() ) {
+		$path = CHILD_THEME_DIR . '/config/acf-configs/acf-json';
+	}
+
 	return $path;
 }
 
