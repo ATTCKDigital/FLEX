@@ -23,6 +23,14 @@ const BackgroundOptionsAttributes = {
 		type: 'string',
 		default: 'center',
 	},
+	backgroundSize: {
+		type: 'string',
+		default: '',
+	},
+	backgroundRepeat: {
+		type: 'string',
+		default: 'no-repeat',
+	},
 };
 
 export default BackgroundOptionsAttributes;

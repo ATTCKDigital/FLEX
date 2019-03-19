@@ -52,15 +52,15 @@ function RowHeightOptions( props ) {
 									value: 'none',
 								},
 								{
-									label: __( 'Small (150px Mobile/300px Desktop' ),
+									label: __( 'Small' ),
 									value: 'small',
 								},
 								{
-									label: __( 'Medium (300px Mobile/500px Desktop' ),
+									label: __( 'Medium' ),
 									value: 'medium',
 								},
 								{
-									label: __( 'Large (100% Mobile/700px Desktop' ),
+									label: __( 'Large' ),
 									value: 'large',
 								},
 								{

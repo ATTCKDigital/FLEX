@@ -15,6 +15,7 @@ const {
 	PanelBody,
 	PanelRow,
 	SelectControl,
+	TextControl,
 } = wp.components;
 
 /**
@@ -43,6 +44,8 @@ function BackgroundOptions( props ) {
 	const setBackgroundColor = value => props.setAttributes( { backgroundColor: value } );
 	const setBackgroundPositionX = value => props.setAttributes( { backgroundPositionX: value } );
 	const setBackgroundPositionY = value => props.setAttributes( { backgroundPositionY: value } );
+	const setBackgroundSize = value => props.setAttributes( { backgroundSize: value } );
+	const setBackgroundRepeat = value => props.setAttributes( { backgroundRepeat: value } );
 
 	const imageBackgroundSelect = () => {
 		if ( 'image' !== props.attributes.backgroundType ) {
@@ -141,6 +144,40 @@ function BackgroundOptions( props ) {
 						onChange={ setBackgroundPositionY }
 					/>
 				</PanelRow>
+				<PanelRow>
+					<TextControl
+						label={__("Background Size", "flexls")}
+						help={__("Set background size. Use pixel value (widthpx heightpx), percentage (width% height%), cover or contain", "flexls")}
+						value={props.attributes.backgroundSize}
+						onChange={setBackgroundSize}
+					/>
+				</PanelRow>
+				<PanelRow>
+					<SelectControl
+						key="background-repeat"
+						label={ __( 'Background Repeat' ) }
+						value={ props.attributes.backgroundRepeat ? props.attributes.backgroundRepeat : '' }
+						options={ [
+							{
+								label: __( 'No Repeat' ),
+								value: 'no-repeat',
+							},
+							{
+								label: __( 'Repeat' ),
+								value: 'repeat',
+							},
+							{
+								label: __( 'Repeat on X Axis' ),
+								value: 'repeat-x',
+							},
+							{
+								label: __( 'Repeat on Y Axis' ),
+								value: 'repeat-y',
+							},
+						] }
+						onChange={ setBackgroundRepeat }
+					/>
+				</PanelRow>
 			</div>
 		);
 	};
@@ -214,9 +251,9 @@ function BackgroundOptions( props ) {
 				title={ __( 'Background Color' ) }
 				colorSettings={ [
 						{
-								value: props.attributes.backgroundColor,
-								onChange: setBackgroundColor,
-								label: __( 'Background Color' ),
+							value: props.attributes.backgroundColor,
+							onChange: setBackgroundColor,
+							label: __( 'Background Color' ),
 						}
 				] }
 			>

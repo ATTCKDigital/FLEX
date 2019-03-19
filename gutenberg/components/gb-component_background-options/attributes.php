@@ -23,4 +23,12 @@ const BACKGROUND_OPTIONS_ATTRIBUTES = [
 		'type' => 'string',
 		'default' => 'center',
 	],
+	'backgroundSize' => [
+		'type' => 'string',
+		'default' => '',
+	],
+	'backgroundRepeat' => [
+		'type' => 'string',
+		'default' => 'no-repeat',
+	],
 ];
