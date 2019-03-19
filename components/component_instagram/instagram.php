@@ -1,45 +1,20 @@
-<?php // Global Twitter ?>
+<?php 
+	// Global Instagram 
+	global $instagram;
+	$instagramFeed = get_field('instagram_feed', 'options');
+?>
 
-<div class="component-twitter component margin-small-bottom-1x">
-	<h4 class="headline6">Live Update</h4>
-	<ul class="twitter-items">
-		<li class="twitter-item padding-small-top-2x margin-small-top-2x component-theme-top-border">
-			<div class="twitter-header margin-small-bottom-1x">
-				<a href="https://twitter.com/AcreageCannabis"><img src="https://pbs.twimg.com/profile_images/997535238929596417/oGzKf9Wt_bigger.jpg" /></a>
-				<p class="subheadline2"><a href="https://twitter.com/AcreageCannabis">Acreage Holdings</a></p>
-			</div>
-			<div class="twitter-post">
-				<p class="color-text-black">Acreage Holdings Enters California Dispensary Market With Acquisition of Kanna, Inc.</p>
-			</div>
-		</li>
-		<li class="twitter-item padding-small-top-2x margin-small-top-2x component-theme-top-border">
-			<div class="twitter-header margin-small-bottom-1x">
-				<a href="https://twitter.com/AcreageCannabis"><img src="https://pbs.twimg.com/profile_images/997535238929596417/oGzKf9Wt_bigger.jpg" /></a>
-				<p class="subheadline2"><a href="https://twitter.com/AcreageCannabis">Acreage Holdings</a></p>
-			</div>
-			<div class="twitter-post">
-				<p class="color-text-black">Acreage Holdings Enters California Dispensary Market With Acquisition of Kanna, Inc.</p>
-			</div>
-		</li>
-		<li class="twitter-item padding-small-top-2x margin-small-top-2x component-theme-top-border">
-			<div class="twitter-header margin-small-bottom-1x">
-				<a href="https://twitter.com/AcreageCannabis"><img src="https://pbs.twimg.com/profile_images/997535238929596417/oGzKf9Wt_bigger.jpg" /></a>
-				<p class="subheadline2"><a href="https://twitter.com/AcreageCannabis">Acreage Holdings</a></p>
-			</div>
-			<div class="twitter-post">
-				<p class="color-text-black">Acreage Holdings Enters California Dispensary Market With Acquisition of Kanna, Inc.</p>
-			</div>
-		</li>
-		<li class="twitter-item padding-small-top-2x margin-small-top-2x component-theme-top-border">
-			<div class="twitter-header margin-small-bottom-1x">
-				<a href="https://twitter.com/AcreageCannabis"><img src="https://pbs.twimg.com/profile_images/997535238929596417/oGzKf9Wt_bigger.jpg" /></a>
-				<p class="subheadline2"><a href="https://twitter.com/AcreageCannabis">Acreage Holdings</a></p>
-			</div>
-			<div class="twitter-post">
-				<p class="color-text-black">Acreage Holdings Enters California Dispensary Market With Acquisition of Kanna, Inc.</p>
-			</div>
-		</li>
-	</ul>
-	<!-- acreagetodo: twitter feed -->
+
+<div class="component-instagram">
+	<h4 class="<?= $this->displayTitleClass;?> align-center margin-small-bottom-2x"><a href="<?= $instagram;?>" target="_blank"><i class="fab fa-instagram"></i>Instagram</a></h4>
+	<span class="display-block caption2 align-center uppercase margin-small-bottom-0x color-text-black"><a href="<?= $instagram;?>" target="_blank">@<?= get_field('instagram_username', 'options');?></a></span>
+	<div class="instagram-feed">
+		<?php echo do_shortcode('[instagram-feed]');?>
+	</div>
+	<?php if($this->ctaText){ ?>
+		<div class="ctas align-center margin-small-top-3x">
+			<a href="<?= $instagram;?>" target="_blank" class="button"><?= $this->ctaText;?></a>
+		</div>
+	<?php } ?>
 </div>
 
