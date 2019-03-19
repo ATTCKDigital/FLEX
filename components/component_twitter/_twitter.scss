@@ -38,7 +38,6 @@
 			}
 
 			.ctf-tweet-meta {
-				@extend .eyebrow;
 				text-transform: uppercase;
 				position: absolute;
 				bottom: 0;
@@ -46,7 +45,6 @@
 			}
 			
 			.ctf-author-name {
-				@extend .subheadline2;
 				color: color('text', 'primary');
 			}
 		}
