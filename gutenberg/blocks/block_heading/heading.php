@@ -4,6 +4,10 @@ namespace FLEX_LAYOUT_SYSTEM\Blocks\Heading;
 use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
 use const FLEX_LAYOUT_SYSTEM\Components\TextColors\TEXT_COLOR_ATTRIBUTES;
+use const FLEX_LAYOUT_SYSTEM\Components\Border\BORDER_OPTIONS_ATTRIBUTES;
+use function FLEX_LAYOUT_SYSTEM\Components\Border\border_options_classes;
+use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
+use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
 
 
 
@@ -47,7 +51,9 @@ function register_heading_block() {
                 ],
 			],
 			MARGIN_OPTIONS_ATTRIBUTES,
-			TEXT_COLOR_ATTRIBUTES
+			PADDING_OPTIONS_ATTRIBUTES,
+			TEXT_COLOR_ATTRIBUTES,
+			BORDER_OPTIONS_ATTRIBUTES
 		),
 		'render_callback' => __NAMESPACE__ . '\render_heading_block',
 	] );
@@ -63,9 +69,12 @@ function render_heading_block($attributes) {
 	$class = $attributes['className'];
 	$class .= " headline{$attributes['level']}";
 	$class .= " align-{$attributes['align']}";
-	$class .= margin_options_classes($attributes);
 	$textColor = array_key_exists('textColor', $attributes) ? $attributes['textColor'] : null;
 	
+	$wrapperClass = margin_options_classes($attributes);
+	$wrapperClass .= padding_options_classes($attributes);
+	$wrapperClass .= border_options_classes($attributes);
+
 	if($textColor) {
 		$style = ' style="color:'.$textColor.';"';
 	} else {
@@ -73,7 +82,7 @@ function render_heading_block($attributes) {
 	}
 
 
-	$output = "<div class=\"component-heading component\"{$style}><{$tagName} class=\"{$class}\">{$attributes['content']}</{$tagName}></div>";
+	$output = "<div class=\"component-heading component {$wrapperClass}\"{$style}><{$tagName} class=\"{$class}\">{$attributes['content']}</{$tagName}></div>";
 
 	return $output;
 }
