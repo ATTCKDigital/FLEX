@@ -1273,7 +1273,7 @@ function MarginOptions( props ) {
 
 	return (
 		<PanelBody
-			title={ __( 'Margins' ) }
+			title={ __( 'Block Margins' ) }
 			className="flexls-margin-options"
 			initialOpen={ false }
 		>
