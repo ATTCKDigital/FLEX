@@ -14,6 +14,15 @@ body {
 }
 
 .wp-block-flexls-row {
+	border: 2px dashed silver;
+	max-width: $siteWidth;
+	margin-left: auto;
+	margin-right: auto;
+
+	.wp-block[data-align=full] & {
+		max-width: none;
+		border: 2px dashed gold;
+	}
 
 	.editor-inner-blocks {
 		width: 100%;
@@ -34,7 +43,8 @@ body {
 .wp-block-flexls-column {
 	border: 2px dotted cornflowerblue;
 	max-width: none;
-	margin: 0 auto;
+	margin-left: auto;
+	margin-right: auto;
 
 	.editor-block-list__layout {
 		display: block;
@@ -44,17 +54,6 @@ body {
 .wp-admin {
 	.pure-g {
 		height: 100%;
-	}
-}
-
-.wp-block-flexls-row {
-	border: 2px dashed silver;
-	max-width: $siteWidth;
-	margin: 0 auto;
-
-	.wp-block[data-align=full] & {
-		max-width: none;
-		border: 2px dashed gold;
 	}
 }
 
@@ -79,4 +78,7 @@ body {
 	min-height: 0;
 }
 
+.wp-core-ui .button {
+	border: 1px solid $borderColor;
+}
 
