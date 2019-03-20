@@ -36,7 +36,8 @@ const {
 /**
  * Internal dependencies
  */
-
+// Import all of our Background Options requirements.
+import BackgroundOptions, { BackgroundOptionsAttributes, BackgroundOptionsClasses, BackgroundOptionsInlineStyles, BackgroundOptionsVideoOutput } from '../../components/gb-component_background-options';
 // Import all of our Padding Options requirements.
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
 // Import all of our Column Options requirements.
@@ -66,6 +67,7 @@ export default registerBlockType(
 			...PaddingOptionsAttributes,
 			...ColumnOptionsAttributes,
 			...BorderOptionsAttributes,
+			...BackgroundOptionsAttributes,
 		},
 		supports: {
 			anchor: true,
@@ -77,7 +79,9 @@ export default registerBlockType(
 
 			return [
 				<InspectorControls>
-
+					<BackgroundOptions
+						{ ...props }
+					/>
 					<ColumnOptions
 						{ ...props }
 					/>
@@ -94,8 +98,11 @@ export default registerBlockType(
 
 				<div
 					className={ className }
-
+					style={ {
+						...BackgroundOptionsInlineStyles( props ),
+					} }
 				>
+					{ BackgroundOptionsVideoOutput( props ) }
 					<InnerBlocks />
 				</div>
 			];
@@ -111,22 +118,24 @@ export default registerBlockType(
 );
 
 const customClassName = createHigherOrderComponent( ( BlockListBlock ) => {
-				return ( props ) => {
-								if (props.name === "flexls/column") {
-										return <BlockListBlock
-												{ ...props }
-												className={ classnames(
-														'component-column',
-														...BorderOptionsClasses( props ),
-														...PaddingOptionsClasses( props ),
-														...ColumnOptionsClasses( props ),
-												) }
-										/>;
-								}
-								return <BlockListBlock
-										{ ...props }
-								/>
-				};
+	return ( props ) => {
+		if (props.name === "flexls/column") {
+				return <BlockListBlock
+						{ ...props }
+						className={ classnames(
+								'component-column',
+								...BorderOptionsClasses( props ),
+								...PaddingOptionsClasses( props ),
+								...ColumnOptionsClasses( props ),
+								...BackgroundOptionsClasses( props ),
+
+						) }
+				/>;
+		}
+		return <BlockListBlock
+				{ ...props }
+		/>
+	};
 }, 'customClassName' );
 
 wp.hooks.addFilter( 'editor.BlockListBlock', 'flexls/column/customClassName', customClassName );
