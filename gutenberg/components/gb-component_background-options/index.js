@@ -53,6 +53,12 @@ function BackgroundOptions( props ) {
 	const setBackgroundSize = value => props.setAttributes( { backgroundSize: value } );
 	const setBackgroundRepeat = value => props.setAttributes( { backgroundRepeat: value } );
 
+	const setBackgroundPositionXMobile = value => props.setAttributes( { backgroundPositionXMobile: value } );
+	const setBackgroundPositionYMobile = value => props.setAttributes( { backgroundPositionYMobile: value } );
+	const setBackgroundSizeMobile = value => props.setAttributes( { backgroundSizeMobile: value } );
+	const setBackgroundRepeatMobile = value => props.setAttributes( { backgroundRepeatMobile: value } );
+
+
 	const imageBackgroundSelect = () => {
 		if ( 'image' !== props.attributes.backgroundType ) {
 			return '';
@@ -224,7 +230,85 @@ function BackgroundOptions( props ) {
 						onChange={ setBackgroundRepeat }
 					/>
 				</PanelRow>
-
+				<PanelRow>
+					<h2 className="components-panel__body-title">Mobile Options</h2>
+					<SelectControl
+						key="background-position-x-mobile"
+						label={ __( 'Background Position X (Mobile)' ) }
+						value={ props.attributes.backgroundPositionXMobile ? props.attributes.backgroundPositionXMobile : '' }
+						options={ [
+							{
+								label: __( 'Center' ),
+								value: 'center',
+							},
+							{
+								label: __( 'Left' ),
+								value: 'left',
+							},
+							{
+								label: __( 'Right' ),
+								value: 'right',
+							},
+						] }
+						onChange={ setBackgroundPositionXMobile }
+					/>
+				</PanelRow>
+				<PanelRow>
+					<SelectControl
+						key="background-position-y-mobile"
+						label={ __( 'Background Position Y (Mobile)' ) }
+						value={ props.attributes.backgroundPositionYMobile ? props.attributes.backgroundPositionYMobile : '' }
+						options={ [
+							{
+								label: __( 'Top' ),
+								value: 'top',
+							},
+							{
+								label: __( 'Center' ),
+								value: 'center',
+							},
+							{
+								label: __( 'Bottom' ),
+								value: 'bottom',
+							},
+						] }
+						onChange={ setBackgroundPositionYMobile }
+					/>
+				</PanelRow>
+				<PanelRow>
+					<TextControl
+						label={__("Background Size (Mobile)", "flexls")}
+						help={__("Set background size. Use pixel value (widthpx heightpx), percentage (width% height%), cover or contain", "flexls")}
+						value={props.attributes.backgroundSizeMobile}
+						onChange={setBackgroundSizeMobile}
+					/>
+				</PanelRow>
+				<PanelRow>
+					<SelectControl
+						key="background-repeat-mobile"
+						label={ __( 'Background Repeat (Mobile)' ) }
+						value={ props.attributes.backgroundRepeatMobile ? props.attributes.backgroundRepeatMobile : '' }
+						options={ [
+							{
+								label: __( 'No Repeat' ),
+								value: 'no-repeat',
+							},
+							{
+								label: __( 'Repeat' ),
+								value: 'repeat',
+							},
+							{
+								label: __( 'Repeat on X Axis' ),
+								value: 'repeat-x',
+							},
+							{
+								label: __( 'Repeat on Y Axis' ),
+								value: 'repeat-y',
+							},
+						] }
+						onChange={ setBackgroundRepeatMobile }
+					/>
+				</PanelRow>
 			</div>
 		);
 	};

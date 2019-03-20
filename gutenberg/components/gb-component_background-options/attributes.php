@@ -34,4 +34,20 @@ const BACKGROUND_OPTIONS_ATTRIBUTES = [
 		'type' => 'string',
 		'default' => 'no-repeat',
 	],
+	'backgroundPositionXMobile' => [
+		'type' => 'string',
+		'default' => 'center',
+	],
+	'backgroundPositionYMobile' => [
+		'type' => 'string',
+		'default' => 'center',
+	],
+	'backgroundSizeMobile' => [
+		'type' => 'string',
+		'default' => 'cover',
+	],
+	'backgroundRepeatMobile' => [
+		'type' => 'string',
+		'default' => 'no-repeat',
+	],
 ];
