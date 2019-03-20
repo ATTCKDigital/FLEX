@@ -3,6 +3,11 @@ namespace FLEX_LAYOUT_SYSTEM\Blocks\Source;
 
 use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
+use const FLEX_LAYOUT_SYSTEM\Components\Border\BORDER_OPTIONS_ATTRIBUTES;
+use function FLEX_LAYOUT_SYSTEM\Components\Border\border_options_classes;
+use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
+use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
+
 
 add_action( 'init', __NAMESPACE__ . '\register_source_block' );
 /**
@@ -32,7 +37,9 @@ function register_source_block() {
                     'default' => '',
                 ],
 			],
-			MARGIN_OPTIONS_ATTRIBUTES
+			MARGIN_OPTIONS_ATTRIBUTES,
+			PADDING_OPTIONS_ATTRIBUTES,
+			BORDER_OPTIONS_ATTRIBUTES		
 		),
 		'render_callback' => __NAMESPACE__ . '\render_source_block',
 	] );
@@ -46,6 +53,8 @@ function render_source_block($attributes) {
 	$class = 'component-source component';
 	$class .= ' '.$attributes['className'];
 	$class .= margin_options_classes($attributes);
+	$class .= padding_options_classes($attributes);
+	$class .= border_options_classes($attributes);
 
 	$output = "<div class=\"{$class}\" >{$attributes['content']}</section>";
 
