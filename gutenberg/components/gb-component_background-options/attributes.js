@@ -9,6 +9,9 @@ const BackgroundOptionsAttributes = {
 	backgroundImage: {
 		type: 'object',
 	},
+	backgroundImageMobile: {
+		type: 'object',
+	},
 	backgroundVideo: {
 		type: 'object',
 	},
@@ -25,7 +28,7 @@ const BackgroundOptionsAttributes = {
 	},
 	backgroundSize: {
 		type: 'string',
-		default: '',
+		default: 'cover',
 	},
 	backgroundRepeat: {
 		type: 'string',

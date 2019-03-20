@@ -9,6 +9,9 @@ const BACKGROUND_OPTIONS_ATTRIBUTES = [
 	'backgroundImage' => [
 		'type' => 'object',
 	],
+	'backgroundImageMobile' => [
+		'type' => 'object',
+	],
 	'backgroundVideo' => [
 		'type' => 'object',
 	],
@@ -25,7 +28,7 @@ const BACKGROUND_OPTIONS_ATTRIBUTES = [
 	],
 	'backgroundSize' => [
 		'type' => 'string',
-		'default' => '',
+		'default' => 'cover',
 	],
 	'backgroundRepeat' => [
 		'type' => 'string',

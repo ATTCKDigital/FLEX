@@ -4,6 +4,8 @@ namespace FLEX_LAYOUT_SYSTEM\Blocks\Row;
 use const FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\BACKGROUND_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_classes;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_inline_styles;
+use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_mobile_styles;
+use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_desktop_styles;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_video_output;
 
 use const FLEX_LAYOUT_SYSTEM\Components\LogoColor\LOGO_COLOR_OPTIONS_ATTRIBUTES;
@@ -79,6 +81,7 @@ function register_row_block() {
  * Server rendering for /blocks/row
  */
 function render_row_block($attributes, $content) {
+	$sectionDataId = rand();
 	$class = 'component-row';
 	$class .= ' '.$attributes['className'];
 	$class .= $attributes['reverseMobile'] ? ' component-row-reverse-mobile' : '';
@@ -89,13 +92,17 @@ function render_row_block($attributes, $content) {
 	$class .= border_options_classes($attributes);
 
 	$style = background_options_inline_styles($attributes);
+	$mobileImage = background_options_mobile_styles($attributes);
+	$desktopImage = background_options_desktop_styles($attributes);
 	$dataLogoColor = logo_color_options_data_attributes($attributes);
+
+	$styleBlock = "<style>section[data-section-id=\"section-{$sectionDataId}\"]{{$mobileImage}} @media only screen and (min-width: 768px){section[data-section-id=\"section-{$sectionDataId}\"]{{$desktopImage}}}</style>";
 
 	$innerContent = background_options_video_output($attributes);
 	$innerContent .= scroller_options_output($attributes);
 	$innerContent .= "<div class=\"pure-g component-row-{$attributes['blockAlignment']} component-alignment-{$attributes['verticalAligment']}\">{$content}</div>";
 
-	$output = "<section class=\"{$class}\" data-logo-color=\"{$dataLogoColor}\" style=\"{$style}\">{$innerContent}</section>";
+	$output = "<section class=\"{$class}\" data-section-id=\"section-{$sectionDataId}\" data-logo-color=\"{$dataLogoColor}\" style=\"{$style}\">{$styleBlock}{$innerContent}</section>";
 
 	return $output;
 }

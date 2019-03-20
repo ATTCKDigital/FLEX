@@ -37,10 +37,16 @@ export {
 
 function BackgroundOptions( props ) {
 	const setBackgroundType = value => props.setAttributes( { backgroundType: value } );
+	
 	const setBackgroundImage = value => props.setAttributes( { backgroundImage: value } );
 	const removeBackgroundImage = () => props.setAttributes( { backgroundImage: null } );
+	
+	const setBackgroundImageMobile = value => props.setAttributes( { backgroundImageMobile: value } );
+	const removeBackgroundImageMobile = () => props.setAttributes( { backgroundImageMobile: null } );
+	
 	const setBackgroundVideo = value => props.setAttributes( { backgroundVideo: value } );
 	const removeBackgroundVideo = () => props.setAttributes( { backgroundVideo: null } );
+	
 	const setBackgroundColor = value => props.setAttributes( { backgroundColor: value } );
 	const setBackgroundPositionX = value => props.setAttributes( { backgroundPositionX: value } );
 	const setBackgroundPositionY = value => props.setAttributes( { backgroundPositionY: value } );
@@ -52,7 +58,7 @@ function BackgroundOptions( props ) {
 			return '';
 		}
 
-		if ( ! props.attributes.backgroundImage ) {
+		if ( ! props.attributes.backgroundImage) {
 			return (
 				<div className="media-upload-wrapper">
 					<p>
@@ -65,13 +71,38 @@ function BackgroundOptions( props ) {
 							value=""
 							render={ ( { open } ) => (
 								<Button className="button button-large" onClick={ open }>
-									<Dashicon icon="format-image" /> { __( 'Add/Upload Image' ) }
+									<Dashicon icon="format-image" /> { __( 'Add Image' ) }
 								</Button>
 							) }
 						/>
 					</p>
 					<p>
-						{ __( 'Add/Upload an image file. (.jpg, .png)' ) }
+						{ __( 'Add an image file. (.jpg, .png)' ) }
+					</p>
+				</div>
+			);
+		}
+
+		if ( ! props.attributes.backgroundImageMobile) {
+			return (
+				<div className="media-upload-wrapper">
+					<p>
+						<MediaUpload
+							buttonProps={ {
+								className: 'components-button button button-large',
+							} }
+							onSelect={ setBackgroundImageMobile }
+							type="image"
+							value=""
+							render={ ( { open } ) => (
+								<Button className="button button-large" onClick={ open }>
+									<Dashicon icon="format-image" /> { __( 'Add Mobile Image' ) }
+								</Button>
+							) }
+						/>
+					</p>
+					<p>
+						{ __( 'Add optional mobile image file. (.jpg, .png) - Mobile image does not appear in preview.' ) }
 					</p>
 				</div>
 			);
@@ -79,27 +110,42 @@ function BackgroundOptions( props ) {
 
 		return (
 			<div className="image-wrapper">
-				<p>
-					<img
-						src={ props.attributes.backgroundImage.url }
-						alt={ props.attributes.backgroundImage.alt }
-					/>
-				</p>
-				{ props.isSelected ? (
-					<div className="media-button-wrapper">
-						<p>
-							<Button
-								className="remove-image button button-large"
-								onClick={ removeBackgroundImage }
-							>
-								<Dashicon icon="no-alt" /> { __( 'Remove Image' ) }
-							</Button>
-						</p>
-						<p>
-							{ __( 'Add/Upload an image file. (.jpg, .png)' ) }
-						</p>
-					</div>
-				) : null }
+				<div className="media-button-wrapper">
+					<p>
+						<img
+							src={ props.attributes.backgroundImage.url }
+							alt={ props.attributes.backgroundImage.alt }
+						/>
+					</p>
+					<p>
+						<Button
+							className="remove-image button button-large"
+							onClick={ removeBackgroundImage }
+						>
+							<Dashicon icon="no-alt" /> { __( 'Remove Image' ) }
+						</Button>
+					</p>
+					<p>
+						{ __( 'Add/Upload an image file. (.jpg, .png)' ) }
+					</p>
+					<p>
+						<img
+							src={ props.attributes.backgroundImageMobile.url }
+							alt={ props.attributes.backgroundImageMobile.alt }
+						/>
+					</p>
+					<p>
+						<Button
+							className="remove-image-mobile button button-large"
+							onClick={ removeBackgroundImageMobile }
+						>
+							<Dashicon icon="no-alt" /> { __( 'Remove Mobile Image' ) }
+						</Button>
+					</p>
+					<p>
+						{ __( 'Add optional mobile image file. (.jpg, .png) - Mobile image does not appear in preview.' ) }
+					</p>
+				</div>
 				<PanelRow>
 					<SelectControl
 						key="background-position-x"
@@ -178,6 +224,7 @@ function BackgroundOptions( props ) {
 						onChange={ setBackgroundRepeat }
 					/>
 				</PanelRow>
+
 			</div>
 		);
 	};
