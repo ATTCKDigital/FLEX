@@ -3,6 +3,10 @@ namespace FLEX_LAYOUT_SYSTEM\Blocks\Shortcode;
 
 use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
+use const FLEX_LAYOUT_SYSTEM\Components\Border\BORDER_OPTIONS_ATTRIBUTES;
+use function FLEX_LAYOUT_SYSTEM\Components\Border\border_options_classes;
+use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
+use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
 
 add_action( 'init', __NAMESPACE__ . '\register_shortcode_block' );
 /**
@@ -32,7 +36,9 @@ function register_shortcode_block() {
                     'default' => ''
                 ],
 			],
-			MARGIN_OPTIONS_ATTRIBUTES
+			MARGIN_OPTIONS_ATTRIBUTES,
+			PADDING_OPTIONS_ATTRIBUTES,
+			BORDER_OPTIONS_ATTRIBUTES		
 		),
 		'render_callback' => __NAMESPACE__ . '\render_shortcode_block',
 	] );
@@ -46,6 +52,8 @@ function render_shortcode_block($attributes) {
 	$class = 'component-shortcode component';
 	$class .= ' '.$attributes['className'];
 	$class .= margin_options_classes($attributes);
+	$class .= padding_options_classes($attributes);
+	$class .= border_options_classes($attributes);
 
 	$output = "<div class=\"{$class}\" >".do_shortcode($attributes['content'])."</section>";
 

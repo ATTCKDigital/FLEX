@@ -118,6 +118,8 @@ export default registerBlockType(
 					`component-image`,
 					`align-${align}`,
 					...MarginOptionsClasses( props ),
+					...PaddingOptionsClasses( props ),
+					...BorderOptionsClasses( props ),
 				)}>
 
 					{ ! imgID ? (
