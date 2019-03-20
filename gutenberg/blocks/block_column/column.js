@@ -41,6 +41,8 @@ const {
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
 // Import all of our Column Options requirements.
 import ColumnOptions, { ColumnOptionsAttributes, ColumnOptionsClasses } from '../../components/gb-component_columns';
+// Import all of our Border Options requirements.
+import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
 
 
 /**
@@ -63,6 +65,7 @@ export default registerBlockType(
 
 			...PaddingOptionsAttributes,
 			...ColumnOptionsAttributes,
+			...BorderOptionsAttributes,
 		},
 		supports: {
 			anchor: true,
@@ -80,6 +83,10 @@ export default registerBlockType(
 					/>
 
 					<PaddingOptions
+						{ ...props }
+					/>
+
+					<BorderOptions
 						{ ...props }
 					/>
 
@@ -110,6 +117,7 @@ const customClassName = createHigherOrderComponent( ( BlockListBlock ) => {
 												{ ...props }
 												className={ classnames(
 														'component-column',
+														...BorderOptionsClasses( props ),
 														...PaddingOptionsClasses( props ),
 														...ColumnOptionsClasses( props ),
 												) }

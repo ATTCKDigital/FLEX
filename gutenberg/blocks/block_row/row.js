@@ -127,13 +127,13 @@ export default registerBlockType(
 					<MarginOptions
 						{ ...props }
 					/>
+					<BorderOptions
+						{ ...props }
+					/>
 					<ScrollerOptions
 						{ ...props }
 					/>
 					<LogoColorOptions
-						{ ...props }
-					/>
-					<BorderOptions
 						{ ...props }
 					/>
 				</InspectorControls>,

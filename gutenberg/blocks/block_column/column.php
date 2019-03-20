@@ -7,6 +7,8 @@ use function FLEX_LAYOUT_SYSTEM\Components\Columns\column_options_classes;
 use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
 
+use const FLEX_LAYOUT_SYSTEM\Components\Border\BORDER_OPTIONS_ATTRIBUTES;
+use function FLEX_LAYOUT_SYSTEM\Components\Border\border_options_classes;
 
 add_action( 'init', __NAMESPACE__ . '\register_column_block' );
 /**
@@ -33,7 +35,8 @@ function register_column_block() {
             	],
         	],
 			COLUMN_OPTIONS_ATTRIBUTES,
-			PADDING_OPTIONS_ATTRIBUTES
+			PADDING_OPTIONS_ATTRIBUTES,
+			BORDER_OPTIONS_ATTRIBUTES
 		),
 		'render_callback' => __NAMESPACE__ . '\render_column_block',
 	] );
@@ -48,6 +51,7 @@ function render_column_block($attributes, $content) {
 	$class .= ' '.$attributes['className'];
 	$class .= column_options_classes($attributes);
 	$class .= padding_options_classes($attributes);
+	$class .= border_options_classes($attributes);
 
 	$output = "<section class=\"{$class}\" >{$content}</section>";
 
