@@ -16,14 +16,16 @@ const {
 	MediaUpload,
 	InspectorControls,
 	URLInput,
-	RichText
+	RichText,
+	AlignmentToolbar
 
 } = wp.editor;
 const {
 	Toolbar,
 	Button,
 	Dashicon,
-	IconButton
+	IconButton,
+	PanelBody
 } = wp.components;
 
 /**
@@ -31,6 +33,10 @@ const {
  */
 // Import all of our Margin Options requirements.
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
+// Import all of our Border Options requirements.
+import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
+// Import all of our Padding Options requirements.
+import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
 
 
 /**
@@ -63,11 +69,17 @@ export default registerBlockType(
 			placeholder: {
 				type: 'string',
 			},
-			...MarginOptionsAttributes
+			align: {
+				type: 'string',
+				default: 'center'
+			},
+			...MarginOptionsAttributes,
+			...PaddingOptionsAttributes,
+			...BorderOptionsAttributes,
 
 		},
 		edit: props => {
-			const { attributes: { imgID, imgURL, url, caption, placeholder},
+			const { attributes: { imgID, imgURL, url, caption, align, placeholder},
 				className, setAttributes, isSelected } = props;
 			const onSelectImage = img => {
 				setAttributes( {
@@ -83,13 +95,28 @@ export default registerBlockType(
 			}
 			return [
 				<InspectorControls>
-
+					<PanelBody title={ __( 'Heading Settings' ) }>
+						<p>{ __( 'Image Alignment' ) }</p>
+						<AlignmentToolbar
+							value={ align }
+							onChange={ ( nextAlign ) => {
+								setAttributes( { align: nextAlign } );
+							} }
+						/>
+					</PanelBody>
 					<MarginOptions
+						{ ...props }
+					/>
+					<PaddingOptions
+						{ ...props }
+					/>
+					<BorderOptions
 						{ ...props }
 					/>
 				</InspectorControls>,
 				<div className={classnames(
 					`component-image`,
+					`align-${align}`,
 					...MarginOptionsClasses( props ),
 				)}>
 
@@ -113,7 +140,10 @@ export default registerBlockType(
 
 					) : (
 
-						<div class="image-wrapper">
+						<div className={classnames(
+							`image-wrapper`,
+							`align-${align}`,
+						)}>
 
 							{ isSelected ? (
 
