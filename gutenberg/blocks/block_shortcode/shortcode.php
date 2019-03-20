@@ -55,7 +55,7 @@ function render_shortcode_block($attributes) {
 	$class .= padding_options_classes($attributes);
 	$class .= border_options_classes($attributes);
 
-	$output = "<div class=\"{$class}\" >".do_shortcode($attributes['content'])."</section>";
+	$output = "<div class=\"{$class}\" >".do_shortcode($attributes['content'])."</div>";
 
 	return $output;
 }
