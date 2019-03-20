@@ -13,6 +13,10 @@ const {
 
 // Import all of our Margin Options requirements.
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
+// Import all of our Padding Options requirements.
+import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
+// Import all of our Border Options requirements.
+import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
 
 
 function isTmceEmpty( editor ) {
@@ -169,6 +173,12 @@ export default class ClassicEdit extends Component {
 			/* eslint-disable jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events */
 			<InspectorControls>
 				<MarginOptions
+					{ ...this.props }
+				/>
+				<PaddingOptions
+					{ ...this.props }
+				/>
+				<BorderOptions
 					{ ...this.props }
 				/>
 			</InspectorControls>,
