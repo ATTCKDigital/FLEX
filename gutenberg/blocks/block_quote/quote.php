@@ -3,6 +3,10 @@ namespace FLEX_LAYOUT_SYSTEM\Blocks\Quote;
 
 use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
+use const FLEX_LAYOUT_SYSTEM\Components\Border\BORDER_OPTIONS_ATTRIBUTES;
+use function FLEX_LAYOUT_SYSTEM\Components\Border\border_options_classes;
+use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
+use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
 use const FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\BACKGROUND_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_classes;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_inline_styles;
@@ -39,6 +43,10 @@ function register_quote_block() {
 					'type' => 'string',
 					'default' => '',
 				],
+				'contentCompany' => [
+					'type' => 'string',
+					'default' => '',
+				],
 				'placeholderSource' => [
 					'type' => 'string',
 				],
@@ -46,8 +54,16 @@ function register_quote_block() {
                     'type' => 'string',
                     'default' => '',
                 ],
+                'imgURL' => [
+					'type' => 'string',
+				],
+				'imgID' => [
+					'type' => 'number',
+				],
 			],
 			MARGIN_OPTIONS_ATTRIBUTES,
+			PADDING_OPTIONS_ATTRIBUTES,
+			BORDER_OPTIONS_ATTRIBUTES,		
 			BACKGROUND_OPTIONS_ATTRIBUTES
 
 		),
@@ -63,11 +79,21 @@ function render_quote_block($attributes) {
 	$class = 'component-quote component';
 	$class .= ' '.$attributes['className'];
 	$class .= margin_options_classes($attributes);
+	$class .= padding_options_classes($attributes);
+	$class .= border_options_classes($attributes);
 	$class .= background_options_classes($attributes);
+
+	$imgID = array_key_exists('imgID', $attributes) ? $attributes['imgID'] : null;
+
+	if($imgID) {
+		$image = '<div class="image-wrapper">'.wp_get_attachment_image($attributes['imgID'], 'full').'</div>';
+	} else {
+		$image = '';
+	}
 
 	$style = background_options_inline_styles($attributes);
 
-	$output = "<div class=\"{$class}\" style=\"{$style}\"><h5 class=\"quote-text\">{$attributes['content']}</h5><cite class=\"quote-source\">{$attributes['contentSource']}</cite></div>";
+	$output = "<div class=\"{$class}\" style=\"{$style}\"><h5 class=\"quote-text\">{$attributes['content']}</h5>{$image}<cite class=\"quote-source\">{$attributes['contentSource']}</cite><cite class=\"quote-company\">{$attributes['contentCompany']}</cite></div>";
 
 	return $output;
 }

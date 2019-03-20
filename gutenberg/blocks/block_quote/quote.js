@@ -2,6 +2,7 @@
  * Block dependencies
  */
 import classnames from 'classnames';
+import icons from 'icons';
 
 /**
  * Internal block libraries
@@ -17,6 +18,8 @@ const {
 	BlockAlignmentToolbar,
 	InspectorControls,
 	InnerBlocks,
+	MediaUpload,
+	URLInput
 } = wp.editor;
 const {
 	Toolbar,
@@ -26,6 +29,8 @@ const {
 	PanelBody,
 	PanelRow,
 	TextControl,
+	Dashicon,
+	IconButton
 
 } = wp.components;
 
@@ -34,6 +39,10 @@ const {
  */
 // Import all of our Margin Options requirements.
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
+// Import all of our Border Options requirements.
+import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
+// Import all of our Padding Options requirements.
+import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
 // Import all of our Background Options requirements.
 import BackgroundOptions, { BackgroundOptionsAttributes, BackgroundOptionsClasses, BackgroundOptionsInlineStyles, BackgroundOptionsVideoOutput } from '../../components/gb-component_background-options';
 
@@ -68,17 +77,44 @@ export default registerBlockType(
 				default: '',
 			},
 
+			contentCompany: {
+				type: 'string',
+				default: '',
+			},
+			
+			imgURL: {
+				type: 'string',
+			},
+			
+			imgID: {
+				type: 'number',
+			},
+
 			placeholderSource: {
 				type: 'string',
 			},
 			...MarginOptionsAttributes,
+			...PaddingOptionsAttributes,
+			...BorderOptionsAttributes,
 			...BackgroundOptionsAttributes,
 
 		},
 
 		edit: props => {
-			const { attributes: { content, placeholder, contentSource, placeholderSource},
-				className, setAttributes } = props;
+			const { attributes: { content, placeholder, contentSource, contentCompany, placeholderSource},
+				className, setAttributes, isSelected, imgID, imgURL } = props;
+			const onSelectImage = img => {
+				setAttributes( {
+					imgID: img.id,
+					imgURL: img.url,
+				} );
+			};
+			const onRemoveImage = () => {
+				setAttributes({
+					imgID: null,
+					imgURL: null,
+				});
+			}
 
 			return [
 
@@ -94,6 +130,8 @@ export default registerBlockType(
 					className={ classnames(
 						`component-quote`,
 						...MarginOptionsClasses( props ),
+						...PaddingOptionsClasses( props ),
+						...BorderOptionsClasses( props ),						
 						...BackgroundOptionsClasses( props ),
 
 					)}
@@ -113,6 +151,46 @@ export default registerBlockType(
 						)}
 						placeholder={ placeholder || __( 'Quote text…' ) }
 					/>
+					{ ! imgID ? (
+
+						<MediaUpload
+							onSelect={ onSelectImage }
+							type="image"
+							value={ imgID }
+							render={ ( { open } ) => (
+								<Button
+									className={ "button button-large" }
+									onClick={ open }
+								>
+									{ icons.upload }
+									{ __( 'Upload Image', 'flexls' ) }
+								</Button>
+							) }
+						>
+						</MediaUpload>
+
+					) : (
+
+						<div className={classnames(
+							`image-wrapper`,
+						)}>
+
+							{ isSelected ? (
+
+								<Button
+									className="remove-image"
+									onClick={ onRemoveImage }
+								>
+									{ icons.remove }
+								</Button>
+							) : null }
+							
+							<img
+								src={ imgURL }
+							/>
+							
+						</div>
+					)}
 					<RichText
 						identifier="contentSource"
 						tagName={ 'cite' }
@@ -121,9 +199,19 @@ export default registerBlockType(
 						onRemove={ () => onReplace( [] ) }
 						className={ classnames(
 							`quote-source`,
-							...MarginOptionsClasses( props ),
 						)}
 						placeholder={ placeholderSource || __( 'Quote source' ) }
+					/>
+					<RichText
+						identifier="contentCompany"
+						tagName={ 'cite' }
+						value={ contentCompany }
+						onChange={ ( value ) => setAttributes( { contentCompany: value } ) }
+						onRemove={ () => onReplace( [] ) }
+						className={ classnames(
+							`quote-company`,
+						)}
+						placeholder={ placeholderSource || __( 'Quote author company' ) }
 					/>
 				</div>
 			];
