@@ -24,6 +24,8 @@ import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '..
 import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
 // Import all of our Padding Options requirements.
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
+// Import all of our Background Options requirements.
+import BackgroundColorOptions, { BackgroundColorOptionsAttributes, BackgroundColorOptionsInlineStyles } from '../../components/gb-component_background-color';
 
 
 export default registerBlockType(
@@ -45,7 +47,8 @@ export default registerBlockType(
 			},
 			...MarginOptionsAttributes,
 			...BorderOptionsAttributes,
-			...PaddingOptionsAttributes
+			...PaddingOptionsAttributes,
+			...BackgroundColorOptionsAttributes
 		},
 		supports: {
 			className: true,

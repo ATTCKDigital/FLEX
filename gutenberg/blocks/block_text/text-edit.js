@@ -3,6 +3,7 @@
  */
 import { Component } from '@wordpress/element';
 import { BACKSPACE, DELETE, F10 } from '@wordpress/keycodes';
+import classnames from 'classnames';
 
 const { wp } = window;
 const { __ } = wp.i18n;
@@ -17,6 +18,8 @@ import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '..
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
 // Import all of our Border Options requirements.
 import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
+// Import all of our Background Options requirements.
+import BackgroundColorOptions, { BackgroundColorOptionsAttributes, BackgroundColorOptionsInlineStyles } from '../../components/gb-component_background-color';
 
 
 function isTmceEmpty( editor ) {
@@ -181,6 +184,9 @@ export default class ClassicEdit extends Component {
 				<BorderOptions
 					{ ...this.props }
 				/>
+				<BackgroundColorOptions
+					{ ...this.props }
+				/>
 			</InspectorControls>,
 			<div
 				key="toolbar"
@@ -188,13 +194,20 @@ export default class ClassicEdit extends Component {
 				ref={ ( ref ) => this.ref = ref }
 				className="block-library-classic__toolbar"
 				onClick={ this.focus }
-				data-placeholder={ __( 'Classic' ) }
 				onKeyDown={ this.onToolbarKeyDown }
 			/>,
 			<div
 				key="editor"
 				id={ `editor-${ clientId }` }
-				className="wp-block-freeform block-library-rich-text__tinymce"
+				className={ classnames(
+					`wp-block-freeform block-library-rich-text__tinymce`,
+					...MarginOptionsClasses( this.props ),
+					...PaddingOptionsClasses( this.props ),
+					...BorderOptionsClasses( this.props ),
+				)}
+				style={ {
+					...BackgroundColorOptionsInlineStyles( this.props ),
+				} }
 			/>,
 		];
 		/* eslint-enable jsx-a11y/no-static-element-interactions */
