@@ -11,54 +11,54 @@ $colors = array(
 		'default'     => '#2F2F2F',
 		'description' => 'Set your site\'s primary text color here.',
 		'label'       => 'Primary Text Color',
-		'slug'        => 'primary-text-color',
+		'slug'        => 'color-text-primary',
 	),
 	array(
 		'default'     => '#FFFFFF',
 		'description' => 'Set your site\'s secondary text color here.',
 		'label'       => 'Secondary Text Color',
-		'slug'        => 'secondary-text-color',
+		'slug'        => 'color-text-secondary',
 	),
 
 	array(
 		'default'     => '#F5F5F5',
 		'description' => 'Set your site\'s tertiary text color here.',
 		'label'       => 'Tertiary Text Color',
-		'slug'        => 'tertiary-text-color',
+		'slug'        => 'color-text-tertiary',
 	),
 
 	array(
 		'default'     => '#F5F5F5',
 		'description' => 'Set your site\'s primary background color here.',
 		'label'       => 'Primary Background Color',
-		'slug'        => 'primary-background-color',
+		'slug'        => 'color-background-primary',
 	),
 	array(
 		'default'     => '#7D7D7D',
 		'description' => 'Set your site\'s secondary background color here.',
 		'label'       => 'Secondary Background Color',
-		'slug'        => 'secondary-background-color',
+		'slug'        => 'color-text-primary',
 	),
 
 	array(
 		'default'     => '#F6F6F6',
 		'description' => 'Set your site\'s tertiary background color here.',
 		'label'       => 'Tertiary Background Color',
-		'slug'        => 'tertiary-background-color',
+		'slug'        => 'color-text-tertiary',
 	),
 
 	array(
 		'default'     => '#FFFFFF',
 		'description' => 'Default White',
 		'label'       => 'Default White Text Color',
-		'slug'        => 'white-text-color',
+		'slug'        => 'color-text-white',
 	),
 
 	array(
 		'default'     => '#000000',
 		'description' => 'Default Black',
 		'label'       => 'Default Black Text Color',
-		'slug'        => 'black-text-color',
+		'slug'        => 'color-text-black',
 	),
 
 );
