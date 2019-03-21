@@ -14,7 +14,7 @@ body {
 }
 
 .wp-block-flexls-row {
-	border: 2px dashed silver;
+	border: 0;
 	max-width: $siteWidth;
 	margin-left: auto;
 	margin-right: auto;
@@ -43,13 +43,52 @@ body {
 }
 
 .wp-block-flexls-column {
-	border: 2px dotted cornflowerblue;
+	border: 0;
 	max-width: none;
 	margin-left: auto;
 	margin-right: auto;
 
 	.editor-block-list__layout {
 		display: block;
+	}
+}
+body.admin-color-sunrise .editor-block-list__layout .editor-block-list__block.is-hovered > .editor-block-list__block-edit:before,
+body.admin-color-blue .editor-block-list__layout .editor-block-list__block.is-hovered > .editor-block-list__block-edit:before,
+body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-hovered > .editor-block-list__block-edit:before {
+	outline: 2px dashed silver;
+}
+
+.editor-block-list__layout .editor-block-list__block.is-selected > .editor-block-list__block-edit:before {
+	outline: 2px dashed cornflowerblue;
+}
+
+.components-button:disabled, .components-button[aria-disabled=true] {
+	opacity: 1;
+
+	svg {
+		fill: cornflowerblue;
+	}
+}
+
+.block-library-classic__toolbar:empty {
+	height: 0;
+	background: transparent;
+	border: 0;
+}
+
+.block-list-appender__toggle {
+	margin: 8px;
+	outline: 1px dotted gainsboro;
+	display: block;
+	box-sizing: border-box;
+	width: 96%;
+
+	&:hover {
+		outline: 1px dotted cornflowerblue;
+	}
+
+	svg {
+		fill: cornflowerblue;
 	}
 }
 
