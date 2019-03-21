@@ -54,6 +54,9 @@ include THEME_DIR . '/gutenberg/components/gb-component_scroller/scroller-output
 include THEME_DIR . '/gutenberg/components/gb-component_border/attributes.php';
 include THEME_DIR . '/gutenberg/components/gb-component_border/classes.php';
 
+include THEME_DIR . '/gutenberg/components/gb-component_background-color/attributes.php';
+include THEME_DIR . '/gutenberg/components/gb-component_background-color/inline-styles.php';
+
 
 // Dynamic Blocks
 include THEME_DIR . '/gutenberg/blocks/block_button/button.php';
