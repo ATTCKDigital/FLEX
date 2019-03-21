@@ -5,7 +5,7 @@
  */
 function TextColorInlineStyles( props ) {
 	return {
-		textColor: ? props.attributes.backgroundColor : null,
+		textColor: ? props.attributes.textColor : null,
 	};
 }
 
