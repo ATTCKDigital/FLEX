@@ -68,3 +68,4 @@ include THEME_DIR . '/gutenberg/blocks/block_row/row.php';
 include THEME_DIR . '/gutenberg/blocks/block_shortcode/shortcode.php';
 include THEME_DIR . '/gutenberg/blocks/block_source/source.php';
 include THEME_DIR . '/gutenberg/blocks/block_text/text.php';
+include THEME_DIR . '/gutenberg/blocks/block_social_media/social-media.php';
