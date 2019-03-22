@@ -59,27 +59,46 @@ $xPositions: left, right, center;
 //Border classes
 
 @each $position in $positions{
-	.component-theme-#{$position}-border {
+	.component-#{$position}-border-none, .wp-block .component-#{$position}-border-none > .pure-g {
+		border-#{$position}: 0;
+	}
+
+	.component-#{$position}-border, .component-#{$position}-border-default, .wp-block .component-#{$position}-border-default > .pure-g {
 		border-#{$position}: 1px solid $borderColor;
 	}
 
-	.component-theme-#{$position}-border-white {
+	.component-#{$position}-border-white, .wp-block .component-#{$position}-border-white > .pure-g {
 		border-#{$position}: 1px solid $white;
 	}
 
-	.component-theme-#{$position}-border-small {
+	.component-#{$position}-border-primary, .wp-block .component-#{$position}-border-primary > .pure-g {
+		border-#{$position}: 1px solid color('background', 'primary');
+	}
+
+	.component-#{$position}-border-secondary, .wp-block .component-#{$position}-border-secondary > .pure-g {
+		border-#{$position}: 1px solid color('background', 'secondary');
+	}
+
+	.component-#{$position}-border-tertiary, .wp-block .component-#{$position}-border-tertiary > .pure-g {
+		border-#{$position}: 1px solid color('background', 'tertiary');
+	}
+
+	.component-#{$position}-border-black, .wp-block .component-#{$position}-border-black > .pure-g {
+		border-#{$position}: 1px solid $black;
+	}
+
+	.component-#{$position}-border-small {
 		@include mediaquery-max(medium) {
 			border-#{$position}: 1px solid $borderColor;
 		}
 	}
 
-	.component-theme-#{$position}-border-medium-up {
+	.component-#{$position}-border-medium-up {
 		@include mediaquery(medium) {
 			border-#{$position}: 1px solid $borderColor;
 		}
 	}
 }
-
 
 //overlay
 .overlay {

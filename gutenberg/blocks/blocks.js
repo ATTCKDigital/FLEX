@@ -9,3 +9,5 @@ import "./block_source/source";
 import "./block_button/button";
 import "./block_image/image";
 import "./block_text/text";
+import "./block_shortcode/shortcode";
+import "./block_social_media/social-media";

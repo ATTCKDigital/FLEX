@@ -35,8 +35,12 @@ const {
  */
 // Import all of our Margin Options requirements.
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
+// Import all of our Text Color Options requirements.
 import TextColorOptions, { TextColorAttributes, TextColorClasses } from '../../components/gb-component_text-colors';
-
+// Import all of our Border Options requirements.
+import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
+// Import all of our Padding Options requirements.
+import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
 
 /**
 	* Register block
@@ -71,6 +75,8 @@ export default registerBlockType(
 				type: 'string',
 			},
 			...MarginOptionsAttributes,
+			...PaddingOptionsAttributes,
+			...BorderOptionsAttributes,
 			...TextColorAttributes
 		},
 
@@ -96,6 +102,12 @@ export default registerBlockType(
 					<MarginOptions
 						{ ...props }
 					/>
+					<PaddingOptions
+						{ ...props }
+					/>
+					<BorderOptions
+						{ ...props }
+					/>
 					<TextColorOptions
 						{ ...props }
 					/>
@@ -112,6 +124,8 @@ export default registerBlockType(
 						`headline${level}`,
 						`align-${align}`,
 						...MarginOptionsClasses( props ),
+						...PaddingOptionsClasses( props ),
+						...BorderOptionsClasses( props ),
 						...TextColorClasses( props ),
 					)}
 					placeholder={ placeholder || __( 'Write heading…' ) }

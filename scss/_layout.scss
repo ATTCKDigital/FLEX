@@ -1,7 +1,5 @@
 /**** Standard Layout Paradigm Mixins ****/
 
-$positions: top, left, right, bottom;
-
 @mixin verticalCenter() {
 	display: flex;
 	align-items: center;

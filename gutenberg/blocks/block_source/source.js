@@ -27,6 +27,10 @@ const {
  */
 // Import all of our Margin Options requirements.
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
+// Import all of our Border Options requirements.
+import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
+// Import all of our Padding Options requirements.
+import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
 
 
 /**
@@ -50,7 +54,9 @@ export default registerBlockType(
 				type: 'string',
 				default: '',
 			},
-			...MarginOptionsAttributes
+			...MarginOptionsAttributes,
+			...PaddingOptionsAttributes,
+			...BorderOptionsAttributes,		
 		},
 
 		supports: {
@@ -67,10 +73,19 @@ export default registerBlockType(
 					<MarginOptions
 						{ ...props }
 					/>
+					<PaddingOptions
+						{ ...props }
+					/>
+					<BorderOptions
+						{ ...props }
+					/>
 				</InspectorControls>,
 				<div className={ classnames(
-							`component-source`,
-						)}>
+					`component-source`,
+					...MarginOptionsClasses( props ),
+					...PaddingOptionsClasses( props ),
+					...BorderOptionsClasses( props ),
+				)}>
 					<PlainText
 						value={ content }
 						onChange={ ( content ) => setAttributes( { content } ) }

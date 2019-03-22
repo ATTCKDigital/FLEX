@@ -32,7 +32,7 @@
 	<?php echo Utils::render_template('config/theme-includes/facebook-pixel.php'); ?>
 	<?php wp_head(); ?>
 </head>
-<body <?php body_class();?>>
+<body <?php body_class('front-end');?>>
 	<?php echo Utils::render_template('config/theme-includes/google-tag-manager-body.php'); ?>
 	<?php echo Utils::render_template('config/theme-includes/hubspot-tracking-code.php'); ?>
 	<?php echo Utils::render_template('config/theme-includes/social-media.php'); ?>

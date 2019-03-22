@@ -20,6 +20,12 @@ const {
 
 // Import all of our Margin Options requirements.
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
+// Import all of our Border Options requirements.
+import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
+// Import all of our Padding Options requirements.
+import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
+// Import all of our Background Options requirements.
+import BackgroundColorOptions, { BackgroundColorOptionsAttributes, BackgroundColorOptionsInlineStyles } from '../../components/gb-component_background-color';
 
 
 export default registerBlockType(
@@ -39,7 +45,10 @@ export default registerBlockType(
 			content: {
 				type: 'string',
 			},
-			...MarginOptionsAttributes
+			...MarginOptionsAttributes,
+			...BorderOptionsAttributes,
+			...PaddingOptionsAttributes,
+			...BackgroundColorOptionsAttributes
 		},
 		supports: {
 			className: true,

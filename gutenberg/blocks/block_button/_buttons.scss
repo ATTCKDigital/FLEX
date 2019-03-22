@@ -6,10 +6,12 @@
 	border-radius: 0;
 	border: 1px solid $black;
 	box-shadow: none;
+	box-sizing: border-box;
 	color: $white;
 	cursor: pointer;
 	display: inline-block;
 	font-size: px-to-rem(16px);
+	line-height: 1;
 	min-height: 50px;
 	overflow: hidden;
 	padding: 10px 25px 9px;

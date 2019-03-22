@@ -51,6 +51,13 @@ include THEME_DIR . '/gutenberg/components/gb-component_text-colors/classes.php'
 include THEME_DIR . '/gutenberg/components/gb-component_scroller/attributes.php';
 include THEME_DIR . '/gutenberg/components/gb-component_scroller/scroller-output.php';
 
+include THEME_DIR . '/gutenberg/components/gb-component_border/attributes.php';
+include THEME_DIR . '/gutenberg/components/gb-component_border/classes.php';
+
+include THEME_DIR . '/gutenberg/components/gb-component_background-color/attributes.php';
+include THEME_DIR . '/gutenberg/components/gb-component_background-color/inline-styles.php';
+
+
 // Dynamic Blocks
 include THEME_DIR . '/gutenberg/blocks/block_button/button.php';
 include THEME_DIR . '/gutenberg/blocks/block_column/column.php';
@@ -58,5 +65,7 @@ include THEME_DIR . '/gutenberg/blocks/block_heading/heading.php';
 include THEME_DIR . '/gutenberg/blocks/block_image/image.php';
 include THEME_DIR . '/gutenberg/blocks/block_quote/quote.php';
 include THEME_DIR . '/gutenberg/blocks/block_row/row.php';
+include THEME_DIR . '/gutenberg/blocks/block_shortcode/shortcode.php';
 include THEME_DIR . '/gutenberg/blocks/block_source/source.php';
 include THEME_DIR . '/gutenberg/blocks/block_text/text.php';
+include THEME_DIR . '/gutenberg/blocks/block_social_media/social-media.php';

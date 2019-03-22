@@ -55,6 +55,22 @@
 	}
 }
 
+//Helper class to Fade In an element
+.fadeOut {
+	animation: fadeOut .7s ease forwards;
+}
+
+@keyframes fadeOut {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		
+		opacity: 0;
+	}
+}
+
 // Apply to a row or column, and makes the component
 // overlap whatever is above it by 100px;
 .slide-up-component {

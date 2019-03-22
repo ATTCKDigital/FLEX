@@ -5,3 +5,4 @@
 - Global Events: A set of global utilities for detecting viewport size, scrolling etc.
 - Parallax: add to any component to create a parallax effect
 - Debug: set to true temporarily to enable custom debugging tools. 
+- Load More: AJAX load more.  Customize as needed for a specific project.  Requires `theme-configs/load-more.php` to execute the query.

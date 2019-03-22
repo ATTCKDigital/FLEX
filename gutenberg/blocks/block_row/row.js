@@ -39,12 +39,16 @@ const {
 import BackgroundOptions, { BackgroundOptionsAttributes, BackgroundOptionsClasses, BackgroundOptionsInlineStyles, BackgroundOptionsVideoOutput } from '../../components/gb-component_background-options';
 // Import all of our Padding Options requirements.
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
+// Import all of our Margin Options requirements.
+import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
 // Import all of our Scroller Options requirements.
 import ScrollerOptions, { ScrollerOptionsAttributes, ScrollerOptionsOutput } from '../../components/gb-component_scroller';
 // Import all of our Logo Color Options requirements.
 import LogoColorOptions, { LogoColorOptionsAttributes, LogoColorOptionsDataAttr } from '../../components/gb-component_logo-color';
 // Import all of our Row Height Options requirements.
 import RowHeightOptions, { RowHeightOptionsAttributes, RowHeightOptionsClasses } from '../../components/gb-component_row-height';
+// Import all of our Border Options requirements.
+import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
 
 
 
@@ -83,8 +87,10 @@ export default registerBlockType(
 			...BackgroundOptionsAttributes,
 			...RowHeightOptionsAttributes,
 			...PaddingOptionsAttributes,
+			...MarginOptionsAttributes,
 			...ScrollerOptionsAttributes,
 			...LogoColorOptionsAttributes,
+			...BorderOptionsAttributes,
 		},
 
 		getEditWrapperProps( attributes ) {
@@ -103,6 +109,8 @@ export default registerBlockType(
 				...BackgroundOptionsClasses( props ),
 				...RowHeightOptionsClasses( props ),
 				...PaddingOptionsClasses( props ),
+				...MarginOptionsClasses( props ),
+				...BorderOptionsClasses( props ),
 			);
 
 			return [
@@ -114,6 +122,12 @@ export default registerBlockType(
 						{ ...props }
 					/>
 					<PaddingOptions
+						{ ...props }
+					/>
+					<MarginOptions
+						{ ...props }
+					/>
+					<BorderOptions
 						{ ...props }
 					/>
 					<ScrollerOptions

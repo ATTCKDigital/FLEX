@@ -11,6 +11,7 @@
 	font-size: 14px;
 	text-align: center;
 	transition: opacity .3s ease-out;
+	vertical-align: top;
 	width: 100px;
 
 	@include mediaquery(xl) {
@@ -28,6 +29,10 @@
 		padding-top: $gap 0;
 	}
 
+	&.share-email {
+		background-color: color('background', 'primary');
+	}
+
 	.fab {
 		font-size: px-to-rem(18px);
 	}
@@ -37,7 +42,6 @@
 .social-icon {
 	background-color: color('text', 'primary');
 	border-radius: 50%;
-	color: white;
 	cursor: pointer;
 	display: inline-block;
 	font-size: px-to-rem(18px);

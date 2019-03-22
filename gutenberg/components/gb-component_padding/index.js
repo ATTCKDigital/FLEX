@@ -139,7 +139,7 @@ function PaddingOptions( props ) {
 													options={ [
 								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -214,7 +214,7 @@ function PaddingOptions( props ) {
 													options={ [
 								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -289,7 +289,7 @@ function PaddingOptions( props ) {
 													options={ [
 								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -367,7 +367,7 @@ function PaddingOptions( props ) {
 							options={ [
 								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -442,7 +442,7 @@ function PaddingOptions( props ) {
 													options={ [
 								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -517,7 +517,7 @@ function PaddingOptions( props ) {
 													options={ [
 								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -592,7 +592,7 @@ function PaddingOptions( props ) {
 													options={ [
 								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -670,7 +670,7 @@ function PaddingOptions( props ) {
 							options={ [
 								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -745,7 +745,7 @@ function PaddingOptions( props ) {
 													options={ [
 								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -820,7 +820,7 @@ function PaddingOptions( props ) {
 													options={ [
 								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -895,7 +895,7 @@ function PaddingOptions( props ) {
 													options={ [
 								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -973,7 +973,7 @@ function PaddingOptions( props ) {
 							options={ [
 								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -1048,7 +1048,7 @@ function PaddingOptions( props ) {
 													options={ [
 								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -1123,7 +1123,7 @@ function PaddingOptions( props ) {
 													options={ [
 								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -1198,7 +1198,7 @@ function PaddingOptions( props ) {
 													options={ [
 								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -1273,7 +1273,7 @@ function PaddingOptions( props ) {
 
 	return (
 		<PanelBody
-			title={ __( 'Row Padding' ) }
+			title={ __( 'Block Padding' ) }
 			className="flexls-padding-options"
 			initialOpen={ false }
 		>

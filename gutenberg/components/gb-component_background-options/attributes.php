@@ -9,6 +9,9 @@ const BACKGROUND_OPTIONS_ATTRIBUTES = [
 	'backgroundImage' => [
 		'type' => 'object',
 	],
+	'backgroundImageMobile' => [
+		'type' => 'object',
+	],
 	'backgroundVideo' => [
 		'type' => 'object',
 	],
@@ -22,5 +25,29 @@ const BACKGROUND_OPTIONS_ATTRIBUTES = [
 	'backgroundPositionY' => [
 		'type' => 'string',
 		'default' => 'center',
+	],
+	'backgroundSize' => [
+		'type' => 'string',
+		'default' => 'cover',
+	],
+	'backgroundRepeat' => [
+		'type' => 'string',
+		'default' => 'no-repeat',
+	],
+	'backgroundPositionXMobile' => [
+		'type' => 'string',
+		'default' => 'center',
+	],
+	'backgroundPositionYMobile' => [
+		'type' => 'string',
+		'default' => 'center',
+	],
+	'backgroundSizeMobile' => [
+		'type' => 'string',
+		'default' => 'cover',
+	],
+	'backgroundRepeatMobile' => [
+		'type' => 'string',
+		'default' => 'no-repeat',
 	],
 ];

@@ -1,14 +1,11 @@
 <?php 
 	//Archive Feed 
 ?>
-<section class="component-row padding-small-top-5x padding-small-bottom-7x component" data-component-name="LoadMore">
+<section class="component-row padding-small-top-7x padding-small-bottom-7x component" data-component-name="LoadMore">
 	<div class="pure-g component-row-wide component-alignment-top">
 		<div class="column flex-g-lg-12-12 flex-g-md-12-12 flex-g-sm-12-12">
 			<div class="component-archive-feed">
-				<header class="archive-feed-header margin-small-bottom-7x">
-					<h1 class="headline2 color-text-primary uppercase align-center"><?= $this->title;?></h1>
-				</header>
-				<div class="feed-items padding-small-bottom-3x" data-post-type="<?= $this->postType;?>" data-term="<?= $this->term;?>" data-taxonomy="<?= $this->taxonomy;?>">
+				<div class="feed-items load-items padding-small-bottom-3x" data-post-type="<?= $this->postType;?>" data-term="<?= $this->term;?>" data-taxonomy="<?= $this->taxonomy;?>">
 					<?php 
 						if ($this->query->have_posts()) { 
 							while ($this->query->have_posts()) { 

@@ -15,6 +15,7 @@ $blocks = array(
 	'flexls/quote',
 	'flexls/shortcode',
 	'flexls/source',
+	'flexls/socialmedia',
 	'flexls/text',
 );
 
