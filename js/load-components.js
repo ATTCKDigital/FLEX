@@ -10,6 +10,7 @@ import Parallax from './parallax';
 import ElementsInViewport from './elements-in-viewport';
 import Nav from '../components/component_nav/nav';
 import Share from '../components/component_share/share';
+import Video from '../gutenberg/blocks/block_video/play-video';
 import LoadMore from './load-more';
 
 //Project Specific
@@ -22,6 +23,7 @@ FLEXLS.Components = {
 	'Nav': Nav,
 	'LoadMore': LoadMore,
 	'Share': Share,
+	'Video': Video,
 };
 
 FLEXLS.Loader = {};
