@@ -56,7 +56,7 @@ function register_column_block() {
  * Server rendering for /blocks/column
  */
 function render_column_block($attributes, $content) {
-	$sectionDataId = rand();
+	$sectionDataId = mt_rand(10,100);
 	$class = 'component-column';
 	$class .= ' '.$attributes['className'];
 	$class .= column_options_classes($attributes);

@@ -81,7 +81,7 @@ function register_row_block() {
  * Server rendering for /blocks/row
  */
 function render_row_block($attributes, $content) {
-	$sectionDataId = rand();
+	$sectionDataId = mt_rand(10,100);
 	$class = 'component-row';
 	$class .= ' '.$attributes['className'];
 	$class .= $attributes['reverseMobile'] ? ' component-row-reverse-mobile' : '';
