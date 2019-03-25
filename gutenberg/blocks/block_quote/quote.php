@@ -11,6 +11,7 @@ use const FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\BACKGROUND_OPTIONS_ATT
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_classes;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_inline_styles;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_video_output;
+use const FLEX_LAYOUT_SYSTEM\Components\TextColors\TEXT_COLOR_ATTRIBUTES;
 
 
 add_action( 'init', __NAMESPACE__ . '\register_quote_block' );
@@ -64,7 +65,8 @@ function register_quote_block() {
 			MARGIN_OPTIONS_ATTRIBUTES,
 			PADDING_OPTIONS_ATTRIBUTES,
 			BORDER_OPTIONS_ATTRIBUTES,		
-			BACKGROUND_OPTIONS_ATTRIBUTES
+			BACKGROUND_OPTIONS_ATTRIBUTES,
+			TEXT_COLOR_ATTRIBUTES
 
 		),
 		'render_callback' => __NAMESPACE__ . '\render_quote_block',
@@ -83,6 +85,8 @@ function render_quote_block($attributes) {
 	$class .= border_options_classes($attributes);
 	$class .= background_options_classes($attributes);
 
+	$textColor = array_key_exists('textColor', $attributes) ? $attributes['textColor'] : null;
+
 	$imgID = array_key_exists('imgID', $attributes) ? $attributes['imgID'] : null;
 
 	if($imgID) {
@@ -91,9 +95,15 @@ function render_quote_block($attributes) {
 		$image = '';
 	}
 
+	if($textColor) {
+		$textStyle = ' style="color:'.$textColor.';"';
+	} else {
+		$textStyle = '';
+	}
+
 	$style = background_options_inline_styles($attributes);
 
-	$output = "<div class=\"{$class}\" style=\"{$style}\"><h5 class=\"quote-text\">{$attributes['content']}</h5>{$image}<cite class=\"quote-source\">{$attributes['contentSource']}</cite><cite class=\"quote-company\">{$attributes['contentCompany']}</cite></div>";
+	$output = "<div class=\"{$class}\" style=\"{$style}\"><h5 class=\"quote-text\"{$textStyle}>{$attributes['content']}</h5>{$image}<cite class=\"quote-source\">{$attributes['contentSource']}</cite><cite class=\"quote-company\">{$attributes['contentCompany']}</cite></div>";
 
 	return $output;
 }
