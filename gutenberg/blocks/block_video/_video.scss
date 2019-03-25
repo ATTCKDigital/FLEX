@@ -1,0 +1,17 @@
+/**** Video Block Styles ****/
+
+.component-video {
+	.close {
+		display: none;
+	}
+
+	&.playingVideo {
+		.close {
+			display: block;
+		}
+
+		.play {
+			display: none;
+		}
+	}
+}
