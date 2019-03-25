@@ -43,12 +43,14 @@
 
 	@include mediaquery-max(medium) {
 		// reverse media query to avoid extra css
-		.component-row-reverse-mobile {
-			display: flex;
-			flex-direction: column-reverse;
-			
-			&:after {
-				display: none;
+		&.component-row-reverse-mobile {
+			.pure-g {
+				display: flex;
+				flex-direction: column-reverse;
+				
+				&:after {
+					display: none;
+				}
 			}
 		}
 	}
