@@ -59,14 +59,18 @@ include THEME_DIR . '/gutenberg/components/gb-component_background-color/inline-
 
 
 // Dynamic Blocks
-include THEME_DIR . '/gutenberg/blocks/block_button/button.php';
-include THEME_DIR . '/gutenberg/blocks/block_column/column.php';
-include THEME_DIR . '/gutenberg/blocks/block_heading/heading.php';
-include THEME_DIR . '/gutenberg/blocks/block_image/image.php';
-include THEME_DIR . '/gutenberg/blocks/block_quote/quote.php';
-include THEME_DIR . '/gutenberg/blocks/block_row/row.php';
-include THEME_DIR . '/gutenberg/blocks/block_shortcode/shortcode.php';
-include THEME_DIR . '/gutenberg/blocks/block_social_media/social-media.php';
-include THEME_DIR . '/gutenberg/blocks/block_source/source.php';
-include THEME_DIR . '/gutenberg/blocks/block_text/text.php';
-include THEME_DIR . '/gutenberg/blocks/block_video/video.php';
+// Override block output in the child theme by creating a block folder and a block php file with the same name and path
+include(locate_template('/gutenberg/blocks/block_button/button.php'));
+include(locate_template('/gutenberg/blocks/block_column/column.php'));
+include(locate_template('/gutenberg/blocks/block_feed/feed.php'));
+include(locate_template('/gutenberg/blocks/block_heading/heading.php'));
+include(locate_template('/gutenberg/blocks/block_image/image.php'));
+include(locate_template('/gutenberg/blocks/block_quote/quote.php'));
+include(locate_template('/gutenberg/blocks/block_row/row.php'));
+include(locate_template('/gutenberg/blocks/block_shortcode/shortcode.php'));
+include(locate_template('/gutenberg/blocks/block_social_media/social-media.php'));
+include(locate_template('/gutenberg/blocks/block_source/source.php'));
+include(locate_template('/gutenberg/blocks/block_text/text.php'));
+include(locate_template('/gutenberg/blocks/block_users/users.php'));
+include(locate_template('/gutenberg/blocks/block_video/video.php'));
+
