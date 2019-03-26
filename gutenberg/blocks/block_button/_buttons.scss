@@ -56,5 +56,18 @@
 		}
 	}
 
+	&.button-negative, &.is-style-button-negative {
+		border-color: $white;
+		color: $white;
+		background: transparent;
+		opacity: 1;
+		transition: opacity .3s ease-out;
+		
+		@include mediaquery(xl) {
+			&:hover {
+				opacity: .5;
+			}
+		}
+	}
 }
 

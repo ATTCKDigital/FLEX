@@ -82,6 +82,7 @@ export default registerBlockType(
 			{ name: 'button-primary', label: __( 'Default', 'block style' ), isDefault: true },
 			{ name: 'button-secondary', label: __( 'Secondary', 'block style' ) },
 			{ name: 'button-tertiary', label: __( 'Tertiary', 'block style' ) },
+			{ name: 'button-negative', label: __( 'Negative', 'block style' ) },
 		],
 
 		edit: props => {
