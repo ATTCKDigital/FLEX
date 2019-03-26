@@ -52,7 +52,7 @@ function render_video_block($attributes, $content) {
 	$class .= ' component-video component';
 	$class .= margin_options_classes($attributes);
 	$class .= border_options_classes($attributes);
-	$videoId = 'video-'.mt_rand(10,100);
+	$videoId = 'video-'.mt_rand(10,1000);
 
 	$video = '';
 	if ( array_key_exists('backgroundVideo', $attributes) ) {
