@@ -1,5 +1,5 @@
 // import Player from '@vimeo/player';
-//okatodo: allow video block to support vimeo and youtube
+//okatodo: allow video block to support vimeo
 
 function Video($el) {
 	

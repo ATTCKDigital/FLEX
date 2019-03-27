@@ -52,37 +52,6 @@ img {
 	position: relative;
 }
 
-/** Responsive Aspect Ratio Videos **/
-.video-wrapper,
-.embed-youtube {
-	display: block;
-	height: 0;
-	overflow: hidden;
-	padding-bottom: 56.25%;
-	position: relative;
-	width: 100%;
-
-	iframe, video {
-		bottom: 0;
-		height: 100%;
-		left: 0;
-		position: absolute;
-		right: 0;
-		top: 0;
-		width: 100%;
-	}
-
-	.video-thumb {
-		bottom: 0;
-		left: -50%;
-		position: absolute;
-		right: -50%;
-		margin: 0 auto;
-		top: 0;
-		z-index: 10;	
-	}
-}
-
 
 /** Image alignment for images added via WYSIWYG **/
 .post-img, .alignnone, .none {
