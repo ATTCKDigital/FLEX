@@ -24,8 +24,30 @@ function ajax_filter_get_posts( $post ) {
 	$postTypeArray = explode(',',$postType);
 	//excluded posts
 	$exclude = $_POST['ids'];
+	//post count
+	$postCount = $_POST['postCount'];
 
-	if($taxonomy == 'category') {
+	if($exclude == '' && $taxonomy == '' && $postCount) {
+		//If we are showing tabbed content for the ALL 
+		$args = array(
+			'posts_per_page' 	=> $postCount,
+			'orderby'			=> 'date',
+			'order' 			=> 'DESC',
+			'post_type' 		=> $postTypeArray,
+			'post_status' 		=> 'publish',
+		);
+	} 
+	else if($exclude == '' && $postCount) {
+		//If we are showing tabbed content
+		$args = array(
+			'posts_per_page' 	=> $postCount,
+			'orderby'			=> 'date',
+			'order' 			=> 'DESC',
+			'post_type' 		=> $postTypeArray,
+			'post_status' 		=> 'publish',
+			'category__in'		=> $termArray,
+		);
+	} else if($taxonomy == 'category') {
 		//If it's a category	
 		$args = array(
 			'posts_per_page' 	=> 10,
@@ -36,7 +58,7 @@ function ajax_filter_get_posts( $post ) {
 			'post__not_in'		=> $exclude,
 			'category__in'		=> $termArray,
 		);
-	} if($taxonomy == 'tag') {
+	} else if($taxonomy == 'tag') {
 		//If it's a tag	
 		$args = array(
 			'posts_per_page' 	=> 10,
@@ -45,7 +67,7 @@ function ajax_filter_get_posts( $post ) {
 			'post_type' 		=> $postTypeArray,
 			'post_status' 		=> 'publish',
 			'post__not_in'		=> $exclude,
-			'tag__in'		=> $termArray,
+			'tag__in'			=> $termArray,
 		);
 	} else {
 		//Default	
@@ -66,15 +88,17 @@ function ajax_filter_get_posts( $post ) {
 				
 		$postID = get_the_ID();
 		$maxPages = $query->max_num_pages;
-		$link = get_the_permalink($postID);
 		$postType = get_post_type($postID);
 		$categories = get_the_category($ID);
 		$thumbnail = get_the_post_thumbnail($postID, 'full');
+		$excerpt = wp_trim_words( get_the_content($postID), 60 );
+		$fallbackImage = get_field('fallback_image', 'options');
+		$link = get_the_permalink($postID);
 
 		if($thumbnail) {
-			 $thumbnail = $thumbnail;
+			 $thumbnail = '<div class="image-wrapper margin-small-bottom-1x"><a href="'.$link.'">'.$thumbnail.'</a></div>';
 		} else {
-			$thumbnail = '<img src="'.get_field('fallback_image', 'options').'" alt="'.get_field('fallback_image_alt', 'options').'" title="'.get_field('fallback_image_alt', 'options').'" />';
+			$thumbnail = '<div class="image-wrapper margin-small-bottom-1x no-image"><a href="'.$link.'"><img src="'.$fallbackImage.'" /></a></div>';
 		}
 
 		$arrayCategories =  array();
@@ -86,14 +110,13 @@ function ajax_filter_get_posts( $post ) {
 			$displayCategories = implode( ', ', $arrayCategories );;
 		}
 
-		$results = '<div class="new-elements load-item feed-item" data-post-id="'.$postID.'" data-max-pages="'.$maxPages.'"><div class="image-wrapper  margin-small-bottom-1x"><a href="'.$link.'">'.$thumbnail.'</a></div><div class="feed-info margin-small-bottom-2x"><span class="eyebrow display-block margin-small-bottom-1x element-in-view">'.$displayCategories.'</span><h2 class="headline6 margin-small-bottom-1x  element-in-view">'.get_the_title($ID).'</h2><p class="margin-small-bottom-1x  element-in-view">'.excerpt(20).'</p><span class="eyebrow display-block margin-small-bottom-1x element-in-view">'.get_the_time('F j, Y').'</span></div></div>';
+		$results = '<div class="new-elements load-item feed-item" data-post-id="'.$postID.'" data-max-pages="'.$maxPages.'">'.$thumbnail.'<div class="feed-info margin-small-bottom-2x"><span class="eyebrow uppercase display-block margin-small-bottom-1x element-in-view">'.$displayCategories.'</span><h2 class="headline6 margin-small-bottom-1x element-in-view"><a href="'.$link.'">'.get_the_title($ID).'</a></h2><p class="margin-small-bottom-1x element-in-view">'.$excerpt.'</p><span class="eyebrow display-block margin-small-bottom-1x">'.get_the_time('F j, Y').'</span></div></div>';
 				
-
 		$result['response'][] = $results;
 		$result['status']   = 'done';
 	
 	endwhile; else:
-		$result['response'] = '<div class="feed-item margin-small-top-2x margin-small-bottom-2x" data-max-pages="0"><h2 class="headline6 margin-small-bottom-1x">There is no content that matches your filter</h2></div>';
+		$result['response'] = '<div class="feed-item margin-small-top-2x element-in-view margin-small-bottom-2x" data-max-pages="0"><h2 class="headline6 margin-small-bottom-1x">There is no content that matches your filter</h2></div>';
 		$result['status']   = '404';
 	endif;
  
