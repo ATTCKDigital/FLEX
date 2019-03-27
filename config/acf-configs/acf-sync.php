@@ -58,7 +58,7 @@ add_filter('aljm_save_json', function($folders) {
 	foreach ($registerBlocks as $registerBlock) {
 		// Find the block template file in the correct theme directory
 		// locate_template only works with files, not folders, so to ensure we get the folder from correct location we are filtering the path.
-		$path = locate_template('components/component_' .$registerBlock.'/'.$registerBlock.'.php');
+		$path = locate_template('gutenberg/blocks/block_' .$registerBlock.'/'.$registerBlock.'.php');
 		$path = str_replace('/'.$registerBlock.'.php', '', $path);
 		
 		$folders[$registerBlock] =  $path;
