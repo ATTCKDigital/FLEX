@@ -1,6 +1,8 @@
 /**** Video Block Styles ****/
 
 .component-video {
+	min-height: 200px;
+
 	.close {
 		display: none;
 	}
@@ -12,6 +14,52 @@
 
 		.play {
 			display: none;
+		}
+
+		.video-thumbnail-wrapper {
+			z-index: -1;
+		}
+	}
+}
+
+/** Responsive Aspect Ratio Videos **/
+.video-wrapper,
+.embed-youtube {
+	display: block;
+	height: 0;
+	overflow: hidden;
+	padding-bottom: 56.25%;
+	position: relative;
+	width: 100%;
+
+	iframe, video {
+		bottom: 0;
+		height: 100%;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 100%;
+	}
+
+	.video-thumbnail-wrapper {
+		bottom: 0;
+		left: -50%;
+		position: absolute;
+		right: -50%;
+		margin: 0 auto;
+		top: 0;
+		overflow: hidden;
+		z-index: 1;
+
+		img {
+			bottom: 0;
+			left: -50%;
+			position: absolute;
+			right: -50%;
+			margin: 0 auto;
+			top: 0;
+			opacity: 1;
 		}
 	}
 }

@@ -19,8 +19,17 @@
 	} // .components-button
 } // .wds-background-options
 
+.flexls-video-settings {
+	.media-upload-wrapper {
+		margin-bottom: 20px;
+	}
+
+	.components-text-control__input {
+		margin-bottom: 20px;
+	}
+}
 //-----------------------------------------
-// Video Background
+// Video 
 //-----------------------------------------
 .component-video {
 	overflow: hidden;

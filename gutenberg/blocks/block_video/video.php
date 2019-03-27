@@ -31,8 +31,19 @@ function register_video_block() {
                     'type' => 'string',
                     'default' => '',
                 ],
-               	'backgroundVideo' => [
+               	'uploadVideo' => [
 					'type' => 'object',
+				],
+				'videoThumbnail' => [
+					'type' => 'object',
+				],
+				'videoType' => [
+					'type' => 'string',
+					'default' => '',
+				],
+				'youtubeVideo' => [
+					'type' => 'string',
+					'default' => '',
 				],
                 
 			],
@@ -52,15 +63,27 @@ function render_video_block($attributes, $content) {
 	$class .= ' component-video component';
 	$class .= margin_options_classes($attributes);
 	$class .= border_options_classes($attributes);
-	$videoId = 'video-'.mt_rand(10,1000);
 
 	$video = '';
-	if ( array_key_exists('backgroundVideo', $attributes) ) {
-		$video = "<video id=\"{$videoId}\"><source type=\"video/mp4\" src=\"{$attributes['backgroundVideo']['url']}\" /></video>";
+	$videoId = '';
+	$youtubeVideoId = '';
+
+	if ( array_key_exists('uploadVideo', $attributes) ) {
+		$videoId = 'video-'.mt_rand(10,1000);
+		$video = '<video id="'.$videoId.'"><source type="video/mp4" src="'.$attributes['uploadVideo']['url'].'" /></video>';
+	} else if (array_key_exists('youtubeVideo', $attributes)) {
+		$youtubeVideoId = $attributes['youtubeVideo'];
+		$videoId = $youtubeVideoId;
+		$video = '<div id="player" data-video-id="'.$youtubeVideoId.'"></div>';
+	}
+
+	$thumbnail = '';
+	if ( array_key_exists('videoThumbnail', $attributes) ) {
+		$thumbnail = '<div class="video-thumbnail-wrapper"><img src="'.$attributes['videoThumbnail']['url'].'" alt="'.$attributes['videoThumbnail']['url'].'"/></div>';
 	}
 
 
-	$output = "<div class=\"{$class}\" data-component-name=\"Video\"><div class=\"video-wrapper\"><mark class=\"playVideo play\" data-video-id=\"{$videoId}\"></mark><mark class=\"pauseVideo close\" data-video-id=\"{$videoId}\"></mark>{$video}</div></div>";
+	$output = "<div class=\"{$class}\" data-component-name=\"Video\"><div class=\"video-wrapper\" data-video-type=\"{$attributes['videoType']}\">{$thumbnail}<mark class=\"playVideo play\" data-video-id=\"{$videoId}\" ></mark><mark class=\"pauseVideo close\" data-video-id=\"{$videoId}\"></mark>{$video}</div></div>";
 
 	return $output;
 }

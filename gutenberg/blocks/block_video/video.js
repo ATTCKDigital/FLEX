@@ -30,6 +30,7 @@ const {
 	PanelBody,
 	PanelRow,
 	TextControl,
+	SelectControl,
 
 } = wp.components;
 
@@ -64,8 +65,17 @@ export default registerBlockType(
 			anchor: true,
 		},
 		attributes: {
-			backgroundVideo: {
+			uploadVideo: {
 				type: 'object',
+			},
+			videoThumbnail: {
+				type: 'object',
+			},
+			youtubeVideo: {
+				type: 'string',
+			},
+			videoType: {
+				type: 'string',
 			},
 			...MarginOptionsAttributes,
 			...BorderOptionsAttributes,
@@ -76,8 +86,13 @@ export default registerBlockType(
 		edit: props => {
 
 			const { className, setAttributes } = props;
-			const setBackgroundVideo = value => props.setAttributes( { backgroundVideo: value } );
-			const removeBackgroundVideo = () => props.setAttributes( { backgroundVideo: null } );
+			const setVideoType = value => props.setAttributes( { videoType: value } );
+			const setUploadVideo = value => props.setAttributes( { uploadVideo: value } );
+			const removeUploadVideo = () => props.setAttributes( { uploadVideo: null } );
+			const setYoutubeVideo = value => props.setAttributes( { youtubeVideo: value } );
+			const setVideoThumbnail = value => props.setAttributes( { videoThumbnail: value } );
+			const removeVideoThumbnail = () => props.setAttributes( { videoThumbnail: null } );
+
 			const classes = classnames(
 				className,
 				`component-video`,
@@ -85,9 +100,66 @@ export default registerBlockType(
 				...BorderOptionsClasses( props ),
 			);
 
-			const videoBackgroundSelect = () => {
+			const thumbnailSelect = () => {
+				if ( ! props.attributes.videoThumbnail ) {
+					return(
+						<div className="media-upload-wrapper">
+							<p>
+								<MediaUpload
+									buttonProps={ {
+										className: 'components-button button button-large',
+									} }
+									onSelect={ setVideoThumbnail }
+									type="video"
+									value=""
+									render={ ( { open } ) => (
+										<Button className="button button-large" onClick={ open }>
+											<Dashicon icon="format-video" /> { __( 'Upload Thumbnail' ) }
+										</Button>
+									) }
+								/>
+							</p>
+							<p>
+								{ __( 'Add/Upload a 1920x1080 video thumbnail.' ) }
+							</p>
+						</div>
+					);
+				};
 
-				if ( ! props.attributes.backgroundVideo ) {
+				return (
+					<div className="video-container">
+						<p>
+							<div className={"video-thumbnail-wrapper"}>
+								<img
+									src={ props.attributes.videoThumbnail ? props.attributes.videoThumbnail.url : '' }
+								/>
+							</div>
+						</p>
+						{ props.isSelected ? (
+							<div className="media-button-wrapper">
+								<p>
+									<Button
+										className="remove-video button button-large"
+										onClick={ removeVideoThumbnail }
+									>
+										<Dashicon icon="no-alt" /> { __( 'Remove Thumbnail' ) }
+									</Button>
+								</p>
+
+								<p>
+									{ __( 'Add/Upload a 1920x1080 video thumbnail.' ) }
+								</p>
+							</div>
+						) : null }
+					</div>
+				);
+			}
+
+			const videoSelect = () => {
+				if ( 'upload' !== props.attributes.videoType ) {
+					return '';
+				}
+				if ( ! props.attributes.uploadVideo ) {
 					return (
 						<div className="media-upload-wrapper">
 							<p>
@@ -95,7 +167,7 @@ export default registerBlockType(
 									buttonProps={ {
 										className: 'components-button button button-large',
 									} }
-									onSelect={ setBackgroundVideo }
+									onSelect={ setUploadVideo }
 									type="video"
 									value=""
 									render={ ( { open } ) => (
@@ -118,7 +190,7 @@ export default registerBlockType(
 							<video className="video-container video-container-overlay">
 								<source
 									type="video/mp4"
-									src={ props.attributes.backgroundVideo.url }
+									src={ props.attributes.uploadVideo ? props.attributes.uploadVideo.url : '' }
 								/>
 							</video>
 						</p>
@@ -127,7 +199,7 @@ export default registerBlockType(
 								<p>
 									<Button
 										className="remove-video button button-large"
-										onClick={ removeBackgroundVideo }
+										onClick={ removeUploadVideo }
 									>
 										<Dashicon icon="no-alt" /> { __( 'Remove Video' ) }
 									</Button>
@@ -142,25 +214,59 @@ export default registerBlockType(
 				);
 			};
 
-			const videoBackgroundOutput = () => {
-
-				if ( ! props.attributes.backgroundVideo ) {
-					return (
-						<div className="video-wrapper">
-							
-						</div>
-					);
+			const youtubeVideoSelect = () => {
+				if ( 'youtube' !== props.attributes.videoType ) {
+					return '';
 				}
-
 				return (
-					<div className="video-wrapper">
-						<mark class="play"></mark>
+					<TextControl
+						label={__("YouTube ID", "flexls")}
+						help={__("Paste the ID of the YouTube Video.", "flexls")}
+						value={props.attributes.youtubeVideo ? props.attributes.youtubeVideo : ''}
+						onChange={setYoutubeVideo}
+					/>
+				);
+
+			};
+
+			const uploadVideoOutput = () => {
+				if ( 'upload' !== props.attributes.videoType ) {
+					return '';
+				}
+				return (
+					<div className={"video-wrapper"}>
+						<div className={"video-thumbnail-wrapper"}>
+							<img
+								src={ props.attributes.videoThumbnail ? props.attributes.videoThumbnail.url : '' }
+							/>
+						</div>
+						<mark className={"play"} data-video-type={"upload"}></mark>
 						<video className="video-container video-container-overlay">
 							<source
 								type="video/mp4"
-								src={ props.attributes.backgroundVideo.url }
+								src={ props.attributes.uploadVideo ? props.attributes.uploadVideo.url : '' }
 							/>
 						</video>
+					</div>
+				);
+
+
+			};
+
+			const youtubeVideoOutput = () => {
+				if ( 'youtube' !== props.attributes.videoType ) {
+					return '';
+				}
+
+				return (
+					<div className={"video-wrapper"}>
+						<div className={"video-thumbnail-wrapper"}>
+							<img
+								src={ props.attributes.videoThumbnail ? props.attributes.videoThumbnail.url : '' }
+							/>
+						</div>
+						<mark className={"play"} data-video-type={"youtube"}></mark>
+						<iframe width="560" height="315" src={ props.attributes.youtubeVideo ? 'https://www.youtube.com/embed/'+props.attributes.youtubeVideo : '' } frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					</div>
 				);
 			};
@@ -178,12 +284,33 @@ export default registerBlockType(
 						className="flexls-video-settings"
 					>
 						<PanelRow>
-							{ videoBackgroundSelect() }
+							<SelectControl
+								key="video-type"
+								label={ __( 'Video Type' ) }
+								value={ props.attributes.videoType ? props.attributes.videoType : '' }
+								options={ [
+									{
+										label: __( 'Upload a video' ),
+										value: 'upload',
+									},
+									{
+										label: __( 'YouTube' ),
+										value: 'youtube',
+									},
+								] }
+								onChange={ setVideoType }
+							/>
+						</PanelRow>
+						<PanelRow>
+							{ thumbnailSelect() }
+							{ videoSelect() }
+							{ youtubeVideoSelect() }
 						</PanelRow>
 					</PanelBody>
 				</InspectorControls>,
 				<div className={ classes }>
-					{ videoBackgroundOutput() }
+					{ uploadVideoOutput() }
+					{ youtubeVideoOutput() }
 				</div>				
 			];
 		},
