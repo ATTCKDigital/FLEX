@@ -121,6 +121,7 @@ export default registerBlockType(
 					onRemove={ () => onReplace( [] ) }
 					style={ { textAlign: align } }
 					className={ classnames(
+						className,
 						`headline${level}`,
 						`align-${align}`,
 						...MarginOptionsClasses( props ),
