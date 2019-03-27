@@ -12,8 +12,8 @@ h1, h2, h3, h4, h5, h6, p, span, .button, img {
 	}
 }
 
-.mce-content-body {
-	//inside the WYSIWYG editor, prevent hidden text
+.mce-content-body, .wp-admin {
+	//inside the WYSIWYG editor and admin, prevent hidden text
 	h1, h2, h3, h4, h5, h6, p, .button, span, img {
 		opacity: 1;
 		transition: opacity .3s ease-in;

@@ -3,7 +3,7 @@
 // Default Colors
 $modalColor: #ffffff;
 $popupColor: rgba(0, 0, 0, .7);
-$defaultTextColor: var(--primary-text-color);
+$defaultTextColor: var(--color-text-primary);
 $borderColor: #DFDFDF;
 $white: #FFFFFF;
 $black: #000000;
@@ -16,17 +16,17 @@ $brand-colors: (
 		'red': #f00
 	),
 	'text': (
-		'primary': var(--primary-text-color),
-		'secondary': var(--secondary-text-color),
-		'tertiary': var(--tertiary-text-color),
+		'primary': var(--color-text-primary),
+		'secondary': var(--color-text-secondary),
+		'tertiary': var(--color-text-tertiary),
 		'white':	#FFFFFF,
 		'black':	#000000,
 	),
 
 	'background': (
-		'primary': var(--primary-background-color),
-		'secondary': var(--secondary-background-color),
-		'tertiary': var(--tertiary-background-color),
+		'primary': var(--color-background-primary),
+		'secondary': var(--color-background-secondary),
+		'tertiary': var(--color-background-tertiary),
 	),
 
 	'social':(
