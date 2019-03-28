@@ -43,12 +43,13 @@ Classic Editor (for WP 5.0+) - https://wordpress.org/plugins/classic-editor/
 Google XML Sitemaps - https://github.com/ATTCKDigital/flex-layout-system
 
 ### Optional Recommended Plugins (as needed per project)
-WPML - https://wpml.org/
+Akismet - https://akismet.com/
 Contact Form 7 (CF7) - https://contactform7.com/
 Flamingo (required if using CF7) - https://contactform7.com/save-submitted-messages-with-flamingo/
-WP Store Locator - https://wpstorelocator.co/
 Smashballoon Custom Twitter Feeds - https://smashballoon.com/custom-twitter-feeds
 Smashballoon The Instagram Feed - https://smashballoon.com/instagram-feed/
+WP Store Locator - https://wpstorelocator.co/
+WPML - https://wpml.org/
 
 ## Plugin Settings/Info
 
@@ -80,6 +81,9 @@ A map plugin that creates a store locator shortcode. Find nearby retailers of a 
 
 ### Smashballoon Twitter and Instagram
 Customizable social media feeds.  Requires a purchased license.
+
+### Akismet
+Comment spam filter. Requires API Key and possible payment. Required if comments are enabled.
 
 #### Global Fields (always include)
 JSON files: `config/acf-configs/acf-json`
