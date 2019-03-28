@@ -54,7 +54,7 @@ export default registerBlockType(
 		description: __( 'A feed of posts.' ),
 		category: 'common',
 		icon: icons.feed,
-		parent: 'flexls/column',
+		parent: ['flexls/column'],
 		keywords: [
 			__( 'Feed', 'flexls' ),
 			__( 'Archive', 'flexls' ),
