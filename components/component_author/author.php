@@ -7,7 +7,7 @@
 	$authorName = get_the_author_meta('display_name', $authorID);
 	$authorTitle = get_field('title', 'user_'.$authorID);
 	$authorBio = get_field('bio', 'user_'.$authorID);
-	$socialTitle = $authorName.', '.$authorTitle.' at Acreage Holdings';
+	$socialTitle = $authorName.', '.$authorTitle;
 ?>
 
 <article class="component-row padding-small-top-5x padding-small-bottom-7x">
@@ -16,7 +16,7 @@
 		<div class="column flex-g-lg-8-12 flex-g-md-8-12 flex-g-sm-12-12">
 			<div class="component-post-body">
 				<header class="single-header margin-small-bottom-3x">
-					<span class="caption2 color-text-brown uppercase display-block margin-small-bottom-2x align-center">Team</span>
+					<span class="caption2 color-text-brown uppercase display-block margin-small-bottom-2x align-center"><?php _e( 'Team', '_flexls' );?></span>
 					<h1 class="headline4 color-text-primary align-center margin-small-bottom-2x"><?= $authorName;?></h1>
 					<span class="caption1 color-text-black uppercase display-block align-center"><?= $authorTitle;?></span>
 				</header>

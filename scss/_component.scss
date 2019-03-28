@@ -47,6 +47,7 @@
 			.pure-g {
 				display: flex;
 				flex-direction: column-reverse;
+				flex-wrap: inherit;
 				
 				&:after {
 					display: none;

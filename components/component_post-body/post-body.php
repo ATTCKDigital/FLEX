@@ -43,7 +43,7 @@
 						$postTitle = get_the_title();
 					}
 					echo Utils::render_template('components/component_share/share.php', array(
-						"displayTitle" 	=> 'Share',
+						"displayTitle" 	=> __('Share', '_flexls'),
 						"socialTitle" 	=> $postTitle,
 						"url" 			=> get_the_permalink()
 					));
