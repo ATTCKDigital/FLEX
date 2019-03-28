@@ -19,6 +19,7 @@
 	.wp-block-button__link {
 		@extend .button;
 		overflow: inherit;
+		border-radius: 0;
 	}
 
 	.editor-rich-text__tinymce[data-is-placeholder-visible=true].wp-block-button__link {
@@ -37,5 +38,13 @@
 
 	&.align-right {
 		text-align: right;
+	}
+}
+
+
+.editor-block-styles__item[role="button"][aria-label="Negative"],
+.editor-block-styles__item[role="button"][aria-label="Tertiary"] {
+	.editor-block-styles__item-preview {
+		background-color: color('background', 'primary');
 	}
 }

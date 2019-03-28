@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 function LoadMore($el) {
-	// Load more posts in a tab
+	// Load more posts
 	// See load-more.php for the query construction
 	function initLoadMorePosts() {
 		var $section = $el.find('.load-items');
@@ -60,7 +60,7 @@ function LoadMore($el) {
 	}
 
 	function tabSwitcher() {
-		// MOVE INTO CHILD ONCE LOADER IS FIXED
+		//Load posts into tabs on click of tab
 		var tabTerm = $(this).attr('data-tab'); //get the term of the clicked tab
 		var tabText = $(this).text(); //get the term of the clicked tab
 		var tabCount = $(this).attr('data-post-count'); //get the term of the clicked tab

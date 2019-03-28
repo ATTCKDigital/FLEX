@@ -171,7 +171,7 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	text-align: right;
 }
 
-.acf-button.button.button-primary {
+.acf-button.button.button-primary, .acf-button.button{
     background: #c7a589;
     border-color: #b78b66 #ae7d55 #ae7d55;
     color: #fff;
@@ -187,18 +187,19 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
     line-height: 2.5;
 }
 
-.acf-button.button.button-primary:focus,.acf-button.button.button-primary:hover {
+.acf-button.button.button-primary:focus,.acf-button.button.button-primary:hover, .acf-button.button:focus,.acf-button.button:hover {
     background: #ccad93;
     border-color: #ae7d55;
     color: #fff;
     box-shadow: 0 1px 0 #ae7d55
 }
 
-.acf-button.button.button-primary:focus {
+.acf-button.button.button-primary:focus, .acf-button.button:focus {
     box-shadow: inset 0 1px 0 #b78b66,0 0 2px 1px #33b3db
 }
 
-.acf-button.button.button-primary.active,.acf-button.button.button-primary.active:focus,.acf-button.button.button-primary.active:hover,.acf-button.button.button-primary:active {
+.acf-button.button.button-primary.active,.acf-button.button.button-primary.active:focus,.acf-button.button.button-primary.active:hover,.acf-button.button.button-primary:active,
+.acf-button.button.active,.acf-button.button.active:focus,.acf-button.button.active:hover,.acf-button.button:active {
     background: #b78b66;
     border-color: #ae7d55;
     box-shadow: inset 0 2px 0 #ae7d55
