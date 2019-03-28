@@ -59,7 +59,7 @@ export default registerBlockType(
 		description: __( 'A stylized pull quote with a source' ),
 		category: 'common',
 		icon: 'editor-quote',
-		parent: 'flexls/column',
+		parent: ['flexls/column'],
 		keywords: [
 			__( 'Text', 'flexls' ),
 			__( 'Quote', 'flexls' ),

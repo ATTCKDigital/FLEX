@@ -50,7 +50,7 @@ export default registerBlockType(
 		description: __( 'Prompt visitors to take action with a custom button.' ),
 		category: 'common',
 		icon: icons.button,
-		parent: 'flexls/column',
+		parent: ['flexls/column'],
 		keywords: [
 			__( 'Text', 'flexls' ),
 			__( 'Button', 'flexls' ),

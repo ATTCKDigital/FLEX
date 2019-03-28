@@ -55,7 +55,7 @@ export default registerBlockType(
 		description: __( 'Add a video that plays inline', 'flexls' ),
 		category: 'common',
 		icon: icons.video,
-		parent: 'flexls/column',
+		parent: ['flexls/column'],
 		keywords: [
 			__( 'Video', 'flexls' ),
 			__( 'YouTube', 'flexls' ),

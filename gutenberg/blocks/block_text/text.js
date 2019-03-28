@@ -35,7 +35,7 @@ export default registerBlockType(
 		description: __( 'Use the classic WordPress editor.' ),
 		icon: icons.text,
 		category: 'common',
-		parent: 'flexls/column',
+		parent: ['flexls/column'],
 		keywords: [
 			__( 'Text', 'flexls' ),
 			__( 'WYSIWYG', 'flexls' ),

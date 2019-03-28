@@ -43,7 +43,7 @@ export default registerBlockType(
 		description: __( 'Display code snippets that respect your spacing and tabs.' ),
 		category: 'common',
 		icon: icons.source,
-		parent: 'flexls/column',
+		parent: ['flexls/column'],
 		keywords: [
 			__( 'Text', 'flexls' ),
 			__( 'Source', 'flexls' ),
