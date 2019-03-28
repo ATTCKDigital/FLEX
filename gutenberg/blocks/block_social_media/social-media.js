@@ -120,45 +120,39 @@ export default registerBlockType(
 						title={ __( 'Social Media Options', 'flexls' ) }
 						className="flexls-social-media-options"
 						initialOpen={ false }
-					>
+					>	
+						<p>Set your accounts in Global Settings. Only platforms with set accounts will appear on the front end.</p>
 						<CheckboxControl
-							heading={__('Facebook', 'flexls')}
 							label={__('Show Facebook?', 'flexls')}
 							checked={facebook}
 							onChange={facebook => setAttributes({ facebook })}
 						/>
 					  	<CheckboxControl
-							heading={__('Twitter', 'flexls')}
 							label={__('Show Twitter?', 'flexls')}
 							checked={twitter}
 							onChange={twitter => setAttributes({ twitter })}
 					  	/>
 					  	<CheckboxControl
-							heading={__('Instagram', 'flexls')}
 							label={__('Show Instagram?', 'flexls')}
 							checked={instagram}
 							onChange={instagram => setAttributes({ instagram })}
 					  	/>
 					  	<CheckboxControl
-							heading={__('LinkedIn', 'flexls')}
 							label={__('Show LinkedIn?', 'flexls')}
 							checked={linkedin}
 							onChange={linkedin => setAttributes({ linkedin })}
 					  	/>
 					  	<CheckboxControl
-							heading={__('Pinterest', 'flexls')}
 							label={__('Show pinterest?', 'flexls')}
 							checked={pinterest}
 							onChange={pinterest => setAttributes({ pinterest })}
 					  	/>
 					  	<CheckboxControl
-							heading={__('Medium', 'flexls')}
 							label={__('Show Medium?', 'flexls')}
 							checked={medium}
 							onChange={medium => setAttributes({ medium })}
 					  	/>
 					  	<CheckboxControl
-							heading={__('YouTube', 'flexls')}
 							label={__('Show YouTube?', 'flexls')}
 							checked={youtube}
 							onChange={youtube => setAttributes({ youtube })}
