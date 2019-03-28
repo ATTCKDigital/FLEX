@@ -55,16 +55,10 @@
 		}
 	}
 
+
+
 	&.zindexTop {
 		z-index: 100000;
-	}
-}
-
-.component-column {
-	padding: 0 $gap;
-
-	@include mediaquery(large) {
-		padding: 0;
 	}
 }
 
@@ -79,6 +73,17 @@
 
 	@include mediaquery(xl) {
 		padding: 0;
+	}
+
+}
+
+// Remove padding on a row without making it full bleed
+@include mediaquery-max(xl) {
+	// reverse media query to avoid extra css
+	.component-row-no-padding {
+		.component-row-wide {
+			padding: 0;
+		}
 	}
 }
 
