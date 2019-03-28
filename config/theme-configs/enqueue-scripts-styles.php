@@ -38,11 +38,11 @@ function flexls_theme_add_editor_styles() {
 add_action( 'admin_init', 'flexls_theme_add_editor_styles' );
 
 // Admin specific styles
-function admin_scripts() {
-	wp_enqueue_script("admin_scripts", get_template_directory_uri() . "/dist/js/admin.js", array(), null, true); //TODO: get these to output right so can serve from child theme
-	wp_enqueue_style('admin-styles', get_stylesheet_directory_uri().'/dist/css/admin.css');
+function block_editor_scripts() {
+	wp_enqueue_script("block_editor_scripts", get_template_directory_uri() . "/dist/js/admin.js", array(), null, true); //TODO: get these to output right so can serve from child theme
+	wp_enqueue_style('block_editor_styles', get_stylesheet_directory_uri().'/dist/css/admin.css');
 }
-add_action('admin_enqueue_scripts', 'admin_scripts');
+add_action('enqueue_block_editor_assets', 'block_editor_scripts');
 
 // REMOVE WP EMOJI
 // https://www.denisbouquet.com/remove-wordpress-emoji-code/
