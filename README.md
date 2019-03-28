@@ -40,12 +40,15 @@ The boilerplate theme has a variety of existing javascript functions (nav animat
 Advanced Custom Fields Pro - https://www.advancedcustomfields.com/
 ACF Local JSON Manager  - https://github.com/khromov/acf-local-json-manager
 Classic Editor (for WP 5.0+) - https://wordpress.org/plugins/classic-editor/
-Flex Layout System - https://github.com/ATTCKDigital/flex-layout-system
+Google XML Sitemaps - https://github.com/ATTCKDigital/flex-layout-system
 
-### Optional Plugins (as needed per project)
+### Optional Recommended Plugins (as needed per project)
 WPML - https://wpml.org/
-List of plugins
-
+Contact Form 7 (CF7) - https://contactform7.com/
+Flamingo (required if using CF7) - https://contactform7.com/save-submitted-messages-with-flamingo/
+WP Store Locator - https://wpstorelocator.co/
+Smashballoon Custom Twitter Feeds - https://smashballoon.com/custom-twitter-feeds
+Smashballoon The Instagram Feed - https://smashballoon.com/instagram-feed/
 
 ## Plugin Settings/Info
 
@@ -53,6 +56,7 @@ List of plugins
 This theme uses ACF to allow for dynamic layouts as well as global settings that can be adjusted by an admin.
 
 Download the latest version from ACF using the ATTCK login (see LastPass for login info).
+_The version of ACF required for the boilerplate is still in beta.  As of 3/29/19 - Version 5.8.0-beta4.1_
 
 ### ACF Local JSON Manager
 This allows syncing of json files from within each component. Once installed and activated, no changes should need to be made.
@@ -62,8 +66,20 @@ Once installed, a dropdown will appear in the admin (in the toolbar at the top).
 ### Classic Editor
 Allows the option to use a plain WYSIWYG editor on any page, CPT or post when WordPress version is 5.0+.
 
+### Google XML Sitemaps
+Creates Google friendly sitemap for the project.
+
 ### WPML
 WPML is a plugin used for creating a multilingual or multiregional site.  Requires a purchased license.
+
+### Contact Form 7 (CF7) & Flamingo
+Robust contact form plugin that allows creation of multiple forms with shortcodes. Flamingo extends the plugin to store submissions in the database
+
+### WP Store Locator
+A map plugin that creates a store locator shortcode. Find nearby retailers of a product.
+
+### Smashballoon Twitter and Instagram
+Customizable social media feeds.  Requires a purchased license.
 
 #### Global Fields (always include)
 JSON files: `config/acf-configs/acf-json`
