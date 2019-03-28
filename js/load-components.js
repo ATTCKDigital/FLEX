@@ -11,6 +11,7 @@ import ElementsInViewport from './elements-in-viewport';
 import Nav from '../components/component_nav/nav';
 import Share from '../components/component_share/share';
 import Video from '../gutenberg/blocks/block_video/play-video';
+import Tabbed from '../../acreage/gutenberg/blocks/block_tabbed/tabbed';
 import LoadMore from './load-more';
 
 //Project Specific
@@ -24,6 +25,7 @@ FLEXLS.Components = {
 	'LoadMore': LoadMore,
 	'Share': Share,
 	'Video': Video,
+	'Tabbed': Tabbed,
 };
 
 FLEXLS.Loader = {};

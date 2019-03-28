@@ -7,9 +7,12 @@ function _scripts() {
 	if (!is_admin()) {
 		//Deregister included jquery. Latest version will be included in main.js
 		wp_deregister_script('jquery');
+		wp_enqueue_script('jquery', "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js", array(), null, true);
 	}
 	//Compiled theme js file
-	wp_enqueue_script("afp_script", get_stylesheet_directory_uri() . "/dist/js/main.js", array(), null, true);
+	wp_enqueue_script('afp_script', get_stylesheet_directory_uri() . "/dist/js/main.js", array(), null, true);
+
+
 
 	// Load more vars
 	wp_localize_script('afp_script', 'afp_vars', array(
@@ -27,6 +30,12 @@ function flexls_deregister_styles() {
 	// Remove CF7 styles
 	wp_deregister_style( 'contact-form-7' );
 }
+
+// Allows WYSIWYG to display custom css
+function flexls_theme_add_editor_styles() {
+    add_editor_style( get_stylesheet_directory_uri().'/dist/css/wysiwyg.css' );
+}
+add_action( 'admin_init', 'flexls_theme_add_editor_styles' );
 
 // Admin specific styles
 function admin_scripts() {
