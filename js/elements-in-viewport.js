@@ -69,10 +69,10 @@ function ElementsInViewport($el) {
 
 	function hideAllElements() {
 		// First, hide all elements
-		$('body').find('h1, h2, h3, h4, h5, h6, p, span').addClass('prepare-in-view');
+		$('body').find('h1, h2, h3, h4, h5, h6, p, span, .button, img').addClass('prepare-in-view');
 
 		// Add elements that need to be manipulated here:
-		$('body').find('h1, h2, h3, h4, h5, h6, p, span').each(function (index, value) {
+		$('body').find('h1, h2, h3, h4, h5, h6, p, span, .button, img').each(function (index, value) {
 			if (!$(this).hasClass('no-element-in-view')) {
 				$(this).addClass('prepare-in-view');
 			}

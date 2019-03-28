@@ -45,6 +45,8 @@ import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '..
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
 // Import all of our Background Options requirements.
 import BackgroundOptions, { BackgroundOptionsAttributes, BackgroundOptionsClasses, BackgroundOptionsInlineStyles, BackgroundOptionsVideoOutput } from '../../components/gb-component_background-options';
+// Import all of our Text Color Options requirements.
+import TextColorOptions, { TextColorAttributes, TextColorClasses } from '../../components/gb-component_text-colors';
 
 
 /**
@@ -57,7 +59,7 @@ export default registerBlockType(
 		description: __( 'A stylized pull quote with a source' ),
 		category: 'common',
 		icon: 'editor-quote',
-		parent: 'flexls/column',
+		parent: ['flexls/column'],
 		keywords: [
 			__( 'Text', 'flexls' ),
 			__( 'Quote', 'flexls' ),
@@ -97,6 +99,7 @@ export default registerBlockType(
 			...PaddingOptionsAttributes,
 			...BorderOptionsAttributes,
 			...BackgroundOptionsAttributes,
+			...TextColorAttributes
 
 		},
 
@@ -125,6 +128,9 @@ export default registerBlockType(
 					<MarginOptions
 						{ ...props }
 					/>
+					<TextColorOptions
+						{ ...props }
+					/>
 				</InspectorControls>,
 				<div
 					className={ classnames(
@@ -133,6 +139,7 @@ export default registerBlockType(
 						...PaddingOptionsClasses( props ),
 						...BorderOptionsClasses( props ),						
 						...BackgroundOptionsClasses( props ),
+						...TextColorClasses( props ),
 
 					)}
 					style={ {

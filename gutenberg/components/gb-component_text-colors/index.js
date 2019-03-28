@@ -32,13 +32,11 @@ export {
 function TextColorOptions( props ) {
 	const setTextColor = value => props.setAttributes( { textColor: value } );
 
+	return (
 
-
-	const colorPanelSelect = () => {
-
-		return (
-			<PanelColorSettings
+		<PanelColorSettings
 				title={ __( 'Text Color' ) }
+				initialOpen={ false }
 				colorSettings={ [
 					{
 						value: props.attributes.textColor,
@@ -47,20 +45,8 @@ function TextColorOptions( props ) {
 					}
 				] }
 			>
-			</PanelColorSettings>
-		);
-	};
+		</PanelColorSettings>
 
-	return (
-		<PanelBody
-			title={ __( 'Text Color' ) }
-			className="text-color-options"
-			initialOpen={ false }
-		>
-			<PanelRow>
-				{ colorPanelSelect() }
-			</PanelRow>
-		</PanelBody>
 	);
 }
 

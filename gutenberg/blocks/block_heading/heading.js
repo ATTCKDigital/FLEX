@@ -52,7 +52,7 @@ export default registerBlockType(
 		description: __( 'Introduce new sections and organize content to help visitors (and search engines) understand the structure of your content.' ),
 		category: 'common',
 		icon: 'heading',
-		parent: 'flexls/column',
+		parent: ['flexls/column'],
 		keywords: [
 			__( 'Text', 'flexls' ),
 			__( 'Heading', 'flexls' ),
@@ -121,6 +121,7 @@ export default registerBlockType(
 					onRemove={ () => onReplace( [] ) }
 					style={ { textAlign: align } }
 					className={ classnames(
+						className,
 						`headline${level}`,
 						`align-${align}`,
 						...MarginOptionsClasses( props ),

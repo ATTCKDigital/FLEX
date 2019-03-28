@@ -53,6 +53,7 @@ export default registerBlockType(
 		description: __( 'Display links to your social media accounts. Accounts ', 'flexls'),
 		category: 'common',
 		icon: icons.social,
+		parent: ['flexls/column'],
 		keywords: [
 			__( 'Social media', 'flexls' ),
 		],

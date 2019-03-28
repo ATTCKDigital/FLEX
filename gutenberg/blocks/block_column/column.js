@@ -56,7 +56,7 @@ export default registerBlockType(
 		description: __( 'Creates a column wrapper to support inner blocks.', 'flexls' ),
 		category: 'layout',
 		icon: 'columns',
-		parent: 'flexls/row',
+		parent: ['flexls/row'],
 		keywords: [
 			__( 'Flex', 'flexls' ),
 			__( 'Layout', 'flexls' ),

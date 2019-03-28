@@ -44,7 +44,7 @@ export default registerBlockType(
 		description: __( 'Display Wordpress shortcodes.' ),
 		category: 'common',
 		icon: 'plus',
-		parent: 'flexls/column',
+		parent: ['flexls/column'],
 		keywords: [
 			__( 'Shortcode', 'flexls' ),
 			__( 'Code', 'flexls' ),

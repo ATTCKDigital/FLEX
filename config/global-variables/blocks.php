@@ -17,6 +17,8 @@ $blocks = array(
 	'flexls/source',
 	'flexls/socialmedia',
 	'flexls/text',
+	'flexls/users',
+	'flexls/video',
 );
 
 

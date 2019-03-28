@@ -50,7 +50,7 @@ export default registerBlockType(
 		description: __( 'Prompt visitors to take action with a custom button.' ),
 		category: 'common',
 		icon: icons.button,
-		parent: 'flexls/column',
+		parent: ['flexls/column'],
 		keywords: [
 			__( 'Text', 'flexls' ),
 			__( 'Button', 'flexls' ),
@@ -82,6 +82,7 @@ export default registerBlockType(
 			{ name: 'button-primary', label: __( 'Default', 'block style' ), isDefault: true },
 			{ name: 'button-secondary', label: __( 'Secondary', 'block style' ) },
 			{ name: 'button-tertiary', label: __( 'Tertiary', 'block style' ) },
+			{ name: 'button-negative', label: __( 'Negative', 'block style' ) },
 		],
 
 		edit: props => {
