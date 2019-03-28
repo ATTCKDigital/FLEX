@@ -49,7 +49,7 @@ export default registerBlockType(
 		description: __( 'Upload an image.', 'flexls'),
 		category: 'common',
 		icon: icons.upload,
-		parent: 'flexls/column',
+		parent: ['flexls/column'],
 		keywords: [
 			__( 'Image', 'flexls' ),
 			__( 'MediaUpload', 'flexls' ),
