@@ -17,9 +17,7 @@ const {
 	InspectorControls,
 	URLInput,
 	RichText,
-	AlignmentToolbar,
-	CheckboxControl
-
+	AlignmentToolbar
 } = wp.editor;
 const {
 	Toolbar,
@@ -27,7 +25,8 @@ const {
 	Dashicon,
 	IconButton,
 	PanelBody,
-	PanelRow
+	PanelRow,
+	CheckboxControl
 } = wp.components;
 
 /**
@@ -110,7 +109,7 @@ export default registerBlockType(
 						{ ...props }
 					/>
 					<PanelBody
-						title={ __( "Icon Alignment", "flexls" ) }
+						title={ __( 'Icon Alignment', 'flexls' ) }
 						className="flexls-icon-alignment"
 						initialOpen={ false }
 					>
@@ -122,22 +121,22 @@ export default registerBlockType(
 						/>
 					</PanelBody>
 					<PanelBody
-						title={ __( "Social Media Options", "flexls" ) }
+						title={ __( 'Social Media Options', 'flexls' ) }
 						className="flexls-social-media-options"
 						initialOpen={ false }
 					>
 						<CheckboxControl
-				            heading={__("Checkbox Control", "flexls")}
-				            label={__("Check here", "flexls")}
-				            help={__("Checkbox control help text", "flexls")}
+				            heading={__('Checkbox Control', 'flexls')}
+				            label={__('Check here', 'flexls')}
+				            help={__('Checkbox control help text', 'flexls')}
 				            checked={facebook}
 				            onChange={facebook => setAttributes({ facebook })}
 				          />
 					</PanelBody>
 				</InspectorControls>,
-				<div 
+				<div
 					className={classnames(
-						`component-social-media`,
+						'component-social-media',
 						...MarginOptionsClasses( props ),
 						...PaddingOptionsClasses( props ),
 						...BorderOptionsClasses( props ),
@@ -146,9 +145,9 @@ export default registerBlockType(
 						...BackgroundColorOptionsInlineStyles( props ),
 					} }
 				>
-					<div 
+					<div
 						className={classnames(
-							`social-media-list`,
+							'social-media-list',
 							`align-${align}`,
 						)}
 					>
