@@ -7,7 +7,7 @@ import path from 'path';
 import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
 
-const devEnv = 'production' !== process.env.NODE_ENV;
+const isDevEnv = 'production' !== process.env.NODE_ENV;
 
 /*
 JS:
@@ -44,8 +44,9 @@ module.exports = {
 	},
 
 	devtool: 'cheap-eval-source-map',
+	mode: process.env.NODE_ENV,
 	target: 'web',
-	watch: devEnv,
+	watch: isDevEnv,
 
 	output: {
 		path: path.resolve(__dirname, './dist'),
@@ -54,7 +55,7 @@ module.exports = {
 
 	resolve: {
 		alias: {
-			'flexls':'clientNamespace.js',
+			'flexls': path.resolve(__dirname, '../flexls'),
 		},
 		modules: [
 			path.resolve(__dirname, './js'),
@@ -91,7 +92,7 @@ module.exports = {
 					{
 						loader: 'css-loader',
 						options: {
-							sourceMap: devEnv
+							sourceMap: isDevEnv
 						}
 					},
 					{
@@ -100,13 +101,13 @@ module.exports = {
 							config: {
 								path: path.resolve(__dirname, './postcss.config.js'),
 							},
-							sourceMap: devEnv
+							sourceMap: isDevEnv
 						}
 					},
 					{
 						loader: 'sass-loader',
 						options: {
-							sourceMap: devEnv
+							sourceMap: isDevEnv
 						}
 					},
 				],
