@@ -60,6 +60,7 @@ function ScrollerOptions( props ) {
 					label={__("Yes", "flexls")}
 					help={__("Adds a scroll down arrow to the row", "flexls")}
 					onChange={setShowScroller}
+					checked={props.attributes.showScroller}
 				/>
 				{ showScrollerID() }
 			</PanelRow>

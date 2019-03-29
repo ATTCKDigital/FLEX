@@ -40,7 +40,9 @@ import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '..
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
 // Import all of our Background Options requirements.
 import BackgroundColorOptions, { BackgroundColorOptionsAttributes, BackgroundColorOptionsInlineStyles } from '../../components/gb-component_background-color';
-
+// Import all of our Text Color Options requirements.
+import TextColorOptions, { TextColorAttributes, TextColorClasses } from '../../components/gb-component_text-colors';
+import SocialOptionsOutput from '../../blocks/block_social_media/social-media-output.js';
 
 /**
  * Register social media block
@@ -49,7 +51,7 @@ export default registerBlockType(
 	'flexls/socialmedia',
 	{
 		title: __( 'Social Media', 'flexls' ),
-		description: __( 'Display links to your social media accounts. Accounts ', 'flexls'),
+		description: __( 'Display links to your social media accounts. Accounts are set in Global Settings ', 'flexls'),
 		category: 'common',
 		icon: icons.social,
 		parent: ['flexls/column'],
@@ -81,6 +83,10 @@ export default registerBlockType(
 				type: 'boolean',
 				default: false,
 			},
+			medium: {
+				type: 'boolean',
+				default: false,
+			},
 			align: {
 				type: 'string',
 				default: 'center'
@@ -88,26 +94,16 @@ export default registerBlockType(
 			...MarginOptionsAttributes,
 			...PaddingOptionsAttributes,
 			...BorderOptionsAttributes,
-			...BackgroundColorOptionsAttributes
+			...BackgroundColorOptionsAttributes,
+			...TextColorAttributes
+
 		},
 		edit: props => {
-			const { attributes: { facebook, twitter, instagram, linkedin, youtube, pinterest, align},
+			const { attributes: { facebook, twitter, instagram, linkedin, youtube, pinterest, medium, align},
 				className, setAttributes, isSelected } = props;
 
 			return [
 				<InspectorControls>
-					<MarginOptions
-						{ ...props }
-					/>
-					<PaddingOptions
-						{ ...props }
-					/>
-					<BorderOptions
-						{ ...props }
-					/>
-					<BackgroundColorOptions
-						{ ...props }
-					/>
 					<PanelBody
 						title={ __( 'Icon Alignment', 'flexls' ) }
 						className="flexls-icon-alignment"
@@ -124,15 +120,59 @@ export default registerBlockType(
 						title={ __( 'Social Media Options', 'flexls' ) }
 						className="flexls-social-media-options"
 						initialOpen={ false }
-					>
+					>	
+						<p>Set your accounts in Global Settings. Only platforms with set accounts will appear on the front end.</p>
 						<CheckboxControl
-				            heading={__('Checkbox Control', 'flexls')}
-				            label={__('Check here', 'flexls')}
-				            help={__('Checkbox control help text', 'flexls')}
-				            checked={facebook}
-				            onChange={facebook => setAttributes({ facebook })}
-				          />
+							label={__('Show Facebook?', 'flexls')}
+							checked={facebook}
+							onChange={facebook => setAttributes({ facebook })}
+						/>
+					  	<CheckboxControl
+							label={__('Show Twitter?', 'flexls')}
+							checked={twitter}
+							onChange={twitter => setAttributes({ twitter })}
+					  	/>
+					  	<CheckboxControl
+							label={__('Show Instagram?', 'flexls')}
+							checked={instagram}
+							onChange={instagram => setAttributes({ instagram })}
+					  	/>
+					  	<CheckboxControl
+							label={__('Show LinkedIn?', 'flexls')}
+							checked={linkedin}
+							onChange={linkedin => setAttributes({ linkedin })}
+					  	/>
+					  	<CheckboxControl
+							label={__('Show pinterest?', 'flexls')}
+							checked={pinterest}
+							onChange={pinterest => setAttributes({ pinterest })}
+					  	/>
+					  	<CheckboxControl
+							label={__('Show Medium?', 'flexls')}
+							checked={medium}
+							onChange={medium => setAttributes({ medium })}
+					  	/>
+					  	<CheckboxControl
+							label={__('Show YouTube?', 'flexls')}
+							checked={youtube}
+							onChange={youtube => setAttributes({ youtube })}
+					  	/>
 					</PanelBody>
+					<MarginOptions
+						{ ...props }
+					/>
+					<PaddingOptions
+						{ ...props }
+					/>
+					<BorderOptions
+						{ ...props }
+					/>
+					<BackgroundColorOptions
+						{ ...props }
+					/>
+					<TextColorOptions
+						{ ...props }
+					/>
 				</InspectorControls>,
 				<div
 					className={classnames(
@@ -151,7 +191,7 @@ export default registerBlockType(
 							`align-${align}`,
 						)}
 					>
-						<p>Hello</p>
+						{ SocialOptionsOutput( props ) }
 					</div>
 				</div>
 			];

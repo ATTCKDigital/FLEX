@@ -42,6 +42,7 @@
 .social-icon {
 	background-color: color('text', 'primary');
 	border-radius: 50%;
+	color: inherit;
 	cursor: pointer;
 	display: inline-block;
 	font-size: px-to-rem(18px);

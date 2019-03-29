@@ -9,6 +9,7 @@ use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
 use const FLEX_LAYOUT_SYSTEM\Components\BackgroundColorOptions\BACKGROUND_COLOR_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundColorOptions\background_color_options_inline_styles;
+use const FLEX_LAYOUT_SYSTEM\Components\TextColors\TEXT_COLOR_ATTRIBUTES;
 
 add_action( 'init', __NAMESPACE__ . '\register_socialmedia_block' );
 /**
@@ -53,6 +54,10 @@ function register_socialmedia_block() {
 					'type' => 'boolean',
 					'default' => 'false',
 				],
+				'medium' => [
+					'type' => 'boolean',
+					'default' => 'false',
+				],
 				'className' => [
                     'type' => 'string',
                     'default' => ''
@@ -66,6 +71,7 @@ function register_socialmedia_block() {
 			MARGIN_OPTIONS_ATTRIBUTES,
 			PADDING_OPTIONS_ATTRIBUTES,
 			BORDER_OPTIONS_ATTRIBUTES,
+			TEXT_COLOR_ATTRIBUTES,
 			BACKGROUND_COLOR_OPTIONS_ATTRIBUTES
 
 		),
@@ -83,11 +89,58 @@ function render_socialmedia_block($attributes) {
 	$class .= padding_options_classes($attributes);
 	$class .= border_options_classes($attributes);
 	$classInner = " align-{$attributes['align']}";
+	$textColor = array_key_exists('textColor', $attributes) ? $attributes['textColor'] : null;
 	$style = background_color_options_inline_styles($attributes);
 
-	
+	if($textColor) {
+		$style .= ' color:'.$textColor.';';
+	}
 
-	$output = '<div class="component-social-media component '.$class.'" style="'.$style.'"><div class="social-media-list'.$classInner.'"></div></div>';
+	$facebook = get_field('facebook_url', 'options');
+	$twitter = get_field('twitter_username', 'options');
+	$instagram =get_field('instagram_username', 'options');
+	$linkedin = get_field('linkedin_url', 'options');
+	$medium = get_field('medium_url', 'options');
+	$youtube = get_field('youtube_url', 'options');
+	$pinterest = get_field('pinterest_username', 'options');
+
+	$facebookLink = '';
+	$twitterLink = '';
+	$instagramLink = '';
+	$pinterestLink = '';
+	$linkedinLink = '';
+	$mediumLink = '';
+	$youtubeLink = '';
+
+	if($attributes['facebook'] == 'true' && $facebook) {
+		$facebookLink = '<mark class="social-icon margin-global-right-2x"><a href="'.$facebook.'" target="_blank"><i class="fab fa-facebook-f"></i></a></mark>';
+	}
+
+	if($attributes['twitter'] == 'true' && $twitter) {
+		$twitterLink = '<mark class="social-icon margin-global-right-2x"><a href="https://twitter.com/'.$twitter.'" target="_blank"><i class="fab fa-twitter"></i></a></mark>';
+	}
+
+	if($attributes['instagram'] == 'true' && $instagram) {
+		$instagramLink = '<mark class="social-icon margin-global-right-2x"><a href="https://www.instagram.com/'.$instagram.'" target="_blank"><i class="fab fa-instagram"></i></a></mark>';
+	}
+
+	if($attributes['pinterest'] == 'true' && $pinterest) {
+		$pinterestLink = '<mark class="social-icon margin-global-right-2x"><a href="https://www.pinterest.com/'.$pinterest.'" target="_blank"><i class="fab fa-pinterest-p"></i></a></mark>';
+	}
+	if($attributes['linkedin'] == 'true' && $linkedin) {
+		$linkedinLink = '<mark class="social-icon margin-global-right-2x"><a href="'.$linkedin.'" target="_blank"><i class="fab fa-linkedin-in"></i></a></mark>';
+	}
+
+	if($attributes['medium'] == 'true' && $medium) {
+		$mediumLink = '<mark class="social-icon margin-global-right-2x"><a href="'.$medium.'" target="_blank"><i class="fab fa-medium-m"></i></a></mark>';
+	}
+
+	if($attributes['youtube'] == 'true' && $youtube) {
+		$youtubeLink = '<mark class="social-icon margin-global-right-2x"><a href="'.$youtube.'" target="_blank"><i class="fab fa-youtube"></i></a></mark>';
+	}
+
+
+	$output = '<div class="component-social-media component '.$class.'" style="'.$style.'"><div class="social-media-list'.$classInner.'">'.$facebookLink.$twitterLink.$instagramLink.$linkedinLink.$mediumLink.$youtubeLink.'</div></div>';
 
 	return $output;
 }
