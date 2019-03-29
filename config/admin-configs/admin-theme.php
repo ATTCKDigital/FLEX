@@ -2,10 +2,11 @@
 /*** Admin Color Schemes ***/
 //Set admin color schemes depending on env variable (var is set in .env)
 function update_user_option_admin_color( $color_scheme ) {
+	$env = $_SERVER['env'];
 
-	if($_SERVER['env'] == 'prod') {
+	if($env == 'prod') {
 		$color_scheme = 'sunrise';
-	} else if($_SERVER['env'] == 'staging') {
+	} else if($env == 'staging') {
 		$color_scheme = 'blue';
 	} else {
 		$color_scheme = 'coffee';
@@ -55,7 +56,7 @@ add_action('admin_head', 'admin_color_scheme');
 //Change the color of the admin bar on the front end if it is displayed
 
 function change_bar_color() {
-$env = $_SERVER['env'];
+	$env = $_SERVER['env'];
 
 	if($env == 'prod') {
 		$barColor = 'red';
