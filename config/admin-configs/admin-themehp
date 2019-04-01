@@ -2,11 +2,11 @@
 /*** Admin Color Schemes ***/
 //Set admin color schemes depending on env variable (var is set in .env)
 function update_user_option_admin_color( $color_scheme ) {
-	$env = $_SERVER['WPENGINE_ACCOUNT'];
 
-	if($env == WPE_PROD) {
+
+	if($_SERVER['env'] == 'prod' || $_SERVER['WPENGINE_ACCOUNT'] == WPE_PROD) {
 		$color_scheme = 'sunrise';
-	} else if($env == WPE_STAGE) {
+	} else if($_SERVER['env'] == 'staging' || $_SERVER['WPENGINE_ACCOUNT'] == WPE_STAGE) {
 		$color_scheme = 'blue';
 	} else {
 		$color_scheme = 'coffee';
@@ -56,11 +56,10 @@ add_action('admin_head', 'admin_color_scheme');
 //Change the color of the admin bar on the front end if it is displayed
 
 function change_bar_color() {
-	$env = $_SERVER['WPENGINE_ACCOUNT'];
 
-	if($env == WPE_PROD) {
+	if($_SERVER['env'] == 'prod' || $_SERVER['WPENGINE_ACCOUNT'] == WPE_PROD) {
 		$barColor = 'red';
-	} else if($env == WPE_STAGE) {
+	} else if($_SERVER['env'] == 'staging' || $_SERVER['WPENGINE_ACCOUNT'] == WPE_PROD) {
 		$barColor = 'DeepSkyBlue';
 	} else {
 		$barColor = 'green';

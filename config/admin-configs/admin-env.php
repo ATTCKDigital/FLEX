@@ -2,11 +2,11 @@
 /*** Admin Environment Notice ***/
 
 function admin_environment($wp_admin_bar) {
-	$env = $_SERVER['env'];
+	$env = $_SERVER['WPENGINE_ACCOUNT'];
 
-	if($env == 'prod') {
+	if($env == WPE_PROD) {
 		$noticeMessage = 'PRODUCTION';
-	} else if($env == 'staging') {
+	} else if($env == WPE_STAGE) {
 		$noticeMessage = 'STAGING';
 	} else {
 		$noticeMessage = 'DEVELOPMENT';
