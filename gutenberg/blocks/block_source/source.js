@@ -2,7 +2,7 @@
  * Block dependencies
  */
 import classnames from 'classnames';
-import icons from 'icons';
+import icons from '../../../js/icons.js'
 
 /**
  * Internal block libraries
