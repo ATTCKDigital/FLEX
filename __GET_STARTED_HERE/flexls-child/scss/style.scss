@@ -7,6 +7,7 @@
 @import 'flexls/scss/_media-queries.scss';
 @import 'flexls/scss/_grid.scss';
 // @import 'flexls/scss/_fonts.scss'; TODO: problems with font asset paths from boilerplate in webpack build
+@import 'fonts';
 @import 'flexls/scss/_colors.scss';
 @import 'flexls/scss/_debug.scss';
 @import 'flexls/scss/_global.scss';
