@@ -87,6 +87,10 @@ export default registerBlockType(
 				type: 'boolean',
 				default: false,
 			},
+			github: {
+				type: 'boolean',
+				default: false,
+			},
 			align: {
 				type: 'string',
 				default: 'center'
@@ -156,6 +160,11 @@ export default registerBlockType(
 							label={__('Show YouTube?', 'flexls')}
 							checked={youtube}
 							onChange={youtube => setAttributes({ youtube })}
+					  	/>
+					  	<CheckboxControl
+							label={__('Show GitHub?', 'flexls')}
+							checked={github}
+							onChange={github => setAttributes({ github })}
 					  	/>
 					</PanelBody>
 					<MarginOptions
