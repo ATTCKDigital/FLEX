@@ -82,10 +82,10 @@ To the end of the file add: `127.0.0.1 dev.project.com` (domain used for Virtual
 12. Review child theme `functions.php` and enable/disable functions needed for project.
 
 #### .env Variables
-SetEnv DB_NAME boilerplate --> the name of your local database
-SetEnv USERNAME root --> the username of your local database
-SetEnv PASSWORD root --> the password of your local database
-SetEnv HOSTNAME 127.0.0.1 --> the host of your local database
+SetEnv FLEX_DB_NAME boilerplate --> the name of your local database
+SetEnv FLEX_USERNAME root --> the username of your local database
+SetEnv FLEX_PASSWORD root --> the password of your local database
+SetEnv FLEX_HOSTNAME 127.0.0.1 --> the host of your local database
 SetEnv S3_UPLOADS_BUCKET bucket_name --> if using an S3 bucket, the name of the bucket
 SetEnv S3_UPLOADS_REGION bucket_region --> if using an S3 bucket, the region of the bucket
 SetEnv WPENGINE_ACCOUNT dev --> the current environment (these are based on WPEngine server variables, requires an adjustment if using another host). If working locally, it should be set to `dev`
