@@ -1,5 +1,6 @@
 
 // SCSS files to include in admin
+@import 'flexls/scss/_wysiwyg.scss';
 @import 'flexls/scss/_sass-utils.scss';
 @import 'flexls/scss/_sizing.scss';
 @import 'flexls/scss/_media-queries.scss';
@@ -16,6 +17,7 @@
 @import 'flexls/gutenberg/components/gb-component_margin/_margin.scss';
 @import 'flexls/gutenberg/blocks/block_heading/_heading.scss';
 @import 'flexls/gutenberg/blocks/block_button/_buttons.scss';
+@import 'flexls/scss/_body-text.scss';
 @import 'flexls/scss/_admin-styles.scss';
 @import 'flexls/scss/_images.scss';
 
@@ -29,4 +31,11 @@
 @import 'flexls/gutenberg/components/gb-component_scroller/_editor.scss';
 @import 'flexls/gutenberg/components/gb-component_text-colors/_editor.scss';
 
+@import 'flexls/gutenberg/blocks/block_video/_editor.scss';
+@import 'flexls/gutenberg/blocks/block_video/_video.scss';
 @import 'flexls/gutenberg/blocks/block_button/_button-admin.scss';
+@import 'flexls/gutenberg/blocks/block_image/_image.scss';
+@import 'flexls/gutenberg/blocks/block_users/_users.scss';
+@import 'flexls/gutenberg/blocks/block_social_media/_social-media.scss';
+
+@import 'flexls/components/component_archive-feed/_archive-feed.scss';
