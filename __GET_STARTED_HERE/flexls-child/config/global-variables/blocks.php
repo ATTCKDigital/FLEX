@@ -6,10 +6,10 @@
 // Enable flexls created blocks by using flexls/block_name
 
 $blocks = array(
-
 	'flexls/row', //REQUIRED
 	'flexls/column', //REQUIRED
 	'flexls/button',
+	'flexls/feed',
 	'flexls/heading',
 	'flexls/image',
 	'flexls/quote',
@@ -17,7 +17,7 @@ $blocks = array(
 	'flexls/source',
 	'flexls/socialmedia',
 	'flexls/text',
-	'flexls/users',
+	// 'flexls/users',
 	'flexls/video',
 );
 
