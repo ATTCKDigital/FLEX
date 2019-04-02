@@ -6,6 +6,7 @@
 function BackgroundOptionsVideoOutput( props ) {
 	if ( 'video' === props.attributes.backgroundType && props.attributes.backgroundVideo ) {
 		return (
+			<div className="video-overlay"></div>,
 			<video
 				className="video-container video-container-overlay"
 				autoPlay="true"
