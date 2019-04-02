@@ -19,8 +19,8 @@ $brand-colors: (
 		'primary': var(--color-text-primary),
 		'secondary': var(--color-text-secondary),
 		'tertiary': var(--color-text-tertiary),
-		'white':	#FFFFFF,
-		'black':	#000000,
+		'white':	var(--color-text-white),
+		'black':	var(--color-text-black),
 	),
 
 	'background': (
