@@ -14,18 +14,17 @@ import Video from '../gutenberg/blocks/block_video/play-video';
 import LoadMore from './load-more';
 
 //Project Specific
-const childComponents = FLEXLS.ChildComponents || {};
 
 // Add your components here so they get loaded.
 // Make sure to import them above first.
-FLEXLS.Components = Object.assign({
+FLEXLS.Components = {
 	'Parallax': Parallax,
 	'ElementsInViewport': ElementsInViewport,
 	'Nav': Nav,
 	'LoadMore': LoadMore,
 	'Share': Share,
 	'Video': Video,
-}, childComponents);
+};
 
 FLEXLS.Loader = {};
 
