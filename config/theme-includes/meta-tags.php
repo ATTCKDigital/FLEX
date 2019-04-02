@@ -81,7 +81,7 @@
 		// Twitter Image Alt (visually impaired description of image)
 		if($twitterImageID) {
 			//if there is a user defined Twitter image
-			$twitterImageAlt = get_the_title($twitterImageAlt);
+			$twitterImageAlt = get_the_title($twitterImageID);
 			$twitterImageAlt = str_replace('-', ' ', $twitterImageAlt);
 		} else if($postThumbnailID) {
 			//if there is NO user defined Twitter image, but there is a Featured Image
