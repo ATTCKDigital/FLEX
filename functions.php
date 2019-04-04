@@ -1,4 +1,10 @@
 <?php
+if(!defined('WPE_PROD')) {
+	define('WPE_PROD', ''); //define the WPEngine environments
+}
+if(!defined('WPE_STAGE')) {
+	define('WPE_STAGE', ''); //define the WPEngine environments
+}
 define('THEME_DIR', get_template_directory()); // use when there are files that should ONLY be from the parent theme.
 
 // Use locate_template() to include files.  This function first checks the child theme for the file and if there is none, uses the parent theme.

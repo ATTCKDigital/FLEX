@@ -63,6 +63,4 @@ $colors = array(
 );
 
 
-if(!defined('FLEXLS_COLORS')) {
-	define('FLEXLS_COLORS', $colors);
-}
+define('FLEXLS_COLORS', $colors);

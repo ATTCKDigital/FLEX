@@ -8,6 +8,7 @@
 	global $medium;
 	global $youtube;
 	global $pinterest;
+	global $github;
 
 	$facebook = get_field('facebook_url', 'options');
 	$twitter = 'https://twitter.com/'.get_field('twitter_username', 'options');
@@ -16,6 +17,7 @@
 	$medium = get_field('medium_url', 'options');
 	$youtube = get_field('youtube_url', 'options');
 	$pinterest = get_field('pinterest_username', 'options');
+	$github = get_field('github_url', 'options');
 
 	if($pinterest) {
 		$pinterest = 'https://www.pinterest.com/'.$pinterest;

@@ -8,6 +8,7 @@
 	global $medium;
 	global $youtube;
 	global $pinterest;
+	global $github;
 ?>
 
 <div class="component-social-media component">
@@ -35,6 +36,9 @@
 		<?php } ?>
 		<?php if($pinterest) { ?>
 			<mark class="social-icon margin-global-right-2x"><a href="<?= $pinterest;?>" target="_blank"><i class="fab fa-pinterest-p"></i></a></mark>
+		<?php } ?>
+		<?php if($github) { ?>
+			<mark class="social-icon margin-global-right-2x"><a href="<?= $github;?>" target="_blank"><i class="fab fa-github"></i></a></mark>
 		<?php } ?>
 	</div>
 </div>

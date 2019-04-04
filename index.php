@@ -19,6 +19,7 @@
         "taxonomy"      => '', //leave blank
         "postType"      => $postType,
         "query"         => $wp_query,
+        "loadMoreText"  => __('Show More', '_flexls')
     ));
 
     get_footer();

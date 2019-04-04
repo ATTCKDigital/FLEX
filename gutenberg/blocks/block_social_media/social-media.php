@@ -58,6 +58,10 @@ function register_socialmedia_block() {
 					'type' => 'boolean',
 					'default' => 'false',
 				],
+				'github' => [
+					'type' => 'boolean',
+					'default' => 'false',
+				],
 				'className' => [
                     'type' => 'string',
                     'default' => ''
@@ -111,6 +115,7 @@ function render_socialmedia_block($attributes) {
 	$linkedinLink = '';
 	$mediumLink = '';
 	$youtubeLink = '';
+	$githubLink = '';
 
 	if($attributes['facebook'] == 'true' && $facebook) {
 		$facebookLink = '<mark class="social-icon margin-global-right-2x"><a href="'.$facebook.'" target="_blank"><i class="fab fa-facebook-f"></i></a></mark>';
@@ -137,6 +142,10 @@ function render_socialmedia_block($attributes) {
 
 	if($attributes['youtube'] == 'true' && $youtube) {
 		$youtubeLink = '<mark class="social-icon margin-global-right-2x"><a href="'.$youtube.'" target="_blank"><i class="fab fa-youtube"></i></a></mark>';
+	}
+
+	if($attributes['github'] == 'true' && $github) {
+		$githubLink = '<mark class="social-icon margin-global-right-2x"><a href="'.$github.'" target="_blank"><i class="fab fa-github"></i></a></mark>';
 	}
 
 

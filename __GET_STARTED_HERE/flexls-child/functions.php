@@ -1,10 +1,14 @@
 <?php
+define('WPE_PROD', ''); //define the WPEngine environments
+define('WPE_STAGE', '');
+
 define('CHILD_THEME_DIR', get_stylesheet_directory()); // use when there are files that should ONLY be from the child theme.
 // Use locate_template() to include files.  This function first checks the child theme for the file and if there is none, uses the parent theme.
 // Allows us to override main functions in the child theme without changing the parent.
 
 /*** Global Variables ***/
 // These define globally available variables, and must be included first
+include_once(locate_template('config/global-variables/blocks.php'));
 include_once(locate_template('config/global-variables/colors.php'));
 include_once(locate_template('config/global-variables/nav-menus.php'));
 include_once(locate_template('config/global-variables/blocks.php'));
@@ -31,6 +35,7 @@ include_once(locate_template('config/admin-configs/remove-comments-column.php'))
 // include_once(locate_template('config/theme-configs/disable-tax-archive.php'));
 // include_once(locate_template('config/theme-configs/geotarget.php'));
 include_once(locate_template('config/theme-configs/load-more.php')); //RECOMMENDED
+include_once(locate_template('config/theme-configs/author-slug.php'));
 // include_once(locate_template('config/theme-configs/password-protection.php'));
 // include_once(locate_template('config/theme-configs/wpml-language-switcher.php'));
 

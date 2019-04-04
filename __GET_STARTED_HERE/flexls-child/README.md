@@ -12,7 +12,7 @@ This system has a block called "Row" and a block called "Column". These are pare
 #### blocks.php
 Gutenberg allows for the whitelisting of blocks.  The `blocks.php` file in `config/global-variables` contains the whitelist of blocks. 
 
-Only blocks that are whitelisted will appear in the editor. A default set has been provided, add acf created blocks to this list to enable them in the editor. If a core block is not needed, it can be removed from the list to disable it.
+Only blocks that are whitelisted will appear in the editor. A default set has been provided, add acf created blocks (`acf/block_name`) to this list to enable them in the editor. If a core block is not needed, it can be removed or commented out from the list to disable it.
 
 You must also register the new block.  Add the new block function path to the `$registerBlocks` array.
 
