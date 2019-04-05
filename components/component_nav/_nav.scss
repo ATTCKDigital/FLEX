@@ -25,6 +25,10 @@
 		}
 	}
 
+	.navOpen &, .navOpen.hideNav & {
+		top: 0;
+	}
+
 	.header-inner {
 		align-items: center;
 		display: flex;
