@@ -4,9 +4,10 @@ $gap						: 20px;
 $siteWidth					: 1024px;
 $navMobileHeight			: 70px;
 $navHeight					: 120px;
-$positions: top, left, bottom, right;
-$screensizes: global, small, medium, large, xl, 2xl, 3xl, 4xl, 5xl;
-$increment: 20;
+$positions					: top, left, bottom, right;
+$screensizes				: small, medium, large, xl, 2xl, 3xl, 4xl, 5xl;
+$increment 					: 20;
+//gap and increment should be the same value. 2 variables are required, one without px
 
 // Breakpoints
 $small-breakpoint			: 0px;
