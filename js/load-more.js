@@ -44,9 +44,11 @@ function LoadMore($el) {
 
 				// Deactivate load more button when there are no more posts to load
 				if ($('.load-items .feed-item:last-child').data('max-pages') === 1) {
-					$('.loadMore').text('End of posts').addClass('button-inactive');
+					$('.loadMore').text('End of posts').addClass('button-inactive').removeClass('hidden');
+				} else if ($('.load-items .feed-item:last-child').data('max-pages') === 0) {
+					$('.loadMore').text('No posts').addClass('hidden');
 				} else {
-					$('.loadMore').text('Show more').removeClass('button-inactive');
+					$('.loadMore').text('Show more').removeClass('button-inactive hidden');
 				}
 			},
 			error: function(MLHttpRequest, textStatus, errorThrown) {
@@ -135,9 +137,11 @@ function LoadMore($el) {
 
 				// Deactivate load more button when there are no more posts to load
 				if ($('.load-items .feed-item:last-child').data('max-pages') === 1) {
-					$('.loadMore').text('End of posts').addClass('button-inactive');
+					$('.loadMore').text('End of posts').addClass('button-inactive').removeClass('hidden');
+				} else if ($('.load-items .feed-item:last-child').data('max-pages') === 0) {
+					$('.loadMore').text('No posts').addClass('hidden');
 				} else {
-					$('.loadMore').text('Show more').removeClass('button-inactive');
+					$('.loadMore').text('Show more').removeClass('button-inactive hidden');
 				}
 			},
 			error: function(MLHttpRequest, textStatus, errorThrown) {
