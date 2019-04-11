@@ -1,4 +1,4 @@
-# GET STARTED!
+# GET STARTED! (Read BEFORE cloning this repo)
 
 ## Starting a new project
 
