@@ -64,7 +64,10 @@ To the end of the file add: `127.0.0.1 dev.project.com` (domain used for Virtual
 
 3. Restart Apache `sudo apachectl restart`
 
-### Installing Wordpress and this theme
+### NEW PROJECT - Installing Wordpress and this theme 
+
+okatodo: add instructions about how to work with an existing project
+git clone --recurse-submodules https://github.com/ATTCKDigital/attck-flexls.git
 
 1. Download [WordPress](https://wordpress.org/download/) into your project directory and add the "flexls" as a submodule in `wp-content/themes`
 2. Use **git submodules**, to add the "flexls" theme to `wp-content/themes`.  
