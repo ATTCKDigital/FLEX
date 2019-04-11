@@ -24,10 +24,10 @@ To set up your project database from the command line:
 `mysql -u root -p`  
 
 2. Create your database:  
-`CREATE DATABASE database_name;`  
+`CREATE DATABASE project_name;` (Query OK, 1 row affected)
 
 3. Grant appropriate permissions:  
-`GRANT ALL on database_name.* to database_name@localhost IDENTIFIED BY 'database_name';`
+`GRANT ALL on project_name.* to project_name@localhost IDENTIFIED BY 'project_name';` (Query OK, 0 rows affected)
 
 You can do also do all the above via a GUI such as [SequelPro](https://www.sequelpro.com/) or [MySQLWorkbench](https://www.mysql.com/products/workbench/).
 
