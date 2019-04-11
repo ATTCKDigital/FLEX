@@ -13,7 +13,7 @@
     			the_content();
 			} else {
 				//If using Classic Editor
-				echo Utils::render_template('components/component_post-body/page-body.php');
+				echo Utils::render_template('components/component_post/page.php');
 
 			} // end Gutenberg check
         endwhile; // endwhile default loop
