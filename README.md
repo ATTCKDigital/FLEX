@@ -1,7 +1,9 @@
 # Flex Layout System Boilerplate
 A boilerplate theme for Flex Layout System WordPress projects
 
-See the README in `__GET_STARTED_HERE` to get started on your project (BEFORE cloning this repo)!
+> READ BEFORE cloning!
+
+See the README in `__GET_STARTED_HERE` to get started on your project.
 
 ## Theme Structure
 
