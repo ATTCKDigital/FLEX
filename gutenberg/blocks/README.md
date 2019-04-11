@@ -1,4 +1,4 @@
-# FLEX - Flexible Layout System
+# FLEX (Flexible Layout System): Blocks
 
 Custom Gutenberg blocks created for the Flex Layout System.  
 
