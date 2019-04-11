@@ -1,4 +1,4 @@
-# FLEX - Flexible Layout System Filters
+# FLEX (Flexible Layout System): Filters
 
 [Wordpress Docs](https://wordpress.org/gutenberg/handbook/designers-developers/developers/filters/)
 
