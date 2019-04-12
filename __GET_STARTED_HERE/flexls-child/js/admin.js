@@ -1,1 +1,1 @@
-import 'flexls/js/admin';
+import 'flexlayout/js/admin';

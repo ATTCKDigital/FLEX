@@ -1,4 +1,4 @@
-import FLEXLS from './clientNamespace';
+import FLEXLAYOUT from './clientNamespace';
 import Debug from './debug';
 import $ from 'jquery';
 
@@ -14,11 +14,11 @@ import Video from '../gutenberg/blocks/block_video/play-video';
 import LoadMore from './load-more';
 
 //Project Specific
-const childComponents = FLEXLS.ChildComponents || {};
+const childComponents = FLEXLAYOUT.ChildComponents || {};
 
 // Add your components here so they get loaded.
 // Make sure to import them above first.
-FLEXLS.Components = Object.assign({
+FLEXLAYOUT.Components = Object.assign({
 	'Parallax': Parallax,
 	'ElementsInViewport': ElementsInViewport,
 	'Nav': Nav,
@@ -27,10 +27,10 @@ FLEXLS.Components = Object.assign({
 	'Video': Video,
 }, childComponents);
 
-FLEXLS.Loader = {};
+FLEXLAYOUT.Loader = {};
 
-FLEXLS.Loader.loadComponents = function () {
-	FLEXLS.Loader.loadedComponents = [];
+FLEXLAYOUT.Loader.loadComponents = function () {
+	FLEXLAYOUT.Loader.loadedComponents = [];
 
 	var self = this;
 
@@ -54,10 +54,10 @@ FLEXLS.Loader.loadComponents = function () {
 			let componentName = el;
 			let params = $this.data('component-options') || {};
 			// console.log(componentName);
-			let instance = new FLEXLS.Components[componentName]($this, params);
+			let instance = new FLEXLAYOUT.Components[componentName]($this, params);
 
 			// Save component instance references in a global manifest.
-			if (typeof FLEXLS.Components[componentName] !== 'undefined') {
+			if (typeof FLEXLAYOUT.Components[componentName] !== 'undefined') {
 				self.loadedComponents.push({
 					'instance': instance
 				});
@@ -72,4 +72,4 @@ FLEXLS.Loader.loadComponents = function () {
 };
 
 
-export default FLEXLS.Loader;
+export default FLEXLAYOUT.Loader;

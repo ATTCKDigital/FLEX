@@ -19,7 +19,7 @@ function register_dynamic_block() {
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flexls/dynamic', [
+	register_block_type( 'flexlayout/dynamic', [
 		'render_callback' => __NAMESPACE__ . '\render_dynamic_block',
 	] );
 

@@ -25,7 +25,7 @@ function register_source_block() {
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flexls/source', [
+	register_block_type( 'flexlayout/source', [
 		'attributes'      => array_merge(
 			[
 				'content' => [

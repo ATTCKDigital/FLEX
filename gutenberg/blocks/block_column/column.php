@@ -34,7 +34,7 @@ function register_column_block() {
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flexls/column', [
+	register_block_type( 'flexlayout/column', [
 		'attributes'      => array_merge(
 			[
 				'className' => [

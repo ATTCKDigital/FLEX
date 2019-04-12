@@ -1,6 +1,6 @@
 <?php 
 // Removes "private" or "protected" from title when using get_the_title() or the_title()
-function flexls_title_trim($title) {
+function flexlayout_title_trim($title) {
 	$title = ESC_ATTR($title);
 
 	$findthese = array(
@@ -17,10 +17,10 @@ function flexls_title_trim($title) {
 
 	return $title;
 }
-add_filter('the_title', 'flexls_title_trim');
+add_filter('the_title', 'flexlayout_title_trim');
 
 //Exclude password protected posts from loops
-function flexls_password_post_filter($where = '') {
+function flexlayout_password_post_filter($where = '') {
 	// Make sure this only applies to loops / feeds on the frontend
 	if (!is_single() && !is_admin() && !is_page()) {
 		// exclude password protected
@@ -28,11 +28,11 @@ function flexls_password_post_filter($where = '') {
 	}
 	return $where;
 }
-add_filter( 'posts_where', 'flexls_password_post_filter' );
+add_filter( 'posts_where', 'flexlayout_password_post_filter' );
 
 
 // Custom markup for password protected form
-function flexls_password_form() {
+function flexlayout_password_form() {
 	global $post;
 	$label = 'pwbox-' . (empty($post->ID) ? rand() : $post->ID);
 	
@@ -44,4 +44,4 @@ function flexls_password_form() {
 
 	return $form;
 }
-add_filter('the_password_form', 'flexls_password_form');
+add_filter('the_password_form', 'flexlayout_password_form');

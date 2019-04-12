@@ -1,5 +1,5 @@
 // Subnav scroll to
-import FLEXLS from 'flexls';
+import FLEXLAYOUT from 'flexlayout';
 
 function SubNav ($el) {
 	function scrollToSection() {
@@ -14,7 +14,7 @@ function SubNav ($el) {
 	function stickySubNav() {
 		// 65 is offset for regular nav
 		var stickyTop = $('.component-subnav').offset().top;
-		$(document.body).on('FLEXLS.scroll', function(e, params) {
+		$(document.body).on('FLEXLAYOUT.scroll', function(e, params) {
 			if(params.currentScrollTop >= stickyTop) {
 	            $('.component-subnav').closest('.component-row').addClass('stickySubNav');
 			} else {

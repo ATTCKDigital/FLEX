@@ -24,7 +24,7 @@ function register_feed_block() {
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flexls/feed', [
+	register_block_type( 'flexlayout/feed', [
 		'attributes'      => array_merge(
 			[
 				'className' => [

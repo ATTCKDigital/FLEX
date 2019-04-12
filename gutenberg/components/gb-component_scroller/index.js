@@ -39,8 +39,8 @@ function ScrollerOptions( props ) {
 		if ( props.attributes.showScroller ) {
 			return (
 				<TextControl
-					label={__("Scroller ID", "flexls")}
-					help={__("Set ID to scroll to. ID should already be set on row to scroll to.", "flexls")}
+					label={__("Scroller ID", "flexlayout")}
+					help={__("Set ID to scroll to. ID should already be set on row to scroll to.", "flexlayout")}
 					value={props.attributes.scrollerId}
 					onChange={setScrollerId}
 				/>
@@ -51,14 +51,14 @@ function ScrollerOptions( props ) {
 	return (
 		<PanelBody
 			title={ __( 'Scroller Options' ) }
-			className="flexls-scroller-options"
+			className="flexlayout-scroller-options"
 			initialOpen={ false }
 		>
 			<PanelRow>
 				<CheckboxControl
-					heading={__("Show scroller?", "flexls")}
-					label={__("Yes", "flexls")}
-					help={__("Adds a scroll down arrow to the row", "flexls")}
+					heading={__("Show scroller?", "flexlayout")}
+					label={__("Yes", "flexlayout")}
+					help={__("Adds a scroll down arrow to the row", "flexlayout")}
 					onChange={setShowScroller}
 					checked={props.attributes.showScroller}
 				/>

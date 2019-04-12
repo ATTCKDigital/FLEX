@@ -2,8 +2,8 @@
 // Disable the taxonomy archive pages
 // https://jboullion.com/disable-taxonomy-archive/
 
-add_action('pre_get_posts', 'flexls_disable_tax_archive');
-function flexls_disable_tax_archive($qry) {
+add_action('pre_get_posts', 'flexlayout_disable_tax_archive');
+function flexlayout_disable_tax_archive($qry) {
 
     if (is_admin()) return;
 

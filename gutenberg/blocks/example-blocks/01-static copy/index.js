@@ -15,31 +15,31 @@ const { registerBlockType } = wp.blocks;
  * Register block
  */
 export default registerBlockType(
-	'flexls/static', //name space - flexls/block-name
+	'flexlayout/static', //name space - flexlayout/block-name
 	{
-			title: __( 'Example - Static Block', 'flexls' ),
-			description: __( 'Demonstration of how to make a static call to action block.', 'flexls' ),
+			title: __( 'Example - Static Block', 'flexlayout' ),
+			description: __( 'Demonstration of how to make a static call to action block.', 'flexlayout' ),
 			category: 'common',
 			icon: {
 				background: 'rgba(254, 243, 224, 0.52)',
 				src: icon,
 			},        
 			keywords: [
-					__( 'Banner', 'flexls' ),
-					__( 'CTA', 'flexls' ),
-					__( 'Shout Out', 'flexls' ),
+					__( 'Banner', 'flexlayout' ),
+					__( 'CTA', 'flexlayout' ),
+					__( 'Shout Out', 'flexlayout' ),
 			],
 			edit: props => {
 				const { className, isSelected } = props;
-				//className is created by wp wp-block-flexls-block-name
+				//className is created by wp wp-block-flexlayout-block-name
 				return (
 					<div className={ className }>
-						<h2>{ __( 'Static Call to Action', 'flexls' ) }</h2>
-						<p>{ __( 'This is really important!', 'flexls' ) }</p>
+						<h2>{ __( 'Static Call to Action', 'flexlayout' ) }</h2>
+						<p>{ __( 'This is really important!', 'flexlayout' ) }</p>
 						{
 							//returns true if user clicks into the block editor, useful to show a message when editing is happening
 							isSelected && (
-								<p className="sorry warning">{ __( '✋ Sorry! You cannot edit this block ✋', 'flexls' ) }</p>
+								<p className="sorry warning">{ __( '✋ Sorry! You cannot edit this block ✋', 'flexlayout' ) }</p>
 							)
 						}
 					</div>
@@ -48,8 +48,8 @@ export default registerBlockType(
 			save: props => {
 				return (
 					<div>
-						<h2>{ __( 'Call to Action', 'flexls' ) }</h2>
-						<p>{ __( 'This is really important!', 'flexls' ) }</p>
+						<h2>{ __( 'Call to Action', 'flexlayout' ) }</h2>
+						<p>{ __( 'This is really important!', 'flexlayout' ) }</p>
 					</div>
 				);
 			},

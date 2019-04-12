@@ -1,6 +1,6 @@
 <?php
 // Redirect user based on country location. Requires WP Engine GeoTarget and WPML	
-function flexls_geo_target() {
+function flexlayout_geo_target() {
 	//get the country we are in
 	// global $wp_query;
 	$country = getenv('HTTP_GEOIP_COUNTRY_CODE');
@@ -60,7 +60,7 @@ function flexls_geo_target() {
 		return;
 	}
 }
-add_action( 'template_redirect', 'flexls_geo_target');
+add_action( 'template_redirect', 'flexlayout_geo_target');
 
 
 

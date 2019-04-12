@@ -31,7 +31,7 @@ function register_text_block() {
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flexls/text', [
+	register_block_type( 'flexlayout/text', [
 		'attributes'      => array_merge(
 			[
 				'content' => [

@@ -63,6 +63,6 @@ $colors = array(
 
 );
 
-if(!defined('FLEXLS_COLORS')) {
-	define('FLEXLS_COLORS', $colors);
+if(!defined('FLEXLAYOUT_COLORS')) {
+	define('FLEXLAYOUT_COLORS', $colors);
 }

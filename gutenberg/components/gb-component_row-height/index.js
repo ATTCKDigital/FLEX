@@ -81,7 +81,7 @@ function RowHeightOptions( props ) {
 	return (
 		<PanelBody
 			title={ __( 'Row Height' ) }
-			className="flexls-row-height-options"
+			className="flexlayout-row-height-options"
 			initialOpen={ false }
 		>
 			<PanelRow>

@@ -1274,7 +1274,7 @@ function MarginOptions( props ) {
 	return (
 		<PanelBody
 			title={ __( 'Block Margins' ) }
-			className="flexls-margin-options"
+			className="flexlayout-margin-options"
 			initialOpen={ false }
 		>
 			<PanelRow>

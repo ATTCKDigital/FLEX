@@ -63,4 +63,4 @@ $colors = array(
 );
 
 
-define('FLEXLS_COLORS', $colors);
+define('FLEXLAYOUT_COLORS', $colors);

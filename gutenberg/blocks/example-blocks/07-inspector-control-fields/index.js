@@ -31,11 +31,11 @@ function getSettings(attributes) {
 /**
  * Register inspector control example block
  */
-export default registerBlockType("flexls/inspector-control-fields", {
-  title: __("Example - Inspector Fields", "flexls"),
+export default registerBlockType("flexlayout/inspector-control-fields", {
+  title: __("Example - Inspector Fields", "flexlayout"),
   description: __(
     "An example of how to use form fields in the Inspector element.",
-    "flexls"
+    "flexlayout"
   ),
   category: "common",
   icon: {
@@ -43,9 +43,9 @@ export default registerBlockType("flexls/inspector-control-fields", {
     src: icon
   },
   keywords: [
-    __("Palette", "flexls"),
-    __("Settings", "flexls"),
-    __("Scheme", "flexls")
+    __("Palette", "flexlayout"),
+    __("Settings", "flexlayout"),
+    __("Scheme", "flexlayout")
   ],
   attributes,
   getEditWrapperProps(attributes) {

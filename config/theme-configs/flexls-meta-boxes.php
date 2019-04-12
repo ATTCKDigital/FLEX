@@ -9,7 +9,7 @@ add_action( 'init', __NAMESPACE__ . '\register_meta_fields' );
 function register_meta_fields() {
 	register_meta(
 		'post',
-		'flexls_gb_metabox',
+		'flexlayout_gb_metabox',
 		[
 			'type'         => 'string',
 			'single'       => true,

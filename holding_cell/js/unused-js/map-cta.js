@@ -1,11 +1,11 @@
-import FLEXLS from 'flexls';
+import FLEXLAYOUT from 'flexlayout';
 
 function MapCta($el) {
 	
 
 	function scrolledIcon($el) {
 		// Bind to scroll
-		$(document.body).bind('FLEXLS.scroll', function (e, data) {
+		$(document.body).bind('FLEXLAYOUT.scroll', function (e, data) {
 		    var scroll = data.currentScrollTop;
 		    var viewPortHeight = data.viewportHeight;
 		    var footerHeight = $('body').find('.page-footer').height();

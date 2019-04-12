@@ -1,5 +1,5 @@
 {
-  "name": "FLEXLSWPTemplate",
+  "name": "FLEXLAYOUTWPTemplate",
   "version": "1.0.0",
   "description": "All WordPress sites start here.",
   "private": true,
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/ATTCKDigital/BuildTemplateWordPress.git"
   },
-  "author": "FLEXLS",
+  "author": "FLEXLAYOUT",
   "bugs": {
     "url": "https://github.com/ATTCKDigital/BuildTemplateWordPress/issues"
   },

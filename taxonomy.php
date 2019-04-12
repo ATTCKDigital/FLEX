@@ -19,7 +19,7 @@
     $archiveQuery = new WP_Query($args);
 
     $maxPages = $archiveQuery->max_num_pages; //Find the max number of pages for the query, necessary for "Load More"
-    $pageTitle = __('Archive', '_flexls') //Set the title of the page
+    $pageTitle = __('Archive', '_flexlayout') //Set the title of the page
     $postType = 'post' //Set the post type
 
     echo Utils::render_template("components/component_archive-feed.php", array(

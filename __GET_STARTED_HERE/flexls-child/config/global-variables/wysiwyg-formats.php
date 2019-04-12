@@ -42,6 +42,6 @@ $style_formats = array(
 		),
 );
 
-if(!defined('FLEXLS_WYSIWYG')) {
-	define('FLEXLS_WYSIWYG', $style_formats);
+if(!defined('FLEXLAYOUT_WYSIWYG')) {
+	define('FLEXLAYOUT_WYSIWYG', $style_formats);
 }

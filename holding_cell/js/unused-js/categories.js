@@ -1,5 +1,5 @@
 // Categories
-import FLEXLS from 'flexls';
+import FLEXLAYOUT from 'flexlayout';
 
 function Categories ($el) {
 	function categoryOpen() {

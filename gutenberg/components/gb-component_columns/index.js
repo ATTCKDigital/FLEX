@@ -764,7 +764,7 @@ function ColumnOptions( props ) {
 	return (
 		<PanelBody
 			title={ __( 'Block Column Count' ) }
-			className="flexls-column-options"
+			className="flexlayout-column-options"
 			initialOpen={ false }
 		>
 			<PanelRow>

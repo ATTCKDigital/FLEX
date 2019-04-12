@@ -25,7 +25,7 @@
 			<div class="column pure-u-lg-4-12 pure-u-md-4-12 pure-u-sm-12-12">
 				<div class="header header-tab header-tab-small">
 					<div class="header-tab-inner">
-						<h2 class="headline2 color-standard-white"><?php _e('Search', '_flexls');?></h2>
+						<h2 class="headline2 color-standard-white"><?php _e('Search', '_flexlayout');?></h2>
 					</div>
 				</div>
 			</div>

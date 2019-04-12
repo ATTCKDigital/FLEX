@@ -27,7 +27,7 @@
         "taxonomy"      => 'category',
         "postType"      => $postType,
         "query"         => $wp_query,
-        "loadMoreText"  => __('Show More', '_flexls')
+        "loadMoreText"  => __('Show More', '_flexlayout')
     ));
 
     get_footer();

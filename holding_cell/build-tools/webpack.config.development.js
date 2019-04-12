@@ -14,7 +14,7 @@ module.exports = {
   resolve: {
     // Create aliases to import or require certain modules more easily.
     alias: {
-      'flexls': path.resolve(__dirname, './js/clientNamespace.js'),
+      'flexlayout': path.resolve(__dirname, './js/clientNamespace.js'),
       'jquery': 'jquery/dist/jquery.min.js'
     },
 
@@ -41,10 +41,10 @@ module.exports = {
       '$': "jquery",
       'jQuery': "jquery",
       "window.jQuery": "jquery",
-      'FLEXLS': 'flexls',
-      'window.FLEXLS': 'flexls',
-      'FLEXLS.Utils': 'utils',
-      'FLEXLS.Config': 'config',
+      'FLEXLAYOUT': 'flexlayout',
+      'window.FLEXLAYOUT': 'flexlayout',
+      'FLEXLAYOUT.Utils': 'utils',
+      'FLEXLAYOUT.Config': 'config',
       'Masonry': 'masonry-layout/masonry',
       'window.Masonry': 'masonry-layout/masonry',
       'ImagesLoaded': 'imagesloaded/imagesloaded'

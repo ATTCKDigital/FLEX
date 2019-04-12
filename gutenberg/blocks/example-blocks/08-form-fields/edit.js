@@ -34,9 +34,9 @@ export default class Edit extends Component {
             <div className={ className }>
 
                 <CheckboxControl
-                    heading={ __( 'Checkbox Control', 'flexls' ) }
-                    label={ __( 'Check here', 'flexls' ) }
-                    help={ __( 'Checkbox control help text', 'flexls' ) }
+                    heading={ __( 'Checkbox Control', 'flexlayout' ) }
+                    label={ __( 'Check here', 'flexlayout' ) }
+                    help={ __( 'Checkbox control help text', 'flexlayout' ) }
                     checked={ checkboxControl }
                     onChange={ checkboxControl => setAttributes( { checkboxControl } ) }
                 />
@@ -47,7 +47,7 @@ export default class Edit extends Component {
                 />
 
                 <RadioControl
-                    label={ __( 'Radio Control', 'flexls' ) }
+                    label={ __( 'Radio Control', 'flexlayout' ) }
                     selected={ radioControl }
                     options={ [
                         { label: 'Author', value: 'a' },
@@ -59,7 +59,7 @@ export default class Edit extends Component {
                 <RangeControl
                     beforeIcon="arrow-left-alt2"
                     afterIcon="arrow-right-alt2"
-                    label={ __( 'Range Control', 'flexls' ) }
+                    label={ __( 'Range Control', 'flexlayout' ) }
                     value={ rangeControl }
                     onChange={ rangeControl => setAttributes( { rangeControl } ) }
                     min={ 1 }
@@ -67,27 +67,27 @@ export default class Edit extends Component {
                 />
 
                 <TextControl
-                    label={ __( 'Text Control', 'flexls' ) }
-                    help={ __( 'Text control help text', 'flexls' ) }
+                    label={ __( 'Text Control', 'flexlayout' ) }
+                    help={ __( 'Text control help text', 'flexlayout' ) }
                     value={ textControl }
                     onChange={ textControl => setAttributes( { textControl } ) }
                 />
 
                 <TextareaControl
-                    label={ __( 'Text Area Control', 'flexls' ) }
-                    help={ __( 'Text area control help text', 'flexls' ) }
+                    label={ __( 'Text Area Control', 'flexlayout' ) }
+                    help={ __( 'Text area control help text', 'flexlayout' ) }
                     value={ textareaControl }
                     onChange={ textareaControl => setAttributes( { textareaControl } ) }
                 />
 
                 <ToggleControl
-                    label={ __( 'Toggle Control', 'flexls' ) }
+                    label={ __( 'Toggle Control', 'flexlayout' ) }
                     checked={ toggleControl }
                     onChange={ toggleControl => setAttributes( { toggleControl } ) }
                 />
 
                 <SelectControl
-                    label={ __( 'Select Control', 'flexls' ) }
+                    label={ __( 'Select Control', 'flexlayout' ) }
                     value={ selectControl }
                     options={ [
                         { value: 'a', label: 'Option A' },

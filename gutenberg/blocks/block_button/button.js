@@ -44,17 +44,17 @@ import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '..
 	* Register block
  */
 export default registerBlockType(
-	'flexls/button',
+	'flexlayout/button',
 	{
 		title: __( 'Button' ),
 		description: __( 'Prompt visitors to take action with a custom button.' ),
 		category: 'common',
 		icon: icons.button,
-		parent: ['flexls/column'],
+		parent: ['flexlayout/column'],
 		keywords: [
-			__( 'Text', 'flexls' ),
-			__( 'Button', 'flexls' ),
-			__( 'CTA', 'flexls' ),
+			__( 'Text', 'flexlayout' ),
+			__( 'Button', 'flexlayout' ),
+			__( 'CTA', 'flexlayout' ),
 		],
 		attributes: {
 			content: {

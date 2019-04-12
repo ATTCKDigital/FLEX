@@ -22,19 +22,19 @@ const {
   * Register block
  */
 export default registerBlockType(
-    'flexls/text-alignment-toolbar',
+    'flexlayout/text-alignment-toolbar',
     {
-        title: __( 'Example - Alignment Toolbar', 'flexls' ),
-        description: __( 'How to add an alignment toolbar to a block for aligning text.', 'flexls' ),
+        title: __( 'Example - Alignment Toolbar', 'flexlayout' ),
+        description: __( 'How to add an alignment toolbar to a block for aligning text.', 'flexlayout' ),
         category: 'common',
         icon: {
             background: 'rgba(254, 243, 224, 0.52)',
             src: 'editor-alignleft',
         },                   
         keywords: [
-            __( 'Toolbar', 'flexls' ),
-            __( 'Settings', 'flexls' ),
-            __( 'Float', 'flexls' ),
+            __( 'Toolbar', 'flexlayout' ),
+            __( 'Settings', 'flexlayout' ),
+            __( 'Float', 'flexlayout' ),
         ],
         attributes: {
             message: {
@@ -62,7 +62,7 @@ export default registerBlockType(
                 <RichText
                     tagName="div"
                     multiline="p"
-                    placeholder={ __( 'Enter your message here..', 'flexls' ) }
+                    placeholder={ __( 'Enter your message here..', 'flexlayout' ) }
                     value={ message }
                     style={ { textAlign: textAlignment } }
                     onChange={ message => setAttributes( { message } ) }

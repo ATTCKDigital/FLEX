@@ -1,40 +1,40 @@
 
 // SCSS files to include in admin
-@import 'flexls/scss/_wysiwyg.scss';
-@import 'flexls/scss/_sass-utils.scss';
-@import 'flexls/scss/_sizing.scss';
-@import 'flexls/scss/_media-queries.scss';
-@import 'flexls/scss/_grid.scss';
-@import 'flexls/scss/_colors.scss';
+@import 'flexlayout/scss/_wysiwyg.scss';
+@import 'flexlayout/scss/_sass-utils.scss';
+@import 'flexlayout/scss/_sizing.scss';
+@import 'flexlayout/scss/_media-queries.scss';
+@import 'flexlayout/scss/_grid.scss';
+@import 'flexlayout/scss/_colors.scss';
 @import 'fonts';
-@import 'flexls/scss/_global.scss';
-@import 'flexls/scss/_layout.scss';
-@import 'flexls/scss/_component.scss';
-@import 'flexls/scss/_hidden.scss';
-@import 'flexls/scss/_row-theme.scss';
-@import 'flexls/scss/_iconography.scss';
-@import 'flexls/gutenberg/components/gb-component_padding/_padding.scss';
-@import 'flexls/gutenberg/components/gb-component_margin/_margin.scss';
-@import 'flexls/gutenberg/blocks/block_heading/_heading.scss';
-@import 'flexls/gutenberg/blocks/block_button/_buttons.scss';
-@import 'flexls/scss/_body-text.scss';
-@import 'flexls/scss/_admin-styles.scss';
-@import 'flexls/scss/_images.scss';
+@import 'flexlayout/scss/_global.scss';
+@import 'flexlayout/scss/_layout.scss';
+@import 'flexlayout/scss/_component.scss';
+@import 'flexlayout/scss/_hidden.scss';
+@import 'flexlayout/scss/_row-theme.scss';
+@import 'flexlayout/scss/_iconography.scss';
+@import 'flexlayout/gutenberg/components/gb-component_padding/_padding.scss';
+@import 'flexlayout/gutenberg/components/gb-component_margin/_margin.scss';
+@import 'flexlayout/gutenberg/blocks/block_heading/_heading.scss';
+@import 'flexlayout/gutenberg/blocks/block_button/_buttons.scss';
+@import 'flexlayout/scss/_body-text.scss';
+@import 'flexlayout/scss/_admin-styles.scss';
+@import 'flexlayout/scss/_images.scss';
 
 //GB Component Specific Overrides
-@import 'flexls/gutenberg/components/gb-component_background-options/_editor.scss';
-@import 'flexls/gutenberg/components/gb-component_columns/_editor.scss';
-@import 'flexls/gutenberg/components/gb-component_logo-color/_editor.scss';
-@import 'flexls/gutenberg/components/gb-component_margin/_editor.scss';
-@import 'flexls/gutenberg/components/gb-component_padding/_editor.scss';
-@import 'flexls/gutenberg/components/gb-component_row-height/_editor.scss';
-@import 'flexls/gutenberg/components/gb-component_scroller/_editor.scss';
-@import 'flexls/gutenberg/components/gb-component_text-colors/_editor.scss';
+@import 'flexlayout/gutenberg/components/gb-component_background-options/_editor.scss';
+@import 'flexlayout/gutenberg/components/gb-component_columns/_editor.scss';
+@import 'flexlayout/gutenberg/components/gb-component_logo-color/_editor.scss';
+@import 'flexlayout/gutenberg/components/gb-component_margin/_editor.scss';
+@import 'flexlayout/gutenberg/components/gb-component_padding/_editor.scss';
+@import 'flexlayout/gutenberg/components/gb-component_row-height/_editor.scss';
+@import 'flexlayout/gutenberg/components/gb-component_scroller/_editor.scss';
+@import 'flexlayout/gutenberg/components/gb-component_text-colors/_editor.scss';
 
-@import 'flexls/gutenberg/blocks/block_video/_editor.scss';
-@import 'flexls/gutenberg/blocks/block_video/_video.scss';
-@import 'flexls/gutenberg/blocks/block_button/_button-admin.scss';
-@import 'flexls/gutenberg/blocks/block_image/_image.scss';
-@import 'flexls/gutenberg/blocks/block_social_media/_social-media.scss';
+@import 'flexlayout/gutenberg/blocks/block_video/_editor.scss';
+@import 'flexlayout/gutenberg/blocks/block_video/_video.scss';
+@import 'flexlayout/gutenberg/blocks/block_button/_button-admin.scss';
+@import 'flexlayout/gutenberg/blocks/block_image/_image.scss';
+@import 'flexlayout/gutenberg/blocks/block_social_media/_social-media.scss';
 
-@import 'flexls/components/component_archive-feed/_archive-feed.scss';
+@import 'flexlayout/components/component_archive-feed/_archive-feed.scss';

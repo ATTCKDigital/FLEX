@@ -24,7 +24,7 @@ function register_users_block() {
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flexls/users', [
+	register_block_type( 'flexlayout/users', [
 		'attributes'      => array_merge(
 			[
 				'className' => [

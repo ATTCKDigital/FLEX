@@ -4,7 +4,7 @@
  */
 function QBOBSPartnerList($el) {
 	function bindEvents() {
-		$(window).on('FLEXLS.resize', resizePartnerListSection);
+		$(window).on('FLEXLAYOUT.resize', resizePartnerListSection);
 	}
 
 	function resizePartnerListSection(e, data) {

@@ -205,8 +205,8 @@ function BackgroundOptions( props ) {
 							</PanelRow>
 							<PanelRow>
 								<TextControl
-									label={__('Background Size', 'flexls')}
-									help={__('Set background size. Use pixel value (widthpx heightpx), percentage (width% height%), cover or contain', 'flexls')}
+									label={__('Background Size', 'flexlayout')}
+									help={__('Set background size. Use pixel value (widthpx heightpx), percentage (width% height%), cover or contain', 'flexlayout')}
 									value={props.attributes.backgroundSize}
 									onChange={setBackgroundSize}
 								/>
@@ -288,8 +288,8 @@ function BackgroundOptions( props ) {
 							</PanelRow>
 							<PanelRow>
 								<TextControl
-									label={__('Background Size (Mobile)', 'flexls')}
-									help={__('Set background size. Use pixel value (widthpx heightpx), percentage (width% height%), cover or contain', 'flexls')}
+									label={__('Background Size (Mobile)', 'flexlayout')}
+									help={__('Set background size. Use pixel value (widthpx heightpx), percentage (width% height%), cover or contain', 'flexlayout')}
 									value={props.attributes.backgroundSizeMobile}
 									onChange={setBackgroundSizeMobile}
 								/>

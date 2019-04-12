@@ -13,7 +13,7 @@ function ElementsInViewport($el) {
 	var _viewportHeight = $(window).outerHeight();
 
 	function bindEvents() {
-		$(document.body).on('FLEXLS.scroll', function (e, data) {
+		$(document.body).on('FLEXLAYOUT.scroll', function (e, data) {
 			// Reset timer to trigger ElementsInViewport
 			_scrollstopTimer = 0;
 
@@ -25,7 +25,7 @@ function ElementsInViewport($el) {
 
 		// Include check for page resize as well since that
 		// can potentially cause the page to scroll
-		$(document.body).on('FLEXLS.resize', function () {
+		$(document.body).on('FLEXLAYOUT.resize', function () {
 			// Reset timer to trigger ElementsInViewport
 			_scrollstopTimer = 0;
 

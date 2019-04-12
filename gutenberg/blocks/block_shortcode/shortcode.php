@@ -24,7 +24,7 @@ function register_shortcode_block() {
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flexls/shortcode', [
+	register_block_type( 'flexlayout/shortcode', [
 		'attributes'      => array_merge(
 			[
 				'content' => [

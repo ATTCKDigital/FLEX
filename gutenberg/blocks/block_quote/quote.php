@@ -30,7 +30,7 @@ function register_quote_block() {
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flexls/quote', [
+	register_block_type( 'flexlayout/quote', [
 		'attributes'      => array_merge(
 			[
 				'content' => [

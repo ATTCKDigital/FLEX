@@ -13,7 +13,7 @@ const isDevEnv = 'production' !== process.env.NODE_ENV;
 JS:
 - Load boilerplate scripts..
 - Load child theme scripts...
-- Load flexls plugin scripts...
+- Load flexlayout plugin scripts...
 - How the hell are we handling component scripts?
 - ES5 transpile from ESNext
 - Lint
@@ -22,7 +22,7 @@ JS:
 SCSS:
 - Load from boilerplate
 - Load from child theme...
-- Load from flexls plugin??
+- Load from flexlayout plugin??
 - Autoprefixer
 - Compile to CSS
 - PostCSS support??
@@ -56,8 +56,8 @@ module.exports = {
 
   resolve: {
     alias: {
-      'flexls': path.resolve(__dirname, '../boilerplate'),
-      // 'flexls':'clientNamespace.js',
+      'flexlayout': path.resolve(__dirname, '../boilerplate'),
+      // 'flexlayout':'clientNamespace.js',
     },
     modules: [
       path.resolve(__dirname, './js'),

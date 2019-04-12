@@ -8,8 +8,8 @@
 
 
 /** ACF Save Point **/
-add_filter('acf/settings/save_json', 'flexls_acf_json_save_point');
-function flexls_acf_json_save_point( $path = '' ) {
+add_filter('acf/settings/save_json', 'flexlayout_acf_json_save_point');
+function flexlayout_acf_json_save_point( $path = '' ) {
 	// Update to custom path - fields will always save to the current active theme.  If a change is made to a parent theme field, it will be saved to the child theme and only be applicable to the child.
 	$path = THEME_DIR . '/config/acf-configs/acf-json';
 
@@ -23,8 +23,8 @@ function flexls_acf_json_save_point( $path = '' ) {
 /** ACF Load Point **/
 // Any changes made to a parent theme json file from the child theme will save to the parent theme save point.
 // https://support.advancedcustomfields.com/forums/topic/acf-json-fields-not-loading-from-parent-theme/
-add_filter('acf/settings/load_json', 'flexls_acf_json_load_point');
-function flexls_acf_json_load_point( $paths ) {
+add_filter('acf/settings/load_json', 'flexlayout_acf_json_load_point');
+function flexlayout_acf_json_load_point( $paths ) {
 	// Append custom paths
 	$paths = array(THEME_DIR.'/config/acf-configs/acf-json');
 
@@ -40,12 +40,12 @@ function flexls_acf_json_load_point( $paths ) {
 
 
 /** Update ACF settings. **/
-function flexls_acf_init() {
+function flexlayout_acf_init() {
 	// Save field changes to database (set to to 'false'). Only for Dev environment
 	acf_update_setting('json', true);
 }
 
-add_action('acf/init', 'flexls_acf_init');
+add_action('acf/init', 'flexlayout_acf_init');
 
 
 /** Sync Registered Blocks **/
@@ -53,7 +53,7 @@ add_action('acf/init', 'flexls_acf_init');
 
 add_filter('aljm_save_json', function($folders) {
 	// Get the list of registered blocks and sync the json for each one into it's component folder
-	$registerBlocks = FLEXLS_REGISTER_BLOCKS;
+	$registerBlocks = FLEXLAYOUT_REGISTER_BLOCKS;
 
 	foreach ($registerBlocks as $registerBlock) {
 		// Find the block template file in the correct theme directory

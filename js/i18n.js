@@ -1,1 +1,1 @@
-wp.i18n.setLocaleData( { '': {} }, 'flexls' );
+wp.i18n.setLocaleData( { '': {} }, 'flexlayout' );

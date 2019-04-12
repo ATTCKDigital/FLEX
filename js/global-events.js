@@ -1,19 +1,19 @@
 import $ from 'jquery';
-import FLEXLS from './clientNamespace';
+import FLEXLAYOUT from './clientNamespace';
 import $$ from './cached-dom-elements';
 import Debug from './debug';
 
-FLEXLS.GlobalEvents = {};
+FLEXLAYOUT.GlobalEvents = {};
 
-FLEXLS.GlobalEvents.initGlobalEvents = function () {
-	var G = FLEXLS.Globals;
+FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
+	var G = FLEXLAYOUT.Globals;
 	var $window = $(window);
 	var self = this;
 
 	/*** Detect scrolling and scrolling direction ***/
 	//USAGE
 	// Bind to scroll
-	// $(document.body).bind('FLEXLS.scroll', function (e, data) {
+	// $(document.body).bind('FLEXLAYOUT.scroll', function (e, data) {
 	// 		// if scroll is past or before x position
 	// 	    if (scroll >= 300) {
 	// 	    	your code here
@@ -39,7 +39,7 @@ FLEXLS.GlobalEvents.initGlobalEvents = function () {
 			return;
 		}
 
-		$(document.body).trigger('FLEXLS.scroll', {
+		$(document.body).trigger('FLEXLAYOUT.scroll', {
 			'e': e,
 			'currentScrollTop': G.currentScrollTop,
 			'viewportHeight':   G.viewportHeight,
@@ -79,7 +79,7 @@ FLEXLS.GlobalEvents.initGlobalEvents = function () {
 	detectOrientation();
 
 	// ...and screen resize
-	$(document.body).on('FLEXLS.resize', detectOrientation);
+	$(document.body).on('FLEXLAYOUT.resize', detectOrientation);
 
 	// Detect whether body content is taller than viewport
 	function detectViewportHeightRatio() {
@@ -106,7 +106,7 @@ FLEXLS.GlobalEvents.initGlobalEvents = function () {
 	detectViewportHeightRatio();
 
 	// ...and screen resize
-	$(document.body).on('FLEXLS.resize', detectViewportHeightRatio);
+	$(document.body).on('FLEXLAYOUT.resize', detectViewportHeightRatio);
 
 	// Tag body once page has loaded for one-time page load functions
 	$(window).on('load', function () {
@@ -140,7 +140,7 @@ FLEXLS.GlobalEvents.initGlobalEvents = function () {
 		G.viewportHeight = $window.outerHeight();
 		G.viewportWidth  = $window.outerWidth();
 
-		$(document.body).trigger('FLEXLS.resize', {
+		$(document.body).trigger('FLEXLAYOUT.resize', {
 			'e': e,
 			'viewportHeight': G.viewportHeight,
 			'viewportWidth': G.viewportWidth
@@ -149,10 +149,10 @@ FLEXLS.GlobalEvents.initGlobalEvents = function () {
 
 };
 
-// Declares FLEXLS.GlobalEvents.xsOnly(), smOnly(), etc for running
+// Declares FLEXLAYOUT.GlobalEvents.xsOnly(), smOnly(), etc for running
 // breakpoint-specific functionality.
 $.each(Debug.breakpoints, function (i, val) {
-	FLEXLS.GlobalEvents['only' + val] = function (f) {
+	FLEXLAYOUT.GlobalEvents['only' + val] = function (f) {
 		if (!$$('.breakpoint.' + val).is(':visible')) {
 			return;
 		}
@@ -165,37 +165,37 @@ $.each(Debug.breakpoints, function (i, val) {
 if (Debug.debug === true) {
 	$(document.body)
 		.addClass("debug")
-		.on("FLEXLS.resize", function () {
+		.on("FLEXLAYOUT.resize", function () {
 
-			FLEXLS.GlobalEvents.onlysmall(function () {
+			FLEXLAYOUT.GlobalEvents.onlysmall(function () {
 				$(".breakpoint-current").show().text("Breakpoint is SM");
 			});
 
-			FLEXLS.GlobalEvents.onlymedium(function () {
+			FLEXLAYOUT.GlobalEvents.onlymedium(function () {
 				$(".breakpoint-current").show().text("Breakpoint is MD");
 			});
 
-			FLEXLS.GlobalEvents.onlylarge(function () {
+			FLEXLAYOUT.GlobalEvents.onlylarge(function () {
 				$(".breakpoint-current").show().text("Breakpoint is LG");
 			});
 
-			FLEXLS.GlobalEvents.onlyxl(function () {
+			FLEXLAYOUT.GlobalEvents.onlyxl(function () {
 				$(".breakpoint-current").show().text("Breakpoint is XL");
 			});
 
-			FLEXLS.GlobalEvents.only2xl(function () {
+			FLEXLAYOUT.GlobalEvents.only2xl(function () {
 				$(".breakpoint-current").show().text("Breakpoint is 2XL");
 			});
 
-			FLEXLS.GlobalEvents.only3xl(function () {
+			FLEXLAYOUT.GlobalEvents.only3xl(function () {
 				$(".breakpoint-current").show().text("Breakpoint is 3XL");
 			});
 
-			FLEXLS.GlobalEvents.only4xl(function () {
+			FLEXLAYOUT.GlobalEvents.only4xl(function () {
 				$(".breakpoint-current").show().text("Breakpoint is 4XL");
 			});
 
-			FLEXLS.GlobalEvents.only5xl(function () {
+			FLEXLAYOUT.GlobalEvents.only5xl(function () {
 				$(".breakpoint-current").show().text("Breakpoint is 5XL");
 			});
 		});
@@ -205,4 +205,4 @@ if (Debug.debug === true) {
 // for scroll (e.g., initial nav opacity)
 $(window).trigger('resize');
 
-export default FLEXLS.GlobalEvents;
+export default FLEXLAYOUT.GlobalEvents;

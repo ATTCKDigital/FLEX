@@ -29,17 +29,17 @@ import BackgroundColorOptions, { BackgroundColorOptionsAttributes, BackgroundCol
 
 
 export default registerBlockType(
-	'flexls/text',
+	'flexlayout/text',
 	{
 		title: __( 'Rich Text', 'block title' ),
 		description: __( 'Use the classic WordPress editor.' ),
 		icon: icons.text,
 		category: 'common',
-		parent: ['flexls/column'],
+		parent: ['flexlayout/column'],
 		keywords: [
-			__( 'Text', 'flexls' ),
-			__( 'WYSIWYG', 'flexls' ),
-			__( 'TinyMCE', 'flexls' ),
+			__( 'Text', 'flexlayout' ),
+			__( 'WYSIWYG', 'flexlayout' ),
+			__( 'TinyMCE', 'flexlayout' ),
 		],
 		attributes: {
 			content: {

@@ -43,7 +43,7 @@ Config files: `config/theme-configs`
 - `constants`: Sets some global PHP constants
 - `custom-nav-classes`: Customize the "current" menu item class.
 - `flex-layout-system`: Hooks for the Flex Layout System extension for Gutenberg.
-- `flexls-meta-boxes`: Hooks for the Flex Layout System extension for Gutenberg related to meta boxes.
+- `flexlayout-meta-boxes`: Hooks for the Flex Layout System extension for Gutenberg related to meta boxes.
 - `nav-walker`: Custom Nav Walker with custom markup for nested menu items. Use as when outputting a menu `'walker' => new Nav_Walker_Nav_Menu,` 👍🏻**recommended**
 - `register-nav-menus`: Registers and enables 2 default menus, editable via admin. 🔒**required**
 - `theme-setup`: Adds featured image to posts/pages and automatic rss links to the head. 🔒**required**

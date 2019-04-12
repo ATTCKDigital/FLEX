@@ -48,17 +48,17 @@ import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from 
 	* Register block
  */
 export default registerBlockType(
-	'flexls/feed',
+	'flexlayout/feed',
 	{
 		title: __( 'Feed' ),
 		description: __( 'A feed of posts.' ),
 		category: 'common',
 		icon: icons.feed,
-		parent: ['flexls/column'],
+		parent: ['flexlayout/column'],
 		keywords: [
-			__( 'Feed', 'flexls' ),
-			__( 'Archive', 'flexls' ),
-			__( 'Posts', 'flexls' ),
+			__( 'Feed', 'flexlayout' ),
+			__( 'Archive', 'flexlayout' ),
+			__( 'Posts', 'flexlayout' ),
 		],
 		attributes: {
 			...MarginOptionsAttributes,
@@ -77,12 +77,12 @@ export default registerBlockType(
                     return (
                         <p className={className} >
                             <Spinner />
-                            { __( 'Loading Posts', 'flexls' ) }
+                            { __( 'Loading Posts', 'flexlayout' ) }
                         </p>
                     );
                 }
                 if ( 0 === posts.length ) {
-                    return <p>{ __( 'No Posts', 'flexls' ) }</p>;
+                    return <p>{ __( 'No Posts', 'flexlayout' ) }</p>;
                 }
                 return (
 	                <InspectorControls>

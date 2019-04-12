@@ -37,17 +37,17 @@ import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from 
 	* Register block
  */
 export default registerBlockType(
-	'flexls/source',
+	'flexlayout/source',
 	{
 		title: __( 'Source/Code' ),
 		description: __( 'Display code snippets that respect your spacing and tabs.' ),
 		category: 'common',
 		icon: icons.source,
-		parent: ['flexls/column'],
+		parent: ['flexlayout/column'],
 		keywords: [
-			__( 'Text', 'flexls' ),
-			__( 'Source', 'flexls' ),
-			__( 'Code', 'flexls' ),
+			__( 'Text', 'flexlayout' ),
+			__( 'Source', 'flexlayout' ),
+			__( 'Code', 'flexlayout' ),
 		],
 		attributes: {
 			content: {

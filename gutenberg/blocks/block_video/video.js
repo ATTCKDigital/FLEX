@@ -47,18 +47,18 @@ import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '..
 	* Register block
  */
 export default registerBlockType(
-	'flexls/video',
+	'flexlayout/video',
 
 	{
 		title: __( 'Video' ),
-		description: __( 'Add a video that plays inline', 'flexls' ),
+		description: __( 'Add a video that plays inline', 'flexlayout' ),
 		category: 'common',
 		icon: icons.video,
-		parent: ['flexls/column'],
+		parent: ['flexlayout/column'],
 		keywords: [
-			__( 'Video', 'flexls' ),
-			__( 'YouTube', 'flexls' ),
-			__( 'Vimeo', 'flexls' ),
+			__( 'Video', 'flexlayout' ),
+			__( 'YouTube', 'flexlayout' ),
+			__( 'Vimeo', 'flexlayout' ),
 		],
 		supports: {
 			anchor: true,
@@ -219,8 +219,8 @@ export default registerBlockType(
 				}
 				return (
 					<TextControl
-						label={__("YouTube ID", "flexls")}
-						help={__("Paste the ID of the YouTube Video.", "flexls")}
+						label={__("YouTube ID", "flexlayout")}
+						help={__("Paste the ID of the YouTube Video.", "flexlayout")}
 						value={props.attributes.youtubeVideo ? props.attributes.youtubeVideo : ''}
 						onChange={setYoutubeVideo}
 					/>
@@ -280,7 +280,7 @@ export default registerBlockType(
 					/>
 					<PanelBody 
 						title={ __( 'Video Settings' ) }
-						className="flexls-video-settings"
+						className="flexlayout-video-settings"
 					>
 						<PanelRow>
 							<SelectControl

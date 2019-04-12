@@ -12,7 +12,7 @@ function current_language() {
 
 // Custom language switcher nav
 // Usage: languages_list_nav();
-function flexls_language_switcher(){
+function flexlayout_language_switcher(){
 	//show all languages
 	$languages =  apply_filters('wpml_active_languages', null, array('skip_missing' => 0 ));
 

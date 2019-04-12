@@ -50,17 +50,17 @@ import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '..
 	* Register block
  */
 export default registerBlockType(
-	'flexls/column',
+	'flexlayout/column',
 	{
 		title: __( 'Column' ),
-		description: __( 'Creates a column wrapper to support inner blocks.', 'flexls' ),
+		description: __( 'Creates a column wrapper to support inner blocks.', 'flexlayout' ),
 		category: 'layout',
 		icon: 'columns',
-		parent: ['flexls/row'],
+		parent: ['flexlayout/row'],
 		keywords: [
-			__( 'Flex', 'flexls' ),
-			__( 'Layout', 'flexls' ),
-			__( 'Column', 'flexls' ),
+			__( 'Flex', 'flexlayout' ),
+			__( 'Layout', 'flexlayout' ),
+			__( 'Column', 'flexlayout' ),
 		],
 		attributes: {
 
@@ -119,7 +119,7 @@ export default registerBlockType(
 
 const customClassName = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
-		if (props.name === "flexls/column") {
+		if (props.name === "flexlayout/column") {
 				return <BlockListBlock
 						{ ...props }
 						className={ classnames(
@@ -138,4 +138,4 @@ const customClassName = createHigherOrderComponent( ( BlockListBlock ) => {
 	};
 }, 'customClassName' );
 
-wp.hooks.addFilter( 'editor.BlockListBlock', 'flexls/column/customClassName', customClassName );
+wp.hooks.addFilter( 'editor.BlockListBlock', 'flexlayout/column/customClassName', customClassName );

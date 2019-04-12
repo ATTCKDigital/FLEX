@@ -1,8 +1,8 @@
 <?php
 
 // Add global colors to the TinyMCE editor
-function flexls_mce_colors($init) {
-	$colors = FLEXLS_COLORS;
+function flexlayout_mce_colors($init) {
+	$colors = FLEXLAYOUT_COLORS;
 	$custom_colors = "";
 	foreach ($colors as $color) {
 		$settingId = colorSettingId($color); // Sarah TODO: function used here is defined in `/config/theme-configs/customizer-colors.php/` - should it be somewhere else??
@@ -19,7 +19,7 @@ function flexls_mce_colors($init) {
 	return $init;
 }
 
-add_filter('tiny_mce_before_init', 'flexls_mce_colors');
+add_filter('tiny_mce_before_init', 'flexlayout_mce_colors');
 
 
 function my_mce_buttons( $buttons ) {
@@ -30,7 +30,7 @@ add_filter('mce_buttons', 'my_mce_buttons');
 
 //Add WYSIWYG Formats dropdown styles 
 function mce_mod( $init ) {
-	$style_formats = FLEXLS_WYSIWYG;
+	$style_formats = FLEXLAYOUT_WYSIWYG;
 
    
 	$init['style_formats'] = json_encode( $style_formats );

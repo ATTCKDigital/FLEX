@@ -196,7 +196,7 @@ function BorderOptions( props ) {
 	return (
 		<PanelBody
 			title={ __( 'Border' ) }
-			className="flexls-border-options"
+			className="flexlayout-border-options"
 			initialOpen={ false }
 		>
 			<PanelRow>

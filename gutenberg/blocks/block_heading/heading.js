@@ -46,17 +46,17 @@ import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from 
 	* Register block
  */
 export default registerBlockType(
-	'flexls/heading',
+	'flexlayout/heading',
 	{
 		title: __( 'Heading' ),
 		description: __( 'Introduce new sections and organize content to help visitors (and search engines) understand the structure of your content.' ),
 		category: 'common',
 		icon: 'heading',
-		parent: ['flexls/column'],
+		parent: ['flexlayout/column'],
 		keywords: [
-			__( 'Text', 'flexls' ),
-			__( 'Heading', 'flexls' ),
-			__( 'Header', 'flexls' ),
+			__( 'Text', 'flexlayout' ),
+			__( 'Heading', 'flexlayout' ),
+			__( 'Header', 'flexlayout' ),
 		],
 		attributes: {
 			content: {

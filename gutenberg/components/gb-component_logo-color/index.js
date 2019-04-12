@@ -42,8 +42,8 @@ function LogoColorOptions( props ) {
 					<PanelRow>
 						<SelectControl
 							key="logo-color"
-							label={__( 'Select Color', 'flexls' )}
-							help={ __( 'If your theme supports a fixed nav, select whether the logo should be light or dark when over this row. Color will be reflective of branding.', 'flexls' )}
+							label={__( 'Select Color', 'flexlayout' )}
+							help={ __( 'If your theme supports a fixed nav, select whether the logo should be light or dark when over this row. Color will be reflective of branding.', 'flexlayout' )}
 							value={ props.attributes.logoColor ? props.attributes.logoColor : '' }
 							onChange={ setLogoColor }
 							options={ [
@@ -67,7 +67,7 @@ function LogoColorOptions( props ) {
 	return (
 		<PanelBody
 			title={ __( 'Logo Color' ) }
-			className="flexls-logo-color-options"
+			className="flexlayout-logo-color-options"
 			initialOpen={ false }
 		>
 			<PanelRow>

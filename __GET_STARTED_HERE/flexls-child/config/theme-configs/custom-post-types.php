@@ -1,8 +1,8 @@
 <?php
-add_action('init', 'flexls_create_cpt_tax');
+add_action('init', 'flexlayout_create_cpt_tax');
 
 // Register custom post types and taxonomies here.
-function flexls_create_cpt_tax() {
+function flexlayout_create_cpt_tax() {
 	register_taxonomy('press_tag', array('press'),
 		array(
 			'hierarchical' => false,

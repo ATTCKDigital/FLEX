@@ -1,10 +1,10 @@
 <?php
 	$menus = array(
-		'primary' => __('Primary Navigation', '_flexls'),
-		'footer' => __('Footer Navigation', '_flexls'),
+		'primary' => __('Primary Navigation', '_flexlayout'),
+		'footer' => __('Footer Navigation', '_flexlayout'),
 	);
 
 
-	if(!defined('FLEXLS_MENUS')) {
-	  define('FLEXLS_MENUS', $menus);
+	if(!defined('FLEXLAYOUT_MENUS')) {
+	  define('FLEXLAYOUT_MENUS', $menus);
 	}

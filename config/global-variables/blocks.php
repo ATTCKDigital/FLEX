@@ -3,27 +3,27 @@
 // Select blocks that should be available for the project.
 // Available Blocks
 // Enable your acf created blocks by using acf/block_name
-// Enable flexls created blocks by using flexls/block_name
+// Enable flexlayout created blocks by using flexlayout/block_name
 
 $blocks = array(
 
-	'flexls/row', //REQUIRED
-	'flexls/column', //REQUIRED
-	'flexls/button',
-	'flexls/heading',
-	'flexls/image',
-	'flexls/quote',
-	'flexls/shortcode',
-	'flexls/source',
-	'flexls/socialmedia',
-	'flexls/text',
-	'flexls/users',
-	'flexls/video',
+	'flexlayout/row', //REQUIRED
+	'flexlayout/column', //REQUIRED
+	'flexlayout/button',
+	'flexlayout/heading',
+	'flexlayout/image',
+	'flexlayout/quote',
+	'flexlayout/shortcode',
+	'flexlayout/source',
+	'flexlayout/socialmedia',
+	'flexlayout/text',
+	'flexlayout/users',
+	'flexlayout/video',
 );
 
 
-if(!defined('FLEXLS_BLOCKS')) {
-	define('FLEXLS_BLOCKS', $blocks);
+if(!defined('FLEXLAYOUT_BLOCKS')) {
+	define('FLEXLAYOUT_BLOCKS', $blocks);
 }
 
 //Add all of the acf blocks that should be registered. Only put the block name. The components must be named as described in the read me.
@@ -31,6 +31,6 @@ $registerBlocks = array(
 );
 
 
-if(!defined('FLEXLS_REGISTER_BLOCKS')) {
-	define('FLEXLS_REGISTER_BLOCKS', $registerBlocks);
+if(!defined('FLEXLAYOUT_REGISTER_BLOCKS')) {
+	define('FLEXLAYOUT_REGISTER_BLOCKS', $registerBlocks);
 }

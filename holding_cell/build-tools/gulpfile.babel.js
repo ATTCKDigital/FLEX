@@ -37,7 +37,7 @@ const PATHS = {
 };
 
 const pkg = {
-  name: "FLEXLSWPTemplate",
+  name: "FLEXLAYOUTWPTemplate",
   version: "1.0.0"
 };
 
@@ -66,7 +66,7 @@ const ESLINT_CONFIG = {
   "globals": [
     "jQuery",
     "$",
-    "FLEXLS"
+    "FLEXLAYOUT"
   ]
 };
 

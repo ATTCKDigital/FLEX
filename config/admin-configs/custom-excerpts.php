@@ -15,7 +15,7 @@ function excerpt($limit) {
 }
 
 // Add excerpts on pages
-add_action('init', 'flexls_add_excerpts_to_pages');
-function flexls_add_excerpts_to_pages() {
+add_action('init', 'flexlayout_add_excerpts_to_pages');
+function flexlayout_add_excerpts_to_pages() {
 	 add_post_type_support('page', 'excerpt');
 }

@@ -5,8 +5,8 @@
 "use strict";
 
 var clientNamespace = {};
-var FLEXLS = clientNamespace;
+var FLEXLAYOUT = clientNamespace;
 
-FLEXLS.Globals = {};
+FLEXLAYOUT.Globals = {};
 
-export default FLEXLS;
+export default FLEXLAYOUT;

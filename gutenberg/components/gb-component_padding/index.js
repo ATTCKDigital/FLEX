@@ -1274,7 +1274,7 @@ function PaddingOptions( props ) {
 	return (
 		<PanelBody
 			title={ __( 'Block Padding' ) }
-			className="flexls-padding-options"
+			className="flexlayout-padding-options"
 			initialOpen={ false }
 		>
 			<PanelRow>

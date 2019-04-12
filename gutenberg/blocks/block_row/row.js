@@ -56,16 +56,16 @@ import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '..
 	* Register block
  */
 export default registerBlockType(
-	'flexls/row',
+	'flexlayout/row',
 
 	{
 		title: __( 'Row' ),
-		description: __( 'Creates a row wrapper to support inner blocks with set column widths.', 'flexls' ),
+		description: __( 'Creates a row wrapper to support inner blocks with set column widths.', 'flexlayout' ),
 		category: 'layout',
 		icon: 'editor-table',
 		keywords: [
-			__( 'Flex', 'flexls' ),
-			__( 'Layout', 'flexls' ),
+			__( 'Flex', 'flexlayout' ),
+			__( 'Layout', 'flexlayout' ),
 		],
 		supports: {
 			anchor: true,
@@ -144,7 +144,7 @@ export default registerBlockType(
 						controls={['full']}
 					/>
 					<Toolbar>
-						<Tooltip text={ __( 'Reverse column order in mobile', 'flexls' )  }>
+						<Tooltip text={ __( 'Reverse column order in mobile', 'flexlayout' )  }>
 							<Button
 								className={ classnames(
 									'components-icon-button',
@@ -159,7 +159,7 @@ export default registerBlockType(
 					</Toolbar>
 					<Toolbar>
 						<ButtonGroup>
-							<Tooltip text={ __( 'Vertical align columns - Top', 'flexls' )  }>
+							<Tooltip text={ __( 'Vertical align columns - Top', 'flexlayout' )  }>
 								<Button
 									className={ classnames(
 										'components-icon-button',
@@ -171,7 +171,7 @@ export default registerBlockType(
 									{ icons.topAlign }
 								</Button>
 							</Tooltip>
-							<Tooltip text={ __( 'Vertical align columns - Center', 'flexls' )  }>
+							<Tooltip text={ __( 'Vertical align columns - Center', 'flexlayout' )  }>
 								<Button
 									className={ classnames(
 										'components-icon-button',
@@ -183,7 +183,7 @@ export default registerBlockType(
 									{ icons.centerAlign }
 								</Button>
 							</Tooltip>
-							<Tooltip text={ __( 'Vertical align columns - Bottom', 'flexls' )  }>
+							<Tooltip text={ __( 'Vertical align columns - Bottom', 'flexlayout' )  }>
 								<Button
 									className={ classnames(
 										'components-icon-button',
@@ -195,7 +195,7 @@ export default registerBlockType(
 									{ icons.bottomAlign }
 								</Button>
 							</Tooltip>
-							<Tooltip text={ __( 'Vertical align columns - Stretch', 'flexls' )  }>
+							<Tooltip text={ __( 'Vertical align columns - Stretch', 'flexlayout' )  }>
 								<Button
 									className={ classnames(
 										'components-icon-button',
