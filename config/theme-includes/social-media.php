@@ -23,6 +23,4 @@
 		$pinterest = 'https://www.pinterest.com/'.$pinterest;
 	}
 
-
-
 ?>

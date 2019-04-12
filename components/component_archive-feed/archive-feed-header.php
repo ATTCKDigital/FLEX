@@ -3,7 +3,7 @@
 		<div class="column flex-g-lg-12-12 flex-g-md-12-12 flex-g-sm-12-12">
 			<div class="component-archive-feed">
 				<header class="archive-feed-header">
-                    <h1 class="headline2 color-text-primary uppercase align-center"><?= $this->title;?></h1>
+                    <h1 class="headline2 color-text-primary align-center"><?= $this->title;?></h1>
                 </header>
             </div>
         </div>

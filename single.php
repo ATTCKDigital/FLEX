@@ -16,15 +16,18 @@
 	} else {
 
 		if (have_posts()) : while (have_posts()) : the_post();
+			echo Utils::render_template('components/component_post/post-header.php');
+
 			if ( has_blocks( $post->post_content ) ) {
 				the_content();
 
 			} else {
 				//If using Classic Editor
-				echo Utils::render_template('components/component_post-body/post-body.php');
-
+				echo Utils::render_template('components/component_post/post-content.php');
 
 			} // end Gutenberg check
+
+			echo Utils::render_template('components/component_post/post-footer.php');
 
 		endwhile; // endwhile default loop
 		else:

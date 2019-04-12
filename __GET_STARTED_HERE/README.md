@@ -64,7 +64,10 @@ To the end of the file add: `127.0.0.1 dev.project.com` (domain used for Virtual
 
 3. Restart Apache `sudo apachectl restart`
 
-### Installing Wordpress and this theme
+### NEW PROJECT - Installing Wordpress and this theme 
+
+okatodo: add instructions about how to work with an existing project
+git clone --recurse-submodules https://github.com/ATTCKDigital/attck-flexls.git
 
 1. Download [WordPress](https://wordpress.org/download/) into your project directory and add the "flexls" as a submodule in `wp-content/themes`
 2. Use **git submodules**, to add the "flexls" theme to `wp-content/themes`.  
@@ -89,6 +92,8 @@ SetEnv FLEX_PASSWORD root --> the password of your local database
 SetEnv FLEX_HOSTNAME 127.0.0.1 --> the host of your local database
 SetEnv S3_UPLOADS_BUCKET bucket_name --> if using an S3 bucket, the name of the bucket
 SetEnv S3_UPLOADS_REGION bucket_region --> if using an S3 bucket, the region of the bucket
+SetEnv AWS_ACCESS_KEY_ID access_key --> if using an S3 bucket, the AWS access key for the bucket IAM user (should be a non-admin user)
+SetEnv AWS_SECRET_ACCESS_KEY secret_key --> if using an S3 bucket, the AWS secret key for the bucket IAM user (should be a non-admin user)
 SetEnv WPENGINE_ACCOUNT dev --> the current environment (these are based on WPEngine server variables, requires an adjustment if using another host). If working locally, it should be set to `dev`
 SerEnv DEBUG true --> enable/disable debugging.  Debugging should only be true in  `dev` or `staging`
 SetEnv url http://flexls.test --> local development url
