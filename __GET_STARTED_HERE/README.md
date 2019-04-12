@@ -71,8 +71,9 @@ git clone --recurse-submodules https://github.com/ATTCKDigital/attck-flexlayout.
 
 1. Download [WordPress](https://wordpress.org/download/) into your project directory and add the "flexlayout" as a submodule in `wp-content/themes`
 2. Use **git submodules**, to add the "flexlayout" theme to `wp-content/themes`.  
-*With ssh*: `git submodule add git@github.com:ATTCKDigital/boilerplate.git`  
-*With HTTPS*: `git submodule add https://github.com/ATTCKDigital/boilerplate.git`
+*With ssh*: `git submodule add git@github.com:ATTCKDigital/flex-layout.git`  
+*With HTTPS*: `git submodule add https://github.com/ATTCKDigital/flex-layout.git`
+The child theme folder *must* be named  `flexlayout`.
 3. From `__GET_STARTED_HERE`, copy `.env`, `gitignore` (rename `.gitignore`), `.htaccess` and `wp-config.php` into the WordPress root
 4. Go to https://api.wordpress.org/secret-key/1.1/salt/ and get new Authentication Unique Keys and Salts. Paste the generated snippet into `lines 67-74` of `wp-config.php` in the WordPress root
 5. Change the variables in the `.env` folder to match your local development settings. Once you have changed the variables, you will need to `restart apache`. From this point, you should be able to navigate to the local project url in the browser and finish the WordPress Install process. See below for description of each `.env` var.
