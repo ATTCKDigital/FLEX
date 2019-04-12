@@ -3,7 +3,7 @@
  * Template: Archive
  * Description: Wordpress template for a archive page.
  *
- */
+ **/
     get_header();
 
     $term = get_queried_object(); 
