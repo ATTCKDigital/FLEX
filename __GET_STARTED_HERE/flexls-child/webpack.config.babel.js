@@ -56,7 +56,7 @@ module.exports = {
 
   resolve: {
     alias: {
-      'flexlayout': path.resolve(__dirname, '../boilerplate'),
+      'flexlayout': path.resolve(__dirname, '../flexlayout'),
       // 'flexlayout':'clientNamespace.js',
     },
     modules: [
