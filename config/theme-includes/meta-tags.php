@@ -41,7 +41,7 @@
 
 		//OG Image
 		$fbImageID = get_field('og_facebook_image', $this->ID);
-		$fallbackImageID = get_field('fallback_image', 'options');
+		$fallbackImage = get_field('fallback_image', 'options');
 		$postThumbnailID = get_post_thumbnail_id($this->ID);
 
 		if($fbImageID) {
@@ -52,7 +52,7 @@
 			$fbImageSrc = wp_get_attachment_image_src($postThumbnailID, 'full')[0];
 		} else {
 			//if there is NO user defined FB image OR a Featured Image
-			$fbImageSrc = wp_get_attachment_image_src($fallbackImageID, 'full')[0];
+			$fbImageSrc = $fallbackImage;
 		}
 
 		//Twitter Image
@@ -66,7 +66,7 @@
 			$twitterImageSrc = wp_get_attachment_image_src($postThumbnailID, 'full')[0];
 		} else {
 			//if there is NO user defined Twitter image OR a Featured Image
-			$twitterImageSrc = wp_get_attachment_image_src($fallbackImageID, 'full')[0];
+			$twitterImageSrc = $fallbackImage;
 		}
 
 		//Twitter Site (username)
