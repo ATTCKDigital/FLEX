@@ -2,7 +2,7 @@
 	//Global Nav 
 ?>
 
-<header class="global-header component" data-component-name="Nav">
+<header class="component-header component" data-component-name="Nav">
 	<div class="header-inner">
 		<div class="hamburger-wrapper">
 			<mark class="hamburger"></mark>

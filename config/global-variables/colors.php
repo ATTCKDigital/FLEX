@@ -22,9 +22,9 @@ $colors = array(
 
 	array(
 		'default'     => '#F5F5F5',
-		'description' => 'Set your site\'s tertiary text color here.',
+		'description' => 'Set your site\'s link text color here.',
 		'label'       => 'Tertiary Text Color',
-		'slug'        => 'color-text-tertiary',
+		'slug'        => 'color-text-link',
 	),
 
 	array(
@@ -38,13 +38,6 @@ $colors = array(
 		'description' => 'Set your site\'s secondary background color here.',
 		'label'       => 'Secondary Background Color',
 		'slug'        => 'color-text-primary',
-	),
-
-	array(
-		'default'     => '#F6F6F6',
-		'description' => 'Set your site\'s tertiary background color here.',
-		'label'       => 'Tertiary Background Color',
-		'slug'        => 'color-text-tertiary',
 	),
 
 	array(

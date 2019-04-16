@@ -18,7 +18,7 @@ $brand-colors: (
 	'text': (
 		'primary': var(--color-text-primary),
 		'secondary': var(--color-text-secondary),
-		'tertiary': var(--color-text-tertiary),
+		'link': var(--color-text-link),
 		'white':	var(--color-text-white),
 		'black':	var(--color-text-black),
 	),
@@ -26,7 +26,6 @@ $brand-colors: (
 	'background': (
 		'primary': var(--color-background-primary),
 		'secondary': var(--color-background-secondary),
-		'tertiary': var(--color-background-tertiary),
 	),
 
 	'social':(
