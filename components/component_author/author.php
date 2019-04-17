@@ -10,7 +10,7 @@
 	$socialTitle = $authorName.', '.$authorTitle;
 ?>
 
-<article class="component-row padding-small-top-5x padding-small-bottom-7x">
+<article class="component-row padding-top-5x padding-bottom-7x">
 	<div class="pure-g component-row-wide component-alignment-top">
 		<div class="column flex-g-lg-2-12 flex-g-md-2-12 flex-g-sm-0-12"></div>
 		<div class="column flex-g-lg-8-12 flex-g-md-8-12 flex-g-sm-12-12">

@@ -82,7 +82,7 @@ function render_feed_block($attributes) {
 		$feedItems  .= '<div class="feed-item">'.$thumbnail.'<div class="feed-info margin-bottom-2x"><span class="eyebrow display-block margin-bottom-1x">'.$displayCategories.'</span><h2 class="headline6 margin-bottom-1x">'.get_the_title($postID).'</h2><p class="margin-bottom-1x">'.$excerpt.'</p><span class="eyebrow display-block margin-bottom-1x">'.get_the_time('F j, Y').'</span></div></div>';
 	}
 
-	$output = "<div class=\"component-archive-feed {$class}\"><div class=\"feed-items load-items padding-small-bottom-3x\">{$feedItems}</div>";
+	$output = "<div class=\"component-archive-feed {$class}\"><div class=\"feed-items load-items padding-bottom-3x\">{$feedItems}</div>";
 
 	return $output;
 }

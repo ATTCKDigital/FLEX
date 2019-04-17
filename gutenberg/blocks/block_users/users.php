@@ -51,7 +51,7 @@ function render_users_block($attributes) {
 
 
 
-	$output = "<div class=\"component-archive-feed {$class}\"><div class=\"feed-items load-items padding-small-bottom-3x\"></div>";
+	$output = "<div class=\"component-archive-feed {$class}\"><div class=\"feed-items load-items padding-bottom-3x\"></div>";
 
 	return $output;
 }
