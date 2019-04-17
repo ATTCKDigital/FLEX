@@ -41,7 +41,7 @@
 .component-row {
 	z-index: 2;
 
-	@include mediaquery-max(medium) {
+	@include mediaquery-max(tablet-portrait) {
 		// reverse media query to avoid extra css
 		&.component-row-reverse-mobile {
 			.pure-g {
@@ -71,14 +71,14 @@
 	position: relative;
 	width: 100%;
 
-	@include mediaquery(xl) {
+	@include mediaquery(desktop)  {
 		padding: 0;
 	}
 
 }
 
 // Remove padding on a row without making it full bleed
-@include mediaquery-max(xl) {
+@include mediaquery-max(desktop) {
 	// reverse media query to avoid extra css
 	.component-row-no-padding {
 		.component-row-wide {
@@ -105,7 +105,7 @@
 	height: $small-row-mobile;
 	overflow: hidden;
 
-	@include mediaquery(medium) {
+	@include mediaquery(tablet-portrait)  {
 		height: $small-row;
 
 	}
@@ -114,7 +114,7 @@
 		min-height: $small-row-mobile;
 		height: auto;
 
-		@include mediaquery(medium) {
+		@include mediaquery(tablet-portrait)  {
 			min-height: $small-row;
 			height: auto;
 
@@ -126,7 +126,7 @@
 	height: $medium-row-mobile;
 	overflow: hidden;
 
-	@include mediaquery(medium) {
+	@include mediaquery(tablet-portrait)  {
 		height: $medium-row;
 
 	}
@@ -135,7 +135,7 @@
 		min-height: $medium-row-mobile;
 		height: auto;
 
-		@include mediaquery(medium) {
+		@include mediaquery(tablet-portrait)  {
 			min-height: $medium-row;
 			height: auto;
 
@@ -147,7 +147,7 @@
 	height: $large-row-mobile;
 	overflow: hidden;
 
-	@include mediaquery(medium) {
+	@include mediaquery(tablet-portrait)  {
 		height: $large-row;
 
 	}
@@ -156,7 +156,7 @@
 		min-height: $large-row-mobile;
 		height: auto;
 
-		@include mediaquery(medium) {
+		@include mediaquery(tablet-portrait)  {
 			min-height: $large-row;
 			height: auto;
 		}

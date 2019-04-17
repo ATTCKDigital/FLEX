@@ -14,7 +14,7 @@
 	vertical-align: top;
 	width: 100px;
 
-	@include mediaquery(xl) {
+	@include mediaquery(desktop)  {
 		&:hover {
 			opacity: .8;
 		}
@@ -52,7 +52,7 @@
 	opacity: 1;
 	transition: opacity .3s ease-out;
 
-	@include mediaquery(large) {
+	@include mediaquery(tablet-landscape)  {
 		&:hover {
 			opacity: .7;
 		}
@@ -105,7 +105,7 @@
 	}
 
 	&:hover {
-		@include mediaquery(large) {
+		@include mediaquery(tablet-landscape)  {
 			opacity: .5;
 		}
 	}
@@ -119,7 +119,7 @@
 	height: 70px;
 	width: 70px;
 
-	@include mediaquery(large) {
+	@include mediaquery(tablet-landscape)  {
 		display: none;
 	}
 }
@@ -235,7 +235,7 @@
 		transition: top .4s ease-out;
 	}
 
-	@include mediaquery(xl) {
+	@include mediaquery(desktop)  {
 		&:hover:before {
 			top: 3px;
 		}

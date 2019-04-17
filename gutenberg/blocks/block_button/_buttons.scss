@@ -20,7 +20,7 @@
 		text-align: center;
 		z-index: 2;
 
-		@include mediaquery(xl){
+		@include mediaquery(desktop) {
 			&:hover {
 				color: $black;
 				background: $white;
@@ -36,7 +36,7 @@
 			color: $black;
 			background: color('background', 'secondary');
 			
-			@include mediaquery(xl) {
+			@include mediaquery(desktop)  {
 				&:hover {
 					color: $white;
 					background: $black;
@@ -48,7 +48,7 @@
 			color: $black;
 			background: $white;
 			
-			@include mediaquery(xl) {
+			@include mediaquery(desktop)  {
 				&:hover {
 					color: $white;
 					background: $black;
@@ -63,7 +63,7 @@
 			opacity: 1;
 			transition: opacity .3s ease-out;
 			
-			@include mediaquery(xl) {
+			@include mediaquery(desktop)  {
 				&:hover {
 					opacity: .5;
 				}

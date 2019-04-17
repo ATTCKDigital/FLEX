@@ -88,13 +88,13 @@ $xPositions: left, right, center;
 	}
 
 	.component-#{$position}-border-small {
-		@include mediaquery-max(medium) {
+		@include mediaquery-max(tablet-portrait) {
 			border-#{$position}: 1px solid $borderColor;
 		}
 	}
 
 	.component-#{$position}-border-medium-up {
-		@include mediaquery(medium) {
+		@include mediaquery(tablet-portrait)  {
 			border-#{$position}: 1px solid $borderColor;
 		}
 	}

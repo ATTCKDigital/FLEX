@@ -758,7 +758,7 @@
     }
 }
 
-@include mediaquery(xl) {
+@include mediaquery(desktop)  {
     .pure-u-xl-1,
     .pure-u-xl-1-1,
     .pure-u-xl-1-2,

@@ -27,7 +27,7 @@ body.debug {
 		}
 	}
 
-	@include mediaquery(medium) {
+	@include mediaquery(tablet-portrait)  {
 		border-color: blue;
 
 		.breakpoint.medium {
@@ -35,7 +35,7 @@ body.debug {
 		}
 	}
 
-	@include mediaquery(large) {
+	@include mediaquery(tablet-landscape)  {
 		border-color: purple;
 
 		.breakpoint.large {
@@ -43,7 +43,7 @@ body.debug {
 		}
 	}
 
-	@include mediaquery(xl) {
+	@include mediaquery(desktop)  {
 		border-color: orange;
 
 		.breakpoint.xl {

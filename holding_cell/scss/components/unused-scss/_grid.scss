@@ -161,7 +161,7 @@
 				padding: $gap*5 $gap*12.5;
 			}
 
-			@include mediaquery(xl) {
+			@include mediaquery(desktop)  {
 				width: 475px;
 			}
 		}

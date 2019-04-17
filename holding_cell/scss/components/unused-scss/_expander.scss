@@ -911,7 +911,7 @@
 			bottom: 60px;
 		}
 
-		@include mediaquery(xl) {
+		@include mediaquery(desktop)  {
 			bottom: 0px;
 		}
 

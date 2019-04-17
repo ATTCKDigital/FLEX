@@ -10,24 +10,20 @@ $increment 					: 20;
 //gap and increment should be the same value. 2 variables are required, one without px
 
 // Breakpoints
-$small-breakpoint			: 0px;
-$medium-breakpoint			: 768px;
-$large-breakpoint			: 1024px;
-$xl-breakpoint				: 1100px;
-$xl2-breakpoint				: 1280px;
-$xl3-breakpoint				: 1440px;
-$xl4-breakpoint				: 1500px;
-$xl5-breakpoint				: 1700px;
+$phone						: 569px;
+$tablet-portrait			: 768px;
+$tablet-landscape			: 1024px;
+$desktop					: 1100px;
+$xl							: 1280px;
+$xl2						: 1440px;
 
 // Max width breakpoints
-$max-small-breakpoint		: 568px;
-$max-medium-breakpoint		: 767px;
-$max-large-breakpoint		: 1023px;
-$max-xl-breakpoint			: 1099px;
-$max-2xl-breakpoint			: 1279px;
-$max-3xl-breakpoint			: 1439px;
-$max-4xl-breakpoint			: 1499px;
-$max-5xl-breakpoint			: 1699px;
+$max-phone					: 569px;
+$max-tablet-portrait		: 768px;
+$max-tablet-landscape		: 1024px;
+$max-desktop				: 1100px;
+$max-xl						: 1280px;
+$max-xl2					: 1440px;
 
 //Fixed row heights
 $small-row-mobile			: 50vh;
