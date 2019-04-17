@@ -42,14 +42,12 @@
 
 	<?php //see global-events.js for usage ?>
 	<div class="breakpoint global"></div>
-	<div class="breakpoint small"></div>
-	<div class="breakpoint medium"></div>
-	<div class="breakpoint large"></div>
+	<div class="breakpoint phone"></div>
+	<div class="breakpoint tablet-portrait"></div>
+	<div class="breakpoint tablet-landscape"></div>
+	<div class="breakpoint desktop"></div>
 	<div class="breakpoint xl"></div>
-	<div class="breakpoint 2xl"></div>
-	<div class="breakpoint 3xl"></div>
-	<div class="breakpoint 4xl"></div>
-	<div class="breakpoint 5xl"></div>
+	<div class="breakpoint xl2"></div>
 	<div class="breakpoint-current"></div>
 
 

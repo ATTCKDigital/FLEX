@@ -19,12 +19,12 @@ $xl							: 1280px;
 $xl2						: 1440px;
 
 // Max width breakpoints
-$max-phone					: 569px;
-$max-tablet-portrait		: 768px;
-$max-tablet-landscape		: 1024px;
-$max-desktop				: 1100px;
-$max-xl						: 1280px;
-$max-xl2					: 1440px;
+$max-phone					: 568px;
+$max-tablet-portrait		: 767px;
+$max-tablet-landscape		: 1023px;
+$max-desktop				: 1099px;
+$max-xl						: 1279px;
+$max-xl2					: 1439px;
 
 //Fixed row heights
 $small-row-mobile			: 50vh;
@@ -39,51 +39,57 @@ $large-row					: 700px;
 // Add fonts sizes for each break point. Font sizes will be converted to rems. 
 // Usage:  @include font-size($font-size)
 $font-size-headline1: (
-	'small'		: 64px,
-	'medium'	: 64px,
-	'large'		: 96px,
-	'xl'		: 96px,
-	'xl2'		: 96px,
+	'phone'				: 64px,
+	'tablet-portrait'	: 64px,
+	'tablet-landscape'	: 96px,
+	'desktop'			: 96px,
+	'xl'				: 96px,
+	'xl2'				: 96px,
 );
 
 $font-size-headline2: (
-	'small'		: 64px,
-	'medium'	: 64px,
-	'large'		: 48px,
-	'xl'		: 48px,
-	'xl2'		: 48px,
+	'phone'				: 64px,
+	'tablet-portrait'	: 64px,
+	'tablet-landscape'	: 48px,
+	'desktop'			: 48px,
+	'xl'				: 48px,
+	'xl2'				: 48px,
 );
 
 $font-size-headline3: (
-	'small'		: 34px,
-	'medium'	: 34px,
-	'large'		: 48px,
-	'xl'		: 48px,
-	'xl2'		: 48px,
+	'phone'				: 34px,
+	'tablet-portrait'	: 34px,
+	'tablet-landscape'	: 48px,
+	'desktop'			: 48px,
+	'xl'				: 48px,
+	'xl2'				: 48px,
 );
 
 $font-size-headline4: (
-	'small'		: 24px,
-	'medium'	: 24px,
-	'large'		: 34px,
-	'xl'		: 34px,
-	'xl2'		: 34px,
+	'phone'				: 24px,
+	'tablet-portrait'	: 24px,
+	'tablet-landscape'	: 34px,
+	'desktop'			: 34px,
+	'xl'				: 34px,
+	'xl2'				: 34px,
 );
 
 $font-size-headline5: (
-	'small'		: 24px,
-	'medium'	: 24px,
-	'large'		: 20px,
-	'xl'		: 20px,
-	'xl2'		: 20px,
+	'phone'				: 24px,
+	'tablet-portrait'	: 24px,
+	'tablet-landscape'	: 24px,
+	'desktop'			: 24px,
+	'xl'				: 24px,
+	'xl2'				: 24px,
 );
 
 $font-size-headline6: (
-	'small'		: 20px,
-	'medium'	: 20px,
-	'large'		: 20px,
-	'xl'		: 20px,
-	'xl2'		: 20px,
+	'phone'				: 20px,
+	'tablet-portrait'	: 20px,
+	'tablet-landscape'	: 20px,
+	'desktop'			: 20px,
+	'xl'				: 20px,
+	'xl2'				: 20px,
 );
 
 @mixin font-size($fs-map) {
