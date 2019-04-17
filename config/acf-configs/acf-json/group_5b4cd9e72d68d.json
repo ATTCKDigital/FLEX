@@ -450,7 +450,7 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "theme-global-settings"
+                "value": "acf-options-global-settings"
             }
         ]
     ],
@@ -462,5 +462,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1554218645
+    "modified": 1555543304
 }
