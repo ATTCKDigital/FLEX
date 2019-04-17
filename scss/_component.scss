@@ -41,7 +41,7 @@
 .component-row {
 	z-index: 2;
 
-	@include mediaquery-max(tablet-portrait) {
+	@include mediaquery-max-width(tablet-portrait) {
 		// reverse media query to avoid extra css
 		&.component-row-reverse-mobile {
 			.pure-g {
@@ -78,7 +78,7 @@
 }
 
 // Remove padding on a row without making it full bleed
-@include mediaquery-max(desktop) {
+@include mediaquery-max-width(desktop) {
 	// reverse media query to avoid extra css
 	.component-row-no-padding {
 		.component-row-wide {

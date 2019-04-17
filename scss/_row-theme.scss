@@ -88,7 +88,7 @@ $xPositions: left, right, center;
 	}
 
 	.component-#{$position}-border-small {
-		@include mediaquery-max(tablet-portrait) {
+		@include mediaquery-max-width(tablet-portrait) {
 			border-#{$position}: 1px solid $borderColor;
 		}
 	}

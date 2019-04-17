@@ -1,5 +1,5 @@
 .component-text{
-	@include mediaquery-max(tablet-landscape) {
+	@include mediaquery-max-width(tablet-landscape) {
 		padding: $gap $gap 0 $gap;
 	}
 

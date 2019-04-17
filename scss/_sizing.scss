@@ -5,7 +5,7 @@ $siteWidth					: 1024px;
 $navMobileHeight			: 70px;
 $navHeight					: 120px;
 $positions					: top, left, bottom, right;
-$screensizes				: small, medium, large, xl, 2xl, 3xl, 4xl, 5xl;
+$screensizes				: small, medium, large, xl, xl2;
 $increment 					: 20;
 //gap and increment should be the same value. 2 variables are required, one without px
 
@@ -42,10 +42,7 @@ $font-size-headline1: (
 	'medium'	: 64px,
 	'large'		: 96px,
 	'xl'		: 96px,
-	'2xl'		: 96px,
-	'3xl'		: 96px,
-	'4xl'		: 96px,
-	'5xl'		: 96px
+	'xl2'		: 96px,
 );
 
 $font-size-headline2: (
@@ -53,10 +50,7 @@ $font-size-headline2: (
 	'medium'	: 64px,
 	'large'		: 48px,
 	'xl'		: 48px,
-	'2xl'		: 48px,
-	'3xl'		: 48px,
-	'4xl'		: 48px,
-	'5xl'		: 48px
+	'xl2'		: 48px,
 );
 
 $font-size-headline3: (
@@ -64,10 +58,7 @@ $font-size-headline3: (
 	'medium'	: 34px,
 	'large'		: 48px,
 	'xl'		: 48px,
-	'2xl'		: 48px,
-	'3xl'		: 48px,
-	'4xl'		: 48px,
-	'5xl'		: 48px
+	'xl2'		: 48px,
 );
 
 $font-size-headline4: (
@@ -75,10 +66,7 @@ $font-size-headline4: (
 	'medium'	: 24px,
 	'large'		: 34px,
 	'xl'		: 34px,
-	'2xl'		: 34px,
-	'3xl'		: 34px,
-	'4xl'		: 34px,
-	'5xl'		: 34px
+	'xl2'		: 34px,
 );
 
 $font-size-headline5: (
@@ -86,10 +74,7 @@ $font-size-headline5: (
 	'medium'	: 24px,
 	'large'		: 20px,
 	'xl'		: 20px,
-	'2xl'		: 20px,
-	'3xl'		: 20px,
-	'4xl'		: 20px,
-	'5xl'		: 20px
+	'xl2'		: 20px,
 );
 
 $font-size-headline6: (
@@ -97,10 +82,7 @@ $font-size-headline6: (
 	'medium'	: 20px,
 	'large'		: 20px,
 	'xl'		: 20px,
-	'2xl'		: 20px,
-	'3xl'		: 20px,
-	'4xl'		: 20px,
-	'5xl'		: 20px
+	'xl2'		: 20px,
 );
 
 @mixin font-size($fs-map) {

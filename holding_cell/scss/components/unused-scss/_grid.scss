@@ -5,7 +5,7 @@
 	}
 
 	&.flex-left {
-		@include mediaquery-max(tablet-portrait) {
+		@include mediaquery-max-width(tablet-portrait) {
 			@include flexbox(flex);
 			@include flexbox-direction(column-reverse);
 			@include flexbox-wrap(wrap);

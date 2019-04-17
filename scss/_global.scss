@@ -39,7 +39,7 @@ body {
 
 	&.popupOpen {
 		//prevents background from scrolling when PopUp is activated, optional 
-		@include mediaquery-max(tablet-portrait) {
+		@include mediaquery-max-width(tablet-portrait) {
 			position: fixed;
 			top: 0;
 			left: 0;

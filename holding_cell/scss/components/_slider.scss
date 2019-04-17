@@ -1,7 +1,7 @@
 /****** SLIDER COMPONENT ******/
 .component-slider {
 
-	@include mediaquery-max(tablet-landscape) {
+	@include mediaquery-max-width(tablet-landscape) {
 		padding: $gap;
 	}
 
@@ -11,7 +11,7 @@
 		height: 0;
 		overflow:hidden;
 
-		@include mediaquery-max(tablet-landscape) {
+		@include mediaquery-max-width(tablet-landscape) {
 			margin-top: $gap;
 		}
 

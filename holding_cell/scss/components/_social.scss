@@ -1,6 +1,6 @@
 /****** SOCIAL COMPONENT ******/
 .component-social {
-	@include mediaquery-max(tablet-landscape) {
+	@include mediaquery-max-width(tablet-landscape) {
 		padding: $gap $gap 2px $gap;
 	}
 

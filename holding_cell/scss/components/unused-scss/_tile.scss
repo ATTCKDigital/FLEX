@@ -40,7 +40,7 @@
 			transform: rotate(135deg);
 			transition: transform 300ms ease-out, top 300ms ease-out;
 
-			@include mediaquery-max(desktop) {
+			@include mediaquery-max-width(desktop) {
 				top: 0.3em;
 			}
 		}
@@ -60,7 +60,7 @@
 		transition: max-height 1s ease-in-out;
 		width: 80%;
 
-		@include mediaquery-max(desktop) {
+		@include mediaquery-max-width(desktop) {
 			margin: 0 0 3.5em 0;
 			max-height: 55px;
 			//padding: 15px 20px;
@@ -71,7 +71,7 @@
 			display: flex;
 			align-items: center;
 
-			@include mediaquery-max(desktop) {
+			@include mediaquery-max-width(desktop) {
 				height: 55px;
 			}
 		}
@@ -91,7 +91,7 @@
 		transition: transform 300ms ease-out, top 300ms ease-out;;
 
 
-		@include mediaquery-max(desktop) {
+		@include mediaquery-max-width(desktop) {
 			top: 2px;
 		}
 

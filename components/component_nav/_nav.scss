@@ -56,7 +56,7 @@
 	}
 
 	.main-nav {
-		@include mediaquery-max(tablet-landscape) {
+		@include mediaquery-max-width(tablet-landscape) {
 			//Mobile only mediaquery so less overrides are necessary
 			position: absolute;
 			top: 0;
@@ -80,7 +80,7 @@
 	}
 
 	.menu-items {
-		@include mediaquery-max(tablet-landscape) {
+		@include mediaquery-max-width(tablet-landscape) {
 			//Mobile only mediaquery so less overrides are necessary
 			text-align: center;
 		}
@@ -96,7 +96,7 @@
 		position: relative;
 		@include primary-bold;
 
-		@include mediaquery-max(tablet-landscape) {
+		@include mediaquery-max-width(tablet-landscape) {
 			//Mobile only mediaquery so less overrides are necessary
 			font-size: px-to-rem(18px);
 			margin-bottom: $gap;

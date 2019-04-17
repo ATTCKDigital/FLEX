@@ -40,7 +40,7 @@
 		display: none;
 		// @include verticalCenter;
 		// @include flexbox-justify-content(center);
-		@include mediaquery-max(tablet-landscape) {
+		@include mediaquery-max-width(tablet-landscape) {
 			overflow: scroll;
 			padding: $gap*3 0;
 		}
@@ -111,7 +111,7 @@
 
 
 				.staff-bio-inner {
-					@include mediaquery-max(tablet-landscape) {
+					@include mediaquery-max-width(tablet-landscape) {
 						overflow: scroll;
 						height: calc(100% + 40px);
 						width: calc(100% + 20px);

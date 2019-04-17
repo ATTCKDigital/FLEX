@@ -1,7 +1,7 @@
 /*** Hide classes ***/
 
 .small-hidden {
-	@include mediaquery-max(tablet-portrait) {
+	@include mediaquery-max-width(tablet-portrait) {
 		display: none;
 	}
 
@@ -11,7 +11,7 @@
 }
 
 .medium-hidden {
-	@include mediaquery-max(tablet-portrait) {
+	@include mediaquery-max-width(tablet-portrait) {
 		display: inherit;
 	}
 
@@ -25,7 +25,7 @@
 }
 
 .large-hidden {
-	@include mediaquery-max(tablet-landscape) {
+	@include mediaquery-max-width(tablet-landscape) {
 		display: inherit;
 	}
 
