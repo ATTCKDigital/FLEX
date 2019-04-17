@@ -8,7 +8,7 @@
 		@for $i from 0 through 50 {
 			@if $i % 1 == 0 {
 
-				@if $screensize != global {
+				@if $screensize != none {
 					.padding-#{$screensize}-#{$position}-#{$i}x { 
 						@include mediaquery(#{$screensize}) {
 							padding-#{$position}: #{$i * $increment}px;
@@ -16,9 +16,9 @@
 					}
 				}
 
-				@if $screensize == global {
+				@if $screensize == none {
 					//creates a global padding class that has no screen size dependency
-					.padding-#{$screensize}-#{$position}-#{$i}x { 
+					.padding-#{$position}-#{$i}x { 
 						padding-#{$position}: #{$i * $increment}px;
 					}
 				} 

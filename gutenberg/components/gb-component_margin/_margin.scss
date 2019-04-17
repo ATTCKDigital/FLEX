@@ -8,8 +8,7 @@
 	@each $screensize in $screensizes{
 		@for $i from 0 through 50 {
 			@if $i % 1 == 0 {
-
-				@if $screensize != global {
+				@if $screensize != none {
 					.margin-#{$screensize}-#{$position}-#{$i}x { 
 						@include mediaquery(#{$screensize}) {
 							margin-#{$position}: #{$i * $increment}px;
@@ -17,9 +16,9 @@
 					}
 				}
 
-				@if $screensize == global {
+				@if $screensize == none {
 					//creates a global margin class that has no screen size dependency
-					.margin-#{$screensize}-#{$position}-#{$i}x { 
+					.margin-#{$position}-#{$i}x { 
 						margin-#{$position}: #{$i * $increment}px;
 					}
 				} 

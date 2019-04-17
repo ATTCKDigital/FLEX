@@ -13,7 +13,7 @@
 								$ID = get_the_ID();
 					?>
 							<div class="feed-item" data-post-id="<?= $ID;?>">
-								<div class="image-wrapper margin-small-bottom-1x<?php if(!has_post_thumbnail()) {echo ' no-image'; }?>">
+								<div class="image-wrapper margin-bottom-1x<?php if(!has_post_thumbnail()) {echo ' no-image'; }?>">
 									<a href="<?php the_permalink();?>">
 										<?php if(has_post_thumbnail()) { ?>
 											<?php the_post_thumbnail();?>
@@ -22,11 +22,11 @@
 										<?php } ?>
 									</a>
 								</div>
-								<div class="feed-info margin-small-bottom-2x">
-									<span class="eyebrow display-block margin-small-bottom-1x"><?php the_category(', '); ?></span>
-									<h2 class="headline6 margin-small-bottom-1x"><a href="<?php the_permalink();?>"><?php the_title();?></a></h2>
-									<p class="margin-small-bottom-1x"><?= excerpt(20);?></p>
-									<span class="eyebrow display-block margin-small-bottom-1x"><?php the_time('F j, Y');?></span>
+								<div class="feed-info margin-bottom-2x">
+									<span class="eyebrow display-block margin-bottom-1x"><?php the_category(', '); ?></span>
+									<h2 class="headline6 margin-bottom-1x"><a href="<?php the_permalink();?>"><?php the_title();?></a></h2>
+									<p class="margin-bottom-1x"><?= excerpt(20);?></p>
+									<span class="eyebrow display-block margin-bottom-1x"><?php the_time('F j, Y');?></span>
 								</div>
 							</div>
 					<?php

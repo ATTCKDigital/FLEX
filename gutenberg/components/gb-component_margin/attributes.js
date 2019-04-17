@@ -3,52 +3,52 @@
  * @type {Object}
  */
 const MarginOptionsAttributes = {
-	marginSmallTop: {
+	marginTop: {
 		type: 'string',
 	},
-	marginSmallRight: {
+	marginRight: {
 		type: 'string',
 	},
-	marginSmallBottom: {
+	marginBottom: {
 		type: 'string',
 	},	
-	marginSmallLeft: {
+	marginLeft: {
 		type: 'string',
 	},
-	marginMediumTop: {
+	marginTabletPortraitTop: {
 		type: 'string',
 	},
-	marginMediumRight: {
+	marginTabletPortraitRight: {
 		type: 'string',
 	},
-	marginMediumBottom: {
+	marginTabletPortraitBottom: {
 		type: 'string',
 	},	
-	marginMediumLeft: {
+	marginTabletPortraitLeft: {
 		type: 'string',
 	},
-	marginLargeTop: {
+	marginTabletLandscapeTop: {
 		type: 'string',
 	},
-	marginLargeRight: {
+	marginTabletLandscapeRight: {
 		type: 'string',
 	},
-	marginLargeBottom: {
+	marginTabletLandscapeBottom: {
 		type: 'string',
 	},	
-	marginLargeLeft: {
+	marginTabletLandscapeLeft: {
 		type: 'string',
 	},
-	marginXLTop: {
+	marginDesktopTop: {
 		type: 'string',
 	},
-	marginXLRight: {
+	marginDesktopRight: {
 		type: 'string',
 	},
-	marginXLBottom: {
+	marginDesktopBottom: {
 		type: 'string',
 	},	
-	marginXLLeft: {
+	marginDesktopLeft: {
 		type: 'string',
 	},
 };

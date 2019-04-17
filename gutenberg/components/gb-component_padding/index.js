@@ -32,22 +32,22 @@ export {
 };
 
 function PaddingOptions( props ) {
-	const setPaddingSmallTop = value => props.setAttributes( { paddingSmallTop: value } );
-	const setPaddingSmallRight = value => props.setAttributes( { paddingSmallRight: value } );
-	const setPaddingSmallBottom = value => props.setAttributes( { paddingSmallBottom: value } );
-	const setPaddingSmallLeft = value => props.setAttributes( { paddingSmallLeft: value } );
-	const setPaddingMediumTop = value => props.setAttributes( { paddingMediumTop: value } );
-	const setPaddingMediumRight = value => props.setAttributes( { paddingMediumRight: value } );
-	const setPaddingMediumBottom = value => props.setAttributes( { paddingMediumBottom: value } );
-	const setPaddingMediumLeft = value => props.setAttributes( { paddingMediumLeft: value } );
-	const setPaddingLargeTop = value => props.setAttributes( { paddingLargeTop: value } );
-	const setPaddingLargeRight = value => props.setAttributes( { paddingLargeRight: value } );
-	const setPaddingLargeBottom = value => props.setAttributes( { paddingLargeBottom: value } );
-	const setPaddingLargeLeft = value => props.setAttributes( { paddingLargeLeft: value } );
-	const setPaddingXLTop = value => props.setAttributes( { paddingXLTop: value } );
-	const setPaddingXLRight = value => props.setAttributes( { paddingXLRight: value } );
-	const setPaddingXLBottom = value => props.setAttributes( { paddingXLBottom: value } );
-	const setPaddingXLLeft = value => props.setAttributes( { paddingXLLeft: value } );
+	const setPaddingTop = value => props.setAttributes( { paddingTop: value } );
+	const setPaddingRight = value => props.setAttributes( { paddingRight: value } );
+	const setPaddingBottom = value => props.setAttributes( { paddingBottom: value } );
+	const setPaddingLeft = value => props.setAttributes( { paddingLeft: value } );
+	const setPaddingTabletPortraitTop = value => props.setAttributes( { paddingTabletPortraitTop: value } );
+	const setPaddingTabletPortraitRight = value => props.setAttributes( { paddingTabletPortraitRight: value } );
+	const setPaddingTabletPortraitBottom = value => props.setAttributes( { paddingTabletPortraitBottom: value } );
+	const setPaddingTabletPortraitLeft = value => props.setAttributes( { paddingTabletPortraitLeft: value } );
+	const setPaddingTabletLandscapeTop = value => props.setAttributes( { paddingTabletLandscapeTop: value } );
+	const setPaddingTabletLandscapeRight = value => props.setAttributes( { paddingTabletLandscapeRight: value } );
+	const setPaddingTabletLandscapeBottom = value => props.setAttributes( { paddingTabletLandscapeBottom: value } );
+	const setPaddingTabletLandscapeLeft = value => props.setAttributes( { paddingTabletLandscapeLeft: value } );
+	const setPaddingDesktopTop = value => props.setAttributes( { paddingDesktopTop: value } );
+	const setPaddingDesktopRight = value => props.setAttributes( { paddingDesktopRight: value } );
+	const setPaddingDesktopBottom = value => props.setAttributes( { paddingDesktopBottom: value } );
+	const setPaddingDesktopLeft = value => props.setAttributes( { paddingDesktopLeft: value } );
 
 	const paddingSelect = () => {
 
@@ -59,8 +59,8 @@ function PaddingOptions( props ) {
 						<SelectControl
 							key="padding-small-top"
 							label={ __( 'Top' ) }
-							value={ props.attributes.paddingSmallTop ? props.attributes.paddingSmallTop : '' }
-							onChange={ setPaddingSmallTop }
+							value={ props.attributes.paddingTop ? props.attributes.paddingTop : '' }
+							onChange={ setPaddingTop }
 							options={ [
 								{
 									label: __( '0' ),
@@ -134,8 +134,8 @@ function PaddingOptions( props ) {
 						<SelectControl
 							key="padding-small-right"
 							label={ __( 'Right' ) }
-							value={ props.attributes.paddingSmallRight ? props.attributes.paddingSmallRight : '' }
-							onChange={ setPaddingSmallRight }
+							value={ props.attributes.paddingRight ? props.attributes.paddingRight : '' }
+							onChange={ setPaddingRight }
 													options={ [
 								{
 									label: __( '0' ),
@@ -209,8 +209,8 @@ function PaddingOptions( props ) {
 						<SelectControl
 							key="padding-small-bottom"
 							label={ __( 'Bottom' ) }
-							value={ props.attributes.paddingSmallBottom ? props.attributes.paddingSmallBottom : '' }
-							onChange={ setPaddingSmallBottom }
+							value={ props.attributes.paddingBottom ? props.attributes.paddingBottom : '' }
+							onChange={ setPaddingBottom }
 													options={ [
 								{
 									label: __( '0' ),
@@ -284,8 +284,8 @@ function PaddingOptions( props ) {
 						<SelectControl
 							key="padding-small-left"
 							label={ __( 'Left' ) }
-							value={ props.attributes.paddingSmallLeft ? props.attributes.paddingSmallLeft : '' }
-							onChange={ setPaddingSmallLeft }
+							value={ props.attributes.paddingLeft ? props.attributes.paddingLeft : '' }
+							onChange={ setPaddingLeft }
 													options={ [
 								{
 									label: __( '0' ),
@@ -362,8 +362,8 @@ function PaddingOptions( props ) {
 						<SelectControl
 							key="padding-medium-top"
 							label={ __( 'Top' ) }
-							value={ props.attributes.paddingMediumTop ? props.attributes.paddingMediumTop : '' }
-							onChange={ setPaddingMediumTop }
+							value={ props.attributes.paddingTabletPortraitTop ? props.attributes.paddingTabletPortraitTop : '' }
+							onChange={ setPaddingTabletPortraitTop }
 							options={ [
 								{
 									label: __( '0' ),
@@ -437,8 +437,8 @@ function PaddingOptions( props ) {
 						<SelectControl
 							key="padding-medium-right"
 							label={ __( 'Right' ) }
-							value={ props.attributes.paddingMediumRight ? props.attributes.paddingMediumRight : '' }
-							onChange={ setPaddingMediumRight }
+							value={ props.attributes.paddingTabletPortraitRight ? props.attributes.paddingTabletPortraitRight : '' }
+							onChange={ setPaddingTabletPortraitRight }
 													options={ [
 								{
 									label: __( '0' ),
@@ -512,8 +512,8 @@ function PaddingOptions( props ) {
 						<SelectControl
 							key="padding-medium-bottom"
 							label={ __( 'Bottom' ) }
-							value={ props.attributes.paddingMediumBottom ? props.attributes.paddingMediumBottom : '' }
-							onChange={ setPaddingMediumBottom }
+							value={ props.attributes.paddingTabletPortraitBottom ? props.attributes.paddingTabletPortraitBottom : '' }
+							onChange={ setPaddingTabletPortraitBottom }
 													options={ [
 								{
 									label: __( '0' ),
@@ -587,8 +587,8 @@ function PaddingOptions( props ) {
 						<SelectControl
 							key="padding-medium-left"
 							label={ __( 'Left' ) }
-							value={ props.attributes.paddingMediumLeft ? props.attributes.paddingMediumLeft : '' }
-							onChange={ setPaddingMediumLeft }
+							value={ props.attributes.paddingTabletPortraitLeft ? props.attributes.paddingTabletPortraitLeft : '' }
+							onChange={ setPaddingTabletPortraitLeft }
 													options={ [
 								{
 									label: __( '0' ),
@@ -665,8 +665,8 @@ function PaddingOptions( props ) {
 						<SelectControl
 							key="padding-large-top"
 							label={ __( 'Top' ) }
-							value={ props.attributes.paddingLargeTop ? props.attributes.paddingLargeTop : '' }
-							onChange={ setPaddingLargeTop }
+							value={ props.attributes.paddingTabletLandscapeTop ? props.attributes.paddingTabletLandscapeTop : '' }
+							onChange={ setPaddingTabletLandscapeTop }
 							options={ [
 								{
 									label: __( '0' ),
@@ -740,8 +740,8 @@ function PaddingOptions( props ) {
 						<SelectControl
 							key="padding-large-right"
 							label={ __( 'Right' ) }
-							value={ props.attributes.paddingLargeRight ? props.attributes.paddingLargeRight : '' }
-							onChange={ setPaddingLargeRight }
+							value={ props.attributes.paddingTabletLandscapeRight ? props.attributes.paddingTabletLandscapeRight : '' }
+							onChange={ setPaddingTabletLandscapeRight }
 													options={ [
 								{
 									label: __( '0' ),
@@ -815,8 +815,8 @@ function PaddingOptions( props ) {
 						<SelectControl
 							key="padding-large-bottom"
 							label={ __( 'Bottom' ) }
-							value={ props.attributes.paddingLargeBottom ? props.attributes.paddingLargeBottom : '' }
-							onChange={ setPaddingLargeBottom }
+							value={ props.attributes.paddingTabletLandscapeBottom ? props.attributes.paddingTabletLandscapeBottom : '' }
+							onChange={ setPaddingTabletLandscapeBottom }
 													options={ [
 								{
 									label: __( '0' ),
@@ -890,8 +890,8 @@ function PaddingOptions( props ) {
 						<SelectControl
 							key="padding-large-left"
 							label={ __( 'Left' ) }
-							value={ props.attributes.paddingLargeLeft ? props.attributes.paddingLargeLeft : '' }
-							onChange={ setPaddingLargeLeft }
+							value={ props.attributes.paddingTabletLandscapeLeft ? props.attributes.paddingTabletLandscapeLeft : '' }
+							onChange={ setPaddingTabletLandscapeLeft }
 													options={ [
 								{
 									label: __( '0' ),
@@ -968,8 +968,8 @@ function PaddingOptions( props ) {
 						<SelectControl
 							key="padding-xl-top"
 							label={ __( 'Top' ) }
-							value={ props.attributes.paddingXLTop ? props.attributes.paddingXLTop : '' }
-							onChange={ setPaddingXLTop }
+							value={ props.attributes.paddingDesktopTop ? props.attributes.paddingDesktopTop : '' }
+							onChange={ setPaddingDesktopTop }
 							options={ [
 								{
 									label: __( '0' ),
@@ -1043,8 +1043,8 @@ function PaddingOptions( props ) {
 						<SelectControl
 							key="padding-xl-right"
 							label={ __( 'Right' ) }
-							value={ props.attributes.paddingXLRight ? props.attributes.paddingXLRight : '' }
-							onChange={ setPaddingXLRight }
+							value={ props.attributes.paddingDesktopRight ? props.attributes.paddingDesktopRight : '' }
+							onChange={ setPaddingDesktopRight }
 													options={ [
 								{
 									label: __( '0' ),
@@ -1118,8 +1118,8 @@ function PaddingOptions( props ) {
 						<SelectControl
 							key="padding-xl-bottom"
 							label={ __( 'Bottom' ) }
-							value={ props.attributes.paddingXLBottom ? props.attributes.paddingXLBottom : '' }
-							onChange={ setPaddingXLBottom }
+							value={ props.attributes.paddingDesktopBottom ? props.attributes.paddingDesktopBottom : '' }
+							onChange={ setPaddingDesktopBottom }
 													options={ [
 								{
 									label: __( '0' ),
@@ -1193,8 +1193,8 @@ function PaddingOptions( props ) {
 						<SelectControl
 							key="padding-xl-left"
 							label={ __( 'Left' ) }
-							value={ props.attributes.paddingXLLeft ? props.attributes.paddingXLLeft : '' }
-							onChange={ setPaddingXLLeft }
+							value={ props.attributes.paddingDesktopLeft ? props.attributes.paddingDesktopLeft : '' }
+							onChange={ setPaddingDesktopLeft }
 													options={ [
 								{
 									label: __( '0' ),

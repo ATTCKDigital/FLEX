@@ -5,22 +5,22 @@
  */
 function MarginOptionsClasses( props ) {
 	return [
-		props.attributes.marginSmallTop ? `margin-small-top-${ props.attributes.marginSmallTop }` : null,
-		props.attributes.marginSmallRight ? `margin-small-right-${ props.attributes.marginSmallRight }` : null,
-		props.attributes.marginSmallLeft ? `margin-small-left-${ props.attributes.marginSmallLeft }` : null,
-		props.attributes.marginSmallBottom ? `margin-small-bottom-${ props.attributes.marginSmallBottom }` : null,
-		props.attributes.marginMediumTop ? `margin-medium-top-${ props.attributes.marginMediumTop }` : null,
-		props.attributes.marginMediumRight ? `margin-medium-right-${ props.attributes.marginMediumRight }` : null,
-		props.attributes.marginMediumLeft ? `margin-medium-left-${ props.attributes.marginMediumLeft }` : null,
-		props.attributes.marginMediumBottom ? `margin-medium-bottom-${ props.attributes.marginMediumBottom }` : null,
-		props.attributes.marginLargeTop ? `margin-large-top-${ props.attributes.marginLargeTop }` : null,
-		props.attributes.marginLargeRight ? `margin-large-right-${ props.attributes.marginLargeRight }` : null,
-		props.attributes.marginLargeLeft ? `margin-large-left-${ props.attributes.marginLargeLeft }` : null,
-		props.attributes.marginLargeBottom ? `margin-large-bottom-${ props.attributes.marginLargeBottom }` : null,
-		props.attributes.marginXLTop ? `margin-xl-top-${ props.attributes.marginXLTop }` : null,
-		props.attributes.marginXLRight ? `margin-xl-right-${ props.attributes.marginXLRight }` : null,
-		props.attributes.marginXLLeft ? `margin-xl-left-${ props.attributes.marginXLLeft }` : null,
-		props.attributes.marginXLBottom ? `margin-xl-bottom-${ props.attributes.marginXLBottom }` : null,
+		props.attributes.marginTop ? `margin-top-${ props.attributes.marginTop }` : null,
+		props.attributes.marginRight ? `margin-right-${ props.attributes.marginRight }` : null,
+		props.attributes.marginLeft ? `margin-left-${ props.attributes.marginLeft }` : null,
+		props.attributes.marginBottom ? `margin-bottom-${ props.attributes.marginBottom }` : null,
+		props.attributes.marginTabletPortraitTop ? `margin-tablet-portrait-top-${ props.attributes.marginTabletPortraitTop }` : null,
+		props.attributes.marginTabletPortraitRight ? `margin-tablet-portrait-right-${ props.attributes.marginTabletPortraitRight }` : null,
+		props.attributes.marginTabletPortraitLeft ? `margin-tablet-portrait-left-${ props.attributes.marginTabletPortraitLeft }` : null,
+		props.attributes.marginTabletPortraitBottom ? `margin-tablet-portrait-bottom-${ props.attributes.marginTabletPortraitBottom }` : null,
+		props.attributes.marginTabletLandscapeTop ? `margin-tablet-landscape-top-${ props.attributes.marginTabletLandscapeTop }` : null,
+		props.attributes.marginTabletLandscapeRight ? `margin-tablet-landscape-right-${ props.attributes.marginTabletLandscapeRight }` : null,
+		props.attributes.marginTabletLandscapeLeft ? `margin-tablet-landscape-left-${ props.attributes.marginTabletLandscapeLeft }` : null,
+		props.attributes.marginTabletLandscapeBottom ? `margin-tablet-landscape-bottom-${ props.attributes.marginTabletLandscapeBottom }` : null,
+		props.attributes.marginDesktopTop ? `margin-desktop-top-${ props.attributes.marginDesktopTop }` : null,
+		props.attributes.marginDesktopRight ? `margin-desktop-right-${ props.attributes.marginDesktopRight }` : null,
+		props.attributes.marginDesktopLeft ? `margin-desktop-left-${ props.attributes.marginDesktopLeft }` : null,
+		props.attributes.marginDesktopBottom ? `margin-desktop-bottom-${ props.attributes.marginDesktopBottom }` : null,
 
 	];
 }
