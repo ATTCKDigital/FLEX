@@ -18,7 +18,8 @@ function register_block_child() {
 			'category'			=> 'formatting',
 			'icon'				=> 'admin-comments',
 			'keywords'			=> array( 'testimonial', 'quote' ),
-			'parent'			=> ['flexlayout/row'],
+			'parent'			=> ['flexlayout/column'],
+			'mode'				=> 'edit'
 		));
 	}
 }

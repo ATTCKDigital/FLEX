@@ -55,6 +55,7 @@ add_filter('aljm_save_json', function($folders) {
 	// Get the list of registered blocks and sync the json for each one into it's component folder
 	$registerBlocks = FLEXLAYOUT_REGISTER_BLOCKS;
 
+
 	foreach ($registerBlocks as $registerBlock) {
 		// Find the block template file in the correct theme directory
 		// locate_template only works with files, not folders, so to ensure we get the folder from correct location we are filtering the path.
