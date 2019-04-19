@@ -8,6 +8,7 @@
 .component-alignment-bottom, .component-alignment-bottom .editor-block-list__layout {
 	display: flex;
 	align-items: flex-end;
+	align-content: flex-end;
 }
 
 //center align elements in a row
@@ -26,6 +27,7 @@
 .component-alignment-top, .component-alignment-top .editor-block-list__layout {
 	display: flex;
 	align-items: flex-start;
+	align-content: flex-start;
 }
 
 
