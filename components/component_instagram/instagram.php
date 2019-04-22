@@ -13,7 +13,7 @@
 	</div>
 	<?php if($this->ctaText){ ?>
 		<div class="ctas align-center margin-top-3x">
-			<a href="<?= $instagram;?>" target="_blank" class="button"><?= $this->ctaText;?></a>
+			<a href="<?= $instagram;?>" target="_blank" class="cta"><?= $this->ctaText;?></a>
 		</div>
 	<?php } ?>
 </div>

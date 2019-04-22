@@ -36,7 +36,7 @@
 				</div>
 				<?php if($this->maxPages > 1) { ?>
 					<div class="component-ctas align-center">
-						<span class="button loadMore"><?= $this->loadMoreText;?></span>
+						<span class="cta loadMore"><?= $this->loadMoreText;?></span>
 					</div>
 				<?php } ?>
 			</div>

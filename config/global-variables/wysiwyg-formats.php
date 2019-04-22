@@ -23,21 +23,21 @@ $style_formats = array(
 		array(  
 			'title' => 'Button Primary',  
 			'inline' => 'span',  
-			'classes' => 'button',
+			'classes' => 'cta',
 			'wrapper' => false,
 		),  
 
 		array(  
 			'title' => 'Button Secondary',  
 			'inline' => 'span',  
-			'classes' => 'button button-secondary',
+			'classes' => 'cta cta-secondary',
 			'wrapper' => false,
 		),  
 
 		array(  
 			'title' => 'Button Tertiary',  
 			'inline' => 'span',  
-			'classes' => 'button button-tertiary',
+			'classes' => 'cta cta-tertiary',
 			'wrapper' => false,
 		),
 );

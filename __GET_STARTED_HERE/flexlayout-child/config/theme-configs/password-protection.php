@@ -38,7 +38,7 @@ function flexlayout_password_form() {
 	
 	$form = '<div class="post-password-form"><form action="' . esc_url(site_url('wp-login.php?action=postpass', 'login_post')) . '" method="post">
 	' . __('<header class="form-header"><p class="margin-mobile-bottom-40">To view content, please enter password.</p>') . '
-	<div class="form-inner"><input name="post_password" id="' . $label . '" type="password" /><input type="submit" name="Submit" class="button" value="' . esc_attr__("Submit") . '" /></div>
+	<div class="form-inner"><input name="post_password" id="' . $label . '" type="password" /><input type="submit" name="Submit" class="cta" value="' . esc_attr__("Submit") . '" /></div>
 	</form></div>
 	';
 

@@ -79,10 +79,10 @@ export default registerBlockType(
 			...MarginOptionsAttributes
 		},
 		styles: [
-			{ name: 'button-primary', label: __( 'Default', 'block style' ), isDefault: true },
-			{ name: 'button-secondary', label: __( 'Secondary', 'block style' ) },
-			{ name: 'button-tertiary', label: __( 'Tertiary', 'block style' ) },
-			{ name: 'button-negative', label: __( 'Negative', 'block style' ) },
+			{ name: 'cta-primary', label: __( 'Default', 'block style' ), isDefault: true },
+			{ name: 'cta-secondary', label: __( 'Secondary', 'block style' ) },
+			{ name: 'cta-tertiary', label: __( 'Tertiary', 'block style' ) },
+			{ name: 'cta-negative', label: __( 'Negative', 'block style' ) },
 		],
 
 		edit: props => {

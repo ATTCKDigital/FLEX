@@ -1,23 +1,23 @@
 //Button styles for Gutenberg Editor
 .component-button-editor {
-	.button {
-		@extend .button;
+	.cta {
+		@extend .cta;
 
-		&.is-style-button-secondary {
-			@extend .button-secondary;
+		&.is-style-cta-secondary {
+			@extend .cta-secondary;
 		}
 
-		&.is-style-button-tertiary {
-			@extend .button-tertiary;
+		&.is-style-cta-tertiary {
+			@extend .cta-tertiary;
 		}
 
-		&.is-style-button-negative {
-			@extend .button-negative;
+		&.is-style-cta-negative {
+			@extend .cta-negative;
 		}
 	}
 
 	.wp-block-button__link {
-		@extend .button;
+		@extend .cta;
 		overflow: inherit;
 		border-radius: 0;
 	}
