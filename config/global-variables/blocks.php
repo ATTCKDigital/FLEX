@@ -18,6 +18,7 @@ $blocks = array(
 	'flexlayout/text',
 	'flexlayout/users',
 	'flexlayout/video',
+	'flexlayout/share'
 );
 
 
