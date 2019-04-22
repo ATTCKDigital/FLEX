@@ -9,18 +9,21 @@
 	display: flex;
 	align-items: flex-end;
 	align-content: flex-end;
+	height: 100%;
 }
 
 //center align elements in a row
 .component-alignment-center, .component-alignment-center .editor-block-list__layout {
 	display: flex;
 	align-items: center;
+	height: 100%;
 }
 
 //stretch elements in a row
 .component-alignment-stretch, .component-alignment-stretch .editor-block-list__layout {
 	display: flex;
 	align-items: stretch;
+	height: 100%;
 }
 
 //top align elements in a row
