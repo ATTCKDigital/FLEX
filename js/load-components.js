@@ -12,6 +12,7 @@ import Nav from '../components/component_nav/nav';
 import Share from '../components/component_share/share';
 import Video from '../gutenberg/blocks/block_video/play-video';
 import LoadMore from './load-more';
+import GDPR from '../components/component_footer/gdpr';
 
 //Project Specific
 const childComponents = FLEXLAYOUT.ChildComponents || {};
@@ -25,6 +26,7 @@ FLEXLAYOUT.Components = Object.assign({
 	'LoadMore': LoadMore,
 	'Share': Share,
 	'Video': Video,
+	'GDPR': GDPR,
 }, childComponents);
 
 FLEXLAYOUT.Loader = {};
