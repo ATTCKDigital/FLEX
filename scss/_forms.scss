@@ -107,11 +107,11 @@ label, .wpcf7-list-item-label, .wpcf7-checkbox .wpcf7-list-item-label {
 		display: none;
 
 		&:checked + .wpcf7-list-item-label:after {
-			background-color: color('background', 'primary');
+			background-color: $borderColor;
 		}
 
 		&:checked + .wpcf7-list-item-label:before {
-			background-color: color('background', 'secondary');
+			background-color: $borderColor;
 		}
 	}
 }
@@ -160,7 +160,7 @@ label, .wpcf7-list-item-label, .wpcf7-checkbox .wpcf7-list-item-label {
 		display: none;
 
 		&:checked + .wpcf7-list-item-label:after {
-			background-color: color('background', 'primary');
+			background-color: $borderColor;
 		}
 
 		&:checked + .wpcf7-list-item-label:before {

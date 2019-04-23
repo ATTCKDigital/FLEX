@@ -3,7 +3,7 @@
 	text-align: center;
 
 	.quote-text {
-		color: color('text', 'primary');
+		color: color('text', 'body');
 		font-size: px-to-rem(28px);
 		line-height: 1.43;
 		letter-spacing: .5px;
@@ -13,7 +13,7 @@
 		@include primary-bold;
 
 		&:before {
-			color: color('background', 'secondary');
+			color: color('brand', 'accent');
 			content: '\201C';
 			font-size: px-to-rem(60px);
 			left: -12px;
@@ -24,7 +24,7 @@
 
 		&:after {
 			bottom: -14px;
-			color: color('background', 'secondary');
+			color: color('brand', 'accent');
 			content: '\201D';
 			font-size: px-to-rem(60px);
 			line-height: .3;

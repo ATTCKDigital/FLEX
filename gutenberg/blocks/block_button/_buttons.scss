@@ -1,12 +1,12 @@
 /**** Button Styles ****/
-.cta, .is-style-cta-default {
-	background-color: $black;
-	border-color: $black;
+.cta, .is-style-cta {
+	background-color: transparent;
+	border-color: color('text', 'body');
 	border-radius: 0;
-	border: 1px solid $black;
+	border: 1px solid color('text', 'body');
 	box-shadow: none;
 	box-sizing: border-box;
-	color: $white;
+	color:  color('text', 'body');
 	cursor: pointer;
 	display: inline-block;
 	font-size: px-to-rem(16px);
@@ -15,58 +15,63 @@
 	overflow: hidden;
 	padding: 10px 25px 9px;
 	position: relative;
-	transition: background .4s ease-out, color .4s ease-out;
+	transition: background .4s ease-out, border-color .4s ease-out;
 	text-align: center;
 	z-index: 2;
 
 	@include mediaquery(desktop) {
 		&:hover {
-			color: $black;
-			background: $white;
+			background: color('brand', 'accent');
+			border-color: color('brand', 'accent');
 		}
 	}
 
-	&.cta-inactive {
-		pointer-events: none;
-		opacity: .5;
-	}
+	&.cta-solid, &.is-style-cta-solid {
+		background-color: color('default', 'white');
+		color:  color('text', 'body');
 
-	&.cta-secondary, &.is-style-cta-secondary {
-		color: $black;
-		background: color('background', 'secondary');
-		
-		@include mediaquery(desktop)  {
+		@include mediaquery(desktop) {
 			&:hover {
-				color: $white;
-				background: $black;
+				background: color('brand', 'accent');
+				border-color: color('brand', 'accent');
 			}
 		}
 	}
 
-	&.cta-tertiary, &.is-style-cta-tertiary {
-		color: $black;
-		background: $white;
-		
-		@include mediaquery(desktop)  {
+	&.cta-accent, &.is-style-cta-accent {
+		border-color: color('brand', 'accent');
+		background-color: color('brand', 'accent');
+		color: color('default', 'white');
+		transition: background .4s ease-out, border-color .4s ease-out, color .4s ease-out;
+
+		@include mediaquery(desktop) {
 			&:hover {
-				color: $white;
-				background: $black;
+				background: color('default', 'white');
+				border-color: color('default', 'white');
+				color: color('brand', 'accent');
 			}
 		}
 	}
 
 	&.cta-negative, &.is-style-cta-negative {
-		border-color: $white;
-		color: $white;
+		border-color: color('default', 'white');
+		color: color('default', 'white');
 		background: transparent;
 		opacity: 1;
 		transition: opacity .3s ease-out;
 		
 		@include mediaquery(desktop)  {
 			&:hover {
+				background: transparent;
+				border-color: color('default', 'white');
 				opacity: .5;
 			}
 		}
+	}
+
+	&.cta-inactive {
+		pointer-events: none;
+		opacity: .5;
 	}
 }
 

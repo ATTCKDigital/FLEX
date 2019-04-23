@@ -79,9 +79,9 @@ export default registerBlockType(
 			...MarginOptionsAttributes
 		},
 		styles: [
-			{ name: 'cta-primary', label: __( 'Default', 'block style' ), isDefault: true },
-			{ name: 'cta-secondary', label: __( 'Secondary', 'block style' ) },
-			{ name: 'cta-tertiary', label: __( 'Tertiary', 'block style' ) },
+			{ name: 'cta', label: __( 'Default', 'block style' ), isDefault: true },
+			{ name: 'cta-solid', label: __( 'Solid', 'block style' ) },
+			{ name: 'cta-accent', label: __( 'Accent', 'block style' ) },
 			{ name: 'cta-negative', label: __( 'Negative', 'block style' ) },
 		],
 

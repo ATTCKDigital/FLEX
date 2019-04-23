@@ -30,7 +30,7 @@
 	}
 
 	&.share-email {
-		background-color: color('background', 'primary');
+		background-color: color('text', 'black');
 	}
 
 	.fab {
@@ -40,7 +40,7 @@
 
 // social media icons
 .social-icon {
-	background-color: color('text', 'primary');
+	background-color: color('text', 'body');
 	border-radius: 50%;
 	color: inherit;
 	cursor: pointer;
@@ -75,7 +75,7 @@
 
 //pure css play button triangle arrow
 .play {
-	background-color: color('background', 'primary');
+	background-color: color('brand', 'accent');
 	border-radius: 50%;
 	display: block;
 	height: 100px;
