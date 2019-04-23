@@ -18,7 +18,7 @@
 				<header class="single-header margin-bottom-3x">
 					<span class="caption2 color-text-brown uppercase display-block margin-bottom-2x align-center"><?php _e( 'Team', '_flexlayout' );?></span>
 					<h1 class="headline4 color-text-primary align-center margin-bottom-2x"><?= $authorName;?></h1>
-					<span class="caption1 color-text-black uppercase display-block align-center"><?= $authorTitle;?></span>
+					<span class="caption1 color-text-body uppercase display-block align-center"><?= $authorTitle;?></span>
 				</header>
 			</div>
 		</div>

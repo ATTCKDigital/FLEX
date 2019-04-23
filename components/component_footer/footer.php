@@ -23,9 +23,9 @@
 				echo Utils::render_template('components/component_social-media/social-media.php', array(
 					"iconStyle" 	=> '',
 					"displayTitle"		=> 'Follow us:',
-					"displayTitleClass" => 'subheadline2 color-text-white ',
+					"displayTitleClass" => 'subheadline2 color-default-white ',
 					"alignment"			=> 'align-left',
-					"colorClass"		=> 'color-background-secondary'
+					"colorClass"		=> 'color-default-white'
 				));
 			?>
 		</div>
