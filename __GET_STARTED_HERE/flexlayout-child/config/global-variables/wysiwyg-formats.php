@@ -49,6 +49,21 @@ $style_formats = array(
 			'classes' => 'cta cta-solid',
 			'wrapper' => false,
 		),
+		
+		array(  
+			'title' => 'Underline',  
+			'inline' => 'span',  
+			'classes' => 'underline',
+			'wrapper' => false,
+		),
+
+		array(  
+			'title' => 'Strikethrough',  
+			'inline' => 'span',  
+			'classes' => 'strikethrough',
+			'wrapper' => false,
+		),
+
 );
 
 if(!defined('FLEXLAYOUT_WYSIWYG')) {

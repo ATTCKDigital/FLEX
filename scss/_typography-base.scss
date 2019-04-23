@@ -133,6 +133,18 @@ th, tr, td {
 	text-decoration:underline;
 }
 
+.strikethrough {
+	// for use in WYSIWYG 
+	color:inherit;
+	display: inline;
+	font-family: inherit;
+	font-size:inherit;
+	font-style:inherit;
+	font-weight:inherit;
+	line-height: inherit;
+	text-decoration: line-through;
+}
+
 .lowercase {
 	text-transform: lowercase;
 }

@@ -126,6 +126,106 @@ function PaddingOptions( props ) {
 									label: __( '15x' ),
 									value: '15x',
 								},
+								{
+									label: __( '16' ),
+									value: '16x',
+								},
+								{
+									label: __( '17x' ),
+									value: '17x',
+								},
+								{
+									label: __( '18x' ),
+									value: '18x',
+								},
+								{
+									label: __( '19x' ),
+									value: '19x',
+								},
+								{
+									label: __( '20x' ),
+									value: '20x',
+								},
+								{
+									label: __( '21x' ),
+									value: '21x',
+								},
+								{
+									label: __( '22x' ),
+									value: '22x',
+								},
+								{
+									label: __( '23x' ),
+									value: '23x',
+								},
+								{
+									label: __( '24x' ),
+									value: '24x',
+								},
+								{
+									label: __( '25x' ),
+									value: '25x',
+								},
+								{
+									label: __( '26x' ),
+									value: '26x',
+								},
+								{
+									label: __( '27x' ),
+									value: '27x',
+								},
+								{
+									label: __( '28x' ),
+									value: '28x',
+								},
+								{
+									label: __( '29x' ),
+									value: '29x',
+								},
+								{
+									label: __( '30x' ),
+									value: '30x',
+								},
+								{
+									label: __( '31x' ),
+									value: '31x',
+								},
+								{
+									label: __( '32x' ),
+									value: '32x',
+								},
+								{
+									label: __( '33x' ),
+									value: '33x',
+								},
+								{
+									label: __( '34x' ),
+									value: '34x',
+								},
+								{
+									label: __( '35x' ),
+									value: '35x',
+								},
+								{
+									label: __( '36x' ),
+									value: '36x',
+								},
+								{
+									label: __( '37x' ),
+									value: '37x',
+								},
+								{
+									label: __( '38x' ),
+									value: '38x',
+								},
+								{
+									label: __( '39x' ),
+									value: '39x',
+								},
+								{
+									label: __( '40x' ),
+									value: '40x',
+								},
 
 							] }
 						/>
@@ -200,6 +300,106 @@ function PaddingOptions( props ) {
 								{
 									label: __( '15x' ),
 									value: '15x',
+								},
+								{
+									label: __( '16' ),
+									value: '16x',
+								},
+								{
+									label: __( '17x' ),
+									value: '17x',
+								},
+								{
+									label: __( '18x' ),
+									value: '18x',
+								},
+								{
+									label: __( '19x' ),
+									value: '19x',
+								},
+								{
+									label: __( '20x' ),
+									value: '20x',
+								},
+								{
+									label: __( '21x' ),
+									value: '21x',
+								},
+								{
+									label: __( '22x' ),
+									value: '22x',
+								},
+								{
+									label: __( '23x' ),
+									value: '23x',
+								},
+								{
+									label: __( '24x' ),
+									value: '24x',
+								},
+								{
+									label: __( '25x' ),
+									value: '25x',
+								},
+								{
+									label: __( '26x' ),
+									value: '26x',
+								},
+								{
+									label: __( '27x' ),
+									value: '27x',
+								},
+								{
+									label: __( '28x' ),
+									value: '28x',
+								},
+								{
+									label: __( '29x' ),
+									value: '29x',
+								},
+								{
+									label: __( '30x' ),
+									value: '30x',
+								},
+								{
+									label: __( '31x' ),
+									value: '31x',
+								},
+								{
+									label: __( '32x' ),
+									value: '32x',
+								},
+								{
+									label: __( '33x' ),
+									value: '33x',
+								},
+								{
+									label: __( '34x' ),
+									value: '34x',
+								},
+								{
+									label: __( '35x' ),
+									value: '35x',
+								},
+								{
+									label: __( '36x' ),
+									value: '36x',
+								},
+								{
+									label: __( '37x' ),
+									value: '37x',
+								},
+								{
+									label: __( '38x' ),
+									value: '38x',
+								},
+								{
+									label: __( '39x' ),
+									value: '39x',
+								},
+								{
+									label: __( '40x' ),
+									value: '40x',
 								},
 
 							] }
@@ -276,6 +476,106 @@ function PaddingOptions( props ) {
 									label: __( '15x' ),
 									value: '15x',
 								},
+								{
+									label: __( '16' ),
+									value: '16x',
+								},
+								{
+									label: __( '17x' ),
+									value: '17x',
+								},
+								{
+									label: __( '18x' ),
+									value: '18x',
+								},
+								{
+									label: __( '19x' ),
+									value: '19x',
+								},
+								{
+									label: __( '20x' ),
+									value: '20x',
+								},
+								{
+									label: __( '21x' ),
+									value: '21x',
+								},
+								{
+									label: __( '22x' ),
+									value: '22x',
+								},
+								{
+									label: __( '23x' ),
+									value: '23x',
+								},
+								{
+									label: __( '24x' ),
+									value: '24x',
+								},
+								{
+									label: __( '25x' ),
+									value: '25x',
+								},
+								{
+									label: __( '26x' ),
+									value: '26x',
+								},
+								{
+									label: __( '27x' ),
+									value: '27x',
+								},
+								{
+									label: __( '28x' ),
+									value: '28x',
+								},
+								{
+									label: __( '29x' ),
+									value: '29x',
+								},
+								{
+									label: __( '30x' ),
+									value: '30x',
+								},
+								{
+									label: __( '31x' ),
+									value: '31x',
+								},
+								{
+									label: __( '32x' ),
+									value: '32x',
+								},
+								{
+									label: __( '33x' ),
+									value: '33x',
+								},
+								{
+									label: __( '34x' ),
+									value: '34x',
+								},
+								{
+									label: __( '35x' ),
+									value: '35x',
+								},
+								{
+									label: __( '36x' ),
+									value: '36x',
+								},
+								{
+									label: __( '37x' ),
+									value: '37x',
+								},
+								{
+									label: __( '38x' ),
+									value: '38x',
+								},
+								{
+									label: __( '39x' ),
+									value: '39x',
+								},
+								{
+									label: __( '40x' ),
+									value: '40x',
+								},
 
 							] }
 						/>
@@ -350,6 +650,106 @@ function PaddingOptions( props ) {
 								{
 									label: __( '15x' ),
 									value: '15x',
+								},
+								{
+									label: __( '16' ),
+									value: '16x',
+								},
+								{
+									label: __( '17x' ),
+									value: '17x',
+								},
+								{
+									label: __( '18x' ),
+									value: '18x',
+								},
+								{
+									label: __( '19x' ),
+									value: '19x',
+								},
+								{
+									label: __( '20x' ),
+									value: '20x',
+								},
+								{
+									label: __( '21x' ),
+									value: '21x',
+								},
+								{
+									label: __( '22x' ),
+									value: '22x',
+								},
+								{
+									label: __( '23x' ),
+									value: '23x',
+								},
+								{
+									label: __( '24x' ),
+									value: '24x',
+								},
+								{
+									label: __( '25x' ),
+									value: '25x',
+								},
+								{
+									label: __( '26x' ),
+									value: '26x',
+								},
+								{
+									label: __( '27x' ),
+									value: '27x',
+								},
+								{
+									label: __( '28x' ),
+									value: '28x',
+								},
+								{
+									label: __( '29x' ),
+									value: '29x',
+								},
+								{
+									label: __( '30x' ),
+									value: '30x',
+								},
+								{
+									label: __( '31x' ),
+									value: '31x',
+								},
+								{
+									label: __( '32x' ),
+									value: '32x',
+								},
+								{
+									label: __( '33x' ),
+									value: '33x',
+								},
+								{
+									label: __( '34x' ),
+									value: '34x',
+								},
+								{
+									label: __( '35x' ),
+									value: '35x',
+								},
+								{
+									label: __( '36x' ),
+									value: '36x',
+								},
+								{
+									label: __( '37x' ),
+									value: '37x',
+								},
+								{
+									label: __( '38x' ),
+									value: '38x',
+								},
+								{
+									label: __( '39x' ),
+									value: '39x',
+								},
+								{
+									label: __( '40x' ),
+									value: '40x',
 								},
 
 							] }
@@ -429,6 +829,106 @@ function PaddingOptions( props ) {
 									label: __( '15x' ),
 									value: '15x',
 								},
+								{
+									label: __( '16' ),
+									value: '16x',
+								},
+								{
+									label: __( '17x' ),
+									value: '17x',
+								},
+								{
+									label: __( '18x' ),
+									value: '18x',
+								},
+								{
+									label: __( '19x' ),
+									value: '19x',
+								},
+								{
+									label: __( '20x' ),
+									value: '20x',
+								},
+								{
+									label: __( '21x' ),
+									value: '21x',
+								},
+								{
+									label: __( '22x' ),
+									value: '22x',
+								},
+								{
+									label: __( '23x' ),
+									value: '23x',
+								},
+								{
+									label: __( '24x' ),
+									value: '24x',
+								},
+								{
+									label: __( '25x' ),
+									value: '25x',
+								},
+								{
+									label: __( '26x' ),
+									value: '26x',
+								},
+								{
+									label: __( '27x' ),
+									value: '27x',
+								},
+								{
+									label: __( '28x' ),
+									value: '28x',
+								},
+								{
+									label: __( '29x' ),
+									value: '29x',
+								},
+								{
+									label: __( '30x' ),
+									value: '30x',
+								},
+								{
+									label: __( '31x' ),
+									value: '31x',
+								},
+								{
+									label: __( '32x' ),
+									value: '32x',
+								},
+								{
+									label: __( '33x' ),
+									value: '33x',
+								},
+								{
+									label: __( '34x' ),
+									value: '34x',
+								},
+								{
+									label: __( '35x' ),
+									value: '35x',
+								},
+								{
+									label: __( '36x' ),
+									value: '36x',
+								},
+								{
+									label: __( '37x' ),
+									value: '37x',
+								},
+								{
+									label: __( '38x' ),
+									value: '38x',
+								},
+								{
+									label: __( '39x' ),
+									value: '39x',
+								},
+								{
+									label: __( '40x' ),
+									value: '40x',
+								},
 
 							] }
 						/>
@@ -503,6 +1003,106 @@ function PaddingOptions( props ) {
 								{
 									label: __( '15x' ),
 									value: '15x',
+								},
+								{
+									label: __( '16' ),
+									value: '16x',
+								},
+								{
+									label: __( '17x' ),
+									value: '17x',
+								},
+								{
+									label: __( '18x' ),
+									value: '18x',
+								},
+								{
+									label: __( '19x' ),
+									value: '19x',
+								},
+								{
+									label: __( '20x' ),
+									value: '20x',
+								},
+								{
+									label: __( '21x' ),
+									value: '21x',
+								},
+								{
+									label: __( '22x' ),
+									value: '22x',
+								},
+								{
+									label: __( '23x' ),
+									value: '23x',
+								},
+								{
+									label: __( '24x' ),
+									value: '24x',
+								},
+								{
+									label: __( '25x' ),
+									value: '25x',
+								},
+								{
+									label: __( '26x' ),
+									value: '26x',
+								},
+								{
+									label: __( '27x' ),
+									value: '27x',
+								},
+								{
+									label: __( '28x' ),
+									value: '28x',
+								},
+								{
+									label: __( '29x' ),
+									value: '29x',
+								},
+								{
+									label: __( '30x' ),
+									value: '30x',
+								},
+								{
+									label: __( '31x' ),
+									value: '31x',
+								},
+								{
+									label: __( '32x' ),
+									value: '32x',
+								},
+								{
+									label: __( '33x' ),
+									value: '33x',
+								},
+								{
+									label: __( '34x' ),
+									value: '34x',
+								},
+								{
+									label: __( '35x' ),
+									value: '35x',
+								},
+								{
+									label: __( '36x' ),
+									value: '36x',
+								},
+								{
+									label: __( '37x' ),
+									value: '37x',
+								},
+								{
+									label: __( '38x' ),
+									value: '38x',
+								},
+								{
+									label: __( '39x' ),
+									value: '39x',
+								},
+								{
+									label: __( '40x' ),
+									value: '40x',
 								},
 
 							] }
@@ -579,6 +1179,106 @@ function PaddingOptions( props ) {
 									label: __( '15x' ),
 									value: '15x',
 								},
+								{
+									label: __( '16' ),
+									value: '16x',
+								},
+								{
+									label: __( '17x' ),
+									value: '17x',
+								},
+								{
+									label: __( '18x' ),
+									value: '18x',
+								},
+								{
+									label: __( '19x' ),
+									value: '19x',
+								},
+								{
+									label: __( '20x' ),
+									value: '20x',
+								},
+								{
+									label: __( '21x' ),
+									value: '21x',
+								},
+								{
+									label: __( '22x' ),
+									value: '22x',
+								},
+								{
+									label: __( '23x' ),
+									value: '23x',
+								},
+								{
+									label: __( '24x' ),
+									value: '24x',
+								},
+								{
+									label: __( '25x' ),
+									value: '25x',
+								},
+								{
+									label: __( '26x' ),
+									value: '26x',
+								},
+								{
+									label: __( '27x' ),
+									value: '27x',
+								},
+								{
+									label: __( '28x' ),
+									value: '28x',
+								},
+								{
+									label: __( '29x' ),
+									value: '29x',
+								},
+								{
+									label: __( '30x' ),
+									value: '30x',
+								},
+								{
+									label: __( '31x' ),
+									value: '31x',
+								},
+								{
+									label: __( '32x' ),
+									value: '32x',
+								},
+								{
+									label: __( '33x' ),
+									value: '33x',
+								},
+								{
+									label: __( '34x' ),
+									value: '34x',
+								},
+								{
+									label: __( '35x' ),
+									value: '35x',
+								},
+								{
+									label: __( '36x' ),
+									value: '36x',
+								},
+								{
+									label: __( '37x' ),
+									value: '37x',
+								},
+								{
+									label: __( '38x' ),
+									value: '38x',
+								},
+								{
+									label: __( '39x' ),
+									value: '39x',
+								},
+								{
+									label: __( '40x' ),
+									value: '40x',
+								},
 
 							] }
 						/>
@@ -653,6 +1353,106 @@ function PaddingOptions( props ) {
 								{
 									label: __( '15x' ),
 									value: '15x',
+								},
+								{
+									label: __( '16' ),
+									value: '16x',
+								},
+								{
+									label: __( '17x' ),
+									value: '17x',
+								},
+								{
+									label: __( '18x' ),
+									value: '18x',
+								},
+								{
+									label: __( '19x' ),
+									value: '19x',
+								},
+								{
+									label: __( '20x' ),
+									value: '20x',
+								},
+								{
+									label: __( '21x' ),
+									value: '21x',
+								},
+								{
+									label: __( '22x' ),
+									value: '22x',
+								},
+								{
+									label: __( '23x' ),
+									value: '23x',
+								},
+								{
+									label: __( '24x' ),
+									value: '24x',
+								},
+								{
+									label: __( '25x' ),
+									value: '25x',
+								},
+								{
+									label: __( '26x' ),
+									value: '26x',
+								},
+								{
+									label: __( '27x' ),
+									value: '27x',
+								},
+								{
+									label: __( '28x' ),
+									value: '28x',
+								},
+								{
+									label: __( '29x' ),
+									value: '29x',
+								},
+								{
+									label: __( '30x' ),
+									value: '30x',
+								},
+								{
+									label: __( '31x' ),
+									value: '31x',
+								},
+								{
+									label: __( '32x' ),
+									value: '32x',
+								},
+								{
+									label: __( '33x' ),
+									value: '33x',
+								},
+								{
+									label: __( '34x' ),
+									value: '34x',
+								},
+								{
+									label: __( '35x' ),
+									value: '35x',
+								},
+								{
+									label: __( '36x' ),
+									value: '36x',
+								},
+								{
+									label: __( '37x' ),
+									value: '37x',
+								},
+								{
+									label: __( '38x' ),
+									value: '38x',
+								},
+								{
+									label: __( '39x' ),
+									value: '39x',
+								},
+								{
+									label: __( '40x' ),
+									value: '40x',
 								},
 
 							] }
@@ -732,6 +1532,106 @@ function PaddingOptions( props ) {
 									label: __( '15x' ),
 									value: '15x',
 								},
+								{
+									label: __( '16' ),
+									value: '16x',
+								},
+								{
+									label: __( '17x' ),
+									value: '17x',
+								},
+								{
+									label: __( '18x' ),
+									value: '18x',
+								},
+								{
+									label: __( '19x' ),
+									value: '19x',
+								},
+								{
+									label: __( '20x' ),
+									value: '20x',
+								},
+								{
+									label: __( '21x' ),
+									value: '21x',
+								},
+								{
+									label: __( '22x' ),
+									value: '22x',
+								},
+								{
+									label: __( '23x' ),
+									value: '23x',
+								},
+								{
+									label: __( '24x' ),
+									value: '24x',
+								},
+								{
+									label: __( '25x' ),
+									value: '25x',
+								},
+								{
+									label: __( '26x' ),
+									value: '26x',
+								},
+								{
+									label: __( '27x' ),
+									value: '27x',
+								},
+								{
+									label: __( '28x' ),
+									value: '28x',
+								},
+								{
+									label: __( '29x' ),
+									value: '29x',
+								},
+								{
+									label: __( '30x' ),
+									value: '30x',
+								},
+								{
+									label: __( '31x' ),
+									value: '31x',
+								},
+								{
+									label: __( '32x' ),
+									value: '32x',
+								},
+								{
+									label: __( '33x' ),
+									value: '33x',
+								},
+								{
+									label: __( '34x' ),
+									value: '34x',
+								},
+								{
+									label: __( '35x' ),
+									value: '35x',
+								},
+								{
+									label: __( '36x' ),
+									value: '36x',
+								},
+								{
+									label: __( '37x' ),
+									value: '37x',
+								},
+								{
+									label: __( '38x' ),
+									value: '38x',
+								},
+								{
+									label: __( '39x' ),
+									value: '39x',
+								},
+								{
+									label: __( '40x' ),
+									value: '40x',
+								},
 
 							] }
 						/>
@@ -806,6 +1706,106 @@ function PaddingOptions( props ) {
 								{
 									label: __( '15x' ),
 									value: '15x',
+								},
+								{
+									label: __( '16' ),
+									value: '16x',
+								},
+								{
+									label: __( '17x' ),
+									value: '17x',
+								},
+								{
+									label: __( '18x' ),
+									value: '18x',
+								},
+								{
+									label: __( '19x' ),
+									value: '19x',
+								},
+								{
+									label: __( '20x' ),
+									value: '20x',
+								},
+								{
+									label: __( '21x' ),
+									value: '21x',
+								},
+								{
+									label: __( '22x' ),
+									value: '22x',
+								},
+								{
+									label: __( '23x' ),
+									value: '23x',
+								},
+								{
+									label: __( '24x' ),
+									value: '24x',
+								},
+								{
+									label: __( '25x' ),
+									value: '25x',
+								},
+								{
+									label: __( '26x' ),
+									value: '26x',
+								},
+								{
+									label: __( '27x' ),
+									value: '27x',
+								},
+								{
+									label: __( '28x' ),
+									value: '28x',
+								},
+								{
+									label: __( '29x' ),
+									value: '29x',
+								},
+								{
+									label: __( '30x' ),
+									value: '30x',
+								},
+								{
+									label: __( '31x' ),
+									value: '31x',
+								},
+								{
+									label: __( '32x' ),
+									value: '32x',
+								},
+								{
+									label: __( '33x' ),
+									value: '33x',
+								},
+								{
+									label: __( '34x' ),
+									value: '34x',
+								},
+								{
+									label: __( '35x' ),
+									value: '35x',
+								},
+								{
+									label: __( '36x' ),
+									value: '36x',
+								},
+								{
+									label: __( '37x' ),
+									value: '37x',
+								},
+								{
+									label: __( '38x' ),
+									value: '38x',
+								},
+								{
+									label: __( '39x' ),
+									value: '39x',
+								},
+								{
+									label: __( '40x' ),
+									value: '40x',
 								},
 
 							] }
@@ -882,6 +1882,106 @@ function PaddingOptions( props ) {
 									label: __( '15x' ),
 									value: '15x',
 								},
+								{
+									label: __( '16' ),
+									value: '16x',
+								},
+								{
+									label: __( '17x' ),
+									value: '17x',
+								},
+								{
+									label: __( '18x' ),
+									value: '18x',
+								},
+								{
+									label: __( '19x' ),
+									value: '19x',
+								},
+								{
+									label: __( '20x' ),
+									value: '20x',
+								},
+								{
+									label: __( '21x' ),
+									value: '21x',
+								},
+								{
+									label: __( '22x' ),
+									value: '22x',
+								},
+								{
+									label: __( '23x' ),
+									value: '23x',
+								},
+								{
+									label: __( '24x' ),
+									value: '24x',
+								},
+								{
+									label: __( '25x' ),
+									value: '25x',
+								},
+								{
+									label: __( '26x' ),
+									value: '26x',
+								},
+								{
+									label: __( '27x' ),
+									value: '27x',
+								},
+								{
+									label: __( '28x' ),
+									value: '28x',
+								},
+								{
+									label: __( '29x' ),
+									value: '29x',
+								},
+								{
+									label: __( '30x' ),
+									value: '30x',
+								},
+								{
+									label: __( '31x' ),
+									value: '31x',
+								},
+								{
+									label: __( '32x' ),
+									value: '32x',
+								},
+								{
+									label: __( '33x' ),
+									value: '33x',
+								},
+								{
+									label: __( '34x' ),
+									value: '34x',
+								},
+								{
+									label: __( '35x' ),
+									value: '35x',
+								},
+								{
+									label: __( '36x' ),
+									value: '36x',
+								},
+								{
+									label: __( '37x' ),
+									value: '37x',
+								},
+								{
+									label: __( '38x' ),
+									value: '38x',
+								},
+								{
+									label: __( '39x' ),
+									value: '39x',
+								},
+								{
+									label: __( '40x' ),
+									value: '40x',
+								},
 
 							] }
 						/>
@@ -956,6 +2056,106 @@ function PaddingOptions( props ) {
 								{
 									label: __( '15x' ),
 									value: '15x',
+								},
+								{
+									label: __( '16' ),
+									value: '16x',
+								},
+								{
+									label: __( '17x' ),
+									value: '17x',
+								},
+								{
+									label: __( '18x' ),
+									value: '18x',
+								},
+								{
+									label: __( '19x' ),
+									value: '19x',
+								},
+								{
+									label: __( '20x' ),
+									value: '20x',
+								},
+								{
+									label: __( '21x' ),
+									value: '21x',
+								},
+								{
+									label: __( '22x' ),
+									value: '22x',
+								},
+								{
+									label: __( '23x' ),
+									value: '23x',
+								},
+								{
+									label: __( '24x' ),
+									value: '24x',
+								},
+								{
+									label: __( '25x' ),
+									value: '25x',
+								},
+								{
+									label: __( '26x' ),
+									value: '26x',
+								},
+								{
+									label: __( '27x' ),
+									value: '27x',
+								},
+								{
+									label: __( '28x' ),
+									value: '28x',
+								},
+								{
+									label: __( '29x' ),
+									value: '29x',
+								},
+								{
+									label: __( '30x' ),
+									value: '30x',
+								},
+								{
+									label: __( '31x' ),
+									value: '31x',
+								},
+								{
+									label: __( '32x' ),
+									value: '32x',
+								},
+								{
+									label: __( '33x' ),
+									value: '33x',
+								},
+								{
+									label: __( '34x' ),
+									value: '34x',
+								},
+								{
+									label: __( '35x' ),
+									value: '35x',
+								},
+								{
+									label: __( '36x' ),
+									value: '36x',
+								},
+								{
+									label: __( '37x' ),
+									value: '37x',
+								},
+								{
+									label: __( '38x' ),
+									value: '38x',
+								},
+								{
+									label: __( '39x' ),
+									value: '39x',
+								},
+								{
+									label: __( '40x' ),
+									value: '40x',
 								},
 
 							] }
@@ -1035,6 +2235,106 @@ function PaddingOptions( props ) {
 									label: __( '15x' ),
 									value: '15x',
 								},
+								{
+									label: __( '16' ),
+									value: '16x',
+								},
+								{
+									label: __( '17x' ),
+									value: '17x',
+								},
+								{
+									label: __( '18x' ),
+									value: '18x',
+								},
+								{
+									label: __( '19x' ),
+									value: '19x',
+								},
+								{
+									label: __( '20x' ),
+									value: '20x',
+								},
+								{
+									label: __( '21x' ),
+									value: '21x',
+								},
+								{
+									label: __( '22x' ),
+									value: '22x',
+								},
+								{
+									label: __( '23x' ),
+									value: '23x',
+								},
+								{
+									label: __( '24x' ),
+									value: '24x',
+								},
+								{
+									label: __( '25x' ),
+									value: '25x',
+								},
+								{
+									label: __( '26x' ),
+									value: '26x',
+								},
+								{
+									label: __( '27x' ),
+									value: '27x',
+								},
+								{
+									label: __( '28x' ),
+									value: '28x',
+								},
+								{
+									label: __( '29x' ),
+									value: '29x',
+								},
+								{
+									label: __( '30x' ),
+									value: '30x',
+								},
+								{
+									label: __( '31x' ),
+									value: '31x',
+								},
+								{
+									label: __( '32x' ),
+									value: '32x',
+								},
+								{
+									label: __( '33x' ),
+									value: '33x',
+								},
+								{
+									label: __( '34x' ),
+									value: '34x',
+								},
+								{
+									label: __( '35x' ),
+									value: '35x',
+								},
+								{
+									label: __( '36x' ),
+									value: '36x',
+								},
+								{
+									label: __( '37x' ),
+									value: '37x',
+								},
+								{
+									label: __( '38x' ),
+									value: '38x',
+								},
+								{
+									label: __( '39x' ),
+									value: '39x',
+								},
+								{
+									label: __( '40x' ),
+									value: '40x',
+								},
 
 							] }
 						/>
@@ -1109,6 +2409,106 @@ function PaddingOptions( props ) {
 								{
 									label: __( '15x' ),
 									value: '15x',
+								},
+								{
+									label: __( '16' ),
+									value: '16x',
+								},
+								{
+									label: __( '17x' ),
+									value: '17x',
+								},
+								{
+									label: __( '18x' ),
+									value: '18x',
+								},
+								{
+									label: __( '19x' ),
+									value: '19x',
+								},
+								{
+									label: __( '20x' ),
+									value: '20x',
+								},
+								{
+									label: __( '21x' ),
+									value: '21x',
+								},
+								{
+									label: __( '22x' ),
+									value: '22x',
+								},
+								{
+									label: __( '23x' ),
+									value: '23x',
+								},
+								{
+									label: __( '24x' ),
+									value: '24x',
+								},
+								{
+									label: __( '25x' ),
+									value: '25x',
+								},
+								{
+									label: __( '26x' ),
+									value: '26x',
+								},
+								{
+									label: __( '27x' ),
+									value: '27x',
+								},
+								{
+									label: __( '28x' ),
+									value: '28x',
+								},
+								{
+									label: __( '29x' ),
+									value: '29x',
+								},
+								{
+									label: __( '30x' ),
+									value: '30x',
+								},
+								{
+									label: __( '31x' ),
+									value: '31x',
+								},
+								{
+									label: __( '32x' ),
+									value: '32x',
+								},
+								{
+									label: __( '33x' ),
+									value: '33x',
+								},
+								{
+									label: __( '34x' ),
+									value: '34x',
+								},
+								{
+									label: __( '35x' ),
+									value: '35x',
+								},
+								{
+									label: __( '36x' ),
+									value: '36x',
+								},
+								{
+									label: __( '37x' ),
+									value: '37x',
+								},
+								{
+									label: __( '38x' ),
+									value: '38x',
+								},
+								{
+									label: __( '39x' ),
+									value: '39x',
+								},
+								{
+									label: __( '40x' ),
+									value: '40x',
 								},
 
 							] }
@@ -1185,6 +2585,106 @@ function PaddingOptions( props ) {
 									label: __( '15x' ),
 									value: '15x',
 								},
+								{
+									label: __( '16' ),
+									value: '16x',
+								},
+								{
+									label: __( '17x' ),
+									value: '17x',
+								},
+								{
+									label: __( '18x' ),
+									value: '18x',
+								},
+								{
+									label: __( '19x' ),
+									value: '19x',
+								},
+								{
+									label: __( '20x' ),
+									value: '20x',
+								},
+								{
+									label: __( '21x' ),
+									value: '21x',
+								},
+								{
+									label: __( '22x' ),
+									value: '22x',
+								},
+								{
+									label: __( '23x' ),
+									value: '23x',
+								},
+								{
+									label: __( '24x' ),
+									value: '24x',
+								},
+								{
+									label: __( '25x' ),
+									value: '25x',
+								},
+								{
+									label: __( '26x' ),
+									value: '26x',
+								},
+								{
+									label: __( '27x' ),
+									value: '27x',
+								},
+								{
+									label: __( '28x' ),
+									value: '28x',
+								},
+								{
+									label: __( '29x' ),
+									value: '29x',
+								},
+								{
+									label: __( '30x' ),
+									value: '30x',
+								},
+								{
+									label: __( '31x' ),
+									value: '31x',
+								},
+								{
+									label: __( '32x' ),
+									value: '32x',
+								},
+								{
+									label: __( '33x' ),
+									value: '33x',
+								},
+								{
+									label: __( '34x' ),
+									value: '34x',
+								},
+								{
+									label: __( '35x' ),
+									value: '35x',
+								},
+								{
+									label: __( '36x' ),
+									value: '36x',
+								},
+								{
+									label: __( '37x' ),
+									value: '37x',
+								},
+								{
+									label: __( '38x' ),
+									value: '38x',
+								},
+								{
+									label: __( '39x' ),
+									value: '39x',
+								},
+								{
+									label: __( '40x' ),
+									value: '40x',
+								},
 
 							] }
 						/>
@@ -1259,6 +2759,106 @@ function PaddingOptions( props ) {
 								{
 									label: __( '15x' ),
 									value: '15x',
+								},
+								{
+									label: __( '16' ),
+									value: '16x',
+								},
+								{
+									label: __( '17x' ),
+									value: '17x',
+								},
+								{
+									label: __( '18x' ),
+									value: '18x',
+								},
+								{
+									label: __( '19x' ),
+									value: '19x',
+								},
+								{
+									label: __( '20x' ),
+									value: '20x',
+								},
+								{
+									label: __( '21x' ),
+									value: '21x',
+								},
+								{
+									label: __( '22x' ),
+									value: '22x',
+								},
+								{
+									label: __( '23x' ),
+									value: '23x',
+								},
+								{
+									label: __( '24x' ),
+									value: '24x',
+								},
+								{
+									label: __( '25x' ),
+									value: '25x',
+								},
+								{
+									label: __( '26x' ),
+									value: '26x',
+								},
+								{
+									label: __( '27x' ),
+									value: '27x',
+								},
+								{
+									label: __( '28x' ),
+									value: '28x',
+								},
+								{
+									label: __( '29x' ),
+									value: '29x',
+								},
+								{
+									label: __( '30x' ),
+									value: '30x',
+								},
+								{
+									label: __( '31x' ),
+									value: '31x',
+								},
+								{
+									label: __( '32x' ),
+									value: '32x',
+								},
+								{
+									label: __( '33x' ),
+									value: '33x',
+								},
+								{
+									label: __( '34x' ),
+									value: '34x',
+								},
+								{
+									label: __( '35x' ),
+									value: '35x',
+								},
+								{
+									label: __( '36x' ),
+									value: '36x',
+								},
+								{
+									label: __( '37x' ),
+									value: '37x',
+								},
+								{
+									label: __( '38x' ),
+									value: '38x',
+								},
+								{
+									label: __( '39x' ),
+									value: '39x',
+								},
+								{
+									label: __( '40x' ),
+									value: '40x',
 								},
 
 							] }
