@@ -21,23 +21,32 @@ $style_formats = array(
 		),  
 
 		array(  
-			'title' => 'Button Primary',  
+			'title' => 'Button',  
 			'inline' => 'span',  
 			'classes' => 'cta',
 			'wrapper' => false,
-		),  
+		),
+
 
 		array(  
-			'title' => 'Button Secondary',  
+			'title' => 'Button Negative',  
 			'inline' => 'span',  
-			'classes' => 'cta cta-secondary',
+			'classes' => 'cta cta-negative',
 			'wrapper' => false,
-		),  
+		),
 
 		array(  
-			'title' => 'Button Tertiary',  
+			'title' => 'Button Accent',  
 			'inline' => 'span',  
-			'classes' => 'cta cta-tertiary',
+			'classes' => 'cta cta-accent',
+			'wrapper' => false,
+		),
+
+		
+		array(  
+			'title' => 'Button Solid',  
+			'inline' => 'span',  
+			'classes' => 'cta cta-solid',
 			'wrapper' => false,
 		),
 );

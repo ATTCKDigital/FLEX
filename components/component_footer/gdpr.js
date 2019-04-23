@@ -26,6 +26,8 @@ function GDPR($el) {
 		if (allowCookies == "yes") {
 			setCookie("allowCookies", "yes", 90);
 			$el.addClass('hideGDPR');
+		} else {
+			$el.removeClass('hideGDPR')
 		}
 	}
 

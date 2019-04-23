@@ -1,6 +1,6 @@
 <?php //GDPR Pop-up ?>
 
-<div class="component component-gdpr" data-component-name="GDPR">
+<div class="component component-gdpr hideGDPR" data-component-name="GDPR">
 	<div class="component-row-full">
 		<div class="pure-g component-alignment-center">
 			<div class="flex-g-xl-2-12 flex-g-lg-2-12 flex-g-md-0-12 flex-g-sm-0-12"></div>
