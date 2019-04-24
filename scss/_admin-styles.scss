@@ -175,3 +175,13 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	font-size: 13px;
 	color: black;
 }
+
+.text-columns {
+	@include mediaquery(tablet-landscape) {
+		column-count: 2;
+		column-gap: $gap*15;
+		column-break-inside: avoid; /* Chrome, Safari, Opera */
+		page-break-inside: avoid; /* Firefox */
+		break-inside: avoid;
+	}
+}
