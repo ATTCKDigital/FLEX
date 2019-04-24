@@ -32,22 +32,22 @@ export {
 };
 
 function MarginOptions( props ) {
-	const setMarginSmallTop = value => props.setAttributes( { marginSmallTop: value } );
-	const setMarginSmallRight = value => props.setAttributes( { marginSmallRight: value } );
-	const setMarginSmallBottom = value => props.setAttributes( { marginSmallBottom: value } );
-	const setMarginSmallLeft = value => props.setAttributes( { marginSmallLeft: value } );
-	const setMarginMediumTop = value => props.setAttributes( { marginMediumTop: value } );
-	const setMarginMediumRight = value => props.setAttributes( { marginMediumRight: value } );
-	const setMarginMediumBottom = value => props.setAttributes( { marginMediumBottom: value } );
-	const setMarginMediumLeft = value => props.setAttributes( { marginMediumLeft: value } );
-	const setMarginLargeTop = value => props.setAttributes( { marginLargeTop: value } );
-	const setMarginLargeRight = value => props.setAttributes( { marginLargeRight: value } );
-	const setMarginLargeBottom = value => props.setAttributes( { marginLargeBottom: value } );
-	const setMarginLargeLeft = value => props.setAttributes( { marginLargeLeft: value } );
-	const setMarginXLTop = value => props.setAttributes( { marginXLTop: value } );
-	const setMarginXLRight = value => props.setAttributes( { marginXLRight: value } );
-	const setMarginXLBottom = value => props.setAttributes( { marginXLBottom: value } );
-	const setMarginXLLeft = value => props.setAttributes( { marginXLLeft: value } );
+	const setMarginTop = value => props.setAttributes( { marginTop: value } );
+	const setMarginRight = value => props.setAttributes( { marginRight: value } );
+	const setMarginBottom = value => props.setAttributes( { marginBottom: value } );
+	const setMarginLeft = value => props.setAttributes( { marginLeft: value } );
+	const setMarginTabletPortraitTop = value => props.setAttributes( { marginTabletPortraitTop: value } );
+	const setMarginTabletPortraitRight = value => props.setAttributes( { marginTabletPortraitRight: value } );
+	const setMarginTabletPortraitBottom = value => props.setAttributes( { marginTabletPortraitBottom: value } );
+	const setMarginTabletPortraitLeft = value => props.setAttributes( { marginTabletPortraitLeft: value } );
+	const setMarginTabletLandscapeTop = value => props.setAttributes( { marginTabletLandscapeTop: value } );
+	const setMarginTabletLandscapeRight = value => props.setAttributes( { marginTabletLandscapeRight: value } );
+	const setMarginTabletLandscapeBottom = value => props.setAttributes( { marginTabletLandscapeBottom: value } );
+	const setMarginTabletLandscapeLeft = value => props.setAttributes( { marginTabletLandscapeLeft: value } );
+	const setMarginDesktopTop = value => props.setAttributes( { marginDesktopTop: value } );
+	const setMarginDesktopRight = value => props.setAttributes( { marginDesktopRight: value } );
+	const setMarginDesktopBottom = value => props.setAttributes( { marginDesktopBottom: value } );
+	const setMarginDesktopLeft = value => props.setAttributes( { marginDesktopLeft: value } );
 
 	const marginSelect = () => {
 
@@ -59,8 +59,8 @@ function MarginOptions( props ) {
 						<SelectControl
 							key="margin-small-top"
 							label={ __( 'Top' ) }
-							value={ props.attributes.marginSmallTop ? props.attributes.marginSmallTop : '' }
-							onChange={ setMarginSmallTop }
+							value={ props.attributes.marginTop ? props.attributes.marginTop : '' }
+							onChange={ setMarginTop }
 							options={ [
 								{
 									label: __( '0' ),
@@ -134,8 +134,8 @@ function MarginOptions( props ) {
 						<SelectControl
 							key="margin-small-right"
 							label={ __( 'Right' ) }
-							value={ props.attributes.marginSmallRight ? props.attributes.marginSmallRight : '' }
-							onChange={ setMarginSmallRight }
+							value={ props.attributes.marginRight ? props.attributes.marginRight : '' }
+							onChange={ setMarginRight }
 													options={ [
 								{
 									label: __( '0' ),
@@ -209,8 +209,8 @@ function MarginOptions( props ) {
 						<SelectControl
 							key="margin-small-bottom"
 							label={ __( 'Bottom' ) }
-							value={ props.attributes.marginSmallBottom ? props.attributes.marginSmallBottom : '' }
-							onChange={ setMarginSmallBottom }
+							value={ props.attributes.marginBottom ? props.attributes.marginBottom : '' }
+							onChange={ setMarginBottom }
 													options={ [
 								{
 									label: __( '0' ),
@@ -284,8 +284,8 @@ function MarginOptions( props ) {
 						<SelectControl
 							key="margin-small-left"
 							label={ __( 'Left' ) }
-							value={ props.attributes.marginSmallLeft ? props.attributes.marginSmallLeft : '' }
-							onChange={ setMarginSmallLeft }
+							value={ props.attributes.marginLeft ? props.attributes.marginLeft : '' }
+							onChange={ setMarginLeft }
 													options={ [
 								{
 									label: __( '0' ),
@@ -362,8 +362,8 @@ function MarginOptions( props ) {
 						<SelectControl
 							key="margin-medium-top"
 							label={ __( 'Top' ) }
-							value={ props.attributes.marginMediumTop ? props.attributes.marginMediumTop : '' }
-							onChange={ setMarginMediumTop }
+							value={ props.attributes.marginTabletPortraitTop ? props.attributes.marginTabletPortraitTop : '' }
+							onChange={ setMarginTabletPortraitTop }
 							options={ [
 								{
 									label: __( '0' ),
@@ -437,8 +437,8 @@ function MarginOptions( props ) {
 						<SelectControl
 							key="margin-medium-right"
 							label={ __( 'Right' ) }
-							value={ props.attributes.marginMediumRight ? props.attributes.marginMediumRight : '' }
-							onChange={ setMarginMediumRight }
+							value={ props.attributes.marginTabletPortraitRight ? props.attributes.marginTabletPortraitRight : '' }
+							onChange={ setMarginTabletPortraitRight }
 													options={ [
 								{
 									label: __( '0' ),
@@ -512,8 +512,8 @@ function MarginOptions( props ) {
 						<SelectControl
 							key="margin-medium-bottom"
 							label={ __( 'Bottom' ) }
-							value={ props.attributes.marginMediumBottom ? props.attributes.marginMediumBottom : '' }
-							onChange={ setMarginMediumBottom }
+							value={ props.attributes.marginTabletPortraitBottom ? props.attributes.marginTabletPortraitBottom : '' }
+							onChange={ setMarginTabletPortraitBottom }
 													options={ [
 								{
 									label: __( '0' ),
@@ -587,8 +587,8 @@ function MarginOptions( props ) {
 						<SelectControl
 							key="margin-medium-left"
 							label={ __( 'Left' ) }
-							value={ props.attributes.marginMediumLeft ? props.attributes.marginMediumLeft : '' }
-							onChange={ setMarginMediumLeft }
+							value={ props.attributes.marginTabletPortraitLeft ? props.attributes.marginTabletPortraitLeft : '' }
+							onChange={ setMarginTabletPortraitLeft }
 													options={ [
 								{
 									label: __( '0' ),
@@ -665,8 +665,8 @@ function MarginOptions( props ) {
 						<SelectControl
 							key="margin-large-top"
 							label={ __( 'Top' ) }
-							value={ props.attributes.marginLargeTop ? props.attributes.marginLargeTop : '' }
-							onChange={ setMarginLargeTop }
+							value={ props.attributes.marginTabletLandscapeTop ? props.attributes.marginTabletLandscapeTop : '' }
+							onChange={ setMarginTabletLandscapeTop }
 							options={ [
 								{
 									label: __( '0' ),
@@ -740,8 +740,8 @@ function MarginOptions( props ) {
 						<SelectControl
 							key="margin-large-right"
 							label={ __( 'Right' ) }
-							value={ props.attributes.marginLargeRight ? props.attributes.marginLargeRight : '' }
-							onChange={ setMarginLargeRight }
+							value={ props.attributes.marginTabletLandscapeRight ? props.attributes.marginTabletLandscapeRight : '' }
+							onChange={ setMarginTabletLandscapeRight }
 													options={ [
 								{
 									label: __( '0' ),
@@ -815,8 +815,8 @@ function MarginOptions( props ) {
 						<SelectControl
 							key="margin-large-bottom"
 							label={ __( 'Bottom' ) }
-							value={ props.attributes.marginLargeBottom ? props.attributes.marginLargeBottom : '' }
-							onChange={ setMarginLargeBottom }
+							value={ props.attributes.marginTabletLandscapeBottom ? props.attributes.marginTabletLandscapeBottom : '' }
+							onChange={ setMarginTabletLandscapeBottom }
 													options={ [
 								{
 									label: __( '0' ),
@@ -890,8 +890,8 @@ function MarginOptions( props ) {
 						<SelectControl
 							key="margin-large-left"
 							label={ __( 'Left' ) }
-							value={ props.attributes.marginLargeLeft ? props.attributes.marginLargeLeft : '' }
-							onChange={ setMarginLargeLeft }
+							value={ props.attributes.marginTabletLandscapeLeft ? props.attributes.marginTabletLandscapeLeft : '' }
+							onChange={ setMarginTabletLandscapeLeft }
 													options={ [
 								{
 									label: __( '0' ),
@@ -968,8 +968,8 @@ function MarginOptions( props ) {
 						<SelectControl
 							key="margin-xl-top"
 							label={ __( 'Top' ) }
-							value={ props.attributes.marginXLTop ? props.attributes.marginXLTop : '' }
-							onChange={ setMarginXLTop }
+							value={ props.attributes.marginDesktopTop ? props.attributes.marginDesktopTop : '' }
+							onChange={ setMarginDesktopTop }
 							options={ [
 								{
 									label: __( '0' ),
@@ -1043,8 +1043,8 @@ function MarginOptions( props ) {
 						<SelectControl
 							key="margin-xl-right"
 							label={ __( 'Right' ) }
-							value={ props.attributes.marginXLRight ? props.attributes.marginXLRight : '' }
-							onChange={ setMarginXLRight }
+							value={ props.attributes.marginDesktopRight ? props.attributes.marginDesktopRight : '' }
+							onChange={ setMarginDesktopRight }
 													options={ [
 								{
 									label: __( '0' ),
@@ -1118,8 +1118,8 @@ function MarginOptions( props ) {
 						<SelectControl
 							key="margin-xl-bottom"
 							label={ __( 'Bottom' ) }
-							value={ props.attributes.marginXLBottom ? props.attributes.marginXLBottom : '' }
-							onChange={ setMarginXLBottom }
+							value={ props.attributes.marginDesktopBottom ? props.attributes.marginDesktopBottom : '' }
+							onChange={ setMarginDesktopBottom }
 													options={ [
 								{
 									label: __( '0' ),
@@ -1193,8 +1193,8 @@ function MarginOptions( props ) {
 						<SelectControl
 							key="margin-xl-left"
 							label={ __( 'Left' ) }
-							value={ props.attributes.marginXLLeft ? props.attributes.marginXLLeft : '' }
-							onChange={ setMarginXLLeft }
+							value={ props.attributes.marginDesktopLeft ? props.attributes.marginDesktopLeft : '' }
+							onChange={ setMarginDesktopLeft }
 													options={ [
 								{
 									label: __( '0' ),

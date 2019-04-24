@@ -258,7 +258,7 @@
 		max-width: 450px;
 		text-align: center;
 
-		@include mediaquery-max(tablet-portrait) {
+		@include mediaquery-max-width(tablet-portrait) {
 			padding: 0 $gap;
 		}
 
@@ -438,7 +438,7 @@
 
 	&.hasVideo {
 		.expander-image {
-			@include mediaquery-max(tablet-portrait) {
+			@include mediaquery-max-width(tablet-portrait) {
 				padding-bottom: 54.6%;
 			}
 		}
@@ -449,7 +449,7 @@
 	//amenity map version of expander
 
 
-	@include mediaquery-max(tablet-landscape) {
+	@include mediaquery-max-width(tablet-landscape) {
 		background-color: color('global', 'navy');
 		height: 100vh;
 	}
@@ -461,7 +461,7 @@
 	.content-wrapper {
 		background-color: color('global', 'navy');
 
-		@include mediaquery-max(tablet-landscape) {
+		@include mediaquery-max-width(tablet-landscape) {
 			height: 100vh;
 		}
 
@@ -511,7 +511,7 @@
 		
 
 
-		@include mediaquery-max(tablet-landscape) {
+		@include mediaquery-max-width(tablet-landscape) {
 			padding: 0 0 50%;
 			height: 0;
 			margin-top: 60px;
@@ -556,7 +556,7 @@
 			height: auto;
 			margin: 0 auto;
 
-			@include mediaquery-max(tablet-landscape) {
+			@include mediaquery-max-width(tablet-landscape) {
 				width: auto;
 			    position: absolute;
 			    height: 100%;
@@ -586,7 +586,7 @@
 			top: 0px;
 			padding-bottom: 70.4%;
 
-			@include mediaquery-max(tablet-landscape) {
+			@include mediaquery-max-width(tablet-landscape) {
 				width: 85%;
 			}
 
@@ -859,7 +859,7 @@
 	.gallery-teaser {
 		display: none;
 
-		@include mediaquery-max(tablet-landscape) {
+		@include mediaquery-max-width(tablet-landscape) {
 			display: none
 		}
 
@@ -911,7 +911,7 @@
 			bottom: 60px;
 		}
 
-		@include mediaquery(xl) {
+		@include mediaquery(desktop)  {
 			bottom: 0px;
 		}
 
@@ -935,7 +935,7 @@
 
 	.expander-wrapper {
 
-		@include mediaquery-max(tablet-landscape) {
+		@include mediaquery-max-width(tablet-landscape) {
 			bottom: -40vh;
 			height: 40vh;
 			left: 0;
@@ -947,7 +947,7 @@
 
 		}
  
-		@include mediaquery-max(tablet-portrait) {
+		@include mediaquery-max-width(tablet-portrait) {
 			bottom: -45vh;
 			height: 45vh;
 		}
@@ -962,7 +962,7 @@
 	}
 
 	.expander-image-wrapper {
-		@include mediaquery-max(tablet-landscape) {
+		@include mediaquery-max-width(tablet-landscape) {
 			width: 100%;
 			margin: 0;
 			padding:0;
@@ -987,7 +987,7 @@
 
 	.expander-tab {
 
-		@include mediaquery-max(tablet-landscape) {
+		@include mediaquery-max-width(tablet-landscape) {
 			height: 0;
 			width: 100%;
 			padding: 0;
@@ -1050,7 +1050,7 @@
 
 		.expander-image-wrapper {
 
-			@include mediaquery-max(tablet-landscape) {
+			@include mediaquery-max-width(tablet-landscape) {
 				height: 100%;
 				@include flexbox-align-items(flex-start);
 			}
@@ -1127,7 +1127,7 @@
 		}
 
 		.expander-tab {
-			@include mediaquery-max(tablet-landscape) {
+			@include mediaquery-max-width(tablet-landscape) {
 				height: 100%;
 				left: 0px;
 			}
@@ -1144,7 +1144,7 @@
 
 		.expander-wrapper {
 
-			@include mediaquery-max(tablet-landscape) {
+			@include mediaquery-max-width(tablet-landscape) {
 				bottom: 0;
 				left: 0;
 			}
@@ -1164,7 +1164,7 @@
 
 		.arrow-wrapper {
 
-		    @include mediaquery-max(tablet-landscape) {
+		    @include mediaquery-max-width(tablet-landscape) {
 				left: 0;
 			    right: 0;
 			    margin: 0 auto;
@@ -1175,14 +1175,14 @@
 		    	position: absolute;
 		    }
 
-			@include mediaquery-max(tablet-portrait) {
+			@include mediaquery-max-width(tablet-portrait) {
 				bottom: 47vh;
 			}
 
 		}
 
 		.no-image {
-			@include mediaquery-max(tablet-landscape) {
+			@include mediaquery-max-width(tablet-landscape) {
 				padding: $gap 0 $gap*2;
 				overflow: scroll;
 				width: calc(100% + 20px);
@@ -1207,7 +1207,7 @@
 
 			.expander-content-positioning {
 
-				@include mediaquery-max(tablet-portrait) {
+				@include mediaquery-max-width(tablet-portrait) {
 					margin-left: -20px;
 				}
 			}
@@ -1278,7 +1278,7 @@
 			height: 100%;
 		}
 
-		@include mediaquery-max(tablet-landscape) {
+		@include mediaquery-max-width(tablet-landscape) {
 			@include transform(translateX(-30%));
 
 		}
@@ -1292,12 +1292,12 @@
 	}
 
 	.expander-wrapper {
-		@include mediaquery-max(tablet-landscape) {
+		@include mediaquery-max-width(tablet-landscape) {
 			width: 46%;
 			height: 100%;
 		}
 
-		@include mediaquery-max(tablet-portrait) {
+		@include mediaquery-max-width(tablet-portrait) {
 			width: calc(30% + 40px);
 			position: absolute;
 			left: calc((30% + 40px) * -1);
@@ -1331,7 +1331,7 @@
 		}
 
 		&.safariBarGone {
-			@include mediaquery-max(tablet-landscape) {
+			@include mediaquery-max-width(tablet-landscape) {
 				bottom: 30px;
 			}
 		}
@@ -1753,7 +1753,7 @@
 
 	.arrow-wrapper {
 
-		@include mediaquery-max(tablet-landscape) {
+		@include mediaquery-max-width(tablet-landscape) {
 			display: block;
 			right: auto;
 			left: 45px;
@@ -1763,12 +1763,12 @@
 
 	&.expanded {
 		.arrow-wrapper {
-			@include mediaquery-max(tablet-landscape) {
+			@include mediaquery-max-width(tablet-landscape) {
 				left: 35%;
 				right: auto;
 			}
 
-			@include mediaquery-max(tablet-portrait) {
+			@include mediaquery-max-width(tablet-portrait) {
 				left: calc(35% + 40px);
 			}
 

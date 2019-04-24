@@ -4,21 +4,21 @@ namespace FLEX_LAYOUT_SYSTEM\Components\Padding;
 
 function padding_options_classes( $attributes ) {
 	$class = '';
-	$class .= array_key_exists('paddingSmallTop', $attributes) ? " padding-small-top-{$attributes['paddingSmallTop']} " : '';
-	$class .= array_key_exists('paddingSmallRight', $attributes) ? " padding-small-right-{$attributes['paddingSmallRight']} " : '';
-	$class .= array_key_exists('paddingSmallLeft', $attributes) ? " padding-small-left-{$attributes['paddingSmallLeft']} " :'';
-	$class .= array_key_exists('paddingSmallBottom', $attributes) ? " padding-small-bottom-{$attributes['paddingSmallBottom']} " :'';
-	$class .= array_key_exists('paddingMediumTop', $attributes) ? " padding-medium-top-{$attributes['paddingMediumTop']} " :'';
-	$class .= array_key_exists('paddingMediumRight', $attributes) ? " padding-medium-right-{$attributes['paddingMediumRight']} " :'';
-	$class .= array_key_exists('paddingMediumLeft', $attributes) ? " padding-medium-left-{$attributes['paddingMediumLeft']} " :'';
-	$class .= array_key_exists('paddingMediumBottom', $attributes) ? " padding-medium-bottom-{$attributes['paddingMediumBottom']} " :'';
-	$class .= array_key_exists('paddingLargeTop', $attributes) ? " padding-large-top-{$attributes['paddingLargeTop']} " :'';
-	$class .= array_key_exists('paddingLargeRight', $attributes) ? " padding-large-right-{$attributes['paddingLargeRight']} " :'';
-	$class .= array_key_exists('paddingLargeLeft', $attributes) ? " padding-large-left-{$attributes['paddingLargeLeft']} " :'';
-	$class .= array_key_exists('paddingLargeBottom', $attributes) ? " padding-large-bottom-{$attributes['paddingLargeBottom']} " :'';
-	$class .= array_key_exists('paddingXLTop', $attributes) ? " padding-xl-top-{$attributes['paddingXLTop']} " :'';
-	$class .= array_key_exists('paddingXLRight', $attributes) ? " padding-xl-right-{$attributes['paddingXLRight']} " :'';
-	$class .= array_key_exists('paddingXLLeft', $attributes) ? " padding-xl-left-{$attributes['paddingXLLeft']} " :'';
-	$class .= array_key_exists('paddingXLBottom', $attributes) ? " padding-xl-bottom-{$attributes['paddingXLBottom']} " :'';
+	$class .= array_key_exists('paddingTop', $attributes) ? " padding-top-{$attributes['paddingTop']} " : '';
+	$class .= array_key_exists('paddingRight', $attributes) ? " padding-right-{$attributes['paddingRight']} " : '';
+	$class .= array_key_exists('paddingLeft', $attributes) ? " padding-left-{$attributes['paddingLeft']} " :'';
+	$class .= array_key_exists('paddingBottom', $attributes) ? " padding-bottom-{$attributes['paddingBottom']} " :'';
+	$class .= array_key_exists('paddingTabletPortraitTop', $attributes) ? " padding-tablet-portrait-top-{$attributes['paddingTabletPortraitTop']} " :'';
+	$class .= array_key_exists('paddingTabletPortraitRight', $attributes) ? " padding-tablet-portrait-right-{$attributes['paddingTabletPortraitRight']} " :'';
+	$class .= array_key_exists('paddingTabletPortraitLeft', $attributes) ? " padding-tablet-portrait-left-{$attributes['paddingTabletPortraitLeft']} " :'';
+	$class .= array_key_exists('paddingTabletPortraitBottom', $attributes) ? " padding-tablet-portrait-bottom-{$attributes['paddingTabletPortraitBottom']} " :'';
+	$class .= array_key_exists('paddingTabletLandscapeTop', $attributes) ? " padding-tablet-landscape-top-{$attributes['paddingTabletLandscapeTop']} " :'';
+	$class .= array_key_exists('paddingTabletLandscapeRight', $attributes) ? " padding-tablet-landscape-right-{$attributes['paddingTabletLandscapeRight']} " :'';
+	$class .= array_key_exists('paddingTabletLandscapeLeft', $attributes) ? " padding-tablet-landscape-left-{$attributes['paddingTabletLandscapeLeft']} " :'';
+	$class .= array_key_exists('paddingTabletLandscapeBottom', $attributes) ? " padding-tablet-landscape-bottom-{$attributes['paddingTabletLandscapeBottom']} " :'';
+	$class .= array_key_exists('paddingDesktopTop', $attributes) ? " padding-desktop-top-{$attributes['paddingDesktopTop']} " :'';
+	$class .= array_key_exists('paddingDesktopRight', $attributes) ? " padding-desktop-right-{$attributes['paddingDesktopRight']} " :'';
+	$class .= array_key_exists('paddingDesktopLeft', $attributes) ? " padding-desktop-left-{$attributes['paddingDesktopLeft']} " :'';
+	$class .= array_key_exists('paddingDesktopBottom', $attributes) ? " padding-desktop-bottom-{$attributes['paddingDesktopBottom']} " :'';
 	return $class;
 }

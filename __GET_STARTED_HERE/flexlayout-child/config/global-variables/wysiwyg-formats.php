@@ -21,25 +21,49 @@ $style_formats = array(
 		),  
 
 		array(  
-			'title' => 'Button Primary',  
+			'title' => 'Button',  
 			'inline' => 'span',  
-			'classes' => 'button',
-			'wrapper' => false,
-		),  
-
-		array(  
-			'title' => 'Button Secondary',  
-			'inline' => 'span',  
-			'classes' => 'button button-secondary',
-			'wrapper' => false,
-		),  
-
-		array(  
-			'title' => 'Button Tertiary',  
-			'inline' => 'span',  
-			'classes' => 'button button-tertiary',
+			'classes' => 'cta',
 			'wrapper' => false,
 		),
+
+
+		array(  
+			'title' => 'Button Negative',  
+			'inline' => 'span',  
+			'classes' => 'cta cta-negative',
+			'wrapper' => false,
+		),
+
+		array(  
+			'title' => 'Button Accent',  
+			'inline' => 'span',  
+			'classes' => 'cta cta-accent',
+			'wrapper' => false,
+		),
+
+		
+		array(  
+			'title' => 'Button Solid',  
+			'inline' => 'span',  
+			'classes' => 'cta cta-solid',
+			'wrapper' => false,
+		),
+		
+		array(  
+			'title' => 'Underline',  
+			'inline' => 'span',  
+			'classes' => 'underline',
+			'wrapper' => false,
+		),
+
+		array(  
+			'title' => 'Strikethrough',  
+			'inline' => 'span',  
+			'classes' => 'strikethrough',
+			'wrapper' => false,
+		),
+
 );
 
 if(!defined('FLEXLAYOUT_WYSIWYG')) {

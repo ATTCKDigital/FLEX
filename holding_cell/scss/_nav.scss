@@ -79,7 +79,7 @@
 	}
 
 	.main-nav {
-		@include mediaquery-max(desktop) {
+		@include mediaquery-max-width(desktop) {
 			background-color: $white;
 			left: 0;
 			max-height: 0;
@@ -102,7 +102,7 @@
 		}
 
 		.language-wrapper {
-			@include mediaquery-max(desktop) {
+			@include mediaquery-max-width(desktop) {
 				padding:0 $gap;
 				border-bottom: 1px solid color('accent', 'gray-border');
 				width: 100%;
@@ -131,7 +131,7 @@
 			position: relative;
 			@include sans-serif-bold;
 			
-			@include mediaquery-max(desktop) {
+			@include mediaquery-max-width(desktop) {
 				border-bottom: 1px solid color('accent', 'gray-border');
 				max-height:40px;
 				padding: 0 $gap;
@@ -181,7 +181,7 @@
 
 
 			& > a {
-				@include mediaquery-max(desktop) {
+				@include mediaquery-max-width(desktop) {
 					display: block;
 					padding: 11px 0 $gap*.5;
 					position: relative;
@@ -354,7 +354,7 @@
 				}
 			}
 
-			@include mediaquery-max(desktop) {
+			@include mediaquery-max-width(desktop) {
 				.menu-item {
 					border: 0;
 					padding: 7px 0 0 0;

@@ -435,7 +435,7 @@ body {
 		}
 	}
 
-	@include mediaquery(xl) {
+	@include mediaquery(desktop)  {
 		border-color: yellow;
 
 		.breakpoint.xl {

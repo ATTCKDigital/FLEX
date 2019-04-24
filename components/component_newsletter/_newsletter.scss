@@ -19,7 +19,8 @@
 		margin-bottom: $gap;
 	}
 
-	input.button {
-		@extend .button-secondary;
+	input.cta {
+		@extend .cta;
+		@extend .cta-negative;
 	}
 }

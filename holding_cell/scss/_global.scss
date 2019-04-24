@@ -26,7 +26,7 @@ body {
 
 	&.popupOpen {
 
-		@include mediaquery-max(tablet-portrait) {
+		@include mediaquery-max-width(tablet-portrait) {
 			position: fixed;
 			top: 0;
 			left: 0;
@@ -143,7 +143,7 @@ main.content {
 	z-index: 2;
 
 	&.zindexTop {
-		z-index: 100000;
+		z-index: 1000;
 	}
 }
 
@@ -213,7 +213,7 @@ main.content {
 
 
 .mobile-hidden {
-	@include mediaquery-max(tablet-portrait) {
+	@include mediaquery-max-width(tablet-portrait) {
 		display: none;
 	}
 
@@ -223,7 +223,7 @@ main.content {
 }
 
 .tablet-hidden {
-	@include mediaquery-max(tablet-landscape) {
+	@include mediaquery-max-width(tablet-landscape) {
 		display: inline-block;
 	}
 
@@ -537,7 +537,7 @@ main.content {
 	.searchOpen & {
 		@include verticalCenter();
 
-		@include mediaquery-max(desktop) {
+		@include mediaquery-max-width(desktop) {
 			// z-index: 1000;
 		}
 	}

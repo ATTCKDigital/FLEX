@@ -59,7 +59,6 @@ function register_button_block() {
  * Server rendering for /blocks/heading
  */
 function render_button_block($attributes) {
-	$tagName = "button";
 	$buttonClass = $attributes['className'];
 	$class = " align-{$attributes['align']}";
 	$class .= margin_options_classes($attributes);
@@ -71,12 +70,12 @@ function render_button_block($attributes) {
 
 	$button1 = null;
 	if ($content1 && $url1) {
-		$button1 = "<{$tagName} class=\"button {$buttonClass}\"><a href=\"{$url1}\">{$content1}</a></{$tagName}>";
+		$button1 = "<a href=\"{$url1}\"  class=\"cta {$buttonClass}\">{$content1}</a>";
 	}
 
 	$button2 = null;
 	if($content2 && $url2) {
-		$button2 = "<{$tagName} class=\"button {$buttonClass}\"><a href=\"{$url2}\">{$content2}</a></{$tagName}>";
+		$button2 = "<a href=\"{$url2}\" class=\"cta {$buttonClass}\">{$content2}</a>";
 	}
 
 	$output = '';

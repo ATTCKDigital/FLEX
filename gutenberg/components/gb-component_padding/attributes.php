@@ -3,52 +3,52 @@
 namespace FLEX_LAYOUT_SYSTEM\Components\Padding;
 
 const PADDING_OPTIONS_ATTRIBUTES = [
-	'paddingSmallTop' => [
+	'paddingTop' => [
 		 'type' => 'string',
 	 ],
-	 'paddingSmallRight' => [
+	 'paddingRight' => [
 		 'type' => 'string',
 	 ],
-	 'paddingSmallBottom' => [
+	 'paddingBottom' => [
 		 'type' => 'string',
 	 ],
-	 'paddingSmallLeft' => [
+	 'paddingLeft' => [
 		 'type' => 'string',
 	 ],
-	 'paddingMediumTop' => [
+	 'paddingTabletPortraitTop' => [
 		 'type' => 'string',
 	 ],
-	 'paddingMediumRight' => [
+	 'paddingTabletPortraitRight' => [
 		 'type' => 'string',
 	 ],
-	 'paddingMediumBottom' => [
+	 'paddingTabletPortraitBottom' => [
 		 'type' => 'string',
 	 ],
-	 'paddingMediumLeft' => [
+	 'paddingTabletPortraitLeft' => [
 		 'type' => 'string',
 	 ],
-	 'paddingLargeTop' => [
+	 'paddingTabletLandscapeTop' => [
 		 'type' => 'string',
 	 ],
-	 'paddingLargeRight' => [
+	 'paddingTabletLandscapeRight' => [
 		 'type' => 'string',
 	 ],
-	 'paddingLargeBottom' => [
+	 'paddingTabletLandscapeBottom' => [
 		 'type' => 'string',
 	 ],
-	 'paddingLargeLeft' => [
+	 'paddingTabletLandscapeLeft' => [
 		 'type' => 'string',
 	 ],
-	 'paddingXLTop' => [
+	 'paddingDesktopTop' => [
 		 'type' => 'string',
 	 ],
-	 'paddingXLRight' => [
+	 'paddingDesktopRight' => [
 		 'type' => 'string',
 	 ],
-	 'paddingXLBottom' => [
+	 'paddingDesktopBottom' => [
 		 'type' => 'string',
 	 ],
-	 'paddingXLLeft' => [
+	 'paddingDesktopLeft' => [
 		 'type' => 'string',
 	 ],
 ];

@@ -4,7 +4,7 @@
 	min-height: 0;
 	max-height: 1000px;
 
-	@include mediaquery(medium) {
+	@include mediaquery(tablet-portrait)  {
 		min-height: 624px;
 		max-height: 1000px;
 	}
@@ -45,7 +45,7 @@
 			}
 			
 			.ctf-author-name {
-				color: color('text', 'primary');
+				color: color('text', 'body');
 			}
 		}
 

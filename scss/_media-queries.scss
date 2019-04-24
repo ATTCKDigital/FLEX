@@ -1,28 +1,21 @@
 /**** Media Queries ****/
 
 $mediaQueries: (
-	'global'	: '0',
-	'small'		: $small-breakpoint,
-	'iPhone6'	: '375px',
-	'medium'	: $medium-breakpoint,
-	'large'		: $large-breakpoint,
-	'xl'		: $xl-breakpoint,
-	'2xl'		: $xl2-breakpoint,
-	'3xl'		: $xl3-breakpoint,
-	'4xl'		: $xl4-breakpoint,
-	'5xl'		: $xl5-breakpoint
+	'phone'				: $phone,
+	'tablet-portrait'	: $tablet-portrait,
+	'tablet-landscape'	: $tablet-landscape,
+	'desktop'			: $desktop,
+	'xl'				: $xl,
+	'xl2'				: $xl2
 );
 
 $maxMediaQueries: (
-	'global'	: 'none',
-	'small'		: $max-small-breakpoint,
-	'medium'	: $max-medium-breakpoint,
-	'large'		: $max-large-breakpoint,
-	'xl'		: $max-xl-breakpoint,
-	'2xl'		: $max-2xl-breakpoint,
-	'3xl'		: $max-3xl-breakpoint,
-	'4xl'		: $max-4xl-breakpoint,
-	'5xl'		: $max-5xl-breakpoint
+	'phone'				: $max-phone,
+	'tablet-portrait'	: $max-tablet-portrait,
+	'tablet-landscape'	: $max-tablet-landscape,
+	'desktop'			: $max-desktop,
+	'xl'				: $max-xl,
+	'xl2'				: $max-xl2
 
 );
 
@@ -35,18 +28,15 @@ $minDeviceHeightMediaQueries: (
 	'desktop'	: '1025px'
 );
 
-// Short versions
-$mediaquery-small	: _get($mediaQueries, 'small');
-$mediaquery-medium	: _get($mediaQueries, 'medium');
-$mediaquery-large	: _get($mediaQueries, 'large');
-$mediaquery-xl		: _get($mediaQueries, 'xl');
-$mediaquery-2xl		: _get($mediaQueries, '2xl');
-$mediaquery-3xl		: _get($mediaQueries, '3xl');
-$mediaquery-4xl		: _get($mediaQueries, '4xl');
-$mediaquery-5xl		: _get($mediaQueries, '5xl');
 
 @mixin mediaquery($breakpoint) {
 	@media only screen and (min-width: _get($mediaQueries, #{$breakpoint})) {
+		@content;
+	}
+}
+
+@mixin mediaquery-max-width($breakpoint) {
+	@media only screen and (max-width: _get($maxMediaQueries, #{$breakpoint})) {
 		@content;
 	}
 }
@@ -59,12 +49,6 @@ $mediaquery-5xl		: _get($mediaQueries, '5xl');
 
 @mixin mediaquery-min-device-height($breakpoint) {
 	@media only screen and (min-device-height: _get($minDeviceHeightMediaQueries, #{$breakpoint})) {
-		@content;
-	}
-}
-
-@mixin mediaquery-max($breakpoint) {
-	@media only screen and (max-width: _get($maxMediaQueries, #{$breakpoint})) {
 		@content;
 	}
 }

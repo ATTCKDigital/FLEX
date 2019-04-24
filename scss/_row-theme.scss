@@ -71,30 +71,30 @@ $xPositions: left, right, center;
 		border-#{$position}: 1px solid $white;
 	}
 
-	.component-#{$position}-border-primary, .wp-block .component-#{$position}-border-primary > .pure-g {
-		border-#{$position}: 1px solid color('background', 'primary');
+	.component-#{$position}-border-brand-primary, .wp-block .component-#{$position}-border-brand-primary > .pure-g {
+		border-#{$position}: 1px solid color('brand', 'primary');
 	}
 
-	.component-#{$position}-border-secondary, .wp-block .component-#{$position}-border-secondary > .pure-g {
-		border-#{$position}: 1px solid color('background', 'secondary');
+	.component-#{$position}-border-brand-accent, .wp-block .component-#{$position}-border-brand-accent > .pure-g {
+		border-#{$position}: 1px solid color('brand', 'accent');
 	}
 
-	.component-#{$position}-border-tertiary, .wp-block .component-#{$position}-border-tertiary > .pure-g {
-		border-#{$position}: 1px solid color('background', 'tertiary');
+	.component-#{$position}-border-brand-secondary, .wp-block .component-#{$position}-border-brand-secondary > .pure-g {
+		border-#{$position}: 1px solid color('brand', 'secondary');
 	}
 
 	.component-#{$position}-border-black, .wp-block .component-#{$position}-border-black > .pure-g {
 		border-#{$position}: 1px solid $black;
 	}
 
-	.component-#{$position}-border-small {
-		@include mediaquery-max(medium) {
+	.component-#{$position}-border-mobile {
+		@include mediaquery-max-width(tablet-portrait) {
 			border-#{$position}: 1px solid $borderColor;
 		}
 	}
 
-	.component-#{$position}-border-medium-up {
-		@include mediaquery(medium) {
+	.component-#{$position}-border-tablet-portrait-up {
+		@include mediaquery(tablet-portrait)  {
 			border-#{$position}: 1px solid $borderColor;
 		}
 	}

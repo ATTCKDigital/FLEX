@@ -8,7 +8,7 @@
 		padding: 0;
 	}
 
-	@include mediaquery-max(tablet-landscape) {
+	@include mediaquery-max-width(tablet-landscape) {
 		.page-template-page-events & {
 			margin-top: $gap;
 		}

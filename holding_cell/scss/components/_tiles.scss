@@ -13,7 +13,7 @@
 		position: relative;
 		
 		.headline2 {
-			@include mediaquery-max(tablet-landscape) {
+			@include mediaquery-max-width(tablet-landscape) {
 				font-size: 14px;
 				line-height: 1.1;
 				letter-spacing: 0.3px;
@@ -114,7 +114,7 @@
 	}
 
 	.small-image {
-		// @include mediaquery-max(tablet-landscape) {
+		// @include mediaquery-max-width(tablet-landscape) {
 		// 	height: auto;
 		// 	padding-bottom: 0;
 		// }
@@ -161,14 +161,14 @@
 				margin: 0 auto;
 				max-height: 100%;
 
-				@include mediaquery-max(tablet-landscape) {
+				@include mediaquery-max-width(tablet-landscape) {
 					max-height: 150px;
 				}
 			}
 		}
 
 		.small-content-inner {
-			@include mediaquery-max(tablet-landscape) {
+			@include mediaquery-max-width(tablet-landscape) {
 				@include verticalCenter;
 			}
 		}

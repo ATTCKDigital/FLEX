@@ -1,5 +1,5 @@
 .component-filter {
-	@include mediaquery-max(tablet-landscape) {
+	@include mediaquery-max-width(tablet-landscape) {
 		margin-bottom: $gap;
 	}
 
@@ -14,7 +14,7 @@
 		padding-top: $gap*.75;
 		padding-bottom: $gap*.75;
 
-		@include mediaquery-max(tablet-landscape) {
+		@include mediaquery-max-width(tablet-landscape) {
 			max-height: 0;
 			overflow: hidden;
 			padding: 0;
@@ -32,7 +32,7 @@
 
 	.openFilter {
 		.filter-items {
-			@include mediaquery-max(tablet-landscape) {
+			@include mediaquery-max-width(tablet-landscape) {
 				max-height: 1000px;
 				padding-top: $gap*.75;
 			}
@@ -59,7 +59,7 @@
 }
 
 .component-archive-feed  {
-	@include mediaquery-max(tablet-landscape) {
+	@include mediaquery-max-width(tablet-landscape) {
 		padding-right: $gap;
 		padding-left: $gap;
 	}

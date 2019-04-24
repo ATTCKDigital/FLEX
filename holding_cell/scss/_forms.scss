@@ -398,7 +398,7 @@
 
 .search {
 	.header-tab {
-		@include mediaquery-max(tablet-landscape) {
+		@include mediaquery-max-width(tablet-landscape) {
 			margin: 0 $gap;
 		}
 	}
@@ -406,7 +406,7 @@
 
 .component-search {
 
-	@include mediaquery-max(tablet-landscape) {
+	@include mediaquery-max-width(tablet-landscape) {
 		margin: 0 $gap;
 	}
 

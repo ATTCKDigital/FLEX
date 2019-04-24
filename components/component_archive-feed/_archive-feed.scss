@@ -6,7 +6,7 @@
 		@include clearRow;
 
 		.feed-item {
-			@include mediaquery(medium) {
+			@include mediaquery(tablet-portrait)  {
 				width: 31%;
 				float: left;
 				margin-right: 3.5%;
@@ -31,7 +31,6 @@
 					left: -50%;
 					margin: 0 auto;
 					max-height: 100%;
-					max-width: 100%;
 					position: absolute;
 					right: -50%;
 					top: 0;

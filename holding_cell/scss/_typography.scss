@@ -361,7 +361,7 @@ th, tr, td {
 		position: relative;
 		@include sans-serif-bold;
 
-		@include mediaquery-max(tablet-landscape) {
+		@include mediaquery-max-width(tablet-landscape) {
 			padding-bottom: 12px;
 			
 			&:after {
@@ -401,7 +401,7 @@ th, tr, td {
 }
 
 .openFilter {
-	@include mediaquery-max(tablet-landscape) {
+	@include mediaquery-max-width(tablet-landscape) {
 		.filter-item-header:after {
 			@include transform(rotate(-90deg));
 		}
@@ -496,7 +496,7 @@ th, tr, td {
 	}
 
 	&.prev-link{
-		@include mediaquery-max(tablet-portrait) {
+		@include mediaquery-max-width(tablet-portrait) {
 			margin-bottom: 2px;
 		}
 		

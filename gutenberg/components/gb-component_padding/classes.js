@@ -5,23 +5,22 @@
  */
 function PaddingOptionsClasses( props ) {
 	return [
-		props.attributes.paddingSmallTop ? `padding-small-top-${ props.attributes.paddingSmallTop }` : null,
-		props.attributes.paddingSmallRight ? `padding-small-right-${ props.attributes.paddingSmallRight }` : null,
-		props.attributes.paddingSmallLeft ? `padding-small-left-${ props.attributes.paddingSmallLeft }` : null,
-		props.attributes.paddingSmallBottom ? `padding-small-bottom-${ props.attributes.paddingSmallBottom }` : null,
-		props.attributes.paddingMediumTop ? `padding-medium-top-${ props.attributes.paddingMediumTop }` : null,
-		props.attributes.paddingMediumRight ? `padding-medium-right-${ props.attributes.paddingMediumRight }` : null,
-		props.attributes.paddingMediumLeft ? `padding-medium-left-${ props.attributes.paddingMediumLeft }` : null,
-		props.attributes.paddingMediumBottom ? `padding-medium-bottom-${ props.attributes.paddingMediumBottom }` : null,
-		props.attributes.paddingLargeTop ? `padding-large-top-${ props.attributes.paddingLargeTop }` : null,
-		props.attributes.paddingLargeRight ? `padding-large-right-${ props.attributes.paddingLargeRight }` : null,
-		props.attributes.paddingLargeLeft ? `padding-large-left-${ props.attributes.paddingLargeLeft }` : null,
-		props.attributes.paddingLargeBottom ? `padding-large-bottom-${ props.attributes.paddingLargeBottom }` : null,
-		props.attributes.paddingXLTop ? `padding-xl-top-${ props.attributes.paddingXLTop }` : null,
-		props.attributes.paddingXLRight ? `padding-xl-right-${ props.attributes.paddingXLRight }` : null,
-		props.attributes.paddingXLLeft ? `padding-xl-left-${ props.attributes.paddingXLLeft }` : null,
-		props.attributes.paddingXLBottom ? `padding-xl-bottom-${ props.attributes.paddingXLBottom }` : null,
-
+		props.attributes.paddingTop ? `padding-top-${ props.attributes.paddingTop }` : null,
+		props.attributes.paddingRight ? `padding-right-${ props.attributes.paddingRight }` : null,
+		props.attributes.paddingLeft ? `padding-left-${ props.attributes.paddingLeft }` : null,
+		props.attributes.paddingBottom ? `padding-bottom-${ props.attributes.paddingBottom }` : null,
+		props.attributes.paddingTabletPortraitTop ? `padding-tablet-portrait-top-${ props.attributes.paddingTabletPortraitTop }` : null,
+		props.attributes.paddingTabletPortraitRight ? `padding-tablet-portrait-right-${ props.attributes.paddingTabletPortraitRight }` : null,
+		props.attributes.paddingTabletPortraitLeft ? `padding-tablet-portrait-left-${ props.attributes.paddingTabletPortraitLeft }` : null,
+		props.attributes.paddingTabletPortraitBottom ? `padding-tablet-portrait-bottom-${ props.attributes.paddingTabletPortraitBottom }` : null,
+		props.attributes.paddingTabletLandscapeTop ? `padding-tablet-landscape-top-${ props.attributes.paddingTabletLandscapeTop }` : null,
+		props.attributes.paddingTabletLandscapeRight ? `padding-tablet-landscape-right-${ props.attributes.paddingTabletLandscapeRight }` : null,
+		props.attributes.paddingTabletLandscapeLeft ? `padding-tablet-landscape-left-${ props.attributes.paddingTabletLandscapeLeft }` : null,
+		props.attributes.paddingTabletLandscapeBottom ? `padding-tablet-landscape-bottom-${ props.attributes.paddingTabletLandscapeBottom }` : null,
+		props.attributes.paddingDesktopTop ? `padding-desktop-top-${ props.attributes.paddingDesktopTop }` : null,
+		props.attributes.paddingDesktopRight ? `padding-desktop-right-${ props.attributes.paddingDesktopRight }` : null,
+		props.attributes.paddingDesktopLeft ? `padding-desktop-left-${ props.attributes.paddingDesktopLeft }` : null,
+		props.attributes.paddingDesktopBottom ? `padding-desktop-bottom-${ props.attributes.paddingDesktopBottom }` : null,
 	];
 }
 

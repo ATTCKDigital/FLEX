@@ -69,18 +69,19 @@ function ElementsInViewport($el) {
 
 	function hideAllElements() {
 		// First, hide all elements
-		$('body').find('h1, h2, h3, h4, h5, h6, p, span, .button, img').addClass('prepare-in-view');
+		$('body').find('h1, h2, h3, h4, h5, h6, p, span, .cta, img, .category-list').addClass('prepare-in-view');
 
 		// Add elements that need to be manipulated here:
-		$('body').find('h1, h2, h3, h4, h5, h6, p, span, .button, img').each(function (index, value) {
+		$('body').find('h1, h2, h3, h4, h5, h6, p, span, .cta, img, .category-list').each(function (index, value) {
 			if (!$(this).hasClass('no-element-in-view')) {
 				$(this).addClass('prepare-in-view');
 			}
 		});
 
 		// Show protected areas
-		$('.global-header').addClass('no-element-in-view');
-		$('.global-footer').addClass('no-element-in-view');
+		$('.component-header').addClass('no-element-in-view');
+		$('.component-footer').addClass('no-element-in-view');
+		$('.component-gdpr p').addClass('no-element-in-view');
 
 		indexAllElements();
 	}

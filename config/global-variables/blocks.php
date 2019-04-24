@@ -6,7 +6,6 @@
 // Enable flexlayout created blocks by using flexlayout/block_name
 
 $blocks = array(
-
 	'flexlayout/row', //REQUIRED
 	'flexlayout/column', //REQUIRED
 	'flexlayout/button',
@@ -19,6 +18,7 @@ $blocks = array(
 	'flexlayout/text',
 	'flexlayout/users',
 	'flexlayout/video',
+	'flexlayout/share'
 );
 
 

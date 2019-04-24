@@ -19,31 +19,32 @@ body.debug {
 		padding: 10px;
 	}
 
-	@include mediaquery(small) {
+
+	@include mediaquery(phone)  {
 		border-color: green;
 
-		.breakpoint.small {
+		.breakpoint.phone {
 			display: block;
 		}
 	}
 
-	@include mediaquery(medium) {
+	@include mediaquery(tablet-portrait)  {
 		border-color: blue;
 
-		.breakpoint.medium {
+		.breakpoint.tablet-portrait {
 			display: block;
 		}
 	}
 
-	@include mediaquery(large) {
+	@include mediaquery(tablet-landscape)  {
 		border-color: purple;
 
-		.breakpoint.large {
+		.breakpoint.tablet-landscape {
 			display: block;
 		}
 	}
 
-	@include mediaquery(xl) {
+	@include mediaquery(desktop)  {
 		border-color: orange;
 
 		.breakpoint.xl {
@@ -51,35 +52,20 @@ body.debug {
 		}
 	}
 
-	@include mediaquery(2xl) {
+	@include mediaquery(xl) {
 		border-color: yellow;
 
-		.breakpoint.2xl {
+		.breakpoint.xl {
 			display: block;
 		}
 	}
 
-	@include mediaquery(3xl) {
+	@include mediaquery(xl2) {
 		border-color: yellow;
 
-		.breakpoint.2xl {
+		.breakpoint.xl2 {
 			display: block;
 		}
 	}
 
-	@include mediaquery(4xl) {
-		border-color: yellow;
-
-		.breakpoint.2xl {
-			display: block;
-		}
-	}
-
-	@include mediaquery(5xl) {
-		border-color: yellow;
-
-		.breakpoint.2xl {
-			display: block;
-		}
-	}
 }

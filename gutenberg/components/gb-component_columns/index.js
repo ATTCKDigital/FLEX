@@ -23,7 +23,6 @@ const {
  */
 import ColumnOptionsAttributes from './attributes';
 import ColumnOptionsClasses from './classes';
-// import './editor.scss';
 
 // Export for ease of importing in individual blocks.
 export {

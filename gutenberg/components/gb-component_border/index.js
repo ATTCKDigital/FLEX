@@ -64,16 +64,16 @@ function BorderOptions( props ) {
 									value: 'white',
 								},
 								{
-									label: __( 'Primary Color' ),
-									value: 'primary',
+									label: __( 'Brand Primary Color' ),
+									value: 'brand-primary',
 								},
 								{
-									label: __( 'Secondary Color' ),
-									value: 'secondary',
+									label: __( 'Brand Secondary Color' ),
+									value: 'brand-secondary',
 								},
 								{
-									label: __( 'Tertiary Color' ),
-									value: 'tertiary',
+									label: __( 'Brand Accent Color' ),
+									value: 'brand-accent',
 								},
 							] }
 						/>	
@@ -100,16 +100,16 @@ function BorderOptions( props ) {
 									value: 'white',
 								},
 								{
-									label: __( 'Primary Color' ),
-									value: 'primary',
+									label: __( 'Brand Primary Color' ),
+									value: 'brand-primary',
 								},
 								{
-									label: __( 'Secondary Color' ),
-									value: 'secondary',
+									label: __( 'Brand Secondary Color' ),
+									value: 'brand-secondary',
 								},
 								{
-									label: __( 'Tertiary Color' ),
-									value: 'tertiary',
+									label: __( 'Brand Accent Color' ),
+									value: 'brand-accent',
 								},
 							] }
 						/>
@@ -136,16 +136,16 @@ function BorderOptions( props ) {
 									value: 'white',
 								},
 								{
-									label: __( 'Primary Color' ),
-									value: 'primary',
+									label: __( 'Brand Primary Color' ),
+									value: 'brand-primary',
 								},
 								{
-									label: __( 'Secondary Color' ),
-									value: 'secondary',
+									label: __( 'Brand Secondary Color' ),
+									value: 'brand-secondary',
 								},
 								{
-									label: __( 'Tertiary Color' ),
-									value: 'tertiary',
+									label: __( 'Brand Accent Color' ),
+									value: 'brand-accent',
 								},
 							] }
 						/>
@@ -172,16 +172,16 @@ function BorderOptions( props ) {
 									value: 'white',
 								},
 								{
-									label: __( 'Primary Color' ),
-									value: 'primary',
+									label: __( 'Brand Primary Color' ),
+									value: 'brand-primary',
 								},
 								{
-									label: __( 'Secondary Color' ),
-									value: 'secondary',
+									label: __( 'Brand Secondary Color' ),
+									value: 'brand-secondary',
 								},
 								{
-									label: __( 'Tertiary Color' ),
-									value: 'tertiary',
+									label: __( 'Brand Accent Color' ),
+									value: 'brand-accent',
 								},
 							] }
 						/>

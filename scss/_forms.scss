@@ -23,14 +23,14 @@
 		@include secondary-regular;
 		@include placeholder($black);
 
-		@include mediaquery(large) {
+		@include mediaquery(tablet-landscape)  {
 			font-size: 16px;
 			letter-spacing: -0.15px;
 		}
 	}
 
 	input[type="submit"] {
-		@extend .button;
+		@extend .cta;
 		border: 0;
 		display: inline-block;
 		width: auto;
@@ -107,11 +107,11 @@ label, .wpcf7-list-item-label, .wpcf7-checkbox .wpcf7-list-item-label {
 		display: none;
 
 		&:checked + .wpcf7-list-item-label:after {
-			background-color: color('background', 'primary');
+			background-color: $borderColor;
 		}
 
 		&:checked + .wpcf7-list-item-label:before {
-			background-color: color('background', 'secondary');
+			background-color: $borderColor;
 		}
 	}
 }
@@ -160,7 +160,7 @@ label, .wpcf7-list-item-label, .wpcf7-checkbox .wpcf7-list-item-label {
 		display: none;
 
 		&:checked + .wpcf7-list-item-label:after {
-			background-color: color('background', 'primary');
+			background-color: $borderColor;
 		}
 
 		&:checked + .wpcf7-list-item-label:before {

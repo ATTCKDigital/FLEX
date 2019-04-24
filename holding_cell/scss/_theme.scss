@@ -39,7 +39,7 @@
 	}
 
 	.component-theme-#{$position}-border-mobile {
-		@include mediaquery-max(tablet-portrait) {
+		@include mediaquery-max-width(tablet-portrait) {
 			border-#{$position}: 1px solid color('accent', 'gray-border');
 		}
 	}

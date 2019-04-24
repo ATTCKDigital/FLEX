@@ -443,6 +443,72 @@
             "maxlength": "",
             "rows": "",
             "new_lines": "br"
+        },
+        {
+            "key": "field_5cbe231255ec0",
+            "label": "GDPR Settings",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5cbe231a55ec1",
+            "label": "Show GDPR?",
+            "name": "show_gdpr",
+            "type": "checkbox",
+            "instructions": "Check this box to display the GDPR pop-up",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Yes": "Yes"
+            },
+            "allow_custom": 0,
+            "default_value": [],
+            "layout": "vertical",
+            "toggle": 0,
+            "return_format": "value",
+            "save_custom": 0
+        },
+        {
+            "key": "field_5cbe233755ec2",
+            "label": "GDPR Message",
+            "name": "gdpr_message",
+            "type": "wysiwyg",
+            "instructions": "Add the message that will appear in the GDPR pop-up",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5cbe231a55ec1",
+                        "operator": "==",
+                        "value": "Yes"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 1
         }
     ],
     "location": [
@@ -450,7 +516,7 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "theme-global-settings"
+                "value": "acf-options-global-settings"
             }
         ]
     ],
@@ -462,5 +528,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1554218645
+    "modified": 1555964775
 }

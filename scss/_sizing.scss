@@ -5,29 +5,26 @@ $siteWidth					: 1024px;
 $navMobileHeight			: 70px;
 $navHeight					: 120px;
 $positions					: top, left, bottom, right;
-$screensizes				: small, medium, large, xl, 2xl, 3xl, 4xl, 5xl;
+$screensizes				: none, phone, tablet-portrait, tablet-landscape, desktop, xl, xl2;
 $increment 					: 20;
 //gap and increment should be the same value. 2 variables are required, one without px
 
 // Breakpoints
-$small-breakpoint			: 0px;
-$medium-breakpoint			: 768px;
-$large-breakpoint			: 1024px;
-$xl-breakpoint				: 1100px;
-$xl2-breakpoint				: 1280px;
-$xl3-breakpoint				: 1440px;
-$xl4-breakpoint				: 1500px;
-$xl5-breakpoint				: 1700px;
+$none						: 0px;
+$phone						: 569px;
+$tablet-portrait			: 768px;
+$tablet-landscape			: 1024px;
+$desktop					: 1100px;
+$xl							: 1280px;
+$xl2						: 1440px;
 
 // Max width breakpoints
-$max-small-breakpoint		: 568px;
-$max-medium-breakpoint		: 767px;
-$max-large-breakpoint		: 1023px;
-$max-xl-breakpoint			: 1099px;
-$max-2xl-breakpoint			: 1279px;
-$max-3xl-breakpoint			: 1439px;
-$max-4xl-breakpoint			: 1499px;
-$max-5xl-breakpoint			: 1699px;
+$max-phone					: 568px;
+$max-tablet-portrait		: 767px;
+$max-tablet-landscape		: 1023px;
+$max-desktop				: 1099px;
+$max-xl						: 1279px;
+$max-xl2					: 1439px;
 
 //Fixed row heights
 $small-row-mobile			: 50vh;
@@ -42,69 +39,57 @@ $large-row					: 700px;
 // Add fonts sizes for each break point. Font sizes will be converted to rems. 
 // Usage:  @include font-size($font-size)
 $font-size-headline1: (
-	'small'		: 64px,
-	'medium'	: 64px,
-	'large'		: 96px,
-	'xl'		: 96px,
-	'2xl'		: 96px,
-	'3xl'		: 96px,
-	'4xl'		: 96px,
-	'5xl'		: 96px
+	'phone'				: 64px,
+	'tablet-portrait'	: 64px,
+	'tablet-landscape'	: 96px,
+	'desktop'			: 96px,
+	'xl'				: 96px,
+	'xl2'				: 96px,
 );
 
 $font-size-headline2: (
-	'small'		: 64px,
-	'medium'	: 64px,
-	'large'		: 48px,
-	'xl'		: 48px,
-	'2xl'		: 48px,
-	'3xl'		: 48px,
-	'4xl'		: 48px,
-	'5xl'		: 48px
+	'phone'				: 64px,
+	'tablet-portrait'	: 64px,
+	'tablet-landscape'	: 48px,
+	'desktop'			: 48px,
+	'xl'				: 48px,
+	'xl2'				: 48px,
 );
 
 $font-size-headline3: (
-	'small'		: 34px,
-	'medium'	: 34px,
-	'large'		: 48px,
-	'xl'		: 48px,
-	'2xl'		: 48px,
-	'3xl'		: 48px,
-	'4xl'		: 48px,
-	'5xl'		: 48px
+	'phone'				: 34px,
+	'tablet-portrait'	: 34px,
+	'tablet-landscape'	: 48px,
+	'desktop'			: 48px,
+	'xl'				: 48px,
+	'xl2'				: 48px,
 );
 
 $font-size-headline4: (
-	'small'		: 24px,
-	'medium'	: 24px,
-	'large'		: 34px,
-	'xl'		: 34px,
-	'2xl'		: 34px,
-	'3xl'		: 34px,
-	'4xl'		: 34px,
-	'5xl'		: 34px
+	'phone'				: 24px,
+	'tablet-portrait'	: 24px,
+	'tablet-landscape'	: 34px,
+	'desktop'			: 34px,
+	'xl'				: 34px,
+	'xl2'				: 34px,
 );
 
 $font-size-headline5: (
-	'small'		: 24px,
-	'medium'	: 24px,
-	'large'		: 20px,
-	'xl'		: 20px,
-	'2xl'		: 20px,
-	'3xl'		: 20px,
-	'4xl'		: 20px,
-	'5xl'		: 20px
+	'phone'				: 24px,
+	'tablet-portrait'	: 24px,
+	'tablet-landscape'	: 24px,
+	'desktop'			: 24px,
+	'xl'				: 24px,
+	'xl2'				: 24px,
 );
 
 $font-size-headline6: (
-	'small'		: 20px,
-	'medium'	: 20px,
-	'large'		: 20px,
-	'xl'		: 20px,
-	'2xl'		: 20px,
-	'3xl'		: 20px,
-	'4xl'		: 20px,
-	'5xl'		: 20px
+	'phone'				: 20px,
+	'tablet-portrait'	: 20px,
+	'tablet-landscape'	: 20px,
+	'desktop'			: 20px,
+	'xl'				: 20px,
+	'xl2'				: 20px,
 );
 
 @mixin font-size($fs-map) {

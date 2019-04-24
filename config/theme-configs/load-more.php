@@ -96,9 +96,9 @@ function ajax_filter_get_posts( $post ) {
 		$link = get_the_permalink($postID);
 
 		if($thumbnail) {
-			 $thumbnail = '<div class="image-wrapper margin-small-bottom-1x"><a href="'.$link.'">'.$thumbnail.'</a></div>';
+			 $thumbnail = '<div class="image-wrapper margin-bottom-1x"><a href="'.$link.'">'.$thumbnail.'</a></div>';
 		} else {
-			$thumbnail = '<div class="image-wrapper margin-small-bottom-1x no-image"><a href="'.$link.'"><img src="'.$fallbackImage.'" /></a></div>';
+			$thumbnail = '<div class="image-wrapper margin-bottom-1x no-image"><a href="'.$link.'"><img src="'.$fallbackImage.'" /></a></div>';
 		}
 
 		$arrayCategories =  array();
@@ -110,13 +110,13 @@ function ajax_filter_get_posts( $post ) {
 			$displayCategories = implode( ', ', $arrayCategories );;
 		}
 
-		$results = '<div class="new-elements load-item feed-item" data-post-id="'.$postID.'" data-max-pages="'.$maxPages.'">'.$thumbnail.'<div class="feed-info margin-small-bottom-2x"><span class="eyebrow uppercase display-block margin-small-bottom-1x element-in-view">'.$displayCategories.'</span><h2 class="headline6 margin-small-bottom-1x element-in-view"><a href="'.$link.'">'.get_the_title($ID).'</a></h2><p class="margin-small-bottom-1x element-in-view">'.$excerpt.'</p><span class="eyebrow display-block margin-small-bottom-1x">'.get_the_time('F j, Y').'</span></div></div>';
+		$results = '<div class="new-elements load-item feed-item" data-post-id="'.$postID.'" data-max-pages="'.$maxPages.'">'.$thumbnail.'<div class="feed-info margin-bottom-2x"><span class="eyebrow uppercase display-block margin-bottom-1x element-in-view">'.$displayCategories.'</span><h2 class="headline6 margin-bottom-1x element-in-view"><a href="'.$link.'">'.get_the_title($ID).'</a></h2><p class="margin-bottom-1x element-in-view">'.$excerpt.'</p><span class="eyebrow display-block margin-bottom-1x">'.get_the_time('F j, Y').'</span></div></div>';
 				
 		$result['response'][] = $results;
 		$result['status']   = 'done';
 	
 	endwhile; else:
-		$result['response'] = '<div class="feed-item margin-small-top-2x element-in-view margin-small-bottom-2x" data-max-pages="0"><h2 class="headline6 margin-small-bottom-1x">There is no content that matches your filter</h2></div>';
+		$result['response'] = '<div class="feed-item margin-top-2x element-in-view margin-bottom-2x" data-max-pages="0"><h2 class="headline6 margin-bottom-1x">There is no content that matches your filter</h2></div>';
 		$result['status']   = '404';
 	endif;
  

@@ -1,39 +1,39 @@
 /*** Hide classes ***/
 
 .small-hidden {
-	@include mediaquery-max(medium) {
+	@include mediaquery-max-width(tablet-portrait) {
 		display: none;
 	}
 
-	@include mediaquery(medium) {
+	@include mediaquery(tablet-portrait)  {
 		display: inherit;
 	}
 }
 
 .medium-hidden {
-	@include mediaquery-max(medium) {
+	@include mediaquery-max-width(tablet-portrait) {
 		display: inherit;
 	}
 
-	@include mediaquery(medium) {
+	@include mediaquery(tablet-portrait)  {
 		display: none;
 	}
 
-	@include mediaquery(large) {
+	@include mediaquery(tablet-landscape)  {
 		display: inherit;
 	}
 }
 
 .large-hidden {
-	@include mediaquery-max(large) {
+	@include mediaquery-max-width(tablet-landscape) {
 		display: inherit;
 	}
 
-	@include mediaquery(large) {
+	@include mediaquery(tablet-landscape)  {
 		display: none;
 	}
 
-	@include mediaquery(xl) {
+	@include mediaquery(desktop)  {
 		display: inherit;
 	}
 }
@@ -41,7 +41,7 @@
 .xl-hidden {
 	display: inherit;
 
-	@include mediaquery(xl) {
+	@include mediaquery(desktop)  {
 		display: none;
 	}
 

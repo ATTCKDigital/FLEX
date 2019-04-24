@@ -75,14 +75,14 @@ function render_feed_block($attributes) {
 		}
 
 		if($thumbnail) {
-			$thumbnail = '<div class="image-wrapper margin-small-bottom-1x">'.get_the_post_thumbnail($postID).'</div>';
+			$thumbnail = '<div class="image-wrapper margin-bottom-1x">'.get_the_post_thumbnail($postID).'</div>';
 		} else {
-			$thumbnail = '<div class="image-wrapper margin-small-bottom-1x no-image"><img src="'.get_field('fallback_image', 'options').'" alt="'.get_field('fallback_image_alt', 'options').'" title="'.get_field('fallback_image_alt', 'options').'" /></div>';
+			$thumbnail = '<div class="image-wrapper margin-bottom-1x no-image"><img src="'.get_field('fallback_image', 'options').'" alt="'.get_field('fallback_image_alt', 'options').'" title="'.get_field('fallback_image_alt', 'options').'" /></div>';
 		}
-		$feedItems  .= '<div class="feed-item">'.$thumbnail.'<div class="feed-info margin-small-bottom-2x"><span class="eyebrow display-block margin-small-bottom-1x">'.$displayCategories.'</span><h2 class="headline6 margin-small-bottom-1x">'.get_the_title($postID).'</h2><p class="margin-small-bottom-1x">'.$excerpt.'</p><span class="eyebrow display-block margin-small-bottom-1x">'.get_the_time('F j, Y').'</span></div></div>';
+		$feedItems  .= '<div class="feed-item">'.$thumbnail.'<div class="feed-info margin-bottom-2x"><span class="eyebrow display-block margin-bottom-1x">'.$displayCategories.'</span><h2 class="headline6 margin-bottom-1x">'.get_the_title($postID).'</h2><p class="margin-bottom-1x">'.$excerpt.'</p><span class="eyebrow display-block margin-bottom-1x">'.get_the_time('F j, Y').'</span></div></div>';
 	}
 
-	$output = "<div class=\"component-archive-feed {$class}\"><div class=\"feed-items load-items padding-small-bottom-3x\">{$feedItems}</div>";
+	$output = "<div class=\"component-archive-feed {$class}\"><div class=\"feed-items load-items padding-bottom-3x\">{$feedItems}</div>";
 
 	return $output;
 }
