@@ -786,7 +786,8 @@ h1, h2, h3, p, li, .caption {
 				float: right;
 				margin: 0 0 $gap*2.5 $gap*2.5;
 
-				&.single {
+								
+&.single-post {
 					margin: 0 -10% $gap*2.5 $gap*2.5;
 				}
 			}
@@ -832,7 +833,8 @@ h1, h2, h3, p, li, .caption {
 				float: right;
 				margin: 0 0 $gap*2.5 $gap*2.5;
 
-				&.single {
+								
+&.single-post {
 					margin: 0 -10% $gap*2.5 $gap*2.5;
 				}
 			}

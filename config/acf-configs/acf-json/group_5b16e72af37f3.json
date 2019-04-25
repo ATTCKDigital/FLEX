@@ -39,6 +39,25 @@
             "maxlength": ""
         },
         {
+            "key": "field_5cc23c1606488",
+            "label": "og:description",
+            "name": "og_description",
+            "type": "textarea",
+            "instructions": "OG Description, if left blank, it will use the excerpt",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
             "key": "field_5c19576c7901a",
             "label": "og:type",
             "name": "og_type",
@@ -144,14 +163,14 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "work"
+                "value": "post"
             }
         ],
         [
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "areas"
+                "value": "post"
             }
         ]
     ],
@@ -163,5 +182,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1556053584
+    "modified": 1556233328
 }
