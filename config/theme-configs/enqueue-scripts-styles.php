@@ -7,7 +7,7 @@ function _scripts() {
 	if (!is_admin()) {
 		//Deregister included jquery. Latest version will be included in main.js
 		wp_deregister_script('jquery');
-		wp_enqueue_script('jquery', "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js", array(), null, true);
+		wp_enqueue_script('jquery', get_stylesheet_directory_uri() . "/dist/js/jquery.js", array(), null, true);
 	}
 	//Compiled theme js file
 	wp_enqueue_script('afp_script', get_stylesheet_directory_uri() . "/dist/js/main.js", array(), null, true);

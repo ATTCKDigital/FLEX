@@ -35,6 +35,7 @@ STATIC ASSETS:
 
 module.exports = {
   entry: {
+    '/js/jquery.js': path.resolve(__dirname, './js/jquery.js'),
     '/js/main.js': path.resolve(__dirname, './js/app.js'),
     // '/js/admin.js': path.resolve(__dirname, './js/admin.js'),
     'css/style': path.resolve(__dirname, './scss/style.scss'),
