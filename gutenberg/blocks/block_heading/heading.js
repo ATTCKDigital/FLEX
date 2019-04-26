@@ -3,6 +3,10 @@
  */
 import classnames from 'classnames';
 import HeadingToolbar from './heading-toolbar';
+import icons from '../../../js/icons.js'
+
+
+
 
 /**
  * Internal block libraries
@@ -19,6 +23,7 @@ const {
 	InspectorControls,
 	InnerBlocks,
 	URLInput,
+	MediaUpload,
 } = wp.editor;
 const {
 	Toolbar,
@@ -28,6 +33,7 @@ const {
 	PanelBody,
 	PanelRow,
 	TextControl,
+	Dashicon,
 	IconButton,
 } = wp.components;
 
@@ -78,6 +84,12 @@ export default registerBlockType(
 			url: {
 				type: 'string',
 			},
+			imgURL: {
+				type: 'string',
+			},
+			imgID: {
+				type: 'number',
+			},
 			...MarginOptionsAttributes,
 			...PaddingOptionsAttributes,
 			...BorderOptionsAttributes,
@@ -85,9 +97,21 @@ export default registerBlockType(
 		},
 
 		edit: props => {
-			const { attributes: { content, level, align, placeholder, url},
+			const { attributes: { content, level, align, placeholder, url, imgID, imgURL, isSelected},
 				className, setAttributes } = props;
 			const tagName = 'h' + level;
+			const onSelectImage = img => {
+				setAttributes( {
+					imgID: img.id,
+					imgURL: img.url,
+				} );
+			};
+			const onRemoveImage = () => {
+				setAttributes({
+					imgID: null,
+					imgURL: null,
+				});
+			}
 
 			return [
 
@@ -112,6 +136,45 @@ export default registerBlockType(
 							/>
 							<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
 						</form>
+						<p>{ __( 'Icon Next to the Heading' ) }</p>
+						{ ! imgID ? (
+
+							<MediaUpload
+								onSelect={ onSelectImage }
+								type="image"
+								value={ imgID }
+								render={ ( { open } ) => (
+									<Button
+										className={ "button button-large" }
+										onClick={ open }
+									>
+										{ icons.upload }
+										{ __( ' Upload Image', 'flexlayout' ) }
+									</Button>
+								) }
+							>
+							</MediaUpload>
+
+						) : (
+
+							<div className={classnames(
+								`image-wrapper`,
+								`align-${align}`,
+							)}>
+
+
+								<Button
+									className="remove-image"
+									onClick={ onRemoveImage }
+								>
+									{ icons.remove }
+								</Button>
+								
+								<img
+									src={ imgURL }
+								/>
+							</div>
+						)}
 					</PanelBody>
 					<MarginOptions
 						{ ...props }
@@ -129,28 +192,35 @@ export default registerBlockType(
 								
 
 				</InspectorControls>,
-				<RichText
-					identifier="content"
-					wrapperClassName="component-heading"
-					tagName={ tagName }
-					value={ content }
-					onChange={ ( value ) => setAttributes( { content: value } ) }
-					onRemove={ () => onReplace( [] ) }
-					style={ {
-						textAlign: align,
-						...TextColorInlineStyles( props )
-					} }
-					className={ classnames(
-						className,
-						`headline${level}`,
-						`align-${align}`,
-						...MarginOptionsClasses( props ),
-						...PaddingOptionsClasses( props ),
-						...BorderOptionsClasses( props ),
-						...TextColorClasses( props ),
-					)}
-					placeholder={ placeholder || __( 'Write heading…' ) }
-				/>
+				<div className={classnames(
+					`component-heading`
+				)}>
+					<img
+						src={ imgURL }
+					/>
+					<RichText
+						identifier="content"
+						wrapperClassName=""
+						tagName={ tagName }
+						value={ content }
+						onChange={ ( value ) => setAttributes( { content: value } ) }
+						onRemove={ () => onReplace( [] ) }
+						style={ {
+							textAlign: align,
+							...TextColorInlineStyles( props )
+						} }
+						className={ classnames(
+							className,
+							`headline${level}`,
+							`align-${align}`,
+							...MarginOptionsClasses( props ),
+							...PaddingOptionsClasses( props ),
+							...BorderOptionsClasses( props ),
+							...TextColorClasses( props ),
+						)}
+						placeholder={ placeholder || __( 'Write heading…' ) }
+					/>
+				</div>
 			];
 
 		},

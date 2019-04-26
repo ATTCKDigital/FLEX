@@ -52,6 +52,12 @@ function register_heading_block() {
                     'type' => 'string',
                     'default' => '',
                 ],
+                'imgURL' => [
+					'type' => 'string',
+				],
+				'imgID' => [
+					'type' => 'number',
+				],
 			],
 			MARGIN_OPTIONS_ATTRIBUTES,
 			PADDING_OPTIONS_ATTRIBUTES,
@@ -74,11 +80,13 @@ function render_heading_block($attributes) {
 	}
 
 	$headlineClass =  "headline{$attributes['level']}";
+	$textColor = array_key_exists('textColor', $attributes) ? $attributes['textColor'] : null;
+	$url = array_key_exists('url', $attributes) ? $attributes['url'] : null;
+	$image = array_key_exists('imgID', $attributes) ? $attributes['imgID'] : null;
 
 	$class = $attributes['className'];
 	$class .= $headlineClass;
 	$class .= " align-{$attributes['align']}";
-	$textColor = array_key_exists('textColor', $attributes) ? $attributes['textColor'] : null;
 	
 	$wrapperClass = margin_options_classes($attributes);
 	$wrapperClass .= padding_options_classes($attributes);
@@ -90,7 +98,6 @@ function render_heading_block($attributes) {
 		$style = '';
 	}
 
-	$url = array_key_exists('url', $attributes) ? $attributes['url'] : null;
 	if($url) {
 		$link = '<a href="'.$url.'">';
 		$linkClose = '</a>';
@@ -99,7 +106,15 @@ function render_heading_block($attributes) {
 		$linkClose = '';
 	}
 
-	$output = "<div class=\"component-heading component {$wrapperClass}\"{$style}><{$tagName} class=\"{$class}\">{$link}{$attributes['content']}{$linkClose}</{$tagName}></div>";
+	if ($image) {
+		$image = wp_get_attachment_image($attributes['imgID'], 'full');
+		$imageClass = ' has-image';
+	} else {
+		$image = '';
+		$imageClass = '';
+	}
+
+	$output = "<div class=\"component-heading component{$imageClass} {$wrapperClass}\"{$style}>{$link}{$image}{$linkClose}<{$tagName} class=\"{$class}\">{$link}{$attributes['content']}{$linkClose}</{$tagName}></div>";
 
 	return $output;
 }
