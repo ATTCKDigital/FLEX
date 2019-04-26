@@ -18,6 +18,7 @@ const {
 	BlockAlignmentToolbar,
 	InspectorControls,
 	InnerBlocks,
+	URLInput,
 } = wp.editor;
 const {
 	Toolbar,
@@ -27,7 +28,7 @@ const {
 	PanelBody,
 	PanelRow,
 	TextControl,
-
+	IconButton,
 } = wp.components;
 
 /**
@@ -74,6 +75,9 @@ export default registerBlockType(
 			placeholder: {
 				type: 'string',
 			},
+			url: {
+				type: 'string',
+			},
 			...MarginOptionsAttributes,
 			...PaddingOptionsAttributes,
 			...BorderOptionsAttributes,
@@ -81,7 +85,7 @@ export default registerBlockType(
 		},
 
 		edit: props => {
-			const { attributes: { content, level, align, placeholder},
+			const { attributes: { content, level, align, placeholder, url},
 				className, setAttributes } = props;
 			const tagName = 'h' + level;
 
@@ -90,7 +94,7 @@ export default registerBlockType(
 				<InspectorControls>
 					<PanelBody title={ __( 'Heading Settings' ) }>
 						<p>{ __( 'Level' ) }</p>
-						<HeadingToolbar minLevel={ 1 } maxLevel={ 7 } selectedLevel={ level } onChange={ ( newLevel ) => setAttributes( { level: newLevel } ) } />
+						<HeadingToolbar minLevel={ 1 } maxLevel={ 13 } selectedLevel={ level } onChange={ ( newLevel ) => setAttributes( { level: newLevel } ) } />
 						<p>{ __( 'Text Alignment' ) }</p>
 						<AlignmentToolbar
 							value={ align }
@@ -98,6 +102,16 @@ export default registerBlockType(
 								setAttributes( { align: nextAlign } );
 							} }
 						/>
+						<p>{ __( 'Optional URL' ) }</p>
+						<form
+							className="block-library-button__inline-link heading-url"
+							onSubmit={ ( event ) => event.preventDefault() }>
+							<URLInput
+								value={ url }
+								onChange={ ( value ) => setAttributes( { url: value } ) }
+							/>
+							<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
+						</form>
 					</PanelBody>
 					<MarginOptions
 						{ ...props }
@@ -111,6 +125,9 @@ export default registerBlockType(
 					<TextColorOptions
 						{ ...props }
 					/>
+
+								
+
 				</InspectorControls>,
 				<RichText
 					identifier="content"

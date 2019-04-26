@@ -185,3 +185,27 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 		break-inside: avoid;
 	}
 }
+
+.components-toolbar {
+	flex-wrap: wrap;
+}
+
+.components-toolbar__control.components-button[data-subscript]:after {
+	font-size: 11px;
+	right: auto;
+	left: 15px;
+}
+
+.components-toolbar__control.components-button[data-subscript] svg.dashicons-heading {
+	height: 25px;
+	width: 25px;
+
+}
+
+.block-library-button__inline-link.heading-url {
+	width: 100%;
+
+	input {
+		width: 100%;
+	}
+}

@@ -45,6 +45,9 @@ function register_heading_block() {
 				'placeholder' => [
 					'type' => 'string',
 				],
+				'url' => [
+					'type' => 'string',
+				],
 				'className' => [
                     'type' => 'string',
                     'default' => '',
@@ -66,8 +69,14 @@ function register_heading_block() {
 function render_heading_block($attributes) {
 	$tagName = "h{$attributes['level']}";
 
+	if($attributes['level'] > 6) {
+		$tagName = "h4";
+	}
+
+	$headlineClass =  "headline{$attributes['level']}";
+
 	$class = $attributes['className'];
-	$class .= " headline{$attributes['level']}";
+	$class .= $headlineClass;
 	$class .= " align-{$attributes['align']}";
 	$textColor = array_key_exists('textColor', $attributes) ? $attributes['textColor'] : null;
 	
@@ -81,8 +90,16 @@ function render_heading_block($attributes) {
 		$style = '';
 	}
 
+	$url = array_key_exists('url', $attributes) ? $attributes['url'] : null;
+	if($url) {
+		$link = '<a href="'.$url.'">';
+		$linkClose = '</a>';
+	} else {
+		$link = '';
+		$linkClose = '';
+	}
 
-	$output = "<div class=\"component-heading component {$wrapperClass}\"{$style}><{$tagName} class=\"{$class}\">{$attributes['content']}</{$tagName}></div>";
+	$output = "<div class=\"component-heading component {$wrapperClass}\"{$style}><{$tagName} class=\"{$class}\">{$link}{$attributes['content']}{$linkClose}</{$tagName}></div>";
 
 	return $output;
 }
