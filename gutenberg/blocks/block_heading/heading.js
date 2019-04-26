@@ -36,7 +36,7 @@ const {
 // Import all of our Margin Options requirements.
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
 // Import all of our Text Color Options requirements.
-import TextColorOptions, { TextColorAttributes, TextColorClasses } from '../../components/gb-component_text-colors';
+import TextColorOptions, { TextColorAttributes, TextColorClasses, TextColorInlineStyles } from '../../components/gb-component_text-colors';
 // Import all of our Border Options requirements.
 import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
 // Import all of our Padding Options requirements.
@@ -119,7 +119,10 @@ export default registerBlockType(
 					value={ content }
 					onChange={ ( value ) => setAttributes( { content: value } ) }
 					onRemove={ () => onReplace( [] ) }
-					style={ { textAlign: align } }
+					style={ {
+						textAlign: align,
+						...TextColorInlineStyles( props )
+					} }
 					className={ classnames(
 						className,
 						`headline${level}`,

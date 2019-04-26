@@ -72,7 +72,7 @@
 		"@wordpress/element": "^2.1.9",
 		"@wordpress/keycodes": "^2.0.6",
 		"babel-polyfill": "^6.26.0",
-		"css-vars-ponyfill": "^1.16.4",
+		"css-vars-ponyfill": "^1.17.2",
 		"imagesloaded": "^4.1.2",
 		"jquery": "^3.3.1",
 		"jquery-bridget": "^2.0.1",
