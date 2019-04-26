@@ -1,6 +1,10 @@
 import $ from 'jquery';
+import cssVars from 'css-vars-ponyfill';
 import GlobalEvents from './global-events';
 import Loader from './load-components';
+
+// Support for native css variables in legacy browsers
+cssVars();
 
 // Import jQuery and make it a global object
 //oka todo: jquery from node modules, test if we need the 3 lines of code below.
