@@ -202,8 +202,15 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 
 }
 
+.components-panel__body {
+	.image-wrapper {
+		background: #d8d8d8;
+	}
+}
+
 .block-library-button__inline-link.heading-url {
 	width: 100%;
+	margin-bottom: $gap*4;
 
 	input {
 		width: 100%;
