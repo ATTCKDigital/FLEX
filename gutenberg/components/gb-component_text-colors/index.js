@@ -21,12 +21,14 @@ const {
  */
 import TextColorAttributes from './attributes';
 import TextColorClasses from './classes';
+import TextColorInlineStyles from './inline-styles';
 // import './editor.scss';
 
 // Export for ease of importing in individual blocks.
 export {
 	TextColorAttributes,
 	TextColorClasses,
+	TextColorInlineStyles,
 };
 
 function TextColorOptions( props ) {
