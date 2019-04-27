@@ -148,29 +148,8 @@
         [
             {
                 "param": "post_type",
-                "operator": "==",
-                "value": "post"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "page"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "post"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "post"
+                "operator": "!=",
+                "value": "schema"
             }
         ]
     ],
@@ -182,5 +161,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1556233328
+    "modified": 1556326954
 }
