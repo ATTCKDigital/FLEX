@@ -216,3 +216,21 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 		width: 100%;
 	}
 }
+
+.editor-block-list__block>.editor-block-mover {
+	left: -4px;
+}
+
+.block-library-classic__toolbar {
+	width: 95%;
+	margin: 0 18px;
+}
+
+.edit-post-sidebar .editor-block-styles__item-preview h2 {
+	@extend .headline2;
+	color: black;
+} 
+.edit-post-sidebar .editor-block-styles__item-preview h3 {
+	@extend .headline3;
+	color: black;
+}

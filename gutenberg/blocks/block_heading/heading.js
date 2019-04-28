@@ -118,7 +118,7 @@ export default registerBlockType(
 				<InspectorControls>
 					<PanelBody title={ __( 'Heading Settings' ) }>
 						<p>{ __( 'Level' ) }</p>
-						<HeadingToolbar minLevel={ 1 } maxLevel={ 13 } selectedLevel={ level } onChange={ ( newLevel ) => setAttributes( { level: newLevel } ) } />
+						<HeadingToolbar minLevel={ 1 } maxLevel={ 7 } selectedLevel={ level } onChange={ ( newLevel ) => setAttributes( { level: newLevel } ) } />
 						<p>{ __( 'Text Alignment' ) }</p>
 						<AlignmentToolbar
 							value={ align }
@@ -201,7 +201,6 @@ export default registerBlockType(
 					<RichText
 						identifier="content"
 						wrapperClassName=""
-						tagName={ tagName }
 						value={ content }
 						onChange={ ( value ) => setAttributes( { content: value } ) }
 						onRemove={ () => onReplace( [] ) }
@@ -211,7 +210,6 @@ export default registerBlockType(
 						} }
 						className={ classnames(
 							className,
-							`headline${level}`,
 							`align-${align}`,
 							...MarginOptionsClasses( props ),
 							...PaddingOptionsClasses( props ),
@@ -231,3 +229,73 @@ export default registerBlockType(
 
 	},
 );
+//Add default styles
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'headline1',
+    label: 'Headline 1'
+} );
+
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'headline2',
+    label: 'Headline 2'
+} );
+
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'headline3',
+    label: 'Headline 3'
+} );
+
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'headline4',
+    label: 'Headline 4'
+} );
+
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'headline5',
+    label: 'Headline 5'
+} );
+
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'headline6',
+    label: 'Headline 6'
+} );
+//okatodo: get these into separate file in child them, also figure out how to do this as array?
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'subheadline1',
+    label: 'Sub Headline 1'
+} );
+
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'subheadline1-wide',
+    label: 'Sub Headline 1 Wide'
+} );
+
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'subheadline1-border',
+    label: 'Sub Headline Right Border'
+} );
+
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'subheadline2',
+    label: 'Sub Headline 2'
+} );
+
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'subheadline2-wide',
+    label: 'Sub Headline 2 Wide'
+} );
+
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'caption1',
+    label: 'Caption 1'
+} );
+
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'caption2',
+    label: 'Caption 2'
+} );
+
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'caption3',
+    label: 'Caption 3'
+} );

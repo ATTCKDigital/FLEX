@@ -79,7 +79,16 @@ function render_heading_block($attributes) {
 		$tagName = "h4";
 	}
 
-	$headlineClass =  "headline{$attributes['level']}";
+	$className = $attributes['className'];
+
+	//fall back to support older versions where styles were not used.
+	if (strpos($className, 'is-style') !== false) {
+		$headlineClass = '';
+	} else {
+	    $headlineClass =  " headline{$attributes['level']}";
+	}
+
+	
 	$textColor = array_key_exists('textColor', $attributes) ? $attributes['textColor'] : null;
 	$url = array_key_exists('url', $attributes) ? $attributes['url'] : null;
 	$image = array_key_exists('imgID', $attributes) ? $attributes['imgID'] : null;
