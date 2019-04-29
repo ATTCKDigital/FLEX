@@ -234,3 +234,7 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	@extend .headline3;
 	color: black;
 }
+
+.edit-post-sidebar .editor-block-styles__item-preview .component-heading img {
+	display: none;
+}
