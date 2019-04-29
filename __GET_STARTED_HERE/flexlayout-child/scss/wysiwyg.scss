@@ -4,6 +4,8 @@
 @import 'flexlayout/scss/_sizing.scss';
 @import 'flexlayout/scss/_media-queries.scss';
 @import 'flexlayout/scss/_colors.scss';
-@import 'fonts';
+@import 'flexlayout/scss/_fonts.scss';
+// @import 'fonts'; // Override parent theme fonts variables from child if needed
+@import 'flexlayout/scss/_fonts-mixins.scss';
 @import 'flexlayout/gutenberg/blocks/block_heading/_heading.scss';
 @import 'flexlayout/gutenberg/blocks/block_button/_buttons.scss';
