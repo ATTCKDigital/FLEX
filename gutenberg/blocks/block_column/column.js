@@ -37,6 +37,7 @@ const {
  * Internal dependencies
  */
 // Import all of our Background Options requirements.
+import AnchorOptions, { AnchorOptionsAttributes } from '../../components/gb-component_anchor';
 import BackgroundOptions, { BackgroundOptionsAttributes, BackgroundOptionsClasses, BackgroundOptionsInlineStyles, BackgroundOptionsVideoOutput } from '../../components/gb-component_background-options';
 // Import all of our Padding Options requirements.
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
@@ -64,17 +65,22 @@ export default registerBlockType(
 		],
 		attributes: {
 
+			...AnchorOptionsAttributes,
 			...PaddingOptionsAttributes,
 			...ColumnOptionsAttributes,
 			...BorderOptionsAttributes,
 			...BackgroundOptionsAttributes,
 		},
-		supports: {
-			anchor: true,
-		},
+		// Forced to roll our own anchor support
+		// Due to Gutenberg core issue
+		// BUG: https://github.com/WordPress/gutenberg/issues/15240
+		// TODO: reenable this when bug is fixed
+		// supports: {
+		// 	anchor: true,
+		// },
 
 		edit: props => {
-			const { attributes: { advancedId },
+			const { attributes: { anchor, advancedId },
 				className, setAttributes } = props;
 
 			return [
@@ -94,9 +100,13 @@ export default registerBlockType(
 						{ ...props }
 					/>
 
+					<AnchorOptions
+						{ ...props }
+					/>
 				</InspectorControls>,
 
 				<div
+					id={ anchor }
 					className={ className }
 					style={ {
 						...BackgroundOptionsInlineStyles( props ),
@@ -119,7 +129,7 @@ export default registerBlockType(
 
 const customClassName = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
-		if (props.name === "flexlayout/column") {
+		if (props.name === 'flexlayout/column') {
 				return <BlockListBlock
 						{ ...props }
 						className={ classnames(

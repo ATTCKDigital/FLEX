@@ -48,6 +48,7 @@ import LogoColorOptions, { LogoColorOptionsAttributes, LogoColorOptionsDataAttr 
 import RowHeightOptions, { RowHeightOptionsAttributes, RowHeightOptionsClasses } from '../../components/gb-component_row-height';
 // Import all of our Border Options requirements.
 import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
+import AnchorOptions, { AnchorOptionsAttributes } from '../../components/gb-component_anchor';
 
 
 
@@ -68,14 +69,12 @@ export default registerBlockType(
 		],
 		// Forced to roll our own anchor support
 		// Due to Gutenberg core issue
-		// https://github.com/WordPress/gutenberg/issues/15240
+		// BUG: https://github.com/WordPress/gutenberg/issues/15240
+		// TODO: reenable this when bug is fixed
 		// supports: {
 		// 	anchor: true,
 		// },
 		attributes: {
-			anchor: {
-				type: 'string',
-			},
 			blockAlignment: {
 				type: 'string',
 				default: 'wide',
@@ -89,6 +88,7 @@ export default registerBlockType(
 				default: 'top',
 			},
 
+			...AnchorOptionsAttributes,
 			...BackgroundOptionsAttributes,
 			...RowHeightOptionsAttributes,
 			...PaddingOptionsAttributes,
@@ -140,19 +140,9 @@ export default registerBlockType(
 					<LogoColorOptions
 						{ ...props }
 					/>
-					<PanelBody
-						title={ __( 'HTML Anchor' ) }
-						className="flexlayout-anchor-options"
-						initialOpen={ false }
-					>
-						<PanelRow>
-							<TextControl
-									label="HTML Anchor"
-									value={ anchor }
-									onChange={ ( anchor ) => setAttributes( { anchor } ) }
-							/>
-					</PanelRow>
-				</PanelBody>
+					<AnchorOptions
+						{ ...props }
+					/>
 				</InspectorControls>,
 				<BlockControls>
 					<BlockAlignmentToolbar

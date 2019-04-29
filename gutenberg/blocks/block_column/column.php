@@ -63,6 +63,7 @@ function render_column_block($attributes, $content) {
 	$class .= padding_options_classes($attributes);
 	$class .= border_options_classes($attributes);
 	$class .= background_options_classes($attributes);
+	$id = array_key_exists('anchor', $attributes) ? " id=\"{$attributes['anchor']}\"" : "";
 
 	$style = background_options_inline_styles($attributes);
 	$mobileImage = background_options_mobile_styles($attributes);
@@ -70,7 +71,7 @@ function render_column_block($attributes, $content) {
 
 	$styleBlock = "<style>.component-background[data-section-id=\"section-{$sectionDataId}\"]{{$mobileImage}} @media only screen and (min-width: 768px){.component-background[data-section-id=\"section-{$sectionDataId}\"]{{$desktopImage}}}</style>";
 
-	$output = "<section class=\"{$class}\" data-section-id=\"section-{$sectionDataId}\" style=\"{$style}\">{$styleBlock}{$content}</section>";
+	$output = "<section{$id} class=\"{$class}\" data-section-id=\"section-{$sectionDataId}\" style=\"{$style}\">{$styleBlock}{$content}</section>";
 
 	return $output;
 }
