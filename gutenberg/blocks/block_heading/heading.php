@@ -45,10 +45,19 @@ function register_heading_block() {
 				'placeholder' => [
 					'type' => 'string',
 				],
+				'url' => [
+					'type' => 'string',
+				],
 				'className' => [
                     'type' => 'string',
                     'default' => '',
                 ],
+                'imgURL' => [
+					'type' => 'string',
+				],
+				'imgID' => [
+					'type' => 'number',
+				],
 			],
 			MARGIN_OPTIONS_ATTRIBUTES,
 			PADDING_OPTIONS_ATTRIBUTES,
@@ -66,10 +75,27 @@ function register_heading_block() {
 function render_heading_block($attributes) {
 	$tagName = "h{$attributes['level']}";
 
-	$class = $attributes['className'];
-	$class .= " headline{$attributes['level']}";
-	$class .= " align-{$attributes['align']}";
+	if($attributes['level'] > 6) {
+		$tagName = "h4";
+	}
+
+	$className = $attributes['className'];
+
+	//fall back to support older versions where styles were not used.
+	if (strpos($className, 'is-style') !== false) {
+		$headlineClass = '';
+	} else {
+	    $headlineClass =  " headline{$attributes['level']}";
+	}
+
+	
 	$textColor = array_key_exists('textColor', $attributes) ? $attributes['textColor'] : null;
+	$url = array_key_exists('url', $attributes) ? $attributes['url'] : null;
+	$image = array_key_exists('imgID', $attributes) ? $attributes['imgID'] : null;
+
+	$class = $attributes['className'];
+	$class .= $headlineClass;
+	$class .= " align-{$attributes['align']}";
 	
 	$wrapperClass = margin_options_classes($attributes);
 	$wrapperClass .= padding_options_classes($attributes);
@@ -81,8 +107,23 @@ function render_heading_block($attributes) {
 		$style = '';
 	}
 
+	if($url) {
+		$link = '<a href="'.$url.'">';
+		$linkClose = '</a>';
+	} else {
+		$link = '';
+		$linkClose = '';
+	}
 
-	$output = "<div class=\"component-heading component {$wrapperClass}\"{$style}><{$tagName} class=\"{$class}\">{$attributes['content']}</{$tagName}></div>";
+	if ($image) {
+		$image = wp_get_attachment_image($attributes['imgID'], 'full');
+		$imageClass = ' has-image';
+	} else {
+		$image = '';
+		$imageClass = '';
+	}
+
+	$output = "<div class=\"component-heading component{$imageClass} {$wrapperClass}\"{$style}>{$link}{$image}{$linkClose}<{$tagName} class=\"{$class}\">{$link}{$attributes['content']}{$linkClose}</{$tagName}></div>";
 
 	return $output;
 }

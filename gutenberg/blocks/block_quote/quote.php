@@ -103,7 +103,7 @@ function render_quote_block($attributes) {
 
 	$style = background_options_inline_styles($attributes);
 
-	$output = "<div class=\"{$class}\" style=\"{$style}\"><h5 class=\"quote-text\"{$textStyle}>{$attributes['content']}</h5>{$image}<cite class=\"quote-source\">{$attributes['contentSource']}</cite><cite class=\"quote-company\">{$attributes['contentCompany']}</cite></div>";
+	$output = "<div class=\"{$class}\" style=\"{$style}\"><h5 class=\"quote-text\"{$textStyle}>{$attributes['content']}</h5>{$image}<cite class=\"quote-source\"{$textStyle}>{$attributes['contentSource']}</cite><cite class=\"quote-company\"{$textStyle}>{$attributes['contentCompany']}</cite></div>";
 
 	return $output;
 }

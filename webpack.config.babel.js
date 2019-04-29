@@ -2,6 +2,7 @@ import CopyPlugin from 'copy-webpack-plugin';
 import ImageminPlugin from 'imagemin-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
+import WebpackNotifierPlugin from 'webpack-notifier';
 import { sync } from 'glob';
 
 import path from 'path';
@@ -133,6 +134,8 @@ module.exports = smp.wrap({
 
 	plugins: [
 		...plugins,
+		new WebpackNotifierPlugin(),
+
 
 		new MiniCssExtractPlugin({
 			filename: '[name].css',

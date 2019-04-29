@@ -2,6 +2,7 @@ import CopyPlugin from 'copy-webpack-plugin';
 import ImageminPlugin from 'imagemin-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
+import WebpackNotifierPlugin from 'webpack-notifier';
 import { sync } from 'glob';
 
 import path from 'path';
@@ -52,7 +53,7 @@ STATIC ASSETS:
 module.exports = smp.wrap({
   entry: {
     '/js/main.js': path.resolve(__dirname, './js/app.js'),
-    // '/js/admin.js': path.resolve(__dirname, './js/admin.js'),
+    '/js/admin.js': path.resolve(__dirname, './js/admin.js'),
     'css/style': path.resolve(__dirname, './scss/style.scss'),
     'css/print': path.resolve(__dirname, './scss/print.scss'),
     'css/admin': path.resolve(__dirname, './scss/admin.scss'),
@@ -89,6 +90,16 @@ module.exports = smp.wrap({
         exclude: /(node_modules|bower_components)/,
         use: {
           loader: 'babel-loader',
+          options: {
+            // TODO: these should not be necessary
+            // should be included via .bablerc
+            // but for some crazy reason admin.js won't compile without these
+            presets: [
+              '@wordpress/default',
+              '@babel/env',
+              '@babel/react',
+            ],
+          }
         },
       },
       {
@@ -135,6 +146,8 @@ module.exports = smp.wrap({
 
   plugins: [
     ...plugins,
+    new WebpackNotifierPlugin(),
+
 
     new MiniCssExtractPlugin({
       filename: '[name].css',
