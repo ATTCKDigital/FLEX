@@ -18,15 +18,22 @@
 		}
 
 		//OG & Meta Description
-		$excerpt = strip_tags(get_the_excerpt($this->ID));
+		$description = get_field('og_description', $this->ID);
+
+		if($description) {
+			$description = $description;
+		} else {
+			$description = strip_tags(get_the_excerpt($this->ID));
+		}
 
 		if(is_archive()) {
 			//if we are on any kind of archive page, use the archive description
-			$excerpt = strip_tags(trim(get_the_archive_description()));	
+			$description = strip_tags(trim(get_the_archive_description()));	
 		}
-		if(!$excerpt) {
+
+		if(!$description) {
 			//if there is no user defined excerpt, use the blog description
-			$excerpt = get_bloginfo('description');
+			$description = get_bloginfo('description');
 		}
 
 		//OG Type
@@ -98,7 +105,7 @@
 
 	<meta property="og:title" content="<?= $title .' | '. $siteName;?>"/>
 	<meta property="og:site_name" content="<?= $siteName;?>"/>
-	<meta property="og:description" content="<?= $excerpt;?>"/>
+	<meta property="og:description" content="<?= $description;?>"/>
 	<meta property="og:type" content="<?= $type;?>"/>
 	<meta property="og:url" content="<?= $url;?>"/>
 	<meta property="og:image" content="<?= $fbImageSrc;?>"/>
@@ -113,10 +120,10 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@<?= $twitterUsername;?>" />
 	<meta name="twitter:creator" content="@<?= $twitterCreator;?>" />
-	<meta name="twitter:description" content="<?= $excerpt;?>" />
+	<meta name="twitter:description" content="<?= $description;?>" />
 	<meta name="twitter:title" content="<?= $title.' | '.$siteName;?>" />
 	<meta name="twitter:image" content="<?= $twitterImageSrc;?>" />
 	<meta name="twitter:image:alt" content="<?= $twitterImageAlt;?>" />
 
-	<title><?= $title; ?> | <?= $excerpt; ?></title>
-	<meta name="description" content="<?= $excerpt;?>">
+	<title><?= $title; ?> | <?= $description; ?></title>
+	<meta name="description" content="<?= $description;?>">

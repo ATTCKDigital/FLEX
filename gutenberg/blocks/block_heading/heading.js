@@ -3,6 +3,10 @@
  */
 import classnames from 'classnames';
 import HeadingToolbar from './heading-toolbar';
+import icons from '../../../js/icons.js'
+
+
+
 
 /**
  * Internal block libraries
@@ -18,6 +22,8 @@ const {
 	BlockAlignmentToolbar,
 	InspectorControls,
 	InnerBlocks,
+	URLInput,
+	MediaUpload,
 } = wp.editor;
 const {
 	Toolbar,
@@ -27,7 +33,8 @@ const {
 	PanelBody,
 	PanelRow,
 	TextControl,
-
+	Dashicon,
+	IconButton,
 } = wp.components;
 
 /**
@@ -74,6 +81,15 @@ export default registerBlockType(
 			placeholder: {
 				type: 'string',
 			},
+			url: {
+				type: 'string',
+			},
+			imgURL: {
+				type: 'string',
+			},
+			imgID: {
+				type: 'number',
+			},
 			...MarginOptionsAttributes,
 			...PaddingOptionsAttributes,
 			...BorderOptionsAttributes,
@@ -81,9 +97,21 @@ export default registerBlockType(
 		},
 
 		edit: props => {
-			const { attributes: { content, level, align, placeholder},
+			const { attributes: { content, level, align, placeholder, url, imgID, imgURL, isSelected},
 				className, setAttributes } = props;
 			const tagName = 'h' + level;
+			const onSelectImage = img => {
+				setAttributes( {
+					imgID: img.id,
+					imgURL: img.url,
+				} );
+			};
+			const onRemoveImage = () => {
+				setAttributes({
+					imgID: null,
+					imgURL: null,
+				});
+			}
 
 			return [
 
@@ -98,6 +126,55 @@ export default registerBlockType(
 								setAttributes( { align: nextAlign } );
 							} }
 						/>
+						<p>{ __( 'Optional URL' ) }</p>
+						<form
+							className="block-library-button__inline-link heading-url"
+							onSubmit={ ( event ) => event.preventDefault() }>
+							<URLInput
+								value={ url }
+								onChange={ ( value ) => setAttributes( { url: value } ) }
+							/>
+							<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
+						</form>
+						<p>{ __( 'Icon Next to the Heading' ) }</p>
+						{ ! imgID ? (
+
+							<MediaUpload
+								onSelect={ onSelectImage }
+								type="image"
+								value={ imgID }
+								render={ ( { open } ) => (
+									<Button
+										className={ "button button-large" }
+										onClick={ open }
+									>
+										{ icons.upload }
+										{ __( ' Upload Image', 'flexlayout' ) }
+									</Button>
+								) }
+							>
+							</MediaUpload>
+
+						) : (
+
+							<div className={classnames(
+								`image-wrapper`,
+								`align-${align}`,
+							)}>
+
+
+								<Button
+									className="remove-image"
+									onClick={ onRemoveImage }
+								>
+									{ icons.remove }
+								</Button>
+								
+								<img
+									src={ imgURL }
+								/>
+							</div>
+						)}
 					</PanelBody>
 					<MarginOptions
 						{ ...props }
@@ -111,29 +188,37 @@ export default registerBlockType(
 					<TextColorOptions
 						{ ...props }
 					/>
+
+								
+
 				</InspectorControls>,
-				<RichText
-					identifier="content"
-					wrapperClassName="component-heading"
-					tagName={ tagName }
-					value={ content }
-					onChange={ ( value ) => setAttributes( { content: value } ) }
-					onRemove={ () => onReplace( [] ) }
-					style={ {
-						textAlign: align,
-						...TextColorInlineStyles( props )
-					} }
-					className={ classnames(
-						className,
-						`headline${level}`,
-						`align-${align}`,
-						...MarginOptionsClasses( props ),
-						...PaddingOptionsClasses( props ),
-						...BorderOptionsClasses( props ),
-						...TextColorClasses( props ),
-					)}
-					placeholder={ placeholder || __( 'Write heading…' ) }
-				/>
+				<div className={classnames(
+					`component-heading`
+				)}>
+					<img
+						src={ imgURL }
+					/>
+					<RichText
+						identifier="content"
+						wrapperClassName=""
+						value={ content }
+						onChange={ ( value ) => setAttributes( { content: value } ) }
+						onRemove={ () => onReplace( [] ) }
+						style={ {
+							textAlign: align,
+							...TextColorInlineStyles( props )
+						} }
+						className={ classnames(
+							className,
+							`align-${align}`,
+							...MarginOptionsClasses( props ),
+							...PaddingOptionsClasses( props ),
+							...BorderOptionsClasses( props ),
+							...TextColorClasses( props ),
+						)}
+						placeholder={ placeholder || __( 'Write heading…' ) }
+					/>
+				</div>
 			];
 
 		},
@@ -144,3 +229,73 @@ export default registerBlockType(
 
 	},
 );
+//Add default styles
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'headline1',
+    label: 'Headline 1'
+} );
+
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'headline2',
+    label: 'Headline 2'
+} );
+
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'headline3',
+    label: 'Headline 3'
+} );
+
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'headline4',
+    label: 'Headline 4'
+} );
+
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'headline5',
+    label: 'Headline 5'
+} );
+
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'headline6',
+    label: 'Headline 6'
+} );
+//okatodo: get these into separate file in child them, also figure out how to do this as array?
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'subheadline1',
+    label: 'Sub Headline 1'
+} );
+
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'subheadline1-wide',
+    label: 'Sub Headline 1 Wide'
+} );
+
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'subheadline1-border',
+    label: 'Sub Headline Right Border'
+} );
+
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'subheadline2',
+    label: 'Sub Headline 2'
+} );
+
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'subheadline2-wide',
+    label: 'Sub Headline 2 Wide'
+} );
+
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'caption1',
+    label: 'Caption 1'
+} );
+
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'caption2',
+    label: 'Caption 2'
+} );
+
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+    name: 'caption3',
+    label: 'Caption 3'
+} );

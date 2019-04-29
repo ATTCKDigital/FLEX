@@ -37,7 +37,7 @@ STATIC ASSETS:
 module.exports = {
   entry: {
     '/js/main.js': path.resolve(__dirname, './js/app.js'),
-    // '/js/admin.js': path.resolve(__dirname, './js/admin.js'),
+    '/js/admin.js': path.resolve(__dirname, './js/admin.js'),
     'css/style': path.resolve(__dirname, './scss/style.scss'),
     'css/print': path.resolve(__dirname, './scss/print.scss'),
     'css/admin': path.resolve(__dirname, './scss/admin.scss'),
@@ -74,6 +74,16 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         use: {
           loader: 'babel-loader',
+          options: {
+            // TODO: these should not be necessary
+            // should be included via .bablerc
+            // but for some crazy reason admin.js won't compile without these
+            presets: [
+              '@wordpress/default',
+              '@babel/env',
+              '@babel/react',
+            ],
+          }
         },
       },
       {

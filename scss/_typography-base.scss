@@ -42,7 +42,6 @@ em, i {
 	font-size: inherit;
 	line-height: inherit;
 	font-family: inherit;
-	@include primary-regular-italic;
 }
 
 hr {
@@ -165,3 +164,12 @@ th, tr, td {
 	display: inline-block;
 }
 
+.text-columns {
+	@include mediaquery(tablet-landscape) {
+		column-count: 2;
+		column-gap: $gap*15;
+		column-break-inside: avoid; /* Chrome, Safari, Opera */
+		page-break-inside: avoid; /* Firefox */
+		break-inside: avoid;
+	}
+}

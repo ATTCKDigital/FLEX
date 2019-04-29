@@ -63,6 +63,8 @@
 	&.is-style-cta-negative {
 		@extend .cta-negative;
 	}
+
+	color: $black;
 }
 
 .editor-block-styles__item[aria-label="Default"] .editor-block-styles__item-preview,

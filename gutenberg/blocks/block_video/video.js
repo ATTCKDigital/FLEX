@@ -60,9 +60,6 @@ export default registerBlockType(
 			__( 'YouTube', 'flexlayout' ),
 			__( 'Vimeo', 'flexlayout' ),
 		],
-		supports: {
-			anchor: true,
-		},
 		attributes: {
 			uploadVideo: {
 				type: 'object',
@@ -80,7 +77,7 @@ export default registerBlockType(
 			...BorderOptionsAttributes,
 		},
 
-		
+
 
 		edit: props => {
 
@@ -94,7 +91,7 @@ export default registerBlockType(
 
 			const classes = classnames(
 				className,
-				`component-video`,
+				'component-video',
 				...MarginOptionsClasses( props ),
 				...BorderOptionsClasses( props ),
 			);
@@ -128,7 +125,7 @@ export default registerBlockType(
 				return (
 					<div className="video-container">
 						<p>
-							<div className={"video-thumbnail-wrapper"}>
+							<div className={'video-thumbnail-wrapper'}>
 								<img
 									src={ props.attributes.videoThumbnail ? props.attributes.videoThumbnail.url : '' }
 								/>
@@ -219,8 +216,8 @@ export default registerBlockType(
 				}
 				return (
 					<TextControl
-						label={__("YouTube ID", "flexlayout")}
-						help={__("Paste the ID of the YouTube Video.", "flexlayout")}
+						label={__('YouTube ID', 'flexlayout')}
+						help={__('Paste the ID of the YouTube Video.', 'flexlayout')}
 						value={props.attributes.youtubeVideo ? props.attributes.youtubeVideo : ''}
 						onChange={setYoutubeVideo}
 					/>
@@ -233,13 +230,13 @@ export default registerBlockType(
 					return '';
 				}
 				return (
-					<div className={"video-wrapper"}>
-						<div className={"video-thumbnail-wrapper"}>
+					<div className={'video-wrapper'}>
+						<div className={'video-thumbnail-wrapper'}>
 							<img
 								src={ props.attributes.videoThumbnail ? props.attributes.videoThumbnail.url : '' }
 							/>
 						</div>
-						<mark className={"play"} data-video-type={"upload"}></mark>
+						<mark className={'play'} data-video-type={'upload'}></mark>
 						<video className="video-container video-container-overlay">
 							<source
 								type="video/mp4"
@@ -258,13 +255,13 @@ export default registerBlockType(
 				}
 
 				return (
-					<div className={"video-wrapper"}>
-						<div className={"video-thumbnail-wrapper"}>
+					<div className={'video-wrapper'}>
+						<div className={'video-thumbnail-wrapper'}>
 							<img
 								src={ props.attributes.videoThumbnail ? props.attributes.videoThumbnail.url : '' }
 							/>
 						</div>
-						<mark className={"play"} data-video-type={"youtube"}></mark>
+						<mark className={'play'} data-video-type={'youtube'}></mark>
 						<iframe width="560" height="315" src={ props.attributes.youtubeVideo ? 'https://www.youtube.com/embed/'+props.attributes.youtubeVideo : '' } frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					</div>
 				);
@@ -278,7 +275,7 @@ export default registerBlockType(
 					<BorderOptions
 						{ ...props }
 					/>
-					<PanelBody 
+					<PanelBody
 						title={ __( 'Video Settings' ) }
 						className="flexlayout-video-settings"
 					>
@@ -310,7 +307,7 @@ export default registerBlockType(
 				<div className={ classes }>
 					{ uploadVideoOutput() }
 					{ youtubeVideoOutput() }
-				</div>				
+				</div>
 			];
 		},
 

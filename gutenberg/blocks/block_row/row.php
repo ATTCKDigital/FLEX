@@ -46,6 +46,9 @@ function register_row_block() {
 	register_block_type( 'flexlayout/row', [
 		'attributes'      => array_merge(
 			[
+				'anchor' => [
+					'type' => 'string',
+				],
 				'blockAlignment' => [
 					'type' => 'string',
 					'default' => 'wide',
@@ -59,10 +62,10 @@ function register_row_block() {
 					'default' => 'top',
 				],
 				'className' => [
-                    'type' => 'string',
-                    'default' => '',
-                ],
-                
+					'type' => 'string',
+					'default' => '',
+				],
+
 			],
 			BACKGROUND_OPTIONS_ATTRIBUTES,
 			LOGO_COLOR_OPTIONS_ATTRIBUTES,
@@ -91,6 +94,8 @@ function render_row_block($attributes, $content) {
 	$class .= row_height_options_classes($attributes);
 	$class .= border_options_classes($attributes);
 
+	$id = array_key_exists('anchor', $attributes) ? " id=\"{$attributes['anchor']}\"" : "";
+
 	$style = background_options_inline_styles($attributes);
 	$mobileImage = background_options_mobile_styles($attributes);
 	$desktopImage = background_options_desktop_styles($attributes);
@@ -102,7 +107,7 @@ function render_row_block($attributes, $content) {
 	$innerContent .= scroller_options_output($attributes);
 	$innerContent .= "<div class=\"pure-g component-row-{$attributes['blockAlignment']} component-alignment-{$attributes['verticalAligment']}\">{$content}</div>";
 
-	$output = "<section class=\"{$class}\" data-section-id=\"section-{$sectionDataId}\" data-logo-color=\"{$dataLogoColor}\" style=\"{$style}\">{$styleBlock}{$innerContent}</section>";
+	$output = "<section{$id} class=\"{$class}\" data-section-id=\"section-{$sectionDataId}\" data-logo-color=\"{$dataLogoColor}\" style=\"{$style}\">{$styleBlock}{$innerContent}</section>";
 
 	return $output;
 }
