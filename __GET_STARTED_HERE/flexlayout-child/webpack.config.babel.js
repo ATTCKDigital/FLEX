@@ -1,13 +1,27 @@
 import CopyPlugin from 'copy-webpack-plugin';
 import ImageminPlugin from 'imagemin-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
 import { sync } from 'glob';
 
 import path from 'path';
 import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
 
+const smp = new SpeedMeasurePlugin();
+
 const isDevEnv = 'production' !== process.env.NODE_ENV;
+
+const devPlugins = [];
+const productionPlugins = [
+      // Minify Images
+      // Include after plugins that add images, eg. copy-webpack-plugin
+      // TODO: this should likely be configured more highly
+      new ImageminPlugin({
+        test: /\.(jpe?g|png|gif|svg)$/i
+      }),
+]
+const plugins = isDevEnv ? devPlugins : productionPlugins;
 
 /*
 JS:
@@ -33,7 +47,7 @@ STATIC ASSETS:
 - compress images
 */
 
-module.exports = {
+module.exports = smp.wrap({
   entry: {
     '/js/main.js': path.resolve(__dirname, './js/app.js'),
     // '/js/admin.js': path.resolve(__dirname, './js/admin.js'),
@@ -118,6 +132,8 @@ module.exports = {
   },
 
   plugins: [
+    ...plugins,
+
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].[hash].css',
@@ -133,13 +149,6 @@ module.exports = {
       },
     ]),
 
-    // Minify Images
-    // Include after plugins that add images, eg. copy-webpack-plugin
-    // TODO: this should likely be configured more highly
-    new ImageminPlugin({
-      test: /\.(jpe?g|png|gif|svg)$/i
-    }),
-
   ],
 
-};
+});
