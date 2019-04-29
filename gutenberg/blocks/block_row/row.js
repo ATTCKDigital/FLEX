@@ -28,7 +28,6 @@ const {
 	PanelBody,
 	PanelRow,
 	TextControl,
-
 } = wp.components;
 
 /**
@@ -49,6 +48,7 @@ import LogoColorOptions, { LogoColorOptionsAttributes, LogoColorOptionsDataAttr 
 import RowHeightOptions, { RowHeightOptionsAttributes, RowHeightOptionsClasses } from '../../components/gb-component_row-height';
 // Import all of our Border Options requirements.
 import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
+import AnchorOptions, { AnchorOptionsAttributes } from '../../components/gb-component_anchor';
 
 
 
@@ -67,9 +67,13 @@ export default registerBlockType(
 			__( 'Flex', 'flexlayout' ),
 			__( 'Layout', 'flexlayout' ),
 		],
-		supports: {
-			anchor: true,
-		},
+		// Forced to roll our own anchor support
+		// Due to Gutenberg core issue
+		// BUG: https://github.com/WordPress/gutenberg/issues/15240
+		// TODO: reenable this when bug is fixed
+		// supports: {
+		// 	anchor: true,
+		// },
 		attributes: {
 			blockAlignment: {
 				type: 'string',
@@ -84,6 +88,7 @@ export default registerBlockType(
 				default: 'top',
 			},
 
+			...AnchorOptionsAttributes,
 			...BackgroundOptionsAttributes,
 			...RowHeightOptionsAttributes,
 			...PaddingOptionsAttributes,
@@ -101,8 +106,7 @@ export default registerBlockType(
 		},
 
 		edit: props => {
-			const { attributes: { reverseMobile, blockAlignment, verticalAligment },
-				className, setAttributes } = props;
+			const { attributes: { anchor, reverseMobile, blockAlignment, verticalAligment }, className, setAttributes } = props;
 			const classes = classnames(
 				className,
 				{ 'component-row-reverse-mobile': reverseMobile },
@@ -134,6 +138,9 @@ export default registerBlockType(
 						{ ...props }
 					/>
 					<LogoColorOptions
+						{ ...props }
+					/>
+					<AnchorOptions
 						{ ...props }
 					/>
 				</InspectorControls>,
@@ -212,6 +219,7 @@ export default registerBlockType(
 				</BlockControls>,
 				<section
 					className={ classes }
+					id={ anchor }
 					style={ {
 						...BackgroundOptionsInlineStyles( props ),
 					} }
@@ -239,3 +247,5 @@ export default registerBlockType(
 
 	},
 );
+
+wp.hooks.removeFilter( 'blocks.registerBlockType', 'core/anchor/attribute' );

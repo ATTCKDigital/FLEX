@@ -4,19 +4,8 @@
 const { __ } = wp.i18n;
 
 const {
-	ColorPalette,
 	PanelColorSettings,
-	MediaUpload,
 } = wp.editor;
-
-const {
-	Button,
-	Dashicon,
-	PanelBody,
-	PanelRow,
-	SelectControl,
-	TextControl,
-} = wp.components;
 
 /**
  * Internal dependencies
@@ -31,11 +20,11 @@ export {
 };
 
 function BackgroundColorOptions( props ) {
-	
+
 	const setBackgroundColor = value => props.setAttributes( { backgroundColor: value } );
-		
+
 		return (
-			
+
 			<PanelColorSettings
 				title={ __( 'Background Color' ) }
 				colorSettings={ [
