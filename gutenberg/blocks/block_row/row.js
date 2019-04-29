@@ -28,7 +28,6 @@ const {
 	PanelBody,
 	PanelRow,
 	TextControl,
-
 } = wp.components;
 
 /**
@@ -67,10 +66,16 @@ export default registerBlockType(
 			__( 'Flex', 'flexlayout' ),
 			__( 'Layout', 'flexlayout' ),
 		],
-		supports: {
-			anchor: true,
-		},
+		// Forced to roll our own anchor support
+		// Due to Gutenberg core issue
+		// https://github.com/WordPress/gutenberg/issues/15240
+		// supports: {
+		// 	anchor: true,
+		// },
 		attributes: {
+			anchor: {
+				type: 'string',
+			},
 			blockAlignment: {
 				type: 'string',
 				default: 'wide',
@@ -101,8 +106,7 @@ export default registerBlockType(
 		},
 
 		edit: props => {
-			const { attributes: { reverseMobile, blockAlignment, verticalAligment },
-				className, setAttributes } = props;
+			const { attributes: { anchor, reverseMobile, blockAlignment, verticalAligment }, className, setAttributes } = props;
 			const classes = classnames(
 				className,
 				{ 'component-row-reverse-mobile': reverseMobile },
@@ -136,6 +140,19 @@ export default registerBlockType(
 					<LogoColorOptions
 						{ ...props }
 					/>
+					<PanelBody
+						title={ __( 'HTML Anchor' ) }
+						className="flexlayout-anchor-options"
+						initialOpen={ false }
+					>
+						<PanelRow>
+							<TextControl
+									label="HTML Anchor"
+									value={ anchor }
+									onChange={ ( anchor ) => setAttributes( { anchor } ) }
+							/>
+					</PanelRow>
+				</PanelBody>
 				</InspectorControls>,
 				<BlockControls>
 					<BlockAlignmentToolbar
@@ -212,6 +229,7 @@ export default registerBlockType(
 				</BlockControls>,
 				<section
 					className={ classes }
+					id={ anchor }
 					style={ {
 						...BackgroundOptionsInlineStyles( props ),
 					} }
@@ -239,3 +257,5 @@ export default registerBlockType(
 
 	},
 );
+
+wp.hooks.removeFilter( 'blocks.registerBlockType', 'core/anchor/attribute' );
