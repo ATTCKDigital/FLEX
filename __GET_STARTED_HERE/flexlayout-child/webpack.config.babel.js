@@ -1,6 +1,7 @@
 import CopyPlugin from 'copy-webpack-plugin';
 import ImageminPlugin from 'imagemin-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import WebpackNotifierPlugin from 'webpack-notifier';
 import { sync } from 'glob';
 
 import path from 'path';
@@ -128,6 +129,8 @@ module.exports = {
   },
 
   plugins: [
+    new WebpackNotifierPlugin(),
+
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].[hash].css',
