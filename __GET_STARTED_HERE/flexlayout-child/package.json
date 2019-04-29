@@ -86,6 +86,7 @@
 	},
 	"scripts": {
 		"dev": "NODE_ENV=development webpack",
+		"measure": "NODE_ENV=development MEASURE=true webpack",
 		"build": "NODE_ENV=production webpack"
 	}
 }

@@ -8,7 +8,9 @@ import path from 'path';
 import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
 
-const smp = new SpeedMeasurePlugin();
+const smp = new SpeedMeasurePlugin({
+  disable: !process.env.MEASURE
+});
 
 const isDevEnv = 'production' !== process.env.NODE_ENV;
 
