@@ -34,7 +34,20 @@ $xPositions: left, right, center;
   	@each $xPosition in $xPositions{
 
 		.component-background-#{$xPosition}-#{$yPosition} { 
-			background-position: #{$xPosition} #{$yPosition};
+			@include mediaquery(tablet-portrait) {
+				background-position: #{$xPosition} #{$yPosition};
+			}
+		}
+	}
+}
+
+@each $yPosition in $yPositions{
+  	@each $xPosition in $xPositions{
+
+		.component-mobile-background-#{$xPosition}-#{$yPosition} { 
+			@include mediaquery-max-width(tablet-portrait) {
+				background-position: #{$xPosition} #{$yPosition};
+			}
 		}
 	}
 }
