@@ -17,7 +17,7 @@
 			$title = trim(wp_title('', FALSE)); //trim leading white space
 		}
 
-		//OG & Meta Description
+		//OG Description
 		$description = get_field('og_description', $this->ID);
 
 		if($description) {
@@ -34,6 +34,25 @@
 		if(!$description) {
 			//if there is no user defined excerpt, use the blog description
 			$description = get_bloginfo('description');
+		}
+
+		//Meta Description
+		$metaDescription = get_field('meta_description', $this->ID);
+
+		if($metaDescription) {
+			$metaDescription = $metaDescription;
+		} else {
+			$metaDescription = strip_tags(get_the_excerpt($this->ID));
+		}
+
+		if(is_archive()) {
+			//if we are on any kind of archive page, use the archive description
+			$metaDescription = strip_tags(trim(get_the_archive_description()));	
+		}
+
+		if(!$metaDescription) {
+			//if there is no user defined excerpt, use the blog description
+			$metaDescription = get_bloginfo('description');
 		}
 
 		//OG Type
@@ -126,4 +145,4 @@
 	<meta name="twitter:image:alt" content="<?= $twitterImageAlt;?>" />
 
 	<title><?= $title; ?> | <?= $description; ?></title>
-	<meta name="description" content="<?= $description;?>">
+	<meta name="description" content="<?= $metaDescription;?>">
