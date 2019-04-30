@@ -4,7 +4,7 @@
 ****/
 
 h1, h2, h3, h4, h5, h6, p, span, .cta, img {
-	opacity: 0;
+	opacity: .2;
 	transition: opacity .3s ease-in;
 
 	.no-element-in-view &, &.no-element-in-view {
