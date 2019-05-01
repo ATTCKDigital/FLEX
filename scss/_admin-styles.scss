@@ -14,11 +14,16 @@ body {
 	
 }
 
+.editor-inner-blocks .editor-block-list__block-edit {
+	background-color: rgba(255, 255, 255, .6);
+}
+
 .wp-block-flexlayout-row {
 	border: 0;
 	max-width: $siteWidth;
 	margin-left: auto;
 	margin-right: auto;
+	background-color: rgba(100, 149, 237, .2);
 
 	.wp-block[data-align=full] & {
 		max-width: none;
@@ -49,6 +54,7 @@ body {
 	max-width: none;
 	margin-left: auto;
 	margin-right: auto;
+	background-color: rgba(237, 100, 149, .2);
 
 	.editor-block-list__layout {
 		display: block;
@@ -238,3 +244,4 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 .edit-post-sidebar .editor-block-styles__item-preview .component-heading img {
 	display: none;
 }
+
