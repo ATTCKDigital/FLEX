@@ -19,7 +19,7 @@ function padding_options_classes( $attributes ) {
 	$class .= array_key_exists('paddingTabletLandscapeTop', $attributes) && $attributes['paddingTabletLandscapeTop'] != 'inherit' ? " padding-tablet-landscape-top-{$attributes['paddingTabletLandscapeTop']} " :'';
 	$class .= array_key_exists('paddingTabletLandscapeRight', $attributes) && $attributes['paddingTabletLandscapeRight'] != 'inherit' ? " padding-tablet-landscape-right-{$attributes['paddingTabletLandscapeRight']} " :'';
 	$class .= array_key_exists('paddingTabletLandscapeLeft', $attributes) && $attributes['paddingTabletLandscapeLeft'] != 'inherit' ? " padding-tablet-landscape-left-{$attributes['paddingTabletLandscapeLeft']} " :'';
-	$class .= array_key_exists('paddingTabletLandscapeBottom', $attributes) && $attributes['paddingTabletLandscapeBottom'] != 'inherit' ? " padding-tablet-landscape-bottom-{$attributes['paddingTabletPortraitBottom']} " :'';
+	$class .= array_key_exists('paddingTabletLandscapeBottom', $attributes) && $attributes['paddingTabletLandscapeBottom'] != 'inherit' ? " padding-tablet-landscape-bottom-{$attributes['paddingTabletLandscapeBottom']} " :'';
 	$class .= array_key_exists('paddingDesktopTop', $attributes) && $attributes['paddingDesktopTop'] != 'inherit' ? " padding-desktop-top-{$attributes['paddingDesktopTop']} " :'';
 	$class .= array_key_exists('paddingDesktopRight', $attributes) && $attributes['paddingDesktopRight'] != 'inherit' ? " padding-desktop-right-{$attributes['paddingDesktopRight']} " :'';
 	$class .= array_key_exists('paddingDesktopLeft', $attributes) && $attributes['paddingDesktopLeft'] != 'inherit' ? " padding-desktop-left-{$attributes['paddingDesktopLeft']} " :'';
