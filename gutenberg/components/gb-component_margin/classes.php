@@ -19,7 +19,7 @@ function margin_options_classes( $attributes ) {
 	$class .= array_key_exists('marginTabletLandscapeTop', $attributes) && $attributes['marginTabletLandscapeTop'] != 'inherit' ? " margin-tablet-landscape-top-{$attributes['marginTabletLandscapeTop']} " :'';
 	$class .= array_key_exists('marginTabletLandscapeRight', $attributes) && $attributes['marginTabletLandscapeRight'] != 'inherit' ? " margin-tablet-landscape-right-{$attributes['marginTabletLandscapeRight']} " :'';
 	$class .= array_key_exists('marginTabletLandscapeLeft', $attributes) && $attributes['marginTabletLandscapeLeft'] != 'inherit' ? " margin-tablet-landscape-left-{$attributes['marginTabletLandscapeLeft']} " :'';
-	$class .= array_key_exists('marginTabletLandscapeBottom', $attributes) && $attributes['marginTabletLandscapeBottom'] != 'inherit' ? " margin-tablet-landscape-bottom-{$attributes['marginTabletPortraitBottom']} " :'';
+	$class .= array_key_exists('marginTabletLandscapeBottom', $attributes) && $attributes['marginTabletLandscapeBottom'] != 'inherit' ? " margin-tablet-landscape-bottom-{$attributes['marginTabletLandscapeBottom']} " :'';
 	$class .= array_key_exists('marginDesktopTop', $attributes) && $attributes['marginDesktopTop'] != 'inherit' ? " margin-desktop-top-{$attributes['marginDesktopTop']} " :'';
 	$class .= array_key_exists('marginDesktopRight', $attributes) && $attributes['marginDesktopRight'] != 'inherit' ? " margin-desktop-right-{$attributes['marginDesktopRight']} " :'';
 	$class .= array_key_exists('marginDesktopLeft', $attributes) && $attributes['marginDesktopLeft'] != 'inherit' ? " margin-desktop-left-{$attributes['marginDesktopLeft']} " :'';
