@@ -36,6 +36,10 @@ function PaddingOptions( props ) {
 	const setPaddingRight = value => props.setAttributes( { paddingRight: value } );
 	const setPaddingBottom = value => props.setAttributes( { paddingBottom: value } );
 	const setPaddingLeft = value => props.setAttributes( { paddingLeft: value } );
+	const setPaddingPhoneTop = value => props.setAttributes( { paddingPhoneTop: value } );
+	const setPaddingPhoneRight = value => props.setAttributes( { paddingPhoneRight: value } );
+	const setPaddingPhoneBottom = value => props.setAttributes( { paddingPhoneBottom: value } );
+	const setPaddingPhoneLeft = value => props.setAttributes( { paddingPhoneLeft: value } );
 	const setPaddingTabletPortraitTop = value => props.setAttributes( { paddingTabletPortraitTop: value } );
 	const setPaddingTabletPortraitRight = value => props.setAttributes( { paddingTabletPortraitRight: value } );
 	const setPaddingTabletPortraitBottom = value => props.setAttributes( { paddingTabletPortraitBottom: value } );
@@ -53,16 +57,21 @@ function PaddingOptions( props ) {
 
 		return (
 			<div className="padding-wrapper">
+				<p>Inherit uses prev screen size setting.</p>
 				<div className="padding-inner-wrapper">
-					<h2 className="components-panel__body-title">Mobile Padding</h2>
+					<h2 className="components-panel__body-title">Padding</h2>
 					<PanelRow>
 						<SelectControl
-							key="padding-small-top"
+							key="padding-top"
 							label={ __( 'Top' ) }
 							value={ props.attributes.paddingTop ? props.attributes.paddingTop : '' }
 							onChange={ setPaddingTop }
 							options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
 									value: '0x',
 								},
@@ -75,169 +84,34 @@ function PaddingOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
-								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
-								{
-									label: __( '16' ),
+									label: __( '16x' ),
 									value: '16x',
 								},
-								{
-									label: __( '17x' ),
-									value: '17x',
-								},
-								{
-									label: __( '18x' ),
-									value: '18x',
-								},
-								{
-									label: __( '19x' ),
-									value: '19x',
-								},
-								{
-									label: __( '20x' ),
-									value: '20x',
-								},
-								{
-									label: __( '21x' ),
-									value: '21x',
-								},
-								{
-									label: __( '22x' ),
-									value: '22x',
-								},
-								{
-									label: __( '23x' ),
-									value: '23x',
-								},
-								{
-									label: __( '24x' ),
-									value: '24x',
-								},
-								{
-									label: __( '25x' ),
-									value: '25x',
-								},
-								{
-									label: __( '26x' ),
-									value: '26x',
-								},
-								{
-									label: __( '27x' ),
-									value: '27x',
-								},
-								{
-									label: __( '28x' ),
-									value: '28x',
-								},
-								{
-									label: __( '29x' ),
-									value: '29x',
-								},
-								{
-									label: __( '30x' ),
-									value: '30x',
-								},
-								{
-									label: __( '31x' ),
-									value: '31x',
-								},
-								{
-									label: __( '32x' ),
-									value: '32x',
-								},
-								{
-									label: __( '33x' ),
-									value: '33x',
-								},
-								{
-									label: __( '34x' ),
-									value: '34x',
-								},
-								{
-									label: __( '35x' ),
-									value: '35x',
-								},
-								{
-									label: __( '36x' ),
-									value: '36x',
-								},
-								{
-									label: __( '37x' ),
-									value: '37x',
-								},
-								{
-									label: __( '38x' ),
-									value: '38x',
-								},
-								{
-									label: __( '39x' ),
-									value: '39x',
-								},
-								{
-									label: __( '40x' ),
-									value: '40x',
-								},
+								
 
 							] }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<SelectControl
-							key="padding-small-right"
+							key="padding-right"
 							label={ __( 'Right' ) }
 							value={ props.attributes.paddingRight ? props.attributes.paddingRight : '' }
 							onChange={ setPaddingRight }
 													options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
 									value: '0x',
 								},
@@ -250,169 +124,34 @@ function PaddingOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
-								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
-								{
-									label: __( '16' ),
+									label: __( '16x' ),
 									value: '16x',
 								},
-								{
-									label: __( '17x' ),
-									value: '17x',
-								},
-								{
-									label: __( '18x' ),
-									value: '18x',
-								},
-								{
-									label: __( '19x' ),
-									value: '19x',
-								},
-								{
-									label: __( '20x' ),
-									value: '20x',
-								},
-								{
-									label: __( '21x' ),
-									value: '21x',
-								},
-								{
-									label: __( '22x' ),
-									value: '22x',
-								},
-								{
-									label: __( '23x' ),
-									value: '23x',
-								},
-								{
-									label: __( '24x' ),
-									value: '24x',
-								},
-								{
-									label: __( '25x' ),
-									value: '25x',
-								},
-								{
-									label: __( '26x' ),
-									value: '26x',
-								},
-								{
-									label: __( '27x' ),
-									value: '27x',
-								},
-								{
-									label: __( '28x' ),
-									value: '28x',
-								},
-								{
-									label: __( '29x' ),
-									value: '29x',
-								},
-								{
-									label: __( '30x' ),
-									value: '30x',
-								},
-								{
-									label: __( '31x' ),
-									value: '31x',
-								},
-								{
-									label: __( '32x' ),
-									value: '32x',
-								},
-								{
-									label: __( '33x' ),
-									value: '33x',
-								},
-								{
-									label: __( '34x' ),
-									value: '34x',
-								},
-								{
-									label: __( '35x' ),
-									value: '35x',
-								},
-								{
-									label: __( '36x' ),
-									value: '36x',
-								},
-								{
-									label: __( '37x' ),
-									value: '37x',
-								},
-								{
-									label: __( '38x' ),
-									value: '38x',
-								},
-								{
-									label: __( '39x' ),
-									value: '39x',
-								},
-								{
-									label: __( '40x' ),
-									value: '40x',
-								},
+								
 
 							] }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<SelectControl
-							key="padding-small-bottom"
+							key="padding-bottom"
 							label={ __( 'Bottom' ) }
 							value={ props.attributes.paddingBottom ? props.attributes.paddingBottom : '' }
 							onChange={ setPaddingBottom }
 													options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
 									value: '0x',
 								},
@@ -425,168 +164,33 @@ function PaddingOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
-								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
-								{
-									label: __( '16' ),
+									label: __( '16x' ),
 									value: '16x',
 								},
-								{
-									label: __( '17x' ),
-									value: '17x',
-								},
-								{
-									label: __( '18x' ),
-									value: '18x',
-								},
-								{
-									label: __( '19x' ),
-									value: '19x',
-								},
-								{
-									label: __( '20x' ),
-									value: '20x',
-								},
-								{
-									label: __( '21x' ),
-									value: '21x',
-								},
-								{
-									label: __( '22x' ),
-									value: '22x',
-								},
-								{
-									label: __( '23x' ),
-									value: '23x',
-								},
-								{
-									label: __( '24x' ),
-									value: '24x',
-								},
-								{
-									label: __( '25x' ),
-									value: '25x',
-								},
-								{
-									label: __( '26x' ),
-									value: '26x',
-								},
-								{
-									label: __( '27x' ),
-									value: '27x',
-								},
-								{
-									label: __( '28x' ),
-									value: '28x',
-								},
-								{
-									label: __( '29x' ),
-									value: '29x',
-								},
-								{
-									label: __( '30x' ),
-									value: '30x',
-								},
-								{
-									label: __( '31x' ),
-									value: '31x',
-								},
-								{
-									label: __( '32x' ),
-									value: '32x',
-								},
-								{
-									label: __( '33x' ),
-									value: '33x',
-								},
-								{
-									label: __( '34x' ),
-									value: '34x',
-								},
-								{
-									label: __( '35x' ),
-									value: '35x',
-								},
-								{
-									label: __( '36x' ),
-									value: '36x',
-								},
-								{
-									label: __( '37x' ),
-									value: '37x',
-								},
-								{
-									label: __( '38x' ),
-									value: '38x',
-								},
-								{
-									label: __( '39x' ),
-									value: '39x',
-								},
-								{
-									label: __( '40x' ),
-									value: '40x',
-								},
+								
 
 							] }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<SelectControl
-							key="padding-small-left"
+							key="padding-left"
 							label={ __( 'Left' ) }
 							value={ props.attributes.paddingLeft ? props.attributes.paddingLeft : '' }
 							onChange={ setPaddingLeft }
 													options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
 								{
 									label: __( '0' ),
 									value: '0x',
@@ -600,157 +204,181 @@ function PaddingOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
-								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
-								{
-									label: __( '16' ),
+									label: __( '16x' ),
 									value: '16x',
 								},
+								
+
+							] }
+						/>
+					</PanelRow>
+				</div>
+				<div className="padding-inner-wrapper">
+					<h2 className="components-panel__body-title">Mobile Padding</h2>
+					<PanelRow>
+						<SelectControl
+							key="padding-phone-top"
+							label={ __( 'Top' ) }
+							value={ props.attributes.paddingPhoneTop ? props.attributes.paddingPhoneTop : '' }
+							onChange={ setPaddingPhoneTop }
+							options={ [
 								{
-									label: __( '17x' ),
-									value: '17x',
+									label: __( 'Inherit' ),
+									value: 'inherit',
 								},
 								{
-									label: __( '18x' ),
-									value: '18x',
+									label: __( '0' ),
+									value: '0x',
 								},
 								{
-									label: __( '19x' ),
-									value: '19x',
+									label: __( '1x' ),
+									value: '1x',
 								},
 								{
-									label: __( '20x' ),
-									value: '20x',
+									label: __( '2x' ),
+									value: '2x',
 								},
 								{
-									label: __( '21x' ),
-									value: '21x',
+									label: __( '4x' ),
+									value: '4x',
 								},
 								{
-									label: __( '22x' ),
-									value: '22x',
+									label: __( '8x' ),
+									value: '8x',
 								},
 								{
-									label: __( '23x' ),
-									value: '23x',
+									label: __( '16x' ),
+									value: '16x',
+								},
+								
+
+							] }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<SelectControl
+							key="padding-phone-right"
+							label={ __( 'Right' ) }
+							value={ props.attributes.paddingPhoneRight ? props.attributes.paddingPhoneRight : '' }
+							onChange={ setPaddingPhoneRight }
+													options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
 								},
 								{
-									label: __( '24x' ),
-									value: '24x',
+									label: __( '0' ),
+									value: '0x',
 								},
 								{
-									label: __( '25x' ),
-									value: '25x',
+									label: __( '1x' ),
+									value: '1x',
 								},
 								{
-									label: __( '26x' ),
-									value: '26x',
+									label: __( '2x' ),
+									value: '2x',
 								},
 								{
-									label: __( '27x' ),
-									value: '27x',
+									label: __( '4x' ),
+									value: '4x',
 								},
 								{
-									label: __( '28x' ),
-									value: '28x',
+									label: __( '8x' ),
+									value: '8x',
 								},
 								{
-									label: __( '29x' ),
-									value: '29x',
+									label: __( '16x' ),
+									value: '16x',
+								},
+								
+
+							] }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<SelectControl
+							key="padding-phone-bottom"
+							label={ __( 'Bottom' ) }
+							value={ props.attributes.paddingPhoneBottom ? props.attributes.paddingPhoneBottom : '' }
+							onChange={ setPaddingPhoneBottom }
+													options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
 								},
 								{
-									label: __( '30x' ),
-									value: '30x',
+									label: __( '0' ),
+									value: '0x',
 								},
 								{
-									label: __( '31x' ),
-									value: '31x',
+									label: __( '1x' ),
+									value: '1x',
 								},
 								{
-									label: __( '32x' ),
-									value: '32x',
+									label: __( '2x' ),
+									value: '2x',
 								},
 								{
-									label: __( '33x' ),
-									value: '33x',
+									label: __( '4x' ),
+									value: '4x',
 								},
 								{
-									label: __( '34x' ),
-									value: '34x',
+									label: __( '8x' ),
+									value: '8x',
 								},
 								{
-									label: __( '35x' ),
-									value: '35x',
+									label: __( '16x' ),
+									value: '16x',
+								},
+								
+
+							] }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<SelectControl
+							key="padding-phone-left"
+							label={ __( 'Left' ) }
+							value={ props.attributes.paddingPhoneLeft ? props.attributes.paddingPhoneLeft : '' }
+							onChange={ setPaddingPhoneLeft }
+													options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
 								},
 								{
-									label: __( '36x' ),
-									value: '36x',
+									label: __( '0' ),
+									value: '0x',
 								},
 								{
-									label: __( '37x' ),
-									value: '37x',
+									label: __( '1x' ),
+									value: '1x',
 								},
 								{
-									label: __( '38x' ),
-									value: '38x',
+									label: __( '2x' ),
+									value: '2x',
 								},
 								{
-									label: __( '39x' ),
-									value: '39x',
+									label: __( '4x' ),
+									value: '4x',
 								},
 								{
-									label: __( '40x' ),
-									value: '40x',
+									label: __( '8x' ),
+									value: '8x',
 								},
+								{
+									label: __( '16x' ),
+									value: '16x',
+								},
+								
 
 							] }
 						/>
@@ -760,12 +388,16 @@ function PaddingOptions( props ) {
 					<h2 className="components-panel__body-title">Tablet Portrait Padding</h2>
 					<PanelRow>
 						<SelectControl
-							key="padding-medium-top"
+							key="padding-tablet-portrait-top"
 							label={ __( 'Top' ) }
 							value={ props.attributes.paddingTabletPortraitTop ? props.attributes.paddingTabletPortraitTop : '' }
 							onChange={ setPaddingTabletPortraitTop }
 							options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
 									value: '0x',
 								},
@@ -778,169 +410,34 @@ function PaddingOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
-								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
-								{
-									label: __( '16' ),
+									label: __( '16x' ),
 									value: '16x',
 								},
-								{
-									label: __( '17x' ),
-									value: '17x',
-								},
-								{
-									label: __( '18x' ),
-									value: '18x',
-								},
-								{
-									label: __( '19x' ),
-									value: '19x',
-								},
-								{
-									label: __( '20x' ),
-									value: '20x',
-								},
-								{
-									label: __( '21x' ),
-									value: '21x',
-								},
-								{
-									label: __( '22x' ),
-									value: '22x',
-								},
-								{
-									label: __( '23x' ),
-									value: '23x',
-								},
-								{
-									label: __( '24x' ),
-									value: '24x',
-								},
-								{
-									label: __( '25x' ),
-									value: '25x',
-								},
-								{
-									label: __( '26x' ),
-									value: '26x',
-								},
-								{
-									label: __( '27x' ),
-									value: '27x',
-								},
-								{
-									label: __( '28x' ),
-									value: '28x',
-								},
-								{
-									label: __( '29x' ),
-									value: '29x',
-								},
-								{
-									label: __( '30x' ),
-									value: '30x',
-								},
-								{
-									label: __( '31x' ),
-									value: '31x',
-								},
-								{
-									label: __( '32x' ),
-									value: '32x',
-								},
-								{
-									label: __( '33x' ),
-									value: '33x',
-								},
-								{
-									label: __( '34x' ),
-									value: '34x',
-								},
-								{
-									label: __( '35x' ),
-									value: '35x',
-								},
-								{
-									label: __( '36x' ),
-									value: '36x',
-								},
-								{
-									label: __( '37x' ),
-									value: '37x',
-								},
-								{
-									label: __( '38x' ),
-									value: '38x',
-								},
-								{
-									label: __( '39x' ),
-									value: '39x',
-								},
-								{
-									label: __( '40x' ),
-									value: '40x',
-								},
+								
 
 							] }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<SelectControl
-							key="padding-medium-right"
+							key="padding-tablet-portrait-right"
 							label={ __( 'Right' ) }
 							value={ props.attributes.paddingTabletPortraitRight ? props.attributes.paddingTabletPortraitRight : '' }
 							onChange={ setPaddingTabletPortraitRight }
 													options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
 									value: '0x',
 								},
@@ -953,169 +450,34 @@ function PaddingOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
-								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
-								{
-									label: __( '16' ),
+									label: __( '16x' ),
 									value: '16x',
 								},
-								{
-									label: __( '17x' ),
-									value: '17x',
-								},
-								{
-									label: __( '18x' ),
-									value: '18x',
-								},
-								{
-									label: __( '19x' ),
-									value: '19x',
-								},
-								{
-									label: __( '20x' ),
-									value: '20x',
-								},
-								{
-									label: __( '21x' ),
-									value: '21x',
-								},
-								{
-									label: __( '22x' ),
-									value: '22x',
-								},
-								{
-									label: __( '23x' ),
-									value: '23x',
-								},
-								{
-									label: __( '24x' ),
-									value: '24x',
-								},
-								{
-									label: __( '25x' ),
-									value: '25x',
-								},
-								{
-									label: __( '26x' ),
-									value: '26x',
-								},
-								{
-									label: __( '27x' ),
-									value: '27x',
-								},
-								{
-									label: __( '28x' ),
-									value: '28x',
-								},
-								{
-									label: __( '29x' ),
-									value: '29x',
-								},
-								{
-									label: __( '30x' ),
-									value: '30x',
-								},
-								{
-									label: __( '31x' ),
-									value: '31x',
-								},
-								{
-									label: __( '32x' ),
-									value: '32x',
-								},
-								{
-									label: __( '33x' ),
-									value: '33x',
-								},
-								{
-									label: __( '34x' ),
-									value: '34x',
-								},
-								{
-									label: __( '35x' ),
-									value: '35x',
-								},
-								{
-									label: __( '36x' ),
-									value: '36x',
-								},
-								{
-									label: __( '37x' ),
-									value: '37x',
-								},
-								{
-									label: __( '38x' ),
-									value: '38x',
-								},
-								{
-									label: __( '39x' ),
-									value: '39x',
-								},
-								{
-									label: __( '40x' ),
-									value: '40x',
-								},
+								
 
 							] }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<SelectControl
-							key="padding-medium-bottom"
+							key="padding-tablet-portrait-bottom"
 							label={ __( 'Bottom' ) }
 							value={ props.attributes.paddingTabletPortraitBottom ? props.attributes.paddingTabletPortraitBottom : '' }
 							onChange={ setPaddingTabletPortraitBottom }
 													options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
 									value: '0x',
 								},
@@ -1128,168 +490,33 @@ function PaddingOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
-								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
-								{
-									label: __( '16' ),
+									label: __( '16x' ),
 									value: '16x',
 								},
-								{
-									label: __( '17x' ),
-									value: '17x',
-								},
-								{
-									label: __( '18x' ),
-									value: '18x',
-								},
-								{
-									label: __( '19x' ),
-									value: '19x',
-								},
-								{
-									label: __( '20x' ),
-									value: '20x',
-								},
-								{
-									label: __( '21x' ),
-									value: '21x',
-								},
-								{
-									label: __( '22x' ),
-									value: '22x',
-								},
-								{
-									label: __( '23x' ),
-									value: '23x',
-								},
-								{
-									label: __( '24x' ),
-									value: '24x',
-								},
-								{
-									label: __( '25x' ),
-									value: '25x',
-								},
-								{
-									label: __( '26x' ),
-									value: '26x',
-								},
-								{
-									label: __( '27x' ),
-									value: '27x',
-								},
-								{
-									label: __( '28x' ),
-									value: '28x',
-								},
-								{
-									label: __( '29x' ),
-									value: '29x',
-								},
-								{
-									label: __( '30x' ),
-									value: '30x',
-								},
-								{
-									label: __( '31x' ),
-									value: '31x',
-								},
-								{
-									label: __( '32x' ),
-									value: '32x',
-								},
-								{
-									label: __( '33x' ),
-									value: '33x',
-								},
-								{
-									label: __( '34x' ),
-									value: '34x',
-								},
-								{
-									label: __( '35x' ),
-									value: '35x',
-								},
-								{
-									label: __( '36x' ),
-									value: '36x',
-								},
-								{
-									label: __( '37x' ),
-									value: '37x',
-								},
-								{
-									label: __( '38x' ),
-									value: '38x',
-								},
-								{
-									label: __( '39x' ),
-									value: '39x',
-								},
-								{
-									label: __( '40x' ),
-									value: '40x',
-								},
+								
 
 							] }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<SelectControl
-							key="padding-medium-left"
+							key="padding-tablet-portrait-left"
 							label={ __( 'Left' ) }
 							value={ props.attributes.paddingTabletPortraitLeft ? props.attributes.paddingTabletPortraitLeft : '' }
 							onChange={ setPaddingTabletPortraitLeft }
 													options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
 								{
 									label: __( '0' ),
 									value: '0x',
@@ -1303,157 +530,18 @@ function PaddingOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
-								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
-								{
-									label: __( '16' ),
+									label: __( '16x' ),
 									value: '16x',
 								},
-								{
-									label: __( '17x' ),
-									value: '17x',
-								},
-								{
-									label: __( '18x' ),
-									value: '18x',
-								},
-								{
-									label: __( '19x' ),
-									value: '19x',
-								},
-								{
-									label: __( '20x' ),
-									value: '20x',
-								},
-								{
-									label: __( '21x' ),
-									value: '21x',
-								},
-								{
-									label: __( '22x' ),
-									value: '22x',
-								},
-								{
-									label: __( '23x' ),
-									value: '23x',
-								},
-								{
-									label: __( '24x' ),
-									value: '24x',
-								},
-								{
-									label: __( '25x' ),
-									value: '25x',
-								},
-								{
-									label: __( '26x' ),
-									value: '26x',
-								},
-								{
-									label: __( '27x' ),
-									value: '27x',
-								},
-								{
-									label: __( '28x' ),
-									value: '28x',
-								},
-								{
-									label: __( '29x' ),
-									value: '29x',
-								},
-								{
-									label: __( '30x' ),
-									value: '30x',
-								},
-								{
-									label: __( '31x' ),
-									value: '31x',
-								},
-								{
-									label: __( '32x' ),
-									value: '32x',
-								},
-								{
-									label: __( '33x' ),
-									value: '33x',
-								},
-								{
-									label: __( '34x' ),
-									value: '34x',
-								},
-								{
-									label: __( '35x' ),
-									value: '35x',
-								},
-								{
-									label: __( '36x' ),
-									value: '36x',
-								},
-								{
-									label: __( '37x' ),
-									value: '37x',
-								},
-								{
-									label: __( '38x' ),
-									value: '38x',
-								},
-								{
-									label: __( '39x' ),
-									value: '39x',
-								},
-								{
-									label: __( '40x' ),
-									value: '40x',
-								},
+								
 
 							] }
 						/>
@@ -1463,12 +551,16 @@ function PaddingOptions( props ) {
 					<h2 className="components-panel__body-title">Tablet Landscape Padding</h2>
 					<PanelRow>
 						<SelectControl
-							key="padding-large-top"
+							key="padding-tablet-landscape-top"
 							label={ __( 'Top' ) }
 							value={ props.attributes.paddingTabletLandscapeTop ? props.attributes.paddingTabletLandscapeTop : '' }
 							onChange={ setPaddingTabletLandscapeTop }
 							options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
 									value: '0x',
 								},
@@ -1481,169 +573,34 @@ function PaddingOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
-								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
-								{
-									label: __( '16' ),
+									label: __( '16x' ),
 									value: '16x',
 								},
-								{
-									label: __( '17x' ),
-									value: '17x',
-								},
-								{
-									label: __( '18x' ),
-									value: '18x',
-								},
-								{
-									label: __( '19x' ),
-									value: '19x',
-								},
-								{
-									label: __( '20x' ),
-									value: '20x',
-								},
-								{
-									label: __( '21x' ),
-									value: '21x',
-								},
-								{
-									label: __( '22x' ),
-									value: '22x',
-								},
-								{
-									label: __( '23x' ),
-									value: '23x',
-								},
-								{
-									label: __( '24x' ),
-									value: '24x',
-								},
-								{
-									label: __( '25x' ),
-									value: '25x',
-								},
-								{
-									label: __( '26x' ),
-									value: '26x',
-								},
-								{
-									label: __( '27x' ),
-									value: '27x',
-								},
-								{
-									label: __( '28x' ),
-									value: '28x',
-								},
-								{
-									label: __( '29x' ),
-									value: '29x',
-								},
-								{
-									label: __( '30x' ),
-									value: '30x',
-								},
-								{
-									label: __( '31x' ),
-									value: '31x',
-								},
-								{
-									label: __( '32x' ),
-									value: '32x',
-								},
-								{
-									label: __( '33x' ),
-									value: '33x',
-								},
-								{
-									label: __( '34x' ),
-									value: '34x',
-								},
-								{
-									label: __( '35x' ),
-									value: '35x',
-								},
-								{
-									label: __( '36x' ),
-									value: '36x',
-								},
-								{
-									label: __( '37x' ),
-									value: '37x',
-								},
-								{
-									label: __( '38x' ),
-									value: '38x',
-								},
-								{
-									label: __( '39x' ),
-									value: '39x',
-								},
-								{
-									label: __( '40x' ),
-									value: '40x',
-								},
+								
 
 							] }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<SelectControl
-							key="padding-large-right"
+							key="padding-tablet-landscape-right"
 							label={ __( 'Right' ) }
 							value={ props.attributes.paddingTabletLandscapeRight ? props.attributes.paddingTabletLandscapeRight : '' }
 							onChange={ setPaddingTabletLandscapeRight }
 													options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
 									value: '0x',
 								},
@@ -1656,169 +613,34 @@ function PaddingOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
-								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
-								{
-									label: __( '16' ),
+									label: __( '16x' ),
 									value: '16x',
 								},
-								{
-									label: __( '17x' ),
-									value: '17x',
-								},
-								{
-									label: __( '18x' ),
-									value: '18x',
-								},
-								{
-									label: __( '19x' ),
-									value: '19x',
-								},
-								{
-									label: __( '20x' ),
-									value: '20x',
-								},
-								{
-									label: __( '21x' ),
-									value: '21x',
-								},
-								{
-									label: __( '22x' ),
-									value: '22x',
-								},
-								{
-									label: __( '23x' ),
-									value: '23x',
-								},
-								{
-									label: __( '24x' ),
-									value: '24x',
-								},
-								{
-									label: __( '25x' ),
-									value: '25x',
-								},
-								{
-									label: __( '26x' ),
-									value: '26x',
-								},
-								{
-									label: __( '27x' ),
-									value: '27x',
-								},
-								{
-									label: __( '28x' ),
-									value: '28x',
-								},
-								{
-									label: __( '29x' ),
-									value: '29x',
-								},
-								{
-									label: __( '30x' ),
-									value: '30x',
-								},
-								{
-									label: __( '31x' ),
-									value: '31x',
-								},
-								{
-									label: __( '32x' ),
-									value: '32x',
-								},
-								{
-									label: __( '33x' ),
-									value: '33x',
-								},
-								{
-									label: __( '34x' ),
-									value: '34x',
-								},
-								{
-									label: __( '35x' ),
-									value: '35x',
-								},
-								{
-									label: __( '36x' ),
-									value: '36x',
-								},
-								{
-									label: __( '37x' ),
-									value: '37x',
-								},
-								{
-									label: __( '38x' ),
-									value: '38x',
-								},
-								{
-									label: __( '39x' ),
-									value: '39x',
-								},
-								{
-									label: __( '40x' ),
-									value: '40x',
-								},
+								
 
 							] }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<SelectControl
-							key="padding-large-bottom"
+							key="padding-tablet-landscape-bottom"
 							label={ __( 'Bottom' ) }
 							value={ props.attributes.paddingTabletLandscapeBottom ? props.attributes.paddingTabletLandscapeBottom : '' }
 							onChange={ setPaddingTabletLandscapeBottom }
 													options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
 									value: '0x',
 								},
@@ -1831,168 +653,33 @@ function PaddingOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
-								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
-								{
-									label: __( '16' ),
+									label: __( '16x' ),
 									value: '16x',
 								},
-								{
-									label: __( '17x' ),
-									value: '17x',
-								},
-								{
-									label: __( '18x' ),
-									value: '18x',
-								},
-								{
-									label: __( '19x' ),
-									value: '19x',
-								},
-								{
-									label: __( '20x' ),
-									value: '20x',
-								},
-								{
-									label: __( '21x' ),
-									value: '21x',
-								},
-								{
-									label: __( '22x' ),
-									value: '22x',
-								},
-								{
-									label: __( '23x' ),
-									value: '23x',
-								},
-								{
-									label: __( '24x' ),
-									value: '24x',
-								},
-								{
-									label: __( '25x' ),
-									value: '25x',
-								},
-								{
-									label: __( '26x' ),
-									value: '26x',
-								},
-								{
-									label: __( '27x' ),
-									value: '27x',
-								},
-								{
-									label: __( '28x' ),
-									value: '28x',
-								},
-								{
-									label: __( '29x' ),
-									value: '29x',
-								},
-								{
-									label: __( '30x' ),
-									value: '30x',
-								},
-								{
-									label: __( '31x' ),
-									value: '31x',
-								},
-								{
-									label: __( '32x' ),
-									value: '32x',
-								},
-								{
-									label: __( '33x' ),
-									value: '33x',
-								},
-								{
-									label: __( '34x' ),
-									value: '34x',
-								},
-								{
-									label: __( '35x' ),
-									value: '35x',
-								},
-								{
-									label: __( '36x' ),
-									value: '36x',
-								},
-								{
-									label: __( '37x' ),
-									value: '37x',
-								},
-								{
-									label: __( '38x' ),
-									value: '38x',
-								},
-								{
-									label: __( '39x' ),
-									value: '39x',
-								},
-								{
-									label: __( '40x' ),
-									value: '40x',
-								},
+								
 
 							] }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<SelectControl
-							key="padding-large-left"
+							key="padding-tablet-landscape-left"
 							label={ __( 'Left' ) }
 							value={ props.attributes.paddingTabletLandscapeLeft ? props.attributes.paddingTabletLandscapeLeft : '' }
 							onChange={ setPaddingTabletLandscapeLeft }
 													options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
 								{
 									label: __( '0' ),
 									value: '0x',
@@ -2006,157 +693,18 @@ function PaddingOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
-								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
-								{
-									label: __( '16' ),
+									label: __( '16x' ),
 									value: '16x',
 								},
-								{
-									label: __( '17x' ),
-									value: '17x',
-								},
-								{
-									label: __( '18x' ),
-									value: '18x',
-								},
-								{
-									label: __( '19x' ),
-									value: '19x',
-								},
-								{
-									label: __( '20x' ),
-									value: '20x',
-								},
-								{
-									label: __( '21x' ),
-									value: '21x',
-								},
-								{
-									label: __( '22x' ),
-									value: '22x',
-								},
-								{
-									label: __( '23x' ),
-									value: '23x',
-								},
-								{
-									label: __( '24x' ),
-									value: '24x',
-								},
-								{
-									label: __( '25x' ),
-									value: '25x',
-								},
-								{
-									label: __( '26x' ),
-									value: '26x',
-								},
-								{
-									label: __( '27x' ),
-									value: '27x',
-								},
-								{
-									label: __( '28x' ),
-									value: '28x',
-								},
-								{
-									label: __( '29x' ),
-									value: '29x',
-								},
-								{
-									label: __( '30x' ),
-									value: '30x',
-								},
-								{
-									label: __( '31x' ),
-									value: '31x',
-								},
-								{
-									label: __( '32x' ),
-									value: '32x',
-								},
-								{
-									label: __( '33x' ),
-									value: '33x',
-								},
-								{
-									label: __( '34x' ),
-									value: '34x',
-								},
-								{
-									label: __( '35x' ),
-									value: '35x',
-								},
-								{
-									label: __( '36x' ),
-									value: '36x',
-								},
-								{
-									label: __( '37x' ),
-									value: '37x',
-								},
-								{
-									label: __( '38x' ),
-									value: '38x',
-								},
-								{
-									label: __( '39x' ),
-									value: '39x',
-								},
-								{
-									label: __( '40x' ),
-									value: '40x',
-								},
+								
 
 							] }
 						/>
@@ -2166,12 +714,16 @@ function PaddingOptions( props ) {
 					<h2 className="components-panel__body-title">Desktop Padding</h2>
 					<PanelRow>
 						<SelectControl
-							key="padding-xl-top"
+							key="padding-desktop-top"
 							label={ __( 'Top' ) }
 							value={ props.attributes.paddingDesktopTop ? props.attributes.paddingDesktopTop : '' }
 							onChange={ setPaddingDesktopTop }
 							options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
 									value: '0x',
 								},
@@ -2184,169 +736,34 @@ function PaddingOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
-								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
-								{
-									label: __( '16' ),
+									label: __( '16x' ),
 									value: '16x',
 								},
-								{
-									label: __( '17x' ),
-									value: '17x',
-								},
-								{
-									label: __( '18x' ),
-									value: '18x',
-								},
-								{
-									label: __( '19x' ),
-									value: '19x',
-								},
-								{
-									label: __( '20x' ),
-									value: '20x',
-								},
-								{
-									label: __( '21x' ),
-									value: '21x',
-								},
-								{
-									label: __( '22x' ),
-									value: '22x',
-								},
-								{
-									label: __( '23x' ),
-									value: '23x',
-								},
-								{
-									label: __( '24x' ),
-									value: '24x',
-								},
-								{
-									label: __( '25x' ),
-									value: '25x',
-								},
-								{
-									label: __( '26x' ),
-									value: '26x',
-								},
-								{
-									label: __( '27x' ),
-									value: '27x',
-								},
-								{
-									label: __( '28x' ),
-									value: '28x',
-								},
-								{
-									label: __( '29x' ),
-									value: '29x',
-								},
-								{
-									label: __( '30x' ),
-									value: '30x',
-								},
-								{
-									label: __( '31x' ),
-									value: '31x',
-								},
-								{
-									label: __( '32x' ),
-									value: '32x',
-								},
-								{
-									label: __( '33x' ),
-									value: '33x',
-								},
-								{
-									label: __( '34x' ),
-									value: '34x',
-								},
-								{
-									label: __( '35x' ),
-									value: '35x',
-								},
-								{
-									label: __( '36x' ),
-									value: '36x',
-								},
-								{
-									label: __( '37x' ),
-									value: '37x',
-								},
-								{
-									label: __( '38x' ),
-									value: '38x',
-								},
-								{
-									label: __( '39x' ),
-									value: '39x',
-								},
-								{
-									label: __( '40x' ),
-									value: '40x',
-								},
+								
 
 							] }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<SelectControl
-							key="padding-xl-right"
+							key="padding-desktop-right"
 							label={ __( 'Right' ) }
 							value={ props.attributes.paddingDesktopRight ? props.attributes.paddingDesktopRight : '' }
 							onChange={ setPaddingDesktopRight }
 													options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
 									value: '0x',
 								},
@@ -2359,169 +776,34 @@ function PaddingOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
-								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
-								{
-									label: __( '16' ),
+									label: __( '16x' ),
 									value: '16x',
 								},
-								{
-									label: __( '17x' ),
-									value: '17x',
-								},
-								{
-									label: __( '18x' ),
-									value: '18x',
-								},
-								{
-									label: __( '19x' ),
-									value: '19x',
-								},
-								{
-									label: __( '20x' ),
-									value: '20x',
-								},
-								{
-									label: __( '21x' ),
-									value: '21x',
-								},
-								{
-									label: __( '22x' ),
-									value: '22x',
-								},
-								{
-									label: __( '23x' ),
-									value: '23x',
-								},
-								{
-									label: __( '24x' ),
-									value: '24x',
-								},
-								{
-									label: __( '25x' ),
-									value: '25x',
-								},
-								{
-									label: __( '26x' ),
-									value: '26x',
-								},
-								{
-									label: __( '27x' ),
-									value: '27x',
-								},
-								{
-									label: __( '28x' ),
-									value: '28x',
-								},
-								{
-									label: __( '29x' ),
-									value: '29x',
-								},
-								{
-									label: __( '30x' ),
-									value: '30x',
-								},
-								{
-									label: __( '31x' ),
-									value: '31x',
-								},
-								{
-									label: __( '32x' ),
-									value: '32x',
-								},
-								{
-									label: __( '33x' ),
-									value: '33x',
-								},
-								{
-									label: __( '34x' ),
-									value: '34x',
-								},
-								{
-									label: __( '35x' ),
-									value: '35x',
-								},
-								{
-									label: __( '36x' ),
-									value: '36x',
-								},
-								{
-									label: __( '37x' ),
-									value: '37x',
-								},
-								{
-									label: __( '38x' ),
-									value: '38x',
-								},
-								{
-									label: __( '39x' ),
-									value: '39x',
-								},
-								{
-									label: __( '40x' ),
-									value: '40x',
-								},
+								
 
 							] }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<SelectControl
-							key="padding-xl-bottom"
+							key="padding-desktop-bottom"
 							label={ __( 'Bottom' ) }
 							value={ props.attributes.paddingDesktopBottom ? props.attributes.paddingDesktopBottom : '' }
 							onChange={ setPaddingDesktopBottom }
 													options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
 									value: '0x',
 								},
@@ -2534,168 +816,33 @@ function PaddingOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
-								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
-								{
-									label: __( '16' ),
+									label: __( '16x' ),
 									value: '16x',
 								},
-								{
-									label: __( '17x' ),
-									value: '17x',
-								},
-								{
-									label: __( '18x' ),
-									value: '18x',
-								},
-								{
-									label: __( '19x' ),
-									value: '19x',
-								},
-								{
-									label: __( '20x' ),
-									value: '20x',
-								},
-								{
-									label: __( '21x' ),
-									value: '21x',
-								},
-								{
-									label: __( '22x' ),
-									value: '22x',
-								},
-								{
-									label: __( '23x' ),
-									value: '23x',
-								},
-								{
-									label: __( '24x' ),
-									value: '24x',
-								},
-								{
-									label: __( '25x' ),
-									value: '25x',
-								},
-								{
-									label: __( '26x' ),
-									value: '26x',
-								},
-								{
-									label: __( '27x' ),
-									value: '27x',
-								},
-								{
-									label: __( '28x' ),
-									value: '28x',
-								},
-								{
-									label: __( '29x' ),
-									value: '29x',
-								},
-								{
-									label: __( '30x' ),
-									value: '30x',
-								},
-								{
-									label: __( '31x' ),
-									value: '31x',
-								},
-								{
-									label: __( '32x' ),
-									value: '32x',
-								},
-								{
-									label: __( '33x' ),
-									value: '33x',
-								},
-								{
-									label: __( '34x' ),
-									value: '34x',
-								},
-								{
-									label: __( '35x' ),
-									value: '35x',
-								},
-								{
-									label: __( '36x' ),
-									value: '36x',
-								},
-								{
-									label: __( '37x' ),
-									value: '37x',
-								},
-								{
-									label: __( '38x' ),
-									value: '38x',
-								},
-								{
-									label: __( '39x' ),
-									value: '39x',
-								},
-								{
-									label: __( '40x' ),
-									value: '40x',
-								},
+								
 
 							] }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<SelectControl
-							key="padding-xl-left"
+							key="padding-desktop-left"
 							label={ __( 'Left' ) }
 							value={ props.attributes.paddingDesktopLeft ? props.attributes.paddingDesktopLeft : '' }
 							onChange={ setPaddingDesktopLeft }
-													options={ [
+							options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
 								{
 									label: __( '0' ),
 									value: '0x',
@@ -2709,157 +856,18 @@ function PaddingOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
-								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
-								{
-									label: __( '16' ),
+									label: __( '16x' ),
 									value: '16x',
 								},
-								{
-									label: __( '17x' ),
-									value: '17x',
-								},
-								{
-									label: __( '18x' ),
-									value: '18x',
-								},
-								{
-									label: __( '19x' ),
-									value: '19x',
-								},
-								{
-									label: __( '20x' ),
-									value: '20x',
-								},
-								{
-									label: __( '21x' ),
-									value: '21x',
-								},
-								{
-									label: __( '22x' ),
-									value: '22x',
-								},
-								{
-									label: __( '23x' ),
-									value: '23x',
-								},
-								{
-									label: __( '24x' ),
-									value: '24x',
-								},
-								{
-									label: __( '25x' ),
-									value: '25x',
-								},
-								{
-									label: __( '26x' ),
-									value: '26x',
-								},
-								{
-									label: __( '27x' ),
-									value: '27x',
-								},
-								{
-									label: __( '28x' ),
-									value: '28x',
-								},
-								{
-									label: __( '29x' ),
-									value: '29x',
-								},
-								{
-									label: __( '30x' ),
-									value: '30x',
-								},
-								{
-									label: __( '31x' ),
-									value: '31x',
-								},
-								{
-									label: __( '32x' ),
-									value: '32x',
-								},
-								{
-									label: __( '33x' ),
-									value: '33x',
-								},
-								{
-									label: __( '34x' ),
-									value: '34x',
-								},
-								{
-									label: __( '35x' ),
-									value: '35x',
-								},
-								{
-									label: __( '36x' ),
-									value: '36x',
-								},
-								{
-									label: __( '37x' ),
-									value: '37x',
-								},
-								{
-									label: __( '38x' ),
-									value: '38x',
-								},
-								{
-									label: __( '39x' ),
-									value: '39x',
-								},
-								{
-									label: __( '40x' ),
-									value: '40x',
-								},
+								
 
 							] }
 						/>
