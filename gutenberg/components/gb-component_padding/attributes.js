@@ -15,6 +15,18 @@ const PaddingOptionsAttributes = {
 	paddingLeft: {
 		type: 'string',
 	},
+	paddingPhoneTop: {
+		type: 'string',
+	},
+	paddingPhoneRight: {
+		type: 'string',
+	},
+	paddingPhoneBottom: {
+		type: 'string',
+	},	
+	paddingPhoneLeft: {
+		type: 'string',
+	},
 	paddingTabletPortraitTop: {
 		type: 'string',
 	},
