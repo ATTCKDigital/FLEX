@@ -6,6 +6,8 @@ import Debug from './debug';
 FLEXLAYOUT.GlobalEvents = {};
 
 FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
+	console.log('global events loaded');
+
 	var G = FLEXLAYOUT.Globals;
 	var $window = $(window);
 	var self = this;
