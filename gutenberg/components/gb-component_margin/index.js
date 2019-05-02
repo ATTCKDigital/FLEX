@@ -36,6 +36,10 @@ function MarginOptions( props ) {
 	const setMarginRight = value => props.setAttributes( { marginRight: value } );
 	const setMarginBottom = value => props.setAttributes( { marginBottom: value } );
 	const setMarginLeft = value => props.setAttributes( { marginLeft: value } );
+	const setMarginPhoneTop = value => props.setAttributes( { marginPhoneTop: value } );
+	const setMarginPhoneRight = value => props.setAttributes( { marginPhoneRight: value } );
+	const setMarginPhoneBottom = value => props.setAttributes( { marginPhoneBottom: value } );
+	const setMarginPhoneLeft = value => props.setAttributes( { marginPhoneLeft: value } );
 	const setMarginTabletPortraitTop = value => props.setAttributes( { marginTabletPortraitTop: value } );
 	const setMarginTabletPortraitRight = value => props.setAttributes( { marginTabletPortraitRight: value } );
 	const setMarginTabletPortraitBottom = value => props.setAttributes( { marginTabletPortraitBottom: value } );
@@ -53,15 +57,20 @@ function MarginOptions( props ) {
 
 		return (
 			<div className="margin-wrapper">
+				<p>Inherit uses prev screen size setting.</p>
 				<div className="margin-inner-wrapper">
-					<h2 className="components-panel__body-title">Mobile Margin</h2>
+					<h2 className="components-panel__body-title">Margin</h2>
 					<PanelRow>
 						<SelectControl
-							key="margin-small-top"
+							key="margin-top"
 							label={ __( 'Top' ) }
 							value={ props.attributes.marginTop ? props.attributes.marginTop : '' }
 							onChange={ setMarginTop }
 							options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
 								{
 									label: __( '0' ),
 									value: '0x',
@@ -75,71 +84,36 @@ function MarginOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
+									label: __( '16x' ),
+									value: '16x',
 								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
+								
 
 							] }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<SelectControl
-							key="margin-small-right"
+							key="margin-right"
 							label={ __( 'Right' ) }
 							value={ props.attributes.marginRight ? props.attributes.marginRight : '' }
 							onChange={ setMarginRight }
 													options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -150,71 +124,36 @@ function MarginOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
+									label: __( '16x' ),
+									value: '16x',
 								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
+								
 
 							] }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<SelectControl
-							key="margin-small-bottom"
+							key="margin-bottom"
 							label={ __( 'Bottom' ) }
 							value={ props.attributes.marginBottom ? props.attributes.marginBottom : '' }
 							onChange={ setMarginBottom }
 													options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -225,71 +164,36 @@ function MarginOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
+									label: __( '16x' ),
+									value: '16x',
 								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
+								
 
 							] }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<SelectControl
-							key="margin-small-left"
+							key="margin-left"
 							label={ __( 'Left' ) }
 							value={ props.attributes.marginLeft ? props.attributes.marginLeft : '' }
 							onChange={ setMarginLeft }
 													options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -300,57 +204,181 @@ function MarginOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
+									label: __( '16x' ),
+									value: '16x',
+								},
+								
+
+							] }
+						/>
+					</PanelRow>
+				</div>
+				<div className="margin-inner-wrapper">
+					<h2 className="components-panel__body-title">Mobile Margin</h2>
+					<PanelRow>
+						<SelectControl
+							key="margin-phone-top"
+							label={ __( 'Top' ) }
+							value={ props.attributes.marginPhoneTop ? props.attributes.marginPhoneTop : '' }
+							onChange={ setMarginPhoneTop }
+							options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
 								},
 								{
-									label: __( '10x' ),
-									value: '10x',
+									label: __( '0' ),
+									value: '0x',
 								},
 								{
-									label: __( '11x' ),
-									value: '11x',
+									label: __( '1x' ),
+									value: '1x',
 								},
 								{
-									label: __( '12x' ),
-									value: '12x',
+									label: __( '2x' ),
+									value: '2x',
 								},
 								{
-									label: __( '13x' ),
-									value: '13x',
+									label: __( '4x' ),
+									value: '4x',
 								},
 								{
-									label: __( '14x' ),
-									value: '14x',
+									label: __( '8x' ),
+									value: '8x',
 								},
 								{
-									label: __( '15x' ),
-									value: '15x',
+									label: __( '16x' ),
+									value: '16x',
 								},
+								
+
+							] }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<SelectControl
+							key="margin-phone-right"
+							label={ __( 'Right' ) }
+							value={ props.attributes.marginPhoneRight ? props.attributes.marginPhoneRight : '' }
+							onChange={ setMarginPhoneRight }
+													options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
+									label: __( '0' ),
+									value: '0x',
+								},
+								{
+									label: __( '1x' ),
+									value: '1x',
+								},
+								{
+									label: __( '2x' ),
+									value: '2x',
+								},
+								{
+									label: __( '4x' ),
+									value: '4x',
+								},
+								{
+									label: __( '8x' ),
+									value: '8x',
+								},
+								{
+									label: __( '16x' ),
+									value: '16x',
+								},
+								
+
+							] }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<SelectControl
+							key="margin-phone-bottom"
+							label={ __( 'Bottom' ) }
+							value={ props.attributes.marginPhoneBottom ? props.attributes.marginPhoneBottom : '' }
+							onChange={ setMarginPhoneBottom }
+													options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
+									label: __( '0' ),
+									value: '0x',
+								},
+								{
+									label: __( '1x' ),
+									value: '1x',
+								},
+								{
+									label: __( '2x' ),
+									value: '2x',
+								},
+								{
+									label: __( '4x' ),
+									value: '4x',
+								},
+								{
+									label: __( '8x' ),
+									value: '8x',
+								},
+								{
+									label: __( '16x' ),
+									value: '16x',
+								},
+								
+
+							] }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<SelectControl
+							key="margin-phone-left"
+							label={ __( 'Left' ) }
+							value={ props.attributes.marginPhoneLeft ? props.attributes.marginPhoneLeft : '' }
+							onChange={ setMarginPhoneLeft }
+													options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
+									label: __( '0' ),
+									value: '0x',
+								},
+								{
+									label: __( '1x' ),
+									value: '1x',
+								},
+								{
+									label: __( '2x' ),
+									value: '2x',
+								},
+								{
+									label: __( '4x' ),
+									value: '4x',
+								},
+								{
+									label: __( '8x' ),
+									value: '8x',
+								},
+								{
+									label: __( '16x' ),
+									value: '16x',
+								},
+								
 
 							] }
 						/>
@@ -360,14 +388,18 @@ function MarginOptions( props ) {
 					<h2 className="components-panel__body-title">Tablet Portrait Margin</h2>
 					<PanelRow>
 						<SelectControl
-							key="margin-medium-top"
+							key="margin-tablet-portrait-top"
 							label={ __( 'Top' ) }
 							value={ props.attributes.marginTabletPortraitTop ? props.attributes.marginTabletPortraitTop : '' }
 							onChange={ setMarginTabletPortraitTop }
 							options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -378,71 +410,36 @@ function MarginOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
+									label: __( '16x' ),
+									value: '16x',
 								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
+								
 
 							] }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<SelectControl
-							key="margin-medium-right"
+							key="margin-tablet-portrait-right"
 							label={ __( 'Right' ) }
 							value={ props.attributes.marginTabletPortraitRight ? props.attributes.marginTabletPortraitRight : '' }
 							onChange={ setMarginTabletPortraitRight }
 													options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -453,71 +450,36 @@ function MarginOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
+									label: __( '16x' ),
+									value: '16x',
 								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
+								
 
 							] }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<SelectControl
-							key="margin-medium-bottom"
+							key="margin-tablet-portrait-bottom"
 							label={ __( 'Bottom' ) }
 							value={ props.attributes.marginTabletPortraitBottom ? props.attributes.marginTabletPortraitBottom : '' }
 							onChange={ setMarginTabletPortraitBottom }
 													options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -528,71 +490,36 @@ function MarginOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
+									label: __( '16x' ),
+									value: '16x',
 								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
+								
 
 							] }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<SelectControl
-							key="margin-medium-left"
+							key="margin-tablet-portrait-left"
 							label={ __( 'Left' ) }
 							value={ props.attributes.marginTabletPortraitLeft ? props.attributes.marginTabletPortraitLeft : '' }
 							onChange={ setMarginTabletPortraitLeft }
 													options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -603,57 +530,18 @@ function MarginOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
+									label: __( '16x' ),
+									value: '16x',
 								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
+								
 
 							] }
 						/>
@@ -663,14 +551,18 @@ function MarginOptions( props ) {
 					<h2 className="components-panel__body-title">Tablet Landscape Margin</h2>
 					<PanelRow>
 						<SelectControl
-							key="margin-large-top"
+							key="margin-tablet-landscape-top"
 							label={ __( 'Top' ) }
 							value={ props.attributes.marginTabletLandscapeTop ? props.attributes.marginTabletLandscapeTop : '' }
 							onChange={ setMarginTabletLandscapeTop }
 							options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -681,71 +573,36 @@ function MarginOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
+									label: __( '16x' ),
+									value: '16x',
 								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
+								
 
 							] }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<SelectControl
-							key="margin-large-right"
+							key="margin-tablet-landscape-right"
 							label={ __( 'Right' ) }
 							value={ props.attributes.marginTabletLandscapeRight ? props.attributes.marginTabletLandscapeRight : '' }
 							onChange={ setMarginTabletLandscapeRight }
 													options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -756,71 +613,36 @@ function MarginOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
+									label: __( '16x' ),
+									value: '16x',
 								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
+								
 
 							] }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<SelectControl
-							key="margin-large-bottom"
+							key="margin-tablet-landscape-bottom"
 							label={ __( 'Bottom' ) }
 							value={ props.attributes.marginTabletLandscapeBottom ? props.attributes.marginTabletLandscapeBottom : '' }
 							onChange={ setMarginTabletLandscapeBottom }
 													options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -831,71 +653,36 @@ function MarginOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
+									label: __( '16x' ),
+									value: '16x',
 								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
+								
 
 							] }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<SelectControl
-							key="margin-large-left"
+							key="margin-tablet-landscape-left"
 							label={ __( 'Left' ) }
 							value={ props.attributes.marginTabletLandscapeLeft ? props.attributes.marginTabletLandscapeLeft : '' }
 							onChange={ setMarginTabletLandscapeLeft }
 													options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -906,57 +693,18 @@ function MarginOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
+									label: __( '16x' ),
+									value: '16x',
 								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
+								
 
 							] }
 						/>
@@ -966,14 +714,18 @@ function MarginOptions( props ) {
 					<h2 className="components-panel__body-title">Desktop Margin</h2>
 					<PanelRow>
 						<SelectControl
-							key="margin-xl-top"
+							key="margin-desktop-top"
 							label={ __( 'Top' ) }
 							value={ props.attributes.marginDesktopTop ? props.attributes.marginDesktopTop : '' }
 							onChange={ setMarginDesktopTop }
 							options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -984,71 +736,36 @@ function MarginOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
+									label: __( '16x' ),
+									value: '16x',
 								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
+								
 
 							] }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<SelectControl
-							key="margin-xl-right"
+							key="margin-desktop-right"
 							label={ __( 'Right' ) }
 							value={ props.attributes.marginDesktopRight ? props.attributes.marginDesktopRight : '' }
 							onChange={ setMarginDesktopRight }
 													options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -1059,71 +776,36 @@ function MarginOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
+									label: __( '16x' ),
+									value: '16x',
 								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
+								
 
 							] }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<SelectControl
-							key="margin-xl-bottom"
+							key="margin-desktop-bottom"
 							label={ __( 'Bottom' ) }
 							value={ props.attributes.marginDesktopBottom ? props.attributes.marginDesktopBottom : '' }
 							onChange={ setMarginDesktopBottom }
 													options={ [
 								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -1134,71 +816,36 @@ function MarginOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
+									label: __( '16x' ),
+									value: '16x',
 								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
+								
 
 							] }
 						/>
 					</PanelRow>
 					<PanelRow>
 						<SelectControl
-							key="margin-xl-left"
+							key="margin-desktop-left"
 							label={ __( 'Left' ) }
 							value={ props.attributes.marginDesktopLeft ? props.attributes.marginDesktopLeft : '' }
 							onChange={ setMarginDesktopLeft }
-													options={ [
+							options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
 								{
 									label: __( '0' ),
-									value: '0',
+									value: '0x',
 								},
 								{
 									label: __( '1x' ),
@@ -1209,57 +856,18 @@ function MarginOptions( props ) {
 									value: '2x',
 								},
 								{
-									label: __( '3x' ),
-									value: '3x',
-								},
-								{
 									label: __( '4x' ),
 									value: '4x',
-								},
-								{
-									label: __( '5x' ),
-									value: '5x',
-								},
-								{
-									label: __( '6x' ),
-									value: '6x',
-								},
-								{
-									label: __( '7x' ),
-									value: '7x',
 								},
 								{
 									label: __( '8x' ),
 									value: '8x',
 								},
 								{
-									label: __( '9x' ),
-									value: '9x',
+									label: __( '16x' ),
+									value: '16x',
 								},
-								{
-									label: __( '10x' ),
-									value: '10x',
-								},
-								{
-									label: __( '11x' ),
-									value: '11x',
-								},
-								{
-									label: __( '12x' ),
-									value: '12x',
-								},
-								{
-									label: __( '13x' ),
-									value: '13x',
-								},
-								{
-									label: __( '14x' ),
-									value: '14x',
-								},
-								{
-									label: __( '15x' ),
-									value: '15x',
-								},
+								
 
 							] }
 						/>

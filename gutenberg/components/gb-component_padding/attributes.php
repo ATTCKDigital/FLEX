@@ -15,7 +15,18 @@ const PADDING_OPTIONS_ATTRIBUTES = [
 	 'paddingLeft' => [
 		 'type' => 'string',
 	 ],
-	 'paddingTabletPortraitTop' => [
+	 'paddingPhoneTop' => [
+		 'type' => 'string',
+	 ],
+	 'paddingPhoneRight' => [
+		 'type' => 'string',
+	 ],
+	 'paddingPhoneBottom' => [
+		 'type' => 'string',
+	 ],
+	 'paddingPhoneLeft' => [
+		 'type' => 'string',
+	 ],'paddingTabletPortraitTop' => [
 		 'type' => 'string',
 	 ],
 	 'paddingTabletPortraitRight' => [

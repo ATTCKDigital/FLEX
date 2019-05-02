@@ -1,8 +1,8 @@
 /**
- * Set the attributes to be displayed in the Margin Options panel.
+ * Set the attributes to be displayed in the Padding Options panel.
  * @type {Object}
  */
-const MarginOptionsAttributes = {
+const MarginsOptionsAttributes = {
 	marginTop: {
 		type: 'string',
 	},
@@ -13,6 +13,18 @@ const MarginOptionsAttributes = {
 		type: 'string',
 	},	
 	marginLeft: {
+		type: 'string',
+	},
+	marginPhoneTop: {
+		type: 'string',
+	},
+	marginPhoneRight: {
+		type: 'string',
+	},
+	marginPhoneBottom: {
+		type: 'string',
+	},	
+	marginPhoneLeft: {
 		type: 'string',
 	},
 	marginTabletPortraitTop: {
@@ -53,4 +65,4 @@ const MarginOptionsAttributes = {
 	},
 };
 
-export default MarginOptionsAttributes;
+export default MarginsOptionsAttributes;

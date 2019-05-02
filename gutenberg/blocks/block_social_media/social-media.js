@@ -103,7 +103,7 @@ export default registerBlockType(
 
 		},
 		edit: props => {
-			const { attributes: { facebook, twitter, instagram, linkedin, youtube, pinterest, medium, align},
+			const { attributes: { facebook, twitter, instagram, linkedin, youtube, pinterest, medium, align, github},
 				className, setAttributes, isSelected } = props;
 
 			return [
