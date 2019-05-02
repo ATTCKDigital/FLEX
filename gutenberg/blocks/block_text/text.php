@@ -24,7 +24,6 @@ add_action( 'init', __NAMESPACE__ . '\register_text_block' );
  * @return void
  */
 function register_text_block() {
-
 	// Only load if Gutenberg is available.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
@@ -32,7 +31,7 @@ function register_text_block() {
 
 	// Hook server side rendering into render callback
 	register_block_type( 'flexlayout/text', [
-		'attributes'      => array_merge(
+		'attributes' => array_merge(
 			[
 				'content' => [
 					'type' => 'string',
@@ -50,7 +49,6 @@ function register_text_block() {
 		),
 		'render_callback' => __NAMESPACE__ . '\render_text_block',
 	] );
-
 }
 
 /**
