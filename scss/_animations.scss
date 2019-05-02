@@ -3,7 +3,7 @@
 /** Fade Me In **/
 // Set initial styles before "faded-in" class added
 .prepare-in-view {
-	opacity: .2;
+	opacity: .5;
 
 	&.element-in-view {
 		opacity: 1;
