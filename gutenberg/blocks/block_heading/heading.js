@@ -5,9 +5,6 @@ import classnames from 'classnames';
 import HeadingToolbar from './heading-toolbar';
 import icons from '../../../js/icons.js'
 
-
-
-
 /**
  * Internal block libraries
  */
