@@ -144,5 +144,5 @@
 	<meta name="twitter:image" content="<?= $twitterImageSrc;?>" />
 	<meta name="twitter:image:alt" content="<?= $twitterImageAlt;?>" />
 
-	<title><?= $title; ?> | <?= $description; ?></title>
+	<title><?= $title; ?> | <?= $siteName; ?></title>
 	<meta name="description" content="<?= $metaDescription;?>">
