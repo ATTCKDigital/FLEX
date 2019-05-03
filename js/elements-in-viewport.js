@@ -78,8 +78,9 @@ function ElementsInViewport($el) {
 		$('body').find('h1, h2, h3, h4, h5, h6, p, span, .cta, img, .category-list, .area-inner').addClass('prepare-in-view');
 
 		// Add elements that need to be manipulated here:
-		$('body').find('h1, h2, h3, h4, h5, h6, p, span, .cta, img, .category-list, .area-inner').each(function (index, value) {
-			if (!$(this).hasClass('no-element-in-view')) {
+
+		$('body').find('h3, h4, h5, h6, p, span, .cta, img, .category-list, .area-inner').each(function (index, value) {
+			if (!$(this).hasClass('no-element-in-view') && !$(this).parents('.no-element-in-view').length) {
 				$(this).addClass('prepare-in-view');
 			}
 		});
