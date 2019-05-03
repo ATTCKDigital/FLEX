@@ -75,7 +75,7 @@ function ElementsInViewport($el) {
 		$('.area-inner h4, .area-inner p').addClass('no-element-in-view');
 
 		// First, hide all elements
-		$('body').find('h1, h2, h3, h4, h5, h6, p, span, .cta, img, .category-list, .area-inner').addClass('prepare-in-view');
+		$('body').find('h3, h4, h5, h6, p, span, .cta, img, .category-list, .area-inner').addClass('prepare-in-view');
 
 		// Add elements that need to be manipulated here:
 
