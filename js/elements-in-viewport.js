@@ -79,7 +79,6 @@ function ElementsInViewport($el) {
 
 		// Add elements that need to be manipulated here:
 		$('body').find('h3, h4, h5, h6, p, span, .cta, img, .category-list, .area-inner').each(function (index, value) {
-			console.log('ElementsInViewport $(this): ', $(this), !$(this).parents('.no-element-in-view').length);
 			if (!$(this).hasClass('no-element-in-view') && !$(this).parents('.no-element-in-view').length) {
 				$(this).addClass('prepare-in-view');
 			}
