@@ -12,11 +12,7 @@ const {
 	registerBlockType,
 } = wp.blocks;
 const {
-	Editable,
-	MediaUpload,
 	InspectorControls,
-	URLInput,
-	RichText,
 	AlignmentToolbar
 } = wp.editor;
 const {

@@ -14,20 +14,14 @@ const {
 const {
 	RichText,
 	AlignmentToolbar,
-	BlockControls,
-	BlockAlignmentToolbar,
 	InspectorControls,
-	InnerBlocks,
 	URLInput
 } = wp.editor;
 const {
-	Toolbar,
 	Button,
 	ButtonGroup,
-	Tooltip,
 	PanelBody,
 	PanelRow,
-	TextControl,
 	Dashicon,
 	IconButton
 

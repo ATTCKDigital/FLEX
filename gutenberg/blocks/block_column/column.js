@@ -12,21 +12,11 @@ const {
 	registerBlockType,
 } = wp.blocks;
 const {
-	RichText,
-	AlignmentToolbar,
-	BlockControls,
-	BlockAlignmentToolbar,
 	InspectorControls,
 	InnerBlocks,
 } = wp.editor;
 const {
 	Toolbar,
-	Button,
-	ButtonGroup,
-	Tooltip,
-	PanelBody,
-	PanelRow,
-	TextControl,
 
 } = wp.components;
 const {
