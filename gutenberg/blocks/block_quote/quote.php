@@ -88,6 +88,11 @@ function render_quote_block($attributes) {
 	$textColor = array_key_exists('textColor', $attributes) ? $attributes['textColor'] : null;
 
 	$imgID = array_key_exists('imgID', $attributes) ? $attributes['imgID'] : null;
+	$contentCompany = array_key_exists('contentCompany', $attributes) ? $attributes['contentCompany'] : null;
+	$contentSource = array_key_exists('contentSource', $attributes) ? $attributes['contentSource'] : null;
+
+
+
 
 	if($imgID) {
 		$image = '<div class="image-wrapper">'.wp_get_attachment_image($attributes['imgID'], 'full').'</div>';
@@ -101,9 +106,21 @@ function render_quote_block($attributes) {
 		$textStyle = '';
 	}
 
+	if($contentSource) {
+		$contentSource = '<div class="quote-source"'.$textStyle.'>'.$attributes['contentSource'].'</div>';
+	} else {
+		$contentSource = '';
+	}
+
+	if($contentCompany) {
+		$contentCompany = '<div class="quote-company"'.$textStyle.'>'.$attributes['contentCompany'].'</div>';
+	} else {
+		$contentCompany = '';
+	}
+
 	$style = background_options_inline_styles($attributes);
 
-	$output = "<div class=\"{$class}\" style=\"{$style}\"><h5 class=\"quote-text\"{$textStyle}>{$attributes['content']}</h5>{$image}<cite class=\"quote-source\"{$textStyle}>{$attributes['contentSource']}</cite><cite class=\"quote-company\"{$textStyle}>{$attributes['contentCompany']}</cite></div>";
+	$output = "<div class=\"{$class}\" style=\"{$style}\"><h5 class=\"quote-text\"{$textStyle}>{$attributes['content']}</h5>{$image}{$contentSource}{$contentCompany}</div>";
 
 	return $output;
 }
