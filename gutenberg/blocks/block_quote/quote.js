@@ -13,24 +13,15 @@ const {
 } = wp.blocks;
 const {
 	RichText,
-	AlignmentToolbar,
-	BlockControls,
-	BlockAlignmentToolbar,
 	InspectorControls,
-	InnerBlocks,
 	MediaUpload,
 	URLInput
 } = wp.editor;
 const {
-	Toolbar,
 	Button,
-	ButtonGroup,
-	Tooltip,
 	PanelBody,
 	PanelRow,
 	TextControl,
-	Dashicon,
-	IconButton
 
 } = wp.components;
 

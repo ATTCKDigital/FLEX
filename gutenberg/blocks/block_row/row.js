@@ -27,7 +27,6 @@ const {
 	Tooltip,
 	PanelBody,
 	PanelRow,
-	TextControl,
 } = wp.components;
 
 /**

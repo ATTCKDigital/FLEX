@@ -98,3 +98,7 @@ img {
 	// styles programmatically without causing layout issues.
 	border: 0 !important;
 }
+
+img.drop-shadow, .drop-shadow img {
+	box-shadow: 0 10px 20px 0 rgba(0,0,0,0.10);
+}

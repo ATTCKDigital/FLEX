@@ -56,7 +56,7 @@ function render_source_block($attributes) {
 	$class .= padding_options_classes($attributes);
 	$class .= border_options_classes($attributes);
 
-	$output = "<div class=\"{$class}\" >{$attributes['content']}</section>";
+	$output = "<div class=\"{$class}\" >{$attributes['content']}</div>";
 
 	return $output;
 }
