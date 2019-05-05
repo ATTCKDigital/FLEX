@@ -52,12 +52,12 @@ STATIC ASSETS:
 
 module.exports = smp.wrap({
 	entry: {
-		'/js/main.js': path.resolve(__dirname, './js/app.js'),
-		'/js/admin.js': path.resolve(__dirname, './js/admin.js'),
-		'css/style': path.resolve(__dirname, './scss/style.scss'),
-    	'css/print': path.resolve(__dirname, './scss/print.scss'),
-    	'css/admin': path.resolve(__dirname, './scss/admin.scss'),
-    	'css/wysiwyg': path.resolve(__dirname, './scss/wysiwyg.scss'),
+		'main.js': path.resolve(__dirname, './js/app.js'),
+		'admin.js': path.resolve(__dirname, './js/admin.js'),
+		'style': path.resolve(__dirname, './scss/style.scss'),
+    'print': path.resolve(__dirname, './scss/print.scss'),
+    'admin': path.resolve(__dirname, './scss/admin.scss'),
+    'wysiwyg': path.resolve(__dirname, './scss/wysiwyg.scss'),
 	},
 
 	devtool: 'cheap-eval-source-map',
@@ -72,7 +72,7 @@ module.exports = smp.wrap({
 
 	resolve: {
 		alias: {
-			'flexlayout': path.resolve(__dirname, '../flexlayout'),
+			'flexlayout': path.resolve(__dirname, '../flex-layout'),
 		},
 		modules: [
 			path.resolve(__dirname, './js'),
