@@ -2,6 +2,7 @@ import CopyPlugin from 'copy-webpack-plugin';
 import ImageminPlugin from 'imagemin-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import WebpackNotifierPlugin from 'webpack-notifier';
 import { sync } from 'glob';
 
@@ -23,6 +24,7 @@ const productionPlugins = [
       new ImageminPlugin({
         test: /\.(jpe?g|png|gif|svg)$/i
       }),
+      new UglifyJsPlugin(),
 ]
 const plugins = isDevEnv ? devPlugins : productionPlugins;
 
@@ -52,16 +54,16 @@ STATIC ASSETS:
 
 module.exports = smp.wrap({
   entry: {
-    '/js/main.js': path.resolve(__dirname, './js/app.js'),
-    '/js/admin.js': path.resolve(__dirname, './js/admin.js'),
-    'css/style': path.resolve(__dirname, './scss/style.scss'),
-    'css/print': path.resolve(__dirname, './scss/print.scss'),
-    'css/admin': path.resolve(__dirname, './scss/admin.scss'),
-    'css/wysiwyg': path.resolve(__dirname, './scss/wysiwyg.scss'),
+    'main.js': path.resolve(__dirname, './js/app.js'),
+    'admin.js': path.resolve(__dirname, './js/admin.js'),
+    'style': path.resolve(__dirname, './scss/style.scss'),
+    'print': path.resolve(__dirname, './scss/print.scss'),
+    'admin': path.resolve(__dirname, './scss/admin.scss'),
+    'wysiwyg': path.resolve(__dirname, './scss/wysiwyg.scss'),
 
   },
 
-  devtool: 'cheap-eval-source-map',
+  devtool: isDevEnv ? 'cheap-eval-source-map' : false,
   mode: process.env.NODE_ENV,
   target: 'web',
   watch: isDevEnv,
@@ -73,7 +75,7 @@ module.exports = smp.wrap({
 
   resolve: {
     alias: {
-      'flexlayout': path.resolve(__dirname, '../flexlayout'),
+      'flexlayout': path.resolve(__dirname, '../flex-layout'),
       // 'flexlayout':'clientNamespace.js',
     },
     modules: [
