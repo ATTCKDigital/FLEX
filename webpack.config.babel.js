@@ -74,7 +74,7 @@ module.exports = smp.wrap({
 
 	resolve: {
 		alias: {
-			'flexlayout': path.resolve(__dirname, '../flex-layout'),
+			'flexlayout': path.resolve(__dirname, '../flexlayout'),
 		},
 		modules: [
 			path.resolve(__dirname, './js'),
@@ -90,6 +90,16 @@ module.exports = smp.wrap({
 				exclude: /(node_modules|bower_components)/,
 				use: {
 					loader: 'babel-loader',
+					options: {
+					    // TODO: these should not be necessary
+					    // should be included via .bablerc
+					    // but for some crazy reason admin.js won't compile without these
+					    presets: [
+					      '@wordpress/default',
+					      '@babel/env',
+					      '@babel/react',
+					    ],
+					  }
 				},
 			},
 			{
