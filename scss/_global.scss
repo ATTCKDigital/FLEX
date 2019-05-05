@@ -4,8 +4,8 @@
 ****/
 
 h3, h4, h5, h6, p, span, .cta, img {
-	opacity: .2;
-	transition: opacity .3s ease-in;
+	opacity: .5;
+	transition: opacity .1s ease-in;
 
 	.no-element-in-view &, &.no-element-in-view {
 		opacity: 1;
@@ -16,7 +16,7 @@ h3, h4, h5, h6, p, span, .cta, img {
 	//inside the WYSIWYG editor and admin, prevent hidden text
 	h3, h4, h5, h6, p, .cta, span, img {
 		opacity: 1;
-		transition: opacity .3s ease-in;
+		transition: opacity .1s ease-in;
 
 		.no-element-in-view &, &.no-element-in-view {
 			opacity: 1;

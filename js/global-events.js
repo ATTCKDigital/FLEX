@@ -6,7 +6,6 @@ import Debug from './debug';
 FLEXLAYOUT.GlobalEvents = {};
 
 FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
-
 	var G = FLEXLAYOUT.Globals;
 	var $window = $(window);
 	var self = this;
