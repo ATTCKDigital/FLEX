@@ -2,6 +2,7 @@ import CopyPlugin from 'copy-webpack-plugin';
 import ImageminPlugin from 'imagemin-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import WebpackNotifierPlugin from 'webpack-notifier';
 import { sync } from 'glob';
 
@@ -23,6 +24,7 @@ const productionPlugins = [
       new ImageminPlugin({
         test: /\.(jpe?g|png|gif|svg)$/i
       }),
+      new UglifyJsPlugin(),
 ]
 const plugins = isDevEnv ? devPlugins : productionPlugins;
 
@@ -60,7 +62,7 @@ module.exports = smp.wrap({
     'wysiwyg': path.resolve(__dirname, './scss/wysiwyg.scss'),
 	},
 
-	devtool: 'cheap-eval-source-map',
+  devtool: isDevEnv ? 'cheap-eval-source-map' : false,
 	mode: process.env.NODE_ENV,
 	target: 'web',
 	watch: isDevEnv,
