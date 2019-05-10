@@ -112,6 +112,7 @@ Webpack is used to compile all of the site assets (fonts, theme images, javascri
 
 ## Deployment
 How to deploy - WPEngine instructions and generic FTP instructions
+- I.e., `git push production master`
 
 ## Settings
 See main README.md for detailed information on WordPress admin, config  and plugin settings.
