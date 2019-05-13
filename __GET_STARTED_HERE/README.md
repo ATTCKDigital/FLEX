@@ -67,7 +67,7 @@ To the end of the file add: `127.0.0.1 dev.project.com` (domain used for Virtual
 ### NEW PROJECT - Installing Wordpress and this theme 
 
 okatodo: add instructions about how to work with an existing project
-git clone --recurse-submodules https://github.com/ATTCKDigital/attck-flexlayout.git
+`git clone --recurse-submodules https://github.com/ATTCKDigital/flex-layout.git`
 
 1. Download [WordPress](https://wordpress.org/download/) into your project directory and add the "flexlayout" as a submodule in `wp-content/themes`
 2. Use **git submodules**, to add the "flexlayout" theme to `wp-content/themes`.  
