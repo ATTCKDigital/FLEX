@@ -1,9 +1,9 @@
 /**** Margins ****/
 
-
 // Creates classes based on variables
 // Use class "margin-size-position-xx" for margins used in all screen sizes
-//ie: margin-small-top-1x where the number before x is the multiplier for the increment (avoids having to remember your multiplication tables :) )
+// ie: margin-small-top-1x where the number before x is the multiplier for 
+// the increment (avoids having to remember your multiplication tables :) )
 @each $position in $positions{
 	@each $screensize in $screensizes{
 		@for $i from 0 through 100 {

@@ -108,10 +108,12 @@ SetEnv tablePrefix flexlayout_ --> database table prefix.  Change to a namespace
 ## Webpack
 Webpack is used to compile all of the site assets (fonts, theme images, javascript, css). To use
 1. From the command line, navigate to the flexlayout PARENT theme and run `npm install`.  This will install all of the associated node modules.
-2. To compile css, js and assets, run `npm run dev` from inside the boilerplate PARENT theme
+2. To compile css, js and assets for your LOCAL environment, run `npm run dev` from inside the PARENT theme
+2. To compile css, js and assets for a PRODUCTION environment, run `npm run build` from inside the CHILD theme
 
 ## Deployment
 How to deploy - WPEngine instructions and generic FTP instructions
+- I.e., `git push production master`
 
 ## Settings
 See main README.md for detailed information on WordPress admin, config  and plugin settings.
