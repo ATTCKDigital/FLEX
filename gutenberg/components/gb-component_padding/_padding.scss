@@ -11,7 +11,7 @@
 				@if $screensize != none {
 					.padding-#{$screensize}-#{$position}-#{$i}x { 
 						@include mediaquery(#{$screensize}) {
-							padding-#{$position}: #{$i * $increment}px;
+							padding-#{$position}: #{$i * $counterIncrement}px;
 						}
 					}
 				}
@@ -19,7 +19,7 @@
 				@if $screensize == none {
 					//creates a global padding class that has no screen size dependency
 					.padding-#{$position}-#{$i}x { 
-						padding-#{$position}: #{$i * $increment}px;
+						padding-#{$position}: #{$i * $counterIncrement}px;
 					}
 				} 
 			}

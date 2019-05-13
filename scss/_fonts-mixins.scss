@@ -41,25 +41,25 @@
 @mixin primary-semi {
 	font-family: $primarySemi;
 	font-style: normal;
-	font-weight: 700;
+	font-weight: 600;
 }
 
 @mixin primary-semi-italic {
 	font-family: $primarySemiItalic;
 	font-style: normal;
-	font-weight: 700;
+	font-weight: 600;
 }
 
 @mixin primary-bold {
 	font-family: $primaryBold;
 	font-style: normal;
-	font-weight: 900;
+	font-weight: 700;
 }
 
 @mixin primary-bold-italic {
 	font-family: $primaryBoldItalic;
 	font-style: normal;
-	font-weight: 900;
+	font-weight: 700;
 }
 
 @mixin secondary-light {

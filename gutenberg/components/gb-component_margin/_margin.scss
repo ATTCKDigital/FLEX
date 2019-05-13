@@ -11,7 +11,7 @@
 				@if $screensize != none {
 					.margin-#{$screensize}-#{$position}-#{$i}x { 
 						@include mediaquery(#{$screensize}) {
-							margin-#{$position}: #{$i * $increment}px;
+							margin-#{$position}: #{$i * $counterIncrement}px;
 						}
 					}
 				}
@@ -19,7 +19,7 @@
 				@if $screensize == none {
 					//creates a global margin class that has no screen size dependency
 					.margin-#{$position}-#{$i}x { 
-						margin-#{$position}: #{$i * $increment}px;
+						margin-#{$position}: #{$i * $counterIncrement}px;
 					}
 				} 
 			}

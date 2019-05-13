@@ -148,12 +148,14 @@
 
 	ul {
 		li {
+			@extend .body1 !optional;
 			list-style-type: disc;
 		}
 	}
 
 	ol {
 		li {
+			@extend .body1 !optional;
 			list-style-type: decimal;
 		}
 	}
