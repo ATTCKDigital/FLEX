@@ -1,8 +1,8 @@
 <?php // Single Post Header ?>
 <section class="component-row">
 	<?php if(has_post_thumbnail()){ ?>
-		<div class="pure-g component-row-full component-alignment-top">
-			<div class="column flex-g-lg-12-12 flex-g-md-12-12 flex-g-sm-12-12">
+		<div class="flex-grid component-row-full component-alignment-top">
+			<div class="column flex-tablet-landscape-12-12 flex-tablet-portrait-12-12 flex-12-12">
 				<div class="component-post-header">
 					<div class="featured-image">
 						<?php the_post_thumbnail('full');?>
@@ -11,9 +11,9 @@
 			</div>
 		</div>	
 	<?php } ?>
-	<div class="pure-g component-row-wide component-alignment-top">
-		<div class="column flex-g-lg-1-12 flex-g-md-1-12 flex-g-sm-0-12"></div>
-		<div class="column flex-g-lg-10-12 flex-g-md-10-12 flex-g-sm-12-12">
+	<div class="flex-grid component-row-wide component-alignment-top">
+		<div class="column flex-tablet-landscape-1-12 flex-tablet-portrait-1-12 flex-0-12"></div>
+		<div class="column flex-tablet-landscape-10-12 flex-tablet-portrait-10-12 flex-12-12">
 			<div class="component-post-header">
 				<header class="single-header margin-bottom-3x">
 					<span class="headline6 color-text-primary display-block margin-bottom-2x align-center"><?php the_category(', '); ?></span>

@@ -229,7 +229,7 @@ export default registerBlockType(
 					{ BackgroundOptionsVideoOutput( props ) }
 					{ ScrollerOptionsOutput( props ) }
 					<div className={ classnames(
-						'pure-g',
+						'flex-grid',
 						`component-alignment-${verticalAligment}`,
 					) }>
 						<InnerBlocks />

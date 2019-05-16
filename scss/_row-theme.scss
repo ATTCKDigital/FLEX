@@ -72,31 +72,31 @@ $xPositions: left, right, center;
 //Border classes
 
 @each $position in $positions{
-	.component-#{$position}-border-none, .wp-block .component-#{$position}-border-none > .pure-g {
+	.component-#{$position}-border-none, .wp-block .component-#{$position}-border-none > .flex-grid {
 		border-#{$position}: 0;
 	}
 
-	.component-#{$position}-border, .component-#{$position}-border-default, .wp-block .component-#{$position}-border-default > .pure-g {
+	.component-#{$position}-border, .component-#{$position}-border-default, .wp-block .component-#{$position}-border-default > .flex-grid {
 		border-#{$position}: 1px solid $borderColor;
 	}
 
-	.component-#{$position}-border-white, .wp-block .component-#{$position}-border-white > .pure-g {
+	.component-#{$position}-border-white, .wp-block .component-#{$position}-border-white > .flex-grid {
 		border-#{$position}: 1px solid $white;
 	}
 
-	.component-#{$position}-border-brand-primary, .wp-block .component-#{$position}-border-brand-primary > .pure-g {
+	.component-#{$position}-border-brand-primary, .wp-block .component-#{$position}-border-brand-primary > .flex-grid {
 		border-#{$position}: 1px solid color('brand', 'primary');
 	}
 
-	.component-#{$position}-border-brand-accent, .wp-block .component-#{$position}-border-brand-accent > .pure-g {
+	.component-#{$position}-border-brand-accent, .wp-block .component-#{$position}-border-brand-accent > .flex-grid {
 		border-#{$position}: 1px solid color('brand', 'accent');
 	}
 
-	.component-#{$position}-border-brand-secondary, .wp-block .component-#{$position}-border-brand-secondary > .pure-g {
+	.component-#{$position}-border-brand-secondary, .wp-block .component-#{$position}-border-brand-secondary > .flex-grid {
 		border-#{$position}: 1px solid color('brand', 'secondary');
 	}
 
-	.component-#{$position}-border-black, .wp-block .component-#{$position}-border-black > .pure-g {
+	.component-#{$position}-border-black, .wp-block .component-#{$position}-border-black > .flex-grid {
 		border-#{$position}: 1px solid $black;
 	}
 

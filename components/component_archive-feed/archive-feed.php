@@ -2,8 +2,8 @@
 	//Archive Feed 
 ?>
 <section class="component-row padding-top-7x padding-bottom-7x component" data-component-name="LoadMore">
-	<div class="pure-g component-row-wide component-alignment-top">
-		<div class="column flex-g-lg-12-12 flex-g-md-12-12 flex-g-sm-12-12">
+	<div class="flex-grid component-row-wide component-alignment-top">
+		<div class="column flex-tablet-landscape-12-12 flex-tablet-portrait-12-12 flex-12-12">
 			<div class="component-archive-feed">
 				<div class="feed-items load-items padding-bottom-3x" data-post-type="<?= $this->postType;?>" data-term="<?= $this->term;?>" data-taxonomy="<?= $this->taxonomy;?>">
 					<?php 

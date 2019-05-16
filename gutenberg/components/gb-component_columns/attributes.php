@@ -1,36 +1,46 @@
 <?php
 namespace FLEX_LAYOUT_SYSTEM\Components\Columns;
-
 const COLUMN_OPTIONS_ATTRIBUTES = [
 	'columnCount' => [
 		'type' => 'string',
 		'default' => '12',
 	],
-	'columnSmall' => [
+	'columnDefault' => [
 		'type' => 'string',
 		'default' => '12',
 	],
-	'columnMedium' => [
+	'columnPhone' => [
 		'type' => 'string',
-		'default' => '12',
+		'default' => 'inherit',
 	],
-	'columnLarge' => [
+	'columnTabletPortrait' => [
 		'type' => 'string',
-		'default' => '12',
+		'default' => 'inherit',
+	],
+	'columnTabletLandscape' => [
+		'type' => 'string',
+		'default' => 'inherit',
+	],	
+	'columnDesktop' => [
+		'type' => 'string',
+		'default' => 'inherit',
 	],
 	'columnXL' => [
 		'type' => 'string',
-		'default' => '12',
+		'default' => 'inherit',
 	],
-	'column24Small' => [
+	'column24Default' => [
 		'type' => 'string',
 	],
-	'column24Medium' => [
+	'column24Phone' => [
 		'type' => 'string',
 	],
-	'column24Large' => [
+	'column24TabletPortrait' => [
 		'type' => 'string',
 	],
+	'column24TabletLandscape' => [
+		'type' => 'string',
+	],	
 	'column24XL' => [
 		'type' => 'string',
 	],
