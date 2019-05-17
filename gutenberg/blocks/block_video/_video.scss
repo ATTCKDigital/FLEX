@@ -10,6 +10,8 @@
 	&.playingVideo {
 		.close {
 			display: block;
+			top: auto;
+			bottom: 20px;
 		}
 
 		.play {

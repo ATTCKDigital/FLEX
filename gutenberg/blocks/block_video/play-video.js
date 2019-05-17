@@ -14,6 +14,10 @@ function Video($el) {
 
 		$el.addClass('playingVideo');
 
+		video.addEventListener('ended',function(){
+			$el.removeClass('playingVideo');
+		},false);
+
 	}
 
 	function pauseVideo() {
@@ -38,9 +42,16 @@ function Video($el) {
 			videoId: videoId,
 			events: {
 				'onReady': onPlayerReady,
-				// 'onStateChange': onPlayerStateChange
+				'onStateChange': onPlayerStateChange
 			}
         });
+    }
+
+    function onPlayerStateChange(event) {  
+    	//once the video has ended on it's own, bring back the thumbnail and play button      
+        if(event.data === 0) {          
+            $el.removeClass('playingVideo');
+        }
     }
 
     function onPlayerReady(event) {
