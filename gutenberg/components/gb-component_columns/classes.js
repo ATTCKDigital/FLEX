@@ -5,10 +5,12 @@
  */
 function ColumnOptionsClasses( props ) {
 	return [
-		props.attributes.columnSmall ? `flex-g-sm-${ props.attributes.columnSmall }-${ props.attributes.columnCount }` : null,
-		props.attributes.columnMedium ? `flex-g-md-${ props.attributes.columnMedium }-${ props.attributes.columnCount }` : null,
-		props.attributes.columnLarge ? `flex-g-lg-${ props.attributes.columnLarge }-${ props.attributes.columnCount }` : null,
-		props.attributes.columnXL ? `flex-g-xl-${ props.attributes.columnXL }-${ props.attributes.columnCount }` : null,
+		props.attributes.columnDefault ? `flex-${ props.attributes.columnDefault }-${ props.attributes.columnCount }` : null,
+		props.attributes.columnPhone && props.attributes.columnPhone !== 'inherit' ? `flex-phone-${ props.attributes.columnPhone }-${ props.attributes.columnCount }` : null,
+		props.attributes.columnTabletPortrait && props.attributes.columnTabletPortrait !== 'inherit' ? `flex-tablet-portrait-${ props.attributes.columnTabletPortrait }-${ props.attributes.columnCount }` : null,
+		props.attributes.columnTabletLandscape && props.attributes.columnTabletLandscape !== 'inherit' ? `flex-tablet-landscape-${ props.attributes.columnTabletLandscape }-${ props.attributes.columnCount }` : null,
+		props.attributes.columnDesktop && props.attributes.columnDesktop !== 'inherit' ? `flex-desktop-${ props.attributes.columnDesktop }-${ props.attributes.columnCount }` : null,
+		props.attributes.columnXL && props.attributes.columnXL !== 'inherit' ? `flex-xl-${ props.attributes.columnXL }-${ props.attributes.columnCount }` : null,
 
 	];
 }

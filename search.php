@@ -21,7 +21,7 @@
 ?>
 <section class="component-row margin-mobile-top-40">
 	<div class="component-row-inner component-row-standard">
-		<div class="pure-g">
+		<div class="flex-grid">
 			<div class="column pure-u-lg-4-12 pure-u-md-4-12 pure-u-sm-12-12">
 				<div class="header header-tab header-tab-small">
 					<div class="header-tab-inner">
@@ -30,7 +30,7 @@
 				</div>
 			</div>
 		</div>      
-		<div class="pure-g component-search">
+		<div class="flex-grid component-search">
 			<div class="column pure-u-lg-4-12 pure-u-md-4-12 mobile-hidden"></div>
 			<div class="column pure-u-lg-7-12 pure-u-md-7-12 pure-u-sm-12-12">
 				<?php 

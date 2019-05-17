@@ -11,9 +11,9 @@
 ?>
 
 <article class="component-row padding-top-5x padding-bottom-7x">
-	<div class="pure-g component-row-wide component-alignment-top">
-		<div class="column flex-g-lg-2-12 flex-g-md-2-12 flex-g-sm-0-12"></div>
-		<div class="column flex-g-lg-8-12 flex-g-md-8-12 flex-g-sm-12-12">
+	<div class="flex-grid component-row-wide component-alignment-top">
+		<div class="column flex-tablet-landscape-2-12 flex-tablet-portrait-2-12 flex-0-12"></div>
+		<div class="column flex-tablet-landscape-8-12 flex-tablet-portrait-8-12 flex-12-12">
 			<div class="component-post-body">
 				<header class="single-header margin-bottom-3x">
 					<span class="caption2 color-text-brown uppercase display-block margin-bottom-2x align-center"><?php _e( 'Team', '_flexlayout' );?></span>
@@ -24,9 +24,9 @@
 		</div>
 	</div>
 	<?php if($headshot){ ?>
-		<div class="pure-g component-row-wide component-alignment-top">
-			<div class="column flex-g-lg-3-12 flex-g-md-3-12 flex-g-sm-12-12"></div>
-			<div class="column flex-g-lg-6-12 flex-g-md-6-12 flex-g-sm-12-12">
+		<div class="flex-grid component-row-wide component-alignment-top">
+			<div class="column flex-tablet-landscape-3-12 flex-tablet-portrait-3-12 flex-12-12"></div>
+			<div class="column flex-tablet-landscape-6-12 flex-tablet-portrait-6-12 flex-12-12">
 				<div class="component-post-body">
 						<div class="margin-bottom-3x">
 							<img src="<?= $headshot;?>" alt="<?= $authorName;?>" title="<?= $authorName;?>" />
@@ -35,9 +35,9 @@
 			</div>
 		</div>	
 	<?php } ?>
-	<div class="pure-g component-row-wide component-alignment-top">
-		<div class="column flex-g-lg-2-12 flex-g-md-1-12 flex-g-sm-0-12"></div>
-		<div class="column flex-g-lg-8-12 flex-g-md-10-12 flex-g-sm-12-12">
+	<div class="flex-grid component-row-wide component-alignment-top">
+		<div class="column flex-tablet-landscape-2-12 flex-tablet-portrait-1-12 flex-0-12"></div>
+		<div class="column flex-tablet-landscape-8-12 flex-tablet-portrait-10-12 flex-12-12">
 			<div class="component-post-body">
 				<div class="body-text margin-bottom-3x">
 					<?= $authorBio;?>

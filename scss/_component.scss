@@ -49,7 +49,7 @@
 	@include mediaquery-max-width(tablet-portrait) {
 		// reverse media query to avoid extra css
 		&.component-row-reverse-mobile {
-			.pure-g {
+			.flex-grid {
 				display: flex;
 				flex-direction: column-reverse;
 				flex-wrap: inherit;
