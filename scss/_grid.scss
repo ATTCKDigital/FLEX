@@ -12,7 +12,7 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 .flex-grid {
     align-content: flex-start;
     display: flex;
-    flex-flow: row wrap;
+    flex-wrap: wrap;
 }
 
 /**** Basic grid settings using flex-gridrid custom mediaqueries ****/
