@@ -6,6 +6,10 @@
 import $ from 'jquery';
 import $$ from './cached-dom-elements';
 
+const elementsHidden = FLEXLAYOUT.ElementsHidden || '';
+const elementsProtected = FLEXLAYOUT.ElementsProtected || '';
+
+
 function ElementsInViewport($el) {
 	var _inViewElementsOffsetIndex = [];
 	var _scrollstopTimer = 0;
@@ -69,17 +73,14 @@ function ElementsInViewport($el) {
 
 	function hideAllElements() {
 		// Show protected areas
-		$('.component-header').addClass('no-element-in-view');
-		$('.component-footer').addClass('no-element-in-view');
-		$('.component-gdpr p').addClass('no-element-in-view');
-		$('.area-inner h4, .area-inner p').addClass('no-element-in-view');
+    $(elementsProtected).addClass('no-element-in-view');
 
 		// First, hide all elements
-		$('body').find('h3, h4, h5, h6, p, span, .cta, img, .category-list, .area-inner').addClass('prepare-in-view');
+		$('body').find(elementsHidden).addClass('prepare-in-view');
 
 		// Add elements that need to be manipulated here:
 
-		$('body').find('h3, h4, h5, h6, p, span, .cta, img, .category-list, .area-inner').each(function (index, value) {
+		$('body').find(elementsHidden).each(function (index, value) {
 			if (!$(this).hasClass('no-element-in-view') && !$(this).parents('.no-element-in-view').length) {
 				$(this).addClass('prepare-in-view');
 			}
