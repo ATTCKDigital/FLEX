@@ -1,6 +1,7 @@
 import CopyPlugin from 'copy-webpack-plugin';
 import ImageminPlugin from 'imagemin-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import WebpackNotifierPlugin from 'webpack-notifier';
@@ -24,7 +25,6 @@ const productionPlugins = [
       new ImageminPlugin({
         test: /\.(jpe?g|png|gif|svg)$/i
       }),
-      new UglifyJsPlugin(),
 ]
 const plugins = isDevEnv ? devPlugins : productionPlugins;
 
@@ -143,6 +143,17 @@ module.exports = smp.wrap({
 			}
 		]
 	},
+
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({}),
+      new OptimizeCSSAssetsPlugin({
+        cssProcessorPluginOptions: {
+          preset: ['default', { discardComments: { removeAll: true } }],
+        },
+      }),
+    ],
+  },
 
 	plugins: [
 		...plugins,
