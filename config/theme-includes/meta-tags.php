@@ -144,5 +144,10 @@
 	<meta name="twitter:image" content="<?= $twitterImageSrc;?>" />
 	<meta name="twitter:image:alt" content="<?= $twitterImageAlt;?>" />
 
-	<title><?= $title; ?> | <?= $siteName; ?></title>
+	<?php if(is_front_page()){ ?>
+		<title><?= $title; ?> | <?= $description; ?></title>
+	<?php } else { ?>
+		<title><?= $title; ?> | <?= $siteName; ?></title>
+	<?php } ?>
+
 	<meta name="description" content="<?= $metaDescription;?>">

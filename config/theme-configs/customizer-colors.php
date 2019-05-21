@@ -92,14 +92,26 @@ function tabor_gutenberg_colors() {
 	$colors = FLEXLAYOUT_COLORS;
 	// Build styles.
 	$css  = "";
+	$css .= ':root {';
 	foreach ($colors as $color) {
 		$settingId = colorSettingId($color);
 		$colorSlug = $color['slug'];
 		$colorValue = esc_attr( get_theme_mod($settingId, $color['default']) );
-		$css .= ":root { --{$colorSlug}: {$colorValue}; }";
+		$css .= " --{$colorSlug}: {$colorValue}; ";
 	}
-	return wp_strip_all_tags( $css );
+
+	$css .= '}';
+	
+	//strip tags
+	$cssVars = wp_strip_all_tags( $css );
+
+	//create new php file with vars
+	$cssVarsFile = fopen(get_template_directory().'/scss/_css-vars.scss', 'w');
+	fwrite($cssVarsFile, $cssVars);
+	
 }
+
+add_action( 'after_setup_theme', 'tabor_gutenberg_colors' );
 
 /**
  * Enqueue theme styles.
@@ -108,6 +120,5 @@ function tabor_styles() {
 	// Load theme styles.
 	wp_enqueue_style( 'tabor-style', get_theme_file_uri( '/style.css' ), false, '@@pkg.version', 'all' );
 	// Add custom colors to the front end.
-	wp_add_inline_style( 'tabor-style', tabor_gutenberg_colors() );
 }
 add_action( 'wp_enqueue_scripts', 'tabor_styles' );
