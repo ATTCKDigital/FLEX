@@ -16,6 +16,8 @@
 /sitemap.xml
 /sitemap.xml.gz
 
-.DS_Store
-assets/.DS_Store
-/node_modules
+/.env
+*.DS_Store
+/wp-content/themes/*/node_modules
+/wp-content/themes/*/package-lock.json
+/wp-content/themes/*/dist
