@@ -1,9 +1,13 @@
 import FLEXLAYOUT from './clientNamespace';
 import Debug from './debug';
 import $ from 'jquery';
+import ObjectAssign from 'es6-object-assign';
+
+//ie11 object assign polyfill
+//todo: figure out why this has to explicitly be in this file.
+ObjectAssign.polyfill();
 
 // Import all JS components explicitly.
-
 //Required
 import $$ from './cached-dom-elements';
 import Parallax from './parallax';
