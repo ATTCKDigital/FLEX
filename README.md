@@ -5,6 +5,11 @@ READ [__GET_STARTED_HERE](https://github.com/ATTCKDigital/flexlayout/tree/master
 
 ## Theme Structure
 
+### Flexlayout Theme
+The Flexlayout theme is a parent theme that sets a varierty of default configurations and base theme files. When a new project is started, a child theme is created specific to the project. 
+
+All changes should be made in the child theme. If a change to the parent theme is required, create a feature branch in the `flexlayout` submodule and submit a pull request detailing why the change was necessary and any possible red flags or repercussions to existing Flexlayout projects. Pull requests should be assigned to Oka and Sarah.
+
 ### Components Structure
 Components are the pieces of the theme. These pieces include such things as the nav, the footer, reusable partials (share tools, social media bar, content feeds, etc). Components are NOT part of Gutenberg Blocks.
 
