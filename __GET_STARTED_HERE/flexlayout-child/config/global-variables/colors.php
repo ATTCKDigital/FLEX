@@ -1,66 +1,58 @@
 <?php
 
 /**
- * Theme attribute of colors is needed in base theme only, not child theme
- * (see `/config/theme-configs/customizer-colors.php/` for attribute usage)
+ * Set child theme colors
  */
+
 
 $colors = array(
 	array(
-		'default'     => '#2F2F2F',
-		'description' => 'Set your site\'s primary text color here.',
-		'label'       => 'Primary Text Color',
-		'slug'        => 'primary-text-color',
+		'default'     => '#1d1d1d',
+		'description' => 'Set your site\'s primary brand color here.',
+		'label'       => 'Brand Primary Color',
+		'slug'        => 'color-brand-primary',
 	),
 	array(
-		'default'     => '#FFFFFF',
-		'description' => 'Set your site\'s secondary text color here.',
-		'label'       => 'Secondary Text Color',
-		'slug'        => 'secondary-text-color',
-	),
-
-	array(
-		'default'     => '#F5F5F5',
-		'description' => 'Set your site\'s tertiary text color here.',
-		'label'       => 'Tertiary Text Color',
-		'slug'        => 'tertiary-text-color',
+		'default'     => '#838383',
+		'description' => 'Set your site\'s secondary brand color here.',
+		'label'       => 'Secondary Brand Color',
+		'slug'        => 'color-brand-secondary',
 	),
 
 	array(
-		'default'     => '#F5F5F5',
-		'description' => 'Set your site\'s primary background color here.',
-		'label'       => 'Primary Background Color',
-		'slug'        => 'primary-background-color',
-	),
-	array(
-		'default'     => '#7D7D7D',
-		'description' => 'Set your site\'s secondary background color here.',
-		'label'       => 'Secondary Background Color',
-		'slug'        => 'secondary-background-color',
+		'default'     => '#feb400',
+		'description' => 'Set your site\'s brand accent color here.',
+		'label'       => 'Brand Accent Color',
+		'slug'        => 'color-brand-accent',
 	),
 
 	array(
-		'default'     => '#F6F6F6',
-		'description' => 'Set your site\'s tertiary background color here.',
-		'label'       => 'Tertiary Background Color',
-		'slug'        => 'tertiary-background-color',
+		'default'     => '#1d1d1d',
+		'description' => 'Set your site\'s body text color here.',
+		'label'       => 'Body Text Color',
+		'slug'        => 'color-text-body',
+	),
+	array(
+		'default'     => '#9e7700',
+		'description' => 'Set your site\'s link color here.',
+		'label'       => 'Link Color',
+		'slug'        => 'color-text-link',
 	),
 
 	array(
 		'default'     => '#FFFFFF',
 		'description' => 'Default White',
-		'label'       => 'Default White Text Color',
-		'slug'        => 'white-text-color',
+		'label'       => 'Default White Color',
+		'slug'        => 'color-default-white',
 	),
 
 	array(
 		'default'     => '#000000',
 		'description' => 'Default Black',
-		'label'       => 'Default Black Text Color',
-		'slug'        => 'black-text-color',
+		'label'       => 'Default Black Color',
+		'slug'        => 'color-default-black',
 	),
 
 );
-
 
 define('FLEXLAYOUT_COLORS', $colors);
