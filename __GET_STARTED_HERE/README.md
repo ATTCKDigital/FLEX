@@ -78,11 +78,13 @@ To the end of the file add: `127.0.0.1 dev.project.com` (domain used for Virtual
 6. Copy the `flexlayout-child` theme into the themes folder and rename the theme to a project relevant name.  Majority of the coding done will be done in the child theme. Any file added to the child theme with the same name and same path as in the parent, will override the parent; EXCLUDING existing functions.
 7. Edit the WordPress `style.css` file to reflect the project specifics (`Theme Name` and `Text Domain`).
 8. Replace `screenshot.png` with a project relevant theme screenshot.
-9. Install required plugins (see [Plugins section](https://github.com/ATTCKDigital/flexlayout))
-10. From the command line, navigate to the newly created CHILD theme and run `npm install`.  This will install all of the associated node modules. 
-11. To compile css, js and assets, while working run `npm run dev` from inside the CHILD theme. To run a production ready build of assets, run `npm run build`.
-12. Enable/disable Gutenberg blocks and set global variables for the project.  See child theme `README.md` for details.
-13. Review child theme `functions.php` and enable/disable functions needed for project.
+9. Go to your local install and complete the steps to install Wordpress. Login and change theme to your child theme.
+10. Install required plugins (see [Plugins section](https://github.com/ATTCKDigital/flexlayout))
+11. Go to Custom Fields in the admin and sync required fields (see main readme for details).
+11. From the command line, navigate to the newly created CHILD theme and run `npm install`.  This will install all of the associated node modules. 
+12. To compile css, js and assets, while working run `npm run dev` from inside the CHILD theme. To run a production ready build of assets, run `npm run build`.
+13. Enable/disable Gutenberg blocks and set global variables for the project.  See child theme `README.md` for details.
+14. Review child theme `functions.php` and enable/disable functions needed for project.
 
 
 #### .env Variables
@@ -131,15 +133,19 @@ WPEngine allows for git push deployment. At the moment, the parent theme submodu
 9. Run `npm run build` from your theme and copy the `dist` folder to the theme in the SFTP server.
 10. Copy the contents of the `flexlayout` folder to the SFTP server in `wp-content/themes/flexlayout` (if you have `node_modules` in this folder, you can skip copying those as they are not needed on the server)
 11. Copy your uploads folder to `wp-content/uploads`.
+12. From the admin, go to Custom Fields and sync custom fields. Unfortunately, at this time, ACF block fields do not auto sync.  For each one, select the appropriate block from *Local JSON* drop down then go to Custom Fields > Tools and use "Import Field Groups" to upload them individually.
 
 #WPEngine Subsequent deployments
 1. Commit your changes. Push the repo to the WPE remote.
 2. Run `npm run build` from your theme and copy the `dist` folder to the theme on the SFTP server.
+3. If ACF changes were made -- From the admin, go to Custom Fields and sync custom fields. Unfortunately, at this time, ACF block fields do not auto sync.  For each one, select the appropriate block from *Local JSON* drop down then go to Custom Fields > Tools and use "Import Field Groups" to upload them individually.
+
 
 #FTP/SFTP FIRST DEPLOYMENT
 1. Run `npm run build` from your theme.
 2. Setup SFTP via your desired FTP GUI or command line with credentials (ask the Producer if you do not have access to them).
 3. Upload the entire repo to the server.  This can take awhile.  
+4. From the admin, go to Custom Fields and sync custom fields. Unfortunately, at this time, ACF block fields do not auto sync.  For each one, select the appropriate block from *Local JSON* drop down then go to Custom Fields > Tools and use "Import Field Groups" to upload them individually.
 
 A good tip is to upload everything but `wp-content`, then create a new folder on the server called `wp-content` and upload `plugins` and `uploads`. 
 
@@ -151,6 +157,7 @@ Copy everything BUT `node_modules` into the appropriate theme folders. (`node_mo
 1. Commit your changes. 
 2. Run `npm run build` from your theme.
 3. Copy the `dist` folder to the theme on the SFTP server.
+4. If ACF changes were made -- From the admin, go to Custom Fields and sync custom fields. Unfortunately, at this time, ACF block fields do not auto sync.  For each one, select the appropriate block from *Local JSON* drop down then go to Custom Fields > Tools and use "Import Field Groups" to upload them individually.
 
 ## Settings
 See main [README.md](https://github.com/ATTCKDigital/flexlayout) for detailed information on WordPress admin, config and plugin settings.

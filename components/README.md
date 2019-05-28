@@ -1,10 +1,10 @@
 ## Components
-Global components that are NOT part of Gutenberg/FLEX editing experience. 
+Components are the pieces of the theme. These pieces include such things as the nav, the footer, reusable partials (share tools, social media bar, content feeds, etc). Components are NOT part of Gutenberg Blocks or Flex ACF Blocks.
 
 ### Adding components
 To create a new acf component, duplicate `components/component_template` in the child `components` folder and rename as per naming conventions below. 
 
-If an existing ACF component needs to be edited for the project, copy the component folder to the child's `components` folder and make changes there. Changes made to this component in the child theme will override existing. 
+If an existing component needs to be edited for the project, copy the component folder to the child's `components` folder and make changes there. Changes made to this component in the child theme will override existing. 
 
 #### How to use a component in a front end template:
 To include a component in a front end template:
@@ -28,5 +28,4 @@ Values/variables can be passed into the component template in the array in the `
 - Component Register ACF Fields: `register_component-name.php`
 
 Created 12/4/2018 by okadots for ATTCK
-
-okatodo: add notes about having an editor and front end stylesheet; figure out solution for acf blocks in terms of json storage.
+Updated 5/28/2019 by okadots for ATTCK

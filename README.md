@@ -81,9 +81,9 @@ Download the latest version from ACF using the ATTCK login (see LastPass for log
 _The version of ACF required for the boilerplate is still in beta and a zipped version is available in `_GET_STARTED_HERE`.  As of 3/29/19 - Version 5.8.0-beta4.1_
 
 ### ACF Local JSON Manager
-This allows syncing of json files from within each ACF Block. Once installed and activated, no changes should need to be made.
+This allows syncing of json files from within each ACF Block. Once installed and activated, no changes should need to be made. (Zipped file available in `_GET_STARTED_HERE/plugins`)
 
-Once installed, a dropdown will appear in the admin (in the toolbar at the top). When you create or edit ACF fields, select the registered ACF Block from the drop down to ensure that the fields save in the correct locations. To edit or add global ACF fields, select "disable overrides".
+Once installed, a dropdown will appear in the admin (in the toolbar at the top). When you create or edit ACF fields, select the registered ACF Block from the drop down to ensure that the fields save in the correct locations. To edit or add global or non-block ACF fields, select "disable overrides".
 
 ### Classic Editor
 Allows the option to use a plain WYSIWYG editor on any page, CPT or post when WordPress version is 5.0+.
@@ -111,9 +111,8 @@ JSON files: `config/acf-configs/acf-json`
 - **Site Settings** (`group_5b4cd9e72d68d.json`): Found in "Global Settings", allows the user to update globally displayed content such as address, email and social media links. These settings can be tailored to the individual project. A default set of options has been included.
 - **Google Tag Manager ID** (`group_5b4cd6926e1bb.json`): Found in "Global Settings", allows the user to insert their own GTM Container ID.
 - **Social Media Sharing** (`group_5b16e72af37f3.json`): Added to all posts, CPTs and pages so user can override default generated OG meta tags.
-- **Site Logo** (`group_5c06cd1fa1248.json`): Found in "Global Settings", allows user to upload 2 logo versions.
-//okatodo: potentially change site logo to be part of customizer instead of an acf field?
 
+There are a few additional field groups that come with the example child theme.  These are on a project basis.
 
 ## Configs
 See detailed README.md in `config` folder.

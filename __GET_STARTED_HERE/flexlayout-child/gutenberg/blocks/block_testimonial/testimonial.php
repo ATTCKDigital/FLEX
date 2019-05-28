@@ -15,7 +15,8 @@ $id = 'testimonial-' . $block['id'];
 $align_class = $block['align'] ? 'align' . $block['align'] : '';
 
 ?>
-<blockquote id="<?php echo $id; ?>" class="testimonial <?php echo $align_class; ?>">
+<div class="component-testimonial component <?php echo $align_class; ?>" id="<?php echo $id; ?>">
+<blockquote class="testimonial">
     <p><?php the_field('testimonial'); ?></p>
     <cite>
     	<img src="<?php echo $avatar['url']; ?>" alt="<?php echo $avatar['alt']; ?>" />
