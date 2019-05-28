@@ -8,4 +8,4 @@
 // } );
 
 //Remove existing default styles
-// wp.blocks.unregisterBlockStyle( 'flexlayout/block-name', 'style-name );
+// wp.blocks.unregisterBlockStyle( 'flexlayout/block-name', 'style-name' );
