@@ -6,6 +6,10 @@
 	background-size: cover;
 	background-position: right center;
 	background-repeat: no-repeat;
+
+	&.component-column {
+		height: 100%;
+	}
 }
 
 .component-video-background {

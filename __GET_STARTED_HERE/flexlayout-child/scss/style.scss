@@ -1,6 +1,7 @@
 /**** Override-able SASS files ****/
 
 // General variables and setup
+@import 'flexlayout/scss/_css-vars.scss';
 @import 'flexlayout/scss/_sass-utils.scss';
 @import 'flexlayout/scss/_reset.scss';
 @import 'flexlayout/scss/_sizing.scss';
