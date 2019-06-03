@@ -18,16 +18,18 @@ You must also register the new block.  Add the new block function path to the `$
 
 (See the `blocks.php` file for details)
 
-#### register-acf-blocks.php
-This file registers your newly created block.  This will allow you to add the necessary custom fields for new blocks. 
-
-
 ### Colors
-The boilerplate theme comes with a set of default colors used for typography and backgrounds. You can either change the colors via the admin or update them in the child theme in `config/global-variables/colors.php`.  Adding additional items to the array will add additional color options to the theme and the admin.
+The boilerplate theme comes with a set of default colors used for typography and backgrounds. Update the colors in the child theme in `config/global-variables/colors.php`. Existing naming conventions should be preserved.
+
+Adding additional items to the array will add additional color options to the theme and the admin.
 
 ### Nav Menus
 Some projects will require more than the default available admin editable menus. To add additional menus or change the names of existing, edit `config/global-variables/nav-menus.php`
 
-okatodo:
 ## How to add/enable/disable functions
-## How to create a new ACF block (more detailed than the info in the components readme)
+As mentioned in the config [README.md](https://github.com/ATTCKDigital/flexlayout/tree/master/config) some functions can be enabled/disabled per project.  To do so go to `flexlayout-child/functions.php` and comment/uncomment those relevant to he project.  To override a parent theme function, copy the function php file from the parent into the same directory in the child and make edits.  The child theme version will override the parent version.
+
+## How to create a new ACF block
+See [README.md](https://github.com/ATTCKDigital/flexlayout/tree/master/__GET_STARTED_HERE/flexlayout-child/gutenberg/blocks) for details.
+
+Updated 5/28/2019 by okadots for ATTCK

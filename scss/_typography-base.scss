@@ -116,7 +116,6 @@ th, tr, td {
 
 .underline {
 	// for use in WYSIWYG as <u></u> was deprecated in 4.7+
-	color:inherit;
 	display: inline;
 	font-family: inherit;
 	font-size:inherit;
@@ -128,7 +127,6 @@ th, tr, td {
 
 .strikethrough {
 	// for use in WYSIWYG 
-	color:inherit;
 	display: inline;
 	font-family: inherit;
 	font-size:inherit;

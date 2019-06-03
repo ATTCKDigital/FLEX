@@ -3,8 +3,8 @@
 //Additional details: https://www.advancedcustomfields.com/blog/acf-5-8-introducing-acf-blocks-for-gutenberg/
 //Namespace function names "register_block_blockname" & "block_render_callback_testimonial"
 
-add_action('acf/init', 'register_block_child');
-function register_block_child() {
+add_action('acf/init', 'register_block_testimonial');
+function register_block_testimonial() {
 	
 	// check function exists
 	if( function_exists('acf_register_block') ) {

@@ -102,6 +102,9 @@ define('WP_DEBUG_LOG', true);
 define( 'AUTOMATIC_UPDATER_DISABLED', true );
 define( 'WP_MEMORY_LIMIT', '256M' );
 
+//remove p tags from cf7
+define('WPCF7_AUTOP', false );
+
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )
   define('ABSPATH', dirname(__FILE__) . '/');
