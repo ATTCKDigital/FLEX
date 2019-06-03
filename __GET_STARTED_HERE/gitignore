@@ -19,5 +19,4 @@
 /.env
 *.DS_Store
 /wp-content/themes/*/node_modules
-/wp-content/themes/*/package-lock.json
 /wp-content/themes/*/dist
