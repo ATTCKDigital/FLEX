@@ -30,8 +30,8 @@ function block_render_callback_testimonial( $block ) {
 	$slug = str_replace('acf/', '', $block['name']);
 	
 	// include a template part from within the "template-parts/block" folder
-	if( file_exists( locate_template("blocks/block_{$slug}/{$slug}.php") ) ) {
-		include( locate_template("blocks/block_{$slug}/{$slug}.php") );
+	if( file_exists( locate_template("gutenberg/blocks/block_{$slug}/{$slug}.php") ) ) {
+		include( locate_template("gutenberg/blocks/block_{$slug}/{$slug}.php") );
 	}
 
 }
