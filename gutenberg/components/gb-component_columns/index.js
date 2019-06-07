@@ -55,6 +55,10 @@ function ColumnOptions( props ) {
 							onChange={ setColumnDefault }
 							options={ [
 								{
+									label: __( 'Hidden' ),
+									value: '0',
+								},
+								{
 									label: __( '1' ),
 									value: '1',
 								},
