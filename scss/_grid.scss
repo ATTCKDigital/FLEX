@@ -63,6 +63,10 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
     zoom: 1;
 }
 
+.flex-0-12, .flex-0-24 {
+	display: none;
+}
+
 .flex-1-24 {
     width: 4.1667%;
     *width: 4.1357%;
@@ -196,7 +200,7 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 
 
 @include mediaquery(phone) {
-	.flex-phone-0-12 {
+	.flex-phone-0-12, .flex-phone-0-24 {
 		display: none;
 	}
 
@@ -379,7 +383,7 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 }
 
 @include mediaquery(tablet-portrait) {
-	.flex-tablet-portrait-0-12 {
+	.flex-tablet-portrait-0-12, .flex-tablet-potrait-0-24 {
 		display: none;
 	}
 
@@ -562,7 +566,7 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 }
 
 @include mediaquery(tablet-landscape) {
-	.flex-tablet-landscape-0-12 {
+	.flex-tablet-landscape-0-12, .flex-tablet-landscape-0-24 {
 		display: none;
 	}
 
@@ -745,7 +749,7 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 }
 
 @include mediaquery(desktop) {
-	.flex-desktop-0-12 {
+	.flex-desktop-0-12, .flex-desktop-0-24 {
 		display: none;
 	}
 
@@ -928,7 +932,7 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 }
 
 @include mediaquery(xl) {
-	.flex-xl-0-12 {
+	.flex-xl-0-12, .flex-xl-0-24 {
 		display: none;
 	}
 
