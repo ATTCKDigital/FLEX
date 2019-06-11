@@ -15,6 +15,7 @@ import ElementsInViewport from './elements-in-viewport';
 import Nav from '../components/component_nav/nav';
 import Share from '../components/component_share/share';
 import Video from '../gutenberg/blocks/block_video/play-video';
+import VideoThumb from '../gutenberg/components/gb-component_background-options/video-thumb';
 import LoadMore from './load-more';
 import ScrollTo from './scroll-to';
 import GDPR from '../components/component_footer/gdpr';
@@ -32,6 +33,7 @@ FLEXLAYOUT.Components = Object.assign({
 	'ScrollTo': ScrollTo,
 	'Share': Share,
 	'Video': Video,
+	'VideoThumb': VideoThumb,
 	'GDPR': GDPR,
 }, childComponents);
 
