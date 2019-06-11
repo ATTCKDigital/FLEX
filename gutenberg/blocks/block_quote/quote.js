@@ -56,6 +56,14 @@ export default registerBlockType(
 			__( 'Quote', 'flexlayout' ),
 		],
 		attributes: {
+			imgURL: {
+				type: 'string',
+			},
+			
+			imgID: {
+				type: 'number',
+			},
+
 			content: {
 				type: 'string',
 				default: '',
@@ -74,14 +82,6 @@ export default registerBlockType(
 				type: 'string',
 				default: '',
 			},
-			
-			imgURL: {
-				type: 'string',
-			},
-			
-			imgID: {
-				type: 'number',
-			},
 
 			placeholderSource: {
 				type: 'string',
@@ -95,8 +95,8 @@ export default registerBlockType(
 		},
 
 		edit: props => {
-			const { attributes: { content, placeholder, contentSource, contentCompany, placeholderSource},
-				className, setAttributes, isSelected, imgID, imgURL } = props;
+			const { attributes: { imgID, imgURL, content, placeholder, contentSource, contentCompany, placeholderSource},
+				className, setAttributes, isSelected } = props;
 			const onSelectImage = img => {
 				setAttributes( {
 					imgID: img.id,
