@@ -15,10 +15,12 @@ function update_user_option_admin_color( $color_scheme ) {
 }
 add_filter( 'get_user_option_admin_color', 'update_user_option_admin_color', 5 );
 
-
-//Rename admin theme colors
-function rename_fresh_color_scheme() {
+//Add custom color scheme
+function additional_admin_color_schemes() {
+  //Get the theme directory
+  $theme_dir = get_stylesheet_directory_uri();
 	global $_wp_admin_css_colors;
+		
 	$color_name = $_wp_admin_css_colors['sunrise']->name;
 
 	foreach ($_wp_admin_css_colors as $color) {
@@ -29,16 +31,19 @@ function rename_fresh_color_scheme() {
 
 		if($colorName == 'Coffee') {
 			$color->name = 'Dev';
+			$color->url = $theme_dir . '/dist/admin-colors.css';
+			$color->colors = array( '#316C31', '#458534', '#7BB35A', '#BBDB6A' );
 		}
 
 		if($colorName == 'Blue') {
 			$color->name = 'Staging';
 		}
 	}
- 
+
 	return $_wp_admin_css_colors;
+ 
 }
-add_filter('admin_init', 'rename_fresh_color_scheme');
+add_action('admin_init', 'additional_admin_color_schemes');
 
 //Remove admin theme colors that are unused
 function admin_color_scheme() {

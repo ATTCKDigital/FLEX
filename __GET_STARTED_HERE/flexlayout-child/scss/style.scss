@@ -22,6 +22,8 @@
 @import 'flexlayout/scss/_images.scss';
 @import 'flexlayout/gutenberg/components/gb-component_padding/_padding.scss';
 @import 'flexlayout/gutenberg/components/gb-component_margin/_margin.scss';
+@import 'flexlayout/gutenberg/blocks/block_paragraph/_paragraph.scss';
+@import 'flexlayout/gutenberg/blocks/block_list/_list.scss';
 
 @import 'flexlayout/gutenberg/blocks/block_heading/_heading.scss';
 @import 'flexlayout/scss/_typography-base.scss';
@@ -31,9 +33,6 @@
 @import 'flexlayout/scss/_iconography.scss';
 @import 'flexlayout/scss/_forms.scss';
 @import 'flexlayout/scss/_styleguide.scss';
-@import 'flexlayout/gutenberg/components/gb-component_padding/_padding.scss';
-@import 'flexlayout/gutenberg/components/gb-component_margin/_margin.scss';
-
 
 //Blocks
 @import 'flexlayout/gutenberg/blocks/block_quote/_quote.scss';
