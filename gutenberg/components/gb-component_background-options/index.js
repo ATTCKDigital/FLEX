@@ -46,6 +46,8 @@ function BackgroundOptions( props ) {
 
 	const setBackgroundVideo = value => props.setAttributes( { backgroundVideo: value } );
 	const removeBackgroundVideo = () => props.setAttributes( { backgroundVideo: null } );
+	const setBackgroundVideoThumb = value => props.setAttributes( { backgroundVideoThumb: value } );
+	const removeBackgroundVideoThumb = () => props.setAttributes( { backgroundVideoThumb: null } );
 
 	const setBackgroundColor = value => props.setAttributes( { backgroundColor: value } );
 	const setBackgroundPositionX = value => props.setAttributes( { backgroundPositionX: value } );
@@ -331,59 +333,101 @@ function BackgroundOptions( props ) {
 			return '';
 		}
 
-		if ( ! props.attributes.backgroundVideo ) {
-			return (
-				<div className="media-upload-wrapper">
-					<p>
-						<MediaUpload
-							buttonProps={ {
-								className: 'components-button button button-large',
-							} }
-							onSelect={ setBackgroundVideo }
-							type="video"
-							value=""
-							render={ ( { open } ) => (
-								<Button className="button button-large" onClick={ open }>
-									<Dashicon icon="format-video" /> { __( 'Upload Video' ) }
-								</Button>
-							) }
-						/>
-					</p>
-					<p>
-						{ __( 'Add/Upload a 1920x1080 .mp4 video file.' ) }
-					</p>
-				</div>
-			);
-		}
-
 		return (
-			<div className="video-wrapper">
-				<p>
-					<video className="video-container video-container-overlay">
-						<source
-							type="video/mp4"
-							src={ props.attributes.backgroundVideo.url }
-						/>
-					</video>
-				</p>
-				{ props.isSelected ? (
-					<div className="media-button-wrapper">
-						<p>
-							<Button
-								className="remove-video button button-large"
-								onClick={ removeBackgroundVideo }
-							>
-								<Dashicon icon="no-alt" /> { __( 'Remove Video' ) }
-							</Button>
-						</p>
+			<div>
+				{ !props.attributes.backgroundVideo &&
 
+					<div className="media-upload-wrapper">
 						<p>
-							{ __( 'Add/Upload a 1920x1080 .mp4 video file. Note: background videos are only supported on heroes.' ) }
+							<MediaUpload
+								buttonProps={ {
+									className: 'components-button button button-large',
+								} }
+								onSelect={ setBackgroundVideo }
+								type="video"
+								value=""
+								render={ ( { open } ) => (
+									<Button className="button button-large" onClick={ open }>
+										<Dashicon icon="format-video" /> { __( 'Upload Video' ) }
+									</Button>
+								) }
+							/>
+						</p>
+						<p>
+							{ __( 'Add/Upload a 1920x1080 .mp4 video file.' ) }
 						</p>
 					</div>
-				) : null }
+
+				}
+				{ props.attributes.backgroundVideo &&
+						<div className="video-panel">
+							<div className="video-wrapper margin-small-bottom-1x">
+								<video className="video-container video-container-overlay">
+									<source
+										type="video/mp4"
+										src={ props.attributes.backgroundVideo.url }
+									/>
+								</video>
+							</div>
+							{ props.isSelected ? (
+								<div className="media-button-wrapper">
+									<p>
+										<Button
+											className="remove-video button button-large"
+											onClick={ removeBackgroundVideo }
+										>
+											<Dashicon icon="no-alt" /> { __( 'Remove Video' ) }
+										</Button>
+									</p>
+								</div>
+							) : null }
+						</div>
+				}
+				{ !props.attributes.backgroundVideoThumb &&
+					<div className="media-upload-wrapper">
+						<p>
+							<MediaUpload
+								buttonProps={ {
+									className: 'components-button button button-large',
+								} }
+								onSelect={ setBackgroundVideoThumb }
+								type="image"
+								value=""
+								render={ ( { open } ) => (
+									<Button className="button button-large" onClick={ open }>
+										<Dashicon icon="format-image" /> { __( 'Add Thumb' ) }
+									</Button>
+								) }
+							/>
+						</p>
+						<p>
+							{ __( 'Add a fallback image for when a video is unable to autoplay. (.jpg, .png)' ) }
+						</p>
+					</div>
+				}
+				{ props.attributes.backgroundVideoThumb &&
+						<div className="image-wrapper">
+							<div className="media-button-wrapper">
+								<p>
+									<img
+										src={ props.attributes.backgroundVideoThumb.url }
+										alt={ props.attributes.backgroundVideoThumb.alt }
+									/>
+								</p>
+								<p>
+									<Button
+										className="remove-image button button-large"
+										onClick={ removeBackgroundVideoThumb }
+									>
+										<Dashicon icon="no-alt" /> { __( 'Remove Thumb' ) }
+									</Button>
+								</p>
+						</div>
+					</div>
+				}
 			</div>
 		);
+
 	};
 
 	const colorPanelSelect = () => {

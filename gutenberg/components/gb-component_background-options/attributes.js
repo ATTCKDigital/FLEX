@@ -15,6 +15,9 @@ const BackgroundOptionsAttributes = {
 	backgroundVideo: {
 		type: 'object',
 	},
+	backgroundVideoThumb: {
+		type: 'object',
+	},
 	backgroundColor: {
 		type: 'string',
 	},

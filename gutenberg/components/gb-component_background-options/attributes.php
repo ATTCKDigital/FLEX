@@ -15,6 +15,9 @@ const BACKGROUND_OPTIONS_ATTRIBUTES = [
 	'backgroundVideo' => [
 		'type' => 'object',
 	],
+	'backgroundVideoThumb' => [
+		'type' => 'object',
+	],
 	'backgroundColor' => [
 		'type' => 'string',
 	],

@@ -6,7 +6,6 @@
 function BackgroundOptionsVideoOutput( props ) {
 	if ( 'video' === props.attributes.backgroundType && props.attributes.backgroundVideo ) {
 		return (
-			<div className="video-overlay"></div>,
 			<video
 				className="video-container video-container-overlay"
 				autoPlay="true"
@@ -17,7 +16,12 @@ function BackgroundOptionsVideoOutput( props ) {
 					type="video/mp4"
 					src={ props.attributes.backgroundVideo.url }
 				/>
-			</video>
+			</video>,
+			<div className="video-thumbnail-wrapper">
+				{ props.attributes.backgroundVideoThumb &&
+					<img src={ props.attributes.backgroundVideoThumb.url } />
+				}
+			</div>
 		);
 	}
 }

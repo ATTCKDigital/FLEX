@@ -104,9 +104,9 @@ SetEnv AWS_ACCESS_KEY_ID access_key --> if using the S3 bucket plugin, the AWS a
 
 SetEnv AWS_SECRET_ACCESS_KEY secret_key --> if using the S3 bucket plugin, the AWS secret key for the bucket IAM user (should be a non-admin user)
 
-SetEnv WPENGINE_ACCOUNT dev --> the current environment (these are based on WPEngine server variables, requires an adjustment if using another host). If working locally, it should be set to `dev`
+SetEnv WPENGINE_ACCOUNT dev --> the current environment (these are based on WPEngine server variables and require the use of their variable instead of our own, see note under "WPEngine First Deployment" below). If working locally, it should be set to `dev`
 
-SerEnv DEBUG true --> enable/disable debugging.  Debugging should only be true in  `dev` or `staging`
+SetEnv DEBUG true --> enable/disable debugging.  Debugging should only be true in  `dev` or `staging`
 
 SetEnv url http://flexlayout.test --> local development url
 
@@ -134,6 +134,14 @@ WPEngine allows for git push deployment. At the moment, the parent theme submodu
 10. Copy the contents of the `flexlayout` folder to the SFTP server in `wp-content/themes/flexlayout` (if you have `node_modules` in this folder, you can skip copying those as they are not needed on the server)
 11. Copy your uploads folder to `wp-content/uploads`.
 12. From the admin, go to Custom Fields and sync custom fields. Unfortunately, at this time, ACF block fields do not auto sync.  For each one, select the appropriate block from *Local JSON* drop down then go to Custom Fields > Tools and use "Import Field Groups" to upload them individually.
+
+*Notes on SetEnv* - WPE does not allow use of an `.env` file. As some of our configurations require a value for `SetEnv WPENGINE_ACCOUNT` - we have figured out a way to get around this.  In the child `functions.php` - you will see the following lines (at the top):
+```
+define('WPE_PROD', ''); //define the WPEngine environments
+define('WPE_STAGE', ''); //define the WPEngine environments
+```
+This is where you define the environment for a WPEngine server.  In most cases you will have a staging site and a production site.  The value of the variables is the name of the WPE install. Place the correct values in the `functions.php` file before you deploy to WPE. 
+
 
 #WPEngine Subsequent deployments
 1. Commit your changes. Push the repo to the WPE remote.
