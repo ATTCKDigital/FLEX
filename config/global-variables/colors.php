@@ -41,6 +41,13 @@ $colors = array(
 	),
 
 	array(
+		'default'     => '#ffce2b',
+		'description' => 'Set your site\'s hover color here.',
+		'label'       => 'Link Hover Color',
+		'slug'        => 'color-text-hover',
+	),
+
+	array(
 		'default'     => '#FFFFFF',
 		'description' => 'Default White',
 		'label'       => 'Default White Color',

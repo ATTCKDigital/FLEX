@@ -11,11 +11,13 @@ $blocks = array(
 	'flexlayout/button',
 	'flexlayout/heading',
 	'flexlayout/image',
+	'flexlayout/list',
+	'flexlayout/paragraph',
 	'flexlayout/quote',
 	'flexlayout/shortcode',
 	'flexlayout/source',
 	'flexlayout/socialmedia',
-	'flexlayout/text',
+	// 'flexlayout/text', DEPRECATED, replaced by List and Paragraph. If your project is already using this, leave it in the child theme.
 	'flexlayout/users',
 	'flexlayout/video',
 	'flexlayout/share'

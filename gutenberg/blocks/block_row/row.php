@@ -101,7 +101,11 @@ function render_row_block($attributes, $content) {
 	$desktopImage = background_options_desktop_styles($attributes);
 	$dataLogoColor = logo_color_options_data_attributes($attributes);
 
-	$styleBlock = "<style>.component-background[data-section-id=\"section-{$sectionDataId}\"]{{$mobileImage}} @media only screen and (min-width: 768px){.component-background[data-section-id=\"section-{$sectionDataId}\"]{{$desktopImage}}}</style>";
+	if($mobileImage || $desktopImage) {
+		$styleBlock = "<style>.component-background[data-section-id=\"section-{$sectionDataId}\"]{{$mobileImage}} @media only screen and (min-width: 768px){.component-background[data-section-id=\"section-{$sectionDataId}\"]{{$desktopImage}}}</style>";
+	} else {
+		$styleBlock = '';
+	}
 
 	$innerContent = background_options_video_output($attributes);
 	$innerContent .= scroller_options_output($attributes);

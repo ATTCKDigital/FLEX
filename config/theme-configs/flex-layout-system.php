@@ -74,4 +74,6 @@ include(locate_template('/gutenberg/blocks/block_text/text.php'));
 include(locate_template('/gutenberg/blocks/block_users/users.php'));
 include(locate_template('/gutenberg/blocks/block_video/video.php'));
 include(locate_template('/gutenberg/blocks/block_share/share.php'));
+include(locate_template('/gutenberg/blocks/block_paragraph/paragraph.php'));
+include(locate_template('/gutenberg/blocks/block_list/list.php'));
 
