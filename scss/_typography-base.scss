@@ -59,20 +59,21 @@ p, .body1, .body {
 	letter-spacing: 0;
 	@include primary-regular;
 
+}
+
+p {
 
 	a {
+		color: color('text', 'link');
 		text-decoration: none;
 		transition: color .3s ease-out;
 
 		@include mediaquery(desktop)  {
 			&:hover {
+				color: color('text', 'hover');
 			}
 		}
-	}
-
-	&:last-child {
-		margin-bottom: 0;
-	}
+	} 
 }
 
 span {

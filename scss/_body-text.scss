@@ -9,18 +9,6 @@
 	@include primary-regular;
 
 
-	a {
-		color: color('text', 'link');
-		text-decoration: none;
-		transition: color .3s ease-out;
-
-		@include mediaquery(desktop)  {
-			&:hover {
-				color: color('text', 'hover');
-			}
-		}
-	}
-
 	&:last-child {
 		margin-bottom: 0;
 	}
@@ -33,19 +21,6 @@
 	letter-spacing: 0;
 	@include primary-regular;
 
-
-	a {
-		color: color('text', 'link');
-		text-decoration: none;
-		transition: color .3s ease-out;
-
-		@include mediaquery(desktop)  {
-			&:hover {
-				color: color('text', 'hover');
-			}
-		}
-	}
-
 	&:last-child {
 		margin-bottom: 0;
 	}
@@ -57,19 +32,6 @@
 	margin-bottom: $gap;
 	letter-spacing: 0;
 	@include primary-regular;
-
-
-	a {
-		color: color('text', 'link');
-		text-decoration: none;
-		transition: color .3s ease-out;
-
-		@include mediaquery(desktop)  {
-			&:hover {
-				color: color('text', 'hover');
-			}
-		}
-	}
 
 	&:last-child {
 		margin-bottom: 0;

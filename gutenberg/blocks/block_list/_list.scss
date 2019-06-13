@@ -23,4 +23,16 @@
 			list-style-position: inside;
 		}
 	}
+
+	a {
+		color: color('text', 'link');
+		text-decoration: none;
+		transition: color .3s ease-out;
+
+		@include mediaquery(desktop)  {
+			&:hover {
+				color: color('text', 'hover');
+			}
+		}
+	}
 }
