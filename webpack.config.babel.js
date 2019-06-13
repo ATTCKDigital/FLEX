@@ -57,9 +57,10 @@ module.exports = smp.wrap({
 		'main.js': path.resolve(__dirname, './js/app.js'),
 		'admin.js': path.resolve(__dirname, './js/admin.js'),
 		'style': path.resolve(__dirname, './scss/style.scss'),
-    'print': path.resolve(__dirname, './scss/print.scss'),
-    'admin': path.resolve(__dirname, './scss/admin.scss'),
-    'wysiwyg': path.resolve(__dirname, './scss/wysiwyg.scss'),
+    	'print': path.resolve(__dirname, './scss/print.scss'),
+    	'admin': path.resolve(__dirname, './scss/admin.scss'),
+        'admin-colors': path.resolve(__dirname, './scss/admin-color-scheme.scss'),
+    	'wysiwyg': path.resolve(__dirname, './scss/wysiwyg.scss'),
 	},
 
   devtool: isDevEnv ? 'cheap-eval-source-map' : false,

@@ -23,6 +23,8 @@
 @import 'flexlayout/scss/_body-text.scss';
 @import 'flexlayout/scss/_admin-styles.scss';
 @import 'flexlayout/scss/_images.scss';
+@import 'flexlayout/gutenberg/blocks/block_paragraph/_paragraph.scss';
+@import 'flexlayout/gutenberg/blocks/block_list/_list.scss';
 
 //GB Component Specific Overrides
 @import 'flexlayout/gutenberg/components/gb-component_background-options/_editor.scss';
