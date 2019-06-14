@@ -36,7 +36,7 @@ import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '..
 // Import all of our Padding Options requirements.
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
 // Import all of our Text Color Options requirements.
-import TextColorOptions, { TextColorAttributes, TextColorClasses } from '../../components/gb-component_text-colors';
+import TextColorOptions, { TextColorAttributes, TextColorClasses, TextColorInlineStyles } from '../../components/gb-component_text-colors';
 
 
 /**
@@ -124,6 +124,10 @@ export default registerBlockType(
 						identifier="content"
 						value={ content }
 						onChange={ onChangeMessage }
+						style={ {
+							textAlign: align,
+							...TextColorInlineStyles( props )
+						} }
 						onRemove={ () => onReplace( [] ) }
 						placeholder={ placeholder || __( 'Paragraph text…' ) }
 						multiline='p'
