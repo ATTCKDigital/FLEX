@@ -11,11 +11,11 @@ This plugin *should not be touched or edited*.  All project specific blocks shou
 ## ACF Gutenberg Blocks
 
 ### Adding ACF Blocks
-To create a new acf blocks, duplicate `blocks/blocks_template` in the child `blocks` folder and rename as per naming conventions below. Once the blocks is created, register and enable it in the child `config/global-variables/blocks.php`. (More info in `boilerplate-child/README.md`).
+To create a new acf blocks, duplicate `blocks/blocks_template` in the child `blocks` folder and rename as per naming conventions below. Once the blocks is created, register and enable it in the child `config/global-variables/blocks.php`. (More info in `flexlayout-child/README.md`).
 
 If an existing ACF blocks needs to be edited for the project, copy the block's folder to the child's `blocks` folder and make changes there. Changes made to this blocks in the child theme will override existing. 
 
-Do NOT edit or add native Gutenberg blocks!! If a change is required, please submit a pull request here: https://github.com/ATTCKDigital/boilerplate
+Do NOT edit or add native Gutenberg blocks!! If a change is required, please submit a pull request here: https://github.com/ATTCKDigital/flexlayout
 
 
 #### To add Front End JS to a new ACF block:
@@ -25,14 +25,13 @@ Do NOT edit or add native Gutenberg blocks!! If a change is required, please sub
 
 ## Adding/Editing FLEX Blocks
 
-1. Install plugin
-2. In plugin directory run `npm install`
-3. Run `npm run dev` (this watches for changes).
-4. For the block to appear in the WordPress admin, you must add the block name to the `blocks.php` file in the `global-variables` file in either the parent or child theme (depending on the use case). You must also add it to `blocks/index.js` in the plugin so it is compiled
-5. Make changes.
-6. Once changes are completed, run `npm run build` to build publishable files.  Publishable files should be committed to the repo so that the plugin is in a run ready state.
+1. Checkout the `develop` branch from the [Flexlayout repo](https://github.com/ATTCKDigital/flexlayout) and then create your own feature branch from `develop`
+2. Run `npm run dev` from your child theme (this watches for changes).
+4. Make changes. For the block to appear in the WordPress admin, you must add the block name to the `blocks.php` file in the `global-variables` file in either the parent or child theme (depending on the use case). You must also add it to `blocks/index.js` in the plugin so it is compiled.
+5. Submit a pull request to `develop`.  Your pr will be reviewed and either returned for fixes or approved. 
+6. The development team will then merge the code into `master` and tag it with a release version.
 
-Changes should be tracked in the [plugin repo](https://github.com/ATTCKDigital/boilerplate).  Once changes are complete, submit a pull request to the repo.
+`master` will always be production ready.  `develop` may contain unreleased features but should be used for ALL development.
 
 #### How to use a blocks in a front end template:
 Blocks will automatically be available in the Gutenberg editor if they have been added to `config/global-variables/blocks.php` in the child theme.  The front end output of the block is defined in the block's php file.
