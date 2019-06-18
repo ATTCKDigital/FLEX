@@ -1,3 +1,4 @@
+_v 3.2 June 11, 2019_
 # Flex Layout System Boilerplate
 A boilerplate theme for Flex Layout System WordPress projects
 
