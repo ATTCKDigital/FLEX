@@ -16,4 +16,16 @@
 		@extend .text-columns;
 	}
 
+	a {
+		color: color('text', 'link');
+		text-decoration: none;
+		transition: color .05s ease-out;
+
+		@include mediaquery(desktop) {
+			&:hover {
+				opacity: 1;
+				color: color('text', 'hover');
+			}
+		}
+	}
 }
