@@ -126,6 +126,7 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 
 .editor-block-list__layout .editor-block-list__block.is-selected > .editor-block-list__block-edit:before {
 	outline: 2px dashed cornflowerblue;
+	box-shadow: none;
 }
 
 .components-button:disabled, .components-button[aria-disabled=true] {
@@ -305,4 +306,15 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 
 .components-popover, .components-base-control {
 	color: black;
+}
+
+.editor-post-title__block .editor-post-title__input, .editor-post-permalink {
+	border: 1px solid #59524c;
+	box-shadow: none;
+}
+
+.editor-post-title__block:not(.is-focus-mode).is-selected .editor-post-title__input, .editor-post-title__block:not(.is-focus-mode):not(.has-fixed-toolbar):not(.is-selected) .editor-post-title__input:hover {
+	box-shadow: none;
+	border-width: 1px;
+	border-color: #59524c;
 }
