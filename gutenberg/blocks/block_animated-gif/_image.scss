@@ -1,0 +1,25 @@
+/**** Image Block Styles ****/
+.component-image {
+	.image-wrapper {
+		@include clearRow;
+	}
+
+	img {
+		display: block;
+		width: auto;
+		height: auto;
+		max-width: 100%;
+	} 
+
+	.align-center {
+		img {
+			margin: 0 auto;
+		}
+	}
+
+	.align-right {
+		img {
+			float: right;
+		}
+	}
+}

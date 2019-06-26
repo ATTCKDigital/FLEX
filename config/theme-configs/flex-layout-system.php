@@ -76,4 +76,5 @@ include(locate_template('/gutenberg/blocks/block_video/video.php'));
 include(locate_template('/gutenberg/blocks/block_share/share.php'));
 include(locate_template('/gutenberg/blocks/block_paragraph/paragraph.php'));
 include(locate_template('/gutenberg/blocks/block_list/list.php'));
+include(locate_template('/gutenberg/blocks/block_animated-gif/animated-gif.php'));
 

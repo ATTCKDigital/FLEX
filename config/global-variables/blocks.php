@@ -8,6 +8,7 @@
 $blocks = array(
 	'flexlayout/row', //REQUIRED
 	'flexlayout/column', //REQUIRED
+	'flexlayout/animated-gif',
 	'flexlayout/button',
 	'flexlayout/heading',
 	'flexlayout/image',
