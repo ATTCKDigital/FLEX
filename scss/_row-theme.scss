@@ -2,14 +2,10 @@
 
 
 //Background classes
-.component-background {
+.component-image-background, .component-color-background, .component-video-background {
 	background-size: cover;
 	background-position: right center;
 	background-repeat: no-repeat;
-
-	&.component-column {
-		height: 100%;
-	}
 }
 
 .component-video-background {
