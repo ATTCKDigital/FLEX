@@ -43,14 +43,23 @@ function Video($el) {
 			events: {
 				'onReady': onPlayerReady,
 				'onStateChange': onPlayerStateChange
+			},
+			playerVars: { 
+				'autoplay': 0, 
+				'controls': 1, 
+				'loop': 1,
+				'modestbranding': 1,
+				'playlist':videoId //makes it so that the related videos don't appear
 			}
         });
     }
 
     function onPlayerStateChange(event) {  
-    	//once the video has ended on it's own, bring back the thumbnail and play button      
+    	//once the video has ended on it's own, bring back the thumbnail and play button   
         if(event.data === 0) {          
             $el.removeClass('playingVideo');
+            event.target.pauseVideo();
+            player.seekTo(0);
         }
     }
 
