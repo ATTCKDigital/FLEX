@@ -51,23 +51,28 @@
 	}
 
 	.video-thumbnail-wrapper {
-		bottom: 0;
-		left: -50%;
+		height: 100%;
+		min-height: 100%;
+		min-width: 100%;
 		position: absolute;
-		right: -50%;
-		margin: 0 auto;
 		top: 0;
-		overflow: hidden;
+		left: 0;
+		width: 100%;
 		z-index: 1;
+		opacity: 1;
+		transition: opacity .1s ease-in, z-index .1s ease-in;
 
 		img {
-			bottom: 0;
-			left: -50%;
+			height: 100%;
+			left: 50%;
+			min-height: 100%;
+			min-width: 100%;
+			object-fit: cover;
+			object-position: center center;
 			position: absolute;
-			right: -50%;
-			margin: 0 auto;
-			top: 0;
-			opacity: 1;
+			transform: translate(-50%, -50%);
+			top: 50%;
+			width: 100%;
 		}
 	}
 }
