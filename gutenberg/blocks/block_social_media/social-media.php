@@ -119,34 +119,34 @@ function render_socialmedia_block($attributes) {
 	$githubLink = '';
 
 	if($attributes['facebook'] == 'true' && $facebook) {
-		$facebookLink = '<mark class="social-icon margin-right-2x"><a href="'.$facebook.'" target="_blank"><i class="fab fa-facebook-f"></i></a></mark>';
+		$facebookLink = '<mark class="social-icon margin-right-2x"><a href="'.$facebook.'" target="_blank"><i class="fab fa-facebook-f" aria-label="Visit our Facebook page"></i></a></mark>';
 	}
 
 	if($attributes['twitter'] == 'true' && $twitter) {
-		$twitterLink = '<mark class="social-icon margin-right-2x"><a href="https://twitter.com/'.$twitter.'" target="_blank"><i class="fab fa-twitter"></i></a></mark>';
+		$twitterLink = '<mark class="social-icon margin-right-2x"><a href="https://twitter.com/'.$twitter.'" target="_blank" aria-label="Visit our Twitter page"><i class="fab fa-twitter"></i></a></mark>';
 	}
 
 	if($attributes['instagram'] == 'true' && $instagram) {
-		$instagramLink = '<mark class="social-icon margin-right-2x"><a href="https://www.instagram.com/'.$instagram.'" target="_blank"><i class="fab fa-instagram"></i></a></mark>';
+		$instagramLink = '<mark class="social-icon margin-right-2x"><a href="https://www.instagram.com/'.$instagram.'" target="_blank" aria-label="Visit our Instagram page"><i class="fab fa-instagram"></i></a></mark>';
 	}
 
 	if($attributes['pinterest'] == 'true' && $pinterest) {
-		$pinterestLink = '<mark class="social-icon margin-right-2x"><a href="https://www.pinterest.com/'.$pinterest.'" target="_blank"><i class="fab fa-pinterest-p"></i></a></mark>';
+		$pinterestLink = '<mark class="social-icon margin-right-2x"><a href="https://www.pinterest.com/'.$pinterest.'" target="_blank" aria-label="Visit our Pinterest page"><i class="fab fa-pinterest-p"></i></a></mark>';
 	}
 	if($attributes['linkedin'] == 'true' && $linkedin) {
-		$linkedinLink = '<mark class="social-icon margin-right-2x"><a href="'.$linkedin.'" target="_blank"><i class="fab fa-linkedin-in"></i></a></mark>';
+		$linkedinLink = '<mark class="social-icon margin-right-2x"><a href="'.$linkedin.'" target="_blank" aria-label="Visit our LinkedIn page"><i class="fab fa-linkedin-in"></i></a></mark>';
 	}
 
 	if($attributes['medium'] == 'true' && $medium) {
-		$mediumLink = '<mark class="social-icon margin-right-2x"><a href="'.$medium.'" target="_blank"><i class="fab fa-medium-m"></i></a></mark>';
+		$mediumLink = '<mark class="social-icon margin-right-2x"><a href="'.$medium.'" target="_blank" aria-label="Visit our Medium page"><i class="fab fa-medium-m"></i></a></mark>';
 	}
 
 	if($attributes['youtube'] == 'true' && $youtube) {
-		$youtubeLink = '<mark class="social-icon margin-right-2x"><a href="'.$youtube.'" target="_blank"><i class="fab fa-youtube"></i></a></mark>';
+		$youtubeLink = '<mark class="social-icon margin-right-2x"><a href="'.$youtube.'" target="_blank" aria-label="Visit our YouTube page"><i class="fab fa-youtube"></i></a></mark>';
 	}
 
 	if($attributes['github'] == 'true' && $github) {
-		$githubLink = '<mark class="social-icon margin-right-2x"><a href="'.$github.'" target="_blank"><i class="fab fa-github"></i></a></mark>';
+		$githubLink = '<mark class="social-icon margin-right-2x"><a href="'.$github.'" target="_blank" aria-label="Visit our Github page"><i class="fab fa-github"></i></a></mark>';
 	}
 
 
