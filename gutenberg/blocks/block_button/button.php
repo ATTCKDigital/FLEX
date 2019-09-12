@@ -43,6 +43,10 @@ function register_button_block() {
 				'url2' => [
 					'type' => 'string',
 				],
+				'target' => [
+					'type' => 'boolean',
+					'default' => 'false',
+				],
 				'className' => [
 					'type' => 'string',
 					'default' => ''
@@ -68,14 +72,19 @@ function render_button_block($attributes) {
 	$content2 = array_key_exists('content2', $attributes) ? $attributes['content2'] : null;
 	$url2 = array_key_exists('url2', $attributes) ? $attributes['url2'] : null;
 
+	$targetAttr = null;
+	if($attributes['target'] == 'true') {
+		$targetAttr = ' target="_blank"';
+	}
+
 	$button1 = null;
 	if ($content1 && $url1) {
-		$button1 = "<a href=\"{$url1}\"  class=\"cta {$buttonClass}\">{$content1}</a>";
+		$button1 = "<a href=\"{$url1}\" {$targetAttr} class=\"cta {$buttonClass}\">{$content1}</a>";
 	}
 
 	$button2 = null;
 	if($content2 && $url2) {
-		$button2 = "<a href=\"{$url2}\" class=\"cta {$buttonClass}\">{$content2}</a>";
+		$button2 = "<a href=\"{$url2}\" {$targetAttr} class=\"cta {$buttonClass}\">{$content2}</a>";
 	}
 
 	$output = '';
