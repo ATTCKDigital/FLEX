@@ -76,8 +76,9 @@ function render_column_block($attributes, $content) {
 		$styleBlock = '';
 	}
 
+	$innerContent = background_options_video_output($attributes);
 
-	$output = "<section{$id} class=\"{$class}\" data-section-id=\"section-{$sectionDataId}\" style=\"{$style}\">{$styleBlock}{$content}</section>";
+	$output = "<section{$id} class=\"{$class}\" data-section-id=\"section-{$sectionDataId}\" style=\"{$style}\">{$styleBlock}{$content}{$innerContent}</section>";
 
 	return $output;
 }
