@@ -3,12 +3,12 @@ import Debug from './debug';
 import $ from 'jquery';
 import ObjectAssign from 'es6-object-assign';
 
-//ie11 object assign polyfill
-//todo: figure out why this has to explicitly be in this file.
+// ie11 object assign polyfill
+// TODO: figure out why this has to explicitly be in this file. - Author?
 ObjectAssign.polyfill();
 
 // Import all JS components explicitly.
-//Required
+// Required
 import $$ from './cached-dom-elements';
 import Parallax from './parallax';
 import ElementsInViewport from './elements-in-viewport';
@@ -21,7 +21,7 @@ import LoadMore from './load-more';
 import ScrollTo from './scroll-to';
 import GDPR from '../components/component_footer/gdpr';
 
-//Project Specific
+// Project Specific
 const childComponents = FLEXLAYOUT.ChildComponents || {};
 
 // Add your components here so they get loaded.
@@ -65,7 +65,6 @@ FLEXLAYOUT.Loader.loadComponents = function () {
 		$.each(componentNames, function (i, el) {
 			let componentName = el;
 			let params = $this.data('component-options') || {};
-			// console.log(componentName);
 			let instance = new FLEXLAYOUT.Components[componentName]($this, params);
 
 			// Save component instance references in a global manifest.
