@@ -31,7 +31,7 @@ FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
 	G.viewportWidth	= $window.outerWidth();
 	G.scrollInProgress = false;
 
-	$window.on('scroll', function (e) {
+    $window.on('scroll', function (e) {
 		G.currentScrollTop = $window.scrollTop();
 
 		// Limit how often this fires, so we don't have the JS double-firing.
@@ -39,7 +39,7 @@ FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
 			return;
 		}
 
-		$(document.body).trigger('FLEXLAYOUT.scroll', {
+        $(document.body).trigger('FLEXLAYOUT.scroll', {
 			'e': e,
 			'currentScrollTop': G.currentScrollTop,
 			'viewportHeight':   G.viewportHeight,
@@ -51,8 +51,7 @@ FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
 
 	/*** Detect screen orientation ***/
 	function detectOrientation() {
-
-		// Default is portrait
+        // Default is portrait
 		var orientation = 'orientation-portrait';
 		var videoOrientation = 'video-portrait';
 		var mapOrientation = 'map-portrait';
@@ -123,7 +122,7 @@ FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
 		}, 5000);
 	});
 
-		// Tag body once page has loaded for one-time page load functions
+	// Tag body once page has loaded for one-time page load functions
 	$(function () {
 		$(document.body).addClass('dom-loaded');
 
@@ -132,8 +131,6 @@ FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
 			$(document.body).addClass('dom-has-been-loaded-for-five-seconds');
 		}, 5000);
 	});
-
-
 
 	// Save the viewport height only as neccessary when it changes.
 	$window.resize(function(e) {
@@ -146,7 +143,6 @@ FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
 			'viewportWidth': G.viewportWidth
 		});
 	});
-
 };
 
 // Declares FLEXLAYOUT.GlobalEvents.xsOnly(), smOnly(), etc for running

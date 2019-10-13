@@ -1,8 +1,8 @@
 import $ from 'jquery';
 
-//Global Nav & Header behavior
+// Global Nav & Header behavior
 function Nav($el) {
-	//cache the body
+	// Cache the body
 	var $body = $('body');
 
 	function navToggle() {
@@ -37,7 +37,7 @@ function Nav($el) {
 	}
 
 	function userScrolled() {
-		//check if user is scrolled on page load so that the nav is hidden when they refresh the page
+		// Check if user is scrolled on page load so that the nav is hidden when they refresh the page
 		if ($(window).scrollTop() >= 10) {
 			$('body').addClass('hideNav');
 		}
@@ -47,73 +47,67 @@ function Nav($el) {
 		// Bind to scroll
 		$(document.body).bind('FLEXLAYOUT.scroll', function (e, data) {
 			// Show/hide nav bar background color
-				var scroll = data.currentScrollTop;
+			var scroll = data.currentScrollTop;
 
-				//add a class after short scroll to add background color etc
-				if (scroll >= 10) {
-					if (!$('body').hasClass('backgroundNav')) {
-						$('body').addClass('backgroundNav');
-					}
+			//add a class after short scroll to add background color etc
+			if (scroll >= 10) {
+				if (!$('body').hasClass('backgroundNav')) {
+					$('body').addClass('backgroundNav');
 				}
+			}
 
-				// Hide nav entirely once scrolled past a certain distance
-				if (scroll >= 300) {
-					if (!$('body').hasClass('hideNav')) {
-						$('body').addClass('hideNav');
-					}
+			// Hide nav entirely once scrolled past a certain distance
+			if (scroll >= 300) {
+				if (!$('body').hasClass('hideNav')) {
+					$('body').addClass('hideNav');
 				}
+			}
 
-				// Show again as soon as they start scrolling back up
-				if (data.scrollDirection === 'up') {
-					$('body').removeClass('hideNav');
-				}
+			// Show again as soon as they start scrolling back up
+			if (data.scrollDirection === 'up') {
+				$('body').removeClass('hideNav');
+			}
 
-				// Show again as soon as they start scrolling back up
-				if (data.scrollDirection === 'up' && scroll <= 10) {
-					$('body').removeClass('hideNav backgroundNav');
-				}
+			// Show again as soon as they start scrolling back up
+			if (data.scrollDirection === 'up' && scroll <= 10) {
+				$('body').removeClass('hideNav backgroundNav');
+			}
 		});
 	}
 
 	function logoColor($el) {
-
 		// Change the logo color as you scroll down the page. Can also be used to change the hamburger color. Make color changes using CSS.
 		var row = $('.component-row');
-
 		var footer = $('.global-footer').offset().top
-
 
 		$(document.body).bind('FLEXLAYOUT.scroll', function (e, data) {
 			var viewportHeight = data.viewportHeight;
 			var scrollTop = data.currentScrollTop;
 
-			$(row).each(function() {
+			$(row).each(function () {
 				var rowTop = $(this).offset().top;
 				var logoColor = $(this).data('logo-color');
 
 				if (rowTop <= scrollTop + 20 ) {
-					if(logoColor == 'logo-color-white') {
+					if (logoColor == 'logo-color-white') {
 						$body.addClass('logoLight').removeClass('logoDark');
 					}
 
-					if(logoColor == 'logo-color-dark') {
+					if (logoColor == 'logo-color-dark') {
 						$body.addClass('logoDark').removeClass('logoLight');
 					}
 				}
-				if(scrollTop == 0 ) {
+
+				if (scrollTop == 0 ) {
 					$body.removeClass('logoDark logoLight');
 				}
-
 			});
 
-			if( scrollTop >= footer ) {
+			if ( scrollTop >= footer ) {
 					$body.addClass('logoLight').removeClass('logoDark');
 			}
-
 		});
 	}
-
-
 
 	function bindEvents() {
 		$el = $el;
@@ -121,8 +115,8 @@ function Nav($el) {
 
 		scrolledNav();
 
-		//Use this if subnav is triggered on hover
-		if($(window).width() > 1024) {
+		// Use this if subnav is triggered on hover
+		if ($(window).width() > 1024) {
 			$el.find('.menu-items > .menu-item-has-children').on('mouseenter', openSubNav);
 
 			// If we're hovering outside the nav, close the nav.
@@ -137,7 +131,6 @@ function Nav($el) {
 					closeSubNav(e);
 				}
 			});
-
 		} else {
 			$el.find('.menu-item-has-children > a').on('click', toggleSubNav);
 
