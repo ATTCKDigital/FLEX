@@ -41,6 +41,8 @@ FLEXLAYOUT.Components = Object.assign({
 
 FLEXLAYOUT.Loader = {};
 
+// Components with JS functionality can be defined via data attribute.
+// Supports multiple components separated by space.
 FLEXLAYOUT.Loader.loadComponents = function () {
 	FLEXLAYOUT.Loader.loadedComponents = [];
 
@@ -53,7 +55,15 @@ FLEXLAYOUT.Loader.loadComponents = function () {
 		}
 
 		var $this = $(this);
-		var componentNames = $this.attr('data-component-name').split(',');
+        var componentNames = $this.attr('data-component-name');
+
+        // For Legacy support, replace any commas with spaces first
+        componentNames = componentNames.replace(',', ' ');
+        componentNames = componentNames.replace('  ', ' ');
+
+        // Now, split by space
+		componentNames = componentNames.split(' ');
+
 
 		// A stack of JS components associated with this DOM element.
 		let instances = $this.data('component-instances');
