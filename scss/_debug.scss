@@ -11,8 +11,10 @@
 	display: none;
 }
 
-body.debug {
-	border: 5px solid white;
+body {
+    &.debug {
+	   border: 5px solid white;
+    }
 
 	.breakpoint {
 		width: 100%;
@@ -67,5 +69,4 @@ body.debug {
 			display: block;
 		}
 	}
-
 }
