@@ -1,6 +1,6 @@
+// import $ from 'jquery';
 import FLEXLAYOUT from './clientNamespace';
 import Debug from './debug';
-import $ from 'jquery';
 import ObjectAssign from 'es6-object-assign';
 
 // ie11 object assign polyfill

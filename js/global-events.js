@@ -1,4 +1,4 @@
-// import $ from 'jquery';
+import $ from 'jquery';
 import FLEXLAYOUT from './clientNamespace';
 import $$ from './cached-dom-elements';
 import Debug from './debug';
