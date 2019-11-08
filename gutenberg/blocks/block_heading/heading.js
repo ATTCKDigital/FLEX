@@ -94,15 +94,29 @@ export default registerBlockType(
 		},
 
 		edit: props => {
-			const { attributes: { content, level, align, placeholder, url, imgID, imgURL, isSelected},
-				className, setAttributes } = props;
+			const {
+                attributes: {
+                	content, 
+                	level, 
+                	align, 
+                	placeholder, 
+                	url, 
+                	imgID, 
+                	imgURL, 
+                	isSelected
+                },
+				className, 
+				setAttributes 
+			} = props;
+
 			const tagName = 'h' + level;
 			const onSelectImage = img => {
-				setAttributes( {
+				setAttributes({
 					imgID: img.id,
 					imgURL: img.url,
-				} );
+				});
 			};
+
 			const onRemoveImage = () => {
 				setAttributes({
 					imgID: null,
@@ -111,9 +125,8 @@ export default registerBlockType(
 			}
 
 			return [
-
 				<InspectorControls>
-					<PanelBody title={ __( 'Heading Settings' ) }>
+					<PanelBody title={ __('Heading Settings' ) }>
 						<p>{ __( 'Level' ) }</p>
 						<HeadingToolbar minLevel={ 1 } maxLevel={ 7 } selectedLevel={ level } onChange={ ( newLevel ) => setAttributes( { level: newLevel } ) } />
 						<p>{ __( 'Text Alignment' ) }</p>

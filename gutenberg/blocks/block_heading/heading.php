@@ -75,13 +75,13 @@ function register_heading_block() {
 function render_heading_block($attributes) {
 	$tagName = "h{$attributes['level']}";
 
-	if($attributes['level'] > 6) {
+	if ($attributes['level'] > 6) {
 		$tagName = "h4";
 	}
 
 	$className = $attributes['className'];
 
-	//fall back to support older versions where styles were not used.
+	// Fall back to support older versions where styles were not used.
 	if (strpos($className, 'is-style') !== false) {
 		$headlineClass = '';
 	} else {
@@ -101,13 +101,13 @@ function render_heading_block($attributes) {
 	$wrapperClass .= padding_options_classes($attributes);
 	$wrapperClass .= border_options_classes($attributes);
 
-	if($textColor) {
+	if ($textColor) {
 		$style = ' style="color:'.$textColor.';"';
 	} else {
 		$style = '';
 	}
 
-	if($url) {
+	if ($url) {
 		$link = '<a href="'.$url.'">';
 		$linkClose = '</a>';
 	} else {
