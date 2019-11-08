@@ -1,4 +1,4 @@
-import $ from 'jquery';
+// import $ from 'jquery';
 import FLEXLAYOUT from './clientNamespace';
 import $$ from './cached-dom-elements';
 import Debug from './debug';
@@ -195,6 +195,18 @@ if (Debug.debug === true) {
 				$(".breakpoint-current").show().text("Breakpoint is 5XL");
 			});
 		});
+}
+
+// https://medium.com/@DylanAttal/truncate-a-string-in-javascript-41f33171d5a8
+FLEXLAYOUT.truncateString = function (str, num) {
+	// If the length of str is less than or equal to num
+	// just return str--don't truncate it.
+	if (str.length <= num) {
+		return str;
+	}
+
+	// Return str truncated with '...' concatenated to the end of str.
+	return str.slice(0, num) + '...';
 }
 
 // Trigger scroll event in case anything is in a partial-state waiting
