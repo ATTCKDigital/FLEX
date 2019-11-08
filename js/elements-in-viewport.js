@@ -13,7 +13,7 @@ function ElementsInViewport($el) {
 	var _viewportHeight = $(window).outerHeight();
 
 	function bindEvents() {
-        $(document.body).on('FLEXLAYOUT.apploaded', hideElements);
+        // $(document.body).on('FLEXLAYOUT.apploaded', hideElements);
 
 		$(document.body).on('FLEXLAYOUT.scroll', function (e, data) {
 			// Reset timer to trigger ElementsInViewport
