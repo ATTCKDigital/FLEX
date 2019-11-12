@@ -81,7 +81,7 @@ NOTE: If you have any file access denied errors, you may need to alter the flexl
 `chmod -Rf 644 wp-content/themes/flexlayout/`
 8. Replace `screenshot.png` with a project relevant theme screenshot.
 9. Go to your local install and complete the steps to install Wordpress. Login and change theme to your child theme.
-10. Install required plugins (see [Plugins section](https://github.com/ATTCKDigital/flexlayout))
+10. Install required plugins (see [Plugins section](https://github.com/ATTCKDigital/flexlayout#plugins))
 11. Go to Custom Fields in the admin and sync required fields (see main readme for details).
 11. From the command line, navigate to the newly created CHILD theme and run `npm install`.  This will install all of the associated node modules. Also do this from the `flexlayout` theme (some modules are required to be in the same theme path).
 12. To compile css, js and assets, while working run `npm run dev` from inside the CHILD theme. To run a production ready build of assets, run `npm run build`.
