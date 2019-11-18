@@ -20,6 +20,7 @@ import VideoThumb from '../gutenberg/components/gb-component_background-options/
 import LoadMore from './load-more';
 import ScrollTo from './scroll-to';
 import GDPR from '../components/component_footer/gdpr';
+import Analytics from '../components/component_analytics/analytics';
 
 // Project Specific
 const childComponents = FLEXLAYOUT.ChildComponents || {};
@@ -37,6 +38,7 @@ FLEXLAYOUT.Components = Object.assign({
 	'AnimatedGif': AnimatedGif,
 	'VideoThumb': VideoThumb,
 	'GDPR': GDPR,
+	'Analytics': Analytics
 }, childComponents);
 
 FLEXLAYOUT.Loader = {};
