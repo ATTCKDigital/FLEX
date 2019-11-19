@@ -2,6 +2,7 @@
 .breakpoint {
 	display: none;
 	height: 0;
+	padding: 10px;
 	position: absolute;
 	width: 0;
 }
@@ -13,7 +14,7 @@
 
 body {
 	&.debug {
-        border: 5px solid white;
+		border: 5px solid white;
 
         @include mediaquery(phone)  {
             border-color: green;
@@ -39,12 +40,6 @@ body {
             border-color: yellow;
         }
     }
-
-	.breakpoint {
-		width: 100%;
-		padding: 10px;
-	}
-
 
 	@include mediaquery(phone)  {
 		.breakpoint.phone {

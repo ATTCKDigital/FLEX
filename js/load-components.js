@@ -1,4 +1,5 @@
-// import $ from 'jquery';
+console.log('loaded', '/flexlayout/js/load-components.js');
+
 import FLEXLAYOUT from './clientNamespace';
 import Debug from './debug';
 import ObjectAssign from 'es6-object-assign';
@@ -57,13 +58,13 @@ FLEXLAYOUT.Loader.loadComponents = function () {
 		}
 
 		var $this = $(this);
-        var componentNames = $this.attr('data-component-name');
+		var componentNames = $this.attr('data-component-name');
 
-        // For Legacy support, replace any commas with spaces first
-        componentNames = componentNames.replace(',', ' ');
-        componentNames = componentNames.replace('  ', ' ');
+		// For Legacy support, replace any commas with spaces first
+		componentNames = componentNames.replace(',', ' ');
+		componentNames = componentNames.replace('  ', ' ');
 
-        // Now, split by space
+		// Now, split by space
 		componentNames = componentNames.split(' ');
 
 
@@ -76,6 +77,12 @@ FLEXLAYOUT.Loader.loadComponents = function () {
 
 		$.each(componentNames, function (i, el) {
 			let componentName = el;
+
+			// Exit if not in component list
+			if (typeof FLEXLAYOUT.Components[componentName] === 'undefined') {
+				return;
+			}
+
 			let params = $this.data('component-options') || {};
 			let instance = new FLEXLAYOUT.Components[componentName]($this, params);
 
