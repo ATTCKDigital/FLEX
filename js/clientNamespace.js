@@ -14,6 +14,8 @@ FLEXLAYOUT.Globals = {};
 
 // Console event override
 (function () {
+	// NOTE: Uncomment to see script references in console
+	// return true;
 	var _log = console.log;
 	var _error = console.error;
 	var _warning = console.warning;
@@ -50,7 +52,6 @@ FLEXLAYOUT.Globals = {};
 						// 		}
 						// 	}
 						// }
-
 						argArray.push('color: #555');
 						argArray.push('color: #666; font-style: italic');
 					}
@@ -81,6 +82,7 @@ FLEXLAYOUT.Globals = {};
 	};
 })();
 
+// TODO: Move this into a global utils later
 window.formatPhoneNumber = function (phoneNumberString) {
   var cleaned = ('' + phoneNumberString).replace(/\D/g, '')
   var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/)
