@@ -1,11 +1,19 @@
-import $ from 'jquery';
+console.log('loaded', '/flexlayout/js/global-events.js');
+
 import FLEXLAYOUT from './clientNamespace';
+
+// Shorthand
+var FLEX = FLEXLAYOUT;
+
 import $$ from './cached-dom-elements';
 import Debug from './debug';
 
+// global-events
 FLEXLAYOUT.GlobalEvents = {};
 
 FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
+	console.log('/flexlayout/js/global-events.js', 'initGlobalEvents()');
+
 	var G = FLEXLAYOUT.Globals;
 	var $window = $(window);
 	var self = this;
@@ -51,6 +59,8 @@ FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
 
 	/*** Detect screen orientation ***/
 	function detectOrientation() {
+		console.log('/flexlayout/js/global-events.js', 'detectOrientation()');
+
         // Default is portrait
 		var orientation = 'orientation-portrait';
 		var videoOrientation = 'video-portrait';
@@ -82,6 +92,8 @@ FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
 
 	// Detect whether body content is taller than viewport
 	function detectViewportHeightRatio() {
+		console.log('/flexlayout/js/global-events.js', 'detectViewportHeightRatio()');
+
 		// Tab body if content height is taller than viewport
 		var totalComponentHeight = 0;
 
@@ -199,6 +211,8 @@ if (Debug.debug === true) {
 
 // https://medium.com/@DylanAttal/truncate-a-string-in-javascript-41f33171d5a8
 FLEXLAYOUT.truncateString = function (str, num) {
+	console.log('/flexlayout/js/global-events.js', 'truncateString()');
+
 	// If the length of str is less than or equal to num
 	// just return str--don't truncate it.
 	if (str.length <= num) {
@@ -208,6 +222,59 @@ FLEXLAYOUT.truncateString = function (str, num) {
 	// Return str truncated with '...' concatenated to the end of str.
 	return str.slice(0, num) + '...';
 }
+
+// Cross-component asynchronous event manager
+// - Each pub/sub event expects a data payload defined in the component class,
+//   as well as a listener callback function.
+// - Allows components to listen for and send requests to each other
+FLEXLAYOUT.events = {
+	'form': {
+		// Data store
+		'forms': [],
+
+		// Events
+		'submit': 'form.submit',
+		'blur': 'form.fieldblur',
+		'error': 'form.fielderror',
+
+		// Bindings
+		register: function (data) {
+			console.log('/flexlayout/js/global-events.js', 'FLEXLAYOUT.events.formregister(), arguments: ', arguments);
+			
+			// Save references to store
+			this.forms.push({
+				'id': data.id,
+				'listener': data.listener,
+				'$el': data.el
+			});
+
+			var _this = this;
+
+			$(FLEX).bind(FLEX.events.form.error, function (e, data) {
+				console.log('/flexlayout/js/global-events.js', 'FLEXLAYOUT.events.formregister(), [FLEX.events.form.error TRIGGERED] arguments: ', arguments);
+
+				$(_this.forms).each(function (index, value) {
+					if (value.id === data.id) {
+						this.listener('error', data);
+					}
+				})
+			});
+
+			$(FLEX).bind(FLEX.events.form.submit, function (e, data) {
+				console.log('/flexlayout/js/global-events.js', 'FLEXLAYOUT.events.formregister(), [FLEX.events.form.error TRIGGERED] arguments: ', arguments);
+
+				$(_this.forms).each(function (index, value) {
+					if (value.id === data.id) {
+						this.listener('submit', data);
+					}
+				})
+			});
+
+			return this.forms[data.id];
+		}
+	}
+};
+
 
 // Trigger scroll event in case anything is in a partial-state waiting
 // for scroll (e.g., initial nav opacity)
