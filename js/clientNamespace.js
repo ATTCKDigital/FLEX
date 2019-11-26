@@ -39,7 +39,7 @@ FLEXLAYOUT.Globals = {};
 						argArray.push('%c   loaded: %c ' + arguments[1]);
 						argArray.push('color: #BADA55');
 						argArray.push('color: #efefef');
-					} else if (arguments[0].startsWith('/')) {
+					} else if (arguments[0].startsWith && arguments[0].startsWith('/')) {
 						argArray = [];
 
 						// Otherwise, if the first item starts with '/', grey it out
