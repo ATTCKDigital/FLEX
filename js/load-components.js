@@ -101,5 +101,31 @@ FLEXLAYOUT.Loader.loadComponents = function () {
 	});
 };
 
+FLEXLAYOUT.Loader.loadComponent = function ($el) {
+	var componentName = $el.attr('data-component-name');
+
+	if (typeof componentName === 'undefined') return;
+
+	// For Legacy support, replace any commas with spaces first
+	componentName = componentName.replace(',', ' ');
+	componentName = componentName.replace('  ', ' ');
+
+	// Now, split by space
+	componentName = componentName.split(' ');
+
+	$.each(componentName, function (i, el) {
+		let componentName = el;
+
+		// Exit if not in component list
+		if (typeof FLEXLAYOUT.Components[componentName] === 'undefined') {
+			console.log('FLEX.js ‹ loadComponents(), unknown component: ', componentName);
+			return;
+		}
+
+		let params = $el.data('component-options') || {};
+		let instance = new FLEXLAYOUT.Components[componentName]($el, params);
+	});
+};
+
 
 export default FLEXLAYOUT.Loader;
