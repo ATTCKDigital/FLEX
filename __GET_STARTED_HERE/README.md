@@ -44,7 +44,7 @@ Sample config:
 <VirtualHost *:80>
     ServerAdmin email@domain.com
     DocumentRoot "/Location/Of/Project/Code/"
-    ServerName dev.project.com
+    ServerName local.project.com
     ErrorLog "/Location/Of/Project/Code/dev.project.com-error_log"
     CustomLog "/Location/Of/Project/Code/dev.project.com-access_log" common
     IncludeOptional "/Location/Of/Project/Code/.env"
@@ -61,14 +61,14 @@ Sample config:
 
 2. Update `hosts` file to include VirtualHost domain  
 Almost certainly at `/etc/hosts`  
-To the end of the file add: `127.0.0.1 dev.project.com` (domain used for VirtualHost)
+To the end of the file add: `127.0.0.1 local.project.com` (domain used for VirtualHost)
 
 3. Restart Apache `sudo apachectl restart`
 
 ### NEW PROJECT - Installing Wordpress and this theme 
 
 1. Create a new github repository under ATTCKDigital if one doesn't already exist. 
-2. Download [WordPress](https://wordpress.org/download/) into your project directory and add the "flexlayout" repo as a submodule in `wp-content/themes`. The theme folder (aka where the submodule repo will live *must* be called `flexlayout`). `flexlayout` is the parent theme. Delete default wordpress themes.
+2. Download [WordPress](https://wordpress.org/download/) into your project directory and add the "flexlayout" repo as a submodule in `wp-content/themes`. The theme folder (aka where the submodule repo will live *must* be called `flexlayout`). `flexlayout` is the parent theme. Leave the default wordpress themes until after you have logged into wp-admin and chosen your new theme.
 3. Use **git submodules**, to add the "flexlayout" parent theme to `wp-content/themes`.  
 *With ssh*: `git submodule add git@github.com:ATTCKDigital/flexlayout.git`  
 *With HTTPS*: `git submodule add https://github.com/ATTCKDigital/flexlayout.git`
@@ -77,9 +77,11 @@ To the end of the file add: `127.0.0.1 dev.project.com` (domain used for Virtual
 5. Change the variables in the `.env` folder to match your local development settings. Once you have changed the variables, you will need to `restart apache`. From this point, you should be able to navigate to the local project url in the browser and finish the WordPress Install process. See below for description of each `.env` var.
 6. Copy the `flexlayout-child` theme into the themes folder and rename the theme to a project relevant name.  Majority of the coding done will be done in the child theme. Any file added to the child theme with the same name and same path as in the parent, will override the parent; EXCLUDING existing functions.
 7. Edit the WordPress `style.css` file to reflect the project specifics (`Theme Name` and `Text Domain`).
+NOTE: If you have any file access denied errors, you may need to alter the flexlayout file permissions:
+`chmod -Rf 644 wp-content/themes/flexlayout/`
 8. Replace `screenshot.png` with a project relevant theme screenshot.
 9. Go to your local install and complete the steps to install Wordpress. Login and change theme to your child theme.
-10. Install required plugins (see [Plugins section](https://github.com/ATTCKDigital/flexlayout))
+10. Install required plugins (see [Plugins section](https://github.com/ATTCKDigital/flexlayout#plugins))
 11. Go to Custom Fields in the admin and sync required fields (see main readme for details).
 11. From the command line, navigate to the newly created CHILD theme and run `npm install`.  This will install all of the associated node modules. Also do this from the `flexlayout` theme (some modules are required to be in the same theme path).
 12. To compile css, js and assets, while working run `npm run dev` from inside the CHILD theme. To run a production ready build of assets, run `npm run build`.
