@@ -31,8 +31,8 @@ import BackgroundColorOptions, { BackgroundColorOptionsAttributes, BackgroundCol
 export default registerBlockType(
 	'flexlayout/text',
 	{
-		title: __( 'DEPRECATED Rich Text', 'block title' ),
-		description: __( 'This block has been deprecated, please use the Paragraph or List block depending on your needs.' ),
+		title: __( 'Rich Text', 'block title' ),
+		description: __( 'This block is similar to the Paragraph or List block depending on your needs.' ),
 		icon: icons.text,
 		category: 'common',
 		parent: ['flexlayout/column'],

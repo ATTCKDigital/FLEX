@@ -13,6 +13,10 @@ function ElementsInViewport($el) {
 	var _viewportHeight = $(window).outerHeight();
 
 	function bindEvents() {
+		console.log('/flexlayout/\tjs/\telements-in-viewport.js', 'bindEvents()');
+
+        // $(document.body).on('FLEXLAYOUT.apploaded', hideElements);
+
 		$(document.body).on('FLEXLAYOUT.scroll', function (e, data) {
 			// Reset timer to trigger ElementsInViewport
 			_scrollstopTimer = 0;
@@ -36,6 +40,8 @@ function ElementsInViewport($el) {
 	}
 
 	function checkTimer() {
+		// console.log('/flexlayout/\tjs/\telements-in-viewport.js', 'checkTimer()');
+
 		// Check if user stopped scrolling for more than two seconds and show anything that
 		// would be visible but hasn't hit the vertical scroll threshold yet
 		if (_scrollstopTimer > 500 && _scrollstopTimer !== 1) {
@@ -51,6 +57,8 @@ function ElementsInViewport($el) {
 	}
 
 	function inViewElements(scrollThreshold) {
+		// console.log('/flexlayout/\tjs/\telements-in-viewport.js', 'inViewElements()');
+
 		// Set Default scroll threshold
 		if (typeof scrollThreshold === 'undefined') {
 			scrollThreshold = _viewportHeight*.8;
@@ -68,18 +76,29 @@ function ElementsInViewport($el) {
 	}
 
 	function hideAllElements() {
-		// Show protected areas
+		console.log('/flexlayout/\tjs/\telements-in-viewport.js', 'hideAllElements()');
+
+        // Show protected areas
 		$('.component-header').addClass('no-element-in-view');
 		$('.component-footer').addClass('no-element-in-view');
 		$('.component-gdpr p').addClass('no-element-in-view');
 		$('.area-inner h4, .area-inner p').addClass('no-element-in-view');
 
-		// First, hide all elements
-		$('body').find('h3, h4, h5, h6, p, span, .cta, img, .category-list, .area-inner').addClass('prepare-in-view');
+        // Set default elements to hide
+        var elementsToHide = 'h3, h4, h5, h6, p, span, .cta, img, .category-list, .area-inner';
 
-		// Add elements that need to be manipulated here:
+        // Check for elements override from child
+        var elementsToHideOverride = $(document.body).attr('data-elements-to-hide');
 
-		$('body').find('h3, h4, h5, h6, p, span, .cta, img, .category-list, .area-inner').each(function (index, value) {
+        if (typeof elementsToHideOverride !== 'undefined') {
+            elementsToHide = elementsToHideOverride;
+        }
+
+        // First, hide all elements
+		$('body').find(elementsToHide).addClass('prepare-in-view');
+
+		// Add elements that need to be manipulated here
+		$('body').find(elementsToHide).each(function (index, value) {
 			if (!$(this).hasClass('no-element-in-view') && !$(this).parents('.no-element-in-view').length) {
 				$(this).addClass('prepare-in-view');
 			}
@@ -90,6 +109,8 @@ function ElementsInViewport($el) {
 	}
 
 	function indexAllElements() {
+		console.log('/flexlayout/\tjs/\telements-in-viewport.js', 'indexAllElements()');
+
 		$('.element-in-view').each(function () {
 			// Convert offset values to strings since they're floats and not a valid array ID
 			_inViewElementsOffsetIndex.push({

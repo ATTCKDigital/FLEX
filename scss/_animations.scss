@@ -4,9 +4,11 @@
 // Set initial styles before "faded-in" class added
 .prepare-in-view {
 	opacity: .5;
+	transition: opacity .3s;
 
 	&.element-in-view {
 		opacity: 1;
+		transition: opacity .3s;
 	}
 }
 

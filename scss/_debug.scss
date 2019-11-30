@@ -2,6 +2,7 @@
 .breakpoint {
 	display: none;
 	height: 0;
+	padding: 10px;
 	position: absolute;
 	width: 0;
 }
@@ -11,61 +12,68 @@
 	display: none;
 }
 
-body.debug {
-	border: 5px solid white;
+body {
+	&.debug {
+		border: 5px solid white;
 
-	.breakpoint {
-		width: 100%;
-		padding: 10px;
-	}
+        @include mediaquery(phone)  {
+            border-color: green;
+        }
 
+        @include mediaquery(tablet-portrait)  {
+            border-color: blue;
+        }
+
+        @include mediaquery(tablet-landscape)  {
+            border-color: purple;
+        }
+
+        @include mediaquery(desktop)  {
+            border-color: orange;
+        }
+
+        @include mediaquery(xl) {
+            border-color: yellow;
+        }
+
+        @include mediaquery(xl2) {
+            border-color: yellow;
+        }
+    }
 
 	@include mediaquery(phone)  {
-		border-color: green;
-
 		.breakpoint.phone {
 			display: block;
 		}
 	}
 
 	@include mediaquery(tablet-portrait)  {
-		border-color: blue;
-
 		.breakpoint.tablet-portrait {
 			display: block;
 		}
 	}
 
 	@include mediaquery(tablet-landscape)  {
-		border-color: purple;
-
 		.breakpoint.tablet-landscape {
 			display: block;
 		}
 	}
 
 	@include mediaquery(desktop)  {
-		border-color: orange;
-
 		.breakpoint.xl {
 			display: block;
 		}
 	}
 
 	@include mediaquery(xl) {
-		border-color: yellow;
-
 		.breakpoint.xl {
 			display: block;
 		}
 	}
 
 	@include mediaquery(xl2) {
-		border-color: yellow;
-
 		.breakpoint.xl2 {
 			display: block;
 		}
 	}
-
 }

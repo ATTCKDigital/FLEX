@@ -1,11 +1,19 @@
-import $ from 'jquery';
+console.log('loaded', '/flexlayout/js/global-events.js');
+
 import FLEXLAYOUT from './clientNamespace';
+
+// Shorthand
+var FLEX = FLEXLAYOUT;
+
 import $$ from './cached-dom-elements';
 import Debug from './debug';
 
+// global-events
 FLEXLAYOUT.GlobalEvents = {};
 
 FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
+	console.log('/flexlayout/\tjs/\tglobal-events.js', 'initGlobalEvents()');
+
 	var G = FLEXLAYOUT.Globals;
 	var $window = $(window);
 	var self = this;
@@ -31,7 +39,7 @@ FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
 	G.viewportWidth	= $window.outerWidth();
 	G.scrollInProgress = false;
 
-	$window.on('scroll', function (e) {
+    $window.on('scroll', function (e) {
 		G.currentScrollTop = $window.scrollTop();
 
 		// Limit how often this fires, so we don't have the JS double-firing.
@@ -39,7 +47,7 @@ FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
 			return;
 		}
 
-		$(document.body).trigger('FLEXLAYOUT.scroll', {
+        $(document.body).trigger('FLEXLAYOUT.scroll', {
 			'e': e,
 			'currentScrollTop': G.currentScrollTop,
 			'viewportHeight':   G.viewportHeight,
@@ -51,8 +59,9 @@ FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
 
 	/*** Detect screen orientation ***/
 	function detectOrientation() {
+		console.log('/flexlayout/\tjs/\tglobal-events.js', 'detectOrientation()');
 
-		// Default is portrait
+        // Default is portrait
 		var orientation = 'orientation-portrait';
 		var videoOrientation = 'video-portrait';
 		var mapOrientation = 'map-portrait';
@@ -83,6 +92,8 @@ FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
 
 	// Detect whether body content is taller than viewport
 	function detectViewportHeightRatio() {
+		console.log('/flexlayout/\tjs/\tglobal-events.js', 'detectViewportHeightRatio()');
+
 		// Tab body if content height is taller than viewport
 		var totalComponentHeight = 0;
 
@@ -123,7 +134,7 @@ FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
 		}, 5000);
 	});
 
-		// Tag body once page has loaded for one-time page load functions
+	// Tag body once page has loaded for one-time page load functions
 	$(function () {
 		$(document.body).addClass('dom-loaded');
 
@@ -132,8 +143,6 @@ FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
 			$(document.body).addClass('dom-has-been-loaded-for-five-seconds');
 		}, 5000);
 	});
-
-
 
 	// Save the viewport height only as neccessary when it changes.
 	$window.resize(function(e) {
@@ -146,7 +155,6 @@ FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
 			'viewportWidth': G.viewportWidth
 		});
 	});
-
 };
 
 // Declares FLEXLAYOUT.GlobalEvents.xsOnly(), smOnly(), etc for running
@@ -200,6 +208,59 @@ if (Debug.debug === true) {
 			});
 		});
 }
+
+// Cross-component asynchronous event manager
+// - Each pub/sub event expects a data payload defined in the component class,
+//   as well as a listener callback function.
+// - Allows components to listen for and send requests to each other
+FLEXLAYOUT.events = {
+	'form': {
+		// Data store
+		'forms': [],
+
+		// Events
+		'submit': 'form.submit',
+		'blur': 'form.fieldblur',
+		'error': 'form.fielderror',
+
+		// Bindings
+		register: function (data) {
+			console.log('/flexlayout/\tjs/\tglobal-events.js', 'FLEXLAYOUT.events.formregister(), arguments: ', arguments);
+			
+			// Save references to store
+			this.forms.push({
+				'id': data.id,
+				'listener': data.listener,
+				'$el': data.el
+			});
+
+			var _this = this;
+
+			$(FLEX).bind(FLEX.events.form.error, function (e, data) {
+				console.log('/flexlayout/\tjs/\tglobal-events.js', 'FLEXLAYOUT.events.formregister(), [FLEX.events.form.error TRIGGERED] arguments: ', arguments);
+
+				$(_this.forms).each(function (index, value) {
+					if (value.id === data.id) {
+						this.listener('error', data);
+					}
+				})
+			});
+
+			$(FLEX).bind(FLEX.events.form.submit, function (e, data) {
+				console.log('/flexlayout/\tjs/\tglobal-events.js', 'FLEXLAYOUT.events.formregister(), [FLEX.events.form.error TRIGGERED] arguments: ', arguments);
+
+				$(_this.forms).each(function (index, value) {
+					if (value.id === data.id) {
+						this.listener('submit', data);
+					}
+				})
+			});
+
+			return this.forms[data.id];
+		}
+	}
+};
+
 
 // Trigger scroll event in case anything is in a partial-state waiting
 // for scroll (e.g., initial nav opacity)

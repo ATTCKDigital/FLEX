@@ -8,9 +8,11 @@ import icons from '../../../js/icons.js'
  * Internal block libraries
  */
 const { __ } = wp.i18n;
+
 const {
 	registerBlockType,
 } = wp.blocks;
+
 const {
 	RichText,
 	AlignmentToolbar,
@@ -20,6 +22,7 @@ const {
 	InnerBlocks,
 	MediaUpload,
 } = wp.editor;
+
 const {
 	Toolbar,
 	Button,
@@ -30,7 +33,6 @@ const {
 	PanelRow,
 	TextControl,
 	SelectControl,
-
 } = wp.components;
 
 /**
@@ -39,12 +41,13 @@ const {
 
 // Import all of our Margin Options requirements.
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
+
 // Import all of our Border Options requirements.
 import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
 
 
 /**
-	* Register block
+ * Register block
  */
 export default registerBlockType(
 	'flexlayout/video',

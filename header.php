@@ -50,7 +50,6 @@
 	<div class="breakpoint xl2"></div>
 	<div class="breakpoint-current"></div>
 
-
 	<?php echo Utils::render_template('config/theme-includes/svg-sprite.php'); ?>
 	<?php echo Utils::render_template('components/component_nav/nav.php'); ?>
 	<div class="content-container component" data-component-name="ElementsInViewport">

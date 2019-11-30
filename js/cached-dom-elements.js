@@ -4,6 +4,8 @@
  * or caches upon first use.
  */
 
+console.log('loaded', '/flexlayout/js/cached-dom-elements.js');
+
 import $ from 'jquery';
 
 window.cachedDomElements = (function () {

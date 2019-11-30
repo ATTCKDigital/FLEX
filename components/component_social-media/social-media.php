@@ -14,9 +14,6 @@
 
 <div class="component-social-media component">
 	<?php if($facebook || $twitter || $instagram || $linkedin || $medium || $youtube || $pinterest || $github) { ?>
-		<?php if($this->displayTitle){ ?>
-			<h4 class="<?= $this->displayTitleClass;?> <?= $this->alignment;?> margin-global-bottom-2x"><?= $this->displayTitle;?></h4>
-		<?php } ?>
 		<div class="social-media-list <?= $this->colorClass;?> <?= $this->alignment;?>">
 			<?php if($twitter) { ?>
 				<mark class="social-icon margin-global-right-2x <?= $this->iconStyle;?>"><a href="<?= $twitter;?>" target="_blank"><i class="fab fa-twitter"></i></a></mark>

@@ -26,7 +26,8 @@
 		}
 	}
 
-	&.cta-solid, &.is-style-cta-solid {
+	&.cta-solid, 
+    &.is-style-cta-solid {
 		background-color: $white;
 		color:  $black;
 
@@ -38,7 +39,8 @@
 		}
 	}
 
-	&.cta-accent, &.is-style-cta-accent {
+	&.cta-accent, 
+    &.is-style-cta-accent {
 		border-color: color('brand', 'accent');
 		background-color: color('brand', 'accent');
 		color: $white;
@@ -53,7 +55,8 @@
 		}
 	}
 
-	&.cta-negative, &.is-style-cta-negative {
+	&.cta-negative, 
+    &.is-style-cta-negative {
 		border-color: $white;
 		color: $white;
 		background: transparent;

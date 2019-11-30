@@ -30,8 +30,8 @@ function register_quote_block() {
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flexlayout/quote', [
-		'attributes'      => array_merge(
+	register_block_type('flexlayout/quote', [
+		'attributes' => array_merge(
 			[
 				'content' => [
 					'type' => 'string',
@@ -91,28 +91,25 @@ function render_quote_block($attributes) {
 	$contentCompany = array_key_exists('contentCompany', $attributes) ? $attributes['contentCompany'] : null;
 	$contentSource = array_key_exists('contentSource', $attributes) ? $attributes['contentSource'] : null;
 
-
-
-
-	if($imgID) {
+	if ($imgID) {
 		$image = '<div class="image-wrapper">'.wp_get_attachment_image($attributes['imgID'], 'full').'</div>';
 	} else {
 		$image = '';
 	}
 
-	if($textColor) {
+	if ($textColor) {
 		$textStyle = ' style="color:'.$textColor.';"';
 	} else {
 		$textStyle = '';
 	}
 
-	if($contentSource) {
+	if ($contentSource) {
 		$contentSource = '<div class="quote-source"'.$textStyle.'>'.$attributes['contentSource'].'</div>';
 	} else {
 		$contentSource = '';
 	}
 
-	if($contentCompany) {
+	if ($contentCompany) {
 		$contentCompany = '<div class="quote-company"'.$textStyle.'>'.$attributes['contentCompany'].'</div>';
 	} else {
 		$contentCompany = '';

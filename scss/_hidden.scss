@@ -44,11 +44,19 @@
 	@include mediaquery(desktop)  {
 		display: none;
 	}
-
 }
 
-//hidden always
-.front-end .hidden {
+// NOTE: Find out which elements use class="front-end". -DP
+// hidden always
+.front-end {
+	.hidden {
+		display: none !important;
+		visibility: hidden;
+	}
+}
+
+.hide,
+.hidden {
 	display: none !important;
 	visibility: hidden;
 }

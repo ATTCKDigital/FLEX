@@ -175,32 +175,32 @@
 	}
 
 	h1 {
-		@extend .headline2;
+		@extend .headline2 !optional;
 		margin-bottom: $gap;
 	}
 
 	h2 {
-		@extend .headline3;
+		@extend .headline3 !optional;
 		margin-bottom: $gap;
 	}
 
 	h3 {
-		@extend .headline3;
+		@extend .headline3 !optional;
 		margin-bottom: $gap;
 	}
 
 	h4 {
-		@extend .headline4;
+		@extend .headline4 !optional;
 		margin-bottom: $gap;
 	}
 
 	h5 {
-		@extend .headline5;
+		@extend .headline5 !optional;
 		margin-bottom: $gap;
 	}
 
 	h6 {
-		@extend .headline6;
+		@extend .headline6 !optional;
 		margin-bottom: $gap;
 	}
 }

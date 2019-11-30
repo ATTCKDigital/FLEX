@@ -26,6 +26,9 @@ h3, h4, h5, h6, p, span, .cta, img {
 
 html {
 	height: 100%;
+
+	// NOTE: Don't uncomment this. It prevents $(window).scroll() reporting
+    // overflow-x: hidden;
 }
 
 body {
