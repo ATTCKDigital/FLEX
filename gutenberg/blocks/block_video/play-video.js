@@ -2,13 +2,11 @@
 //okatodo: allow video block to support vimeo
 
 function Video($el) {
-	
-
 
 	function playVideo() {
 
 		var videoId = $(this).attr('data-video-id');
-		var video = document.getElementById(videoId); 
+		var video = document.getElementById(videoId);
 
 		video.play();
 
@@ -23,7 +21,7 @@ function Video($el) {
 	function pauseVideo() {
 
 		var videoId = $(this).attr('data-video-id');
-		var video = document.getElementById(videoId); 
+		var video = document.getElementById(videoId);
 
 		video.pause();
 
@@ -47,9 +45,9 @@ function Video($el) {
         });
     }
 
-    function onPlayerStateChange(event) {  
-    	//once the video has ended on it's own, bring back the thumbnail and play button      
-        if(event.data === 0) {          
+    function onPlayerStateChange(event) {
+    	//once the video has ended on it's own, bring back the thumbnail and play button
+        if(event.data === 0) {
             $el.removeClass('playingVideo');
         }
     }
@@ -88,8 +86,29 @@ function Video($el) {
 		};
 	}
 
+    function playBrightcoveVideo() {
+        var videoId = $(this).attr('data-video-id');
+        var video = document.querySelector('video[data-video-id="'+videoId+'"]');
 
-	
+        video.play();
+
+        $el.addClass('playingVideo');
+
+        video.addEventListener('ended',function(){
+            $el.removeClass('playingVideo');
+        },false);
+    }
+
+    function pauseBrightcoveVideo() {
+        var videoId = $(this).attr('data-video-id');
+        var video = document.querySelector('video[data-video-id="'+videoId+'"]');
+
+        video.pause();
+
+        $el.removeClass('playingVideo');
+    }
+
+
 	this.init = function ($el) {
 		$el = $el;
 		$el.find('.video-wrapper[data-video-type="upload"] .playVideo').on('click', playVideo);
@@ -101,7 +120,10 @@ function Video($el) {
 			loadPlayer();
 		}
 
-
+        if($el.find('.video-wrapper').attr('data-video-type') === 'brightcove') {
+            $el.find('.video-wrapper[data-video-type="brightcove"] .playVideo').on('click', playBrightcoveVideo);
+            $el.find('.video-wrapper[data-video-type="brightcove"] .pauseVideo').on('click', pauseBrightcoveVideo);
+        }
 
 		return this;
 	}

@@ -85,7 +85,7 @@ function render_video_block($attributes, $content) {
         $brightcoveVideoId = $attributes['brightcoveVideo'];
         $brightcoveAccountId = $attributes['brightcoveAccount'];
         $videoId = $brightcoveVideoId;
-        $video = '<iframe src="https://players.brightcove.net/'.$brightcoveAccountId.'/default_default/index.html?videoId='.$brightcoveVideoId.'" allowFullScreen webkitallowfullscreen mozallowfullscreen></iframe>';
+        $video = '<video class="video-js" data-account="'.$brightcoveAccountId.'" data-player="default" data-embed="default" controls data-video-id="'.$brightcoveVideoId.'"></video><script src="https://players.brightcove.net/5098879600001/default_default/index.min.js"></script>';
     }
 
 	$thumbnail = '';
