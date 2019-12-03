@@ -12,7 +12,7 @@ import Debug from './debug';
 FLEXLAYOUT.GlobalEvents = {};
 
 FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
-	console.log('/flexlayout/js/global-events.js', 'initGlobalEvents()');
+	console.log('/flexlayout/\tjs/\tglobal-events.js', 'initGlobalEvents()');
 
 	var G = FLEXLAYOUT.Globals;
 	var $window = $(window);
@@ -59,7 +59,7 @@ FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
 
 	/*** Detect screen orientation ***/
 	function detectOrientation() {
-		console.log('/flexlayout/js/global-events.js', 'detectOrientation()');
+		console.log('/flexlayout/\tjs/\tglobal-events.js', 'detectOrientation()');
 
         // Default is portrait
 		var orientation = 'orientation-portrait';
@@ -92,7 +92,7 @@ FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
 
 	// Detect whether body content is taller than viewport
 	function detectViewportHeightRatio() {
-		console.log('/flexlayout/js/global-events.js', 'detectViewportHeightRatio()');
+		console.log('/flexlayout/\tjs/\tglobal-events.js', 'detectViewportHeightRatio()');
 
 		// Tab body if content height is taller than viewport
 		var totalComponentHeight = 0;
@@ -209,20 +209,6 @@ if (Debug.debug === true) {
 		});
 }
 
-// https://medium.com/@DylanAttal/truncate-a-string-in-javascript-41f33171d5a8
-FLEXLAYOUT.truncateString = function (str, num) {
-	console.log('/flexlayout/js/global-events.js', 'truncateString()');
-
-	// If the length of str is less than or equal to num
-	// just return str--don't truncate it.
-	if (str.length <= num) {
-		return str;
-	}
-
-	// Return str truncated with '...' concatenated to the end of str.
-	return str.slice(0, num) + '...';
-}
-
 // Cross-component asynchronous event manager
 // - Each pub/sub event expects a data payload defined in the component class,
 //   as well as a listener callback function.
@@ -239,7 +225,7 @@ FLEXLAYOUT.events = {
 
 		// Bindings
 		register: function (data) {
-			console.log('/flexlayout/js/global-events.js', 'FLEXLAYOUT.events.formregister(), arguments: ', arguments);
+			console.log('/flexlayout/\tjs/\tglobal-events.js', 'FLEXLAYOUT.events.formregister(), arguments: ', arguments);
 			
 			// Save references to store
 			this.forms.push({
@@ -251,7 +237,7 @@ FLEXLAYOUT.events = {
 			var _this = this;
 
 			$(FLEX).bind(FLEX.events.form.error, function (e, data) {
-				console.log('/flexlayout/js/global-events.js', 'FLEXLAYOUT.events.formregister(), [FLEX.events.form.error TRIGGERED] arguments: ', arguments);
+				console.log('/flexlayout/\tjs/\tglobal-events.js', 'FLEXLAYOUT.events.formregister(), [FLEX.events.form.error TRIGGERED] arguments: ', arguments);
 
 				$(_this.forms).each(function (index, value) {
 					if (value.id === data.id) {
@@ -261,7 +247,7 @@ FLEXLAYOUT.events = {
 			});
 
 			$(FLEX).bind(FLEX.events.form.submit, function (e, data) {
-				console.log('/flexlayout/js/global-events.js', 'FLEXLAYOUT.events.formregister(), [FLEX.events.form.error TRIGGERED] arguments: ', arguments);
+				console.log('/flexlayout/\tjs/\tglobal-events.js', 'FLEXLAYOUT.events.formregister(), [FLEX.events.form.error TRIGGERED] arguments: ', arguments);
 
 				$(_this.forms).each(function (index, value) {
 					if (value.id === data.id) {

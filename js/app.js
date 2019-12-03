@@ -1,6 +1,5 @@
 /*!
  * FLEX v1.11.17.19
- * https://attck.com/
  *
  * Copyright JS Foundation and other contributors
  * Released under the MIT license
@@ -15,7 +14,7 @@ console.log('loaded', '/flexlayout/js/app.js');
 import $ from 'jquery';
 
 // https://stackoverflow.com/questions/34338411/how-to-import-jquery-using-es6-syntax
-window.$ = $;
+window.$ = window.jQuery = $;
 
 import cssVars from 'css-vars-ponyfill';
 import GlobalEvents from './global-events';
