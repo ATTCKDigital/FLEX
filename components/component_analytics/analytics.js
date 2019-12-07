@@ -43,22 +43,22 @@ function Analytics($el) {
 
 				switch (true) {
 					case classes[i].indexOf('event-category') > -1 :
-						event['category'] = classes.category.substr('event-category'.length + 1);
+						event['category'] = classes[i].substr('event-category'.length + 1);
 						match = true;
 						break;
 
 					case classes[i].indexOf('event-action') > -1 :
-						event['action'] = classes.action.substr('event-action'.length + 1);
+						event['action'] = classes[i].substr('event-action'.length + 1);
 						match = true;
 						break;
 
 					case classes[i].indexOf('event-label') > -1 :
-						event['label'] = classes.label.substr('event-label'.length + 1);
+						event['label'] = classes[i].substr('event-label'.length + 1);
 						match = true;
 						break;
 
 					case classes[i].indexOf('event-value') > -1 :
-						event['value'] = classes.value.substr('event-value'.length + 1);
+						event['value'] = classes[i].substr('event-value'.length + 1);
 						match = true;
 						break;
 
