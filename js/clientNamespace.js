@@ -64,15 +64,7 @@ FLEXLAYOUT.showConsoleLogs = false || FLEXLAYOUT.getQueryVariable('debug');
 	// NOTE: Uncomment to see script references in console
 	// return true;
 	var _log = console.log;
-	var _error = console.error;
-	var _warning = console.warning;
-
-	// console.error = function (errMessage) {
-	// 	if (FLEXLAYOUT.showConsoleLogs) {
-	// 		_error.apply(console, arguments);
-	// 	}
-	// };
-
+	
 	console.log = function (logMessage) {
 		if (FLEXLAYOUT.showConsoleLogs) {
 			var argArray = arguments;
@@ -91,14 +83,6 @@ FLEXLAYOUT.showConsoleLogs = false || FLEXLAYOUT.getQueryVariable('debug');
 
 						// Otherwise, if the first item starts with '/', grey it out
 						argArray.push('%c   ' + arguments[0] + ' › %c ' + arguments[1]);
-
-						// for (const prop in arguments) {
-						// 	if (arguments.hasOwnProperty(prop)) {
-						// 		if (arguments[(prop * 1) + 2]) {
-						// 			argArray.push(arguments[(prop * 1) + 2]);
-						// 		}
-						// 	}
-						// }
 						argArray.push('color: #89a9c8');
 						argArray.push('color: #0b286d; font-style: italic');
 					}
@@ -116,17 +100,8 @@ FLEXLAYOUT.showConsoleLogs = false || FLEXLAYOUT.getQueryVariable('debug');
 			}
 
 			_log.apply(console, argArray);
-
-			// Reset value
-			// delete FLEXLAYOUT.debugpath;
 		}
 	};
-
-	// console.warning = function (warnMessage) {
-	// 	if (FLEXLAYOUT.showConsoleLogs) {
-	// 		_warning.apply(console, arguments);
-	// 	}
-	// };
 })();
 
 console.log('loaded', '/flexlayout/js/clientNamespace.js');
