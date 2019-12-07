@@ -122,6 +122,10 @@ th, tr, td {
 	text-align: right;
 }
 
+.center {
+	margin: 0 auto;
+}
+
 .underline {
 	// for use in WYSIWYG as <u></u> was deprecated in 4.7+
 	display: inline;
