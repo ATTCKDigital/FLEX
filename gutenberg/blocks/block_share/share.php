@@ -122,19 +122,19 @@ function render_share_block($attributes) {
 	$newtitle = str_replace($search, $replace, $postTitle);
 
 	if($attributes['facebook'] == 'true') {
-		$facebookLink = '<mark class="social-icon margin-right-2x sharelink"'.$styleIcon.'><a href="https://www.facebook.com/sharer/sharer.php?u='.$encoded.'" data-options="menubar=1,resizable=1,width=600,height=400" target="_blank"><i class="fab fa-facebook-f"></i></a></mark>';
+		$facebookLink = '<mark class="social-icon margin-right-2x sharelink"'.$styleIcon.'><a href="https://www.facebook.com/sharer/sharer.php?u='.$encoded.'" data-options="menubar=1,resizable=1,width=600,height=400" target="_blank" aria-label="link to share on Facebook"><i class="fab fa-facebook-f"></i></a></mark>';
 	}
 
 	if($attributes['twitter'] == 'true') {
-		$twitterLink = '<mark class="social-icon margin-right-2x sharelink"'.$styleIcon.'><a href="https://twitter.com/home/?status='.$newtitle.': '.$encoded.' via @'. get_field('twitter_username', 'options').'" data-options="menubar=1,resizable=1,width=600,height=400" target="_blank"><i class="fab fa-twitter"></i></a></mark>';
+		$twitterLink = '<mark class="social-icon margin-right-2x sharelink"'.$styleIcon.'><a href="https://twitter.com/home/?status='.$newtitle.': '.$encoded.' via @'. get_field('twitter_username', 'options').'" data-options="menubar=1,resizable=1,width=600,height=400" target="_blank" aria-label="link to share on Twitter"><i class="fab fa-twitter"></i></a></mark>';
 	}
 
 	if($attributes['linkedin'] == 'true') {
-		$linkedinLink = '<mark class="social-icon margin-right-2x"'.$styleIcon.'><a href="https://www.linkedin.com/sharing/share-offsite/?mini=true&url='.$encoded.'&title='.$newtitle.' data-options="menubar=1,resizable=1,width=600,height=400" " target="_blank"><i class="fab fa-linkedin-in"></i></a></mark>';
+		$linkedinLink = '<mark class="social-icon margin-right-2x"'.$styleIcon.'><a href="https://www.linkedin.com/sharing/share-offsite/?mini=true&url='.$encoded.'&title='.$newtitle.' data-options="menubar=1,resizable=1,width=600,height=400" " target="_blank" aria-label="link to share on Linkedin"><i class="fab fa-linkedin-in"></i></a></mark>';
 	}
 
 	if($attributes['email'] == 'true') {
-		$emailLink = '<mark class="social-icon margin-right-2x"'.$styleIcon.'><a href="mailto:?subject=I thought you might be interested in '.$newtitle.'&body='.$newtitle .' '.$encoded.'" data-options="menubar=1,resizable=1,width=600,height=400" target="_blank"><i class="far fa-envelope"></i></a></mark>';
+		$emailLink = '<mark class="social-icon margin-right-2x"'.$styleIcon.'><a href="mailto:?subject=I thought you might be interested in '.$newtitle.'&body='.$newtitle .' '.$encoded.'" data-options="menubar=1,resizable=1,width=600,height=400" target="_blank" aria-label="link to share via email"><i class="far fa-envelope"></i></a></mark>';
 	}
 
 

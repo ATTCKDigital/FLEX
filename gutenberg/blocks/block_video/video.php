@@ -45,7 +45,11 @@ function register_video_block() {
 					'type' => 'string',
 					'default' => '',
 				],
-                
+                'brightcoveVideo' => [
+                    'type' => 'string',
+                    'default' => '',
+                ],
+
 			],
 			MARGIN_OPTIONS_ATTRIBUTES,
 			BORDER_OPTIONS_ATTRIBUTES
@@ -67,15 +71,22 @@ function render_video_block($attributes, $content) {
 	$video = '';
 	$videoId = '';
 	$youtubeVideoId = '';
+    $brightcoveVideoId = '';
+    $brightcoveAccountId = '';
 
 	if ( array_key_exists('uploadVideo', $attributes) ) {
 		$videoId = 'video-'.mt_rand(10,1000);
 		$video = '<video id="'.$videoId.'"><source type="video/mp4" src="'.$attributes['uploadVideo']['url'].'" /></video>';
-	} else if (array_key_exists('youtubeVideo', $attributes)) {
+	} else if (array_key_exists('youtubeVideo', $attributes) && $attributes['youtubeVideo'] !== "") {
 		$youtubeVideoId = $attributes['youtubeVideo'];
 		$videoId = $youtubeVideoId;
 		$video = '<div id="player" data-video-id="'.$youtubeVideoId.'"></div>';
-	}
+	} else if (array_key_exists('brightcoveVideo', $attributes)  && $attributes['brightcoveVideo'] !== "") {
+        $brightcoveVideoId = $attributes['brightcoveVideo'];
+        $brightcoveAccountId = $attributes['brightcoveAccount'];
+        $videoId = $brightcoveVideoId;
+        $video = '<video class="video-js" data-account="'.$brightcoveAccountId.'" data-player="default" data-embed="default" controls data-video-id="'.$brightcoveVideoId.'"></video><script src="https://players.brightcove.net/5098879600001/default_default/index.min.js"></script>';
+    }
 
 	$thumbnail = '';
 	if ( array_key_exists('videoThumbnail', $attributes) ) {

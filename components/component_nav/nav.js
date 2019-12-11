@@ -49,28 +49,31 @@ function Nav($el) {
 			// Show/hide nav bar background color
 			var scroll = data.currentScrollTop;
 
-			//add a class after short scroll to add background color etc
-			if (scroll >= 10) {
-				if (!$('body').hasClass('backgroundNav')) {
-					$('body').addClass('backgroundNav');
+			// Enable nav peek only on home page and HCP pages (en & fr) per ZH@SQNY 12/4/19
+			if ($('body').hasClass('page-home') || $('body').hasClass('page-professionnels-de-la-sante') || $('body').hasClass('page-healthcare-providers')) {
+				//add a class after short scroll to add background color etc
+				if (scroll >= 10) {
+					if (!$('body').hasClass('backgroundNav')) {
+						$('body').addClass('backgroundNav');
+					}
 				}
-			}
 
-			// Hide nav entirely once scrolled past a certain distance
-			if (scroll >= 300) {
-				if (!$('body').hasClass('hideNav')) {
-					$('body').addClass('hideNav');
+				// Hide nav entirely once scrolled past a certain distance
+				if (scroll >= 300) {
+					if (!$('body').hasClass('hideNav')) {
+						$('body').addClass('hideNav');
+					}
 				}
-			}
 
-			// Show again as soon as they start scrolling back up
-			if (data.scrollDirection === 'up') {
-				$('body').removeClass('hideNav');
-			}
+				// Show again as soon as they start scrolling back up
+				if (data.scrollDirection === 'up') {
+					$('body').removeClass('hideNav');
+				}
 
-			// Show again as soon as they start scrolling back up
-			if (data.scrollDirection === 'up' && scroll <= 10) {
-				$('body').removeClass('hideNav backgroundNav');
+				// Show again as soon as they start scrolling back up
+				if (data.scrollDirection === 'up' && scroll <= 10) {
+					$('body').removeClass('hideNav backgroundNav');
+				}
 			}
 		});
 	}
