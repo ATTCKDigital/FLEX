@@ -2,7 +2,7 @@
 	//Global Nav 
 ?>
 
-<header class="component-header component" data-component-name="Nav">
+<header class="component-header component" data-component-name="Nav" role="banner">
 	<div class="header-inner">
 		<div class="hamburger-wrapper">
 			<mark class="hamburger"></mark>
@@ -14,7 +14,7 @@
 			?>
 			<img src="<?= $customLogoURL;?>" class="nav-logo" alt="<?= bloginfo('name');?>" title="<?= bloginfo('name');?>" />
 		</a>
-		<nav class="main-nav">
+		<nav class="main-nav" aria-label="Main site navigation" role="navigation">
 			<ul class="menu-items">
 				<?php
 					//Default is 'primary' nav. 
