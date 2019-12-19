@@ -1,5 +1,5 @@
 <?php // Global Footer Nav ?>
-			<nav class="footer-nav">
+			<nav class="footer-nav" aria-label="Site navigation in the footer">
 				<ul class="menu-items">
 					<?php
 						//Default is 'primary' nav. 

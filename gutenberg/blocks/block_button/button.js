@@ -23,7 +23,8 @@ const {
 	PanelBody,
 	PanelRow,
 	Dashicon,
-	IconButton
+	IconButton,
+	CheckboxControl
 
 } = wp.components;
 
@@ -70,6 +71,10 @@ export default registerBlockType(
 			placeholder: {
 				type: 'string',
 			},
+			target: {
+				type: 'boolean',
+				default: 'false'
+			},
 			...MarginOptionsAttributes
 		},
 		styles: [
@@ -80,7 +85,7 @@ export default registerBlockType(
 		],
 
 		edit: props => {
-			const { attributes: { content, align, placeholder, url, content2, url2},
+			const { attributes: { content, align, placeholder, url, content2, url2, target},
 				className, setAttributes, isSelected } = props;
 			const tagName = 'span';
 
@@ -93,6 +98,11 @@ export default registerBlockType(
 								setAttributes( { align: nextAlign } );
 							} }
 						/>
+						<CheckboxControl
+							label={__('Open in new window?', 'flexlayout')}
+							checked={target}
+							onChange={target => setAttributes({ target })}
+					  	/>
 					</PanelBody>
 					<MarginOptions
 						{ ...props }

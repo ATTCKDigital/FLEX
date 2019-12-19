@@ -76,8 +76,10 @@ function render_column_block($attributes, $content) {
 		$styleBlock = '';
 	}
 
+	//video will only appear if the column has content
+	$innerContent = background_options_video_output($attributes);
 
-	$output = "<section{$id} class=\"{$class}\" data-section-id=\"section-{$sectionDataId}\" style=\"{$style}\">{$styleBlock}{$content}</section>";
+	$output = "<section{$id} class=\"{$class}\" data-section-id=\"section-{$sectionDataId}\" style=\"{$style}\">{$styleBlock}{$content}{$innerContent}</section>";
 
 	return $output;
 }
