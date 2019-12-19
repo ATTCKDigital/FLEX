@@ -1,15 +1,15 @@
-_v 3.2.4 June 26, 2019_
-# Flex Layout System Boilerplate
-A boilerplate theme for Flex Layout System WordPress projects
+_v 3.3.0 December 18, 2019_
+# FLEX (Flexible Layout Experience)
+A parent theme for FLEX WordPress projects
 
-READ [__GET_STARTED_HERE](https://github.com/ATTCKDigital/flexlayout/tree/master/__GET_STARTED_HERE) BEFORE cloning!
+READ [__GET_STARTED_HERE](https://github.com/ATTCKDigital/FLEX/tree/master/__GET_STARTED_HERE) BEFORE cloning!
 
 ## Theme Structure
 
-### Flexlayout Theme
-The Flexlayout theme is a parent theme that sets a varierty of default configurations and base theme files. When a new project is started, a child theme is created specific to the project. 
+### FLEX Theme
+The FLEX theme is a parent theme that sets a varierty of default configurations and base theme files. When a new project is started, a child theme is created specific to the project. 
 
-All changes should be made in the child theme. If a change to the parent theme is required, create a feature branch in the `flexlayout` submodule and submit a pull request detailing why the change was necessary and any possible red flags or repercussions to existing Flexlayout projects. Pull requests should be assigned to Oka and Sarah.
+All changes should be made in the child theme. If a change to the parent theme is required, create a feature branch in the `FLEX` submodule and submit a pull request detailing why the change was necessary and any possible red flags or repercussions to existing FLEX projects.
 
 ### Components Structure
 Components are the pieces of the theme. These pieces include such things as the nav, the footer, reusable partials (share tools, social media bar, content feeds, etc). Components are NOT part of Gutenberg Blocks.
@@ -20,7 +20,7 @@ Each component folder contains the following, specific to the component:
 - js file (if component has js aspect)
 - readme.md specific to component (if needed)
 
-See detailed README.md in [`components`[(https://github.com/ATTCKDigital/flexlayout/tree/master/components)] folder.
+See detailed README.md in [`components`[(https://github.com/ATTCKDigital/FLEX/tree/master/components)] folder.
 
 #### Including a Component
 Components can be included in any template file.
@@ -30,9 +30,9 @@ The `Utils::render_template()` function should be used to include all files.
 See example of how to include a template in the README.md in `components` folder.
 
 ### Blocks
-Wordpress 5.0+ uses Gutenberg as an editing interface. This interface is comprised of `blocks`.  Flexlayout uses a custom block system based on the row/column grid paradigm. 
+Wordpress 5.0+ uses Gutenberg as an editing interface. This interface is comprised of `blocks`.  FLEX uses a custom block system based on the row/column grid paradigm. 
 
-The Flexlayout theme comes with a standard set of blocks. Per project, custom blocks can be created via ACF. See the readme in the sample child theme in the `gutenberg` folder for additional information.
+The FLEX theme comes with a standard set of blocks. Per project, custom blocks can be created via ACF. See the readme in the sample child theme in the `gutenberg` folder for additional information.
 
 
 ### Assets
@@ -119,7 +119,7 @@ There are a few additional field groups that come with the example child theme. 
 See detailed README.md in `config` folder.
 
 ## WordPress Settings
-This is _not_ a complete list of all WordPress native settings. It is a list of commonly adjusted settings relevant to the _flexlayout_.
+This is _not_ a complete list of all WordPress native settings. It is a list of commonly adjusted settings relevant to the _FLEX_.
 
 ### General settings
 From wp-admin: Settings > General
@@ -163,4 +163,4 @@ Users have the ability to set the available colors via the admin. In most cases,
 
 
 Created 12/3/2018 by okadots for ATTCK
-Updated 5/24/2019 by okadots for ATTCK
+Updated 12/18/2019 by dennisplucinik for ATTCK
