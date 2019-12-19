@@ -68,29 +68,29 @@ To the end of the file add: `127.0.0.1 local.project.com` (domain used for Virtu
 ### NEW PROJECT - Installing Wordpress and this theme 
 
 1. Create a new github repository under ATTCKDigital if one doesn't already exist. 
-2. Download [WordPress](https://wordpress.org/download/) into your project directory and add the "flexlayout" repo as a submodule in `wp-content/themes`. The theme folder (aka where the submodule repo will live *must* be called `flexlayout`). `flexlayout` is the parent theme. Leave the default wordpress themes until after you have logged into wp-admin and chosen your new theme.
-3. Use **git submodules**, to add the "flexlayout" parent theme to `wp-content/themes`.  
-*With ssh*: `git submodule add git@github.com:ATTCKDigital/flexlayout.git`  
-*With HTTPS*: `git submodule add https://github.com/ATTCKDigital/flexlayout.git`
+2. Download [WordPress](https://wordpress.org/download/) into your project directory and add the "FLEX" repo as a submodule in `wp-content/themes`. The theme folder (aka where the submodule repo will live *must* be called `FLEX`). `FLEX` is the parent theme. Leave the default wordpress themes until after you have logged into wp-admin and chosen your new theme.
+3. Use **git submodules**, to add the "FLEX" parent theme to `wp-content/themes`.  
+*With ssh*: `git submodule add git@github.com:ATTCKDigital/FLEX.git`  
+*With HTTPS*: `git submodule add https://github.com/ATTCKDigital/FLEX.git`
 3. From `__GET_STARTED_HERE`, copy `.env`, `gitignore` (rename `.gitignore`), `.htaccess` and `wp-config.php` into the WordPress root
 4. Go to [https://api.wordpress.org/secret-key/1.1/salt/](https://api.wordpress.org/secret-key/1.1/salt/) and get new Authentication Unique Keys and Salts. Paste the generated snippet into `lines 67-74` of `wp-config.php` in the WordPress root
 5. Change the variables in the `.env` folder to match your local development settings. Once you have changed the variables, you will need to `restart apache`. From this point, you should be able to navigate to the local project url in the browser and finish the WordPress Install process. See below for description of each `.env` var.
-6. Copy the `flexlayout-child` theme into the themes folder and rename the theme to a project relevant name.  Majority of the coding done will be done in the child theme. Any file added to the child theme with the same name and same path as in the parent, will override the parent; EXCLUDING existing functions.
+6. Copy the `flex-child` theme into the themes folder and rename the theme to a project relevant name.  Majority of the coding done will be done in the child theme. Any file added to the child theme with the same name and same path as in the parent, will override the parent; EXCLUDING existing functions.
 7. Edit the WordPress `style.css` file to reflect the project specifics (`Theme Name` and `Text Domain`).
-NOTE: If you have any file access denied errors, you may need to alter the flexlayout file permissions:
-`chmod -Rf 644 wp-content/themes/flexlayout/`
+NOTE: If you have any file access denied errors, you may need to alter the FLEX file permissions:
+`chmod -Rf 644 wp-content/themes/FLEX/`
 8. Replace `screenshot.png` with a project relevant theme screenshot.
 9. Go to your local install and complete the steps to install Wordpress. Login and change theme to your child theme.
-10. Install required plugins (see [Plugins section](https://github.com/ATTCKDigital/flexlayout#plugins))
+10. Install required plugins (see [Plugins section](https://github.com/ATTCKDigital/FLEX#plugins))
 11. Go to Custom Fields in the admin and sync required fields (see main readme for details).
-11. From the command line, navigate to the newly created CHILD theme and run `npm install`.  This will install all of the associated node modules. Also do this from the `flexlayout` theme (some modules are required to be in the same theme path).
+11. From the command line, navigate to the newly created CHILD theme and run `npm install`.  This will install all of the associated node modules. Also do this from the `FLEX` theme (some modules are required to be in the same theme path).
 12. To compile css, js and assets, while working run `npm run dev` from inside the CHILD theme. To run a production ready build of assets, run `npm run build`.
 13. Enable/disable Gutenberg blocks and set global variables for the project.  See child theme `README.md` for details.
 14. Review child theme `functions.php` and enable/disable functions needed for project.
 
 
 #### .env Variables
-SetEnv FLEX_DB_NAME flexlayout --> the name of your local database
+SetEnv FLEX_DB_NAME FLEX --> the name of your local database
 
 SetEnv FLEX_USERNAME root --> the username of your local database
 
@@ -110,9 +110,9 @@ SetEnv WPENGINE_ACCOUNT dev --> the current environment (these are based on WPEn
 
 SetEnv DEBUG true --> enable/disable debugging.  Debugging should only be true in  `dev` or `staging`
 
-SetEnv url http://flexlayout.test --> local development url
+SetEnv url http://local.flexprojectname.com --> local development url
 
-SetEnv tablePrefix flexlayout_ --> database table prefix.  Change to a namespaced value, ie. `flexlayout_`.  This is a security measure.
+SetEnv tablePrefix flex_ --> database table prefix.  Change to a namespaced value, ie. `flex_`.  This is a security measure.
 
 ## Webpack
 Webpack is used to compile all of the site assets (fonts, theme images, javascript, css). To use
@@ -133,7 +133,7 @@ WPEngine allows for git push deployment. At the moment, the parent theme submodu
 7. Setup SFTP via your desired FTP GUI or command line.
 8. Commit your changes. Push the repo to the WPE remote.
 9. Run `npm run build` from your theme and copy the `dist` folder to the theme in the SFTP server.
-10. Copy the contents of the `flexlayout` folder to the SFTP server in `wp-content/themes/flexlayout` (if you have `node_modules` in this folder, you can skip copying those as they are not needed on the server)
+10. Copy the contents of the `FLEX` folder to the SFTP server in `wp-content/themes/FLEX` (if you have `node_modules` in this folder, you can skip copying those as they are not needed on the server)
 11. Copy your uploads folder to `wp-content/uploads`.
 12. From the admin, go to Custom Fields and sync custom fields. Unfortunately, at this time, ACF block fields do not auto sync.  For each one, select the appropriate block from *Local JSON* drop down then go to Custom Fields > Tools and use "Import Field Groups" to upload them individually.
 
@@ -170,7 +170,7 @@ Copy everything BUT `node_modules` into the appropriate theme folders. (`node_mo
 4. If ACF changes were made -- From the admin, go to Custom Fields and sync custom fields. Unfortunately, at this time, ACF block fields do not auto sync.  For each one, select the appropriate block from *Local JSON* drop down then go to Custom Fields > Tools and use "Import Field Groups" to upload them individually.
 
 ## Settings
-See main [README.md](https://github.com/ATTCKDigital/flexlayout) for detailed information on WordPress admin, config and plugin settings.
+See main [README.md](https://github.com/ATTCKDigital/FLEX) for detailed information on WordPress admin, config and plugin settings.
 
 Created 12/3/2018 by okadots for ATTCK
-Updated 5/24/2019 by okadots for ATTCK
+Updated 12/18/2019 by dennisplucinik for ATTCK
