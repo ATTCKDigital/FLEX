@@ -1,7 +1,10 @@
-/**** Element in Viewport - Prevents flashing for Element in Viewport transition
-*	(js adds opacity 1 once loaded)
-*	Add elements or classes that are present BEFORE js and are affected by the Element in Viewport script
-****/
+/** 
+ * Element in Viewport - Prevents flashing for Element in Viewport transition
+ * (js adds opacity 1 once loaded)
+ *
+ * Add elements or classes that are present BEFORE js and are affected 
+ * by the Element in Viewport script
+ **/
 
 h3, h4, h5, h6, p, span, .cta, img {
 	// opacity: .5;

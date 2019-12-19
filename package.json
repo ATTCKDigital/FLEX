@@ -1,5 +1,5 @@
 {
-	"name": "FLEXLAYOUTWPTemplate",
+	"name": "FLEX-WP-Template",
 	"version": "1.0.0",
 	"description": "All WordPress sites start here.",
 	"private": true,
@@ -8,11 +8,11 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/ATTCKDigital/flex-layout.git"
+		"url": "git+https://github.com/ATTCKDigital/FLEX.git"
 	},
-	"author": "FLEXLAYOUT",
+	"author": "ATTCK",
 	"bugs": {
-		"url": "https://github.com/ATTCKDigital/flex-layout/issues"
+		"url": "https://github.com/ATTCKDigital/FLEX/issues"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.3.4",

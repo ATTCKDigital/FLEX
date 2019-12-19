@@ -1,22 +1,22 @@
 <?php
-/**
- * Template: Search results
- * Description: Wordpress template for search results
- *
- */
+	/**
+	 * Template: Search results
+	 * Description: Wordpress template for search results
+	 *
+	 */
 	get_header();
 
 	$searchQuery = get_search_query();
 
-	//get the search query
+	// Get the search query
 	$allsearch = new WP_Query("s=$s&showposts=9999");
 	$key = esc_html($s, 1);
 
-	//count the number of results
+	// Count the number of results
 	$count = $allsearch->post_count;
 	wp_reset_query();
 
-	//get the max number of pages
+	// Get the max number of pages
 	$maxPages = $wp_query->max_num_pages;
 ?>
 <section class="component-row margin-mobile-top-40">
@@ -25,7 +25,7 @@
 			<div class="column pure-u-lg-4-12 pure-u-md-4-12 pure-u-sm-12-12">
 				<div class="header header-tab header-tab-small">
 					<div class="header-tab-inner">
-						<h2 class="headline2 color-standard-white"><?php _e('Search', '_flexlayout');?></h2>
+						<h2 class="headline2 color-standard-white"><?php _e('Search', '_flex');?></h2>
 					</div>
 				</div>
 			</div>
@@ -57,8 +57,5 @@
         "authorID"      => ''
 	));
 
-?>
-
-<?php 
 	get_footer();
 ?>
