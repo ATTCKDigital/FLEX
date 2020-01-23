@@ -15,8 +15,6 @@ function Analytics($el) {
 			var eventID = $(this).attr('data-event-id');
 			var eventSource = $(this).attr('data-event-source');
 			var eventMedium = $(this).attr('data-event-medium');
-
-
 		});
 
 		// Try to find event info in classes
