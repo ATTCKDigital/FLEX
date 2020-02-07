@@ -3,6 +3,5 @@
 /assets/.DS_Store
 /node_modules
 /dist
-/scss/_css-vars.scss
 /__GET_STARTED_HERE/
 screenshot.png
