@@ -21,7 +21,7 @@ const {
     InspectorControls,
     InnerBlocks,
     MediaUpload,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
     Toolbar,

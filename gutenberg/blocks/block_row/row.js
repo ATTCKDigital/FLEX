@@ -19,7 +19,7 @@ const {
 	BlockAlignmentToolbar,
 	InspectorControls,
 	InnerBlocks,
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	Toolbar,
 	Button,

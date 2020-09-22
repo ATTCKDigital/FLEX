@@ -16,7 +16,7 @@ const {
 	InspectorControls,
 	MediaUpload,
 	URLInput
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	Button,
 	PanelBody,
@@ -59,7 +59,7 @@ export default registerBlockType(
 			imgURL: {
 				type: 'string',
 			},
-			
+
 			imgID: {
 				type: 'number',
 			},
@@ -128,7 +128,7 @@ export default registerBlockType(
 						`component-quote`,
 						...MarginOptionsClasses( props ),
 						...PaddingOptionsClasses( props ),
-						...BorderOptionsClasses( props ),						
+						...BorderOptionsClasses( props ),
 						...BackgroundOptionsClasses( props ),
 						...TextColorClasses( props ),
 
@@ -182,11 +182,11 @@ export default registerBlockType(
 									{ icons.remove }
 								</Button>
 							) : null }
-							
+
 							<img
 								src={ imgURL }
 							/>
-							
+
 						</div>
 					)}
 					<RichText

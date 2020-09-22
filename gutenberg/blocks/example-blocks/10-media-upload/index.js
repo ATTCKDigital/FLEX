@@ -14,7 +14,7 @@ const {
 const {
     Editable,
     MediaUpload,
-} = wp.editor;
+} = wp.blockEditor;
 const {
     Button,
 } = wp.components;
@@ -31,7 +31,7 @@ export default registerBlockType(
         icon: {
             background: 'rgba(254, 243, 224, 0.52)',
             src: icons.upload,
-        },         
+        },
         keywords: [
             __( 'Image', 'flexlayout' ),
             __( 'MediaUpload', 'flexlayout' ),

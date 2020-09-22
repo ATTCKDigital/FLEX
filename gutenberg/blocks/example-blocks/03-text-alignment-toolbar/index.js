@@ -15,7 +15,7 @@ const {
   RichText,
   AlignmentToolbar,
   BlockControls,
-} = wp.editor;
+} = wp.blockEditor;
 
 
 /**
@@ -30,7 +30,7 @@ export default registerBlockType(
         icon: {
             background: 'rgba(254, 243, 224, 0.52)',
             src: 'editor-alignleft',
-        },                   
+        },
         keywords: [
             __( 'Toolbar', 'flexlayout' ),
             __( 'Settings', 'flexlayout' ),
@@ -73,9 +73,9 @@ export default registerBlockType(
         save: props => {
           const { textAlignment, message } = props.attributes;
           return (
-            <div 
-                className="message-body" 
-                style={ { textAlign: textAlignment } } 
+            <div
+                className="message-body"
+                style={ { textAlign: textAlignment } }
             >
               { message }
             </div>

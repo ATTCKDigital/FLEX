@@ -7,7 +7,7 @@ const {
 	ColorPalette,
 	PanelColorSettings,
 	MediaUpload,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
 	Button,

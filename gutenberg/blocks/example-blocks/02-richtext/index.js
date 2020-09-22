@@ -9,7 +9,7 @@ import './style.scss';
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 
 /**
  * Register block
@@ -23,7 +23,7 @@ export default registerBlockType(
         icon: {
             background: 'rgba(254, 243, 224, 0.52)',
             src: icon,
-        },   
+        },
         keywords: [
             __( 'Banner', 'flexlayout' ),
             __( 'Call to Action', 'flexlayout' ),

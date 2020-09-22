@@ -15,7 +15,7 @@ const {
 	PlainText,
 	InspectorControls,
 	InnerBlocks,
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	Toolbar,
 	Tooltip,
@@ -56,7 +56,7 @@ export default registerBlockType(
 			},
 			...MarginOptionsAttributes,
 			...PaddingOptionsAttributes,
-			...BorderOptionsAttributes,		
+			...BorderOptionsAttributes,
 		},
 
 		supports: {

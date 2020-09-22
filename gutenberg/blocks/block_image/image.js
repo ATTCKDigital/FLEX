@@ -19,7 +19,7 @@ const {
 	RichText,
 	AlignmentToolbar
 
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	Toolbar,
 	Button,

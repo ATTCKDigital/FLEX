@@ -18,7 +18,7 @@ const {
     BlockControls,
     BlockAlignmentToolbar,
     InspectorControls,
-} = wp.editor;
+} = wp.blockEditor;
 const {
     Toolbar,
     Button,
@@ -41,7 +41,7 @@ export default registerBlockType(
         icon: {
             background: 'rgba(254, 243, 224, 0.52)',
             src: icons.sidebar,
-        },                 
+        },
         keywords: [
             __( 'Button', 'flexlayout' ),
             __( 'Settings', 'flexlayout' ),
@@ -74,7 +74,7 @@ export default registerBlockType(
             const { attributes: { textAlignment, blockAlignment, message, highContrast },
                 className, setAttributes } = props;
             const toggleHighContrast = () => setAttributes( { highContrast: ! highContrast } );
-            
+
             return [
                 <InspectorControls>
                     <PanelBody
@@ -94,7 +94,7 @@ export default registerBlockType(
                             />
                         </PanelRow>
                     </PanelBody>
-                </InspectorControls>,            
+                </InspectorControls>,
                 <BlockControls>
                     <AlignmentToolbar
                         value={ textAlignment }

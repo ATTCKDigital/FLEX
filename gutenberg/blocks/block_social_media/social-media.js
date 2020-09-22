@@ -14,7 +14,7 @@ const {
 const {
 	InspectorControls,
 	AlignmentToolbar
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	Toolbar,
 	Button,
@@ -120,7 +120,7 @@ export default registerBlockType(
 						title={ __( 'Social Media Options', 'flexlayout' ) }
 						className="flexlayout-social-media-options"
 						initialOpen={ false }
-					>	
+					>
 						<p>Set your accounts in Global Settings. Only platforms with set accounts will appear on the front end.</p>
 						<CheckboxControl
 							label={__('Show Facebook?', 'flexlayout')}

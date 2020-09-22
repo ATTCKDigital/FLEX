@@ -14,7 +14,7 @@ const {
 const {
 	BlockControls,
 	InspectorControls,
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	PanelBody,
 	PanelRow,
@@ -22,8 +22,8 @@ const {
 	SelectControl,
 
 } = wp.components;
-const { 
-	withSelect 
+const {
+	withSelect
 } = wp.data;
 
 
@@ -87,7 +87,7 @@ export default registerBlockType(
 											label: __( 'Post' ),
 											value: 'post',
 										},
-										
+
 									] }
 								/>
 							</PanelRow>
@@ -100,7 +100,7 @@ export default registerBlockType(
 											label: __( 'Post' ),
 											value: 'post',
 										},
-										
+
 									] }
 								/>
 							</PanelRow>
@@ -113,7 +113,7 @@ export default registerBlockType(
 											label: __( 'Post' ),
 											value: 'post',
 										},
-										
+
 									] }
 								/>
 							</PanelRow>

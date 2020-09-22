@@ -19,7 +19,7 @@ const {
 	RichText,
 	AlignmentToolbar
 
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	Toolbar,
 	Button,
@@ -209,7 +209,7 @@ export default registerBlockType(
 							) : null }
 						</div>
 					)}
-					
+
 					{ ! gifID ? (
 
 						<MediaUpload

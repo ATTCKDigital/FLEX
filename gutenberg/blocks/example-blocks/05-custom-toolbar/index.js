@@ -18,7 +18,7 @@ const {
     AlignmentToolbar,
     BlockControls,
     BlockAlignmentToolbar,
-} = wp.editor;
+} = wp.blockEditor;
 const {
     Dashicon,
     Toolbar,
@@ -38,7 +38,7 @@ export default registerBlockType(
         icon: {
             background: 'rgba(254, 243, 224, 0.52)',
             src: icon,
-        },                   
+        },
         keywords: [
             __( 'Button', 'flexlayout' ),
             __( 'Settings', 'flexlayout' ),

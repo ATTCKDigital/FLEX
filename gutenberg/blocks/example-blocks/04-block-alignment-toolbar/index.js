@@ -16,7 +16,7 @@ const {
     AlignmentToolbar,
     BlockControls,
     BlockAlignmentToolbar,
-} = wp.editor;
+} = wp.blockEditor;
 
 
 /**
@@ -31,7 +31,7 @@ export default registerBlockType(
         icon: {
             background: 'rgba(254, 243, 224, 0.52)',
             src: 'align-none',
-        },           
+        },
         keywords: [
             __( 'Toolbar', 'flexlayout' ),
             __( 'Settings', 'flexlayout' ),

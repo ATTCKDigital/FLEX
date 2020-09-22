@@ -14,7 +14,7 @@ const {
 } = wp.blocks;
 const {
     URLInput,
-} = wp.editor;
+} = wp.blockEditor;
 const {
     IconButton,
     Tooltip,
@@ -33,7 +33,7 @@ export default registerBlockType(
         icon: {
             background: 'rgba(254, 243, 224, 0.52)',
             src: icon,
-        },         
+        },
         keywords: [
             __( 'Link', 'flexlayout' ),
             __( 'Post', 'flexlayout' ),

@@ -14,7 +14,7 @@ const {
 } = wp.blocks;
 const {
     RichText,
-} = wp.editor;
+} = wp.blockEditor;
 
 function getSettings(attributes) {
     let settings = [];

@@ -21,7 +21,7 @@ const {
 	InnerBlocks,
 	URLInput,
 	MediaUpload,
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	Toolbar,
 	Button,
@@ -96,17 +96,17 @@ export default registerBlockType(
 		edit: props => {
 			const {
                 attributes: {
-                	content, 
-                	level, 
-                	align, 
-                	placeholder, 
-                	url, 
-                	imgID, 
-                	imgURL, 
+                	content,
+                	level,
+                	align,
+                	placeholder,
+                	url,
+                	imgID,
+                	imgURL,
                 	isSelected
                 },
-				className, 
-				setAttributes 
+				className,
+				setAttributes
 			} = props;
 
 			const tagName = 'h' + level;
@@ -179,7 +179,7 @@ export default registerBlockType(
 								>
 									{ icons.remove }
 								</Button>
-								
+
 								<img
 									src={ imgURL }
 								/>
@@ -199,7 +199,7 @@ export default registerBlockType(
 						{ ...props }
 					/>
 
-								
+
 
 				</InspectorControls>,
 				<div className={classnames(

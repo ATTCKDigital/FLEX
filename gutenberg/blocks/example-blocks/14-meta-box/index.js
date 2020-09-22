@@ -9,7 +9,7 @@ import './style.scss';
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { InspectorControls } = wp.editor;
+const { InspectorControls } = wp.blockEditor;
 const { TextControl, PanelBody } = wp.components;
 
 /**
@@ -24,7 +24,7 @@ export default registerBlockType(
         icon: {
             background: 'rgba(254, 243, 224, 0.52)',
             src: icon,
-        },         
+        },
         keywords: [
             __( 'Meta', 'flexlayout' ),
             __( 'Custom field', 'flexlayout' ),
@@ -48,7 +48,7 @@ export default registerBlockType(
                             onChange={ text => setAttributes( { text } ) }
                         />
                     </PanelBody>
-                </InspectorControls>,                
+                </InspectorControls>,
                 <div className={ className } >
                     <p>{ __( 'Check the meta', 'flexlayout' ) }</p>
                 </div>

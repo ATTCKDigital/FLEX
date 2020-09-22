@@ -18,7 +18,7 @@ const {
 	BlockAlignmentToolbar,
 	InspectorControls,
 	InnerBlocks,
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	Toolbar,
 	Button,
@@ -31,8 +31,8 @@ const {
 	SelectControl,
 
 } = wp.components;
-const { 
-	withSelect 
+const {
+	withSelect
 } = wp.data;
 
 
@@ -95,7 +95,7 @@ export default registerBlockType(
 											label: __( 'Post' ),
 											value: 'post',
 										},
-										
+
 									] }
 								/>
 							</PanelRow>

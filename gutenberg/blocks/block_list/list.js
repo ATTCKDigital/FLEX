@@ -17,7 +17,7 @@ const {
 	InspectorControls,
 	MediaUpload,
 	URLInput,
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	Button,
 	PanelBody,
@@ -117,7 +117,7 @@ export default registerBlockType(
 						className,
 						...MarginOptionsClasses( props ),
 						...PaddingOptionsClasses( props ),
-						...BorderOptionsClasses( props ),						
+						...BorderOptionsClasses( props ),
 						...TextColorClasses( props ),
 
 					)}
@@ -135,7 +135,7 @@ export default registerBlockType(
 						onRemove={ () => onReplace( [] ) }
 						onTagNameChange={ ( tag ) => setAttributes( { ordered: tag === 'ol' } ) }
 					/>
-					
+
 				</div>
 			];
 

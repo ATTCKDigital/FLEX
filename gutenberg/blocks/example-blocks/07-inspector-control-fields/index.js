@@ -10,7 +10,7 @@ import "./style.scss";
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 
 function getSettings(attributes) {
   let settings = [];

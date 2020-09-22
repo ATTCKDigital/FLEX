@@ -5,7 +5,7 @@ const { __ } = wp.i18n;
 const { Component } = wp.element;
 const {
     ColorPalette,
-} = wp.editor;
+} = wp.blockEditor;
 const {
     CheckboxControl,
     RadioControl,

@@ -7,7 +7,7 @@ const {
 	ColorPalette,
 	PanelColorSettings,
 	MediaUpload,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
 	Button,
@@ -95,7 +95,7 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-								
+
 
 							] }
 						/>
@@ -135,7 +135,7 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-								
+
 
 							] }
 						/>
@@ -175,7 +175,7 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-								
+
 
 							] }
 						/>
@@ -215,7 +215,7 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-								
+
 
 							] }
 						/>
@@ -258,7 +258,7 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-								
+
 
 							] }
 						/>
@@ -298,7 +298,7 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-								
+
 
 							] }
 						/>
@@ -338,7 +338,7 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-								
+
 
 							] }
 						/>
@@ -378,7 +378,7 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-								
+
 
 							] }
 						/>
@@ -421,7 +421,7 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-								
+
 
 							] }
 						/>
@@ -461,7 +461,7 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-								
+
 
 							] }
 						/>
@@ -501,7 +501,7 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-								
+
 
 							] }
 						/>
@@ -541,7 +541,7 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-								
+
 
 							] }
 						/>
@@ -584,7 +584,7 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-								
+
 
 							] }
 						/>
@@ -624,7 +624,7 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-								
+
 
 							] }
 						/>
@@ -664,7 +664,7 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-								
+
 
 							] }
 						/>
@@ -704,7 +704,7 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-								
+
 
 							] }
 						/>
@@ -747,7 +747,7 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-								
+
 
 							] }
 						/>
@@ -787,7 +787,7 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-								
+
 
 							] }
 						/>
@@ -827,7 +827,7 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-								
+
 
 							] }
 						/>
@@ -867,7 +867,7 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-								
+
 
 							] }
 						/>
