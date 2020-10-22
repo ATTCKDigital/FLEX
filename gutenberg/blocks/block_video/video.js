@@ -89,7 +89,6 @@ export default registerBlockType(
 
 
         edit: props => {
-
             const { className, setAttributes } = props;
             const setVideoType = value => props.setAttributes( { videoType: value } );
             const setUploadVideo = value => props.setAttributes( { uploadVideo: value } );
@@ -291,7 +290,7 @@ export default registerBlockType(
                     <div className={'video-wrapper'}>
                         <div className={'video-thumbnail-wrapper'}>
                             <img
-                                src={ props.attributes.videoThumbnail ? props.attributes.videoThumbnail.url : '' }
+                                src={ props.attributes.videoThumbnail ? props.attributes.videoThumbnail.url : 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=' }
                             />
                         </div>
                         <mark className={'play'} data-video-type={'youtube'}></mark>
