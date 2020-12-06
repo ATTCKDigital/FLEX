@@ -14,7 +14,7 @@ const {
 const {
 	BlockControls,
 	InspectorControls,
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	PanelBody,
 	PanelRow,
@@ -22,8 +22,8 @@ const {
 	SelectControl,
 
 } = wp.components;
-const { 
-	withSelect 
+const {
+	withSelect
 } = wp.data;
 
 
@@ -39,17 +39,17 @@ import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from 
 	* Register block
  */
 export default registerBlockType(
-	'flexlayout/feed',
+	'flex/feed',
 	{
 		title: __( 'Feed' ),
 		description: __( 'A feed of posts.' ),
 		category: 'common',
 		icon: icons.feed,
-		parent: ['flexlayout/column'],
+		parent: ['flex/column'],
 		keywords: [
-			__( 'Feed', 'flexlayout' ),
-			__( 'Archive', 'flexlayout' ),
-			__( 'Posts', 'flexlayout' ),
+			__( 'Feed', 'FLEX' ),
+			__( 'Archive', 'FLEX' ),
+			__( 'Posts', 'FLEX' ),
 		],
 		attributes: {
 			...MarginOptionsAttributes,
@@ -68,12 +68,12 @@ export default registerBlockType(
                     return (
                         <p className={className} >
                             <Spinner />
-                            { __( 'Loading Posts', 'flexlayout' ) }
+                            { __( 'Loading Posts', 'FLEX' ) }
                         </p>
                     );
                 }
                 if ( 0 === posts.length ) {
-                    return <p>{ __( 'No Posts', 'flexlayout' ) }</p>;
+                    return <p>{ __( 'No Posts', 'FLEX' ) }</p>;
                 }
                 return (
 	                <InspectorControls>
@@ -87,7 +87,7 @@ export default registerBlockType(
 											label: __( 'Post' ),
 											value: 'post',
 										},
-										
+
 									] }
 								/>
 							</PanelRow>
@@ -100,7 +100,7 @@ export default registerBlockType(
 											label: __( 'Post' ),
 											value: 'post',
 										},
-										
+
 									] }
 								/>
 							</PanelRow>
@@ -113,7 +113,7 @@ export default registerBlockType(
 											label: __( 'Post' ),
 											value: 'post',
 										},
-										
+
 									] }
 								/>
 							</PanelRow>

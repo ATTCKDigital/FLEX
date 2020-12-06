@@ -1,6 +1,6 @@
-import FLEXLAYOUT from 'flexlayout/js/clientNamespace';
+import FLEX from 'FLEX/js/clientNamespace';
 // import your child components
 
 // then add them to this object
-FLEXLAYOUT.ChildComponents = {
+FLEX.ChildComponents = {
 };

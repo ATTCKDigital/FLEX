@@ -24,7 +24,7 @@ function register_image_block() {
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flexlayout/image', [
+	register_block_type( 'flex/image', [
 		'attributes'      => array_merge(
 			[
 				'imgURL' => [

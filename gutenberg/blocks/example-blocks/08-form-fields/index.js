@@ -14,7 +14,7 @@ const {
 } = wp.blocks;
 const {
     RichText,
-} = wp.editor;
+} = wp.blockEditor;
 
 function getSettings(attributes) {
     let settings = [];
@@ -32,19 +32,19 @@ function getSettings(attributes) {
  * Register static block example block
  */
 export default registerBlockType(
-    'flexlayout/form-fields',
+    'flex/form-fields',
     {
-        title: __('Example - Form Fields', 'flexlayout'),
-        description: __('An example of how to use form component in a block.', 'flexlayout'),
+        title: __('Example - Form Fields', 'FLEX'),
+        description: __('An example of how to use form component in a block.', 'FLEX'),
         category: 'common',
         icon: {
             background: 'rgba(254, 243, 224, 0.52)',
             src: icon,
         },
         keywords: [
-            __('Palette', 'flexlayout'),
-            __('Settings', 'flexlayout'),
-            __('Scheme', 'flexlayout'),
+            __('Palette', 'FLEX'),
+            __('Settings', 'FLEX'),
+            __('Scheme', 'FLEX'),
         ],
         attributes,
         getEditWrapperProps(attributes) {
@@ -68,7 +68,7 @@ export default registerBlockType(
 
             return (
                 <div>
-                    <p>{__('Check the settings', 'flexlayout')}</p>
+                    <p>{__('Check the settings', 'FLEX')}</p>
                     <ul>
                         {settings}
                     </ul>

@@ -21,7 +21,7 @@ const {
 	InnerBlocks,
 	URLInput,
 	MediaUpload,
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	Toolbar,
 	Button,
@@ -50,17 +50,17 @@ import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from 
 	* Register block
  */
 export default registerBlockType(
-	'flexlayout/heading',
+	'flex/heading',
 	{
 		title: __( 'Heading' ),
 		description: __( 'Introduce new sections and organize content to help visitors (and search engines) understand the structure of your content.' ),
 		category: 'common',
 		icon: 'heading',
-		parent: ['flexlayout/column'],
+		parent: ['flex/column'],
 		keywords: [
-			__( 'Text', 'flexlayout' ),
-			__( 'Heading', 'flexlayout' ),
-			__( 'Header', 'flexlayout' ),
+			__( 'Text', 'FLEX' ),
+			__( 'Heading', 'FLEX' ),
+			__( 'Header', 'FLEX' ),
 		],
 		attributes: {
 			content: {
@@ -96,17 +96,17 @@ export default registerBlockType(
 		edit: props => {
 			const {
                 attributes: {
-                	content, 
-                	level, 
-                	align, 
-                	placeholder, 
-                	url, 
-                	imgID, 
-                	imgURL, 
+                	content,
+                	level,
+                	align,
+                	placeholder,
+                	url,
+                	imgID,
+                	imgURL,
                 	isSelected
                 },
-				className, 
-				setAttributes 
+				className,
+				setAttributes
 			} = props;
 
 			const tagName = 'h' + level;
@@ -159,7 +159,7 @@ export default registerBlockType(
 										onClick={ open }
 									>
 										{ icons.upload }
-										{ __( ' Upload Image', 'flexlayout' ) }
+										{ __( ' Upload Image', 'FLEX' ) }
 									</Button>
 								) }
 							>
@@ -179,7 +179,7 @@ export default registerBlockType(
 								>
 									{ icons.remove }
 								</Button>
-								
+
 								<img
 									src={ imgURL }
 								/>
@@ -199,7 +199,7 @@ export default registerBlockType(
 						{ ...props }
 					/>
 
-								
+
 
 				</InspectorControls>,
 				<div className={classnames(
@@ -240,32 +240,32 @@ export default registerBlockType(
 	},
 );
 //Add default styles
-wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+wp.blocks.registerBlockStyle( 'flex/heading', {
     name: 'headline1',
     label: 'Headline 1'
 } );
 
-wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+wp.blocks.registerBlockStyle( 'flex/heading', {
     name: 'headline2',
     label: 'Headline 2'
 } );
 
-wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+wp.blocks.registerBlockStyle( 'flex/heading', {
     name: 'headline3',
     label: 'Headline 3'
 } );
 
-wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+wp.blocks.registerBlockStyle( 'flex/heading', {
     name: 'headline4',
     label: 'Headline 4'
 } );
 
-wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+wp.blocks.registerBlockStyle( 'flex/heading', {
     name: 'headline5',
     label: 'Headline 5'
 } );
 
-wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+wp.blocks.registerBlockStyle( 'flex/heading', {
     name: 'headline6',
     label: 'Headline 6'
 } );

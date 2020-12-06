@@ -16,26 +16,26 @@ const {
     AlignmentToolbar,
     BlockControls,
     BlockAlignmentToolbar,
-} = wp.editor;
+} = wp.blockEditor;
 
 
 /**
   * Register block
  */
 export default registerBlockType(
-    'flexlayout/block-alignment-toolbar',
+    'flex/block-alignment-toolbar',
     {
-        title: __( 'Example - Block Alignment Toolbar', 'flexlayout' ),
-        description: __( 'How to add an alignment toolbar to a block for aligning an entire block.', 'flexlayout' ),
+        title: __( 'Example - Block Alignment Toolbar', 'FLEX' ),
+        description: __( 'How to add an alignment toolbar to a block for aligning an entire block.', 'FLEX' ),
         category: 'common',
         icon: {
             background: 'rgba(254, 243, 224, 0.52)',
             src: 'align-none',
-        },           
+        },
         keywords: [
-            __( 'Toolbar', 'flexlayout' ),
-            __( 'Settings', 'flexlayout' ),
-            __( 'Float', 'flexlayout' ),
+            __( 'Toolbar', 'FLEX' ),
+            __( 'Settings', 'FLEX' ),
+            __( 'Float', 'FLEX' ),
         ],
         attributes: {
             message: {
@@ -76,7 +76,7 @@ export default registerBlockType(
                 <RichText
                     tagName="div"
                     multiline="p"
-                    placeholder={ __( 'Enter your message here..', 'flexlayout' ) }
+                    placeholder={ __( 'Enter your message here..', 'FLEX' ) }
                     value={ message }
                     style={ { textAlign: textAlignment } }
                     onChange={ message => setAttributes( { message } ) }

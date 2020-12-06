@@ -5,7 +5,7 @@ const { __ } = wp.i18n;
 
 const {
 	PanelColorSettings,
-} = wp.editor;
+} = wp.blockEditor;
 
 /**
  * Internal dependencies

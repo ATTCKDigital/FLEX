@@ -14,7 +14,7 @@ const {
 const {
 	InspectorControls,
 	InnerBlocks,
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	Toolbar,
 
@@ -41,17 +41,17 @@ import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '..
 	* Register block
  */
 export default registerBlockType(
-	'flexlayout/column',
+	'flex/column',
 	{
 		title: __( 'Column' ),
-		description: __( 'Creates a column wrapper to support inner blocks.', 'flexlayout' ),
+		description: __( 'Creates a column wrapper to support inner blocks.', 'FLEX' ),
 		category: 'layout',
 		icon: 'columns',
-		parent: ['flexlayout/row'],
+		parent: ['flex/row'],
 		keywords: [
-			__( 'Flex', 'flexlayout' ),
-			__( 'Layout', 'flexlayout' ),
-			__( 'Column', 'flexlayout' ),
+			__( 'Flex', 'FLEX' ),
+			__( 'Layout', 'FLEX' ),
+			__( 'Column', 'FLEX' ),
 		],
 		attributes: {
 
@@ -119,7 +119,7 @@ export default registerBlockType(
 
 const customClassName = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
-		if (props.name === 'flexlayout/column') {
+		if (props.name === 'FLEX/column') {
 				return <BlockListBlock
 						{ ...props }
 						className={ classnames(
@@ -138,4 +138,4 @@ const customClassName = createHigherOrderComponent( ( BlockListBlock ) => {
 	};
 }, 'customClassName' );
 
-wp.hooks.addFilter( 'editor.BlockListBlock', 'flexlayout/column/customClassName', customClassName );
+wp.hooks.addFilter( 'editor.BlockListBlock', 'FLEX/column/customClassName', customClassName );

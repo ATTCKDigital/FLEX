@@ -17,7 +17,7 @@ const {
 	InspectorControls,
 	MediaUpload,
 	URLInput,
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	Button,
 	PanelBody,
@@ -43,16 +43,16 @@ import TextColorOptions, { TextColorAttributes, TextColorClasses, TextColorInlin
 	* Register block
  */
 export default registerBlockType(
-	'flexlayout/list',
+	'flex/list',
 	{
 		title: __( 'List' ),
 		description: __( 'A text list block' ),
 		category: 'common',
 		icon: 'list-view',
-		parent: ['flexlayout/column'],
+		parent: ['flex/column'],
 		keywords: [
-			__( 'Text', 'flexlayout' ),
-			__( 'List', 'flexlayout' ),
+			__( 'Text', 'FLEX' ),
+			__( 'List', 'FLEX' ),
 		],
 		attributes: {
 			ordered: {
@@ -117,7 +117,7 @@ export default registerBlockType(
 						className,
 						...MarginOptionsClasses( props ),
 						...PaddingOptionsClasses( props ),
-						...BorderOptionsClasses( props ),						
+						...BorderOptionsClasses( props ),
 						...TextColorClasses( props ),
 
 					)}
@@ -135,7 +135,7 @@ export default registerBlockType(
 						onRemove={ () => onReplace( [] ) }
 						onTagNameChange={ ( tag ) => setAttributes( { ordered: tag === 'ol' } ) }
 					/>
-					
+
 				</div>
 			];
 

@@ -16,7 +16,7 @@ const {
 const {
 	InspectorControls,
 	InnerBlocks,
-} = wp.editor;
+} = wp.blockEditor;
 
 // Import all of our Margin Options requirements.
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
@@ -29,17 +29,17 @@ import BackgroundColorOptions, { BackgroundColorOptionsAttributes, BackgroundCol
 
 
 export default registerBlockType(
-	'flexlayout/text',
+	'flex/text',
 	{
 		title: __( 'Rich Text', 'block title' ),
 		description: __( 'This block is similar to the Paragraph or List block depending on your needs.' ),
 		icon: icons.text,
 		category: 'common',
-		parent: ['flexlayout/column'],
+		parent: ['FLEX/column'],
 		keywords: [
-			__( 'Text', 'flexlayout' ),
-			__( 'WYSIWYG', 'flexlayout' ),
-			__( 'TinyMCE', 'flexlayout' ),
+			__( 'Text', 'FLEX' ),
+			__( 'WYSIWYG', 'FLEX' ),
+			__( 'TinyMCE', 'FLEX' ),
 		],
 		attributes: {
 			content: {

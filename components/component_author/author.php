@@ -1,6 +1,5 @@
 <?php 
-	//Author page 
-
+	// Author page 
 	$author = get_queried_object();
 	$authorID = $author->ID;
 	$headshot = get_field('headshot', 'user_'.$authorID);
@@ -9,14 +8,13 @@
 	$authorBio = get_field('bio', 'user_'.$authorID);
 	$socialTitle = $authorName.', '.$authorTitle;
 ?>
-
 <article role="article" class="component-row padding-top-5x padding-bottom-7x">
 	<div class="flex-grid component-row-wide component-alignment-top">
 		<div class="column flex-tablet-landscape-2-12 flex-tablet-portrait-2-12 flex-0-12"></div>
 		<div class="column flex-tablet-landscape-8-12 flex-tablet-portrait-8-12 flex-12-12">
 			<div class="component-post-body">
 				<header class="single-header margin-bottom-3x">
-					<span class="caption2 color-text-brown uppercase display-block margin-bottom-2x align-center"><?php _e( 'Team', '_flexlayout' );?></span>
+					<span class="caption2 color-text-brown uppercase display-block margin-bottom-2x align-center"><?php _e( 'Team', '_flex' );?></span>
 					<h1 class="headline4 color-text-primary align-center margin-bottom-2x"><?= $authorName;?></h1>
 					<span class="caption1 color-text-body uppercase display-block align-center"><?= $authorTitle;?></span>
 				</header>

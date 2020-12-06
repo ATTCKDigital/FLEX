@@ -1,27 +1,27 @@
-console.log('loaded', '/flexlayout/js/global-events.js');
+console.log('loaded', '/FLEX/js/global-events.js');
 
-import FLEXLAYOUT from './clientNamespace';
+import FLEX from './clientNamespace';
 
 // Shorthand
-var FLEX = FLEXLAYOUT;
+// var FLEX = FLEX;
 
 import $$ from './cached-dom-elements';
 import Debug from './debug';
 
 // global-events
-FLEXLAYOUT.GlobalEvents = {};
+FLEX.GlobalEvents = {};
 
-FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
-	console.log('/flexlayout/\tjs/\tglobal-events.js', 'initGlobalEvents()');
+FLEX.GlobalEvents.initGlobalEvents = function () {
+	console.log('/FLEX/\tjs/\tglobal-events.js', 'initGlobalEvents()');
 
-	var G = FLEXLAYOUT.Globals;
+	var G = FLEX.Globals;
 	var $window = $(window);
 	var self = this;
 
 	/*** Detect scrolling and scrolling direction ***/
 	//USAGE
 	// Bind to scroll
-	// $(document.body).bind('FLEXLAYOUT.scroll', function (e, data) {
+	// $(document.body).bind('FLEX.scroll', function (e, data) {
 	// 		// if scroll is past or before x position
 	// 	    if (scroll >= 300) {
 	// 	    	your code here
@@ -47,7 +47,7 @@ FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
 			return;
 		}
 
-        $(document.body).trigger('FLEXLAYOUT.scroll', {
+        $(document.body).trigger('FLEX.scroll', {
 			'e': e,
 			'currentScrollTop': G.currentScrollTop,
 			'viewportHeight':   G.viewportHeight,
@@ -59,7 +59,7 @@ FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
 
 	/*** Detect screen orientation ***/
 	function detectOrientation() {
-		console.log('/flexlayout/\tjs/\tglobal-events.js', 'detectOrientation()');
+		console.log('/FLEX/\tjs/\tglobal-events.js', 'detectOrientation()');
 
         // Default is portrait
 		var orientation = 'orientation-portrait';
@@ -88,11 +88,11 @@ FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
 	detectOrientation();
 
 	// ...and screen resize
-	$(document.body).on('FLEXLAYOUT.resize', detectOrientation);
+	$(document.body).on('FLEX.resize', detectOrientation);
 
 	// Detect whether body content is taller than viewport
 	function detectViewportHeightRatio() {
-		console.log('/flexlayout/\tjs/\tglobal-events.js', 'detectViewportHeightRatio()');
+		console.log('/FLEX/\tjs/\tglobal-events.js', 'detectViewportHeightRatio()');
 
 		// Tab body if content height is taller than viewport
 		var totalComponentHeight = 0;
@@ -117,7 +117,7 @@ FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
 	detectViewportHeightRatio();
 
 	// ...and screen resize
-	$(document.body).on('FLEXLAYOUT.resize', detectViewportHeightRatio);
+	$(document.body).on('FLEX.resize', detectViewportHeightRatio);
 
 	// Tag body once page has loaded for one-time page load functions
 	$(window).on('load', function () {
@@ -149,7 +149,7 @@ FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
 		G.viewportHeight = $window.outerHeight();
 		G.viewportWidth  = $window.outerWidth();
 
-		$(document.body).trigger('FLEXLAYOUT.resize', {
+		$(document.body).trigger('FLEX.resize', {
 			'e': e,
 			'viewportHeight': G.viewportHeight,
 			'viewportWidth': G.viewportWidth
@@ -157,10 +157,10 @@ FLEXLAYOUT.GlobalEvents.initGlobalEvents = function () {
 	});
 };
 
-// Declares FLEXLAYOUT.GlobalEvents.xsOnly(), smOnly(), etc for running
+// Declares FLEX.GlobalEvents.xsOnly(), smOnly(), etc for running
 // breakpoint-specific functionality.
 $.each(Debug.breakpoints, function (i, val) {
-	FLEXLAYOUT.GlobalEvents['only' + val] = function (f) {
+	FLEX.GlobalEvents['only' + val] = function (f) {
 		if (!$$('.breakpoint.' + val).is(':visible')) {
 			return;
 		}
@@ -173,37 +173,37 @@ $.each(Debug.breakpoints, function (i, val) {
 if (Debug.debug === true) {
 	$(document.body)
 		.addClass("debug")
-		.on("FLEXLAYOUT.resize", function () {
+		.on("FLEX.resize", function () {
 
-			FLEXLAYOUT.GlobalEvents.onlysmall(function () {
+			FLEX.GlobalEvents.onlysmall(function () {
 				$(".breakpoint-current").show().text("Breakpoint is SM");
 			});
 
-			FLEXLAYOUT.GlobalEvents.onlymedium(function () {
+			FLEX.GlobalEvents.onlymedium(function () {
 				$(".breakpoint-current").show().text("Breakpoint is MD");
 			});
 
-			FLEXLAYOUT.GlobalEvents.onlylarge(function () {
+			FLEX.GlobalEvents.onlylarge(function () {
 				$(".breakpoint-current").show().text("Breakpoint is LG");
 			});
 
-			FLEXLAYOUT.GlobalEvents.onlyxl(function () {
+			FLEX.GlobalEvents.onlyxl(function () {
 				$(".breakpoint-current").show().text("Breakpoint is XL");
 			});
 
-			FLEXLAYOUT.GlobalEvents.only2xl(function () {
+			FLEX.GlobalEvents.only2xl(function () {
 				$(".breakpoint-current").show().text("Breakpoint is 2XL");
 			});
 
-			FLEXLAYOUT.GlobalEvents.only3xl(function () {
+			FLEX.GlobalEvents.only3xl(function () {
 				$(".breakpoint-current").show().text("Breakpoint is 3XL");
 			});
 
-			FLEXLAYOUT.GlobalEvents.only4xl(function () {
+			FLEX.GlobalEvents.only4xl(function () {
 				$(".breakpoint-current").show().text("Breakpoint is 4XL");
 			});
 
-			FLEXLAYOUT.GlobalEvents.only5xl(function () {
+			FLEX.GlobalEvents.only5xl(function () {
 				$(".breakpoint-current").show().text("Breakpoint is 5XL");
 			});
 		});
@@ -213,7 +213,7 @@ if (Debug.debug === true) {
 // - Each pub/sub event expects a data payload defined in the component class,
 //   as well as a listener callback function.
 // - Allows components to listen for and send requests to each other
-FLEXLAYOUT.events = {
+FLEX.events = {
 	'form': {
 		// Data store
 		'forms': [],
@@ -225,7 +225,7 @@ FLEXLAYOUT.events = {
 
 		// Bindings
 		register: function (data) {
-			console.log('/flexlayout/\tjs/\tglobal-events.js', 'FLEXLAYOUT.events.formregister(), arguments: ', arguments);
+			console.log('/FLEX/\tjs/\tglobal-events.js', 'FLEX.events.formregister(), arguments: ', arguments);
 			
 			// Save references to store
 			this.forms.push({
@@ -237,7 +237,7 @@ FLEXLAYOUT.events = {
 			var _this = this;
 
 			$(FLEX).bind(FLEX.events.form.error, function (e, data) {
-				console.log('/flexlayout/\tjs/\tglobal-events.js', 'FLEXLAYOUT.events.formregister(), [FLEX.events.form.error TRIGGERED] arguments: ', arguments);
+				console.log('/FLEX/\tjs/\tglobal-events.js', 'FLEX.events.formregister(), [FLEX.events.form.error TRIGGERED] arguments: ', arguments);
 
 				$(_this.forms).each(function (index, value) {
 					if (value.id === data.id) {
@@ -247,7 +247,7 @@ FLEXLAYOUT.events = {
 			});
 
 			$(FLEX).bind(FLEX.events.form.submit, function (e, data) {
-				console.log('/flexlayout/\tjs/\tglobal-events.js', 'FLEXLAYOUT.events.formregister(), [FLEX.events.form.error TRIGGERED] arguments: ', arguments);
+				console.log('/FLEX/\tjs/\tglobal-events.js', 'FLEX.events.formregister(), [FLEX.events.form.error TRIGGERED] arguments: ', arguments);
 
 				$(_this.forms).each(function (index, value) {
 					if (value.id === data.id) {
@@ -266,4 +266,4 @@ FLEXLAYOUT.events = {
 // for scroll (e.g., initial nav opacity)
 $(window).trigger('resize');
 
-export default FLEXLAYOUT.GlobalEvents;
+export default FLEX.GlobalEvents;

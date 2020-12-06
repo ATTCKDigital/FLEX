@@ -21,7 +21,7 @@ function register_button_block() {
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flexlayout/button', [
+	register_block_type( 'flex/button', [
 		'attributes'      => array_merge(
 			[
 				'content' => [

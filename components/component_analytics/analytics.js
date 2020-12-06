@@ -3,7 +3,7 @@ function Analytics($el) {
 	console.log('/analytics.js', 'Analytics()');
 
 	function bindEvents() {
-		console.log('/flexlayout/\tcomponents/\tcomponent-analytics/\tanalytics.js', 'bindEvents()');
+		console.log('/FLEX/\tcomponents/\tcomponent-analytics/\tanalytics.js', 'bindEvents()');
 
 		// $(document.body).on('click', '*', { 'type': 'click' }, trackEvent);
 		// $(document.body).on('mouseenter', '*', { 'type': 'mouseenter' }, trackEvent);
@@ -15,8 +15,6 @@ function Analytics($el) {
 			var eventID = $(this).attr('data-event-id');
 			var eventSource = $(this).attr('data-event-source');
 			var eventMedium = $(this).attr('data-event-medium');
-
-
 		});
 
 		// Try to find event info in classes
@@ -77,13 +75,13 @@ function Analytics($el) {
 	}
 
 	function recordEvent(event) {
-		console.log('/flexlayout/\tcomponents/\tcomponent-analytics/\tanalytics.js', 'recordEvent()');
+		console.log('/FLEX/\tcomponents/\tcomponent-analytics/\tanalytics.js', 'recordEvent()');
 
 		// Sent event to Gogle Analytics (GA)
 	}
 
 	function trackEvent(e) {
-		// console.log('/flexlayout/\tcomponents/\tcomponent-analytics/\tanalytics.js', 'trackEvent()');
+		// console.log('/FLEX/\tcomponents/\tcomponent-analytics/\tanalytics.js', 'trackEvent()');
 		// console.log('/— e: ', 'object:', e);
 
 		// Set up defaults so switch below doesn't fail
@@ -112,7 +110,7 @@ function Analytics($el) {
 	}
 
 	this.init = function INIT($el) {
-		console.log('/flexlayout/\tcomponents/\tcomponent-analytics/\tanalytics.js', 'init()');
+		console.log('/FLEX/\tcomponents/\tcomponent-analytics/\tanalytics.js', 'init()');
 
 		bindEvents();
 
@@ -122,6 +120,6 @@ function Analytics($el) {
 	return this.init($el);
 }
 
-console.log('loaded', '/flexlayout/components/component_analytics/analytics.js');
+console.log('loaded', '/FLEX/components/component_analytics/analytics.js');
 
 export default Analytics;

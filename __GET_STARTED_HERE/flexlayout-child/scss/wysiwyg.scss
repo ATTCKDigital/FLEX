@@ -1,11 +1,11 @@
 
 // SCSS files to include in admin WYSIWYG
-@import 'flexlayout/scss/_sass-utils.scss';
-@import 'flexlayout/scss/_sizing.scss';
-@import 'flexlayout/scss/_media-queries.scss';
-@import 'flexlayout/scss/_colors.scss';
-@import 'flexlayout/scss/_fonts.scss';
+@import 'FLEX/scss/_sass-utils.scss';
+@import 'FLEX/scss/_sizing.scss';
+@import 'FLEX/scss/_media-queries.scss';
+@import 'FLEX/scss/_colors.scss';
+@import 'FLEX/scss/_fonts.scss';
 // @import 'fonts'; // Override parent theme fonts variables from child if needed
-@import 'flexlayout/scss/_fonts-mixins.scss';
-@import 'flexlayout/gutenberg/blocks/block_heading/_heading.scss';
-@import 'flexlayout/gutenberg/blocks/block_button/_buttons.scss';
+@import 'FLEX/scss/_fonts-mixins.scss';
+@import 'FLEX/gutenberg/blocks/block_heading/_heading.scss';
+@import 'FLEX/gutenberg/blocks/block_button/_buttons.scss';

@@ -16,7 +16,7 @@ const {
 	InspectorControls,
 	MediaUpload,
 	URLInput
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	Button,
 	PanelBody,
@@ -44,22 +44,22 @@ import TextColorOptions, { TextColorAttributes, TextColorClasses } from '../../c
 	* Register block
  */
 export default registerBlockType(
-	'flexlayout/quote',
+	'flex/quote',
 	{
 		title: __( 'Quote' ),
 		description: __( 'A stylized pull quote with a source' ),
 		category: 'common',
 		icon: 'editor-quote',
-		parent: ['flexlayout/column'],
+		parent: ['flex/column'],
 		keywords: [
-			__( 'Text', 'flexlayout' ),
-			__( 'Quote', 'flexlayout' ),
+			__( 'Text', 'FLEX' ),
+			__( 'Quote', 'FLEX' ),
 		],
 		attributes: {
 			imgURL: {
 				type: 'string',
 			},
-			
+
 			imgID: {
 				type: 'number',
 			},
@@ -128,7 +128,7 @@ export default registerBlockType(
 						`component-quote`,
 						...MarginOptionsClasses( props ),
 						...PaddingOptionsClasses( props ),
-						...BorderOptionsClasses( props ),						
+						...BorderOptionsClasses( props ),
 						...BackgroundOptionsClasses( props ),
 						...TextColorClasses( props ),
 
@@ -161,7 +161,7 @@ export default registerBlockType(
 									onClick={ open }
 								>
 									{ icons.upload }
-									{ __( 'Upload Image', 'flexlayout' ) }
+									{ __( 'Upload Image', 'FLEX' ) }
 								</Button>
 							) }
 						>
@@ -182,11 +182,11 @@ export default registerBlockType(
 									{ icons.remove }
 								</Button>
 							) : null }
-							
+
 							<img
 								src={ imgURL }
 							/>
-							
+
 						</div>
 					)}
 					<RichText

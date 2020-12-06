@@ -26,7 +26,7 @@ function register_list_block() {
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flexlayout/list', [
+	register_block_type( 'flex/list', [
 		'attributes'      => array_merge(
 			[
 				'content' => [

@@ -3,22 +3,22 @@
 // Select blocks that should be available for the project.
 // Available Blocks
 // Enable your acf created blocks by using acf/block_name
-// Enable flexlayout created blocks by using flexlayout/block_name
+// Enable FLEX created blocks by using FLEX/block_name
 
 $blocks = array(
-	'flexlayout/row', //REQUIRED
-	'flexlayout/column', //REQUIRED
-	'flexlayout/button',
-	'flexlayout/feed',
-	'flexlayout/heading',
-	'flexlayout/image',
-	'flexlayout/quote',
-	'flexlayout/shortcode',
-	'flexlayout/source',
-	'flexlayout/socialmedia',
-	'flexlayout/text',
-	// 'flexlayout/users',
-	'flexlayout/video',
+	'FLEX/row', //REQUIRED
+	'FLEX/column', //REQUIRED
+	'FLEX/button',
+	'FLEX/feed',
+	'FLEX/heading',
+	'FLEX/image',
+	'FLEX/quote',
+	'FLEX/shortcode',
+	'FLEX/source',
+	'FLEX/socialmedia',
+	'FLEX/text',
+	// 'FLEX/users',
+	'FLEX/video',
 );
 
 

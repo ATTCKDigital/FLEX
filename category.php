@@ -1,14 +1,14 @@
 <?php
-/**
- * Template: Category Archive
- * Description: Wordpress template for a category archive page. Copy and re-name to category-termname.php for category specific archives.
- *
- */
+	/**
+	 * Template: Category Archive
+	 * Description: Wordpress template for a category archive page. Copy and re-name to category-termname.php for category specific archives.
+	 *
+	 */
     get_header();
 
     $term = get_queried_object(); 
-    //If archive is a category or a tag, find out the term.
-    //https://codex.wordpress.org/Function_Reference/get_queried_object
+    // If archive is a category or a tag, find out the term.
+    // https://codex.wordpress.org/Function_Reference/get_queried_object
 
     $taxonomy = ''; //Set taxonomy if using custom tax
 
@@ -27,7 +27,7 @@
         "taxonomy"      => 'category',
         "postType"      => $postType,
         "query"         => $wp_query,
-        "loadMoreText"  => __('Show More', '_flexlayout')
+        "loadMoreText"  => __('Show More', '_flex')
     ));
 
     get_footer();

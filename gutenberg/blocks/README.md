@@ -15,7 +15,7 @@ To create a new acf blocks, duplicate `blocks/blocks_template` in the child `blo
 
 If an existing ACF blocks needs to be edited for the project, copy the block's folder to the child's `blocks` folder and make changes there. Changes made to this blocks in the child theme will override existing. 
 
-Do NOT edit or add native Gutenberg blocks!! If a change is required, please submit a pull request here: https://github.com/ATTCKDigital/flexlayout
+Do NOT edit or add native Gutenberg blocks!! If a change is required, please submit a pull request here: https://github.com/ATTCKDigital/FLEX
 
 
 #### To add Front End JS to a new ACF block:
@@ -25,7 +25,7 @@ Do NOT edit or add native Gutenberg blocks!! If a change is required, please sub
 
 ## Adding/Editing FLEX Blocks
 
-1. Checkout the `develop` branch from the [Flexlayout repo](https://github.com/ATTCKDigital/flexlayout) and then create your own feature branch from `develop`
+1. Checkout the `develop` branch from the [Flexlayout repo](https://github.com/ATTCKDigital/FLEX) and then create your own feature branch from `develop`
 2. Run `npm run dev` from your child theme (this watches for changes).
 4. Make changes. For the block to appear in the WordPress admin, you must add the block name to the `blocks.php` file in the `global-variables` file in either the parent or child theme (depending on the use case). You must also add it to `blocks/index.js` in the plugin so it is compiled.
 5. Submit a pull request to `develop`.  Your pr will be reviewed and either returned for fixes or approved. 

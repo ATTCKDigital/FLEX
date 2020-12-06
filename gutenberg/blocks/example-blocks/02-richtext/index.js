@@ -9,25 +9,25 @@ import './style.scss';
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 
 /**
  * Register block
  */
 export default registerBlockType(
-    'flexlayout/richtext',
+    'flex/richtext',
     {
-        title: __( 'Example - RichText', 'flexlayout' ),
-        description: __( 'How to use the RichText component for building your own editable blocks.', 'flexlayout' ),
+        title: __( 'Example - RichText', 'FLEX' ),
+        description: __( 'How to use the RichText component for building your own editable blocks.', 'FLEX' ),
         category: 'common',
         icon: {
             background: 'rgba(254, 243, 224, 0.52)',
             src: icon,
-        },   
+        },
         keywords: [
-            __( 'Banner', 'flexlayout' ),
-            __( 'Call to Action', 'flexlayout' ),
-            __( 'Message', 'flexlayout' ),
+            __( 'Banner', 'FLEX' ),
+            __( 'Call to Action', 'FLEX' ),
+            __( 'Message', 'FLEX' ),
         ],
         attributes: {
             message: {
@@ -41,11 +41,11 @@ export default registerBlockType(
             const onChangeMessage = message => { setAttributes( { message } ) };
             return (
                 <div className={ className }>
-                    <h2>{ __( 'Call to Action', 'flexlayout' ) }</h2>
+                    <h2>{ __( 'Call to Action', 'FLEX' ) }</h2>
                     <RichText
                         tagName="div"
                         multiline="p"
-                        placeholder={ __( 'Add your custom message', 'flexlayout' ) }
+                        placeholder={ __( 'Add your custom message', 'FLEX' ) }
                   		onChange={ onChangeMessage }
                   		value={ message }
               		/>
@@ -56,7 +56,7 @@ export default registerBlockType(
             const { attributes: { message } } = props;
             return (
                 <div>
-                    <h2>{ __( 'Call to Action', 'flexlayout' ) }</h2>
+                    <h2>{ __( 'Call to Action', 'FLEX' ) }</h2>
                     <div class="message-body">
                         { message }
                     </div>

@@ -24,7 +24,7 @@ function register_video_block() {
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flexlayout/video', [
+	register_block_type( 'flex/video', [
 		'attributes'      => array_merge(
 			[
 				'className' => [
@@ -74,25 +74,25 @@ function render_video_block($attributes, $content) {
     $brightcoveVideoId = '';
     $brightcoveAccountId = '';
 
-	if ( array_key_exists('uploadVideo', $attributes) ) {
-		$videoId = 'video-'.mt_rand(10,1000);
-		$video = '<video id="'.$videoId.'"><source type="video/mp4" src="'.$attributes['uploadVideo']['url'].'" /></video>';
+	if (array_key_exists('uploadVideo', $attributes)) {
+		$videoId = 'video-' . mt_rand(10,1000);
+		$video = '<video id="' . $videoId . '"><source type="video/mp4" src="' . $attributes['uploadVideo']['url'] . '" /></video>';
 	} else if (array_key_exists('youtubeVideo', $attributes) && $attributes['youtubeVideo'] !== "") {
 		$youtubeVideoId = $attributes['youtubeVideo'];
 		$videoId = $youtubeVideoId;
-		$video = '<div id="player" data-video-id="'.$youtubeVideoId.'"></div>';
+		$video = '<div id="player_' . $youtubeVideoId . '" class="youtubePlayer" data-video-id="' . $youtubeVideoId . '"></div>';
 	} else if (array_key_exists('brightcoveVideo', $attributes)  && $attributes['brightcoveVideo'] !== "") {
         $brightcoveVideoId = $attributes['brightcoveVideo'];
         $brightcoveAccountId = $attributes['brightcoveAccount'];
         $videoId = $brightcoveVideoId;
-        $video = '<video class="video-js" data-account="'.$brightcoveAccountId.'" data-player="default" data-embed="default" controls data-video-id="'.$brightcoveVideoId.'"></video><script src="https://players.brightcove.net/5098879600001/default_default/index.min.js"></script>';
+        $video = '<video class="video-js" data-account="' . $brightcoveAccountId . '" data-player="default" data-embed="default" controls data-video-id="' . $brightcoveVideoId . '"></video><script src="https://players.brightcove.net/5098879600001/default_default/index.min.js"></script>';
     }
 
 	$thumbnail = '';
-	if ( array_key_exists('videoThumbnail', $attributes) ) {
-		$thumbnail = '<div class="video-thumbnail-wrapper"><img src="'.$attributes['videoThumbnail']['url'].'" alt="'.$attributes['videoThumbnail']['url'].'"/></div>';
-	}
 
+	if ( array_key_exists('videoThumbnail', $attributes) ) {
+		$thumbnail = '<div class="video-thumbnail-wrapper"><img src="' . $attributes['videoThumbnail']['url'] . '" alt="' . $attributes['videoThumbnail']['url'] . '"/></div>';
+	}
 
 	$output = "<div class=\"{$class}\" data-component-name=\"Video\"><div class=\"video-wrapper\" data-video-type=\"{$attributes['videoType']}\">{$thumbnail}<mark class=\"playVideo play\" data-video-id=\"{$videoId}\" ></mark><mark class=\"pauseVideo close\" data-video-id=\"{$videoId}\"></mark>{$video}</div></div>";
 

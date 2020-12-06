@@ -18,7 +18,7 @@ const {
     BlockControls,
     BlockAlignmentToolbar,
     InspectorControls,
-} = wp.editor;
+} = wp.blockEditor;
 const {
     Toolbar,
     Button,
@@ -33,19 +33,19 @@ const {
   * Register block
  */
 export default registerBlockType(
-    'flexlayout/inspector-controls',
+    'flex/inspector-controls',
     {
-        title: __( 'Example - Inspector Controls', 'flexlayout' ),
-        description: __( 'An example of how to use the Inspector component for a block.', 'flexlayout'),
+        title: __( 'Example - Inspector Controls', 'FLEX' ),
+        description: __( 'An example of how to use the Inspector component for a block.', 'FLEX'),
         category: 'common',
         icon: {
             background: 'rgba(254, 243, 224, 0.52)',
             src: icons.sidebar,
-        },                 
+        },
         keywords: [
-            __( 'Button', 'flexlayout' ),
-            __( 'Settings', 'flexlayout' ),
-            __( 'Controls', 'flexlayout' ),
+            __( 'Button', 'FLEX' ),
+            __( 'Settings', 'FLEX' ),
+            __( 'Controls', 'FLEX' ),
         ],
         attributes: {
             textAlignment: {
@@ -74,34 +74,34 @@ export default registerBlockType(
             const { attributes: { textAlignment, blockAlignment, message, highContrast },
                 className, setAttributes } = props;
             const toggleHighContrast = () => setAttributes( { highContrast: ! highContrast } );
-            
+
             return [
                 <InspectorControls>
                     <PanelBody
-                        title={ __( 'High Contrast', 'flexlayout' ) }
+                        title={ __( 'High Contrast', 'FLEX' ) }
                     >
                         <PanelRow>
                             <label
                                 htmlFor="high-contrast-form-toggle"
                             >
-                                { __( 'High Contrast', 'flexlayout' ) }
+                                { __( 'High Contrast', 'FLEX' ) }
                             </label>
                             <FormToggle
                                 id="high-contrast-form-toggle"
-                                label={ __( 'High Contrast', 'flexlayout' ) }
+                                label={ __( 'High Contrast', 'FLEX' ) }
                                 checked={ highContrast }
                                 onChange={ toggleHighContrast }
                             />
                         </PanelRow>
                     </PanelBody>
-                </InspectorControls>,            
+                </InspectorControls>,
                 <BlockControls>
                     <AlignmentToolbar
                         value={ textAlignment }
                         onChange={ ( textAlignment ) => props.setAttributes( { textAlignment } ) }
                     />
                     <Toolbar>
-                        <Tooltip text={ __( 'High Contrast', 'flexlayout' )  }>
+                        <Tooltip text={ __( 'High Contrast', 'FLEX' )  }>
                             <Button
                                 className={ classnames(
                                     'components-icon-button',

@@ -27,9 +27,9 @@ Adding additional items to the array will add additional color options to the th
 Some projects will require more than the default available admin editable menus. To add additional menus or change the names of existing, edit `config/global-variables/nav-menus.php`
 
 ## How to add/enable/disable functions
-As mentioned in the config [README.md](https://github.com/ATTCKDigital/flexlayout/tree/master/config) some functions can be enabled/disabled per project.  To do so go to `flexlayout-child/functions.php` and comment/uncomment those relevant to he project.  To override a parent theme function, copy the function php file from the parent into the same directory in the child and make edits.  The child theme version will override the parent version.
+As mentioned in the config [README.md](https://github.com/ATTCKDigital/FLEX/tree/master/config) some functions can be enabled/disabled per project.  To do so go to `flexlayout-child/functions.php` and comment/uncomment those relevant to he project.  To override a parent theme function, copy the function php file from the parent into the same directory in the child and make edits.  The child theme version will override the parent version.
 
 ## How to create a new ACF block
-See [README.md](https://github.com/ATTCKDigital/flexlayout/tree/master/__GET_STARTED_HERE/flexlayout-child/gutenberg/blocks) for details.
+See [README.md](https://github.com/ATTCKDigital/FLEX/tree/master/__GET_STARTED_HERE/FLEX-child/gutenberg/blocks) for details.
 
 Updated 5/28/2019 by okadots for ATTCK

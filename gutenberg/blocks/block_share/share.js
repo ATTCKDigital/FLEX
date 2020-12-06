@@ -14,7 +14,7 @@ const {
 const {
 	InspectorControls,
 	AlignmentToolbar
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	Toolbar,
 	Button,
@@ -44,16 +44,16 @@ import ShareOutput from '../../blocks/block_share/share-output.js';
  * Register social media block
  */
 export default registerBlockType(
-	'flexlayout/share',
+	'flex/share',
 	{
-		title: __( 'Share', 'flexlayout' ),
-		description: __( 'Displays share tools. Accounts are set in Global Settings ', 'flexlayout'),
+		title: __( 'Share', 'FLEX' ),
+		description: __( 'Displays share tools. Accounts are set in Global Settings ', 'FLEX'),
 		category: 'common',
 		icon: icons.share,
-		parent: ['flexlayout/column'],
+		parent: ['flex/column'],
 		keywords: [
-			__( 'Social media', 'flexlayout' ),
-			__( 'Share', 'flexlayout' ),
+			__( 'Social media', 'FLEX' ),
+			__( 'Share', 'FLEX' ),
 		],
 		attributes: {
 			facebook: {
@@ -90,8 +90,8 @@ export default registerBlockType(
 			return [
 				<InspectorControls>
 					<PanelBody
-						title={ __( 'Icon Alignment', 'flexlayout' ) }
-						className="flexlayout-icon-alignment"
+						title={ __( 'Icon Alignment', 'FLEX' ) }
+						className="FLEX-icon-alignment"
 						initialOpen={ false }
 					>
 						<AlignmentToolbar
@@ -102,28 +102,28 @@ export default registerBlockType(
 						/>
 					</PanelBody>
 					<PanelBody
-						title={ __( 'Share Options', 'flexlayout' ) }
-						className="flexlayout-share-options"
+						title={ __( 'Share Options', 'FLEX' ) }
+						className="FLEX-share-options"
 						initialOpen={ false }
-					>	
+					>
 						<p>Set your accounts in Global Settings. Only platforms with set accounts will appear on the front end.</p>
 						<CheckboxControl
-							label={__('Show Facebook?', 'flexlayout')}
+							label={__('Show Facebook?', 'FLEX')}
 							checked={facebook}
 							onChange={facebook => setAttributes({ facebook })}
 						/>
 					  	<CheckboxControl
-							label={__('Show Twitter?', 'flexlayout')}
+							label={__('Show Twitter?', 'FLEX')}
 							checked={twitter}
 							onChange={twitter => setAttributes({ twitter })}
 					  	/>
 					  	<CheckboxControl
-							label={__('Show LinkedIn?', 'flexlayout')}
+							label={__('Show LinkedIn?', 'FLEX')}
 							checked={linkedin}
 							onChange={linkedin => setAttributes({ linkedin })}
 					  	/>
 					  	<CheckboxControl
-							label={__('Show email?', 'flexlayout')}
+							label={__('Show email?', 'FLEX')}
 							checked={email}
 							onChange={email => setAttributes({ email })}
 					  	/>

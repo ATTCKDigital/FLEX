@@ -8,7 +8,7 @@ const {
   ColorPalette,
   PanelColorSettings,
   ContrastChecker
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
   CheckboxControl,

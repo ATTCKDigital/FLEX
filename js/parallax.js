@@ -17,7 +17,7 @@ function Parallax($el, params={}) {
 	function bindEvents() {
 		// Start offsetting the background-position-y value
 		// on scroll when we reach data-scroll-start
-		$(document.body).on('FLEXLAYOUT.scroll', parallaxGo);
+		$(document.body).on('FLEX.scroll', parallaxGo);
 
 		// Prevent full height hero from affecting body height when
 		// scrolling on mobile, which due to the changing size of the

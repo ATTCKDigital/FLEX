@@ -6,7 +6,7 @@ const { __ } = wp.i18n;
 const {
 	ColorPalette,
 	PanelColorSettings,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
 	Button,

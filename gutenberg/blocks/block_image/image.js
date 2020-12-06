@@ -19,7 +19,7 @@ const {
 	RichText,
 	AlignmentToolbar
 
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	Toolbar,
 	Button,
@@ -43,16 +43,16 @@ import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from 
  * Register image block
  */
 export default registerBlockType(
-	'flexlayout/image',
+	'flex/image',
 	{
-		title: __( 'Image', 'flexlayout' ),
-		description: __( 'Upload an image.', 'flexlayout'),
+		title: __( 'Image', 'FLEX' ),
+		description: __( 'Upload an image.', 'FLEX'),
 		category: 'common',
 		icon: icons.upload,
-		parent: ['flexlayout/column'],
+		parent: ['flex/column'],
 		keywords: [
-			__( 'Image', 'flexlayout' ),
-			__( 'MediaUpload', 'flexlayout' ),
+			__( 'Image', 'FLEX' ),
+			__( 'MediaUpload', 'FLEX' ),
 		],
 		attributes: {
 			imgURL: {
@@ -135,7 +135,7 @@ export default registerBlockType(
 									onClick={ open }
 								>
 									{ icons.upload }
-									{ __( ' Upload Image', 'flexlayout' ) }
+									{ __( ' Upload Image', 'FLEX' ) }
 								</Button>
 							) }
 						>

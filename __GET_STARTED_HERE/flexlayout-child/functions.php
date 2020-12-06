@@ -1,6 +1,8 @@
 <?php
-define('WPE_PROD', ''); //define the WPEngine environments
-define('WPE_STAGE', '');
+// 'prod', 'stage', etc. are the names of  WPEngine environments
+// 'WPE_PROD' & 'WPE_STAGE' are key names of the WPENGINE_ACCOUNT' server variable
+define('WPE_PROD', 'prod');
+define('WPE_STAGE', 'stage');
 
 define('CHILD_THEME_DIR', get_stylesheet_directory()); // use when there are files that should ONLY be from the child theme.
 // Use locate_template() to include files.  This function first checks the child theme for the file and if there is none, uses the parent theme.

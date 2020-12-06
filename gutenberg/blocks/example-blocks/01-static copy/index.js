@@ -15,31 +15,31 @@ const { registerBlockType } = wp.blocks;
  * Register block
  */
 export default registerBlockType(
-	'flexlayout/static', //name space - flexlayout/block-name
+	'flex/static', //name space - FLEX/block-name
 	{
-			title: __( 'Example - Static Block', 'flexlayout' ),
-			description: __( 'Demonstration of how to make a static call to action block.', 'flexlayout' ),
+			title: __( 'Example - Static Block', 'FLEX' ),
+			description: __( 'Demonstration of how to make a static call to action block.', 'FLEX' ),
 			category: 'common',
 			icon: {
 				background: 'rgba(254, 243, 224, 0.52)',
 				src: icon,
 			},        
 			keywords: [
-					__( 'Banner', 'flexlayout' ),
-					__( 'CTA', 'flexlayout' ),
-					__( 'Shout Out', 'flexlayout' ),
+					__( 'Banner', 'FLEX' ),
+					__( 'CTA', 'FLEX' ),
+					__( 'Shout Out', 'FLEX' ),
 			],
 			edit: props => {
 				const { className, isSelected } = props;
-				//className is created by wp wp-block-flexlayout-block-name
+				//className is created by wp wp-block-FLEX-block-name
 				return (
 					<div className={ className }>
-						<h2>{ __( 'Static Call to Action', 'flexlayout' ) }</h2>
-						<p>{ __( 'This is really important!', 'flexlayout' ) }</p>
+						<h2>{ __( 'Static Call to Action', 'FLEX' ) }</h2>
+						<p>{ __( 'This is really important!', 'FLEX' ) }</p>
 						{
 							//returns true if user clicks into the block editor, useful to show a message when editing is happening
 							isSelected && (
-								<p className="sorry warning">{ __( '✋ Sorry! You cannot edit this block ✋', 'flexlayout' ) }</p>
+								<p className="sorry warning">{ __( '✋ Sorry! You cannot edit this block ✋', 'FLEX' ) }</p>
 							)
 						}
 					</div>
@@ -48,8 +48,8 @@ export default registerBlockType(
 			save: props => {
 				return (
 					<div>
-						<h2>{ __( 'Call to Action', 'flexlayout' ) }</h2>
-						<p>{ __( 'This is really important!', 'flexlayout' ) }</p>
+						<h2>{ __( 'Call to Action', 'FLEX' ) }</h2>
+						<p>{ __( 'This is really important!', 'FLEX' ) }</p>
 					</div>
 				);
 			},

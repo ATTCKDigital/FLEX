@@ -4,7 +4,7 @@
  * or caches upon first use.
  */
 
-console.log('loaded', '/flexlayout/js/cached-dom-elements.js');
+console.log('loaded', '/FLEX/js/cached-dom-elements.js');
 
 import $ from 'jquery';
 

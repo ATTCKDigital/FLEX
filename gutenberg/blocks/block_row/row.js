@@ -19,7 +19,7 @@ const {
 	BlockAlignmentToolbar,
 	InspectorControls,
 	InnerBlocks,
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	Toolbar,
 	Button,
@@ -55,16 +55,16 @@ import AnchorOptions, { AnchorOptionsAttributes } from '../../components/gb-comp
 	* Register block
  */
 export default registerBlockType(
-	'flexlayout/row',
+	'flex/row',
 
 	{
 		title: __( 'Row' ),
-		description: __( 'Creates a row wrapper to support inner blocks with set column widths.', 'flexlayout' ),
+		description: __( 'Creates a row wrapper to support inner blocks with set column widths.', 'FLEX' ),
 		category: 'layout',
 		icon: 'editor-table',
 		keywords: [
-			__( 'Flex', 'flexlayout' ),
-			__( 'Layout', 'flexlayout' ),
+			__( 'Flex', 'FLEX' ),
+			__( 'Layout', 'FLEX' ),
 		],
 		// Forced to roll our own anchor support
 		// Due to Gutenberg core issue
@@ -150,7 +150,7 @@ export default registerBlockType(
 						controls={['full']}
 					/>
 					<Toolbar>
-						<Tooltip text={ __( 'Reverse column order in mobile', 'flexlayout' )  }>
+						<Tooltip text={ __( 'Reverse column order in mobile', 'FLEX' )  }>
 							<Button
 								className={ classnames(
 									'components-icon-button',
@@ -165,7 +165,7 @@ export default registerBlockType(
 					</Toolbar>
 					<Toolbar>
 						<ButtonGroup>
-							<Tooltip text={ __( 'Vertical align columns - Top', 'flexlayout' )  }>
+							<Tooltip text={ __( 'Vertical align columns - Top', 'FLEX' )  }>
 								<Button
 									className={ classnames(
 										'components-icon-button',
@@ -177,7 +177,7 @@ export default registerBlockType(
 									{ icons.topAlign }
 								</Button>
 							</Tooltip>
-							<Tooltip text={ __( 'Vertical align columns - Center', 'flexlayout' )  }>
+							<Tooltip text={ __( 'Vertical align columns - Center', 'FLEX' )  }>
 								<Button
 									className={ classnames(
 										'components-icon-button',
@@ -189,7 +189,7 @@ export default registerBlockType(
 									{ icons.centerAlign }
 								</Button>
 							</Tooltip>
-							<Tooltip text={ __( 'Vertical align columns - Bottom', 'flexlayout' )  }>
+							<Tooltip text={ __( 'Vertical align columns - Bottom', 'FLEX' )  }>
 								<Button
 									className={ classnames(
 										'components-icon-button',
@@ -201,7 +201,7 @@ export default registerBlockType(
 									{ icons.bottomAlign }
 								</Button>
 							</Tooltip>
-							<Tooltip text={ __( 'Vertical align columns - Stretch', 'flexlayout' )  }>
+							<Tooltip text={ __( 'Vertical align columns - Stretch', 'FLEX' )  }>
 								<Button
 									className={ classnames(
 										'components-icon-button',

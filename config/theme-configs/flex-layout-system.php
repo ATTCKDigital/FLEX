@@ -7,15 +7,15 @@
  * @license     GPL2+
  *
  * @wordpress-plugin
- * Plugin Name: Flex Layout System
- * Plugin URI:
+ * Plugin Name: FLEX 
+ * Plugin URI:	https://attck.com/wordpress/
  * Description: A plugin to enhance gb editor to create a dynamic flexible layout system.
  * Version:     1.0
- * Author:      Oka Tai-Lee - ATTCK
- * Author URI:
- * Text Domain: fls
+ * Author:      ATTCK
+ * Author URI:	https://attck.com
+ * Text Domain: _flex
  * Domain Path: /languages
- * License:     GPL2+
+ * License:     GPL3+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
 

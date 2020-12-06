@@ -2,6 +2,9 @@
 /*** Admin Environment Notice ***/
 
 function admin_environment($wp_admin_bar) {
+	// The 'WPENGINE_ACCOUNT' variable is provided by WPEngine and not something 
+	// set by our app (i.e., via .env file).
+	// WPE_PROD & WPE_STAGE are set in the child theme's functions.php file.
 	$env = $_SERVER['WPENGINE_ACCOUNT'];
 
 	if($env == WPE_PROD) {

@@ -17,7 +17,7 @@ const {
 	InspectorControls,
 	MediaUpload,
 	URLInput,
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	Button,
 	PanelBody,
@@ -43,16 +43,16 @@ import TextColorOptions, { TextColorAttributes, TextColorClasses, TextColorInlin
 	* Register block
  */
 export default registerBlockType(
-	'flexlayout/paragraph',
+	'flex/paragraph',
 	{
 		title: __( 'Paragraph' ),
 		description: __( 'A text block' ),
 		category: 'common',
 		icon: 'editor-paragraph',
-		parent: ['flexlayout/column'],
+		parent: ['flex/column'],
 		keywords: [
-			__( 'Text', 'flexlayout' ),
-			__( 'Paragraph', 'flexlayout' ),
+			__( 'Text', 'FLEX' ),
+			__( 'Paragraph', 'FLEX' ),
 		],
 		attributes: {
 			content: {
@@ -115,7 +115,7 @@ export default registerBlockType(
 						className,
 						...MarginOptionsClasses( props ),
 						...PaddingOptionsClasses( props ),
-						...BorderOptionsClasses( props ),						
+						...BorderOptionsClasses( props ),
 						...TextColorClasses( props ),
 
 					)}
@@ -133,7 +133,7 @@ export default registerBlockType(
 						multiline='p'
 						formattingControls = { ['bold', 'italic', 'strikethrough', 'link'] }
 					/>
-					
+
 				</div>
 			];
 
