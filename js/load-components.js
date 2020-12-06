@@ -1,6 +1,6 @@
-console.log('loaded', '/flexlayout/js/load-components.js');
+console.log('loaded', '/FLEX/js/load-components.js');
 
-import FLEXLAYOUT from './clientNamespace';
+import FLEX from './clientNamespace';
 import Debug from './debug';
 import ObjectAssign from 'es6-object-assign';
 
@@ -24,11 +24,11 @@ import GDPR from '../components/component_footer/gdpr';
 import Analytics from '../components/component_analytics/analytics';
 
 // Project Specific
-const childComponents = FLEXLAYOUT.ChildComponents || {};
+const childComponents = FLEX.ChildComponents || {};
 
 // Add your components here so they get loaded.
 // Make sure to import them above first.
-FLEXLAYOUT.Components = Object.assign({
+FLEX.Components = Object.assign({
 	'Parallax': Parallax,
 	'ElementsInViewport': ElementsInViewport,
 	'Nav': Nav,
@@ -42,12 +42,12 @@ FLEXLAYOUT.Components = Object.assign({
 	'Analytics': Analytics
 }, childComponents);
 
-FLEXLAYOUT.Loader = {};
+FLEX.Loader = {};
 
 // Components with JS functionality can be defined via data attribute.
 // Supports multiple components separated by space.
-FLEXLAYOUT.Loader.loadComponents = function () {
-	FLEXLAYOUT.Loader.loadedComponents = [];
+FLEX.Loader.loadComponents = function () {
+	FLEX.Loader.loadedComponents = [];
 
 	var self = this;
 
@@ -79,15 +79,15 @@ FLEXLAYOUT.Loader.loadComponents = function () {
 			let componentName = el;
 
 			// Exit if not in component list
-			if (typeof FLEXLAYOUT.Components[componentName] === 'undefined') {
+			if (typeof FLEX.Components[componentName] === 'undefined') {
 				return;
 			}
 
 			let params = $this.data('component-options') || {};
-			let instance = new FLEXLAYOUT.Components[componentName]($this, params);
+			let instance = new FLEX.Components[componentName]($this, params);
 
 			// Save component instance references in a global manifest.
-			if (typeof FLEXLAYOUT.Components[componentName] !== 'undefined') {
+			if (typeof FLEX.Components[componentName] !== 'undefined') {
 				self.loadedComponents.push({
 					'instance': instance
 				});
@@ -101,7 +101,7 @@ FLEXLAYOUT.Loader.loadComponents = function () {
 	});
 };
 
-FLEXLAYOUT.Loader.loadComponent = function ($el) {
+FLEX.Loader.loadComponent = function ($el) {
 	var componentName = $el.attr('data-component-name');
 
 	if (typeof componentName === 'undefined') return;
@@ -117,15 +117,15 @@ FLEXLAYOUT.Loader.loadComponent = function ($el) {
 		let componentName = el;
 
 		// Exit if not in component list
-		if (typeof FLEXLAYOUT.Components[componentName] === 'undefined') {
+		if (typeof FLEX.Components[componentName] === 'undefined') {
 			console.log('FLEX.js ‹ loadComponents(), unknown component: ', componentName);
 			return;
 		}
 
 		let params = $el.data('component-options') || {};
-		let instance = new FLEXLAYOUT.Components[componentName]($el, params);
+		let instance = new FLEX.Components[componentName]($el, params);
 	});
 };
 
 
-export default FLEXLAYOUT.Loader;
+export default FLEX.Loader;

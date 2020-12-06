@@ -16,25 +16,25 @@ const { TextControl, PanelBody } = wp.components;
  * Register example block
  */
 export default registerBlockType(
-    'flexlayout/meta-box',
+    'FLEX/meta-box',
     {
-        title: __( 'Example - Meta Box', 'flexlayout' ),
-        description: __( 'An example of how to build a block with a meta box field.', 'flexlayout'),
+        title: __( 'Example - Meta Box', 'FLEX' ),
+        description: __( 'An example of how to build a block with a meta box field.', 'FLEX'),
         category: 'common',
         icon: {
             background: 'rgba(254, 243, 224, 0.52)',
             src: icon,
         },
         keywords: [
-            __( 'Meta', 'flexlayout' ),
-            __( 'Custom field', 'flexlayout' ),
-            __( 'Box', 'flexlayout' ),
+            __( 'Meta', 'FLEX' ),
+            __( 'Custom field', 'FLEX' ),
+            __( 'Box', 'FLEX' ),
         ],
         attributes: {
             text: {
                 type: 'string',
                 source: 'meta',
-                meta: 'flexlayout_gb_metabox',
+                meta: 'FLEX_gb_metabox',
             },
         },
         edit: props => {
@@ -43,20 +43,20 @@ export default registerBlockType(
                 <InspectorControls>
                     <PanelBody>
                         <TextControl
-                            label={ __( 'Meta box', 'flexlayout' ) }
+                            label={ __( 'Meta box', 'FLEX' ) }
                             value={ text }
                             onChange={ text => setAttributes( { text } ) }
                         />
                     </PanelBody>
                 </InspectorControls>,
                 <div className={ className } >
-                    <p>{ __( 'Check the meta', 'flexlayout' ) }</p>
+                    <p>{ __( 'Check the meta', 'FLEX' ) }</p>
                 </div>
             ];
         },
         save: props => {
             return (
-                <p>{ __( 'Check the meta', 'flexlayout' ) }</p>
+                <p>{ __( 'Check the meta', 'FLEX' ) }</p>
             );
         },
     },

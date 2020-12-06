@@ -11,9 +11,9 @@
 
 	.body-text {
 		p {
+			color: $white;
 			font-size: px-to-rem(13px);
 			line-height: 1.6;
-			color: $white;
 
 			a {
 				color: color('brand', 'accent');
@@ -27,10 +27,10 @@
 		}
 
 		.gdprAgree {
-			min-height: 40px;
 			font-size: px-to-rem(13px);
-			padding: 12px 14px 11px;
+			min-height: 40px;
 			min-width: 150px;
+			padding: 12px 14px 11px;
 		}
 	}
 

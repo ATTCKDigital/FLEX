@@ -1,2 +1,2 @@
 import './components';
-import 'flexlayout/js/app';
+import 'FLEX/js/app';

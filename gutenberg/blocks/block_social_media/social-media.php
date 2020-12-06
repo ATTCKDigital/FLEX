@@ -27,7 +27,7 @@ function register_socialmedia_block() {
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flexlayout/socialmedia', [
+	register_block_type( 'flex/socialmedia', [
 		'attributes'      => array_merge(
 			[
 				'facebook' => [

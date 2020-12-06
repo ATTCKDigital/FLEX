@@ -38,16 +38,16 @@ import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from 
 	* Register block
  */
 export default registerBlockType(
-	'flexlayout/shortcode',
+	'flex/shortcode',
 	{
 		title: __( 'Shortcode' ),
 		description: __( 'Display Wordpress shortcodes.' ),
 		category: 'common',
 		icon: 'plus',
-		parent: ['flexlayout/column'],
+		parent: ['FLEX/column'],
 		keywords: [
-			__( 'Shortcode', 'flexlayout' ),
-			__( 'Code', 'flexlayout' ),
+			__( 'Shortcode', 'FLEX' ),
+			__( 'Code', 'FLEX' ),
 		],
 		attributes: {
 			content: {

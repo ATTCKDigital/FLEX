@@ -24,7 +24,7 @@ function register_video_block() {
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flexlayout/video', [
+	register_block_type( 'flex/video', [
 		'attributes'      => array_merge(
 			[
 				'className' => [

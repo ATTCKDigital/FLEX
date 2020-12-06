@@ -48,17 +48,17 @@ import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from 
 	* Register block
  */
 export default registerBlockType(
-	'flexlayout/users',
+	'flex/users',
 	{
 		title: __( 'Users' ),
 		description: __( 'A list of WordPress users.' ),
 		category: 'common',
 		icon: icons.users,
-		parent: ['flexlayout/column'],
+		parent: ['FLEX/column'],
 		keywords: [
-			__( 'Staff', 'flexlayout' ),
-			__( 'Users', 'flexlayout' ),
-			__( 'Authors', 'flexlayout' ),
+			__( 'Staff', 'FLEX' ),
+			__( 'Users', 'FLEX' ),
+			__( 'Authors', 'FLEX' ),
 		],
 		attributes: {
 			...MarginOptionsAttributes,
@@ -76,12 +76,12 @@ export default registerBlockType(
                     return (
                         <p className={className} >
                             <Spinner />
-                            { __( 'Loading Users', 'flexlayout' ) }
+                            { __( 'Loading Users', 'FLEX' ) }
                         </p>
                     );
                 }
                 if ( 0 === users.length ) {
-                    return <p>{ __( 'No Users', 'flexlayout' ) }</p>;
+                    return <p>{ __( 'No Users', 'FLEX' ) }</p>;
                 }
                 return (
 	                <InspectorControls>

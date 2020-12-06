@@ -23,19 +23,19 @@ const {
  * Register example block
  */
 export default registerBlockType(
-    'flexlayout/media-upload',
+    'flex/media-upload',
     {
-        title: __( 'Example - Media Upload Button', 'flexlayout' ),
-        description: __( 'An example of how to use the MediaUpload component.', 'flexlayout'),
+        title: __( 'Example - Media Upload Button', 'FLEX' ),
+        description: __( 'An example of how to use the MediaUpload component.', 'FLEX'),
         category: 'common',
         icon: {
             background: 'rgba(254, 243, 224, 0.52)',
             src: icons.upload,
         },
         keywords: [
-            __( 'Image', 'flexlayout' ),
-            __( 'MediaUpload', 'flexlayout' ),
-            __( 'Message', 'flexlayout' ),
+            __( 'Image', 'FLEX' ),
+            __( 'MediaUpload', 'FLEX' ),
+            __( 'Message', 'FLEX' ),
         ],
         attributes: {
             imgURL: {
@@ -86,7 +86,7 @@ export default registerBlockType(
                                     onClick={ open }
                                 >
                                     { icons.upload }
-                                    { __( ' Upload Image', 'flexlayout' ) }
+                                    { __( ' Upload Image', 'FLEX' ) }
                                 </Button>
                             ) }
                         >

@@ -1,2 +1,2 @@
-import 'flexlayout/js/admin';
+import 'FLEX/js/admin';
 import 'block-styles';

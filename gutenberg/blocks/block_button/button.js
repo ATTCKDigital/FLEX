@@ -39,17 +39,17 @@ import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '..
 	* Register block
  */
 export default registerBlockType(
-	'flexlayout/button',
+	'flex/button',
 	{
 		title: __( 'Button' ),
 		description: __( 'Prompt visitors to take action with a custom button.' ),
 		category: 'common',
 		icon: icons.button,
-		parent: ['flexlayout/column'],
+		parent: ['flex/column'],
 		keywords: [
-			__( 'Text', 'flexlayout' ),
-			__( 'Button', 'flexlayout' ),
-			__( 'CTA', 'flexlayout' ),
+			__( 'Text', 'FLEX' ),
+			__( 'Button', 'FLEX' ),
+			__( 'CTA', 'FLEX' ),
 		],
 		attributes: {
 			content: {
@@ -99,7 +99,7 @@ export default registerBlockType(
 							} }
 						/>
 						<CheckboxControl
-							label={__('Open in new window?', 'flexlayout')}
+							label={__('Open in new window?', 'FLEX')}
 							checked={target}
 							onChange={target => setAttributes({ target })}
 					  	/>

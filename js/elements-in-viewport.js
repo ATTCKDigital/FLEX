@@ -13,7 +13,7 @@ function ElementsInViewport($el) {
 	var _viewportHeight = $(window).outerHeight();
 
 	function bindEvents() {
-		console.log('/flexlayout/\tjs/\telements-in-viewport.js', 'bindEvents()');
+		console.log('/FLEX/\tjs/\telements-in-viewport.js', 'bindEvents()');
 
         // $(document.body).on('FLEXLAYOUT.apploaded', hideElements);
 
@@ -40,7 +40,7 @@ function ElementsInViewport($el) {
 	}
 
 	function checkTimer() {
-		// console.log('/flexlayout/\tjs/\telements-in-viewport.js', 'checkTimer()');
+		// console.log('/FLEX/\tjs/\telements-in-viewport.js', 'checkTimer()');
 
 		// Check if user stopped scrolling for more than two seconds and show anything that
 		// would be visible but hasn't hit the vertical scroll threshold yet
@@ -57,7 +57,7 @@ function ElementsInViewport($el) {
 	}
 
 	function inViewElements(scrollThreshold) {
-		// console.log('/flexlayout/\tjs/\telements-in-viewport.js', 'inViewElements()');
+		// console.log('/FLEX/\tjs/\telements-in-viewport.js', 'inViewElements()');
 
 		// Set Default scroll threshold
 		if (typeof scrollThreshold === 'undefined') {
@@ -76,7 +76,7 @@ function ElementsInViewport($el) {
 	}
 
 	function hideAllElements() {
-		console.log('/flexlayout/\tjs/\telements-in-viewport.js', 'hideAllElements()');
+		console.log('/FLEX/\tjs/\telements-in-viewport.js', 'hideAllElements()');
 
         // Show protected areas
 		$('.component-header').addClass('no-element-in-view');
@@ -109,7 +109,7 @@ function ElementsInViewport($el) {
 	}
 
 	function indexAllElements() {
-		console.log('/flexlayout/\tjs/\telements-in-viewport.js', 'indexAllElements()');
+		console.log('/FLEX/\tjs/\telements-in-viewport.js', 'indexAllElements()');
 
 		$('.element-in-view').each(function () {
 			// Convert offset values to strings since they're floats and not a valid array ID

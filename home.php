@@ -1,7 +1,9 @@
 <?php
 	/**
 	 * Template: WP Blog Posts Index
-	 * Description: home.php is used to render the blog posts index, whether it is being used as the front page or on separate static page. If home.php does not exist, WordPress will use index.php.
+	 * Description: home.php is used to render the blog posts index, whether it 
+	 * is being used as the front page or on separate static page. If home.php 
+	 * does not exist, WordPress will use index.php.
 	 *
 	 */
     get_header();

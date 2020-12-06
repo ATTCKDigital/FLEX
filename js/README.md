@@ -3,7 +3,7 @@
 - `app.js`: Import jQuery and jQuery plugins and globalize it, run css-vars-ponyfill, load component loader.
 - `debug.js`: set to true temporarily to enable custom debugging tools. 
 - Cached DOM Elements: returned cached element if previously used or caches upon first use.
-- Client Namespace: Creates `FLEXLAYOUT.Globals` namespace.
+- Client Namespace: Creates `FLEX.Globals` namespace.
 - Elements in Viewport: manipulate a component as it is scrolled into the viewport. Defaults to fading in text elements. Requires making css changes.
 - Global Events: A set of global utilities for detecting viewport size, scrolling etc.
 - `load-components.js`: Loads js for components. Defaults are set in parent.  To add new js components, add them in `flexlayout-child/js/components.js`

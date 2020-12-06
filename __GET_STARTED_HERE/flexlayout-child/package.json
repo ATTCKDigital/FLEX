@@ -83,7 +83,7 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "../flexlayout/.githooks/checkfilesize"
+			"pre-commit": "../FLEX/.githooks/checkfilesize"
 		}
 	},
 	"scripts": {

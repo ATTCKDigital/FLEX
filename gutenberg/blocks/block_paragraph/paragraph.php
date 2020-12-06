@@ -26,7 +26,7 @@ function register_paragraph_block() {
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flexlayout/paragraph', [
+	register_block_type( 'flex/paragraph', [
 		'attributes'      => array_merge(
 			[
 				'content' => [

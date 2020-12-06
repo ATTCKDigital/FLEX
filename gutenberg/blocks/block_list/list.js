@@ -43,16 +43,16 @@ import TextColorOptions, { TextColorAttributes, TextColorClasses, TextColorInlin
 	* Register block
  */
 export default registerBlockType(
-	'flexlayout/list',
+	'flex/list',
 	{
 		title: __( 'List' ),
 		description: __( 'A text list block' ),
 		category: 'common',
 		icon: 'list-view',
-		parent: ['flexlayout/column'],
+		parent: ['flex/column'],
 		keywords: [
-			__( 'Text', 'flexlayout' ),
-			__( 'List', 'flexlayout' ),
+			__( 'Text', 'FLEX' ),
+			__( 'List', 'FLEX' ),
 		],
 		attributes: {
 			ordered: {

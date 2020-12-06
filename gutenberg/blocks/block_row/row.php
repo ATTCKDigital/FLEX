@@ -43,7 +43,7 @@ function register_row_block() {
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flexlayout/row', [
+	register_block_type( 'flex/row', [
 		'attributes'      => array_merge(
 			[
 				'anchor' => [

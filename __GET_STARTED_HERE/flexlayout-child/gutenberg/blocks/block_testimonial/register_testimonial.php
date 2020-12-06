@@ -18,7 +18,7 @@ function register_block_testimonial() {
 			'category'			=> 'formatting',
 			'icon'				=> 'admin-comments',
 			'keywords'			=> array( 'testimonial', 'quote' ),
-			'parent'			=> ['flexlayout/column'],
+			'parent'			=> ['FLEX/column'],
 			'mode'				=> 'edit'
 		));
 	}

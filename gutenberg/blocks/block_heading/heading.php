@@ -9,8 +9,6 @@ use function FLEX_LAYOUT_SYSTEM\Components\Border\border_options_classes;
 use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
 
-
-
 add_action( 'init', __NAMESPACE__ . '\register_heading_block' );
 /**
  * Register the dynamic block.
@@ -27,7 +25,7 @@ function register_heading_block() {
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flexlayout/heading', [
+	register_block_type( 'flex/heading', [
 		'attributes'      => array_merge(
 			[
 				'content' => [
@@ -66,7 +64,6 @@ function register_heading_block() {
 		),
 		'render_callback' => __NAMESPACE__ . '\render_heading_block',
 	] );
-
 }
 
 /**
@@ -87,7 +84,6 @@ function render_heading_block($attributes) {
 	} else {
 	    $headlineClass =  " headline{$attributes['level']}";
 	}
-
 	
 	$textColor = array_key_exists('textColor', $attributes) ? $attributes['textColor'] : null;
 	$url = array_key_exists('url', $attributes) ? $attributes['url'] : null;

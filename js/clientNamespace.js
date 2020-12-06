@@ -10,7 +10,7 @@ var FLEXLAYOUT = clientNamespace;
 FLEXLAYOUT.Globals = {};
 
 FLEXLAYOUT.formatPhoneNumber = function (phoneNumberString) {
-	console.log('/flexlayout/js/clientNamespace', 'formatPhoneNumber()');
+	console.log('/FLEX/js/clientNamespace', 'formatPhoneNumber()');
 	console.log('/— phoneNumberString: ', phoneNumberString);
 
 	var cleaned = ('' + phoneNumberString).replace(/\D/g, '')
@@ -40,7 +40,7 @@ FLEXLAYOUT.getQueryVariable = function (variable) {
 
 // https://medium.com/@DylanAttal/truncate-a-string-in-javascript-41f33171d5a8
 FLEXLAYOUT.truncateString = function (str, num) {
-	console.log('/flexlayout/js/global-events.js', 'truncateString()');
+	console.log('/FLEX/js/global-events.js', 'truncateString()');
 
 	if (!str) return false;
 	if (!num) return false;
@@ -104,6 +104,6 @@ FLEXLAYOUT.showConsoleLogs = false || FLEXLAYOUT.getQueryVariable('debug');
 	};
 })();
 
-console.log('loaded', '/flexlayout/js/clientNamespace.js');
+console.log('loaded', '/FLEX/js/clientNamespace.js');
 
 export default FLEXLAYOUT;
