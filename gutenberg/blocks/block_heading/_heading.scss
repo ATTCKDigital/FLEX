@@ -1,62 +1,24 @@
-/**** Headline Styles ****/
+.component-heading {
+	width: 100%;
 
-.headline1, .is-style-headline1 {
-	line-height: 1.25;
-	letter-spacing: -.5px;
-	@include secondary-semi;
-	@include font-size($font-size-headline1);
-}	
+	&.has-image {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
 
-.headline2, .is-style-headline2 {
-	line-height: 1.375;
-	letter-spacing: -.5px;
-	@include secondary-semi;
-	@include font-size($font-size-headline2);
-}	
+		img {
 
-.headline3, .is-style-headline3 {
-	line-height: 1.25;
-	@include primary-semi;
-	@include font-size($font-size-headline3);
-}
+			max-width: 45px;
+			width: auto;
+			height: auto;
+			max-height: 30px;
+			margin-right: $gap*5;
 
-.headline4, .is-style-headline4 {
-	line-height: 1.41;
-	@include primary-semi;
-	@include font-size($font-size-headline4);
-}	
-
-.headline5, .is-style-headline5 {
-	line-height: 1.3;
-	letter-spacing: .2px;
-	@include primary-semi;
-	@include font-size($font-size-headline5);
-}
-
-.headline6, .is-style-headline6 {
-	line-height: 1.4;
-	letter-spacing: .2px;
-	@include primary-semi;
-	@include font-size($font-size-headline6);
-}
-
-.component-heading.has-image {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-
-	img {
-
-		max-width: 45px;
-		width: auto;
-		height: auto;
-		max-height: 30px;
-		margin-right: $gap*5;
-
-		@include mediaquery(tablet-portrait) {
-			max-width: 80px;
-			max-height: 50px;
-			margin-right: $gap*2;
+			@include mediaquery(tablet-portrait) {
+				max-width: 80px;
+				max-height: 50px;
+				margin-right: $gap*2;
+			}
 		}
 	}
 }

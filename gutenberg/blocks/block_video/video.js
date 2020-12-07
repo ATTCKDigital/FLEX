@@ -50,18 +50,17 @@ import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '..
  * Register block
  */
 export default registerBlockType(
-    'flex/video',
-
+    'flexlayout/video',
     {
         title: __( 'Video' ),
-        description: __( 'Add a video that plays inline', 'FLEX' ),
+        description: __( 'Add a video that plays inline', 'flexlayout' ),
         category: 'common',
         icon: icons.video,
-        parent: ['FLEX/column'],
+        // parent: ['flexlayout/column'],
         keywords: [
-            __( 'Video', 'FLEX' ),
-            __( 'YouTube', 'FLEX' ),
-            __( 'Vimeo', 'FLEX' ),
+            __( 'Video', 'flexlayout' ),
+            __( 'YouTube', 'flexlayout' ),
+            __( 'Vimeo', 'flexlayout' ),
         ],
         attributes: {
             uploadVideo: {
@@ -226,8 +225,8 @@ export default registerBlockType(
                 }
                 return (
                     <TextControl
-                        label={__('YouTube ID', 'FLEX')}
-                        help={__('Paste the ID of the YouTube Video.', 'FLEX')}
+                        label={__('YouTube ID', 'flexlayout')}
+                        help={__('Paste the ID of the YouTube Video.', 'flexlayout')}
                         value={props.attributes.youtubeVideo ? props.attributes.youtubeVideo : ''}
                         onChange={setYoutubeVideo}
                     />
@@ -242,14 +241,14 @@ export default registerBlockType(
                 return (
                     <div>
                         <TextControl
-                            label={__('BrightCove Account ID', 'FLEX')}
-                            help={__('Paste the ID of the BrightCove Account.', 'FLEX')}
+                            label={__('BrightCove Account ID', 'flexlayout')}
+                            help={__('Paste the ID of the BrightCove Account.', 'flexlayout')}
                             value={props.attributes.brightcoveAccount ? props.attributes.brightcoveAccount : ''}
                             onChange={setBrightcoveAccount}
                         />
                         <TextControl
-                            label={__('BrightCove Video ID', 'FLEX')}
-                            help={__('Paste the ID of the BrightCove Video.', 'FLEX')}
+                            label={__('BrightCove Video ID', 'flexlayout')}
+                            help={__('Paste the ID of the BrightCove Video.', 'flexlayout')}
                             value={props.attributes.brightcoveVideo ? props.attributes.brightcoveVideo : ''}
                             onChange={setBrightcoveVideo}
                         />

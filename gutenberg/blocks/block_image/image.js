@@ -43,16 +43,16 @@ import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from 
  * Register image block
  */
 export default registerBlockType(
-	'flex/image',
+	'flexlayout/image',
 	{
-		title: __( 'Image', 'FLEX' ),
-		description: __( 'Upload an image.', 'FLEX'),
+		title: __( 'Image', 'flexlayout' ),
+		description: __( 'Upload an image.', 'flexlayout'),
 		category: 'common',
 		icon: icons.upload,
-		parent: ['flex/column'],
+		// parent: ['flexlayout/column'],
 		keywords: [
-			__( 'Image', 'FLEX' ),
-			__( 'MediaUpload', 'FLEX' ),
+			__( 'Image', 'flexlayout' ),
+			__( 'MediaUpload', 'flexlayout' ),
 		],
 		attributes: {
 			imgURL: {
@@ -135,7 +135,7 @@ export default registerBlockType(
 									onClick={ open }
 								>
 									{ icons.upload }
-									{ __( ' Upload Image', 'FLEX' ) }
+									{ __( ' Upload Image', 'flexlayout' ) }
 								</Button>
 							) }
 						>

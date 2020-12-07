@@ -1,9 +1,13 @@
-/**** Global Nav Styles ****/
-//Override with custom styles in child theme
+/**
+ * Global Nav Styles
+ * Override with custom styles in child theme
+ */
+ 
 .component-header {
 	height: $navMobileHeight;
 	left: 0;
 	position: fixed;
+	position: relative;
 	right: 0;
 	top: 0;
 	transition: top .3s ease-in;

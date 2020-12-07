@@ -50,17 +50,17 @@ import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from 
 	* Register block
  */
 export default registerBlockType(
-	'flex/heading',
+	'flexlayout/heading',
 	{
 		title: __( 'Heading' ),
 		description: __( 'Introduce new sections and organize content to help visitors (and search engines) understand the structure of your content.' ),
 		category: 'common',
 		icon: 'heading',
-		parent: ['flex/column'],
+		// parent: ['flexlayout/column'],
 		keywords: [
-			__( 'Text', 'FLEX' ),
-			__( 'Heading', 'FLEX' ),
-			__( 'Header', 'FLEX' ),
+			__( 'Text', 'flexlayout' ),
+			__( 'Heading', 'flexlayout' ),
+			__( 'Header', 'flexlayout' ),
 		],
 		attributes: {
 			content: {
@@ -127,7 +127,7 @@ export default registerBlockType(
 			return [
 				<InspectorControls>
 					<PanelBody title={ __('Heading Settings' ) }>
-						<p>{ __( 'Level' ) }</p>
+						<p>{ __( 'HTML Element' ) }</p>
 						<HeadingToolbar minLevel={ 1 } maxLevel={ 7 } selectedLevel={ level } onChange={ ( newLevel ) => setAttributes( { level: newLevel } ) } />
 						<p>{ __( 'Text Alignment' ) }</p>
 						<AlignmentToolbar
@@ -159,7 +159,7 @@ export default registerBlockType(
 										onClick={ open }
 									>
 										{ icons.upload }
-										{ __( ' Upload Image', 'FLEX' ) }
+										{ __( ' Upload Image', 'flexlayout' ) }
 									</Button>
 								) }
 							>
@@ -240,32 +240,32 @@ export default registerBlockType(
 	},
 );
 //Add default styles
-wp.blocks.registerBlockStyle( 'flex/heading', {
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
     name: 'headline1',
     label: 'Headline 1'
 } );
 
-wp.blocks.registerBlockStyle( 'flex/heading', {
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
     name: 'headline2',
     label: 'Headline 2'
 } );
 
-wp.blocks.registerBlockStyle( 'flex/heading', {
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
     name: 'headline3',
     label: 'Headline 3'
 } );
 
-wp.blocks.registerBlockStyle( 'flex/heading', {
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
     name: 'headline4',
     label: 'Headline 4'
 } );
 
-wp.blocks.registerBlockStyle( 'flex/heading', {
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
     name: 'headline5',
     label: 'Headline 5'
 } );
 
-wp.blocks.registerBlockStyle( 'flex/heading', {
+wp.blocks.registerBlockStyle( 'flexlayout/heading', {
     name: 'headline6',
     label: 'Headline 6'
 } );

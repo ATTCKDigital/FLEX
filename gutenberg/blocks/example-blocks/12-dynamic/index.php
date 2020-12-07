@@ -1,7 +1,5 @@
 <?php
-
 namespace FLEX_LAYOUT_SYSTEM\Blocks\Dynamic;
-
 
 add_action( 'init', __NAMESPACE__ . '\register_dynamic_block' );
 /**
@@ -12,14 +10,13 @@ add_action( 'init', __NAMESPACE__ . '\register_dynamic_block' );
  * @return void
  */
 function register_dynamic_block() {
-
 	// Only load if Gutenberg is available.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flex/dynamic', [
+	register_block_type( 'flexlayout/dynamic', [
 		'render_callback' => __NAMESPACE__ . '\render_dynamic_block',
 	] );
 

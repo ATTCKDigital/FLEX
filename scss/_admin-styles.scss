@@ -1,4 +1,3 @@
-/**** Admin Styles ****/
 h1, h2, h3, h4, h5, h6, p {
 	opacity: 1; //overrides fade in elements
 }
@@ -12,7 +11,7 @@ body {
 	border: 1px solid hsla(0, 0%, 75%, 0.2) !important;
 	margin-bottom: 1px;
 	margin-top: 1px;
-	padding: 1px;
+	padding: 5px;
 
 	&.is-hovered {
 		background: hsla(219, 79%, 66%, 0.2) !important;
@@ -22,6 +21,31 @@ body {
 	&.is-selected {
 		border: 1px solid hsla(219, 79%, 66%, 0.5) !important;
 	}
+
+	.component-quote {
+		cite {
+			background: white;
+			border: 1px solid #ccc;
+			line-height: 2.30769231;
+			margin: 0 2px;
+			padding: 5px 15px;
+		}
+	}
+}
+
+.block-editor-button-block-appender.block-list-appender__toggle>svg {
+	background: transparent;
+}
+
+.edit-post-visual-editor .block-editor-inserter .components-button.block-list-appender__toggle {
+	// background: hsl(0deg 0% 100% / 50%);
+	background: hsla(0, 0, 100%, 50%);
+	border: 1px solid #8aacf0;
+	border-radius: 30px;
+	height: 30px;
+	outline: 0;
+	padding: 5px;
+	width: 30px;
 }
 
 //Styles for grid, row and column within editor
@@ -29,12 +53,12 @@ body {
 	max-width: none;
 }
 
-.editor-inner-blocks 
-.editor-block-list__block-edit {
+.editor-inner-blocks .editor-block-list__block-edit,
+.block-editor-inner-blocks .block-editor-block-list__block-edit {
 	background-color: rgba(255, 255, 255, .6);
 }
 
-.wp-block-flex-row {
+.wp-block-flexlayout-row {
 	background-color: rgba(237, 100, 149, .1);
 	border: 0;
 	max-width: $siteWidth;
@@ -45,60 +69,19 @@ body {
 		max-width: none;
 	}
 
-	.editor-inner-blocks {
+	.editor-inner-blocks,
+	.block-editor-inner-blocks {
 		width: 100%;
 	}
 
-	.editor-block-list__layout {
-	    align-content: flex-start;
-		display: flex;
-	    flex-flow: row wrap;
-	    margin: 0;
-
-	    .editor-block-list__block {
-			border: 1px dotted hsla(219, 79%, 66%, 0.2)
-		}
-	}
-	
-	.wp-block {
-		margin-left: 0;
-		margin-right: 0;
-		max-width: none;
-		padding-left: 8px;
-		padding-right: 8px;
-	}
-}
-
-// Updating selectors to support WordPres v.5.5.3
-// .block-editor-block-list__layout .block-editor-block-list__block, 
-// .block-editor-block-list__layout .block-list-appender { ... }
-
-.editor-inner-blocks .editor-block-list__block-edit {
-	background-color: rgba(255, 255, 255, .6);
-}
-
-.wp-block-flex-row {
-	background-color: rgba(237, 100, 149, .1);
-	border: 0;
-	border: 1px dotted hsla(0, 0%, 75%, 0.5);
-	max-width: $siteWidth;
-	margin-left: auto;
-	margin-right: auto;
-
-	.wp-block[data-align=full] & {
-		max-width: none;
-	}
-
-	.editor-inner-blocks {
-		width: 100%;
-	}
-
+	.editor-block-list__layout,
 	.block-editor-block-list__layout {
 	    align-content: flex-start;
 		display: flex;
 	    flex-flow: row wrap;
 	    margin: 0;
 
+	    .editor-block-list__block,
 	    .block-editor-block-list__block {
 			border: 1px dotted hsla(219, 79%, 66%, 0.2);
 
@@ -109,12 +92,21 @@ body {
 	}
 	
 	.wp-block {
-		margin-left: 0;
-		margin-right: 0;
+		// margin-left: 0;
+		// margin-right: 0;
 		max-width: none;
-		padding-left: 8px;
-		padding-right: 8px;
+		padding-left: 2px;
+		padding-right: 2px;
 	}
+}
+
+// Updating selectors to support WordPres v.5.5.3
+// .block-editor-block-list__layout .block-editor-block-list__block, 
+// .block-editor-block-list__layout .block-list-appender { ... }
+
+.editor-inner-blocks .editor-block-list__block-edit,
+.block-editor-inner-blocks .editor-block-list__block-edit {
+	background-color: rgba(255, 255, 255, .6);
 }
 
 .wp-block-flex-column {
@@ -124,7 +116,8 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 
-	.editor-block-list__layout {
+	.editor-block-list__layout,
+	.block-editor-block-list__layout {
 		display: block;
 	}
 }
@@ -154,7 +147,8 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	min-width: 55px;
 }
 
-.edit-post-visual-editor {
+.edit-post-visual-editor,
+.block-edit-post-visual-editor {
 	.components-button {
 		outline: 0;
 		width: auto;
@@ -177,25 +171,29 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 		}
 	}
 
-	.editor-block-list__block .editor-block-list__block-edit {
+	.editor-block-list__block .editor-block-list__block-edit,
+	.block-editor-block-list__block .editor-block-list__block-edit {
 		margin-right: 0;
 		margin-left: 0;
 	}
 }
 
-.editor-block-list__layout .editor-block-list__block .editor-block-list__block-edit:before {
+.editor-block-list__layout .editor-block-list__block .editor-block-list__block-edit:before,
+.block-editor-block-list__layout .editor-block-list__block .editor-block-list__block-edit:before {
 	left: 0;
 	right: 0;
 	top: 0;
 	bottom: 0;
 }
 
-.editor-block-list__layout .editor-block-list__block.is-selected > .editor-block-list__block-edit:before {
+.editor-block-list__layout .editor-block-list__block.is-selected > .editor-block-list__block-edit:before,
+.block-editor-block-list__layout .block-editor-block-list__block.is-selected > .block-editor-block-list__block-edit:before {
 	outline: 2px dashed cornflowerblue;
 	box-shadow: none;
 }
 
-.components-button:disabled, .components-button[aria-disabled=true] {
+.components-button:disabled, 
+.components-button[aria-disabled=true] {
 	opacity: 1;
 
 	svg {
@@ -263,23 +261,25 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 }
 
 /** Helper Classes **/
-.align-center {
-	text-align: center;
-}
+// .align-center {
+// 	text-align: center;
+// }
 
-.align-left {
-	text-align: left;
-}
+// .align-left {
+// 	text-align: left;
+// }
 
-.align-right {
-	text-align: right;
-}
+// .align-right {
+// 	text-align: right;
+// }
+
 .edit-post-meta-boxes-area #poststuff h2.hndle span {
 	font-size: 13px;
 	color: black;
 }
 
-.text-columns, .is-style-text-columns .mce-content-body {
+.text-columns, 
+.is-style-text-columns .mce-content-body {
 	@include mediaquery(tablet-landscape) {
 		column-count: 2;
 		column-gap: $gap*15;
@@ -320,7 +320,8 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	}
 }
 
-.editor-block-list__block>.editor-block-mover {
+.editor-block-list__block>.editor-block-mover,
+.block-editor-block-list__block>.block-editor-block-mover {
 	left: -4px;
 }
 
@@ -329,16 +330,20 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	margin: 0 18px;
 }
 
-.edit-post-sidebar .editor-block-styles__item-preview h2 {
+.edit-post-sidebar .editor-block-styles__item-preview h2,
+.edit-post-sidebar .block-editor-block-styles__item-preview h2 {
 	@extend .headline2;
 	color: black;
-} 
-.edit-post-sidebar .editor-block-styles__item-preview h3 {
+}
+
+.edit-post-sidebar .editor-block-styles__item-preview h3,
+.edit-post-sidebar .block-editor-block-styles__item-preview h3 {
 	@extend .headline3;
 	color: black;
 }
 
-.edit-post-sidebar .editor-block-styles__item-preview .component-heading img {
+.edit-post-sidebar .editor-block-styles__item-preview .component-heading img,
+.edit-post-sidebar .block-editor-block-styles__item-preview .component-heading img {
 	display: none;
 }
 
@@ -349,15 +354,14 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	border: 1px dotted black;
 }
 
-.editor-block-list__layout {
+.editor-block-list__layout,
+.block-editor-block-list__layout {
 	margin-top: 50px;
 }
 
-.editor-block-toolbar {
-	border-left: 1px solid #e2e4e7;
-}
-
+.editor-block-toolbar,
 .block-editor-block-toolbar {
+	border-left: 1px solid #e2e4e7;
 	box-shadow: none;
 }
 
@@ -370,16 +374,21 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	line-height: unset;
 }
 
-.components-popover, .components-base-control {
+.components-popover, 
+.components-base-control {
 	color: black;
 }
 
-.editor-post-title__block .editor-post-title__input, .editor-post-permalink {
+.editor-post-title__block .editor-post-title__input, 
+.block-editor-post-title__block .block-editor-post-title__input, 
+.editor-post-permalink,
+.block-editor-post-permalink {
 	border: 1px solid #59524c;
 	box-shadow: none;
 }
 
-.editor-post-title__block:not(.is-focus-mode).is-selected .editor-post-title__input, .editor-post-title__block:not(.is-focus-mode):not(.has-fixed-toolbar):not(.is-selected) .editor-post-title__input:hover {
+.editor-post-title__block:not(.is-focus-mode).is-selected .editor-post-title__input, 
+.editor-post-title__block:not(.is-focus-mode):not(.has-fixed-toolbar):not(.is-selected) .editor-post-title__input:hover {
 	box-shadow: none;
 	border-width: 1px;
 	border-color: #59524c;

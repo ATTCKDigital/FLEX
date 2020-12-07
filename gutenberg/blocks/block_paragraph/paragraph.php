@@ -9,7 +9,6 @@ use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
 use const FLEX_LAYOUT_SYSTEM\Components\TextColors\TEXT_COLOR_ATTRIBUTES;
 
-
 add_action( 'init', __NAMESPACE__ . '\register_paragraph_block' );
 /**
  * Register the dynamic block.
@@ -19,25 +18,24 @@ add_action( 'init', __NAMESPACE__ . '\register_paragraph_block' );
  * @return void
  */
 function register_paragraph_block() {
-
 	// Only load if Gutenberg is available.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flex/paragraph', [
-		'attributes'      => array_merge(
+	register_block_type( 'flexlayout/paragraph', [
+		'attributes'	  => array_merge(
 			[
 				'content' => [
 					'type' => 'string',
-                    'default' => '',
+					'default' => '',
 				],
 				'className' => [
-                    'type' => 'string',
-                    'default' => '',
-                ],
-                'align' => [
+					'type' => 'string',
+					'default' => '',
+				],
+				'align' => [
 					'type' => 'string',
 					'default' => 'left'
 				],
@@ -50,7 +48,6 @@ function register_paragraph_block() {
 		),
 		'render_callback' => __NAMESPACE__ . '\render_paragraph_block',
 	] );
-
 }
 
 /**
@@ -66,7 +63,7 @@ function render_paragraph_block($attributes) {
 
 	$textColor = array_key_exists('textColor', $attributes) ? $attributes['textColor'] : null;
 
-	if($textColor) {
+	if ($textColor) {
 		$textStyle = ' style="color:'.$textColor.';"';
 	} else {
 		$textStyle = '';

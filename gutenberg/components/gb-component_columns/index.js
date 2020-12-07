@@ -43,6 +43,7 @@ function ColumnOptions( props ) {
 		if ( '12' !== props.attributes.columnCount ) {
 			return '';
 		}
+
 		return (
 			<div className="column-wrapper">
 				<div className="column-inner-wrapper">
@@ -106,7 +107,6 @@ function ColumnOptions( props ) {
 									label: __( '12 (Full width)' ),
 									value: '12',
 								},
-
 							] }
 						/>
 					</PanelRow>
@@ -449,7 +449,6 @@ function ColumnOptions( props ) {
 			</div>
 		);
 	};
-
 
 	const column24Select = () => {
 		if ( '24' !== props.attributes.columnCount ) {
@@ -1141,7 +1140,6 @@ function ColumnOptions( props ) {
 			</div>
 		);
 	};
-
 
 	return (
 		<PanelBody

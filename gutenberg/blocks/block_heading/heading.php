@@ -10,6 +10,7 @@ use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
 
 add_action( 'init', __NAMESPACE__ . '\register_heading_block' );
+
 /**
  * Register the dynamic block.
  *
@@ -18,15 +19,14 @@ add_action( 'init', __NAMESPACE__ . '\register_heading_block' );
  * @return void
  */
 function register_heading_block() {
-
 	// Only load if Gutenberg is available.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flex/heading', [
-		'attributes'      => array_merge(
+	register_block_type( 'flexlayout/heading', [
+		'attributes'	  => array_merge(
 			[
 				'content' => [
 					'type' => 'string',
@@ -47,10 +47,10 @@ function register_heading_block() {
 					'type' => 'string',
 				],
 				'className' => [
-                    'type' => 'string',
-                    'default' => '',
-                ],
-                'imgURL' => [
+					'type' => 'string',
+					'default' => '',
+				],
+				'imgURL' => [
 					'type' => 'string',
 				],
 				'imgID' => [
@@ -82,7 +82,7 @@ function render_heading_block($attributes) {
 	if (strpos($className, 'is-style') !== false) {
 		$headlineClass = '';
 	} else {
-	    $headlineClass =  " headline{$attributes['level']}";
+		$headlineClass =  " headline{$attributes['level']}";
 	}
 	
 	$textColor = array_key_exists('textColor', $attributes) ? $attributes['textColor'] : null;

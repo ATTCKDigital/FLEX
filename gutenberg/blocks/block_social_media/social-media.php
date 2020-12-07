@@ -12,6 +12,7 @@ use function FLEX_LAYOUT_SYSTEM\Components\BackgroundColorOptions\background_col
 use const FLEX_LAYOUT_SYSTEM\Components\TextColors\TEXT_COLOR_ATTRIBUTES;
 
 add_action( 'init', __NAMESPACE__ . '\register_socialmedia_block' );
+
 /**
  * Register the dynamic block.
  *
@@ -20,14 +21,13 @@ add_action( 'init', __NAMESPACE__ . '\register_socialmedia_block' );
  * @return void
  */
 function register_socialmedia_block() {
-
 	// Only load if Gutenberg is available.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flex/socialmedia', [
+	register_block_type( 'flexlayout/socialmedia', [
 		'attributes'      => array_merge(
 			[
 				'facebook' => [
@@ -96,7 +96,7 @@ function render_socialmedia_block($attributes) {
 	$textColor = array_key_exists('textColor', $attributes) ? $attributes['textColor'] : null;
 	$style = background_color_options_inline_styles($attributes);
 
-	if($textColor) {
+	if ($textColor) {
 		$style .= ' color:'.$textColor.';';
 	}
 
@@ -118,34 +118,34 @@ function render_socialmedia_block($attributes) {
 	$youtubeLink = '';
 	$githubLink = '';
 
-	if($attributes['facebook'] == 'true' && $facebook) {
+	if ($attributes['facebook'] == 'true' && $facebook) {
 		$facebookLink = '<mark class="social-icon margin-right-2x"><a href="'.$facebook.'" target="_blank"><i class="fab fa-facebook-f" aria-label="Visit our Facebook page"></i></a></mark>';
 	}
 
-	if($attributes['twitter'] == 'true' && $twitter) {
+	if ($attributes['twitter'] == 'true' && $twitter) {
 		$twitterLink = '<mark class="social-icon margin-right-2x"><a href="https://twitter.com/'.$twitter.'" target="_blank" aria-label="Visit our Twitter page"><i class="fab fa-twitter"></i></a></mark>';
 	}
 
-	if($attributes['instagram'] == 'true' && $instagram) {
+	if ($attributes['instagram'] == 'true' && $instagram) {
 		$instagramLink = '<mark class="social-icon margin-right-2x"><a href="https://www.instagram.com/'.$instagram.'" target="_blank" aria-label="Visit our Instagram page"><i class="fab fa-instagram"></i></a></mark>';
 	}
 
-	if($attributes['pinterest'] == 'true' && $pinterest) {
+	if ($attributes['pinterest'] == 'true' && $pinterest) {
 		$pinterestLink = '<mark class="social-icon margin-right-2x"><a href="https://www.pinterest.com/'.$pinterest.'" target="_blank" aria-label="Visit our Pinterest page"><i class="fab fa-pinterest-p"></i></a></mark>';
 	}
-	if($attributes['linkedin'] == 'true' && $linkedin) {
+	if ($attributes['linkedin'] == 'true' && $linkedin) {
 		$linkedinLink = '<mark class="social-icon margin-right-2x"><a href="'.$linkedin.'" target="_blank" aria-label="Visit our LinkedIn page"><i class="fab fa-linkedin-in"></i></a></mark>';
 	}
 
-	if($attributes['medium'] == 'true' && $medium) {
+	if ($attributes['medium'] == 'true' && $medium) {
 		$mediumLink = '<mark class="social-icon margin-right-2x"><a href="'.$medium.'" target="_blank" aria-label="Visit our Medium page"><i class="fab fa-medium-m"></i></a></mark>';
 	}
 
-	if($attributes['youtube'] == 'true' && $youtube) {
+	if ($attributes['youtube'] == 'true' && $youtube) {
 		$youtubeLink = '<mark class="social-icon margin-right-2x"><a href="'.$youtube.'" target="_blank" aria-label="Visit our YouTube page"><i class="fab fa-youtube"></i></a></mark>';
 	}
 
-	if($attributes['github'] == 'true' && $github) {
+	if ($attributes['github'] == 'true' && $github) {
 		$githubLink = '<mark class="social-icon margin-right-2x"><a href="'.$github.'" target="_blank" aria-label="Visit our Github page"><i class="fab fa-github"></i></a></mark>';
 	}
 
@@ -154,4 +154,3 @@ function render_socialmedia_block($attributes) {
 
 	return $output;
 }
-

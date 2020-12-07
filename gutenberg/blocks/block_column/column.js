@@ -8,17 +8,20 @@ import icons from '../../../js/icons.js'
  * Internal block libraries
  */
 const { __ } = wp.i18n;
+
 const {
 	registerBlockType,
 } = wp.blocks;
+
 const {
 	InspectorControls,
 	InnerBlocks,
 } = wp.blockEditor;
+
 const {
 	Toolbar,
-
 } = wp.components;
+
 const {
 	createHigherOrderComponent
 } = wp.compose;
@@ -41,20 +44,19 @@ import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '..
 	* Register block
  */
 export default registerBlockType(
-	'flex/column',
+	'flexlayout/column',
 	{
 		title: __( 'Column' ),
-		description: __( 'Creates a column wrapper to support inner blocks.', 'FLEX' ),
+		description: __( 'Creates a column wrapper to support inner blocks.', 'flexlayout' ),
 		category: 'layout',
 		icon: 'columns',
-		parent: ['flex/row'],
+		// parent: ['flexlayout/row'],
 		keywords: [
-			__( 'Flex', 'FLEX' ),
-			__( 'Layout', 'FLEX' ),
-			__( 'Column', 'FLEX' ),
+			__( 'Flex', 'flexlayout' ),
+			__( 'Layout', 'flexlayout' ),
+			__( 'Column', 'flexlayout' ),
 		],
 		attributes: {
-
 			...AnchorOptionsAttributes,
 			...PaddingOptionsAttributes,
 			...ColumnOptionsAttributes,
@@ -119,7 +121,7 @@ export default registerBlockType(
 
 const customClassName = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
-		if (props.name === 'FLEX/column') {
+		if (props.name === 'flexlayout/column') {
 				return <BlockListBlock
 						{ ...props }
 						className={ classnames(
@@ -138,4 +140,4 @@ const customClassName = createHigherOrderComponent( ( BlockListBlock ) => {
 	};
 }, 'customClassName' );
 
-wp.hooks.addFilter( 'editor.BlockListBlock', 'FLEX/column/customClassName', customClassName );
+wp.hooks.addFilter( 'editor.BlockListBlock', 'flexlayout/column/customClassName', customClassName );

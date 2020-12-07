@@ -4,12 +4,71 @@
  */
 "use strict";
 
-var clientNamespace = {};
-var FLEXLAYOUT = clientNamespace;
+// Namespace & config
+var FLEX = {
+	breakpoints: [
+		"small",
+		"phone",
+		"tablet-portrait",
+		"tablet-landscape",
+		"desktop",
+		"xl",
+		"2xl",
+		"3xl",
+		"4xl",
+		"5xl"
+	],
+	debugOverride: false,
+	showConsoleLogs: true
+};
 
-FLEXLAYOUT.Globals = {};
+FLEX.Globals = {};
 
-FLEXLAYOUT.formatPhoneNumber = function (phoneNumberString) {
+// Fire up the chopper
+FLEX.init = function () {
+	// Retrieve URL vars
+	this.queryVariables.init();
+
+	// Detect debug mode
+	this.debug.init();
+
+	return this;
+};
+
+// Cookie manager
+FLEX.cookies = (function () {
+	function set(key, value, expiry) {
+		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.cookies.set(key:' + key + ', value:' + value + ', expiry:' + expiry + ')');
+
+		var expires = new Date();
+		expires.setTime(expires.getTime() + (expiry * 24 * 60 * 60 * 1000));
+		document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+	}
+
+	function get(key) {
+		var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+		var returnValue = keyValue ? keyValue[2] : null;
+
+		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.cookies.get(' + key + ') › returnValue: ' + returnValue);
+
+		return returnValue;
+	}
+
+	function remove(key) {
+		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.cookies.remove(' + key + ')');
+
+		var keyValue = this.get(key);
+		this.set(key, keyValue, '-1');
+	}
+
+	return {
+		get: get,
+		remove: remove,
+		set: set
+	}
+})();
+
+FLEX.formatPhoneNumber = function (phoneNumberString) {
 	console.log('/FLEX/js/clientNamespace', 'formatPhoneNumber()');
 	console.log('/— phoneNumberString: ', phoneNumberString);
 
@@ -20,26 +79,70 @@ FLEXLAYOUT.formatPhoneNumber = function (phoneNumberString) {
 		return '(' + match[1] + ') ' + match[2] + '-' + match[3]
 	}
 
-	return null
+	return null;
 };
 
-FLEXLAYOUT.getQueryVariable = function (variable) {
-	var query = window.location.search.substring(1);
-	var vars = query.split("&");
+// URL variable manager
+FLEX.queryVariables = (function () {
+	var store = {};
 
-	for (var i=0; i < vars.length; i++) {
-		var pair = vars[i].split("=");
-
-		if (pair[0] === variable) {
-			return pair[1];
-		}
+	function set(key, value) {
+		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.queryVariables.set(key: ' + key + ', value:' + value + ')');
+		store[key] = value;
 	}
 
-	return(false);
-};
+	function get(key) {
+		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.queryVariables.get(key: ' + key + ')');
 
-// https://medium.com/@DylanAttal/truncate-a-string-in-javascript-41f33171d5a8
-FLEXLAYOUT.truncateString = function (str, num) {
+		return store[key];
+	}
+
+	function getAll() {
+		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.queryVariables.getAll()');
+		var query = window.location.search.substring(1);
+		var vars = query.split('&');
+
+		for (var i = 0; i < vars.length; i++) {
+			var pair = vars[i].split('=');
+
+			set(pair[0], pair[1]);
+		}
+
+		return store;
+	}
+
+	function init() {
+		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.queryVariables.init()');
+
+		return getAll();
+	}
+
+	function remove(key) {
+		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.queryVariables.remove(key: ' + key + ')');
+
+		return delete store[key];
+	}
+
+	return {
+		get: get,
+		getAll: getAll,
+		init: init
+	}
+})();
+
+FLEX.insertDecimal = function (num) {
+	num = (num / 100).toFixed(2);
+	num = num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+	return num;
+}
+
+FLEX.isUndefined = function (value) {
+	return typeof value === 'undefined';
+}
+
+FLEX.truncateString = function (str, num) {
+	// https://medium.com/@DylanAttal/truncate-a-string-in-javascript-41f33171d5a8
 	console.log('/FLEX/js/global-events.js', 'truncateString()');
 
 	if (!str) return false;
@@ -55,55 +158,11 @@ FLEXLAYOUT.truncateString = function (str, num) {
 	return str.slice(0, num) + '...';
 };
 
-// Turn console logging on or off
-// Can override with ?debug=true URL variable
-FLEXLAYOUT.showConsoleLogs = false || FLEXLAYOUT.getQueryVariable('debug');
-
-// Console event override
-(function () {
-	// NOTE: Uncomment to see script references in console
-	// return true;
-	var _log = console.log;
-	
-	console.log = function (logMessage) {
-		if (FLEXLAYOUT.showConsoleLogs) {
-			var argArray = arguments;
-
-			if (arguments.length === 2) {
-				if (arguments[0] && arguments[1]) {
-					if (arguments[0] === 'loaded') {
-						argArray = [];
-
-						// If first item is 'loaded', make it green
-						argArray.push('%c   loaded: %c ' + arguments[1]);
-						argArray.push('color: #BADA55');
-						argArray.push('color: #759417');
-					} else if (arguments[0].startsWith && arguments[0].startsWith('/')) {
-						argArray = [];
-
-						// Otherwise, if the first item starts with '/', grey it out
-						argArray.push('%c   ' + arguments[0] + ' › %c ' + arguments[1]);
-						argArray.push('color: #89a9c8');
-						argArray.push('color: #0b286d; font-style: italic');
-					}
-				}
-			} else {
-				argArray = [];
-
-				for (const prop in arguments) {
-					if (arguments.hasOwnProperty(prop)) {
-						if (arguments[(prop * 1)]) {
-							argArray.push(arguments[(prop * 1)]);
-						}
-					}
-				}
-			}
-
-			_log.apply(console, argArray);
-		}
-	};
-})();
+// Initiate Global Component Loader and Global Events.
+$(function() {
+	FLEX.init();
+});
 
 console.log('loaded', '/FLEX/js/clientNamespace.js');
 
-export default FLEXLAYOUT;
+export default FLEX;

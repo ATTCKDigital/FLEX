@@ -3,11 +3,9 @@
  * @type {Object}
  */
 const BackgroundColorOptionsAttributes = {
-
 	backgroundColor: {
 		type: 'string',
 	},
-
 };
 
 export default BackgroundColorOptionsAttributes;

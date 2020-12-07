@@ -1,13 +1,19 @@
 <?php
-if(!defined('WPE_PROD')) {
-	define('WPE_PROD', ''); //define the WPEngine environments
+// WPEngine environments should be added tothe child theme
+// e.g., clientprod.wpengine.com = 'clientprod'
+if (!defined('WPE_PROD')) {
+	define('WPE_PROD', '');
 }
-if(!defined('WPE_STAGE')) {
-	define('WPE_STAGE', ''); //define the WPEngine environments
-}
-define('THEME_DIR', get_template_directory()); // use when there are files that should ONLY be from the parent theme.
 
-// Use locate_template() to include files.  This function first checks the child theme for the file and if there is none, uses the parent theme.
+// e.g., clientstage.wpengine.com = 'clientstage'
+if (!defined('WPE_STAGE')) {
+	define('WPE_STAGE', '');
+}
+
+// Use when there are files that should ONLY be from the parent theme.
+define('THEME_DIR', get_template_directory());
+
+// Use locate_template() to include files. This function first checks the child theme for the file and if there is none, uses the parent theme.
 // Allows us to override main functions in the child theme without changing the parent.
 
 /*** Global Variables ***/
@@ -19,7 +25,8 @@ include_once(locate_template('config/global-variables/svg-sprite.php')); //REQUI
 include_once(locate_template('config/global-variables/date-format.php')); //REQUIRED
 include_once(locate_template('config/global-variables/wysiwyg-formats.php')); //REQUIRED
 
-// WP functions are split out into individual files for clarity. Disable/Enable files by commenting out here. See README.md
+// WP functions are split out into individual files for clarity. 
+// Disable/Enable files by commenting out here. See README.md
 // for details on each config file
 
 /*** ACF Configs ***/

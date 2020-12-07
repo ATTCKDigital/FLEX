@@ -8,15 +8,18 @@ import icons from '../../../js/icons.js'
  * Internal block libraries
  */
 const { __ } = wp.i18n;
+
 const {
 	registerBlockType,
 } = wp.blocks;
+
 const {
 	RichText,
 	AlignmentToolbar,
 	InspectorControls,
 	URLInput
 } = wp.blockEditor;
+
 const {
 	Button,
 	ButtonGroup,
@@ -25,7 +28,6 @@ const {
 	Dashicon,
 	IconButton,
 	CheckboxControl
-
 } = wp.components;
 
 /**
@@ -34,22 +36,21 @@ const {
 // Import all of our Margin Options requirements.
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
 
-
 /**
 	* Register block
  */
 export default registerBlockType(
-	'flex/button',
+	'flexlayout/button',
 	{
 		title: __( 'Button' ),
 		description: __( 'Prompt visitors to take action with a custom button.' ),
 		category: 'common',
 		icon: icons.button,
-		parent: ['flex/column'],
+		// parent: ['flexlayout/column'],
 		keywords: [
-			__( 'Text', 'FLEX' ),
-			__( 'Button', 'FLEX' ),
-			__( 'CTA', 'FLEX' ),
+			__( 'Text', 'flexlayout' ),
+			__( 'Button', 'flexlayout' ),
+			__( 'CTA', 'flexlayout' ),
 		],
 		attributes: {
 			content: {
@@ -99,7 +100,7 @@ export default registerBlockType(
 							} }
 						/>
 						<CheckboxControl
-							label={__('Open in new window?', 'FLEX')}
+							label={__('Open in new window?', 'flexlayout')}
 							checked={target}
 							onChange={target => setAttributes({ target })}
 					  	/>
@@ -167,6 +168,5 @@ export default registerBlockType(
 		save() {
 			return null;
 		},
-
 	},
 );

@@ -1,4 +1,5 @@
 
+
 // General variables and setup
 @import 'css-vars';
 @import 'sass-utils';
@@ -6,9 +7,11 @@
 @import 'sizing';
 @import 'media-queries';
 @import 'grid';
+@import 'colors';
 @import 'fonts';
 @import 'fonts-mixins';
-@import 'colors';
+@import 'typography-base';
+@import 'body-text';
 @import 'debug';
 @import 'global';
 @import 'layout';
@@ -21,8 +24,6 @@
 @import '../gutenberg/components/gb-component_padding/_padding.scss';
 @import '../gutenberg/components/gb-component_margin/_margin.scss';
 
-@import 'typography-base';
-@import 'body-text';
 @import '../gutenberg/blocks/block_image/_image.scss';
 @import '../gutenberg/blocks/block_button/_buttons.scss';
 @import '../gutenberg/blocks/block_heading/_heading.scss';

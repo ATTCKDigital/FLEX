@@ -8,72 +8,83 @@
 }
 
 .breakpoint-current {
-	font-size: 20px;
 	display: none;
+	font-size: 20px;
 }
 
 body {
 	&.debug {
-		border: 5px solid white;
-
-        @include mediaquery(phone)  {
-            border-color: green;
-        }
-
-        @include mediaquery(tablet-portrait)  {
-            border-color: blue;
-        }
-
-        @include mediaquery(tablet-landscape)  {
-            border-color: purple;
-        }
-
-        @include mediaquery(desktop)  {
-            border-color: orange;
-        }
-
-        @include mediaquery(xl) {
-            border-color: yellow;
-        }
-
-        @include mediaquery(xl2) {
-            border-color: yellow;
-        }
-    }
-
-	@include mediaquery(phone)  {
-		.breakpoint.phone {
-			display: block;
+		* {
+			// Blue to yellow diagonal gradient
+			background: linear-gradient(160deg, rgba(0,0,255,0.21), rgba(255,255,0,0.21));
 		}
-	}
 
-	@include mediaquery(tablet-portrait)  {
-		.breakpoint.tablet-portrait {
-			display: block;
+		// Pink to blue diagonal gradient
+		div {
+			background: linear-gradient(160deg, rgba(255,0,255,0.21), rgba(0,0,255,0.21));
 		}
-	}
 
-	@include mediaquery(tablet-landscape)  {
-		.breakpoint.tablet-landscape {
-			display: block;
+		section {
+			outline: dotted .25rem greenyellow;
+			outline-offset: -.5rem;
 		}
-	}
 
-	@include mediaquery(desktop)  {
-		.breakpoint.xl {
-			display: block;
+		.component[data-component-name] {
+			background-color: rgba(0, 0, 0, .5);
+			outline: dashed .25rem #ffd400;
+			outline-offset: -.5rem;
+
+			&:hover {
+				background-color: transparent;
+			}
 		}
-	}
 
-	@include mediaquery(xl) {
-		.breakpoint.xl {
-			display: block;
+		@include mediaquery(phone)  {
+			border-color: orange;
+
+			.breakpoint.phone {
+				display: block;
+			}
 		}
-	}
 
-	@include mediaquery(xl2) {
-		.breakpoint.xl2 {
-			display: block;
+		@include mediaquery(tablet-portrait)  {
+			border-color: yellow;
+
+			.breakpoint.tablet-portrait {
+				display: block;
+			}
+		}
+
+		@include mediaquery(tablet-landscape)  {
+			border-color: green;
+
+			.breakpoint.tablet-landscape {
+				display: block;
+			}
+		}
+
+		@include mediaquery(desktop)  {
+			border-color: blue;
+
+			.breakpoint.xl {
+				display: block;
+			}
+		}
+
+		@include mediaquery(xl) {
+			border-color: purple;
+
+			.breakpoint.xl {
+				display: block;
+			}
+		}
+
+		@include mediaquery(xl2) {
+			border-color: black;
+
+			.breakpoint.xl2 {
+				display: block;
+			}
 		}
 	}
 }

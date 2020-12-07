@@ -25,19 +25,19 @@ const {
  * Register example block
  */
 export default registerBlockType(
-    'flex/url-input',
+    'flexlayout/url-input',
     {
-        title: __( 'Example - URL Input', 'FLEX' ),
-        description: __( 'An example of how to use the URLInput component.', 'FLEX'),
+        title: __( 'Example - URL Input', 'flexlayout' ),
+        description: __( 'An example of how to use the URLInput component.', 'flexlayout'),
         category: 'common',
         icon: {
             background: 'rgba(254, 243, 224, 0.52)',
             src: icon,
         },
         keywords: [
-            __( 'Link', 'FLEX' ),
-            __( 'Post', 'FLEX' ),
-            __( 'Search', 'FLEX' ),
+            __( 'Link', 'flexlayout' ),
+            __( 'Post', 'flexlayout' ),
+            __( 'Search', 'flexlayout' ),
         ],
         attributes: {
             text: {
@@ -62,11 +62,11 @@ export default registerBlockType(
                         <Fragment>
                             <TextControl
                                 id="example-input-field"
-                                label={ __( 'Link Text', 'FLEX' ) }
+                                label={ __( 'Link Text', 'flexlayout' ) }
                                 value={ text }
                                 onChange={ text => setAttributes( { text } ) }
                             />
-                            <p>{ __( 'Link URL', 'FLEX' ) }</p>
+                            <p>{ __( 'Link URL', 'flexlayout' ) }</p>
                             <form
                                 className="blocks-format-toolbar__link-modal-line blocks-format-toolbar__link-modal-line"
                                 onSubmit={ event => event.preventDefault() }
@@ -81,7 +81,7 @@ export default registerBlockType(
                                 />
                                 <IconButton
                                     icon="editor-break"
-                                    label={ __( 'Apply', 'FLEX' ) }
+                                    label={ __( 'Apply', 'flexlayout' ) }
                                     type="submit"
                                 />
                             </form>
@@ -91,7 +91,7 @@ export default registerBlockType(
 
                         <p>
                             <a href={ url }>
-                                { text || __( 'Edit link', 'FLEX' ) }
+                                { text || __( 'Edit link', 'flexlayout' ) }
                             </a>
                         </p>
 

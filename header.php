@@ -6,14 +6,14 @@
 		// Set the post ID
 		global $wp;
 
-		if(is_home()) {
-			$ID = get_option( 'page_for_posts' ); //get the ID of the "posts page" as set in Settings > Reading
-		} else if(is_category() || is_tag()) {
+		if ( is_home() ) {
+			$ID = get_option('page_for_posts'); //get the ID of the "posts page" as set in Settings > Reading
+		} else if ( is_category() || is_tag() ) {
 			// is a category or tag archive
 			$ID = get_queried_object()->term_id;
-		} else if(is_404()) {
+		} else if ( is_404() ) {
 			$ID = '';
-		} else if(is_archive()) {
+		} else if ( is_archive() ) {
 			$ID = '';
 		} else {
 			$ID = $post->ID;

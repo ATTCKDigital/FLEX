@@ -6,19 +6,19 @@
 // Enable FLEX created blocks by using FLEX/block_name
 
 $blocks = array(
-	'FLEX/row', //REQUIRED
-	'FLEX/column', //REQUIRED
-	'FLEX/button',
-	'FLEX/feed',
-	'FLEX/heading',
-	'FLEX/image',
-	'FLEX/quote',
-	'FLEX/shortcode',
-	'FLEX/source',
-	'FLEX/socialmedia',
-	'FLEX/text',
-	// 'FLEX/users',
-	'FLEX/video',
+	'flexlayout/row', //REQUIRED
+	'flexlayout/column', //REQUIRED
+	'flexlayout/button',
+	'flexlayout/feed',
+	'flexlayout/heading',
+	'flexlayout/image',
+	'flexlayout/quote',
+	'flexlayout/shortcode',
+	'flexlayout/source',
+	'flexlayout/socialmedia',
+	'flexlayout/text',
+	// 'flexlayout/users',
+	'flexlayout/video',
 );
 
 

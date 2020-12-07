@@ -30,19 +30,19 @@ const {
  * Register block
  */
 export default registerBlockType(
-    'flex/custom-toolbar',
+    'flexlayout/custom-toolbar',
     {
-        title: __( 'Example - Custom Toolbar', 'FLEX' ),
-        description: __( 'An example of how to add a custom buttom to the block toolbar.', 'FLEX'),
+        title: __( 'Example - Custom Toolbar', 'flexlayout' ),
+        description: __( 'An example of how to add a custom buttom to the block toolbar.', 'flexlayout'),
         category: 'common',
         icon: {
             background: 'rgba(254, 243, 224, 0.52)',
             src: icon,
         },
         keywords: [
-            __( 'Button', 'FLEX' ),
-            __( 'Settings', 'FLEX' ),
-            __( 'Controls', 'FLEX' ),
+            __( 'Button', 'flexlayout' ),
+            __( 'Settings', 'flexlayout' ),
+            __( 'Controls', 'flexlayout' ),
         ],
         attributes: {
             alignment: {
@@ -86,7 +86,7 @@ export default registerBlockType(
                             onChange={ alignment => props.setAttributes( { alignment } ) }
                         />
                         <Toolbar>
-                            <Tooltip text={ __( 'High Contrast', 'FLEX' )  }>
+                            <Tooltip text={ __( 'High Contrast', 'flexlayout' )  }>
                                 <Button
                                     className={ classnames(
                                         'components-icon-button',
@@ -103,7 +103,7 @@ export default registerBlockType(
                     <RichText
                         tagName="div"
                         multiline="p"
-                        placeholder={ __( 'Enter your message here..', 'FLEX' ) }
+                        placeholder={ __( 'Enter your message here..', 'flexlayout' ) }
                         value={ message }
                         className={ classnames(
                             'message-body',

@@ -29,17 +29,17 @@ import BackgroundColorOptions, { BackgroundColorOptionsAttributes, BackgroundCol
 
 
 export default registerBlockType(
-	'flex/text',
+	'flexlayout/text',
 	{
 		title: __( 'Rich Text', 'block title' ),
 		description: __( 'This block is similar to the Paragraph or List block depending on your needs.' ),
 		icon: icons.text,
 		category: 'common',
-		parent: ['FLEX/column'],
+		// parent: ['flexlayout/column'],
 		keywords: [
-			__( 'Text', 'FLEX' ),
-			__( 'WYSIWYG', 'FLEX' ),
-			__( 'TinyMCE', 'FLEX' ),
+			__( 'Text', 'flexlayout' ),
+			__( 'WYSIWYG', 'flexlayout' ),
+			__( 'TinyMCE', 'flexlayout' ),
 		],
 		attributes: {
 			content: {

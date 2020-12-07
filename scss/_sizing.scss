@@ -40,13 +40,22 @@ $large-row					: 700px;
 // Add as many as needed.
 // Add fonts sizes for each break point. Font sizes will be converted to rems. 
 // Usage:  @include font-size($font-size)
+$font-size-default: (
+	'phone'				: 26px,
+	'tablet-portrait'	: 26px,
+	'tablet-landscape'	: 26px,
+	'desktop'			: 26px,
+	'xl'				: 26px,
+	'xl2'				: 26px,
+);
+
 $font-size-headline1: (
-	'phone'				: 64px,
+	'phone'				: 60px,
 	'tablet-portrait'	: 64px,
-	'tablet-landscape'	: 96px,
-	'desktop'			: 96px,
-	'xl'				: 96px,
-	'xl2'				: 96px,
+	'tablet-landscape'	: 68px,
+	'desktop'			: 72px,
+	'xl'				: 72px,
+	'xl2'				: 72px,
 );
 
 $font-size-headline2: (

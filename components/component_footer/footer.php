@@ -9,7 +9,7 @@
 		<div class="flex-desktop-1-12 flex-tablet-landscape-1-12 flex-tablet-portrait-1-12 flex-0-12"></div>
 		<div class="flex-desktop-3-12 flex-tablet-landscape-3-12 flex-tablet-portrait-3-12 flex-12-12 padding-bottom-2x padding-tablet-portrait-bottom-0x">
 			<?php
-				//To make this into a share component, change componentType value to "share"
+				// To make this into a share component, change componentType value to "share"
 				echo Utils::render_template('components/component_footer/footer-contact.php', array(
 					'displayTitle'	=> 'Contact us:'
 				));

@@ -1,7 +1,9 @@
-/** Body Copy **/
 // Styles for content within a WYSIWYG.
 // All WYSIWYG content should be wrapped in a "body-text" div
-.body1, .is-style-body1 p, .is-style-body1 {
+
+.body1,
+.is-style-body1 p,
+.is-style-body1 {
 	font-size: 14px;
 	line-height: 1.3;
 	margin-bottom: $gap;
@@ -14,7 +16,9 @@
 	}
 }
 
-.body2, .is-style-body2 p, .is-style-body2 {
+.body2,
+.is-style-body2 p,
+.is-style-body2 {
 	font-size: 16px;
 	line-height: 1.3;
 	margin-bottom: $gap;
@@ -26,7 +30,9 @@
 	}
 }
 
-.body3, .is-style-body3 p, .is-style-body3 {
+.body3,
+.is-style-body3 p,
+.is-style-body3 {
 	font-size: 12px;
 	line-height: 1.3;
 	margin-bottom: $gap;
@@ -38,7 +44,8 @@
 	}
 }
 
-.body-text, .mce-content-body {
+.body-text,
+.mce-content-body {
 	p {
 		@extend .body1 !optional;
 	}
@@ -49,7 +56,9 @@
 	}
 
 	.wp-caption {
-		&.aligncenter, &.none, &.alignnone {
+		&.aligncenter,
+		&.none,
+		&.alignnone {
 			display: block;
 			margin: 0 auto $gap*5;
 			max-width: 100%;
@@ -103,7 +112,8 @@
 	}
 
 	table {
-		td, th {
+		td,
+		th {
 			@extend .body1 !optional;
 			border: 1px solid $borderColor;
 			padding: $gap;
@@ -125,7 +135,10 @@
 		text-decoration: none;
 	}
 
-	a, p a, ul li a, ol li a {
+	a,
+	p a,
+	ul li a,
+	ol li a {
 		text-decoration: underline;
 		transition: opacity .4s ease-out;
 
@@ -141,7 +154,8 @@
 	}
 
 	//list styles
-	ul, ol {
+	ul,
+	ol {
 		margin-left: $gap*.75;
 		margin-bottom: $gap;
 

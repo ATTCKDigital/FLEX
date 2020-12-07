@@ -43,16 +43,16 @@ import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from 
  * Register image block
  */
 export default registerBlockType(
-	'flex/animated-gif',
+	'flexlayout/animated-gif',
 	{
-		title: __( 'Animated GIF', 'FLEX' ),
-		description: __( 'A block for large animated gif files.', 'FLEX'),
+		title: __( 'Animated GIF', 'flexlayout' ),
+		description: __( 'A block for large animated gif files.', 'flexlayout'),
 		category: 'common',
 		icon: icons.gif,
-		parent: ['flex/column'],
+		// parent: ['flexlayout/column'],
 		keywords: [
-			__( 'Image', 'FLEX' ),
-			__( 'MediaUpload', 'FLEX' ),
+			__( 'Image', 'flexlayout' ),
+			__( 'MediaUpload', 'flexlayout' ),
 		],
 		attributes: {
 			imgURL: {
@@ -154,7 +154,7 @@ export default registerBlockType(
 									onClick={ open }
 								>
 									{ icons.upload }
-									{ __( ' Upload Placeholder Image', 'FLEX' ) }
+									{ __( ' Upload Placeholder Image', 'flexlayout' ) }
 								</Button>
 							) }
 						>
@@ -222,7 +222,7 @@ export default registerBlockType(
 									onClick={ open }
 								>
 									{ icons.upload }
-									{ __( ' Upload Animated GIF', 'FLEX' ) }
+									{ __( ' Upload Animated GIF', 'flexlayout' ) }
 								</Button>
 							) }
 						>

@@ -4,7 +4,6 @@ namespace FLEX_LAYOUT_SYSTEM\Blocks\Button;
 use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
 
-
 add_action( 'init', __NAMESPACE__ . '\register_button_block' );
 /**
  * Register the dynamic block.
@@ -14,15 +13,14 @@ add_action( 'init', __NAMESPACE__ . '\register_button_block' );
  * @return void
  */
 function register_button_block() {
-
 	// Only load if Gutenberg is available.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flex/button', [
-		'attributes'      => array_merge(
+	register_block_type( 'flexlayout/button', [
+		'attributes'	  => array_merge(
 			[
 				'content' => [
 					'type' => 'string',
@@ -56,7 +54,6 @@ function register_button_block() {
 		),
 		'render_callback' => __NAMESPACE__ . '\render_button_block',
 	] );
-
 }
 
 /**
@@ -73,21 +70,25 @@ function render_button_block($attributes) {
 	$url2 = array_key_exists('url2', $attributes) ? $attributes['url2'] : null;
 
 	$targetAttr = null;
-	if($attributes['target'] == 'true') {
+
+	if ($attributes['target'] == 'true') {
 		$targetAttr = ' target="_blank"';
 	}
 
 	$button1 = null;
+	
 	if ($content1 && $url1) {
 		$button1 = "<a href=\"{$url1}\" {$targetAttr} class=\"cta {$buttonClass}\">{$content1}</a>";
 	}
 
 	$button2 = null;
-	if($content2 && $url2) {
+	
+	if ($content2 && $url2) {
 		$button2 = "<a href=\"{$url2}\" {$targetAttr} class=\"cta {$buttonClass}\">{$content2}</a>";
 	}
 
 	$output = '';
+
 	if ($button1 || $button2) {
 		$output = "<div class=\"component-button component {$class}\">{$button1}{$button2}</div>";
 	}

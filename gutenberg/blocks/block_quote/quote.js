@@ -44,16 +44,16 @@ import TextColorOptions, { TextColorAttributes, TextColorClasses } from '../../c
 	* Register block
  */
 export default registerBlockType(
-	'flex/quote',
+	'flexlayout/quote',
 	{
 		title: __( 'Quote' ),
 		description: __( 'A stylized pull quote with a source' ),
 		category: 'common',
 		icon: 'editor-quote',
-		parent: ['flex/column'],
+		// parent: ['flexlayout/column'],
 		keywords: [
-			__( 'Text', 'FLEX' ),
-			__( 'Quote', 'FLEX' ),
+			__( 'Text', 'flexlayout' ),
+			__( 'Quote', 'flexlayout' ),
 		],
 		attributes: {
 			imgURL: {
@@ -161,7 +161,7 @@ export default registerBlockType(
 									onClick={ open }
 								>
 									{ icons.upload }
-									{ __( 'Upload Image', 'FLEX' ) }
+									{ __( 'Upload Image', 'flexlayout' ) }
 								</Button>
 							) }
 						>

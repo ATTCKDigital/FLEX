@@ -9,6 +9,7 @@ use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
 
 add_action( 'init', __NAMESPACE__ . '\register_animated_gif_block' );
+
 /**
  * Register the dynamic block.
  *
@@ -17,15 +18,14 @@ add_action( 'init', __NAMESPACE__ . '\register_animated_gif_block' );
  * @return void
  */
 function register_animated_gif_block() {
-
 	// Only load if Gutenberg is available.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flex/animated-gif', [
-		'attributes'      => array_merge(
+	register_block_type( 'flexlayout/animated-gif', [
+		'attributes'	  => array_merge(
 			[
 				'imgURL' => [
 					'type' => 'string',
@@ -46,10 +46,10 @@ function register_animated_gif_block() {
 					'type' => 'string',
 				],
 				'className' => [
-                    'type' => 'string',
-                    'default' => ''
-                ],
-                'align' => [
+					'type' => 'string',
+					'default' => ''
+				],
+				'align' => [
 					'type' => 'string',
 					'default' => 'center'
 				],
@@ -61,7 +61,6 @@ function register_animated_gif_block() {
 		),
 		'render_callback' => __NAMESPACE__ . '\render_animated_gif_block',
 	] );
-
 }
 
 /**
@@ -86,12 +85,11 @@ function render_animated_gif_block($attributes) {
 		$image = $imageURL;
 	}
 
-	if($caption) {
+	if ($caption) {
 		$caption = '<figcaption class="caption">'.$caption.'</figcaption>';
 	} else {
 		$caption = '';
 	}
-	
 
 	$output = '<div class="component-animated-gif component '.$class.'" data-component-name="AnimatedGif"><div class="image-wrapper'.$classInner.'" data-gif-src="'.$gifURL[0].'">'.$image.$caption.'</div></div>';
 

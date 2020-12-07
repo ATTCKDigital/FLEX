@@ -1,9 +1,8 @@
 <?php
-
 /**
  * WYSIWYG Formats dropdown styles 
  *
-**/
+ */
 
 $style_formats = array(
 	array(  
@@ -42,6 +41,6 @@ $style_formats = array(
 		),
 );
 
-if(!defined('FLEXLAYOUT_WYSIWYG')) {
+if ( !defined('FLEXLAYOUT_WYSIWYG') ) {
 	define('FLEXLAYOUT_WYSIWYG', $style_formats);
 }

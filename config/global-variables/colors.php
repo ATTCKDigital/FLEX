@@ -1,10 +1,8 @@
 <?php
-
 /**
  * Theme attribute of colors is needed in base theme only, not child theme
  * (see `/config/theme-configs/customizer-colors.php/` for attribute usage)
  */
-
 
 $colors = array(
 	array(
@@ -63,6 +61,6 @@ $colors = array(
 
 );
 
-if(!defined('FLEXLAYOUT_COLORS')) {
+if ( !defined('FLEXLAYOUT_COLORS') ) {
 	define('FLEXLAYOUT_COLORS', $colors);
 }

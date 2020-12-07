@@ -7,9 +7,9 @@ function admin_environment($wp_admin_bar) {
 	// WPE_PROD & WPE_STAGE are set in the child theme's functions.php file.
 	$env = $_SERVER['WPENGINE_ACCOUNT'];
 
-	if($env == WPE_PROD) {
+	if ($env == WPE_PROD) {
 		$noticeMessage = 'PRODUCTION';
-	} else if($env == WPE_STAGE) {
+	} else if ($env == WPE_STAGE) {
 		$noticeMessage = 'STAGING';
 	} else {
 		$noticeMessage = 'DEVELOPMENT';
@@ -20,4 +20,5 @@ function admin_environment($wp_admin_bar) {
 		'title' 	=> $noticeMessage,
 	) );
 }
+
 add_action('admin_bar_menu', 'admin_environment', 1);

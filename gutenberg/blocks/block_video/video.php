@@ -17,14 +17,13 @@ add_action( 'init', __NAMESPACE__ . '\register_video_block' );
  * @return void
  */
 function register_video_block() {
-
 	// Only load if Gutenberg is available.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flex/video', [
+	register_block_type( 'flexlayout/video', [
 		'attributes'      => array_merge(
 			[
 				'className' => [

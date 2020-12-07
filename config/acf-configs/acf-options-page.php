@@ -1,5 +1,6 @@
 <?php
 // custom settings page, use acf to add necessary fields
+
 if (function_exists('acf_add_options_page')) {
 	// add global settings in settings menu
 	acf_add_options_sub_page(array(
@@ -8,4 +9,3 @@ if (function_exists('acf_add_options_page')) {
 		'parent_slug' 	=> 'options-general.php',
 	));
 }
-

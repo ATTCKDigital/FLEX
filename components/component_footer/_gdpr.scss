@@ -34,6 +34,21 @@
 		}
 	}
 
+	.gdpr-message {
+		align-items: center;
+		display: flex;
+		justify-content: space-evenly;
+
+		p {
+			@include tertiary-light;
+			margin: 0;
+		}
+
+		.cta {
+			margin: $gap 0;
+		}
+	}
+
 	&.hideGDPR {
 		display: none;
 	}

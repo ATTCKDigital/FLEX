@@ -4,6 +4,6 @@
 		'footer' => __('Footer Navigation', '_flex'),
 	);
 
-	if (!defined('FLEXLAYOUT_MENUS')) {
+	if ( !defined('FLEXLAYOUT_MENUS') ) {
 		define('FLEXLAYOUT_MENUS', $menus);
 	}

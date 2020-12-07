@@ -13,8 +13,8 @@ use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_video_output;
 use const FLEX_LAYOUT_SYSTEM\Components\TextColors\TEXT_COLOR_ATTRIBUTES;
 
-
 add_action( 'init', __NAMESPACE__ . '\register_quote_block' );
+
 /**
  * Register the dynamic block.
  *
@@ -23,14 +23,13 @@ add_action( 'init', __NAMESPACE__ . '\register_quote_block' );
  * @return void
  */
 function register_quote_block() {
-
 	// Only load if Gutenberg is available.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type('flex/quote', [
+	register_block_type('flexlayout/quote', [
 		'attributes' => array_merge(
 			[
 				'content' => [
@@ -52,10 +51,10 @@ function register_quote_block() {
 					'type' => 'string',
 				],
 				'className' => [
-                    'type' => 'string',
-                    'default' => '',
-                ],
-                'imgURL' => [
+					'type' => 'string',
+					'default' => '',
+				],
+				'imgURL' => [
 					'type' => 'string',
 				],
 				'imgID' => [
@@ -67,11 +66,9 @@ function register_quote_block() {
 			BORDER_OPTIONS_ATTRIBUTES,		
 			BACKGROUND_OPTIONS_ATTRIBUTES,
 			TEXT_COLOR_ATTRIBUTES
-
 		),
 		'render_callback' => __NAMESPACE__ . '\render_quote_block',
 	] );
-
 }
 
 /**

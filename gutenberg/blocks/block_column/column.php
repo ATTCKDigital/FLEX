@@ -19,6 +19,7 @@ use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_
 
 
 add_action( 'init', __NAMESPACE__ . '\register_column_block' );
+
 /**
  * Register the dynamic block.
  *
@@ -27,21 +28,20 @@ add_action( 'init', __NAMESPACE__ . '\register_column_block' );
  * @return void
  */
 function register_column_block() {
-
 	// Only load if Gutenberg is available.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flex/column', [
-		'attributes'      => array_merge(
+	register_block_type( 'flexlayout/column', [
+		'attributes'	  => array_merge(
 			[
 				'className' => [
-                	'type' => 'string',
-                	'default' => '',
-            	],
-        	],
+					'type' => 'string',
+					'default' => '',
+				],
+			],
 			COLUMN_OPTIONS_ATTRIBUTES,
 			PADDING_OPTIONS_ATTRIBUTES,
 			BORDER_OPTIONS_ATTRIBUTES,
@@ -49,7 +49,6 @@ function register_column_block() {
 		),
 		'render_callback' => __NAMESPACE__ . '\render_column_block',
 	] );
-
 }
 
 /**
@@ -69,8 +68,7 @@ function render_column_block($attributes, $content) {
 	$mobileImage = background_options_mobile_styles($attributes);
 	$desktopImage = background_options_desktop_styles($attributes);
 
-	if($mobileImage || $desktopImage) {
-
+	if ($mobileImage || $desktopImage) {
 		$styleBlock = "<style>.component-background[data-section-id=\"section-{$sectionDataId}\"]{{$mobileImage}} @media only screen and (min-width: 768px){.component-background[data-section-id=\"section-{$sectionDataId}\"]{{$desktopImage}}}</style>";
 	} else {
 		$styleBlock = '';

@@ -43,16 +43,16 @@ import TextColorOptions, { TextColorAttributes, TextColorClasses, TextColorInlin
 	* Register block
  */
 export default registerBlockType(
-	'flex/paragraph',
+	'flexlayout/paragraph',
 	{
 		title: __( 'Paragraph' ),
 		description: __( 'A text block' ),
 		category: 'common',
 		icon: 'editor-paragraph',
-		parent: ['flex/column'],
+		// parent: ['flexlayout/column'],
 		keywords: [
-			__( 'Text', 'FLEX' ),
-			__( 'Paragraph', 'FLEX' ),
+			__( 'Text', 'flexlayout' ),
+			__( 'Paragraph', 'flexlayout' ),
 		],
 		attributes: {
 			content: {

@@ -35,7 +35,7 @@
 		.acf-field[data-name='column'] .layout, 
 		.acf-field[data-name='column'] .layout .acf-field {
 			background-color: gainsboro;
-			border-bottom:1px solid #e1e1e1;
+			border-bottom: 1px solid #e1e1e1;
 			margin-bottom: 20px;
 		}
 

@@ -32,19 +32,19 @@ function getSettings(attributes) {
  * Register static block example block
  */
 export default registerBlockType(
-    'flex/form-fields',
+    'flexlayout/form-fields',
     {
-        title: __('Example - Form Fields', 'FLEX'),
-        description: __('An example of how to use form component in a block.', 'FLEX'),
+        title: __('Example - Form Fields', 'flexlayout'),
+        description: __('An example of how to use form component in a block.', 'flexlayout'),
         category: 'common',
         icon: {
             background: 'rgba(254, 243, 224, 0.52)',
             src: icon,
         },
         keywords: [
-            __('Palette', 'FLEX'),
-            __('Settings', 'FLEX'),
-            __('Scheme', 'FLEX'),
+            __('Palette', 'flexlayout'),
+            __('Settings', 'flexlayout'),
+            __('Scheme', 'flexlayout'),
         ],
         attributes,
         getEditWrapperProps(attributes) {
@@ -68,7 +68,7 @@ export default registerBlockType(
 
             return (
                 <div>
-                    <p>{__('Check the settings', 'FLEX')}</p>
+                    <p>{__('Check the settings', 'flexlayout')}</p>
                     <ul>
                         {settings}
                     </ul>

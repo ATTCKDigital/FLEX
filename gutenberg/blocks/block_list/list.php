@@ -9,8 +9,8 @@ use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
 use const FLEX_LAYOUT_SYSTEM\Components\TextColors\TEXT_COLOR_ATTRIBUTES;
 
-
 add_action( 'init', __NAMESPACE__ . '\register_list_block' );
+
 /**
  * Register the dynamic block.
  *
@@ -19,33 +19,32 @@ add_action( 'init', __NAMESPACE__ . '\register_list_block' );
  * @return void
  */
 function register_list_block() {
-
 	// Only load if Gutenberg is available.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flex/list', [
-		'attributes'      => array_merge(
+	register_block_type( 'flexlayout/list', [
+		'attributes'	  => array_merge(
 			[
 				'content' => [
 					'type' => 'string',
-                    'default' => '',
+					'default' => '',
 				],
 				'ordered' => [
 					'type' => 'boolean',
-                    'default' => false,
+					'default' => false,
 				],
 				'content' => [
 					'type' => 'string',
 					'default' => ''
 				],
 				'className' => [
-                    'type' => 'string',
-                    'default' => '',
-                ],
-                'align' => [
+					'type' => 'string',
+					'default' => '',
+				],
+				'align' => [
 					'type' => 'string',
 					'default' => 'left'
 				],
@@ -54,11 +53,9 @@ function register_list_block() {
 			PADDING_OPTIONS_ATTRIBUTES,
 			BORDER_OPTIONS_ATTRIBUTES,		
 			TEXT_COLOR_ATTRIBUTES
-
 		),
 		'render_callback' => __NAMESPACE__ . '\render_list_block',
 	] );
-
 }
 
 /**
@@ -66,7 +63,7 @@ function register_list_block() {
  */
 function render_list_block($attributes) {
 	$tagName = $attributes['ordered'] ? 'ol' : 'ul';
-;
+
 	$class = 'component-list component';
 	$class .= ' '.$attributes['className'];
 	$class .= " align-{$attributes['align']}";
@@ -84,7 +81,7 @@ function render_list_block($attributes) {
 
 	$textColor = array_key_exists('textColor', $attributes) ? $attributes['textColor'] : null;
 
-	if($textColor) {
+	if ($textColor) {
 		$textStyle = ' style="color:'.$textColor.';"';
 	} else {
 		$textStyle = '';

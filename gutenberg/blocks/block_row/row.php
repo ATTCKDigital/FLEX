@@ -26,8 +26,8 @@ use function FLEX_LAYOUT_SYSTEM\Components\Border\border_options_classes;
 use const FLEX_LAYOUT_SYSTEM\Components\Scroller\SCROLLER_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Scroller\scroller_options_output;
 
-
 add_action( 'init', __NAMESPACE__ . '\register_row_block' );
+
 /**
  * Register the dynamic block.
  *
@@ -36,15 +36,14 @@ add_action( 'init', __NAMESPACE__ . '\register_row_block' );
  * @return void
  */
 function register_row_block() {
-
 	// Only load if Gutenberg is available.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flex/row', [
-		'attributes'      => array_merge(
+	register_block_type( 'flexlayout/row', [
+		'attributes'	  => array_merge(
 			[
 				'anchor' => [
 					'type' => 'string',
@@ -77,7 +76,6 @@ function register_row_block() {
 		),
 		'render_callback' => __NAMESPACE__ . '\render_row_block',
 	] );
-
 }
 
 /**
@@ -101,7 +99,7 @@ function render_row_block($attributes, $content) {
 	$desktopImage = background_options_desktop_styles($attributes);
 	$dataLogoColor = logo_color_options_data_attributes($attributes);
 
-	if($mobileImage || $desktopImage) {
+	if ($mobileImage || $desktopImage) {
 		$styleBlock = "<style>.component-background[data-section-id=\"section-{$sectionDataId}\"]{{$mobileImage}} @media only screen and (min-width: 768px){.component-background[data-section-id=\"section-{$sectionDataId}\"]{{$desktopImage}}}</style>";
 	} else {
 		$styleBlock = '';

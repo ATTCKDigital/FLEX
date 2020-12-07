@@ -82,6 +82,7 @@ function ElementsInViewport($el) {
 		$('.component-header').addClass('no-element-in-view');
 		$('.component-footer').addClass('no-element-in-view');
 		$('.component-gdpr p').addClass('no-element-in-view');
+		$('.component-gdpr .cta').addClass('no-element-in-view');
 		$('.area-inner h4, .area-inner p').addClass('no-element-in-view');
 
         // Set default elements to hide

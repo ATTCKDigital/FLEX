@@ -33,19 +33,19 @@ const {
   * Register block
  */
 export default registerBlockType(
-    'flex/inspector-controls',
+    'flexlayout/inspector-controls',
     {
-        title: __( 'Example - Inspector Controls', 'FLEX' ),
-        description: __( 'An example of how to use the Inspector component for a block.', 'FLEX'),
+        title: __( 'Example - Inspector Controls', 'flexlayout' ),
+        description: __( 'An example of how to use the Inspector component for a block.', 'flexlayout'),
         category: 'common',
         icon: {
             background: 'rgba(254, 243, 224, 0.52)',
             src: icons.sidebar,
         },
         keywords: [
-            __( 'Button', 'FLEX' ),
-            __( 'Settings', 'FLEX' ),
-            __( 'Controls', 'FLEX' ),
+            __( 'Button', 'flexlayout' ),
+            __( 'Settings', 'flexlayout' ),
+            __( 'Controls', 'flexlayout' ),
         ],
         attributes: {
             textAlignment: {
@@ -78,17 +78,17 @@ export default registerBlockType(
             return [
                 <InspectorControls>
                     <PanelBody
-                        title={ __( 'High Contrast', 'FLEX' ) }
+                        title={ __( 'High Contrast', 'flexlayout' ) }
                     >
                         <PanelRow>
                             <label
                                 htmlFor="high-contrast-form-toggle"
                             >
-                                { __( 'High Contrast', 'FLEX' ) }
+                                { __( 'High Contrast', 'flexlayout' ) }
                             </label>
                             <FormToggle
                                 id="high-contrast-form-toggle"
-                                label={ __( 'High Contrast', 'FLEX' ) }
+                                label={ __( 'High Contrast', 'flexlayout' ) }
                                 checked={ highContrast }
                                 onChange={ toggleHighContrast }
                             />
@@ -101,7 +101,7 @@ export default registerBlockType(
                         onChange={ ( textAlignment ) => props.setAttributes( { textAlignment } ) }
                     />
                     <Toolbar>
-                        <Tooltip text={ __( 'High Contrast', 'FLEX' )  }>
+                        <Tooltip text={ __( 'High Contrast', 'flexlayout' )  }>
                             <Button
                                 className={ classnames(
                                     'components-icon-button',

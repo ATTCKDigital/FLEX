@@ -8,6 +8,8 @@
 @import 'colors';
 @import 'fonts';
 @import 'fonts-mixins';
+@import 'typography-base';
+@import 'body-text';
 @import 'global';
 @import 'layout';
 @import 'component';
@@ -18,7 +20,6 @@
 @import '../gutenberg/blocks/block_heading/_heading.scss';
 @import '../gutenberg/blocks/block_button/_buttons.scss';
 @import 'admin-styles';
-@import 'body-text';
 @import 'iconography';
 @import 'images';
 @import '../gutenberg/blocks/block_paragraph/_paragraph.scss';

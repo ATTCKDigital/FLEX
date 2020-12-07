@@ -44,15 +44,15 @@ import SocialOptionsOutput from '../../blocks/block_social_media/social-media-ou
  * Register social media block
  */
 export default registerBlockType(
-	'flex/socialmedia',
+	'flexlayout/socialmedia',
 	{
-		title: __( 'Social Media', 'FLEX' ),
-		description: __( 'Display links to your social media accounts. Accounts are set in Global Settings ', 'FLEX'),
+		title: __( 'Social Media', 'flexlayout' ),
+		description: __( 'Display links to your social media accounts. Accounts are set in Global Settings ', 'flexlayout'),
 		category: 'common',
 		icon: icons.social,
-		parent: ['FLEX/column'],
+		// parent: ['flexlayout/column'],
 		keywords: [
-			__( 'Social media', 'FLEX' ),
+			__( 'Social media', 'flexlayout' ),
 		],
 		attributes: {
 			facebook: {
@@ -105,7 +105,7 @@ export default registerBlockType(
 			return [
 				<InspectorControls>
 					<PanelBody
-						title={ __( 'Icon Alignment', 'FLEX' ) }
+						title={ __( 'Icon Alignment', 'flexlayout' ) }
 						className="FLEX-icon-alignment"
 						initialOpen={ false }
 					>
@@ -117,48 +117,48 @@ export default registerBlockType(
 						/>
 					</PanelBody>
 					<PanelBody
-						title={ __( 'Social Media Options', 'FLEX' ) }
+						title={ __( 'Social Media Options', 'flexlayout' ) }
 						className="FLEX-social-media-options"
 						initialOpen={ false }
 					>
 						<p>Set your accounts in Global Settings. Only platforms with set accounts will appear on the front end.</p>
 						<CheckboxControl
-							label={__('Show Facebook?', 'FLEX')}
+							label={__('Show Facebook?', 'flexlayout')}
 							checked={facebook}
 							onChange={facebook => setAttributes({ facebook })}
 						/>
 					  	<CheckboxControl
-							label={__('Show Twitter?', 'FLEX')}
+							label={__('Show Twitter?', 'flexlayout')}
 							checked={twitter}
 							onChange={twitter => setAttributes({ twitter })}
 					  	/>
 					  	<CheckboxControl
-							label={__('Show Instagram?', 'FLEX')}
+							label={__('Show Instagram?', 'flexlayout')}
 							checked={instagram}
 							onChange={instagram => setAttributes({ instagram })}
 					  	/>
 					  	<CheckboxControl
-							label={__('Show LinkedIn?', 'FLEX')}
+							label={__('Show LinkedIn?', 'flexlayout')}
 							checked={linkedin}
 							onChange={linkedin => setAttributes({ linkedin })}
 					  	/>
 					  	<CheckboxControl
-							label={__('Show pinterest?', 'FLEX')}
+							label={__('Show pinterest?', 'flexlayout')}
 							checked={pinterest}
 							onChange={pinterest => setAttributes({ pinterest })}
 					  	/>
 					  	<CheckboxControl
-							label={__('Show Medium?', 'FLEX')}
+							label={__('Show Medium?', 'flexlayout')}
 							checked={medium}
 							onChange={medium => setAttributes({ medium })}
 					  	/>
 					  	<CheckboxControl
-							label={__('Show YouTube?', 'FLEX')}
+							label={__('Show YouTube?', 'flexlayout')}
 							checked={youtube}
 							onChange={youtube => setAttributes({ youtube })}
 					  	/>
 					  	<CheckboxControl
-							label={__('Show GitHub?', 'FLEX')}
+							label={__('Show GitHub?', 'flexlayout')}
 							checked={github}
 							onChange={github => setAttributes({ github })}
 					  	/>

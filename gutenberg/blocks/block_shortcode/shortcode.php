@@ -9,6 +9,7 @@ use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
 
 add_action( 'init', __NAMESPACE__ . '\register_shortcode_block' );
+
 /**
  * Register the dynamic block.
  *
@@ -23,7 +24,7 @@ function register_shortcode_block() {
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flex/shortcode', [
+	register_block_type( 'flexlayout/shortcode', [
 		'attributes'      => array_merge(
 			[
 				'content' => [
@@ -41,7 +42,6 @@ function register_shortcode_block() {
 		),
 		'render_callback' => __NAMESPACE__ . '\render_shortcode_block',
 	] );
-
 }
 
 /**

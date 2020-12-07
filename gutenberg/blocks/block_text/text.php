@@ -13,9 +13,8 @@ use function FLEX_LAYOUT_SYSTEM\Components\Border\border_options_classes;
 use const FLEX_LAYOUT_SYSTEM\Components\BackgroundColorOptions\BACKGROUND_COLOR_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundColorOptions\background_color_options_inline_styles;
 
-
-
 add_action( 'init', __NAMESPACE__ . '\register_text_block' );
+
 /**
  * Register the dynamic block.
  *
@@ -30,7 +29,7 @@ function register_text_block() {
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flex/text', [
+	register_block_type( 'flexlayout/text', [
 		'attributes' => array_merge(
 			[
 				'content' => [
@@ -38,9 +37,9 @@ function register_text_block() {
 					'default' => '',
 				],
 				'className' => [
-                    'type' => 'string',
-                    'default' => '',
-                ],
+					'type' => 'string',
+					'default' => '',
+				],
 			],
 			MARGIN_OPTIONS_ATTRIBUTES,
 			PADDING_OPTIONS_ATTRIBUTES,

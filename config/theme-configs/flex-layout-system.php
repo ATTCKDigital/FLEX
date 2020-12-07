@@ -59,7 +59,8 @@ include THEME_DIR . '/gutenberg/components/gb-component_background-color/inline-
 
 
 // Dynamic Blocks
-// Override block output in the child theme by creating a block folder and a block php file with the same name and path
+// Override block output in the child theme by creating a block folder 
+// and a block php file with the same name and path
 include(locate_template('/gutenberg/blocks/block_button/button.php'));
 include(locate_template('/gutenberg/blocks/block_column/column.php'));
 include(locate_template('/gutenberg/blocks/block_feed/feed.php'));
