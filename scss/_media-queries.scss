@@ -1,7 +1,10 @@
 /**** Media Queries ****/
 
 $mediaQueries: (
+	'none'				: $default,
+	'default'			: $default,
 	'phone'				: $phone,
+	'phone-plus'		: $phone-plus,
 	'tablet-portrait'	: $tablet-portrait,
 	'tablet-landscape'	: $tablet-landscape,
 	'desktop'			: $desktop,

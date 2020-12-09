@@ -1,0 +1,19 @@
+/**** Global Footer Styles ****/
+//Override with custom styles in child theme
+
+.component-footer {
+	.menu-item {
+		display: block;
+		font-size: px-to-rem(16px);
+		margin-bottom: $gap;
+		@include primary-bold;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.footer-link {
+		margin-bottom: $gap*.25;
+	}
+}

@@ -1,0 +1,243 @@
+.component-timer {
+	color: white;
+	display: none;
+	margin-top: 0px;
+	position: relative;
+	text-align: center;
+
+	a.btn.btn--secondary {
+		margin-left: 10px;
+		position: relative;
+		top: 10px;
+
+		@include mediaquery(tablet-portrait) {
+			top: -22px;
+		}
+	}
+
+	p {
+		max-width: 95vw;
+		width: auto;
+	}
+
+	p, 
+	p.code-heading span {
+		@include secondary-light;
+		display: inline-block;
+		float: none;
+		font-size: px-to-rem(19px);
+		margin: 0 auto;
+
+		@include mediaquery(phone) {
+			font-size: px-to-rem(20px);
+		}
+
+		@include mediaquery(phone-plus) {
+			font-size: px-to-rem(21px);
+		}
+
+		@include mediaquery(tablet-portrait) {
+			font-size: px-to-rem(22px);
+		}
+
+		strong {
+			font-size: inherit;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+	}
+
+	p.code-heading {
+		span.code-container {
+			font-size: px-to-rem(18px);
+			font-weight: 400;
+			margin-top: 8px;
+
+			@include mediaquery(phone) {
+				font-size: px-to-rem(21px);
+			}
+
+			.code {
+				font-family: monospace;
+				font-size: px-to-rem(21px);
+				font-weight: bold;
+
+
+				@include mediaquery(phone) {
+					font-size: px-to-rem(23px);
+				}
+			}
+		}
+
+		span.hyphen {
+			display: none;
+			padding: 0 $gap;
+
+			@include mediaquery(tablet-portrait) {
+				display: inline-block;
+			}
+		}
+	}
+
+	span {
+		color: $white;
+		display: block;
+		float: left;
+		margin-right: 2px;
+
+		&.first-digit {
+			margin-right: 0;
+		}
+
+		&.second-digit {
+			margin-right: 0;
+		}
+
+		&.digit {
+			display: none;
+			position: relative;
+		}
+	}
+
+	ul, li {
+		display: inline-block;
+		margin: 0;
+		padding: 0;
+		position: relative;
+	}
+
+	.digit {
+		// background: rgba(255, 255, 255, .1);
+		border-radius: 5px;
+		color: $white;
+		display: inline-block;
+		font-size: 2rem;
+		padding: 8px 7px 5px 6px;
+		text-align: center;
+	}
+
+	.digit-container {
+		background: color('brand', 'secondary');
+		border-radius: 5px;
+		display: inline-block;
+		margin: 20px auto 0 auto;
+		padding: 10px 20px;
+		text-align: center;
+
+		@include mediaquery(phone-plus) {
+			max-width: 90vw;
+		}
+
+		li {
+			.digit {
+				@include tertiary-bold;
+
+				font-size: 3rem;
+
+				// Use this padding if digits appear with mask
+				padding: 8px 7px 5px 6px;
+
+				// Use this padding if digits appear together
+				padding: 0;
+
+				// Prevents total width from jittering
+				// width: 2rem;
+
+				// Displays digits closer together
+				width: auto;
+			}
+		}
+	}
+
+	.showTimer & {
+		display: block;
+	}
+
+	.timer-container {
+		margin: 0 auto;
+		max-width: 1248px;
+		overflow: hidden;
+		padding: 20px 0 30px 0;
+		width: 100%;
+
+		@include mediaquery(tablet-portrait) {
+			padding: 20px 0;
+		}
+	}
+
+	.timer-container-wrapper {
+		// background: color('brand', 'secondary');;
+	}
+
+	.timer-digit-label {
+		@include tertiary-regular;
+		font-size: 1.7rem;
+		margin: 0;
+		// Label on the right side (default)
+		padding: 27px 8px 0 2px;
+
+		// Label centered underneath
+		&.position-bottom {
+			border-radius: 5px;
+			clear: both;
+			display: inline-block;
+			font-size: 1rem;
+			padding: 10px 0 0;
+			width: 100%;
+		}
+	}
+
+	.timer-digits-container {
+		// background: rgba(255, 0, 0, .2);
+	}
+
+	.timer-days,
+	.timer-hours,
+	.timer-minutes,
+	.timer-seconds {
+		.active {
+			display: inline-block;
+		}
+	}
+
+	.timer-days,
+	.timer-hours,
+	.timer-minutes {
+		padding-right: 15px;
+
+		&:after {
+			// background: rgba(0, 0, 0, .2);
+			color: white;
+			content: ':';
+			font-size: 2rem;
+			height: 2rem;
+			padding: 0 10px;
+			position: absolute;
+			right: -5px;
+			top: .4rem;
+		}
+	}
+
+	.timer-days {
+		.digit {
+			width: 100%;
+		}
+
+		.first-digit {
+			.digit-0 {
+				// There are less than seven days before the event
+				// so we don't need this for now
+				display: none;
+				// visibility: hidden;
+			}
+		}
+
+		.second-digit {
+			width: 100%;
+
+			span {
+				float: none;
+			}
+		}
+	}
+}

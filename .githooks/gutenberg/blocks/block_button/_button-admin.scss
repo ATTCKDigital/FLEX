@@ -1,0 +1,75 @@
+//Button styles for Gutenberg Editor
+.component-button-editor {
+	.cta {
+		@extend .cta;
+
+		&.is-style-cta {
+			@extend .cta;
+		}
+
+		&.is-style-cta-solid {
+			@extend .cta-solid;
+		}
+
+		&.is-style-cta-accent {
+			@extend .cta-accent;
+		}
+
+		&.is-style-cta-negative {
+			@extend .cta-negative;
+		}
+	}
+
+	.wp-block-button__link {
+		@extend .cta;
+		overflow: inherit;
+		border-radius: 0;
+	}
+
+	.editor-rich-text__tinymce[data-is-placeholder-visible=true].wp-block-button__link {
+		position: absolute;
+		background: transparent;
+		border:0;
+	}
+
+	&.align-center {
+		text-align: center;
+	}
+
+	&.align-left {
+		text-align: left;
+	}
+
+	&.align-right {
+		text-align: right;
+	}
+}
+
+.wp-core-ui .component-button-editor .wp-block-button__link {
+	@extend .cta;
+
+	&.is-style-cta {
+		@extend .cta;
+	}
+
+	&.is-style-cta-solid {
+		@extend .cta-solid;
+	}
+
+	&.is-style-cta-accent {
+		@extend .cta-accent;
+	}
+
+	&.is-style-cta-negative {
+		@extend .cta-negative;
+	}
+
+	color: $black;
+}
+
+// .editor-block-styles__item[aria-label="Default"] .editor-block-styles__item-preview,
+// .editor-block-styles__item[aria-label="Solid"] .editor-block-styles__item-preview,
+// .editor-block-styles__item[aria-label="Accent"] .editor-block-styles__item-preview { 
+// 	background: $black;
+// }
+

@@ -1,0 +1,60 @@
+{
+    "key": "group_5c195f6273c39",
+    "title": "Pinterest Business ID",
+    "fields": [
+        {
+            "key": "field_5c195f68f428f",
+            "label": "Set up Pinterest Business ID",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "<a href=\"https:\/\/business.pinterest.com\/en\/get-started-how-to-use-pinterest\" target=\"_blank\">Click here to set up a Pinterest Business account.<\/a>",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_5c195f95f4290",
+            "label": "Pinterest Business ID",
+            "name": "pinterest_business_id",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-global-settings"
+            }
+        ]
+    ],
+    "menu_order": 4,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1555543335
+}

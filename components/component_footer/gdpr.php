@@ -6,7 +6,7 @@
 			<div class="flex-desktop-8-12 flex-tablet-landscape-8-12 flex-tablet-portrait-12-12 flex-12-12">
 				<div class="gdpr-message">
 					<?= get_field('gdpr_message', 'options');?>
-					<span class="cta cta-small cta-secondary-inverted gdprAgree">Accept and close</span>
+					<span class="cta cta-small cta-secondary-inverted gdprAgree">Accept</span>
 				</div>
 			</div>
 		</div>

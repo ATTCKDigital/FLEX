@@ -1,0 +1,90 @@
+// Allows JS to access CSS breakpoints
+.breakpoint {
+	display: none;
+	height: 0;
+	padding: 10px;
+	position: absolute;
+	width: 0;
+}
+
+.breakpoint-current {
+	display: none;
+	font-size: 20px;
+}
+
+body {
+	&.debug {
+		* {
+			// Blue to yellow diagonal gradient
+			background: linear-gradient(160deg, rgba(0,0,255,0.21), rgba(255,255,0,0.21));
+		}
+
+		// Pink to blue diagonal gradient
+		div {
+			background: linear-gradient(160deg, rgba(255,0,255,0.21), rgba(0,0,255,0.21));
+		}
+
+		section {
+			outline: dotted .25rem greenyellow;
+			outline-offset: -.5rem;
+		}
+
+		.component[data-component-name] {
+			background-color: rgba(0, 0, 0, .5);
+			outline: dashed .25rem #ffd400;
+			outline-offset: -.5rem;
+
+			&:hover {
+				background-color: transparent;
+			}
+		}
+
+		@include mediaquery(phone)  {
+			border-color: orange;
+
+			.breakpoint.phone {
+				display: block;
+			}
+		}
+
+		@include mediaquery(tablet-portrait)  {
+			border-color: yellow;
+
+			.breakpoint.tablet-portrait {
+				display: block;
+			}
+		}
+
+		@include mediaquery(tablet-landscape)  {
+			border-color: green;
+
+			.breakpoint.tablet-landscape {
+				display: block;
+			}
+		}
+
+		@include mediaquery(desktop)  {
+			border-color: blue;
+
+			.breakpoint.xl {
+				display: block;
+			}
+		}
+
+		@include mediaquery(xl) {
+			border-color: purple;
+
+			.breakpoint.xl {
+				display: block;
+			}
+		}
+
+		@include mediaquery(xl2) {
+			border-color: black;
+
+			.breakpoint.xl2 {
+				display: block;
+			}
+		}
+	}
+}

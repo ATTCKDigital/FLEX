@@ -1,0 +1,55 @@
+/**** Media Queries ****/
+
+$mediaQueries: (
+	'phone'				: $phone,
+	'phone-plus'		: $phone-plus,
+	'tablet-portrait'	: $tablet-portrait,
+	'tablet-landscape'	: $tablet-landscape,
+	'desktop'			: $desktop,
+	'xl'				: $xl,
+	'xl2'				: $xl2
+);
+
+$maxMediaQueries: (
+	'phone'				: $max-phone,
+	'tablet-portrait'	: $max-tablet-portrait,
+	'tablet-landscape'	: $max-tablet-landscape,
+	'desktop'			: $max-desktop,
+	'xl'				: $max-xl,
+	'xl2'				: $max-xl2
+
+);
+
+$minDeviceHeightMediaQueries: (
+	'iPhone4'	: '480px',
+	'iPhone5'	: '568px',
+	'Android'	: '569px',
+	'iPhone6'	: '667px',
+	'iPad'		: '737px',
+	'desktop'	: '1025px'
+);
+
+
+@mixin mediaquery($breakpoint) {
+	@media only screen and (min-width: _get($mediaQueries, #{$breakpoint})) {
+		@content;
+	}
+}
+
+@mixin mediaquery-max-width($breakpoint) {
+	@media only screen and (max-width: _get($maxMediaQueries, #{$breakpoint})) {
+		@content;
+	}
+}
+
+@mixin mediaquery-max-device-width($breakpoint) {
+	@media only screen and (max-device-width: _get($maxMediaQueries, #{$breakpoint})) {
+		@content;
+	}
+}
+
+@mixin mediaquery-min-device-height($breakpoint) {
+	@media only screen and (min-device-height: _get($minDeviceHeightMediaQueries, #{$breakpoint})) {
+		@content;
+	}
+}

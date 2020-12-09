@@ -5,15 +5,16 @@ $siteWidth					: 1024px;
 $navMobileHeight			: 70px;
 $navHeight					: 120px;
 $positions					: top, left, bottom, right;
-$screensizes				: none, phone, tablet-portrait, tablet-landscape, desktop, xl, xl2;
+$screensizes				: none, default, phone, phone-plus, tablet-portrait, tablet-landscape, desktop, xl, xl2;
 $counterIncrement 			: 20;
 $x 							: 30;
 // x is the max number of loops the padding and margins mixin should run
 //gap and increment should be the same value. 2 variables are required, one without px
 
 // Breakpoints
-$none						: 0px;
+$default					: 0px;
 $phone						: 375px;
+$phone-plus                 : 414px;
 $tablet-portrait			: 768px;
 $tablet-landscape			: 1024px;
 $desktop					: 1100px;
@@ -40,8 +41,21 @@ $large-row					: 700px;
 // Add as many as needed.
 // Add fonts sizes for each break point. Font sizes will be converted to rems. 
 // Usage:  @include font-size($font-size)
+$font-size-body-text: (
+	'default'			: 15px,
+	'phone'				: 15px,
+	'phone-plus'		: 15px,
+	'tablet-portrait'	: 17px,
+	'tablet-landscape'	: 19px,
+	'desktop'			: 19px,
+	'xl'				: 19px,
+	'xl2'				: 19px,
+);
+
 $font-size-default: (
-	'phone'				: 26px,
+	'default'			: 17px,
+	'phone'				: 19px,
+	'phone-plus'		: 22px,
 	'tablet-portrait'	: 26px,
 	'tablet-landscape'	: 26px,
 	'desktop'			: 26px,
@@ -50,16 +64,20 @@ $font-size-default: (
 );
 
 $font-size-headline1: (
-	'phone'				: 60px,
-	'tablet-portrait'	: 64px,
-	'tablet-landscape'	: 68px,
-	'desktop'			: 72px,
-	'xl'				: 72px,
-	'xl2'				: 72px,
+	'default'			: 39px,
+	'phone'				: 45px,
+	'phone-plus'		: 53px,
+	'tablet-portrait'	: 53px,
+	'tablet-landscape'	: 60px,
+	'desktop'			: 60px,
+	'xl'				: 60px,
+	'xl2'				: 60px,
 );
 
 $font-size-headline2: (
+	'default'			: 64px,
 	'phone'				: 64px,
+	'phone-plus'		: 64px,
 	'tablet-portrait'	: 64px,
 	'tablet-landscape'	: 48px,
 	'desktop'			: 48px,
@@ -68,7 +86,9 @@ $font-size-headline2: (
 );
 
 $font-size-headline3: (
+	'default'			: 34px,
 	'phone'				: 34px,
+	'phone-plus'		: 34px,
 	'tablet-portrait'	: 34px,
 	'tablet-landscape'	: 48px,
 	'desktop'			: 48px,
@@ -77,7 +97,9 @@ $font-size-headline3: (
 );
 
 $font-size-headline4: (
+	'default'			: 24px,
 	'phone'				: 24px,
+	'phone-plus'		: 24px,
 	'tablet-portrait'	: 24px,
 	'tablet-landscape'	: 34px,
 	'desktop'			: 34px,
@@ -86,7 +108,9 @@ $font-size-headline4: (
 );
 
 $font-size-headline5: (
+	'default'			: 24px,
 	'phone'				: 24px,
+	'phone-plus'		: 24px,
 	'tablet-portrait'	: 24px,
 	'tablet-landscape'	: 24px,
 	'desktop'			: 24px,
@@ -95,7 +119,9 @@ $font-size-headline5: (
 );
 
 $font-size-headline6: (
+	'default'			: 20px,
 	'phone'				: 20px,
+	'phone-plus'		: 20px,
 	'tablet-portrait'	: 20px,
 	'tablet-landscape'	: 20px,
 	'desktop'			: 20px,
@@ -117,4 +143,3 @@ $font-size-headline6: (
 	$remSize: $size / 13px;
 	@return #{$remSize}rem;
 }
-

@@ -1,0 +1,244 @@
+/**** Global Iconography ****/
+
+// share on social media buttons
+.share-button {
+	border-radius: 4px;
+	color: $white;
+	cursor: pointer;
+	display: inline-block;
+	height: 56px;
+	padding: 18px $gap 0;
+	font-size: 14px;
+	text-align: center;
+	transition: opacity .3s ease-out;
+	vertical-align: top;
+	width: 100px;
+
+	@include mediaquery(desktop)  {
+		&:hover {
+			opacity: .8;
+		}
+	}
+
+	&.share-facebook {
+		background-color: color('social', 'facebook');
+	}
+
+	&.share-twitter {
+		background-color: color('social', 'twitter');
+		padding-top: $gap 0;
+	}
+
+	&.share-email {
+		background-color: color('text', 'black');
+	}
+
+	.fab {
+		font-size: px-to-rem(18px);
+	}
+}
+
+// social media icons
+.social-icon {
+	background-color: color('text', 'body');
+	border-radius: 50%;
+	color: inherit;
+	cursor: pointer;
+	display: inline-block;
+	font-size: px-to-rem(18px);
+	height: 40px;
+	text-align: center;
+	width: 40px;
+	opacity: 1;
+	transition: opacity .3s ease-out;
+
+	@include mediaquery(tablet-landscape)  {
+		&:hover {
+			opacity: .7;
+		}
+	}
+	
+	a {
+		align-items: center;
+		display: flex;
+		height: 100%;
+		justify-content: center;
+		width: 100%;
+	}
+
+	&.social-icon-plain {
+		background-color: transparent;
+		width: auto;
+		height: auto;
+	}
+}
+
+//pure css play button triangle arrow
+.play {
+	background-color: color('brand', 'accent');
+	border-radius: 50%;
+	display: block;
+	height: 100px;
+	left: 0;
+	margin: 0 auto;
+	opacity: 1;
+	position: absolute;
+	right: 0;
+	top: calc(50% - 50px);
+	transition: opacity .3s ease-in;
+	width: 100px;
+	z-index: 2;
+
+	&:after {
+		border-color: transparent transparent transparent $white;
+		border-style: solid;
+		border-width: 19px 0 19px 38px;
+		content: '';
+		cursor: pointer;
+		height: 0;
+		left: 34px;
+		position: absolute;
+		top: 30px;
+		width: 0;
+		z-index: 12;
+
+	}
+
+	&:hover {
+		@include mediaquery(tablet-landscape)  {
+			opacity: .5;
+		}
+	}
+}
+
+//Creates a larger target space for the hamburger. Apple's iPhone Human Interface Guidelines recommends a minimum target size of 44 pixels wide 44 pixels tall.
+.hamburger-wrapper {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 70px;
+	width: 70px;
+
+	@include mediaquery(tablet-landscape)  {
+		display: none;
+	}
+}
+
+// 3 line hamburger animates to an X when "navOpen" class is added to the body
+.hamburger {
+	background-color: transparent;
+	cursor: pointer;
+	display: block;
+	height: 18px;
+	border-radius: 0;
+	border-top: 2px solid $black;
+	position: absolute;
+	right: 23px;
+	top: 25px;
+	width: 24px;
+	z-index: 100;
+	transition: background-color .2s ease-in, border-radius .2s ease-in;
+
+	&:after, &:before {
+		background-color: $black;
+		content: '';
+		height: 2px;
+		left: 0;
+		position: absolute;
+		top: 6px;
+		width: 100%;
+		transition: all .2s ease-in;
+	}
+
+	&:after {
+	  top: 14px;
+	}
+
+	.navOpen & {
+		border-top: 0;
+
+		&:after {
+			top: 8px;
+			transform: rotate(45deg);
+		}
+
+		&:before {
+			top: 8px;
+			transform: rotate(-45deg);
+		}
+
+	}
+}
+
+// pure css close "X", has 2 sizes
+.close {
+	cursor: pointer;
+	display: block;
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	right: 5px;
+	top: 0;
+	z-index: 100;
+
+	&:after, &:before {
+		content: '';
+		position: absolute;
+		background-color: $black;
+		height: 2px;	
+		width: 18px;		
+	}
+
+	&:after {
+		top: 19px;
+		left: 11px;
+		transform: rotate(45deg);
+	}
+
+	&:before {
+		top: 19px;
+		left: 11px;
+		transform: rotate(-45deg);
+	}
+
+	&.close-white {
+
+		&:after, &:before {
+			background-color: $white;
+		}
+	}
+
+	&.close-small {
+		transform: scale(.5);
+	}
+}
+
+.pdf {
+	cursor: pointer;
+	font-size: 12px;
+	letter-spacing: -0.7px;
+	line-height: 1.3;
+	padding-top: $gap*2;
+	position: relative;
+	display: inline-block;
+	text-align: center;
+
+	&:before {
+		content: '\2192';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		font-size: 30px;
+		@include primary-bold;
+		transform: rotate(90deg);
+		transition: top .4s ease-out;
+	}
+
+	@include mediaquery(desktop)  {
+		&:hover:before {
+			top: 3px;
+		}
+	}
+}
+

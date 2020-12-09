@@ -1,7 +1,8 @@
-/** Font Mixins **/
-
-// Basic set of font mixins. Add and adjust as needed.
-
+/**
+ * Font Mixins
+ *
+ * Basic set of font mixins. Add and adjust as needed.
+ */
 @mixin primary-light {
 	font-family: $primaryLight;
 	font-style: normal;

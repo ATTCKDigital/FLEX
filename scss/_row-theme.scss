@@ -1,8 +1,9 @@
-/*** Row Theme Settings ***/
-
-
-//Background classes
-.component-image-background, .component-color-background, .component-video-background {
+/**
+ * Row Theme Settings
+ */
+.component-image-background, 
+.component-color-background, 
+.component-video-background {
 	background-size: cover;
 	background-position: right center;
 	background-repeat: no-repeat;
@@ -26,7 +27,6 @@
 		top: 50%;
 		width: 100%;
 		z-index: -1;
-
 	}
 	
 	.video-thumbnail-wrapper {
@@ -67,13 +67,20 @@
 	}
 }
 
+.overlay {
+	background-color: rgba(0, 0, 0, .3);
+	height: 100%;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
 
 $yPositions: top, center, bottom;
 $xPositions: left, right, center;
 
-@each $yPosition in $yPositions{
-  	@each $xPosition in $xPositions{
-
+@each $yPosition in $yPositions {
+  	@each $xPosition in $xPositions {
 		.component-background-#{$xPosition}-#{$yPosition} { 
 			@include mediaquery(tablet-portrait) {
 				background-position: #{$xPosition} #{$yPosition};
@@ -82,9 +89,8 @@ $xPositions: left, right, center;
 	}
 }
 
-@each $yPosition in $yPositions{
-  	@each $xPosition in $xPositions{
-
+@each $yPosition in $yPositions {
+  	@each $xPosition in $xPositions {
 		.component-mobile-background-#{$xPosition}-#{$yPosition} { 
 			@include mediaquery-max-width(tablet-portrait) {
 				background-position: #{$xPosition} #{$yPosition};
@@ -93,26 +99,20 @@ $xPositions: left, right, center;
 	}
 }
 
-@each $xPosition in $xPositions{
-
+@each $xPosition in $xPositions {
 	.component-background-position-x-#{$xPosition} { 
 		background-position-x: #{$xPosition};
 	}
 }
 
-@each $yPosition in $yPositions{
-
+@each $yPosition in $yPositions {
 	.component-background-position-y-#{$yPosition} { 
 		background-position-y: #{$yPosition};
 	}
 }
 
-
-
-
-//Border classes
-
-@each $position in $positions{
+// Border classes
+@each $position in $positions {
 	.component-#{$position}-border-none, .wp-block .component-#{$position}-border-none > .flex-grid {
 		border-#{$position}: 0;
 	}
@@ -153,15 +153,3 @@ $xPositions: left, right, center;
 		}
 	}
 }
-
-//overlay
-.overlay {
-	background-color: rgba(0, 0, 0, .3);
-	height: 100%;
-	left: 0;
-	position: absolute;
-	right: 0;
-	top: 0;
-}
-
-

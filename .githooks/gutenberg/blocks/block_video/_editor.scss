@@ -1,0 +1,52 @@
+//--------------------------------------------------------------
+// Editor Styles
+//
+// Additional styles necessary to assist the editor.
+// Enqueued after style.scss.
+//--------------------------------------------------------------
+.media-upload-wrapper, .media-button-wrapper {
+
+	.blocks-base-control {
+		width: 100%;
+	} // .blocks-base-control
+
+	.components-button {
+
+		svg {
+			position: relative;
+			top: 5px;
+		} // svg
+	} // .components-button
+} // .wds-background-options
+
+.flexlayout-video-settings {
+	.media-upload-wrapper {
+		margin-bottom: 20px;
+	}
+
+	.components-text-control__input {
+		margin-bottom: 20px;
+	}
+}
+//-----------------------------------------
+// Video 
+//-----------------------------------------
+.component-video {
+	overflow: hidden;
+	position: relative;
+
+	.video-container {
+		height: 100%;
+		left: 50%;
+		min-height: 100%;
+		min-width: 100%;
+		object-fit: cover;
+		object-position: center center;
+		position: absolute;
+		transform: translate(-50%, -50%);
+		top: 50%;
+		width: 100%;
+		z-index: -1;
+	} // .video-container
+} // .has-video-background
+

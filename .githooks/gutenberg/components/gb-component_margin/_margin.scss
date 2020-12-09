@@ -1,0 +1,28 @@
+/**** Margins ****/
+
+// Creates classes based on variables
+// Use class "margin-size-position-xx" for margins used in all screen sizes
+// ie: margin-small-top-1x where the number before x is the multiplier for 
+// the increment (avoids having to remember your multiplication tables :) )
+@each $position in $positions{
+	@each $screensize in $screensizes{
+		@for $i from 0 through $x {
+			@if $i % 1 == 0 {
+				@if $screensize != none {
+					.margin-#{$screensize}-#{$position}-#{$i}x { 
+						@include mediaquery(#{$screensize}) {
+							margin-#{$position}: #{$i * $counterIncrement}px;
+						}
+					}
+				}
+
+				@if $screensize == none {
+					//creates a global margin class that has no screen size dependency
+					.margin-#{$position}-#{$i}x { 
+						margin-#{$position}: #{$i * $counterIncrement}px;
+					}
+				} 
+			}
+		}
+	}
+}

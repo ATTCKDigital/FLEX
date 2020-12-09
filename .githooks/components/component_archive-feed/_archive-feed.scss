@@ -1,0 +1,42 @@
+/**** Global Archive Feed Styles ****/
+//Override with custom styles in child theme
+
+.component-archive-feed {
+	.feed-items {
+		@include clearRow;
+
+		.feed-item {
+			@include mediaquery(tablet-portrait)  {
+				width: 31%;
+				float: left;
+				margin-right: 3.5%;
+
+				&:nth-child(3n) {
+					margin-right: 0;
+				}
+
+				&:nth-child(3n+1) {
+					clear: both;
+				}
+			}
+
+			.image-wrapper {
+				height: 0;
+				overflow: hidden;
+				padding-bottom: 62%;
+				position: relative;
+
+				img {
+					height: 100%;
+					left: -50%;
+					margin: 0 auto;
+					max-height: 100%;
+					position: absolute;
+					right: -50%;
+					top: 0;
+					width: auto;
+				}
+			}
+		}
+	}
+}

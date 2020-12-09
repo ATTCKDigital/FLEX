@@ -1,0 +1,24 @@
+.component-heading {
+	width: 100%;
+
+	&.has-image {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+
+		img {
+
+			max-width: 45px;
+			width: auto;
+			height: auto;
+			max-height: 30px;
+			margin-right: $gap*5;
+
+			@include mediaquery(tablet-portrait) {
+				max-width: 80px;
+				max-height: 50px;
+				margin-right: $gap*2;
+			}
+		}
+	}
+}

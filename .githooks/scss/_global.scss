@@ -1,0 +1,99 @@
+/** 
+ * Element in Viewport - Prevents flashing for Element in Viewport transition
+ * (js adds opacity 1 once loaded)
+ *
+ * Add elements or classes that are present BEFORE js and are affected 
+ * by the Element in Viewport script
+ **/
+
+h3, h4, h5, h6, p, span, .cta, img {
+	// opacity: .5;
+	// transition: opacity .1s ease-in;
+
+	.no-element-in-view &, &.no-element-in-view {
+		// opacity: 1;
+	}
+}
+
+.mce-content-body, .wp-admin {
+	// Inside the WYSIWYG editor and admin, prevent hidden text
+	h3, h4, h5, h6, p, .cta, span, img {
+		opacity: 1;
+		transition: opacity .1s ease-in;
+
+		.no-element-in-view &, &.no-element-in-view {
+			opacity: 1;
+		}
+	}
+}
+
+html {
+	height: 100%;
+
+	// NOTE: Don't uncomment this. It prevents $(window).scroll() reporting
+    // overflow-x: hidden;
+}
+
+body {
+	font-smoothing: antialiased;
+	color: $defaultTextColor;
+	font-size: 13px;
+	height: 100%;
+	min-height: 100vh;
+	overflow-x: hidden;
+	@include primary-regular;
+
+	&.popupOpen {
+		// Prevents background from scrolling when PopUp is activated, optional 
+		@include mediaquery-max-width(tablet-portrait) {
+			left: 0;
+			position: fixed;
+			right: 0;
+			top: 0;
+		}
+	}
+}
+
+.content-container {
+	min-height: calc(100vh - 150px);
+}
+
+main.content {
+	width: 100%;
+	// height: 100%;
+
+	.wp-admin & {
+		height: auto;
+	}
+}
+
+article {
+	height: 100%;
+}
+
+.flex-grid {
+	align-content: inherit;
+	letter-spacing: inherit;
+}
+
+/**** Misc ****/
+
+// SVG sprite is hidden from the screen
+.svg-sprite {
+	height: 0;
+	overflow: hidden;
+}
+
+
+// Accessibility trick to hide span nearby with aria values
+.sr-only {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+	position: absolute;
+    width: 1px;
+}
+

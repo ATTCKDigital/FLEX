@@ -41,11 +41,33 @@
 
 		p {
 			@include tertiary-light;
+			font-size: 0.9rem;
 			margin: 0;
+			padding: 0 0 0 10px;
+
+			@include mediaquery(tablet-portrait) {
+				font-size: inherit;
+				padding: 0;
+			}
 		}
 
 		.cta {
 			margin: $gap 0;
+			margin-right: $gap;
+			padding: 10px;
+			min-width: 90px;
+
+			@include mediaquery(tablet-portrait) {
+				min-width: 110px;
+			}
+
+			@include mediaquery(tablet-landscape) {
+				min-width: 120px;
+			}
+
+			@include mediaquery(desktop) {
+				min-width: 150px;
+			}
 		}
 	}
 
