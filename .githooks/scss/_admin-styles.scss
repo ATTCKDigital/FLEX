@@ -20,6 +20,7 @@ body {
 
 	&.is-selected {
 		border: 1px solid hsla(219, 79%, 66%, 0.5) !important;
+		width: 200px;
 	}
 
 	.component-quote {
