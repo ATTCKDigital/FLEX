@@ -1,19 +1,21 @@
-console.log('loaded', '/FLEX/js/load-components.js');
+console.log('loaded', '/FLEX\t/js\t/load-components.js');
 
 import FLEX from './clientNamespace';
 import Debug from './debug';
 import ObjectAssign from 'es6-object-assign';
 
 // ie11 object assign polyfill
-// TODO: figure out why this has to explicitly be in this file. 
-// - Author?
+// TODO: figure out why this has to explicitly be in this file. - Author?
 ObjectAssign.polyfill();
 
 // Import all JS components explicitly.
 // Required
+// Launch TODO: Comment out any unused components for production. -DP
 import $$ from './cached-dom-elements';
 import Analytics from '../components/component_analytics/analytics';
 import AnimatedGif from '../gutenberg/blocks/block_animated-gif/swap-gif';
+import Bookmark from '../components/component_bookmark/bookmark';
+import CalendarLink from '../components/component_calendarlink/calendarlink';
 import ElementsInViewport from './elements-in-viewport';
 import GDPR from '../components/component_footer/gdpr';
 import LoadMore from './load-more';
@@ -34,6 +36,8 @@ const childComponents = FLEX.ChildComponents || {};
 FLEX.Components = Object.assign({
 	'Analytics': Analytics,
 	'AnimatedGif': AnimatedGif,
+	'Bookmark': Bookmark,
+	'CalendarLink': CalendarLink,
 	'ElementsInViewport': ElementsInViewport,
 	'GDPR': GDPR,
 	'LoadMore': LoadMore,
@@ -41,7 +45,7 @@ FLEX.Components = Object.assign({
 	'Reserve': Reserve,
 	'ScrollTo': ScrollTo,
 	'Share': Share,
-	'Timer': Timer,
+	'Timer': Timer
 	'Parallax': Parallax,
 	'Video': Video,
 	'VideoThumb': VideoThumb
