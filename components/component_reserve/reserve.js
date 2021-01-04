@@ -12,6 +12,13 @@ function Reserve($el) {
 
 		// Clicking an hour
 		$('li', $el).on('click', chooseHour);
+
+		// Prevent disabled CTA clicks
+		$('.cta[href="/#"]').on('click', function (e) {
+			if ($(this).hasClass('disabled')) {
+				e.preventDefault();
+			}
+		});
 	}
 
 	function chooseHour(e) {

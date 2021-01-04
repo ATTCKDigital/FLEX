@@ -3,16 +3,17 @@
     margin-bottom: 20px;
 
     li {
-		// background: linear-gradient(360deg, rgba(255, 255, 255, .5), transparent);
-		background: #FFB400;
+		background: color('brand', 'accent');
 		border-left: 1px solid #979797;
+		color: color('brand', 'primary');
 		display: inline-block;
 		line-height: 1rem;
-		margin: 0 -1px 0 0;
+		margin: 0 -1px 1px 0;
 		padding: 10px 15px;
 		width: 25%;
 
 		@include mediaquery(tablet-portrait) {
+			color: $white;
 			width: auto;
 
 			&:first-child {
@@ -27,8 +28,8 @@
 
 		&.active,
 		&:hover {
-			// background: linear-gradient(360deg, white, transparent);
 			background: #21008C;
+			color: $white;
 		}
 
 		&:hover {
