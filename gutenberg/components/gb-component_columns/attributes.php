@@ -13,6 +13,10 @@ const COLUMN_OPTIONS_ATTRIBUTES = [
 		'type' => 'string',
 		'default' => 'inherit',
 	],
+	'columnPhonePlus' => [
+		'type' => 'string',
+		'default' => 'inherit',
+	],
 	'columnTabletPortrait' => [
 		'type' => 'string',
 		'default' => 'inherit',
@@ -33,6 +37,9 @@ const COLUMN_OPTIONS_ATTRIBUTES = [
 		'type' => 'string',
 	],
 	'column24Phone' => [
+		'type' => 'string',
+	],
+	'column24PhonePlus' => [
 		'type' => 'string',
 	],
 	'column24TabletPortrait' => [
