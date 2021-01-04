@@ -27,5 +27,9 @@
 				color: color('text', 'hover');
 			}
 		}
+
+		.links-white & {
+			color: $white;
+		}
 	}
 }
