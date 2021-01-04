@@ -40,12 +40,12 @@
 
 // social media icons
 .social-icon {
-	background-color: color('text', 'body');
+	// background-color: color('text', 'body');
 	border-radius: 50%;
 	color: inherit;
 	cursor: pointer;
 	display: inline-block;
-	font-size: px-to-rem(18px);
+	font-size: px-to-rem(20px);
 	height: 40px;
 	text-align: center;
 	width: 40px;
@@ -53,6 +53,8 @@
 	transition: opacity .3s ease-out;
 
 	@include mediaquery(tablet-landscape)  {
+		font-size: px-to-rem(24px);
+
 		&:hover {
 			opacity: .7;
 		}
