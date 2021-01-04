@@ -1,7 +1,17 @@
 <?php 
 	// Share
 
-	$url = $this->url;
+function url(){
+    if (isset($_SERVER['HTTPS'])){
+        $protocol = ($_SERVER['HTTPS'] && $_SERVER['HTTPS'] != "off") ? "https" : "http";
+    } else {
+        $protocol = 'http';
+    }
+    return $protocol . "://" . $_SERVER['SERVER_NAME'];
+}
+
+echo 'url: ' . url();
+	$url = url();
 	$encoded = urlencode($url);
 	$title = $this->socialTitle;
 	$search = array(
