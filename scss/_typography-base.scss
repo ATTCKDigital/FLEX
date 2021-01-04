@@ -105,23 +105,6 @@ th, tr, td {
 	color: red;
 }
 
-/** Helper Classes **/
-.align-center {
-	text-align: center;
-}
-
-.align-left {
-	text-align: left;
-}
-
-.align-right {
-	text-align: right;
-}
-
-.center {
-	margin: 0 auto;
-}
-
 .underline {
 	// for use in WYSIWYG as <u></u> was deprecated in 4.7+
 	display: inline;

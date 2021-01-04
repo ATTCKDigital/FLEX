@@ -45,3 +45,40 @@
 		width: 100%;
 	}
 }
+
+/** Helper Classes **/
+.align-center {
+	text-align: center;
+}
+
+.align-left {
+	text-align: left;
+}
+
+.align-right {
+	text-align: right;
+}
+
+.block {
+	display: block !important;
+}
+
+.center {
+	margin: 0 auto !important;
+}
+
+.float-left {
+	float: left !important;
+}
+
+.float-right {
+	float: right !important;
+}
+
+.nofloat {
+	float: none;
+}
+
+.relative {
+	position: relative !important;
+}
