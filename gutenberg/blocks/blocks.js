@@ -14,7 +14,7 @@ import "./block_paragraph/paragraph";
 import "./block_quote/quote";
 import "./block_share/share";
 import "./block_shortcode/shortcode";
-import "./block_social_media/social-media";
+// import "./block_social_media/social-media";
 import "./block_source/source";
 import "./block_text/text";
 import "./block_video/video";
