@@ -164,6 +164,6 @@ $(function() {
 	FLEX.init();
 });
 
-console.log('loaded', '/FLEX/js/clientNamespace.js');
+console.log('loaded', '/FLEX\t/js\t/clientNamespace.js');
 
 export default FLEX;

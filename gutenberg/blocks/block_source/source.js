@@ -34,7 +34,7 @@ import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from 
 
 
 /**
-	* Register block
+ * Register block
  */
 export default registerBlockType(
 	'flexlayout/source',
@@ -68,7 +68,6 @@ export default registerBlockType(
 				className, setAttributes } = props;
 
 			return [
-
 				<InspectorControls>
 					<MarginOptions
 						{ ...props }
@@ -94,12 +93,10 @@ export default registerBlockType(
 					/>
 				</div>
 			];
-
 		},
 
 		save() {
 			return null;
 		},
-
 	},
 );

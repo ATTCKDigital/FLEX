@@ -1,11 +1,11 @@
 /**
- * Block dependencies
+ * WordPress dependencies
  */
 import classnames from 'classnames';
 import icons from '../../../js/icons.js'
 
 /**
- * Internal block libraries
+ * Internal dependencies
  */
 const { __ } = wp.i18n;
 const {
@@ -15,6 +15,7 @@ const {
 	RichText,
 	AlignmentToolbar,
 	InspectorControls,
+	InnerBlocks,
 	MediaUpload,
 	URLInput,
 } = wp.blockEditor;
@@ -23,7 +24,6 @@ const {
 	PanelBody,
 	PanelRow,
 	TextControl,
-
 } = wp.components;
 
 /**
@@ -37,10 +37,11 @@ import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '..
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
 // Import all of our Text Color Options requirements.
 import TextColorOptions, { TextColorAttributes, TextColorClasses, TextColorInlineStyles } from '../../components/gb-component_text-colors';
-
+// Import all of our Background Options requirements.
+import BackgroundColorOptions, { BackgroundColorOptionsAttributes, BackgroundColorOptionsInlineStyles } from '../../components/gb-component_background-color';
 
 /**
-	* Register block
+ * Register block
  */
 export default registerBlockType(
 	'flexlayout/paragraph',
@@ -59,7 +60,6 @@ export default registerBlockType(
 				type: 'string',
 				default: '',
 			},
-
 			placeholder: {
 				type: 'string',
 			},
@@ -67,7 +67,6 @@ export default registerBlockType(
 				type: 'string',
 				default: 'left'
 			},
-
 			...MarginOptionsAttributes,
 			...PaddingOptionsAttributes,
 			...BorderOptionsAttributes,
@@ -84,8 +83,8 @@ export default registerBlockType(
 		edit: props => {
 			const { attributes: { content, placeholder, align}, setAttributes, className} = props;
 			const onChangeMessage = content => { setAttributes( { content } ) };
+			
 			return [
-
 				<InspectorControls>
 					<MarginOptions
 						{ ...props }

@@ -1,7 +1,10 @@
-/**** Interactions & Animations ****/
+/**
+ * Interactions & Animations
+ */
 
 /** Fade Me In **/
 // Set initial styles before "faded-in" class added
+// TODO: Rename to "transition-when-visible"
 .prepare-in-view {
 	opacity: .5;
 	transition: opacity .3s;
@@ -12,6 +15,7 @@
 	}
 }
 
+// TODO: Rename to "transitioned-into-view"
 .element-in-view {
 	opacity: 1;
 
@@ -26,7 +30,7 @@
 	opacity: 0;
 }
 
-//Helper class to Slide In an element
+// Helper class to Slide In an element
 .slideIn {
 	animation: moveUp 0.65s ease forwards;
 	opacity: 1;
@@ -43,7 +47,7 @@
 	}
 }
 
-//Helper class to Fade In an element
+// Helper class to Fade In an element
 .fadeIn {
 	animation: fadeIn .7s ease forwards;
 }
@@ -59,7 +63,7 @@
 	}
 }
 
-//Helper class to Fade In an element
+// Helper class to Fade In an element
 .fadeOut {
 	animation: fadeOut .7s ease forwards;
 }

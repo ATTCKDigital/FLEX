@@ -2,7 +2,7 @@ import $ from 'jquery';
 
 // Share button
 function Share ($el) {
-		// Opens social share links in new windows
+	// Opens social share links in new windows
 	function openShareWindow(e) {
 		e.preventDefault();
 

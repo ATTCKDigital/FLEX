@@ -1,4 +1,4 @@
-console.log('loaded', '/FLEX/js/global-events.js');
+console.log('loaded', '/FLEX\t/js\t/global-events.js');
 
 import FLEX from './clientNamespace';
 import $$ from './cached-dom-elements';

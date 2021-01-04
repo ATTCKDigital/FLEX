@@ -26,7 +26,7 @@ function register_heading_block() {
 
 	// Hook server side rendering into render callback
 	register_block_type( 'flexlayout/heading', [
-		'attributes'	  => array_merge(
+		'attributes' => array_merge(
 			[
 				'content' => [
 					'type' => 'string',

@@ -70,8 +70,6 @@ function Analytics($el) {
 				console.log('/— return: ', false);
 			}
 		});
-	
-
 	}
 
 	function recordEvent(event) {
@@ -120,6 +118,6 @@ function Analytics($el) {
 	return this.init($el);
 }
 
-console.log('loaded', '/FLEX/components/component_analytics/analytics.js');
+console.log('loaded', '/FLEX\t/components\t/component_analytics\t/analytics.js');
 
 export default Analytics;

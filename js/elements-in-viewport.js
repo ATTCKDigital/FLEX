@@ -2,7 +2,7 @@
  * Element in Viewport
  * Tracks when an element is in the view port.
  * Default behavior is to fade in specific elements - this behavior/animation/transition is handled via css
- **/
+ */
 import $ from 'jquery';
 import $$ from './cached-dom-elements';
 
@@ -56,6 +56,7 @@ function ElementsInViewport($el) {
 		}
 	}
 
+	// TODO: Rename this method name to something comprehensible. -DP
 	function inViewElements(scrollThreshold) {
 		// console.log('/FLEX/\tjs/\telements-in-viewport.js', 'inViewElements()');
 
@@ -78,7 +79,7 @@ function ElementsInViewport($el) {
 	function hideAllElements() {
 		console.log('/FLEX/\tjs/\telements-in-viewport.js', 'hideAllElements()');
 
-        // Show protected areas
+        // Don't hide these elements
 		$('.component-header').addClass('no-element-in-view');
 		$('.component-footer').addClass('no-element-in-view');
 		$('.component-gdpr p').addClass('no-element-in-view');

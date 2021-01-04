@@ -9,7 +9,7 @@
  */
 
 // Load order: First, before 
-console.log('loaded', '/FLEX/js/app.js');
+console.log('loaded', '/FLEX\t/js\t/app.js');
 
 import $ from 'jquery';
 

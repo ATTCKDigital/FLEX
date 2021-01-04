@@ -35,7 +35,6 @@ function TextColorOptions( props ) {
 	const setTextColor = value => props.setAttributes( { textColor: value } );
 
 	return (
-
 		<PanelColorSettings
 				title={ __( 'Text Color' ) }
 				initialOpen={ false }
@@ -48,7 +47,6 @@ function TextColorOptions( props ) {
 				] }
 			>
 		</PanelColorSettings>
-
 	);
 }
 

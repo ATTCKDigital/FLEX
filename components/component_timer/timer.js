@@ -501,6 +501,7 @@ function Timer($el, options) {
 
 	this.init = function ($el) {
 		console.log('/src/scripts/FLEX.js', 'Timer.init()');
+		console.log('loaded', 'Timer.init()');
 
 		// bindEvents();
 		render();
