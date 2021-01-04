@@ -42,47 +42,47 @@ $large-row					: 700px;
 // Add fonts sizes for each break point. Font sizes will be converted to rems. 
 // Usage:  @include font-size($font-size)
 $font-size-body-text: (
-	'default'			: 15px,
-	'phone'				: 15px,
-	'phone-plus'		: 15px,
-	'tablet-portrait'	: 17px,
-	'tablet-landscape'	: 19px,
-	'desktop'			: 19px,
-	'xl'				: 19px,
-	'xl2'				: 19px,
+	'default'			: 13px,
+	'phone'				: 13px,
+	'phone-plus'		: 13px,
+	'tablet-portrait'	: 15px,
+	'tablet-landscape'	: 17px,
+	'desktop'			: 17px,
+	'xl'				: 17px,
+	'xl2'				: 17px,
 );
 
 $font-size-default: (
-	'default'			: 17px,
-	'phone'				: 19px,
-	'phone-plus'		: 22px,
-	'tablet-portrait'	: 26px,
-	'tablet-landscape'	: 26px,
-	'desktop'			: 26px,
-	'xl'				: 26px,
-	'xl2'				: 26px,
+	'default'			: 15px,
+	'phone'				: 17px,
+	'phone-plus'		: 20px,
+	'tablet-portrait'	: 22px,
+	'tablet-landscape'	: 22px,
+	'desktop'			: 22px,
+	'xl'				: 22px,
+	'xl2'				: 22px,
 );
 
 $font-size-headline1: (
-	'default'			: 39px,
-	'phone'				: 45px,
-	'phone-plus'		: 53px,
-	'tablet-portrait'	: 53px,
-	'tablet-landscape'	: 60px,
-	'desktop'			: 60px,
-	'xl'				: 60px,
-	'xl2'				: 60px,
+	'default'			: 31px,
+	'phone'				: 37px,
+	'phone-plus'		: 45px,
+	'tablet-portrait'	: 45px,
+	'tablet-landscape'	: 52px,
+	'desktop'			: 52px,
+	'xl'				: 52px,
+	'xl2'				: 52px,
 );
 
 $font-size-headline2: (
-	'default'			: 64px,
-	'phone'				: 64px,
-	'phone-plus'		: 64px,
-	'tablet-portrait'	: 64px,
-	'tablet-landscape'	: 48px,
-	'desktop'			: 48px,
-	'xl'				: 48px,
-	'xl2'				: 48px,
+	'default'			: 20px,
+	'phone'				: 20px,
+	'phone-plus'		: 32px,
+	'tablet-portrait'	: 38px,
+	'tablet-landscape'	: 46px,
+	'desktop'			: 55px,
+	'xl'				: 55px,
+	'xl2'				: 55px,
 );
 
 $font-size-headline3: (
