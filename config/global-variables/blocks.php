@@ -6,12 +6,12 @@
  * Enable your acf created blocks by using acf/block_name
  * Enable FLEX created blocks by using flexlayout/block_name
  */
-
 $blocks = array(
 	'flexlayout/row', //REQUIRED
 	'flexlayout/column', //REQUIRED
 	'flexlayout/animated-gif',
 	'flexlayout/button',
+	'flexlayout/feed',
 	'flexlayout/heading',
 	'flexlayout/image',
 	'flexlayout/list',
