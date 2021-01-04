@@ -112,7 +112,7 @@ function ColumnOptions( props ) {
 					</PanelRow>
 					<PanelRow>
 						<SelectControl
-							key="column-small"
+							key="column-phone"
 							label={ __( 'Mobile' ) }
 							value={ props.attributes.columnPhone ? props.attributes.columnPhone : '' }
 							onChange={ setColumnPhone }
