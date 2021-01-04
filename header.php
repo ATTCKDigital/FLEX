@@ -41,7 +41,10 @@
 		$currentSecond = date('s');
 	?>
 </head>
-<body <?php body_class('front-end');?> data-currentHour='<?= $currentHour ?>' data-currentMinute='<?= $currentMinute ?>' data-currentSecond='<?= $currentSecond ?>'>
+<body <?php body_class('front-end');?> 
+	data-currentHour='<?= $currentHour ?>' 
+	data-currentMinute='<?= $currentMinute ?>' 
+	data-currentSecond='<?= $currentSecond ?>'>
 	<?php echo Utils::render_template('config/theme-includes/google-tag-manager-body.php'); ?>
 	<?php echo Utils::render_template('config/theme-includes/hubspot-tracking-code.php'); ?>
 	<?php echo Utils::render_template('config/theme-includes/social-media.php'); ?>
