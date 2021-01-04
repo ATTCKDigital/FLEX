@@ -3,13 +3,11 @@ namespace FLEX_LAYOUT_SYSTEM\Blocks\Text;
 
 use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
-
 use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
-
 use const FLEX_LAYOUT_SYSTEM\Components\Border\BORDER_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Border\border_options_classes;
-
+use const FLEX_LAYOUT_SYSTEM\Components\TextColors\TEXT_COLOR_ATTRIBUTES;
 use const FLEX_LAYOUT_SYSTEM\Components\BackgroundColorOptions\BACKGROUND_COLOR_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundColorOptions\background_color_options_inline_styles;
 
@@ -40,11 +38,16 @@ function register_text_block() {
 					'type' => 'string',
 					'default' => '',
 				],
+				'align' => [
+					'type' => 'string',
+					'default' => 'left'
+				],
 			],
 			MARGIN_OPTIONS_ATTRIBUTES,
 			PADDING_OPTIONS_ATTRIBUTES,
-			BACKGROUND_COLOR_OPTIONS_ATTRIBUTES,
-			BORDER_OPTIONS_ATTRIBUTES
+			BORDER_OPTIONS_ATTRIBUTES,
+			TEXT_COLOR_ATTRIBUTES,
+			BACKGROUND_COLOR_OPTIONS_ATTRIBUTES
 		),
 		'render_callback' => __NAMESPACE__ . '\render_text_block',
 	] );
@@ -56,12 +59,44 @@ function register_text_block() {
 function render_text_block($attributes) {
 	$class = 'component-text component';
 	$class .= ' '.$attributes['className'];
+	$class .= " align-{$attributes['align']}";
 	$class .= margin_options_classes($attributes);
 	$class .= padding_options_classes($attributes);
 	$class .= border_options_classes($attributes);
+
 	$style = background_color_options_inline_styles($attributes);
+
+	$textColor = array_key_exists('textColor', $attributes) ? $attributes['textColor'] : null;
+
+	if ($textColor) {
+		$textStyle = ' color:'.$textColor.';';
+	} else {
+		$textStyle = '';
+	}
+
+	$style .= $textStyle;
 
 	$output = "<div class=\"{$class}\" style=\"{$style}\"><div class=\"body-text\">{$attributes['content']}</div></div>";
 
 	return $output;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
