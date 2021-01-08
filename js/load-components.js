@@ -45,7 +45,7 @@ FLEX.Components = Object.assign({
 	'Reserve': Reserve,
 	'ScrollTo': ScrollTo,
 	'Share': Share,
-	'Timer': Timer
+	'Timer': Timer,
 	'Parallax': Parallax,
 	'Video': Video,
 	'VideoThumb': VideoThumb
