@@ -70,7 +70,7 @@ To the end of the file add: `127.0.0.1 local.project.com` (domain used for Virtu
 1. Create a new github repository under ATTCKDigital if one doesn't already exist. 
 2. Download [WordPress](https://wordpress.org/download/) into your project directory and add the "FLEX" repo as a submodule in `wp-content/themes`. The theme folder (aka where the submodule repo will live *must* be called `FLEX`). `FLEX` is the parent theme. Leave the default wordpress themes until after you have logged into wp-admin and chosen your new theme.
 3. Use **git submodules**, to add the "FLEX" parent theme to `wp-content/themes`.  
-*With ssh*: `git submodule add git@github.com:ATTCKDigital/FLEX.git`  
+*With SSH*: `git submodule add git@github.com:ATTCKDigital/FLEX.git`  
 *With HTTPS*: `git submodule add https://github.com/ATTCKDigital/FLEX.git`
 3. From `__GET_STARTED_HERE`, copy `.env`, `gitignore` (rename `.gitignore`), `.htaccess` and `wp-config.php` into the WordPress root
 4. Go to [https://api.wordpress.org/secret-key/1.1/salt/](https://api.wordpress.org/secret-key/1.1/salt/) and get new Authentication Unique Keys and Salts. Paste the generated snippet into `lines 67-74` of `wp-config.php` in the WordPress root
