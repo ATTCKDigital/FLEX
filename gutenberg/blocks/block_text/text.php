@@ -80,23 +80,3 @@ function render_text_block($attributes) {
 
 	return $output;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

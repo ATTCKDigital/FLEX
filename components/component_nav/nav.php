@@ -1,7 +1,6 @@
 <?php 
 	// Global Nav 
 ?>
-
 <header 
 	class="component-header component" 
 	data-component-name="Nav" 

@@ -20,23 +20,22 @@ export {
 };
 
 function BackgroundColorOptions( props ) {
-
 	const setBackgroundColor = value => props.setAttributes( { backgroundColor: value } );
-
-		return (
-
-			<PanelColorSettings
-				title={ __( 'Background Color' ) }
-				colorSettings={ [
-					{
-						value: props.attributes.backgroundColor,
-						onChange: setBackgroundColor,
-						label: __( 'Background Color' ),
-					}
-				] }
-			>
-			</PanelColorSettings>
-		);
+	
+	return (
+		<PanelColorSettings
+			title={ __( 'Background Color' ) }
+			initialOpen={ false }
+			colorSettings={ [
+				{
+					value: props.attributes.backgroundColor,
+					onChange: setBackgroundColor,
+					label: __( 'Background Color' ),
+				}
+			] }
+		>
+		</PanelColorSettings>
+	);
 }
 
 export default BackgroundColorOptions;

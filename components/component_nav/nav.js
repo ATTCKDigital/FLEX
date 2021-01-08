@@ -79,7 +79,8 @@ function Nav($el) {
 	}
 
 	function logoColor($el) {
-		// Change the logo color as you scroll down the page. Can also be used to change the hamburger color. Make color changes using CSS.
+		// Change the logo color as you scroll down the page. Can also be used to change the hamburger color. 
+		// Make color changes using CSS.
 		var row = $('.component-row');
 		var footer = $('.global-footer').offset().top
 

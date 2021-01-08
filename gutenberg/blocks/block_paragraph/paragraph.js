@@ -7,23 +7,34 @@ import icons from '../../../js/icons.js'
 /**
  * Internal dependencies
  */
+const { wp } = window;
 const { __ } = wp.i18n;
+
 const {
 	registerBlockType,
 } = wp.blocks;
+
 const {
-	RichText,
 	AlignmentToolbar,
-	InspectorControls,
+	BlockControls,
+	BlockAlignmentToolbar,
 	InnerBlocks,
+	InspectorControls,
 	MediaUpload,
+	RichText,
 	URLInput,
 } = wp.blockEditor;
+
 const {
 	Button,
+	ButtonGroup,
+	Dashicon,
+	IconButton,
 	PanelBody,
 	PanelRow,
 	TextControl,
+	Toolbar,
+	Tooltip,
 } = wp.components;
 
 /**
@@ -31,12 +42,16 @@ const {
  */
 // Import all of our Margin Options requirements.
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
+
 // Import all of our Border Options requirements.
-import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
-// Import all of our Padding Options requirements.
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
+
 // Import all of our Text Color Options requirements.
+import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
+
+// Import all of our Padding Options requirements.
 import TextColorOptions, { TextColorAttributes, TextColorClasses, TextColorInlineStyles } from '../../components/gb-component_text-colors';
+
 // Import all of our Background Options requirements.
 import BackgroundColorOptions, { BackgroundColorOptionsAttributes, BackgroundColorOptionsInlineStyles } from '../../components/gb-component_background-color';
 
@@ -47,15 +62,21 @@ export default registerBlockType(
 	'flexlayout/paragraph',
 	{
 		title: __( 'Paragraph' ),
-		description: __( 'A text block' ),
+		description: __( 'A simple text block' ),
 		category: 'common',
 		icon: 'editor-paragraph',
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__( 'Text', 'flexlayout' ),
 			__( 'Paragraph', 'flexlayout' ),
+			__( 'WYSIWYG', 'flexlayout' ),
+			__( 'TinyMCE', 'flexlayout' ),
 		],
 		attributes: {
+			align: {
+				type: 'string',
+				default: 'left'
+			},
 			content: {
 				type: 'string',
 				default: '',
@@ -63,16 +84,13 @@ export default registerBlockType(
 			placeholder: {
 				type: 'string',
 			},
-			align: {
-				type: 'string',
-				default: 'left'
-			},
 			...MarginOptionsAttributes,
 			...PaddingOptionsAttributes,
 			...BorderOptionsAttributes,
-			...TextColorAttributes
-
+			...TextColorAttributes,
+			...BackgroundColorOptionsAttributes
 		},
+
 		styles: [
 			{ name: 'body1', label: __( 'Default', 'block style' ), isDefault: true },
 			{ name: 'body2', label: __( 'Body 2', 'block style' ) },
@@ -81,7 +99,16 @@ export default registerBlockType(
 		],
 
 		edit: props => {
-			const { attributes: { content, placeholder, align}, setAttributes, className} = props;
+			const { 
+				attributes: { 
+					align,
+					content, 
+					placeholder
+				}, 
+				className,
+				setAttributes
+			} = props;
+
 			const onChangeMessage = content => { setAttributes( { content } ) };
 			
 			return [
@@ -95,17 +122,21 @@ export default registerBlockType(
 					<BorderOptions
 						{ ...props }
 					/>
-					<PanelBody title={ __( 'Paragraph Alignment' ) }>
+					<TextColorOptions
+						{ ...props }
+					/>
+					<BackgroundColorOptions
+						{ ...props }
+					/>
+					<PanelBody title={ __( 'Paragraph Alignment' ) } initialOpen={ false }>
 						<AlignmentToolbar
 							value={ align }
+							initialOpen={ false }
 							onChange={ ( nextAlign ) => {
 								setAttributes( { align: nextAlign } );
 							} }
 						/>
 					</PanelBody>
-					<TextColorOptions
-						{ ...props }
-					/>
 				</InspectorControls>,
 				<div
 					className={ classnames(
@@ -116,26 +147,32 @@ export default registerBlockType(
 						...PaddingOptionsClasses( props ),
 						...BorderOptionsClasses( props ),
 						...TextColorClasses( props ),
-
 					)}
 				>
 					<RichText
+						className={ classnames(
+							`align-${align}`,
+							...MarginOptionsClasses( props ),
+							...PaddingOptionsClasses( props ),
+							...BorderOptionsClasses( props ),
+							...TextColorClasses( props ),
+						)}
+						formattingControls = { ['bold', 'italic', 'strikethrough', 'link'] }
 						identifier="content"
-						value={ content }
+						multiline='p'
 						onChange={ onChangeMessage }
-						style={ {
-							textAlign: align,
-							...TextColorInlineStyles( props )
-						} }
 						onRemove={ () => onReplace( [] ) }
 						placeholder={ placeholder || __( 'Paragraph text…' ) }
-						multiline='p'
-						formattingControls = { ['bold', 'italic', 'strikethrough', 'link'] }
+						style={ {
+							textAlign: align,
+							...TextColorInlineStyles( props ),
+							...BackgroundColorOptionsInlineStyles( props )
+						} }
+						value={ content }
 					/>
 
 				</div>
 			];
-
 		},
 
 		save() {

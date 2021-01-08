@@ -37,8 +37,8 @@ import BackgroundColorOptions, { BackgroundColorOptionsAttributes, BackgroundCol
 export default registerBlockType(
 	'flexlayout/text',
 	{
-		title: __( 'Rich Text', 'block title' ),
-		description: __( 'This block is similar to the Paragraph or List block depending on your needs.' ),
+		title: __( 'Text', 'block title' ),
+		description: __( 'Provides a rich-text editing toolbar' ),
 		icon: icons.text,
 		category: 'common',
 		// parent: ['flexlayout/column'],
@@ -52,8 +52,8 @@ export default registerBlockType(
 				type: 'string',
 			},
 			...MarginOptionsAttributes,
-			...BorderOptionsAttributes,
 			...PaddingOptionsAttributes,
+			...BorderOptionsAttributes,
 			...BackgroundColorOptionsAttributes
 		},
 		supports: {

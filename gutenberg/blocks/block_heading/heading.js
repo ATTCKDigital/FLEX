@@ -13,25 +13,25 @@ const {
 	registerBlockType,
 } = wp.blocks;
 const {
-	RichText,
 	AlignmentToolbar,
 	BlockControls,
 	BlockAlignmentToolbar,
 	InspectorControls,
 	InnerBlocks,
-	URLInput,
 	MediaUpload,
+	RichText,
+	URLInput,
 } = wp.blockEditor;
 const {
-	Toolbar,
 	Button,
 	ButtonGroup,
-	Tooltip,
+	Dashicon,
+	IconButton,
 	PanelBody,
 	PanelRow,
 	TextControl,
-	Dashicon,
-	IconButton,
+	Toolbar,
+	Tooltip,
 } = wp.components;
 
 /**
@@ -39,12 +39,19 @@ const {
  */
 // Import all of our Margin Options requirements.
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
-// Import all of our Text Color Options requirements.
-import TextColorOptions, { TextColorAttributes, TextColorClasses, TextColorInlineStyles } from '../../components/gb-component_text-colors';
-// Import all of our Border Options requirements.
-import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
+
 // Import all of our Padding Options requirements.
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
+
+// Import all of our Border Options requirements.
+import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
+
+// Import all of our Text Color Options requirements.
+import TextColorOptions, { TextColorAttributes, TextColorClasses, TextColorInlineStyles } from '../../components/gb-component_text-colors';
+
+// Import all of our Background Options requirements.
+import BackgroundColorOptions, { BackgroundColorOptionsAttributes, BackgroundColorOptionsInlineStyles } from '../../components/gb-component_background-color';
+
 
 /**
 	* Register block
@@ -63,23 +70,13 @@ export default registerBlockType(
 			__( 'Header', 'flexlayout' ),
 		],
 		attributes: {
-			content: {
-				type: 'string',
-				default: '',
-			},
-			level: {
-				type: 'number',
-				default: 2,
-			},
 			align: {
 				type: 'string',
 				default: 'left'
 			},
-			placeholder: {
+			content: {
 				type: 'string',
-			},
-			url: {
-				type: 'string',
+				default: '',
 			},
 			imgURL: {
 				type: 'string',
@@ -87,29 +84,43 @@ export default registerBlockType(
 			imgID: {
 				type: 'number',
 			},
+			level: {
+				type: 'number',
+				default: 2,
+			},
+			placeholder: {
+				type: 'string',
+			},
+			url: {
+				type: 'string',
+			},
 			...MarginOptionsAttributes,
 			...PaddingOptionsAttributes,
 			...BorderOptionsAttributes,
-			...TextColorAttributes
+			...TextColorAttributes,
+			...BackgroundColorOptionsAttributes
 		},
 
 		edit: props => {
 			const {
                 attributes: {
-                	content,
-                	level,
                 	align,
-                	placeholder,
-                	url,
+                	content,
                 	imgID,
                 	imgURL,
-                	isSelected
+                	isSelected,
+                	level,
+                	placeholder,
+                	url
                 },
 				className,
 				setAttributes
 			} = props;
 
 			const tagName = 'h' + level;
+
+			const onChangeMessage = content => { setAttributes( { content } ) };
+
 			const onSelectImage = img => {
 				setAttributes({
 					imgID: img.id,
@@ -126,7 +137,22 @@ export default registerBlockType(
 
 			return [
 				<InspectorControls>
-					<PanelBody title={ __('Heading Settings' ) }>
+					<MarginOptions
+						{ ...props }
+					/>
+					<PaddingOptions
+						{ ...props }
+					/>
+					<BorderOptions
+						{ ...props }
+					/>
+					<TextColorOptions
+						{ ...props }
+					/>
+					<BackgroundColorOptions
+						{ ...props }
+					/>
+					<PanelBody title={ __('Heading Settings' ) } initialOpen={ false }>
 						<p>{ __( 'HTML Element' ) }</p>
 						<HeadingToolbar minLevel={ 1 } maxLevel={ 7 } selectedLevel={ level } onChange={ ( newLevel ) => setAttributes( { level: newLevel } ) } />
 						<p>{ __( 'Text Alignment' ) }</p>
@@ -146,9 +172,8 @@ export default registerBlockType(
 							/>
 							<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
 						</form>
-						<p>{ __( 'Icon Next to the Heading' ) }</p>
+						<p>{ __( 'Icon left of the Heading' ) }</p>
 						{ ! imgID ? (
-
 							<MediaUpload
 								onSelect={ onSelectImage }
 								type="image"
@@ -164,15 +189,11 @@ export default registerBlockType(
 								) }
 							>
 							</MediaUpload>
-
 						) : (
-
 							<div className={classnames(
 								`image-wrapper`,
 								`align-${align}`,
 							)}>
-
-
 								<Button
 									className="remove-image"
 									onClick={ onRemoveImage }
@@ -186,47 +207,33 @@ export default registerBlockType(
 							</div>
 						)}
 					</PanelBody>
-					<MarginOptions
-						{ ...props }
-					/>
-					<PaddingOptions
-						{ ...props }
-					/>
-					<BorderOptions
-						{ ...props }
-					/>
-					<TextColorOptions
-						{ ...props }
-					/>
-
-
-
 				</InspectorControls>,
 				<div className={classnames(
-					`component-heading`
+					`component-heading`,
+					className
 				)}>
 					<img
 						src={ imgURL }
 					/>
 					<RichText
-						identifier="content"
-						wrapperClassName=""
-						value={ content }
-						onChange={ ( value ) => setAttributes( { content: value } ) }
-						onRemove={ () => onReplace( [] ) }
-						style={ {
-							textAlign: align,
-							...TextColorInlineStyles( props )
-						} }
 						className={ classnames(
-							className,
 							`align-${align}`,
 							...MarginOptionsClasses( props ),
 							...PaddingOptionsClasses( props ),
 							...BorderOptionsClasses( props ),
 							...TextColorClasses( props ),
 						)}
-						placeholder={ placeholder || __( 'Write heading…' ) }
+						identifier="content"
+						// onChange={ ( value ) => setAttributes( { content: value } ) }
+						onChange={ onChangeMessage }
+						onRemove={ () => onReplace( [] ) }
+						placeholder={ placeholder || __( 'Heading text…' ) }
+						style={ {
+							textAlign: align,
+							...TextColorInlineStyles( props ),
+							...BackgroundColorOptionsInlineStyles( props )
+						} }
+						value={ content }
 					/>
 				</div>
 			];
@@ -239,7 +246,8 @@ export default registerBlockType(
 
 	},
 );
-//Add default styles
+
+// Add default styles
 wp.blocks.registerBlockStyle( 'flexlayout/heading', {
     name: 'headline1',
     label: 'Headline 1'

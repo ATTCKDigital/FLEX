@@ -1,4 +1,4 @@
-//Button styles for Gutenberg Editor
+// Button styles for Gutenberg Editor
 .component-button-editor {
 	.cta {
 		@extend .cta;
@@ -22,14 +22,14 @@
 
 	.wp-block-button__link {
 		@extend .cta;
-		overflow: inherit;
 		border-radius: 0;
+		overflow: inherit;
 	}
 
 	.editor-rich-text__tinymce[data-is-placeholder-visible=true].wp-block-button__link {
-		position: absolute;
 		background: transparent;
-		border:0;
+		border: 0;
+		position: absolute;
 	}
 
 	&.align-center {
@@ -72,4 +72,3 @@
 // .editor-block-styles__item[aria-label="Accent"] .editor-block-styles__item-preview { 
 // 	background: $black;
 // }
-

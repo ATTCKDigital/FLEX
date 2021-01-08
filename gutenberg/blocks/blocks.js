@@ -18,4 +18,3 @@ import "./block_shortcode/shortcode";
 import "./block_source/source";
 import "./block_text/text";
 import "./block_video/video";
-
