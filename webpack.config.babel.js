@@ -12,20 +12,22 @@ import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
 
 const smp = new SpeedMeasurePlugin({
-  disable: !process.env.MEASURE
+	disable: !process.env.MEASURE
 });
 
 const isDevEnv = 'production' !== process.env.NODE_ENV;
 
 const devPlugins = [];
+
 const productionPlugins = [
-      // Minify Images
-      // Include after plugins that add images, eg. copy-webpack-plugin
-      // TODO: this should likely be configured more highly
-      new ImageminPlugin({
-        test: /\.(jpe?g|png|gif|svg)$/i
-      }),
+	// Minify Images
+	// Include after plugins that add images, eg. copy-webpack-plugin
+	// TODO: this should likely be configured more highly
+	new ImageminPlugin({
+		test: /\.(jpe?g|png|gif|svg)$/i
+	}),
 ]
+
 const plugins = isDevEnv ? devPlugins : productionPlugins;
 
 /*
@@ -57,13 +59,13 @@ module.exports = smp.wrap({
 		'main.js': path.resolve(__dirname, './js/app.js'),
 		'admin.js': path.resolve(__dirname, './js/admin.js'),
 		'style': path.resolve(__dirname, './scss/style.scss'),
-    	'print': path.resolve(__dirname, './scss/print.scss'),
-    	'admin': path.resolve(__dirname, './scss/admin.scss'),
-        'admin-colors': path.resolve(__dirname, './scss/admin-color-scheme.scss'),
-    	'wysiwyg': path.resolve(__dirname, './scss/wysiwyg.scss'),
+			'print': path.resolve(__dirname, './scss/print.scss'),
+			'admin': path.resolve(__dirname, './scss/admin.scss'),
+				'admin-colors': path.resolve(__dirname, './scss/admin-color-scheme.scss'),
+			'wysiwyg': path.resolve(__dirname, './scss/wysiwyg.scss'),
 	},
 
-  devtool: isDevEnv ? 'cheap-eval-source-map' : false,
+	devtool: isDevEnv ? 'cheap-eval-source-map' : false,
 	mode: process.env.NODE_ENV,
 	target: 'web',
 	watch: isDevEnv,
@@ -93,15 +95,15 @@ module.exports = smp.wrap({
 				use: {
 					loader: 'babel-loader',
 					options: {
-					    // TODO: these should not be necessary
-					    // should be included via .bablerc
-					    // but for some crazy reason admin.js won't compile without these
-					    presets: [
-					      '@wordpress/default',
-					      '@babel/env',
-					      '@babel/react',
-					    ],
-					  }
+							// TODO: these should not be necessary
+							// should be included via .bablerc
+							// but for some crazy reason admin.js won't compile without these
+							presets: [
+								'@wordpress/default',
+								'@babel/env',
+								'@babel/react',
+							],
+						}
 				},
 			},
 			{
@@ -146,21 +148,24 @@ module.exports = smp.wrap({
 		]
 	},
 
-  optimization: {
-    minimizer: [
-      new UglifyJsPlugin({}),
-      new OptimizeCSSAssetsPlugin({
-        cssProcessorPluginOptions: {
-          preset: ['default', { discardComments: { removeAll: true } }],
-        },
-      }),
-    ],
-  },
+	optimization: {
+		minimizer: [
+			new UglifyJsPlugin({}),
+			new OptimizeCSSAssetsPlugin({
+				cssProcessorPluginOptions: {
+					preset: ['default', {
+						discardComments: {
+							removeAll: true
+						}
+					}],
+				},
+			}),
+		],
+	},
 
 	plugins: [
 		...plugins,
 		new WebpackNotifierPlugin(),
-
 
 		new MiniCssExtractPlugin({
 			filename: '[name].css',
@@ -176,7 +181,5 @@ module.exports = smp.wrap({
 				to: path.resolve(__dirname, './dist/assets/server-side-assets'),
 			},
 		]),
-
 	],
-
 });
