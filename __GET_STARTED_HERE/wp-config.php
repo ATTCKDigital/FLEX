@@ -99,15 +99,31 @@ define('WP_DEBUG', $_SERVER['DEBUG']);
 define('WP_DEBUG_LOG', true);
 @ini_set('display_errors',0);
 
-define( 'AUTOMATIC_UPDATER_DISABLED', true );
-define( 'WP_MEMORY_LIMIT', '256M' );
+// https://wordpress.org/support/topic/error-automatic_updater_disabled-constant-is-defined-and-enabled/
+// TL;DR: Automatic updates often include security updates
+define('AUTOMATIC_UPDATER_DISABLED', false);
 
-//remove p tags from cf7
-define('WPCF7_AUTOP', false );
+// Remove p tags from cf7
+define('WPCF7_AUTOP', false);
+
+// Uncomment if receiving "memory limit exceeded" errors
+// — memory limit cannot exceed your PHP memory limit (set in php.ini)
+// — memory limit is per-script
+// — Helpful resource: https://wordpress.org/support/topic/wp_memory_limit-in-config-php/
+define('WP_MEMORY_LIMIT', '256M');
+
+// Uncomment to enable file uploading on local development environment
+// define('FS_METHOD', 'direct');
+
+// Uncomment to enable multisite option in WP Admin › Tools › Network
+// define('WP_ALLOW_MULTISITE', true);
+
+/* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
-if ( !defined('ABSPATH') )
-  define('ABSPATH', dirname(__FILE__) . '/');
+if ( ! defined( 'ABSPATH' ) ) {
+	define( 'ABSPATH', dirname( __FILE__ ) . '/' );
+}
 
 /** Sets up WordPress vars and included files. */
-require_once(ABSPATH . 'wp-settings.php');
+require_once ABSPATH . 'wp-settings.php';
