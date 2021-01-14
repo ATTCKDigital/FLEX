@@ -85,7 +85,7 @@ function render_paragraph_block($attributes) {
 	$style = '';
 
 	if ($bgColor || $textColor) {
-		$style .= 'style=\"';
+		$style .= 'style="';
 	}
 
 	// — background color
