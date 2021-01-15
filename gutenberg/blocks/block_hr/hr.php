@@ -20,8 +20,9 @@ add_action( 'init', __NAMESPACE__ . '\register_hr_block' );
  * @return void
  */
 function register_hr_block() {
+
 	// Only load if Gutenberg is available.
-	if ( ! function_exists( 'register_hr_block' ) ) {
+	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
 
@@ -62,8 +63,8 @@ function render_hr_block($attributes) {
 	$style = 'style="';
 
 	// — background color
-	if (array_key_exists('bgColor', $attributes)) {
-		$style .= 'background-color:' . $attributes['bgColor'] . ';';
+	if ($bgColor) {
+		$style .= 'background-color:' . $bgColor . ';';
 	}
 
 	// — CSS width
@@ -71,9 +72,9 @@ function render_hr_block($attributes) {
 		$style .= 'width:' . $attributes['HRWidth'] . ';';
 	}
 
-	$style .= '">';
+	$style .= '"';
 
-	$output = '<hr class="component component-hr ' . $class . ' ' . $classInner . '" ' . $style . ' />';
+	$output = '<hr class="component component-hr ' . $class . ' ' . $classInner . '" ' . $style . '/>';
 
 	return $output;
 }
