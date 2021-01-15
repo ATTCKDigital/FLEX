@@ -15,6 +15,7 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	flex-wrap: wrap;
 }
 
+.flex-grid.flex-grid{
 /**
  * Basic grid settings using flex-gridrid custom mediaqueries 
  */
@@ -2653,4 +2654,5 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-2xl-12-12imp {
 		width: 100% !important;
 	}
+}
 }
