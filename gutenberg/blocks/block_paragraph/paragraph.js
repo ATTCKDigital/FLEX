@@ -2,12 +2,13 @@
  * WordPress dependencies
  */
 import classnames from 'classnames';
-import icons from '../../../js/icons.js'
+import icons from '../../../js/icons.js';
 
 /**
  * Internal dependencies
  */
 const { wp } = window;
+
 const { __ } = wp.i18n;
 
 const {
@@ -16,8 +17,8 @@ const {
 
 const {
 	AlignmentToolbar,
-	BlockControls,
 	BlockAlignmentToolbar,
+	BlockControls,
 	InnerBlocks,
 	InspectorControls,
 	MediaUpload,
@@ -43,13 +44,13 @@ const {
 // Import all of our Margin Options requirements.
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
 
-// Import all of our Border Options requirements.
+// Import all of our Padding Options requirements.
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
 
-// Import all of our Text Color Options requirements.
+// Import all of our Border Options requirements.
 import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
 
-// Import all of our Padding Options requirements.
+// Import all of our Text Color Options requirements.
 import TextColorOptions, { TextColorAttributes, TextColorClasses, TextColorInlineStyles } from '../../components/gb-component_text-colors';
 
 // Import all of our Background Options requirements.
@@ -75,7 +76,7 @@ export default registerBlockType(
 		attributes: {
 			align: {
 				type: 'string',
-				default: 'left'
+				default: 'left',
 			},
 			content: {
 				type: 'string',
@@ -128,7 +129,8 @@ export default registerBlockType(
 					<BackgroundColorOptions
 						{ ...props }
 					/>
-					<PanelBody title={ __( 'Paragraph Alignment' ) } initialOpen={ false }>
+					<PanelBody title={ __( 'Paragraph Alignment', 'flexlayout' ) } initialOpen={ false }>
+						<p>{ __( ' Alignment', 'flexlayout' ) }</p>
 						<AlignmentToolbar
 							value={ align }
 							initialOpen={ false }
@@ -170,14 +172,11 @@ export default registerBlockType(
 						} }
 						value={ content }
 					/>
-
 				</div>
 			];
 		},
-
 		save() {
 			return null;
 		},
-
 	},
 );
