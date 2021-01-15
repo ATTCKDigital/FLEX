@@ -1,6 +1,8 @@
-/**** Variables related to heights and widths ****/
-
-$gap						: 20px;
+/**
+ * Variables for:
+ * gap, site width, nav heights, responsive breakpoint names
+ */
+$gap						: 16px;
 $siteWidth					: 1024px;
 $navMobileHeight			: 70px;
 $navHeight					: 120px;
@@ -23,6 +25,7 @@ $xl2						: 1440px;
 
 // Max width breakpoints
 $max-phone					: 568px;
+$max-phone-plus				: 413px;
 $max-tablet-portrait		: 767px;
 $max-tablet-landscape		: 1023px;
 $max-desktop				: 1099px;
