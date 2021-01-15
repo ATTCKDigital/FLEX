@@ -35,7 +35,7 @@ function register_column_block() {
 
 	// Hook server side rendering into render callback
 	register_block_type( 'flexlayout/column', [
-		'attributes'	  => array_merge(
+		'attributes' => array_merge(
 			[
 				'className' => [
 					'type' => 'string',
@@ -51,19 +51,23 @@ function register_column_block() {
 	] );
 }
 
-/**
- * Server rendering for /blocks/column
- */
+// Server rendering for /blocks/column
 function render_column_block($attributes, $content) {
 	$sectionDataId = mt_rand(10,1000);
 	$class = 'component-column';
-	$class .= ' '.$attributes['className'];
+	$class .= ' ' . $attributes['className'];
 	$class .= column_options_classes($attributes);
 	$class .= padding_options_classes($attributes);
 	$class .= border_options_classes($attributes);
 	$class .= background_options_classes($attributes);
+
+	// Apply alignment setting
+	$class .= array_key_exists('align', $attributes) ? " column-align-{$attributes['align']}" : "";
+
+	// Apply relative link id (e.g., page.html#link)
 	$id = array_key_exists('anchor', $attributes) ? " id=\"{$attributes['anchor']}\"" : "";
 
+	// Apply background images
 	$style = background_options_inline_styles($attributes);
 	$mobileImage = background_options_mobile_styles($attributes);
 	$desktopImage = background_options_desktop_styles($attributes);
@@ -74,7 +78,7 @@ function render_column_block($attributes, $content) {
 		$styleBlock = '';
 	}
 
-	//video will only appear if the column has content
+	// Video will only appear if the column has content
 	$innerContent = background_options_video_output($attributes);
 
 	$output = "<section{$id} class=\"{$class}\" data-section-id=\"section-{$sectionDataId}\" style=\"{$style}\">{$styleBlock}{$content}{$innerContent}</section>";

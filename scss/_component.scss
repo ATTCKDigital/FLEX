@@ -13,7 +13,8 @@
 }
 
 //center align elements in a row
-.component-alignment-center, .component-alignment-center .editor-block-list__layout {
+.component-alignment-center, 
+.component-alignment-center .editor-block-list__layout {
 	display: flex;
 	align-items: center;
 	align-content: center;
@@ -21,30 +22,42 @@
 }
 
 //stretch elements in a row
-.component-alignment-stretch, .component-alignment-stretch .editor-block-list__layout {
+.component-alignment-stretch, 
+.component-alignment-stretch .editor-block-list__layout {
 	display: flex;
 	align-items: stretch;
 	height: 100%;
 }
 
 //top align elements in a row
-.component-alignment-top, .component-alignment-top .editor-block-list__layout {
+.component-alignment-top, 
+.component-alignment-top .editor-block-list__layout {
 	display: flex;
 	align-items: flex-start;
 	align-content: flex-start;
 }
 
+.component-column {
+	&.column-align-left {
+		display: block !important;
+		float: left !important;
+	}
 
-//component row settings
+	&.column-align-center {
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+
+	&.column-align-right {
+		display: block !important;
+		float: right !important;
+	}
+}
+
 .component-row {
 	height: auto;
 	position: relative;
 	width: 100%;
-
-}
-
-
-.component-row {
 	z-index: 2;
 
 	@include mediaquery-max-width(tablet-portrait) {
@@ -61,8 +74,6 @@
 			}
 		}
 	}
-
-
 
 	&.zindexTop {
 		z-index: 1000;
