@@ -1,6 +1,7 @@
-/**** Colors ****/
-
-// Default Colors
+/**
+ * Colors 
+ */
+// Default
 $modalColor: #ffffff;
 $popupColor: rgba(0, 0, 0, .7);
 $defaultTextColor: var(--color-text-body);
@@ -8,8 +9,7 @@ $borderColor: #DFDFDF;
 $white: #FFFFFF;
 $black: #000000;
 
-
-// Colors
+// Brand
 $brand-color-key: 'red' !default;
 
 $brand-colors: (
@@ -25,12 +25,12 @@ $brand-colors: (
 		'body': var(--color-text-body),
 		'link': var(--color-text-link),
 		'hover': var(--color-text-hover),
-		'white':	var(--color-text-white),
-		'black':	var(--color-text-black),
+		'white': var(--color-text-white),
+		'black': var(--color-text-black),
 	),
 	'default': (
-		'white':	var(--color-default-white),
-		'black':	var(--color-default-black),
+		'white': var(--color-default-white),
+		'black': var(--color-default-black),
 	),
 	'social':(
 		'facebook': #3b5998,

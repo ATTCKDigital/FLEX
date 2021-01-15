@@ -7,23 +7,29 @@
  * Enable FLEX created blocks by using flexlayout/block_name
  */
 $blocks = array(
-	'flexlayout/row', //REQUIRED
-	'flexlayout/column', //REQUIRED
 	'flexlayout/animated-gif',
 	'flexlayout/button',
+	'flexlayout/column', // REQUIRED
 	'flexlayout/feed',
 	'flexlayout/heading',
+	'flexlayout/hr',
 	'flexlayout/image',
 	'flexlayout/list',
 	'flexlayout/paragraph',
 	'flexlayout/quote',
+	'flexlayout/row', // REQUIRED
+	'flexlayout/share',
 	'flexlayout/shortcode',
 	'flexlayout/source',
 	'flexlayout/socialmedia',
-	// 'flexlayout/text', DEPRECATED, replaced by List and Paragraph. If your project is already using this, leave it in the child theme.
+		
+	//  DEPRECATED, replaced by List and Paragraph. 
+	// If your project is already using this, 
+	// leave it in the child theme.
+	// 'flexlayout/text',
+
 	'flexlayout/users',
-	'flexlayout/video',
-	'flexlayout/share'
+	'flexlayout/video'
 );
 
 if ( !defined('FLEXLAYOUT_BLOCKS') ) {

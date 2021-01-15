@@ -1,5 +1,4 @@
 <?php
-
 /**
  * colorSettingId
  * By generating customizer color settingIds in this way,
@@ -121,4 +120,5 @@ function tabor_styles() {
 	wp_enqueue_style( 'tabor-style', get_theme_file_uri( '/style.css' ), false, '@@pkg.version', 'all' );
 	// Add custom colors to the front end.
 }
+
 add_action( 'wp_enqueue_scripts', 'tabor_styles' );

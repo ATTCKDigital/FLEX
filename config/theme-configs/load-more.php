@@ -1,15 +1,11 @@
 <?php
 /**
  * AJAX Load More Posts
- *
  */
-
-
 $result = array();
 
 // Script for getting posts
 function ajax_filter_get_posts( $post ) {
-
 	// Verify nonce
 	if( !isset( $_POST['afp_nonce'] ) || !wp_verify_nonce( $_POST['afp_nonce'], 'afp_nonce' ) )
 		die('Permission denied');
@@ -126,7 +122,6 @@ function ajax_filter_get_posts( $post ) {
 
 	die();
 }
-
 
 add_action('wp_ajax_filter_posts', 'ajax_filter_get_posts');
 add_action('wp_ajax_nopriv_filter_posts', 'ajax_filter_get_posts');

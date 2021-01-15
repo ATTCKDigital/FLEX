@@ -30,10 +30,9 @@
 	}
 
 	class Utils {
-
 		/**
-	 	* Renders a template inside of another template
-	 	*/
+	 	 * Renders a template inside of another template
+	 	 */
 		public static function render_template($file, $args = array()){
 			$template = new Template($file, $args);
 			$template->render();
@@ -50,6 +49,7 @@
 			$object = $wp_query->get_queried_object();
 			$parent_id  = $object->post_parent;
 			$depth = 0;
+			
 			while($parent_id > 0){
 				$page = get_page($parent_id);
 				$parent_id = $page->post_parent;
@@ -59,7 +59,6 @@
 		 	return $depth;
 		}
 
-
 		/**
 		 * Format a WordPress date for the user.
 		 *
@@ -68,5 +67,4 @@
 		public static function format_date($d) {
 			return date(SITE_DATE_FORMAT, strtotime($d));
 		}
-
 	}
