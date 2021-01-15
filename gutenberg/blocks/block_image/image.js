@@ -2,30 +2,35 @@
  * Block dependencies
  */
 import classnames from 'classnames';
-import icons from '../../../js/icons.js'
+import icons from '../../../js/icons.js';
 
 /**
  * Internal block libraries
  */
 const { __ } = wp.i18n;
+
 const {
 	registerBlockType,
 } = wp.blocks;
-const {
-	Editable,
-	MediaUpload,
-	InspectorControls,
-	URLInput,
-	RichText,
-	AlignmentToolbar
 
-} = wp.blockEditor;
 const {
-	Toolbar,
+	AlignmentToolbar,
+	BlockAlignmentToolbar,
+	BlockControls,
+	Editable,
+	InspectorControls,
+	MediaUpload,
+	RichText,
+	URLInput,
+} = wp.blockEditor;
+
+const {
 	Button,
 	Dashicon,
 	IconButton,
-	PanelBody
+	PanelBody,
+	TextControl,
+	Toolbar,
 } = wp.components;
 
 /**
@@ -33,11 +38,12 @@ const {
  */
 // Import all of our Margin Options requirements.
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
+
 // Import all of our Border Options requirements.
 import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
+
 // Import all of our Padding Options requirements.
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
-
 
 /**
  * Register image block
@@ -74,37 +80,46 @@ export default registerBlockType(
 				type: 'string',
 				default: 'center'
 			},
+			CSSWidth: {
+				type: 'string',
+				default: ''
+			},
 			...MarginOptionsAttributes,
 			...PaddingOptionsAttributes,
 			...BorderOptionsAttributes,
-
 		},
 		edit: props => {
-			const { attributes: { imgID, imgURL, url, caption, align, placeholder},
-				className, setAttributes, isSelected } = props;
+			const {
+				attributes: {
+					align,
+					caption,
+					CSSWidth,
+					imgID,
+					imgURL,
+					placeholder,
+					url
+				},
+				className,
+				setAttributes,
+				isSelected
+			} = props;
+
 			const onSelectImage = img => {
 				setAttributes( {
 					imgID: img.id,
 					imgURL: img.url,
 				} );
 			};
+
 			const onRemoveImage = () => {
 				setAttributes({
 					imgID: null,
 					imgURL: null,
 				});
 			}
+
 			return [
 				<InspectorControls>
-					<PanelBody title={ __( 'Heading Settings' ) }>
-						<p>{ __( 'Image Alignment' ) }</p>
-						<AlignmentToolbar
-							value={ align }
-							onChange={ ( nextAlign ) => {
-								setAttributes( { align: nextAlign } );
-							} }
-						/>
-					</PanelBody>
 					<MarginOptions
 						{ ...props }
 					/>
@@ -114,7 +129,31 @@ export default registerBlockType(
 					<BorderOptions
 						{ ...props }
 					/>
+					<PanelBody title={ __( 'Image Settings', 'flexlayout' ) }>
+						<p>{ __( ' Alignment', 'flexlayout' ) }</p>
+						<AlignmentToolbar
+							value={ align }
+							onChange={ ( nextAlign ) => {
+								setAttributes( { align: nextAlign } );
+							} }
+						/>
+						<p>{ __( ' CSS Width (100%, 50px, auto, etc.)' ) }</p>
+						<TextControl
+							value={ CSSWidth }
+							onChange={ ( nextCSSWidth ) => {
+								setAttributes( { CSSWidth: nextCSSWidth } );
+							} }
+						/>
+					</PanelBody>
 				</InspectorControls>,
+				<BlockControls>
+					<AlignmentToolbar
+						value={ align }
+						onChange={ ( nextAlign ) => {
+							setAttributes( { align: nextAlign } );
+						} }
+					/>
+				</BlockControls>,
 				<div className={classnames(
 					`component-image`,
 					`align-${align}`,
@@ -122,9 +161,7 @@ export default registerBlockType(
 					...PaddingOptionsClasses( props ),
 					...BorderOptionsClasses( props ),
 				)}>
-
 					{ ! imgID ? (
-
 						<MediaUpload
 							onSelect={ onSelectImage }
 							type="image"
@@ -140,16 +177,12 @@ export default registerBlockType(
 							) }
 						>
 						</MediaUpload>
-
 					) : (
-
 						<div className={classnames(
 							`image-wrapper`,
 							`align-${align}`,
 						)}>
-
 							{ isSelected ? (
-
 								<Button
 									className="remove-image"
 									onClick={ onRemoveImage }
@@ -158,7 +191,6 @@ export default registerBlockType(
 								</Button>
 							) : null }
 							{ isSelected ? (
-
 								<form
 									className="block-library-button__inline-link"
 									onSubmit={ ( event ) => event.preventDefault() }>
@@ -169,13 +201,11 @@ export default registerBlockType(
 									/>
 									<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
 								</form>
-
 							) : null }
 							<img
 								src={ imgURL }
 							/>
 							{ isSelected ? (
-
 								<RichText
 									identifier="caption"
 									wrapperClassName="image-caption"
@@ -186,11 +216,9 @@ export default registerBlockType(
 									className={ classnames('caption')}
 									placeholder={ placeholder || __( 'Write caption' ) }
 								/>
-
 							) : null }
 						</div>
 					)}
-
 				</div>
 			];
 		},
