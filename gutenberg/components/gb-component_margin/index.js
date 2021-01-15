@@ -36,18 +36,27 @@ function MarginOptions( props ) {
 	const setMarginRight = value => props.setAttributes( { marginRight: value } );
 	const setMarginBottom = value => props.setAttributes( { marginBottom: value } );
 	const setMarginLeft = value => props.setAttributes( { marginLeft: value } );
+	
 	const setMarginPhoneTop = value => props.setAttributes( { marginPhoneTop: value } );
 	const setMarginPhoneRight = value => props.setAttributes( { marginPhoneRight: value } );
 	const setMarginPhoneBottom = value => props.setAttributes( { marginPhoneBottom: value } );
 	const setMarginPhoneLeft = value => props.setAttributes( { marginPhoneLeft: value } );
+	
+	const setMarginPhonePlusTop = value => props.setAttributes( { marginPhonePlusTop: value } );
+	const setMarginPhonePlusRight = value => props.setAttributes( { marginPhonePlusRight: value } );
+	const setMarginPhonePlusBottom = value => props.setAttributes( { marginPhonePlusBottom: value } );
+	const setMarginPhonePlusLeft = value => props.setAttributes( { marginPhonePlusLeft: value } );
+	
 	const setMarginTabletPortraitTop = value => props.setAttributes( { marginTabletPortraitTop: value } );
 	const setMarginTabletPortraitRight = value => props.setAttributes( { marginTabletPortraitRight: value } );
 	const setMarginTabletPortraitBottom = value => props.setAttributes( { marginTabletPortraitBottom: value } );
 	const setMarginTabletPortraitLeft = value => props.setAttributes( { marginTabletPortraitLeft: value } );
+	
 	const setMarginTabletLandscapeTop = value => props.setAttributes( { marginTabletLandscapeTop: value } );
 	const setMarginTabletLandscapeRight = value => props.setAttributes( { marginTabletLandscapeRight: value } );
 	const setMarginTabletLandscapeBottom = value => props.setAttributes( { marginTabletLandscapeBottom: value } );
 	const setMarginTabletLandscapeLeft = value => props.setAttributes( { marginTabletLandscapeLeft: value } );
+	
 	const setMarginDesktopTop = value => props.setAttributes( { marginDesktopTop: value } );
 	const setMarginDesktopRight = value => props.setAttributes( { marginDesktopRight: value } );
 	const setMarginDesktopBottom = value => props.setAttributes( { marginDesktopBottom: value } );
@@ -385,6 +394,163 @@ function MarginOptions( props ) {
 					</PanelRow>
 				</div>
 				<div className="margin-inner-wrapper">
+					<h2 className="components-panel__body-title">Mobile Plus Margin</h2>
+					<PanelRow>
+						<SelectControl
+							key="margin-phone-plus-top"
+							label={ __( 'Top' ) }
+							value={ props.attributes.marginPhonePlusTop ? props.attributes.marginPhonePlusTop : '' }
+							onChange={ setMarginPhonePlusTop }
+							options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
+									label: __( '0' ),
+									value: '0x',
+								},
+								{
+									label: __( '1x' ),
+									value: '1x',
+								},
+								{
+									label: __( '2x' ),
+									value: '2x',
+								},
+								{
+									label: __( '4x' ),
+									value: '4x',
+								},
+								{
+									label: __( '8x' ),
+									value: '8x',
+								},
+								{
+									label: __( '16x' ),
+									value: '16x',
+								},
+
+
+							] }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<SelectControl
+							key="margin-phone-plus-right"
+							label={ __( 'Right' ) }
+							value={ props.attributes.marginPhonePlusRight ? props.attributes.marginPhonePlusRight : '' }
+							onChange={ setMarginPhonePlusRight }
+													options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
+									label: __( '0' ),
+									value: '0x',
+								},
+								{
+									label: __( '1x' ),
+									value: '1x',
+								},
+								{
+									label: __( '2x' ),
+									value: '2x',
+								},
+								{
+									label: __( '4x' ),
+									value: '4x',
+								},
+								{
+									label: __( '8x' ),
+									value: '8x',
+								},
+								{
+									label: __( '16x' ),
+									value: '16x',
+								},
+							] }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<SelectControl
+							key="margin-phone-plus-bottom"
+							label={ __( 'Bottom' ) }
+							value={ props.attributes.marginPhonePlusBottom ? props.attributes.marginPhonePlusBottom : '' }
+							onChange={ setMarginPhonePlusBottom }
+													options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
+									label: __( '0' ),
+									value: '0x',
+								},
+								{
+									label: __( '1x' ),
+									value: '1x',
+								},
+								{
+									label: __( '2x' ),
+									value: '2x',
+								},
+								{
+									label: __( '4x' ),
+									value: '4x',
+								},
+								{
+									label: __( '8x' ),
+									value: '8x',
+								},
+								{
+									label: __( '16x' ),
+									value: '16x',
+								},
+							] }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<SelectControl
+							key="margin-phone-plus-left"
+							label={ __( 'Left' ) }
+							value={ props.attributes.marginPhonePlusLeft ? props.attributes.marginPhonePlusLeft : '' }
+							onChange={ setMarginPhonePlusLeft }
+													options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
+									label: __( '0' ),
+									value: '0x',
+								},
+								{
+									label: __( '1x' ),
+									value: '1x',
+								},
+								{
+									label: __( '2x' ),
+									value: '2x',
+								},
+								{
+									label: __( '4x' ),
+									value: '4x',
+								},
+								{
+									label: __( '8x' ),
+									value: '8x',
+								},
+								{
+									label: __( '16x' ),
+									value: '16x',
+								},
+							] }
+						/>
+					</PanelRow>
+				</div>
+				<div className="margin-inner-wrapper">
 					<h2 className="components-panel__body-title">Tablet Portrait Margin</h2>
 					<PanelRow>
 						<SelectControl
@@ -421,8 +587,6 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-
-
 							] }
 						/>
 					</PanelRow>
@@ -461,8 +625,6 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-
-
 							] }
 						/>
 					</PanelRow>
@@ -501,8 +663,6 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-
-
 							] }
 						/>
 					</PanelRow>
@@ -541,8 +701,6 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-
-
 							] }
 						/>
 					</PanelRow>
@@ -584,8 +742,6 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-
-
 							] }
 						/>
 					</PanelRow>
@@ -624,8 +780,6 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-
-
 							] }
 						/>
 					</PanelRow>
@@ -664,8 +818,6 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-
-
 							] }
 						/>
 					</PanelRow>
@@ -675,7 +827,7 @@ function MarginOptions( props ) {
 							label={ __( 'Left' ) }
 							value={ props.attributes.marginTabletLandscapeLeft ? props.attributes.marginTabletLandscapeLeft : '' }
 							onChange={ setMarginTabletLandscapeLeft }
-													options={ [
+							options={ [
 								{
 									label: __( 'Inherit' ),
 									value: 'inherit',
@@ -704,8 +856,6 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-
-
 							] }
 						/>
 					</PanelRow>
@@ -747,8 +897,6 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-
-
 							] }
 						/>
 					</PanelRow>
@@ -787,8 +935,6 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-
-
 							] }
 						/>
 					</PanelRow>
@@ -798,7 +944,7 @@ function MarginOptions( props ) {
 							label={ __( 'Bottom' ) }
 							value={ props.attributes.marginDesktopBottom ? props.attributes.marginDesktopBottom : '' }
 							onChange={ setMarginDesktopBottom }
-													options={ [
+							options={ [
 								{
 									label: __( 'Inherit' ),
 									value: 'inherit',
@@ -827,8 +973,6 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-
-
 							] }
 						/>
 					</PanelRow>
@@ -867,8 +1011,6 @@ function MarginOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-
-
 							] }
 						/>
 					</PanelRow>
@@ -876,8 +1018,6 @@ function MarginOptions( props ) {
 			</div>
 		);
 	};
-
-
 
 	return (
 		<PanelBody

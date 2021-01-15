@@ -36,18 +36,27 @@ function PaddingOptions( props ) {
 	const setPaddingRight = value => props.setAttributes( { paddingRight: value } );
 	const setPaddingBottom = value => props.setAttributes( { paddingBottom: value } );
 	const setPaddingLeft = value => props.setAttributes( { paddingLeft: value } );
+	
 	const setPaddingPhoneTop = value => props.setAttributes( { paddingPhoneTop: value } );
 	const setPaddingPhoneRight = value => props.setAttributes( { paddingPhoneRight: value } );
 	const setPaddingPhoneBottom = value => props.setAttributes( { paddingPhoneBottom: value } );
 	const setPaddingPhoneLeft = value => props.setAttributes( { paddingPhoneLeft: value } );
+
+	const setPaddingPhonePlusTop = value => props.setAttributes( { paddingPhonePlusTop: value } );
+	const setPaddingPhonePlusRight = value => props.setAttributes( { paddingPhonePlusRight: value } );
+	const setPaddingPhonePlusBottom = value => props.setAttributes( { paddingPhonePlusBottom: value } );
+	const setPaddingPhonePlusLeft = value => props.setAttributes( { paddingPhonePlusLeft: value } );
+	
 	const setPaddingTabletPortraitTop = value => props.setAttributes( { paddingTabletPortraitTop: value } );
 	const setPaddingTabletPortraitRight = value => props.setAttributes( { paddingTabletPortraitRight: value } );
 	const setPaddingTabletPortraitBottom = value => props.setAttributes( { paddingTabletPortraitBottom: value } );
 	const setPaddingTabletPortraitLeft = value => props.setAttributes( { paddingTabletPortraitLeft: value } );
+	
 	const setPaddingTabletLandscapeTop = value => props.setAttributes( { paddingTabletLandscapeTop: value } );
 	const setPaddingTabletLandscapeRight = value => props.setAttributes( { paddingTabletLandscapeRight: value } );
 	const setPaddingTabletLandscapeBottom = value => props.setAttributes( { paddingTabletLandscapeBottom: value } );
 	const setPaddingTabletLandscapeLeft = value => props.setAttributes( { paddingTabletLandscapeLeft: value } );
+	
 	const setPaddingDesktopTop = value => props.setAttributes( { paddingDesktopTop: value } );
 	const setPaddingDesktopRight = value => props.setAttributes( { paddingDesktopRight: value } );
 	const setPaddingDesktopBottom = value => props.setAttributes( { paddingDesktopBottom: value } );
@@ -95,8 +104,6 @@ function PaddingOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-
-
 							] }
 						/>
 					</PanelRow>
@@ -106,7 +113,7 @@ function PaddingOptions( props ) {
 							label={ __( 'Right' ) }
 							value={ props.attributes.paddingRight ? props.attributes.paddingRight : '' }
 							onChange={ setPaddingRight }
-													options={ [
+							options={ [
 								{
 									label: __( 'Inherit' ),
 									value: 'inherit',
@@ -135,8 +142,6 @@ function PaddingOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-
-
 							] }
 						/>
 					</PanelRow>
@@ -146,7 +151,7 @@ function PaddingOptions( props ) {
 							label={ __( 'Bottom' ) }
 							value={ props.attributes.paddingBottom ? props.attributes.paddingBottom : '' }
 							onChange={ setPaddingBottom }
-													options={ [
+							options={ [
 								{
 									label: __( 'Inherit' ),
 									value: 'inherit',
@@ -175,8 +180,6 @@ function PaddingOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-
-
 							] }
 						/>
 					</PanelRow>
@@ -186,7 +189,7 @@ function PaddingOptions( props ) {
 							label={ __( 'Left' ) }
 							value={ props.attributes.paddingLeft ? props.attributes.paddingLeft : '' }
 							onChange={ setPaddingLeft }
-													options={ [
+							options={ [
 								{
 									label: __( 'Inherit' ),
 									value: 'inherit',
@@ -215,8 +218,6 @@ function PaddingOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-
-
 							] }
 						/>
 					</PanelRow>
@@ -258,8 +259,6 @@ function PaddingOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-
-
 							] }
 						/>
 					</PanelRow>
@@ -269,7 +268,7 @@ function PaddingOptions( props ) {
 							label={ __( 'Right' ) }
 							value={ props.attributes.paddingPhoneRight ? props.attributes.paddingPhoneRight : '' }
 							onChange={ setPaddingPhoneRight }
-													options={ [
+							options={ [
 								{
 									label: __( 'Inherit' ),
 									value: 'inherit',
@@ -298,8 +297,6 @@ function PaddingOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-
-
 							] }
 						/>
 					</PanelRow>
@@ -309,7 +306,7 @@ function PaddingOptions( props ) {
 							label={ __( 'Bottom' ) }
 							value={ props.attributes.paddingPhoneBottom ? props.attributes.paddingPhoneBottom : '' }
 							onChange={ setPaddingPhoneBottom }
-													options={ [
+							options={ [
 								{
 									label: __( 'Inherit' ),
 									value: 'inherit',
@@ -338,8 +335,6 @@ function PaddingOptions( props ) {
 									label: __( '16x' ),
 									value: '16x',
 								},
-
-
 							] }
 						/>
 					</PanelRow>
@@ -349,7 +344,163 @@ function PaddingOptions( props ) {
 							label={ __( 'Left' ) }
 							value={ props.attributes.paddingPhoneLeft ? props.attributes.paddingPhoneLeft : '' }
 							onChange={ setPaddingPhoneLeft }
-													options={ [
+							options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
+									label: __( '0' ),
+									value: '0x',
+								},
+								{
+									label: __( '1x' ),
+									value: '1x',
+								},
+								{
+									label: __( '2x' ),
+									value: '2x',
+								},
+								{
+									label: __( '4x' ),
+									value: '4x',
+								},
+								{
+									label: __( '8x' ),
+									value: '8x',
+								},
+								{
+									label: __( '16x' ),
+									value: '16x',
+								},
+							] }
+						/>
+					</PanelRow>
+				</div>
+
+				<div className="padding-inner-wrapper">
+					<h2 className="components-panel__body-title">Mobile Plus Padding</h2>
+					<PanelRow>
+						<SelectControl
+							key="padding-phone-plus-top"
+							label={ __( 'Top' ) }
+							value={ props.attributes.paddingPhonePlusTop ? props.attributes.paddingPhonePlusTop : '' }
+							onChange={ setPaddingPhonePlusTop }
+							options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
+									label: __( '0' ),
+									value: '0x',
+								},
+								{
+									label: __( '1x' ),
+									value: '1x',
+								},
+								{
+									label: __( '2x' ),
+									value: '2x',
+								},
+								{
+									label: __( '4x' ),
+									value: '4x',
+								},
+								{
+									label: __( '8x' ),
+									value: '8x',
+								},
+								{
+									label: __( '16x' ),
+									value: '16x',
+								},
+							] }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<SelectControl
+							key="padding-phone-plus-right"
+							label={ __( 'Right' ) }
+							value={ props.attributes.paddingPhonePlusRight ? props.attributes.paddingPhonePlusRight : '' }
+							onChange={ setPaddingPhonePlusRight }
+							options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
+									label: __( '0' ),
+									value: '0x',
+								},
+								{
+									label: __( '1x' ),
+									value: '1x',
+								},
+								{
+									label: __( '2x' ),
+									value: '2x',
+								},
+								{
+									label: __( '4x' ),
+									value: '4x',
+								},
+								{
+									label: __( '8x' ),
+									value: '8x',
+								},
+								{
+									label: __( '16x' ),
+									value: '16x',
+								},
+							] }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<SelectControl
+							key="padding-phone-plus-bottom"
+							label={ __( 'Bottom' ) }
+							value={ props.attributes.paddingPhonePlusBottom ? props.attributes.paddingPhonePlusBottom : '' }
+							onChange={ setPaddingPhonePlusBottom }
+							options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
+									label: __( '0' ),
+									value: '0x',
+								},
+								{
+									label: __( '1x' ),
+									value: '1x',
+								},
+								{
+									label: __( '2x' ),
+									value: '2x',
+								},
+								{
+									label: __( '4x' ),
+									value: '4x',
+								},
+								{
+									label: __( '8x' ),
+									value: '8x',
+								},
+								{
+									label: __( '16x' ),
+									value: '16x',
+								},
+							] }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<SelectControl
+							key="padding-phone-plus-left"
+							label={ __( 'Left' ) }
+							value={ props.attributes.paddingPhonePlusLeft ? props.attributes.paddingPhonePlusLeft : '' }
+							onChange={ setPaddingPhonePlusLeft }
+							options={ [
 								{
 									label: __( 'Inherit' ),
 									value: 'inherit',
@@ -384,6 +535,7 @@ function PaddingOptions( props ) {
 						/>
 					</PanelRow>
 				</div>
+
 				<div className="padding-inner-wrapper">
 					<h2 className="components-panel__body-title">Tablet Portrait Padding</h2>
 					<PanelRow>
