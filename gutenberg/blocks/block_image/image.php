@@ -3,8 +3,10 @@ namespace FLEX_LAYOUT_SYSTEM\Blocks\Image;
 
 use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
+
 use const FLEX_LAYOUT_SYSTEM\Components\Border\BORDER_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Border\border_options_classes;
+
 use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
 
@@ -25,7 +27,7 @@ function register_image_block() {
 
 	// Hook server side rendering into render callback
 	register_block_type( 'flexlayout/image', [
-		'attributes'	  => array_merge(
+		'attributes' => array_merge(
 			[
 				'imgURL' => [
 					'type' => 'string',
@@ -47,7 +49,10 @@ function register_image_block() {
 					'type' => 'string',
 					'default' => 'center'
 				],
-
+				'CSSWidth' => [
+					'type' => 'string',
+					'default' => ''
+				],
 			],
 			MARGIN_OPTIONS_ATTRIBUTES,
 			PADDING_OPTIONS_ATTRIBUTES,
@@ -57,33 +62,39 @@ function register_image_block() {
 	] );
 }
 
-/**
- * Server rendering for /blocks/image
- */
+// Server rendering for /blocks/image
 function render_image_block($attributes) {
 	$class = " {$attributes['className']}";
 	$class .= margin_options_classes($attributes);
 	$class .= padding_options_classes($attributes);
 	$class .= border_options_classes($attributes);
+
 	$classInner = " align-{$attributes['align']}";
+
+	if (array_key_exists('CSSWidth', $attributes)) {
+		$CSSWidth = 'style="width:' . $attributes['CSSWidth'] . '"';
+	} else {
+		$CSSWidth = '';
+	}
+
 	$url = array_key_exists('url', $attributes) ? $attributes['url'] : null;
 	$caption = array_key_exists('caption', $attributes) ? $attributes['caption'] : null;
 	$imageID = array_key_exists('imgID', $attributes) ? $attributes['imgID'] : null;
 	$imageURL = wp_get_attachment_image($imageID, 'full');
 
 	if ($url) {
-		$image = '<a href="'.$url.'">'.$imageURL.'</a>';
+		$image = '<a href="' . $url . '">' . $imageURL . '</a>';
 	} else {
 		$image = $imageURL;
 	}
 
 	if ($caption) {
-		$caption = '<figcaption class="caption">'.$caption.'</figcaption>';
+		$caption = '<figcaption class="caption">' . $caption . '</figcaption>';
 	} else {
 		$caption = '';
 	}
 
-	$output = '<div class="component-image component '.$class.'"><div class="image-wrapper'.$classInner.'">'.$image.$caption.'</div></div>';
+	$output = '<div class="component-image component ' . $class . '" ' . $CSSWidth . '><div class="image-wrapper' . $classInner . '">' . $image . $caption . '</div></div>';
 
 	return $output;
 }
