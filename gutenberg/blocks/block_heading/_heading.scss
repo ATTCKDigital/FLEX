@@ -2,22 +2,21 @@
 	width: 100%;
 
 	&.has-image {
+		align-items: center;
 		display: flex;
 		flex-wrap: wrap;
-		align-items: center;
 
 		img {
-
+			height: auto;
+			margin-right: $gap*5;
+			max-height: 30px;
 			max-width: 45px;
 			width: auto;
-			height: auto;
-			max-height: 30px;
-			margin-right: $gap*5;
 
 			@include mediaquery(tablet-portrait) {
-				max-width: 80px;
-				max-height: 50px;
 				margin-right: $gap*2;
+				max-height: 50px;
+				max-width: 80px;
 			}
 		}
 	}

@@ -5,6 +5,9 @@ import { Component } from '@wordpress/element';
 import { BACKSPACE, DELETE, F10 } from '@wordpress/keycodes';
 import classnames from 'classnames';
 
+/**
+ * Internal dependencies
+ */
 const { wp } = window;
 const { __ } = wp.i18n;
 const {

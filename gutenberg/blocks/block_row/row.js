@@ -14,21 +14,21 @@ const {
 } = wp.blocks;
 
 const {
-	RichText,
 	AlignmentToolbar,
-	BlockControls,
 	BlockAlignmentToolbar,
+	BlockControls,
 	InspectorControls,
 	InnerBlocks,
+	RichText,
 } = wp.blockEditor;
 
 const {
-	Toolbar,
 	Button,
 	ButtonGroup,
-	Tooltip,
 	PanelBody,
 	PanelRow,
+	Toolbar,
+	Tooltip,
 } = wp.components;
 
 /**
@@ -37,18 +37,25 @@ const {
 
 // Import all of our Background Options requirements.
 import BackgroundOptions, { BackgroundOptionsAttributes, BackgroundOptionsClasses, BackgroundOptionsInlineStyles, BackgroundOptionsVideoOutput } from '../../components/gb-component_background-options';
+
 // Import all of our Padding Options requirements.
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
+
 // Import all of our Margin Options requirements.
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
+
 // Import all of our Scroller Options requirements.
 import ScrollerOptions, { ScrollerOptionsAttributes, ScrollerOptionsOutput } from '../../components/gb-component_scroller';
+
 // Import all of our Logo Color Options requirements.
 import LogoColorOptions, { LogoColorOptionsAttributes, LogoColorOptionsDataAttr } from '../../components/gb-component_logo-color';
+
 // Import all of our Row Height Options requirements.
 import RowHeightOptions, { RowHeightOptionsAttributes, RowHeightOptionsClasses } from '../../components/gb-component_row-height';
+
 // Import all of our Border Options requirements.
 import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
+
 import AnchorOptions, { AnchorOptionsAttributes } from '../../components/gb-component_anchor';
 
 /**
@@ -85,7 +92,6 @@ export default registerBlockType(
 				type: 'string',
 				default: 'top',
 			},
-
 			...AnchorOptionsAttributes,
 			...BackgroundOptionsAttributes,
 			...RowHeightOptionsAttributes,
@@ -98,6 +104,7 @@ export default registerBlockType(
 
 		getEditWrapperProps( attributes ) {
 			const { blockAlignment } = attributes;
+			
 			if ( 'left' === blockAlignment || 'right' === blockAlignment || 'full' === blockAlignment || 'wide' === blockAlignment ) {
 				return { 'data-align': blockAlignment };
 			}

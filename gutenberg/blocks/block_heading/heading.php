@@ -115,12 +115,12 @@ function render_heading_block($attributes) {
 
 	// — background color
 	if ($bgColor) {
-		$style .= ';background-color:' . $bgColor . ';';
+		$style .= 'background-color:' . $bgColor . ';';
 	}
 
 	// — text color
 	if ($textColor) {
-		$style .= ';color:' . $textColor . ';';
+		$style .= 'color:' . $textColor . ';';
 	}
 
 	// End inline style attribute block
@@ -144,7 +144,7 @@ function render_heading_block($attributes) {
 		$image = '';
 	}
 
-	$output = "<div class=\"{$wrapperClass}\"{$style}>{$link}{$image}{$linkClose}<{$tagName} class=\"{$class}\">{$link}{$attributes['content']}{$linkClose}</{$tagName}></div>";
+	$output = "<div class=\"{$wrapperClass}\" {$style}>{$link}{$image}{$linkClose}<{$tagName} class=\"{$class}\">{$link}{$attributes['content']}{$linkClose}</{$tagName}></div>";
 
 	return $output;
 }

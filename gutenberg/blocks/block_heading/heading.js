@@ -3,15 +3,17 @@
  */
 import classnames from 'classnames';
 import HeadingToolbar from './heading-toolbar';
-import icons from '../../../js/icons.js'
+import icons from '../../../js/icons.js';
 
 /**
  * Internal block libraries
  */
 const { __ } = wp.i18n;
+
 const {
 	registerBlockType,
 } = wp.blocks;
+
 const {
 	AlignmentToolbar,
 	BlockControls,
@@ -22,6 +24,7 @@ const {
 	RichText,
 	URLInput,
 } = wp.blockEditor;
+
 const {
 	Button,
 	ButtonGroup,
@@ -51,7 +54,6 @@ import TextColorOptions, { TextColorAttributes, TextColorClasses, TextColorInlin
 
 // Import all of our Background Options requirements.
 import BackgroundColorOptions, { BackgroundColorOptionsAttributes, BackgroundColorOptionsInlineStyles } from '../../components/gb-component_background-color';
-
 
 /**
 	* Register block
@@ -106,11 +108,11 @@ export default registerBlockType(
                 attributes: {
                 	align,
                 	content,
+                	placeholder,
                 	imgID,
                 	imgURL,
                 	isSelected,
                 	level,
-                	placeholder,
                 	url
                 },
 				className,
