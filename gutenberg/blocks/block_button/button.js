@@ -2,7 +2,7 @@
  * Block dependencies
  */
 import classnames from 'classnames';
-import icons from '../../../js/icons.js'
+import icons from '../../../js/icons.js';
 
 /**
  * Internal block libraries
@@ -42,8 +42,8 @@ import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '..
 export default registerBlockType(
 	'flexlayout/button',
 	{
-		title: __( 'Button' ),
-		description: __( 'Prompt visitors to take action with a custom button.' ),
+		title: __( 'Button', 'flexlayout' ),
+		description: __( 'Prompt visitors to take action with a custom button.', 'flexlayout' ),
 		category: 'common',
 		icon: icons.button,
 		// parent: ['flexlayout/column'],
@@ -86,17 +86,32 @@ export default registerBlockType(
 		],
 
 		edit: props => {
-			const { attributes: { content, align, placeholder, url, content2, url2, target},
-				className, setAttributes, isSelected } = props;
+			const {
+				attributes: {
+					content,
+					align,
+					placeholder,
+					url,
+					content2,
+					url2,
+					target
+				},
+				className,
+				setAttributes,
+				isSelected
+			} = props;
+			
 			const tagName = 'span';
 
 			return ([
 				<InspectorControls>
-					<PanelBody title={ __( 'Button Alignment' ) }>
+					<PanelBody title={ __( 'Button Alignment', 'flexlayout' ) }>
 						<AlignmentToolbar
 							value={ align }
 							onChange={ ( nextAlign ) => {
-								setAttributes( { align: nextAlign } );
+								setAttributes( {
+									align: nextAlign
+								} );
 							} }
 						/>
 						<CheckboxControl
@@ -137,7 +152,7 @@ export default registerBlockType(
 							<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
 						</form>
 					) }
-					<RichText
+					{/*<RichText
 						identifier="content2"
 						className={ classnames('wp-block-button__link', className)}
 						tagName={ tagName }
@@ -159,7 +174,7 @@ export default registerBlockType(
 							/>
 							<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
 						</form>
-					) }
+					) }*/}
 				</div>
 			]);
 
