@@ -12,6 +12,10 @@ function margin_options_classes( $attributes ) {
 	$class .= array_key_exists('marginPhoneRight', $attributes) && $attributes['marginPhoneRight'] != 'inherit' ? " margin-phone-right-{$attributes['marginPhoneRight']} " :'';
 	$class .= array_key_exists('marginPhoneLeft', $attributes) && $attributes['marginPhoneLeft'] != 'inherit' ? " margin-phone-left-{$attributes['marginPhoneLeft']} " :'';
 	$class .= array_key_exists('marginPhoneBottom', $attributes) && $attributes['marginPhoneBottom'] != 'inherit' ? " margin-phone-bottom-{$attributes['marginPhoneBottom']} " :'';
+	$class .= array_key_exists('marginPhonePlusTop', $attributes) && $attributes['marginPhonePlusTop'] != 'inherit' ? " margin-phone-top-{$attributes['marginPhonePlusTop']} " :'';
+	$class .= array_key_exists('marginPhonePlusRight', $attributes) && $attributes['marginPhonePlusRight'] != 'inherit' ? " margin-phone-right-{$attributes['marginPhonePlusRight']} " :'';
+	$class .= array_key_exists('marginPhonePlusLeft', $attributes) && $attributes['marginPhonePlusLeft'] != 'inherit' ? " margin-phone-left-{$attributes['marginPhonePlusLeft']} " :'';
+	$class .= array_key_exists('marginPhonePlusBottom', $attributes) && $attributes['marginPhonePlusBottom'] != 'inherit' ? " margin-phone-bottom-{$attributes['marginPhonePlusBottom']} " :'';
 	$class .= array_key_exists('marginTabletPortraitTop', $attributes) && $attributes['marginTabletPortraitTop'] != 'inherit' ? " margin-tablet-portrait-top-{$attributes['marginTabletPortraitTop']} " :'';
 	$class .= array_key_exists('marginTabletPortraitRight', $attributes) && $attributes['marginTabletPortraitRight'] != 'inherit' ? " margin-tablet-portrait-right-{$attributes['marginTabletPortraitRight']} " :'';
 	$class .= array_key_exists('marginTabletPortraitLeft', $attributes) && $attributes['marginTabletPortraitLeft'] != 'inherit' ? " margin-tablet-portrait-left-{$attributes['marginTabletPortraitLeft']} " :'';

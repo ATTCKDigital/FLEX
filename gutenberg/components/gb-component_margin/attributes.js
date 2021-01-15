@@ -15,6 +15,8 @@ const MarginsOptionsAttributes = {
 	marginLeft: {
 		type: 'string',
 	},
+
+
 	marginPhoneTop: {
 		type: 'string',
 	},
@@ -27,6 +29,22 @@ const MarginsOptionsAttributes = {
 	marginPhoneLeft: {
 		type: 'string',
 	},
+	
+
+	marginPhonePlusTop: {
+		type: 'string',
+	},
+	marginPhonePlusRight: {
+		type: 'string',
+	},
+	marginPhonePlusBottom: {
+		type: 'string',
+	},	
+	marginPhonePlusLeft: {
+		type: 'string',
+	},
+
+
 	marginTabletPortraitTop: {
 		type: 'string',
 	},
@@ -39,6 +57,8 @@ const MarginsOptionsAttributes = {
 	marginTabletPortraitLeft: {
 		type: 'string',
 	},
+
+
 	marginTabletLandscapeTop: {
 		type: 'string',
 	},
@@ -51,6 +71,8 @@ const MarginsOptionsAttributes = {
 	marginTabletLandscapeLeft: {
 		type: 'string',
 	},
+
+	
 	marginDesktopTop: {
 		type: 'string',
 	},

@@ -1,5 +1,4 @@
 <?php
-
 namespace FLEX_LAYOUT_SYSTEM\Components\Margin;
 
 const MARGIN_OPTIONS_ATTRIBUTES = [
@@ -15,6 +14,8 @@ const MARGIN_OPTIONS_ATTRIBUTES = [
 	 'marginLeft' => [
 		 'type' => 'string',
 	 ],
+
+
 	 'marginPhoneTop' => [
 		 'type' => 'string',
 	 ],
@@ -26,7 +27,24 @@ const MARGIN_OPTIONS_ATTRIBUTES = [
 	 ],
 	 'marginPhoneLeft' => [
 		 'type' => 'string',
-	 ],'marginTabletPortraitTop' => [
+	 ],
+
+
+	 'marginPhonePlusTop' => [
+		 'type' => 'string',
+	 ],
+	 'marginPhonePlusRight' => [
+		 'type' => 'string',
+	 ],
+	 'marginPhonePlusBottom' => [
+		 'type' => 'string',
+	 ],
+	 'marginPhonePlusLeft' => [
+		 'type' => 'string',
+	 ],
+
+
+	 'marginTabletPortraitTop' => [
 		 'type' => 'string',
 	 ],
 	 'marginTabletPortraitRight' => [
@@ -38,6 +56,8 @@ const MARGIN_OPTIONS_ATTRIBUTES = [
 	 'marginTabletPortraitLeft' => [
 		 'type' => 'string',
 	 ],
+
+
 	 'marginTabletLandscapeTop' => [
 		 'type' => 'string',
 	 ],
@@ -50,6 +70,8 @@ const MARGIN_OPTIONS_ATTRIBUTES = [
 	 'marginTabletLandscapeLeft' => [
 		 'type' => 'string',
 	 ],
+
+
 	 'marginDesktopTop' => [
 		 'type' => 'string',
 	 ],

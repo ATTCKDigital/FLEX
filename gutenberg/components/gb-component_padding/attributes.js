@@ -15,6 +15,8 @@ const PaddingOptionsAttributes = {
 	paddingLeft: {
 		type: 'string',
 	},
+
+
 	paddingPhoneTop: {
 		type: 'string',
 	},
@@ -27,6 +29,22 @@ const PaddingOptionsAttributes = {
 	paddingPhoneLeft: {
 		type: 'string',
 	},
+
+
+	paddingPhonePlusTop: {
+		type: 'string',
+	},
+	paddingPhonePlusRight: {
+		type: 'string',
+	},
+	paddingPhonePlusBottom: {
+		type: 'string',
+	},	
+	paddingPhonePlusLeft: {
+		type: 'string',
+	},
+
+
 	paddingTabletPortraitTop: {
 		type: 'string',
 	},
@@ -39,6 +57,8 @@ const PaddingOptionsAttributes = {
 	paddingTabletPortraitLeft: {
 		type: 'string',
 	},
+
+
 	paddingTabletLandscapeTop: {
 		type: 'string',
 	},
@@ -51,6 +71,8 @@ const PaddingOptionsAttributes = {
 	paddingTabletLandscapeLeft: {
 		type: 'string',
 	},
+
+
 	paddingDesktopTop: {
 		type: 'string',
 	},
