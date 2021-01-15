@@ -110,7 +110,11 @@ export default registerBlockType(
 				setAttributes
 			} = props;
 
-			const onChangeMessage = content => { setAttributes( { content } ) };
+			const onChangeMessage = content => { 
+				setAttributes( { 
+					content 
+				} ); 
+			};
 			
 			return [
 				<InspectorControls>
