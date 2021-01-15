@@ -58,6 +58,9 @@ body {
 	// We can use a min height to the same effect
 	min-height: 50px;
 
+	// These need to take up 100% by default in order for rows to center within rows
+	width: 100%;
+
 	&.is-hovered {
 		background: hsla(219, 79%, 66%, 0.2) !important;
 		border: 1px solid hsla(219, 79%, 66%, 0.3) !important;
@@ -401,7 +404,14 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 
 .wp-block {
 	max-width: none;
+
+	&[data-align=full] {
+		> .wp-block-flexlayout-row {
+			max-width: none;
+		}
+	}
 }
+
 
 .wp-block-flexlayout-row {
 	background-color: rgba(237, 100, 149, .1);
@@ -409,10 +419,6 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	max-width: $siteWidth;
 	margin-left: auto;
 	margin-right: auto;
-
-	.wp-block[data-align=full] & {
-		max-width: none;
-	}
 
 	.editor-inner-blocks,
 	.block-editor-inner-blocks {
