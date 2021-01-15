@@ -21,7 +21,7 @@ const {
 	InspectorControls,
 	MediaUpload,
 	RichText,
-	URLInput,
+	URLInput
 } = wp.blockEditor;
 
 const {
@@ -30,7 +30,7 @@ const {
 	IconButton,
 	PanelBody,
 	TextControl,
-	Toolbar,
+	Toolbar
 } = wp.components;
 
 /**
@@ -58,23 +58,23 @@ export default registerBlockType(
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__( 'Image', 'flexlayout' ),
-			__( 'MediaUpload', 'flexlayout' ),
+			__( 'MediaUpload', 'flexlayout' )
 		],
 		attributes: {
 			imgURL: {
-				type: 'string',
+				type: 'string'
 			},
 			imgID: {
-				type: 'number',
+				type: 'number'
 			},
 			url: {
-				type: 'string',
+				type: 'string'
 			},
 			caption: {
-				type: 'string',
+				type: 'string'
 			},
 			placeholder: {
-				type: 'string',
+				type: 'string'
 			},
 			align: {
 				type: 'string',
@@ -86,7 +86,7 @@ export default registerBlockType(
 			},
 			...MarginOptionsAttributes,
 			...PaddingOptionsAttributes,
-			...BorderOptionsAttributes,
+			...BorderOptionsAttributes
 		},
 		edit: props => {
 			const {
@@ -107,14 +107,14 @@ export default registerBlockType(
 			const onSelectImage = img => {
 				setAttributes( {
 					imgID: img.id,
-					imgURL: img.url,
+					imgURL: img.url
 				} );
 			};
 
 			const onRemoveImage = () => {
 				setAttributes({
 					imgID: null,
-					imgURL: null,
+					imgURL: null
 				});
 			}
 
@@ -159,7 +159,7 @@ export default registerBlockType(
 					`align-${align}`,
 					...MarginOptionsClasses( props ),
 					...PaddingOptionsClasses( props ),
-					...BorderOptionsClasses( props ),
+					...BorderOptionsClasses( props )
 				)}>
 					{ ! imgID ? (
 						<MediaUpload
