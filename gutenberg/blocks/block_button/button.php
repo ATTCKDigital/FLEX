@@ -66,6 +66,7 @@ function render_button_block($attributes) {
 
 	$content1 = array_key_exists('content', $attributes) ? $attributes['content'] : null;
 	$url1 = array_key_exists('url', $attributes) ? $attributes['url'] : null;
+	
 	$content2 = array_key_exists('content2', $attributes) ? $attributes['content2'] : null;
 	$url2 = array_key_exists('url2', $attributes) ? $attributes['url2'] : null;
 
