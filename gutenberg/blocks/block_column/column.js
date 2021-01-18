@@ -14,11 +14,18 @@ const {
 } = wp.blocks;
 
 const {
+	AlignmentToolbar,
+	BlockAlignmentToolbar,
+	BlockControls,
 	InspectorControls,
 	InnerBlocks,
 } = wp.blockEditor;
 
 const {
+	Button,
+	Dashicon,
+	IconButton,
+	PanelBody,
 	Toolbar,
 } = wp.components;
 
@@ -56,15 +63,20 @@ export default registerBlockType(
 		keywords: [
 			__( 'Flex', 'flexlayout' ),
 			__( 'Layout', 'flexlayout' ),
-			__( 'Column', 'flexlayout' ),
+			__( 'Column', 'flexlayout' )
 		],
 		attributes: {
+			align: {
+				type: 'string',
+				default: ''
+			},
 			...AnchorOptionsAttributes,
 			...PaddingOptionsAttributes,
 			...ColumnOptionsAttributes,
 			...BorderOptionsAttributes,
-			...BackgroundOptionsAttributes,
+			...BackgroundOptionsAttributes
 		},
+
 		// Forced to roll our own anchor support
 		// Due to Gutenberg core issue
 		// BUG: https://github.com/WordPress/gutenberg/issues/15240
@@ -74,8 +86,15 @@ export default registerBlockType(
 		// },
 
 		edit: props => {
-			const { attributes: { anchor, advancedId },
-				className, setAttributes } = props;
+			const {
+				attributes: {
+					align,
+					anchor,
+					advancedId
+				},
+				className,
+				setAttributes
+			} = props;
 
 			return [
 				<InspectorControls>
@@ -85,11 +104,9 @@ export default registerBlockType(
 					<ColumnOptions
 						{ ...props }
 					/>
-
 					<PaddingOptions
 						{ ...props }
 					/>
-
 					<BorderOptions
 						{ ...props }
 					/>
@@ -97,10 +114,20 @@ export default registerBlockType(
 						{ ...props }
 					/>
 				</InspectorControls>,
-
+				<BlockControls>
+					<AlignmentToolbar
+						value={ align }
+						onChange={ ( nextAlign ) => {
+							setAttributes( { align: nextAlign } );
+						} }
+					/>
+				</BlockControls>,
 				<div
 					id={ anchor }
-					className={ className }
+					className={
+						className,
+						`column-align-${align}`
+					}
 					style={ {
 						...BackgroundOptionsInlineStyles( props ),
 					} }
@@ -127,6 +154,7 @@ const customClassName = createHigherOrderComponent( ( BlockListBlock ) => {
 						{ ...props }
 						className={ classnames(
 								'component-column',
+								`column-align-${props.attributes.align}`,
 								...BorderOptionsClasses( props ),
 								...PaddingOptionsClasses( props ),
 								...ColumnOptionsClasses( props ),
@@ -135,6 +163,7 @@ const customClassName = createHigherOrderComponent( ( BlockListBlock ) => {
 						) }
 				/>;
 		}
+		
 		return <BlockListBlock
 				{ ...props }
 		/>

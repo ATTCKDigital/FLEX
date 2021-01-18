@@ -18,4 +18,4 @@ import "./block_source/source";
 // import "./block_text/text";
 // import "./block_users/users";
 import "./block_video/video";
-import "./block_hr/hr";
+// import "./block_hr/hr";
