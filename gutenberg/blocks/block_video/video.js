@@ -1,12 +1,8 @@
-/**
- * Block dependencies
- */
+// Block dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js'
 
-/**
- * Internal block libraries
- */
+// Internal block libraries
 const { __ } = wp.i18n;
 
 const {
@@ -35,20 +31,11 @@ const {
     SelectControl,
 } = wp.components;
 
-/**
- * Internal dependencies
- */
-
-// Import all of our Margin Options requirements.
+// Internal dependencies
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
-
-// Import all of our Border Options requirements.
 import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
 
-
-/**
- * Register block
- */
+// Register block
 export default registerBlockType(
     'flexlayout/video',
     {
@@ -84,8 +71,6 @@ export default registerBlockType(
             ...MarginOptionsAttributes,
             ...BorderOptionsAttributes,
         },
-
-
 
         edit: props => {
             const { className, setAttributes } = props;
@@ -133,13 +118,15 @@ export default registerBlockType(
 
                 return (
                     <div className="video-container">
-                        <p>
-                            <div className={'video-thumbnail-wrapper'}>
-                                <img
-                                    src={ props.attributes.videoThumbnail ? props.attributes.videoThumbnail.url : '' }
-                                />
-                            </div>
-                        </p>
+                    	{ props.attributes.videoThumbnail ? (
+	                        <p>
+	                            <div className={'video-thumbnail-wrapper'}>
+	                                <img
+	                                    src={ props.attributes.videoThumbnail ? props.attributes.videoThumbnail.url : '' }
+	                                />
+	                            </div>
+	                        </p>
+                        ) : null }
                         { props.isSelected ? (
                             <div className="media-button-wrapper">
                                 <p>
@@ -164,6 +151,7 @@ export default registerBlockType(
                 if ( 'upload' !== props.attributes.videoType ) {
                     return '';
                 }
+
                 if ( ! props.attributes.uploadVideo ) {
                     return (
                         <div className="media-upload-wrapper">
@@ -192,7 +180,7 @@ export default registerBlockType(
                 return (
                     <div className="video-container">
                         <p>
-                            <video className="video-container video-container-overlay">
+                            <video autoplay loop muted className="video-container video-container-overlay">
                                 <source
                                     type="video/mp4"
                                     src={ props.attributes.uploadVideo ? props.attributes.uploadVideo.url : '' }
@@ -223,6 +211,7 @@ export default registerBlockType(
                 if ( 'youtube' !== props.attributes.videoType ) {
                     return '';
                 }
+
                 return (
                     <TextControl
                         label={__('YouTube ID', 'flexlayout')}
@@ -231,13 +220,13 @@ export default registerBlockType(
                         onChange={setYoutubeVideo}
                     />
                 );
-
             };
 
             const brightcoveVideoSelect = () => {
                 if ( 'brightcove' !== props.attributes.videoType ) {
                     return '';
                 }
+
                 return (
                     <div>
                         <TextControl
@@ -260,15 +249,19 @@ export default registerBlockType(
                 if ( 'upload' !== props.attributes.videoType ) {
                     return '';
                 }
+
                 return (
-                    <div className={'video-wrapper'}>
-                        <div className={'video-thumbnail-wrapper'}>
-                            <img
-                                src={ props.attributes.videoThumbnail ? props.attributes.videoThumbnail.url : '' }
-                            />
-                        </div>
-                        <mark className={'play'} data-video-type={'upload'}></mark>
-                        <video className="video-container video-container-overlay">
+                    <div className={'video-wrapper showVideo'}>
+                    	{ props.attributes.videoThumbnail ? (
+	                        <div className={'video-thumbnail-wrapper'}>
+	                            <img
+	                                src={ props.attributes.videoThumbnail ? props.attributes.videoThumbnail.url : '' }
+	                            />
+	                        </div>
+                        ) : null }
+                    	{/*Only show these controls in wp-admin*/}
+                        {/*<mark className={'play'} data-video-type={'upload'}></mark>*/}
+                        <video autoplay loop muted className="video-container video-container-overlay">
                             <source
                                 type="video/mp4"
                                 src={ props.attributes.uploadVideo ? props.attributes.uploadVideo.url : '' }
@@ -276,8 +269,6 @@ export default registerBlockType(
                         </video>
                     </div>
                 );
-
-
             };
 
             const youtubeVideoOutput = () => {
@@ -287,11 +278,13 @@ export default registerBlockType(
 
                 return (
                     <div className={'video-wrapper'}>
-                        <div className={'video-thumbnail-wrapper'}>
-                            <img
-                                src={ props.attributes.videoThumbnail ? props.attributes.videoThumbnail.url : 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=' }
-                            />
-                        </div>
+                    	{ props.attributes.videoThumbnail ? (
+	                        <div className={'video-thumbnail-wrapper'}>
+	                            <img
+	                                src={ props.attributes.videoThumbnail ? props.attributes.videoThumbnail.url : 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=' }
+	                            />
+	                        </div>
+                        ) : null }
                         <mark className={'play'} data-video-type={'youtube'}></mark>
                         <iframe width="560" height="315" src={ props.attributes.youtubeVideo ? 'https://www.youtube.com/embed/'+props.attributes.youtubeVideo : '' } frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
@@ -305,11 +298,13 @@ export default registerBlockType(
 
                 return (
                     <div className={'video-wrapper'}>
-                        <div className={'video-thumbnail-wrapper'}>
-                            <img
-                                src={ props.attributes.videoThumbnail ? props.attributes.videoThumbnail.url : '' }
-                            />
-                        </div>
+                    	{ props.attributes.videoThumbnail ? (
+	                        <div className={'video-thumbnail-wrapper'}>
+	                            <img
+	                                src={ props.attributes.videoThumbnail ? props.attributes.videoThumbnail.url : '' }
+	                            />
+	                        </div>
+                        ) : null }
                         <mark className={'play'} data-video-type={'brightcove'}></mark>
                         <iframe
                             src={ props.attributes.brightcoveVideo && props.attributes.brightcoveAccount  ? 'https://players.brightcove.net/'+props.attributes.brightcoveAccount+'/default_default/index.html?videoId='+props.attributes.brightcoveVideo : '' }
@@ -371,6 +366,5 @@ export default registerBlockType(
         save() {
             return null;
         },
-
     },
 );

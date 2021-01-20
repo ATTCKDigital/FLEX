@@ -1,4 +1,8 @@
 <?php
+// TODO: (DP)
+// — Add Vimeo
+// — Add support for autoplay, looping
+
 namespace FLEX_LAYOUT_SYSTEM\Blocks\Video;
 
 use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
@@ -7,8 +11,8 @@ use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
 use const FLEX_LAYOUT_SYSTEM\Components\Border\BORDER_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Border\border_options_classes;
 
-
 add_action( 'init', __NAMESPACE__ . '\register_video_block' );
+
 /**
  * Register the dynamic block.
  *
@@ -24,7 +28,7 @@ function register_video_block() {
 
 	// Hook server side rendering into render callback
 	register_block_type( 'flexlayout/video', [
-		'attributes'      => array_merge(
+		'attributes' => array_merge(
 			[
 				'className' => [
                     'type' => 'string',
@@ -55,31 +59,61 @@ function register_video_block() {
 		),
 		'render_callback' => __NAMESPACE__ . '\render_video_block',
 	] );
-
 }
 
-/**
- * Server rendering for /blocks/row
- */
+// Server rendering for /blocks/row
 function render_video_block($attributes, $content) {
 	$class = $attributes['className'];
 	$class .= ' component-video component';
 	$class .= margin_options_classes($attributes);
 	$class .= border_options_classes($attributes);
 
+	// Initialize placeholder vars
 	$video = '';
 	$videoId = '';
 	$youtubeVideoId = '';
     $brightcoveVideoId = '';
     $brightcoveAccountId = '';
+    $videoPlayerAttributes = '';
+    $thumbnail = '';
 
-	if (array_key_exists('uploadVideo', $attributes)) {
+    $isAutoplay = false;
+    $isUploadedVideo = array_key_exists('uploadVideo', $attributes);
+    $isYouTubeVideo = array_key_exists('youtubeVideo', $attributes);
+    $hasYouTubeVideoURL = ($attributes['youtubeVideo'] !== "");
+    $hasVideoThumbnail = array_key_exists('videoThumbnail', $attributes);
+
+    // Insert thumbnail if one exists
+	if ($hasVideoThumbnail) {
+		$thumbnail = '<div class="video-thumbnail-wrapper"><img src="' . $attributes['videoThumbnail']['url'] . '" alt="' . $attributes['videoThumbnail']['url'] . '"/></div>';
+
+	// Assume if no thumbnail, this video should autoplay in place
+	} else {
+		if ($isUploadedVideo) {
+			// Augment <video> attributes
+			$videoPlayerAttributes .= ' autoplay loop muted';
+
+			// This will cause the player controls to show
+			$class .= ' playingVideo autoplayingVideo';
+
+			// Save this flag for later
+			$isAutoplay = true;
+		}
+	}
+
+    // Handle uploaded videos
+	if ($isUploadedVideo) {
+		// Generate a random number to use for the player ID so we can have multiple players on the same page
 		$videoId = 'video-' . mt_rand(10,1000);
-		$video = '<video id="' . $videoId . '"><source type="video/mp4" src="' . $attributes['uploadVideo']['url'] . '" /></video>';
-	} else if (array_key_exists('youtubeVideo', $attributes) && $attributes['youtubeVideo'] !== "") {
+		$video = '<video id="' . $videoId . '" ' . $videoPlayerAttributes . '><source type="video/mp4" src="' . $attributes['uploadVideo']['url'] . '" />Sorry, your browser doesn\'t support embedded videos.</video>';
+
+	// Handle YouTube Videos
+	} else if ($isYouTubeVideo && $hasYouTubeVideoURL) {
 		$youtubeVideoId = $attributes['youtubeVideo'];
 		$videoId = $youtubeVideoId;
 		$video = '<div id="player_' . $youtubeVideoId . '" class="youtubePlayer" data-video-id="' . $youtubeVideoId . '"></div>';
+
+	// Handle Brightcove Videos
 	} else if (array_key_exists('brightcoveVideo', $attributes)  && $attributes['brightcoveVideo'] !== "") {
         $brightcoveVideoId = $attributes['brightcoveVideo'];
         $brightcoveAccountId = $attributes['brightcoveAccount'];
@@ -87,13 +121,22 @@ function render_video_block($attributes, $content) {
         $video = '<video class="video-js" data-account="' . $brightcoveAccountId . '" data-player="default" data-embed="default" controls data-video-id="' . $brightcoveVideoId . '"></video><script src="https://players.brightcove.net/5098879600001/default_default/index.min.js"></script>';
     }
 
-	$thumbnail = '';
+    // Assemble vars into final HTML output
+	$output = "";
 
-	if ( array_key_exists('videoThumbnail', $attributes) ) {
-		$thumbnail = '<div class="video-thumbnail-wrapper"><img src="' . $attributes['videoThumbnail']['url'] . '" alt="' . $attributes['videoThumbnail']['url'] . '"/></div>';
+	$output .= "<div class=\"{$class}\" data-component-name=\"Video\">";
+	$output .= 		"<div class=\"video-wrapper\" data-video-type=\"{$attributes['videoType']}\">";
+	$output .= 			"{$thumbnail}";
+	
+	// Prevent player controls from showing
+	if (!$isAutoplay) {
+		$output .= 			"<mark class=\"playVideo play\" data-video-id=\"{$videoId}\" ></mark>";
+		$output .= 			"<mark class=\"pauseVideo close\" data-video-id=\"{$videoId}\"></mark>";
 	}
 
-	$output = "<div class=\"{$class}\" data-component-name=\"Video\"><div class=\"video-wrapper\" data-video-type=\"{$attributes['videoType']}\">{$thumbnail}<mark class=\"playVideo play\" data-video-id=\"{$videoId}\" ></mark><mark class=\"pauseVideo close\" data-video-id=\"{$videoId}\"></mark>{$video}</div></div>";
+	$output .= 			"{$video}";
+	$output .= 		"</div>";
+	$output .= "</div>";
 
 	return $output;
 }

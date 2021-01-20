@@ -1,8 +1,7 @@
 // import Player from '@vimeo/player';
 // TODO: allow video block to support vimeo -OT
-
 function Video($el) {
-	function playVideo() {
+	function playVideo(autoplay) {
 		var videoId = $(this).attr('data-video-id');
 		var video = document.getElementById(videoId);
 
@@ -10,10 +9,15 @@ function Video($el) {
 
 		$el.addClass('playingVideo');
 
-		video.addEventListener('ended',function(){
-			$el.removeClass('playingVideo');
-		},false);
+		// Assume for now that autoplaying also means looping
+		// We'll add support for both in the future
+		console.log('typeof autoplay: ', typeof autoplay);
 
+		if (typeof autoplay !== 'undefined' && autoplay === true) {
+			video.addEventListener('ended',function(){
+				$el.removeClass('playingVideo');
+			},false);
+		}
 	}
 
 	function pauseVideo() {
@@ -23,7 +27,6 @@ function Video($el) {
 		video.pause();
 
 		$el.removeClass('playingVideo');
-
 	}
 
 	// YouTube API Player
@@ -112,11 +115,21 @@ function Video($el) {
         $el.removeClass('playingVideo');
     }
 
-
 	this.init = function ($el) {
+		console.log('play.video.js › init');
 		$el = $el;
-		$el.find('.video-wrapper[data-video-type="upload"] .playVideo').on('click', playVideo);
-		$el.find('.video-wrapper[data-video-type="upload"] .pauseVideo').on('click', pauseVideo);
+
+		// Determine if video should autoplay,
+		var shouldAutoplay = $el.find('video').prop('autoplay') === true;
+
+		if (shouldAutoplay) {
+			$el.find('video').trigger('play');
+
+		// ...otherwise, bind player control events
+		} else {
+			$el.find('.video-wrapper[data-video-type="upload"] .playVideo').on('click', playVideo);
+			$el.find('.video-wrapper[data-video-type="upload"] .pauseVideo').on('click', pauseVideo);
+		}
 
 		if ($el.find('.video-wrapper').attr('data-video-type') == 'youtube') {
 			// If there is a youtube video on the page, load the API

@@ -1,5 +1,4 @@
-/**** Video Block Styles ****/
-
+// Video Block Styles
 .component-video {
 	min-height: 200px;
 
@@ -11,7 +10,8 @@
 		opacity: 0;
 	}
 
-	&.playingVideo {
+	&.playingVideo,
+	.showVideo {
 		.close {
 			display: block;
 		}
@@ -28,6 +28,13 @@
 			opacity: 1;
 		}
 	}
+
+	&.autoplayingVideo,
+	.showVideo {
+		.close {
+			display: none
+		}
+	}
 }
 
 /** Responsive Aspect Ratio Videos **/
@@ -39,6 +46,7 @@
 	padding-bottom: 56.25%;
 	position: relative;
 	width: 100%;
+	z-index: 1;
 
 	iframe, video, .video-js {
 		bottom: 0;
