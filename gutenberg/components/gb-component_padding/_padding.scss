@@ -11,6 +11,18 @@
 		@for $i from 0 through $x {
 			@if $i % 1 == 0 {
 				@if $screensize != default {
+					// Limit Geometric growth multiplier to 3x
+					@if $i < 4 {
+						.padding-#{$screensize}-#{$position}-#{$i+1}x-geo { 
+							@include mediaquery(#{$screensize}) {
+								// This is the correct function for the 8, 16, 32, 64 sequence
+								// I.e., Geometric growth
+								// https://www.mathway.com/popular-problems/Algebra/965626
+								padding-#{$position}: #{$counterIncrement * _pow(2, $i)}px;
+							}
+						}
+					}
+
 					.padding-#{$screensize}-#{$position}-#{$i}x { 
 						@include mediaquery(#{$screensize}) {
 							padding-#{$position}: #{$i * $counterIncrement}px;
@@ -18,8 +30,18 @@
 					}
 				}
 
+				// Creates a global padding class that has no screen size dependency
 				@if $screensize == default {
-					//creates a global padding class that has no screen size dependency
+					// Limit Geometric growth multiplier to 3x
+					@if $i < 4 {
+						.padding-#{$position}-#{$i+1}x-geo { 
+							// This is the correct function for the 8, 16, 32, 64 sequence
+							// I.e., Geometric growth
+							// https://www.mathway.com/popular-problems/Algebra/965626
+							padding-#{$position}: #{$counterIncrement * _pow(2, $i)}px;
+						}
+					}
+
 					.padding-#{$position}-#{$i}x { 
 						padding-#{$position}: #{$i * $counterIncrement}px;
 					}
