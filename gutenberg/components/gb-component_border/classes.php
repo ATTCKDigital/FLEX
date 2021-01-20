@@ -1,5 +1,4 @@
 <?php
-
 namespace FLEX_LAYOUT_SYSTEM\Components\Border;
 
 function border_options_classes( $attributes ) {

@@ -1,6 +1,4 @@
-/**
- * WordPress dependencies
- */
+// WordPress dependencies
 const { __ } = wp.i18n;
 
 const {
@@ -17,9 +15,7 @@ const {
 	SelectControl
 } = wp.components;
 
-/**
- * Internal dependencies
- */
+// Internal dependencies
 import BorderOptionsAttributes from './attributes';
 import BorderOptionsClasses from './classes';
 
@@ -30,37 +26,59 @@ export {
 };
 
 function BorderOptions( props ) {
-	const setBorderTop = value => props.setAttributes( { borderTop: value } );
-	const setBorderRight = value => props.setAttributes( { borderRight: value } );
-	const setBorderBottom = value => props.setAttributes( { borderBottom: value } );
-	const setBorderLeft = value => props.setAttributes( { borderLeft: value } );
+	const setBorderTop = value => {
+		// if (value !== 'choose') {
+			props.setAttributes( { borderTop: value } );
+		// }
+	}
+
+	const setBorderRight = value => {
+		// if (value !== 'choose') {
+			props.setAttributes( { borderRight: value } );
+		// }
+	}
+
+	const setBorderBottom = value => {
+		// if (value !== 'choose') {
+			props.setAttributes( { borderBottom: value } );
+		// }
+	}
+
+	const setBorderLeft = value => {
+		// if (value !== 'choose') {
+			props.setAttributes( { borderLeft: value } );
+		// }
+	}
 
 	const borderSelect = () => {
-
 		return (
 			<div className="border-wrapper">
 				<div className="border-inner-wrapper">
 					<PanelRow>
 						<SelectControl
 							key="border-top"
-							label={ __( 'Top Border' ) }
+							label={ __( 'Top' ) }
 							value={ props.attributes.borderTop ? props.attributes.borderTop : '' }
 							onChange={ setBorderTop }
 							options={ [
 								{
-									label: __( 'No border' ),
+									label: __ ( 'Choose border style' ),
+									// value: null,
+								},
+								{
+									label: __( 'None' ),
 									value: 'none',
 								},
 								{
-									label: __( 'Default Gray Border' ),
+									label: __( 'Default Gray' ),
 									value: 'default',
 								},
 								{
-									label: __( 'Black Border' ),
+									label: __( 'Black' ),
 									value: 'black',
 								},
 								{
-									label: __( 'White Border' ),
+									label: __( 'White' ),
 									value: 'white',
 								},
 								{
@@ -79,24 +97,28 @@ function BorderOptions( props ) {
 						/>
 						<SelectControl
 							key="border-right"
-							label={ __( 'Right Border' ) }
+							label={ __( 'Right' ) }
 							value={ props.attributes.borderRight ? props.attributes.borderRight : '' }
 							onChange={ setBorderRight }
 							options={ [
 								{
-									label: __( 'No border' ),
+									label: __ ( 'Choose border style' ),
+									value: null,
+								},
+								{
+									label: __( 'None' ),
 									value: 'none',
 								},
 								{
-									label: __( 'Default Gray Border' ),
+									label: __( 'Default Gray' ),
 									value: 'default',
 								},
 								{
-									label: __( 'Black Border' ),
+									label: __( 'Black' ),
 									value: 'black',
 								},
 								{
-									label: __( 'White Border' ),
+									label: __( 'White' ),
 									value: 'white',
 								},
 								{
@@ -115,24 +137,28 @@ function BorderOptions( props ) {
 						/>
 						<SelectControl
 							key="border-bottom"
-							label={ __( 'Bottom Border' ) }
+							label={ __( 'Bottom' ) }
 							value={ props.attributes.borderBottom ? props.attributes.borderBottom : '' }
 							onChange={ setBorderBottom }
 							options={ [
 								{
-									label: __( 'No border' ),
+									label: __ ( 'Choose border style' ),
+									value: null,
+								},
+								{
+									label: __( 'None' ),
 									value: 'none',
 								},
 								{
-									label: __( 'Default Gray Border' ),
+									label: __( 'Default Gray' ),
 									value: 'default',
 								},
 								{
-									label: __( 'Black Border' ),
+									label: __( 'Black' ),
 									value: 'black',
 								},
 								{
-									label: __( 'White Border' ),
+									label: __( 'White' ),
 									value: 'white',
 								},
 								{
@@ -151,24 +177,28 @@ function BorderOptions( props ) {
 						/>
 						<SelectControl
 							key="border-left"
-							label={ __( 'Left Border' ) }
+							label={ __( 'Left' ) }
 							value={ props.attributes.borderLeft ? props.attributes.borderLeft : '' }
 							onChange={ setBorderLeft }
 							options={ [
 								{
-									label: __( 'No border' ),
+									label: __ ( 'Choose border style' ),
+									value: null,
+								},
+								{
+									label: __( 'None' ),
 									value: 'none',
 								},
 								{
-									label: __( 'Default Gray Border' ),
+									label: __( 'Default Gray' ),
 									value: 'default',
 								},
 								{
-									label: __( 'Black Border' ),
+									label: __( 'Black' ),
 									value: 'black',
 								},
 								{
-									label: __( 'White Border' ),
+									label: __( 'White' ),
 									value: 'white',
 								},
 								{
@@ -190,8 +220,6 @@ function BorderOptions( props ) {
 			</div>
 		);
 	};
-
-
 
 	return (
 		<PanelBody
