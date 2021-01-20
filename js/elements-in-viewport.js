@@ -14,10 +14,9 @@ function ElementsInViewport($el) {
 
 	function bindEvents() {
 		console.log('/FLEX/\tjs/\telements-in-viewport.js', 'bindEvents()');
-
         // $(document.body).on('FLEXLAYOUT.apploaded', hideElements);
 
-		$(document.body).on('FLEXLAYOUT.scroll', function (e, data) {
+		$(document.body).on('FLEX.scroll', function (e, data) {
 			// Reset timer to trigger ElementsInViewport
 			_scrollstopTimer = 0;
 
@@ -29,7 +28,7 @@ function ElementsInViewport($el) {
 
 		// Include check for page resize as well since that
 		// can potentially cause the page to scroll
-		$(document.body).on('FLEXLAYOUT.resize', function () {
+		$(document.body).on('FLEX.resize', function () {
 			// Reset timer to trigger ElementsInViewport
 			_scrollstopTimer = 0;
 
@@ -105,7 +104,6 @@ function ElementsInViewport($el) {
 				$(this).addClass('prepare-in-view');
 			}
 		});
-
 
 		indexAllElements();
 	}
