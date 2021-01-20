@@ -47,8 +47,14 @@ body {
 }
 
 .block-editor-block-list__block {
-	background: hsla(0, 0%, 75%, 0.1) !important;
-	border: 1px solid hsla(0, 0%, 75%, 0.2) !important;
+	// Barely visible yellow theme
+	// background: hsla(0, 0%, 75%, 0.1) !important;
+	// border: 1px solid hsla(0, 0%, 75%, 0.2) !important;
+
+	// Green theme
+	background: hsla(108, 55%, 51%, 0.1) !important;
+	border: 1px solid hsla(125, 100%, 40%, .2) !important;
+
 	margin-bottom: 1px;
 	margin-top: 1px;
 
@@ -448,9 +454,11 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 		margin-left: initial;
 		margin-right: initial;
 		max-width: none;
-		padding-left: 2px;
-		padding-right: 2px;
-		// width: 100%; // Can't set width, as it will override column width settings
+
+		// Can't set these, as they will override column settings
+		// padding-left: 2px; 
+		// padding-right: 2px;
+		// width: 100%;
 
 		&[data-type="flexlayout/source"] {
 			width: 100%;
