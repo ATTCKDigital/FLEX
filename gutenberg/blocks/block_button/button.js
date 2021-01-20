@@ -1,12 +1,8 @@
-/**
- * Block dependencies
- */
+// Block dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js';
 
-/**
- * Internal block libraries
- */
+// Internal block libraries
 const { __ } = wp.i18n;
 
 const {
@@ -30,15 +26,10 @@ const {
 	CheckboxControl
 } = wp.components;
 
-/**
- * Internal dependencies
- */
-// Import all of our Margin Options requirements.
+// Internal dependencies
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
 
-/**
-	* Register block
- */
+// Register block
 export default registerBlockType(
 	'flexlayout/button',
 	{
@@ -177,7 +168,6 @@ export default registerBlockType(
 					) }*/}
 				</div>
 			]);
-
 		},
 
 		save() {

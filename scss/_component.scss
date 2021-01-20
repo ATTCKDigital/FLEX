@@ -4,7 +4,8 @@
 }
 
 // Bottom align elements in a row
-.component-alignment-bottom, .component-alignment-bottom .editor-block-list__layout {
+.component-alignment-bottom,
+.component-alignment-bottom .editor-block-list__layout {
 	display: flex;
 	align-items: flex-end;
 	align-content: flex-end;

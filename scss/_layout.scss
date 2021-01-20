@@ -1,5 +1,3 @@
-/**** Standard Layout Paradigm Mixins ****/
-
 @mixin verticalCenter() {
 	display: flex;
 	align-items: center;
@@ -47,15 +45,18 @@
 }
 
 // Helper Classes
-.align-center {
+.align-center,
+.text-align-center {
 	text-align: center;
 }
 
-.align-left {
+.align-left,
+.text-align-left {
 	text-align: left;
 }
 
-.align-right {
+.align-right,
+.text-align-right {
 	text-align: right;
 }
 
@@ -63,15 +64,18 @@
 	display: block !important;
 }
 
-.center {
+.center,
+.block-align-center {
 	margin: 0 auto !important;
 }
 
-.float-left {
+.float-left,
+.block-align-left {
 	float: left !important;
 }
 
-.float-right {
+.float-right,
+.block-align-right {
 	float: right !important;
 }
 

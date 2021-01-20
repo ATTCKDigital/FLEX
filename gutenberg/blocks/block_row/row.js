@@ -1,12 +1,8 @@
-/**
- * Block dependencies
- */
+// Block dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js'
 
-/**
- * Internal block libraries
- */
+// Internal block libraries
 const { __ } = wp.i18n;
 
 const {
@@ -31,36 +27,17 @@ const {
 	Tooltip,
 } = wp.components;
 
-/**
- * Internal dependencies
- */
-
-// Import all of our Background Options requirements.
+// Internal dependencies
 import BackgroundOptions, { BackgroundOptionsAttributes, BackgroundOptionsClasses, BackgroundOptionsInlineStyles, BackgroundOptionsVideoOutput } from '../../components/gb-component_background-options';
-
-// Import all of our Padding Options requirements.
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
-
-// Import all of our Margin Options requirements.
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
-
-// Import all of our Scroller Options requirements.
 import ScrollerOptions, { ScrollerOptionsAttributes, ScrollerOptionsOutput } from '../../components/gb-component_scroller';
-
-// Import all of our Logo Color Options requirements.
 import LogoColorOptions, { LogoColorOptionsAttributes, LogoColorOptionsDataAttr } from '../../components/gb-component_logo-color';
-
-// Import all of our Row Height Options requirements.
 import RowHeightOptions, { RowHeightOptionsAttributes, RowHeightOptionsClasses } from '../../components/gb-component_row-height';
-
-// Import all of our Border Options requirements.
 import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
-
 import AnchorOptions, { AnchorOptionsAttributes } from '../../components/gb-component_anchor';
 
-/**
-	* Register block
- */
+// Register block
 export default registerBlockType(
 	'flexlayout/row',
 	{
@@ -249,7 +226,6 @@ export default registerBlockType(
 				<InnerBlocks.Content />
 			);
 		},
-
 	},
 );
 

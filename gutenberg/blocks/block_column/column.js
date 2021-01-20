@@ -1,12 +1,8 @@
-/**
- * Block dependencies
- */
+// Block dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js'
 
-/**
- * Internal block libraries
- */
+// Internal block libraries
 const { __ } = wp.i18n;
 
 const {
@@ -33,25 +29,14 @@ const {
 	createHigherOrderComponent
 } = wp.compose;
 
-/**
- * Internal dependencies
- */
-// Import all of our Background Options requirements.
+// Internal dependencies
 import AnchorOptions, { AnchorOptionsAttributes } from '../../components/gb-component_anchor';
 import BackgroundOptions, { BackgroundOptionsAttributes, BackgroundOptionsClasses, BackgroundOptionsInlineStyles, BackgroundOptionsVideoOutput } from '../../components/gb-component_background-options';
-
-// Import all of our Padding Options requirements.
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
-
-// Import all of our Column Options requirements.
 import ColumnOptions, { ColumnOptionsAttributes, ColumnOptionsClasses } from '../../components/gb-component_columns';
-
-// Import all of our Border Options requirements.
 import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
 
-/**
- * Register block
- */
+// Register block
 export default registerBlockType(
 	'flexlayout/column',
 	{
@@ -159,7 +144,6 @@ const customClassName = createHigherOrderComponent( ( BlockListBlock ) => {
 								...PaddingOptionsClasses( props ),
 								...ColumnOptionsClasses( props ),
 								...BackgroundOptionsClasses( props ),
-
 						) }
 				/>;
 		}
