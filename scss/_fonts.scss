@@ -1,4 +1,6 @@
-/**** Fonts ****/
+/**
+ * Parent theme fonts
+ */
 
 /** Font Awesome (via npm) **/
 $fa-font-path: "~FLEX/assets/fonts/fontawesome";
@@ -7,7 +9,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
 @import "node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
 @import "node_modules/@fortawesome/fontawesome-free/scss/regular.scss";
 
-/* poppins-300 - latin */
+// poppins-300 - latin
 @font-face {
 	font-family: 'Poppins';
 	font-style: normal;
@@ -20,7 +22,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
 			 url('~FLEX/assets/fonts/Poppins/poppins-v5-latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
 			 url('~FLEX/assets/fonts/Poppins/poppins-v5-latin-300.svg#Poppins') format('svg'); /* Legacy iOS */
 }
-/* poppins-300italic - latin */
+// poppins-300italic - latin
 @font-face {
 	font-family: 'Poppins';
 	font-style: italic;
@@ -33,7 +35,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
 			 url('~FLEX/assets/fonts/Poppins/poppins-v5-latin-300italic.ttf') format('truetype'), /* Safari, Android, iOS */
 			 url('~FLEX/assets/fonts/Poppins/poppins-v5-latin-300italic.svg#Poppins') format('svg'); /* Legacy iOS */
 }
-/* poppins-regular - latin */
+// poppins-regular - latin
 @font-face {
 	font-family: 'Poppins';
 	font-style: normal;
@@ -47,7 +49,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
 			 url('~FLEX/assets/fonts/Poppins/poppins-v5-latin-regular.svg#Poppins') format('svg'); /* Legacy iOS */
 }
 
-/* poppins-italic - latin */
+// poppins-italic - latin
 @font-face {
 	font-family: 'Poppins';
 	font-style: italic;
@@ -60,7 +62,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
 			 url('~FLEX/assets/fonts/Poppins/poppins-v5-latin-italic.ttf') format('truetype'), /* Safari, Android, iOS */
 			 url('~FLEX/assets/fonts/Poppins/poppins-v5-latin-italic.svg#Poppins') format('svg'); /* Legacy iOS */
 }
-/* poppins-500italic - latin */
+// poppins-500italic - latin
 @font-face {
 	font-family: 'Poppins';
 	font-style: italic;
@@ -73,7 +75,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
 			 url('~FLEX/assets/fonts/Poppins/poppins-v5-latin-500italic.ttf') format('truetype'), /* Safari, Android, iOS */
 			 url('~FLEX/assets/fonts/Poppins/poppins-v5-latin-500italic.svg#Poppins') format('svg'); /* Legacy iOS */
 }
-/* poppins-600 - latin */
+// poppins-600 - latin
 @font-face {
 	font-family: 'Poppins';
 	font-style: normal;
@@ -86,7 +88,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
 			 url('~FLEX/assets/fonts/Poppins/poppins-v5-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
 			 url('~FLEX/assets/fonts/Poppins/poppins-v5-latin-600.svg#Poppins') format('svg'); /* Legacy iOS */
 }
-/* poppins-500 - latin */
+// poppins-500 - latin
 @font-face {
 	font-family: 'Poppins';
 	font-style: normal;
@@ -99,7 +101,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
 			 url('~FLEX/assets/fonts/Poppins/poppins-v5-latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
 			 url('~FLEX/assets/fonts/Poppins/poppins-v5-latin-500.svg#Poppins') format('svg'); /* Legacy iOS */
 }
-/* poppins-600italic - latin */
+// poppins-600italic - latin
 @font-face {
 	font-family: 'Poppins';
 	font-style: italic;
@@ -112,7 +114,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
 			 url('~FLEX/assets/fonts/Poppins/poppins-v5-latin-600italic.ttf') format('truetype'), /* Safari, Android, iOS */
 			 url('~FLEX/assets/fonts/Poppins/poppins-v5-latin-600italic.svg#Poppins') format('svg'); /* Legacy iOS */
 }
-/* poppins-700 - latin */
+// poppins-700 - latin
 @font-face {
 	font-family: 'Poppins';
 	font-style: normal;
@@ -125,7 +127,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
 			 url('~FLEX/assets/fonts/Poppins/poppins-v5-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
 			 url('~FLEX/assets/fonts/Poppins/poppins-v5-latin-700.svg#Poppins') format('svg'); /* Legacy iOS */
 }
-/* poppins-700italic - latin */
+// poppins-700italic - latin
 @font-face {
 	font-family: 'Poppins';
 	font-style: italic;
@@ -139,7 +141,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
 			 url('~FLEX/assets/fonts/Poppins/poppins-v5-latin-700italic.svg#Poppins') format('svg'); /* Legacy iOS */
 }
 
-/* roboto-300 - latin */
+// roboto-300 - latin
 @font-face {
 	font-family: 'Roboto';
 	font-style: normal;
@@ -152,7 +154,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
 			 url('~FLEX/assets/fonts/Roboto/roboto-v18-latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
 			 url('~FLEX/assets/fonts/Roboto/roboto-v18-latin-300.svg#Roboto') format('svg'); /* Legacy iOS */
 }
-/* roboto-300italic - latin */
+// roboto-300italic - latin
 @font-face {
 	font-family: 'Roboto';
 	font-style: italic;
@@ -165,7 +167,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
 			 url('~FLEX/assets/fonts/Roboto/roboto-v18-latin-300italic.ttf') format('truetype'), /* Safari, Android, iOS */
 			 url('~FLEX/assets/fonts/Roboto/roboto-v18-latin-300italic.svg#Roboto') format('svg'); /* Legacy iOS */
 }
-/* roboto-regular - latin */
+// roboto-regular - latin
 @font-face {
 	font-family: 'Roboto';
 	font-style: normal;
@@ -178,7 +180,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
 			 url('~FLEX/assets/fonts/Roboto/roboto-v18-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
 			 url('~FLEX/assets/fonts/Roboto/roboto-v18-latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
 }
-/* roboto-italic - latin */
+// roboto-italic - latin
 @font-face {
 	font-family: 'Roboto';
 	font-style: italic;
@@ -191,7 +193,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
 			 url('~FLEX/assets/fonts/Roboto/roboto-v18-latin-italic.ttf') format('truetype'), /* Safari, Android, iOS */
 			 url('~FLEX/assets/fonts/Roboto/roboto-v18-latin-italic.svg#Roboto') format('svg'); /* Legacy iOS */
 }
-/* roboto-500italic - latin */
+// roboto-500italic - latin
 @font-face {
 	font-family: 'Roboto';
 	font-style: italic;
@@ -204,7 +206,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
 			 url('~FLEX/assets/fonts/Roboto/roboto-v18-latin-500italic.ttf') format('truetype'), /* Safari, Android, iOS */
 			 url('~FLEX/assets/fonts/Roboto/roboto-v18-latin-500italic.svg#Roboto') format('svg'); /* Legacy iOS */
 }
-/* roboto-700 - latin */
+// roboto-700 - latin
 @font-face {
 	font-family: 'Roboto';
 	font-style: normal;
@@ -217,7 +219,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
 			 url('~FLEX/assets/fonts/Roboto/roboto-v18-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
 			 url('~FLEX/assets/fonts/Roboto/roboto-v18-latin-700.svg#Roboto') format('svg'); /* Legacy iOS */
 }
-/* roboto-500 - latin */
+// roboto-500 - latin
 @font-face {
 	font-family: 'Roboto';
 	font-style: normal;
@@ -230,7 +232,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
 			 url('~FLEX/assets/fonts/Roboto/roboto-v18-latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
 			 url('~FLEX/assets/fonts/Roboto/roboto-v18-latin-500.svg#Roboto') format('svg'); /* Legacy iOS */
 }
-/* roboto-900 - latin */
+// roboto-900 - latin
 @font-face {
 	font-family: 'Roboto';
 	font-style: normal;
@@ -244,7 +246,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
 		url('~FLEX/assets/fonts/Roboto/roboto-v18-latin-900.svg#Roboto') format('svg'); /* Legacy iOS */
 }
 
-/* roboto-700italic - latin */
+// roboto-700italic - latin
 @font-face {
 	font-family: 'Roboto';
 	font-style: italic;
@@ -257,7 +259,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
 			 url('~FLEX/assets/fonts/Roboto/roboto-v18-latin-700italic.ttf') format('truetype'), /* Safari, Android, iOS */
 			 url('~FLEX/assets/fonts/Roboto/roboto-v18-latin-700italic.svg#Roboto') format('svg'); /* Legacy iOS */
 }
-/* roboto-900italic - latin */
+// roboto-900italic - latin
 @font-face {
 	font-family: 'Roboto';
 	font-style: italic;
@@ -271,7 +273,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
 			 url('~FLEX/assets/fonts/Roboto/roboto-v18-latin-900italic.svg#Roboto') format('svg'); /* Legacy iOS */
 }
 
-/* eb-garamond-regular - latin */
+// eb-garamond-regular - latin
 @font-face {
   font-family: 'EB Garamond';
   font-style: normal;
@@ -284,7 +286,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
        url('~FLEX/assets/fonts/EBGaramond/eb-garamond-v10-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
        url('~FLEX/assets/fonts/EBGaramond/eb-garamond-v10-latin-regular.svg#EBGaramond') format('svg'); /* Legacy iOS */
 }
-/* eb-garamond-italic - latin */
+// eb-garamond-italic - latin
 @font-face {
   font-family: 'EB Garamond';
   font-style: italic;
@@ -297,7 +299,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
        url('~FLEX/assets/fonts/EBGaramond/eb-garamond-v10-latin-italic.ttf') format('truetype'), /* Safari, Android, iOS */
        url('~FLEX/assets/fonts/EBGaramond/eb-garamond-v10-latin-italic.svg#EBGaramond') format('svg'); /* Legacy iOS */
 }
-/* eb-garamond-500 - latin */
+// eb-garamond-500 - latin
 @font-face {
   font-family: 'EB Garamond';
   font-style: normal;
@@ -310,7 +312,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
        url('~FLEX/assets/fonts/EBGaramond/eb-garamond-v10-latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
        url('~FLEX/assets/fonts/EBGaramond/eb-garamond-v10-latin-500.svg#EBGaramond') format('svg'); /* Legacy iOS */
 }
-/* eb-garamond-500italic - latin */
+// eb-garamond-500italic - latin
 @font-face {
   font-family: 'EB Garamond';
   font-style: italic;
@@ -323,7 +325,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
        url('~FLEX/assets/fonts/EBGaramond/eb-garamond-v10-latin-500italic.ttf') format('truetype'), /* Safari, Android, iOS */
        url('~FLEX/assets/fonts/EBGaramond/eb-garamond-v10-latin-500italic.svg#EBGaramond') format('svg'); /* Legacy iOS */
 }
-/* eb-garamond-600 - latin */
+// eb-garamond-600 - latin
 @font-face {
   font-family: 'EB Garamond';
   font-style: normal;
@@ -336,7 +338,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
        url('~FLEX/assets/fonts/EBGaramond/eb-garamond-v10-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
        url('~FLEX/assets/fonts/EBGaramond/eb-garamond-v10-latin-600.svg#EBGaramond') format('svg'); /* Legacy iOS */
 }
-/* eb-garamond-600italic - latin */
+// eb-garamond-600italic - latin
 @font-face {
   font-family: 'EB Garamond';
   font-style: italic;
@@ -349,7 +351,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
        url('~FLEX/assets/fonts/EBGaramond/eb-garamond-v10-latin-600italic.ttf') format('truetype'), /* Safari, Android, iOS */
        url('~FLEX/assets/fonts/EBGaramond/eb-garamond-v10-latin-600italic.svg#EBGaramond') format('svg'); /* Legacy iOS */
 }
-/* eb-garamond-700 - latin */
+// eb-garamond-700 - latin
 @font-face {
   font-family: 'EB Garamond';
   font-style: normal;
@@ -362,7 +364,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
        url('~FLEX/assets/fonts/EBGaramond/eb-garamond-v10-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
        url('~FLEX/assets/fonts/EBGaramond/eb-garamond-v10-latin-700.svg#EBGaramond') format('svg'); /* Legacy iOS */
 }
-/* eb-garamond-700italic - latin */
+// eb-garamond-700italic - latin
 @font-face {
   font-family: 'EB Garamond';
   font-style: italic;
@@ -375,7 +377,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
        url('~FLEX/assets/fonts/EBGaramond/eb-garamond-v10-latin-700italic.ttf') format('truetype'), /* Safari, Android, iOS */
        url('~FLEX/assets/fonts/EBGaramond/eb-garamond-v10-latin-700italic.svg#EBGaramond') format('svg'); /* Legacy iOS */
 }
-/* eb-garamond-800 - latin */
+// eb-garamond-800 - latin
 @font-face {
   font-family: 'EB Garamond';
   font-style: normal;
@@ -388,7 +390,7 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
        url('~FLEX/assets/fonts/EBGaramond/eb-garamond-v10-latin-800.ttf') format('truetype'), /* Safari, Android, iOS */
        url('~FLEX/assets/fonts/EBGaramond/eb-garamond-v10-latin-800.svg#EBGaramond') format('svg'); /* Legacy iOS */
 }
-/* eb-garamond-800italic - latin */
+// eb-garamond-800italic - latin
 @font-face {
   font-family: 'EB Garamond';
   font-style: italic;
@@ -403,8 +405,9 @@ $fa-font-path: "~FLEX/assets/fonts/fontawesome";
 }
 
 
-/** Font Variables **/
-//Primary Font
+// Font Variables
+
+// Primary
 $primaryLight: "Roboto", Helvetica, Arial, sans-serif;
 $primaryLightItalic: "Roboto", Helvetica, Arial, sans-serif;
 $primaryRegular: "Roboto", Helvetica, Arial, sans-serif;
@@ -416,7 +419,7 @@ $primarySemiItalic: "Roboto", Helvetica, Arial, sans-serif;
 $primaryBold: "Roboto", Helvetica, Arial, sans-serif;
 $primaryBoldItalic: "Roboto", Helvetica, Arial, sans-serif;
 
-//Secondary Font
+// Secondary 
 $secondaryLight: "Poppins", Helvetica, Arial, sans-serif;
 $secondaryLightItalic: "Poppins", Helvetica, Arial, sans-serif;
 $secondaryRegular: "Poppins", Helvetica, Arial, sans-serif;
@@ -428,7 +431,7 @@ $secondarySemiItalic: "Poppins", Helvetica, Arial, sans-serif;
 $secondaryBold: "Poppins", Helvetica, Arial, sans-serif;
 $secondaryBoldItalic: "Poppins", Helvetica, Arial, sans-serif;
 
-//Tertiary Font
+// Tertiary 
 $tertiaryLight: "EB Garamond Light", Georgia, Times, serif;
 $tertiaryLightItalic: "EB Garamond Light Italic", Georgia, Times, serif;
 $tertiaryRegular: "EB Garamond Regular", Georgia, Times, serif;

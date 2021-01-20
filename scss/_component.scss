@@ -1,10 +1,9 @@
-/**** Component Settings ****/
-
+// Component Settings
 .component {
 	width: 100%;
 }
 
-//bottom align elements in a row
+// Bottom align elements in a row
 .component-alignment-bottom, .component-alignment-bottom .editor-block-list__layout {
 	display: flex;
 	align-items: flex-end;
@@ -12,7 +11,7 @@
 	height: 100%;
 }
 
-//center align elements in a row
+// Center align elements in a row
 .component-alignment-center, 
 .component-alignment-center .editor-block-list__layout {
 	display: flex;
@@ -21,7 +20,7 @@
 	height: 100%;
 }
 
-//stretch elements in a row
+// Stretch elements in a row
 .component-alignment-stretch, 
 .component-alignment-stretch .editor-block-list__layout {
 	display: flex;
@@ -29,7 +28,7 @@
 	height: 100%;
 }
 
-//top align elements in a row
+// Top align elements in a row
 .component-alignment-top, 
 .component-alignment-top .editor-block-list__layout {
 	display: flex;
@@ -38,12 +37,14 @@
 }
 
 .component-column {
+
 	&.column-align-left {
 		display: block !important;
 		float: left !important;
 	}
 
 	&.column-align-center {
+		display: block !important;
 		margin-left: auto !important;
 		margin-right: auto !important;
 	}

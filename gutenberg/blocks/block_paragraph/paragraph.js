@@ -1,12 +1,8 @@
-/**
- * WordPress dependencies
- */
+// WordPress dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js';
 
-/**
- * Internal dependencies
- */
+// Internal dependencies
 const { wp } = window;
 
 const { __ } = wp.i18n;
@@ -38,27 +34,14 @@ const {
 	Tooltip,
 } = wp.components;
 
-/**
- * Internal dependencies
- */
-// Import all of our Margin Options requirements.
+// Internal dependencies
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
-
-// Import all of our Padding Options requirements.
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
-
-// Import all of our Border Options requirements.
 import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
-
-// Import all of our Text Color Options requirements.
 import TextColorOptions, { TextColorAttributes, TextColorClasses, TextColorInlineStyles } from '../../components/gb-component_text-colors';
-
-// Import all of our Background Options requirements.
 import BackgroundColorOptions, { BackgroundColorOptionsAttributes, BackgroundColorOptionsInlineStyles } from '../../components/gb-component_background-color';
 
-/**
- * Register block
- */
+// Register block
 export default registerBlockType(
 	'flexlayout/paragraph',
 	{
@@ -157,10 +140,10 @@ export default registerBlockType(
 				>
 					<RichText
 						className={ classnames(
-							`align-${align}`,
-							...MarginOptionsClasses( props ),
-							...PaddingOptionsClasses( props ),
-							...BorderOptionsClasses( props ),
+							// `align-${align}`,
+							// ...MarginOptionsClasses( props ),
+							// ...PaddingOptionsClasses( props ),
+							// ...BorderOptionsClasses( props ),
 							...TextColorClasses( props ),
 						)}
 						formattingControls = { ['bold', 'italic', 'strikethrough', 'link'] }
