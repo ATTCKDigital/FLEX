@@ -53,7 +53,7 @@ export default registerBlockType(
 		title: __( 'Horizontal line', 'flexlayout' ),
 		description: __( 'A horizontal line.', 'flexlayout'),
 		category: 'common',
-		icon: icons.minus,
+		icon: icons.upload,
 		// icon: 'heading',
 		// parent: ['flexlayout/column'],
 		keywords: [
@@ -84,7 +84,6 @@ export default registerBlockType(
 				className,
 				setAttributes
 			} = props;
-
 			return [
 				<InspectorControls>
 					<MarginOptions
@@ -121,7 +120,7 @@ export default registerBlockType(
 						} }
 					/>
 				</BlockControls>,
-				<div 
+				<hr 
 					className={classnames(
 						`component-hr`,
 						`align-${align}`,
@@ -131,8 +130,7 @@ export default registerBlockType(
 					style={ {
 						...BackgroundColorOptionsInlineStyles( props )
 					} }
-				>
-				</div>
+				/>
 			];
 		},
 		save() {
