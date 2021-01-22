@@ -11,6 +11,20 @@ function background_options_inline_styles( $attributes ) {
 	return $style;
 }
 
+function background_options_desktop_styles( $attributes ) {
+	$desktopStyle = '';
+
+	if ( array_key_exists('backgroundType', $attributes) ) {
+		$desktopStyle .= $attributes['backgroundType'] == 'image' && array_key_exists('backgroundImage', $attributes) ? "background-image: url({$attributes['backgroundImage']['url']}); " : '';
+		$desktopStyle .= $attributes['backgroundType'] == 'image' && array_key_exists('backgroundSize', $attributes) ? "background-size: {$attributes['backgroundSize']}; " : '';
+		$desktopStyle .= $attributes['backgroundType'] == 'image' && array_key_exists('backgroundRepeat', $attributes) ? "background-repeat: {$attributes['backgroundRepeat']}; " : '';
+		$desktopStyle .= $attributes['backgroundType'] == 'image' && array_key_exists('backgroundPositionX', $attributes) ? "background-position-x: {$attributes['backgroundPositionX']}; " : '';
+		$desktopStyle .= $attributes['backgroundType'] == 'image' && array_key_exists('backgroundPositionY', $attributes) ? "background-position-y: {$attributes['backgroundPositionY']}; " : '';
+	}
+
+	return $desktopStyle;
+}
+
 function background_options_mobile_styles( $attributes ) {
 	$mobileStyle = '';
 
@@ -25,16 +39,12 @@ function background_options_mobile_styles( $attributes ) {
 	return $mobileStyle;
 }
 
-function background_options_desktop_styles( $attributes ) {
-	$desktopStyle = '';
+function background_options_background_image_wide_styles( $attributes ) {
+	$backgroundImageWideStyle = '';
 
-	if ( array_key_exists('backgroundType', $attributes) ) {
-		$desktopStyle .= $attributes['backgroundType'] == 'image' && array_key_exists('backgroundImage', $attributes) ? "background-image: url({$attributes['backgroundImage']['url']}); " : '';
-		$desktopStyle .= $attributes['backgroundType'] == 'image' && array_key_exists('backgroundSize', $attributes) ? "background-size: {$attributes['backgroundSize']}; " : '';
-		$desktopStyle .= $attributes['backgroundType'] == 'image' && array_key_exists('backgroundRepeat', $attributes) ? "background-repeat: {$attributes['backgroundRepeat']}; " : '';
-		$desktopStyle .= $attributes['backgroundType'] == 'image' && array_key_exists('backgroundPositionX', $attributes) ? "background-position-x: {$attributes['backgroundPositionX']}; " : '';
-		$desktopStyle .= $attributes['backgroundType'] == 'image' && array_key_exists('backgroundPositionY', $attributes) ? "background-position-y: {$attributes['backgroundPositionY']}; " : '';
+	if ( array_key_exists('backgroundImageWide', $attributes) && $attributes['backgroundImageWide'] == true ) {
+		$backgroundImageWideStyle = ':before';
 	}
 
-	return $desktopStyle;
+	return $backgroundImageWideStyle;	
 }

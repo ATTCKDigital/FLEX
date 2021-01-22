@@ -6,6 +6,7 @@
 function BackgroundOptionsClasses( props ) {
 	return [
 		{ 'component-image-background component-background': 'image' === props.attributes.backgroundType },
+		{ 'component-image-background-wide': true === props.attributes.backgroundImageWide },
 		{ 'component-color-background component-background': 'color' === props.attributes.backgroundType },
 		{ 'component-video-background component-background': 'video' === props.attributes.backgroundType },
 		{ 'component-background-left-center': 'left' === props.attributes.backgroundPositionX && 'center' === props.attributes.backgroundPositionY },

@@ -6,6 +6,7 @@ use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_inline_styles;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_mobile_styles;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_desktop_styles;
+use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_background_image_wide_styles;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_video_output;
 
 use const FLEX_LAYOUT_SYSTEM\Components\Border\BORDER_OPTIONS_ATTRIBUTES;
@@ -116,9 +117,19 @@ function render_row_block($attributes, $content) {
 	$style = background_options_inline_styles($attributes);
 	$mobileImage = background_options_mobile_styles($attributes);
 	$desktopImage = background_options_desktop_styles($attributes);
+	$wideImage = background_options_background_image_wide_styles($attributes);
 
 	if ($mobileImage || $desktopImage) {
-		$styleBlock = "<style>.component-background[data-section-id=\"section-{$sectionDataId}\"]{{$mobileImage}} @media only screen and (min-width: 768px){.component-background[data-section-id=\"section-{$sectionDataId}\"]{{$desktopImage}}}</style>";
+		$styleBlock  = "<style>";
+		$styleBlock .= 		".component-image-background.component-image-background-wide[data-section-id=\"{$sectionDataId}\"]:{$wideImage}{";
+		$styleBlock .= 			"{$mobileImage}";
+		$styleBlock .= 		"}";
+		$styleBlock .= 		"@media only screen and (min-width: 768px){";
+		$styleBlock .= 			".component-image-background.component-image-background-wide[data-section-id=\"{$sectionDataId}\"]{$wideImage}{";
+		$styleBlock .= 				"{$desktopImage}";
+		$styleBlock .= 			"}";
+		$styleBlock .= 		"}";
+		$styleBlock .= "</style>";
 	} else {
 		$styleBlock = '';
 	}
@@ -132,7 +143,7 @@ function render_row_block($attributes, $content) {
 
 	$innerContent .= "<div class=\"flex-grid component-row-{$attributes['blockAlignment']} component-alignment-{$attributes['verticalAligment']}\">{$content}</div>";
 
-	$output = "<section{$id} class=\"{$class}\" data-section-id=\"section-{$sectionDataId}\" data-logo-color=\"{$dataLogoColor}\" style=\"{$style}\" {$dataComponentName} {$dataComponentOptions}>{$styleBlock}{$innerContent}</section>";
+	$output = "<section{$id} class=\"{$class}\" data-section-id=\"{$sectionDataId}\" data-logo-color=\"{$dataLogoColor}\" style=\"{$style}\" {$dataComponentName} {$dataComponentOptions}>{$styleBlock}{$innerContent}</section>";
 
 	return $output;
 }

@@ -1,13 +1,21 @@
+import mt_rand from '../../../js/mt_rand';
+
 /**
  * Set the attributes to be displayed in the Background Options panel.
  * @type {Object}
  */
+// var dataSectionId = mt_rand(10, 1000);
+var dataSectionId;// = mt_rand(10, 1000);
+
 const BackgroundOptionsAttributes = {
 	backgroundType: {
 		type: 'string',
 	},
 	backgroundImage: {
 		type: 'object',
+	},
+	backgroundImageWide: {
+		type: 'boolean',
 	},
 	backgroundImageMobile: {
 		type: 'object',
@@ -53,6 +61,10 @@ const BackgroundOptionsAttributes = {
 		type: 'string',
 		default: 'no-repeat',
 	},
+	dataSectionId: {
+		type: 'string',
+		default: `${dataSectionId}`
+	}
 };
 
 export default BackgroundOptionsAttributes;

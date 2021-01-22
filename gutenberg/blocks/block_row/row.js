@@ -31,7 +31,7 @@ const {
 
 // Internal dependencies
 import AnchorOptions, { AnchorOptionsAttributes } from '../../components/gb-component_anchor';
-import BackgroundOptions, { BackgroundOptionsAttributes, BackgroundOptionsClasses, BackgroundOptionsInlineStyles, BackgroundOptionsVideoOutput } from '../../components/gb-component_background-options';
+import BackgroundOptions, { BackgroundOptionsAttributes, BackgroundOptionsClasses, BackgroundOptionsInlineStyles, BackgroundOptionsVideoOutput, BackgroundOptionsImageWide } from '../../components/gb-component_background-options';
 import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
 import DataComponentNameOptions, { DataComponentNameAttributes } from '../../components/gb-component_data-component-name';
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
@@ -39,6 +39,7 @@ import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from 
 import RowHeightOptions, { RowHeightOptionsAttributes, RowHeightOptionsClasses } from '../../components/gb-component_row-height';
 import LogoColorOptions, { LogoColorOptionsAttributes, LogoColorOptionsDataAttr } from '../../components/gb-component_logo-color';
 import ScrollerOptions, { ScrollerOptionsAttributes, ScrollerOptionsOutput } from '../../components/gb-component_scroller';
+import mt_rand from '../../../js/mt_rand';
 
 // Register block
 export default registerBlockType(
@@ -99,10 +100,11 @@ export default registerBlockType(
 			const { 
 				attributes: { 
 					anchor, 
-					reverseMobile, 
 					blockAlignment,
 					dataComponentName,
 					dataComponentOptions,
+					dataSectionId,
+					reverseMobile, 
 					verticalAligment, 
 				}, 
 				className, 
@@ -232,10 +234,12 @@ export default registerBlockType(
 					style={ {
 						...BackgroundOptionsInlineStyles( props ),
 					} }
+					data-section-id={ props.attributes.dataSectionId = mt_rand(10, 1000) }
 					data-component-name={ dataComponentName }
 					data-component-options={ dataComponentOptions }
 					data-logo-color={ LogoColorOptionsDataAttr( props ) }
 				>
+					{ BackgroundOptionsImageWide( props ) }
 					{ BackgroundOptionsVideoOutput( props ) }
 					{ ScrollerOptionsOutput( props ) }
 					<div className={ classnames(

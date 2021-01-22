@@ -9,6 +9,7 @@ const {
 
 const {
 	Button,
+	CheckboxControl,
 	Dashicon,
 	PanelBody,
 	PanelRow,
@@ -16,11 +17,14 @@ const {
 	TextControl,
 } = wp.components;
 
+// import { useState } from '@wordpress/element';
+
 // Internal dependencies
 import BackgroundOptionsAttributes from './attributes';
 import BackgroundOptionsClasses from './classes';
 import BackgroundOptionsInlineStyles from './inline-styles';
 import BackgroundOptionsVideoOutput from './video';
+import BackgroundOptionsImageWide from './background-image-wide';
 // import './editor.scss';
 
 // Export for ease of importing in individual blocks.
@@ -29,6 +33,7 @@ export {
 	BackgroundOptionsClasses,
 	BackgroundOptionsInlineStyles,
 	BackgroundOptionsVideoOutput,
+	BackgroundOptionsImageWide,
 };
 
 function BackgroundOptions( props ) {
@@ -45,6 +50,11 @@ function BackgroundOptions( props ) {
 	const setBackgroundVideoThumb = value => props.setAttributes( { backgroundVideoThumb: value } );
 	const removeBackgroundVideoThumb = () => props.setAttributes( { backgroundVideoThumb: null } );
 
+	const setBackgroundImageWide = value => {
+		// console.log('value: ', value);
+		props.setAttributes( { backgroundImageWide: value } );
+	}
+
 	const setBackgroundColor = value => props.setAttributes( { backgroundColor: value } );
 	const setBackgroundPositionX = value => props.setAttributes( { backgroundPositionX: value } );
 	const setBackgroundPositionY = value => props.setAttributes( { backgroundPositionY: value } );
@@ -56,6 +66,16 @@ function BackgroundOptions( props ) {
 	const setBackgroundSizeMobile = value => props.setAttributes( { backgroundSizeMobile: value } );
 	const setBackgroundRepeatMobile = value => props.setAttributes( { backgroundRepeatMobile: value } );
 
+	const BackgroundImageWideCheckbox = () => {
+		return (
+			<CheckboxControl
+				label="Full screen"
+				help="Will be applied to viewport width"
+				checked={ props.attributes.backgroundImageWide }
+				onChange={ setBackgroundImageWide }
+			/>
+		)
+	};
 
 	const imageBackgroundSelect = () => {
 		if ( 'image' !== props.attributes.backgroundType ) {
@@ -87,28 +107,114 @@ function BackgroundOptions( props ) {
 					</div>
 				}
 				{ props.attributes.backgroundImage &&
-						<div className="image-wrapper">
-							<div className="media-button-wrapper">
-								<p>
-									<img
-										src={ props.attributes.backgroundImage.url }
-										alt={ props.attributes.backgroundImage.alt }
-									/>
-								</p>
-								<p>
-									<Button
-										className="remove-image button button-large"
-										onClick={ removeBackgroundImage }
-									>
-										<Dashicon icon="no-alt" /> { __( 'Remove Image' ) }
-									</Button>
-								</p>
-								<p>
-									{ __( 'Add/Upload an image file. (.jpg, .png)' ) }
-								</p>
+					<div className="image-wrapper">
+						<div className="media-button-wrapper">
+							<p>
+								<img
+									src={ props.attributes.backgroundImage.url }
+									alt={ props.attributes.backgroundImage.alt }
+								/>
+							</p>
+							<p>
+								<Button
+									className="remove-image button button-large"
+									onClick={ removeBackgroundImage }
+								>
+									<Dashicon icon="no-alt" /> { __( 'Remove Image' ) }
+								</Button>
+							</p>
+							<p>
+								{ __( 'Add/Upload an image file. (.jpg, .png)' ) }
+							</p>
+							<p>
+								<BackgroundImageWideCheckbox />
+							</p>
 						</div>
 					</div>
+					}
+					{ props.attributes.backgroundImage &&
+					<div className="image-wrapper">
+						<PanelRow>
+							<SelectControl
+								key="background-position-x"
+								label={ __( 'Position X' ) }
+								value={ props.attributes.backgroundPositionX ? props.attributes.backgroundPositionX : '' }
+								options={ [
+									{
+										label: __( 'Center' ),
+										value: 'center',
+									},
+									{
+										label: __( 'Left' ),
+										value: 'left',
+									},
+									{
+										label: __( 'Right' ),
+										value: 'right',
+									},
+								] }
+								onChange={ setBackgroundPositionX }
+							/>
+						</PanelRow>
+						<PanelRow>
+							<SelectControl
+								key="background-position-y"
+								label={ __( 'Position Y' ) }
+								value={ props.attributes.backgroundPositionY ? props.attributes.backgroundPositionY : '' }
+								options={ [
+									{
+										label: __( 'Top' ),
+										value: 'top',
+									},
+									{
+										label: __( 'Center' ),
+										value: 'center',
+									},
+									{
+										label: __( 'Bottom' ),
+										value: 'bottom',
+									},
+								] }
+								onChange={ setBackgroundPositionY }
+							/>
+						</PanelRow>
+						<PanelRow>
+							<TextControl
+								label={__('Size', 'flexlayout')}
+								help={__('Set background size. Use pixel value (widthpx heightpx), percentage (width% height%), cover or contain', 'flexlayout')}
+								value={props.attributes.backgroundSize}
+								onChange={setBackgroundSize}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<SelectControl
+								key="background-repeat"
+								label={ __( 'Repeat' ) }
+								value={ props.attributes.backgroundRepeat ? props.attributes.backgroundRepeat : '' }
+								options={ [
+									{
+										label: __( 'No Repeat' ),
+										value: 'no-repeat',
+									},
+									{
+										label: __( 'Repeat' ),
+										value: 'repeat',
+									},
+									{
+										label: __( 'Repeat on X Axis' ),
+										value: 'repeat-x',
+									},
+									{
+										label: __( 'Repeat on Y Axis' ),
+										value: 'repeat-y',
+									},
+								] }
+								onChange={ setBackgroundRepeat }
+							/>
+						</PanelRow>
+					</div>
 				}
+
 				{ !props.attributes.backgroundImageMobile &&
 					<div className="media-upload-wrapper">
 						<p>
@@ -154,172 +260,89 @@ function BackgroundOptions( props ) {
 						</div>
 					</div>
 				}
-
-					{ props.attributes.backgroundImage &&
-						<div className="image-wrapper">
-							<PanelRow>
-								<SelectControl
-									key="background-position-x"
-									label={ __( 'Background Position X' ) }
-									value={ props.attributes.backgroundPositionX ? props.attributes.backgroundPositionX : '' }
-									options={ [
-										{
-											label: __( 'Center' ),
-											value: 'center',
-										},
-										{
-											label: __( 'Left' ),
-											value: 'left',
-										},
-										{
-											label: __( 'Right' ),
-											value: 'right',
-										},
-									] }
-									onChange={ setBackgroundPositionX }
-								/>
-							</PanelRow>
-							<PanelRow>
-								<SelectControl
-									key="background-position-y"
-									label={ __( 'Background Position Y' ) }
-									value={ props.attributes.backgroundPositionY ? props.attributes.backgroundPositionY : '' }
-									options={ [
-										{
-											label: __( 'Top' ),
-											value: 'top',
-										},
-										{
-											label: __( 'Center' ),
-											value: 'center',
-										},
-										{
-											label: __( 'Bottom' ),
-											value: 'bottom',
-										},
-									] }
-									onChange={ setBackgroundPositionY }
-								/>
-							</PanelRow>
-							<PanelRow>
-								<TextControl
-									label={__('Background Size', 'flexlayout')}
-									help={__('Set background size. Use pixel value (widthpx heightpx), percentage (width% height%), cover or contain', 'flexlayout')}
-									value={props.attributes.backgroundSize}
-									onChange={setBackgroundSize}
-								/>
-							</PanelRow>
-							<PanelRow>
-								<SelectControl
-									key="background-repeat"
-									label={ __( 'Background Repeat' ) }
-									value={ props.attributes.backgroundRepeat ? props.attributes.backgroundRepeat : '' }
-									options={ [
-										{
-											label: __( 'No Repeat' ),
-											value: 'no-repeat',
-										},
-										{
-											label: __( 'Repeat' ),
-											value: 'repeat',
-										},
-										{
-											label: __( 'Repeat on X Axis' ),
-											value: 'repeat-x',
-										},
-										{
-											label: __( 'Repeat on Y Axis' ),
-											value: 'repeat-y',
-										},
-									] }
-									onChange={ setBackgroundRepeat }
-								/>
-							</PanelRow>
-						</div>
-					}
-					{ props.attributes.backgroundImageMobile &&
-						<div className="image-wrapper">
-							<PanelRow>
-								<h2 className="components-panel__body-title">Mobile Options</h2>
-								<SelectControl
-									key="background-position-x-mobile"
-									label={ __( 'Background Position X (Mobile)' ) }
-									value={ props.attributes.backgroundPositionXMobile ? props.attributes.backgroundPositionXMobile : '' }
-									options={ [
-										{
-											label: __( 'Center' ),
-											value: 'center',
-										},
-										{
-											label: __( 'Left' ),
-											value: 'left',
-										},
-										{
-											label: __( 'Right' ),
-											value: 'right',
-										},
-									] }
-									onChange={ setBackgroundPositionXMobile }
-								/>
-							</PanelRow>
-							<PanelRow>
-								<SelectControl
-									key="background-position-y-mobile"
-									label={ __( 'Background Position Y (Mobile)' ) }
-									value={ props.attributes.backgroundPositionYMobile ? props.attributes.backgroundPositionYMobile : '' }
-									options={ [
-										{
-											label: __( 'Top' ),
-											value: 'top',
-										},
-										{
-											label: __( 'Center' ),
-											value: 'center',
-										},
-										{
-											label: __( 'Bottom' ),
-											value: 'bottom',
-										},
-									] }
-									onChange={ setBackgroundPositionYMobile }
-								/>
-							</PanelRow>
-							<PanelRow>
-								<TextControl
-									label={__('Background Size (Mobile)', 'flexlayout')}
-									help={__('Set background size. Use pixel value (widthpx heightpx), percentage (width% height%), cover or contain', 'flexlayout')}
-									value={props.attributes.backgroundSizeMobile}
-									onChange={setBackgroundSizeMobile}
-								/>
-							</PanelRow>
-							<PanelRow>
-								<SelectControl
-									key="background-repeat-mobile"
-									label={ __( 'Background Repeat (Mobile)' ) }
-									value={ props.attributes.backgroundRepeatMobile ? props.attributes.backgroundRepeatMobile : '' }
-									options={ [
-										{
-											label: __( 'No Repeat' ),
-											value: 'no-repeat',
-										},
-										{
-											label: __( 'Repeat' ),
-											value: 'repeat',
-										},
-										{
-											label: __( 'Repeat on X Axis' ),
-											value: 'repeat-x',
-										},
-										{
-											label: __( 'Repeat on Y Axis' ),
-											value: 'repeat-y',
-										},
-									] }
-									onChange={ setBackgroundRepeatMobile }
-								/>
-							</PanelRow>
-						</div>
-					}
+				{ props.attributes.backgroundImageMobile &&
+					<div className="image-wrapper">
+						<PanelRow>
+							<h2 className="components-panel__body-title">Mobile Options</h2>
+							<SelectControl
+								key="background-position-x-mobile"
+								label={ __( 'Position X (Mobile)' ) }
+								value={ props.attributes.backgroundPositionXMobile ? props.attributes.backgroundPositionXMobile : '' }
+								options={ [
+									{
+										label: __( 'Center' ),
+										value: 'center',
+									},
+									{
+										label: __( 'Left' ),
+										value: 'left',
+									},
+									{
+										label: __( 'Right' ),
+										value: 'right',
+									},
+								] }
+								onChange={ setBackgroundPositionXMobile }
+							/>
+						</PanelRow>
+						<PanelRow>
+							<SelectControl
+								key="background-position-y-mobile"
+								label={ __( 'Position Y (Mobile)' ) }
+								value={ props.attributes.backgroundPositionYMobile ? props.attributes.backgroundPositionYMobile : '' }
+								options={ [
+									{
+										label: __( 'Top' ),
+										value: 'top',
+									},
+									{
+										label: __( 'Center' ),
+										value: 'center',
+									},
+									{
+										label: __( 'Bottom' ),
+										value: 'bottom',
+									},
+								] }
+								onChange={ setBackgroundPositionYMobile }
+							/>
+						</PanelRow>
+						<PanelRow>
+							<TextControl
+								label={__('Size (Mobile)', 'flexlayout')}
+								help={__('Set background size. Use pixel value (widthpx heightpx), percentage (width% height%), cover or contain', 'flexlayout')}
+								value={props.attributes.backgroundSizeMobile}
+								onChange={setBackgroundSizeMobile}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<SelectControl
+								key="background-repeat-mobile"
+								label={ __( 'Repeat (Mobile)' ) }
+								value={ props.attributes.backgroundRepeatMobile ? props.attributes.backgroundRepeatMobile : '' }
+								options={ [
+									{
+										label: __( 'No Repeat' ),
+										value: 'no-repeat',
+									},
+									{
+										label: __( 'Repeat' ),
+										value: 'repeat',
+									},
+									{
+										label: __( 'Repeat on X Axis' ),
+										value: 'repeat-x',
+									},
+									{
+										label: __( 'Repeat on Y Axis' ),
+										value: 'repeat-y',
+									},
+								] }
+								onChange={ setBackgroundRepeatMobile }
+							/>
+						</PanelRow>
+					</div>
+				}
 			</div>
 		);
 	};
@@ -402,22 +425,22 @@ function BackgroundOptions( props ) {
 					</div>
 				}
 				{ props.attributes.backgroundVideoThumb &&
-						<div className="image-wrapper">
-							<div className="media-button-wrapper">
-								<p>
-									<img
-										src={ props.attributes.backgroundVideoThumb.url }
-										alt={ props.attributes.backgroundVideoThumb.alt }
-									/>
-								</p>
-								<p>
-									<Button
-										className="remove-image button button-large"
-										onClick={ removeBackgroundVideoThumb }
-									>
-										<Dashicon icon="no-alt" /> { __( 'Remove Thumb' ) }
-									</Button>
-								</p>
+					<div className="image-wrapper">
+						<div className="media-button-wrapper">
+							<p>
+								<img
+									src={ props.attributes.backgroundVideoThumb.url }
+									alt={ props.attributes.backgroundVideoThumb.alt }
+								/>
+							</p>
+							<p>
+								<Button
+									className="remove-image button button-large"
+									onClick={ removeBackgroundVideoThumb }
+								>
+									<Dashicon icon="no-alt" /> { __( 'Remove Thumb' ) }
+								</Button>
+							</p>
 						</div>
 					</div>
 				}
@@ -462,16 +485,16 @@ function BackgroundOptions( props ) {
 							value: '',
 						},
 						{
+							label: __( 'Color' ),
+							value: 'color',
+						},
+						{
 							label: __( 'Image' ),
 							value: 'image',
 						},
 						{
 							label: __( 'Video' ),
 							value: 'video',
-						},
-						{
-							label: __( 'Color' ),
-							value: 'color',
 						},
 					] }
 					onChange={ setBackgroundType }

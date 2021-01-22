@@ -221,6 +221,31 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	}
 }
 
+.components-panel {
+	p {
+		font-size: px-to-rem(10px);
+		margin-bottom: 8px;
+	}
+
+	.button {
+		.dashicons, 
+		.dashicons-before:before {
+			margin-right: 8px;
+			vertical-align: middle;
+		}
+	}
+
+	.components-panel__row {
+		margin-top: 24px;
+	}
+}
+
+.components-panel__body {
+	.image-wrapper {
+		background: #d8d8d8;
+	}
+}
+
 .components-panel__row {
 	display: block;
 }
@@ -279,12 +304,6 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	height: 25px;
 	width: 25px;
 
-}
-
-.components-panel__body {
-	.image-wrapper {
-		background: #d8d8d8;
-	}
 }
 
 .block-library-button__inline-link.heading-url {

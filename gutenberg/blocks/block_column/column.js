@@ -126,7 +126,7 @@ export default registerBlockType(
 					className={
 						className,
 						`column-align-${align}`,
-						dataComponentName && `component-${dataComponentName.toString().toLowerCase()}`
+						`component-${dataComponentName.toString().toLowerCase()}`
 					}
 					style={ {
 						...BackgroundOptionsInlineStyles( props ),
