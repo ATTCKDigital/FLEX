@@ -21,6 +21,8 @@ const {
 const {
 	Button,
 	ButtonGroup,
+	Dashicon,
+	IconButton,
 	PanelBody,
 	PanelRow,
 	Toolbar,
@@ -28,14 +30,15 @@ const {
 } = wp.components;
 
 // Internal dependencies
-import BackgroundOptions, { BackgroundOptionsAttributes, BackgroundOptionsClasses, BackgroundOptionsInlineStyles, BackgroundOptionsVideoOutput } from '../../components/gb-component_background-options';
-import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
-import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
-import ScrollerOptions, { ScrollerOptionsAttributes, ScrollerOptionsOutput } from '../../components/gb-component_scroller';
-import LogoColorOptions, { LogoColorOptionsAttributes, LogoColorOptionsDataAttr } from '../../components/gb-component_logo-color';
-import RowHeightOptions, { RowHeightOptionsAttributes, RowHeightOptionsClasses } from '../../components/gb-component_row-height';
-import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
 import AnchorOptions, { AnchorOptionsAttributes } from '../../components/gb-component_anchor';
+import BackgroundOptions, { BackgroundOptionsAttributes, BackgroundOptionsClasses, BackgroundOptionsInlineStyles, BackgroundOptionsVideoOutput } from '../../components/gb-component_background-options';
+import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
+import DataComponentNameOptions, { DataComponentNameAttributes } from '../../components/gb-component_data-component-name';
+import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
+import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
+import RowHeightOptions, { RowHeightOptionsAttributes, RowHeightOptionsClasses } from '../../components/gb-component_row-height';
+import LogoColorOptions, { LogoColorOptionsAttributes, LogoColorOptionsDataAttr } from '../../components/gb-component_logo-color';
+import ScrollerOptions, { ScrollerOptionsAttributes, ScrollerOptionsOutput } from '../../components/gb-component_scroller';
 
 // Register block
 export default registerBlockType(
@@ -71,27 +74,46 @@ export default registerBlockType(
 			},
 			...AnchorOptionsAttributes,
 			...BackgroundOptionsAttributes,
-			...RowHeightOptionsAttributes,
-			...PaddingOptionsAttributes,
-			...MarginOptionsAttributes,
-			...ScrollerOptionsAttributes,
-			...LogoColorOptionsAttributes,
 			...BorderOptionsAttributes,
+			...DataComponentNameAttributes,
+			...MarginOptionsAttributes,
+			...PaddingOptionsAttributes,
+			...RowHeightOptionsAttributes,
+			...LogoColorOptionsAttributes,
+			...ScrollerOptionsAttributes,
 		},
 
 		getEditWrapperProps( attributes ) {
-			const { blockAlignment } = attributes;
+			const { 
+				blockAlignment 
+			} = attributes;
 			
 			if ( 'left' === blockAlignment || 'right' === blockAlignment || 'full' === blockAlignment || 'wide' === blockAlignment ) {
-				return { 'data-align': blockAlignment };
+				return {
+					'data-align': blockAlignment
+				};
 			}
 		},
 
 		edit: props => {
-			const { attributes: { anchor, reverseMobile, blockAlignment, verticalAligment }, className, setAttributes } = props;
+			const { 
+				attributes: { 
+					anchor, 
+					reverseMobile, 
+					blockAlignment,
+					dataComponentName,
+					dataComponentOptions,
+					verticalAligment, 
+				}, 
+				className, 
+				setAttributes 
+			} = props;
+
 			const classes = classnames(
 				className,
-				{ 'component-row-reverse-mobile': reverseMobile },
+				{ 
+					'component-row-reverse-mobile': reverseMobile 
+				},
 				...BackgroundOptionsClasses( props ),
 				...RowHeightOptionsClasses( props ),
 				...PaddingOptionsClasses( props ),
@@ -107,22 +129,25 @@ export default registerBlockType(
 					<RowHeightOptions
 						{ ...props }
 					/>
-					<PaddingOptions
+					<BorderOptions
 						{ ...props }
 					/>
 					<MarginOptions
 						{ ...props }
 					/>
-					<BorderOptions
-						{ ...props }
-					/>
-					<ScrollerOptions
+					<PaddingOptions
 						{ ...props }
 					/>
 					<LogoColorOptions
 						{ ...props }
 					/>
+					<ScrollerOptions
+						{ ...props }
+					/>
 					<AnchorOptions
+						{ ...props }
+					/>
+					<DataComponentNameOptions
 						{ ...props }
 					/>
 				</InspectorControls>,
@@ -200,20 +225,23 @@ export default registerBlockType(
 					</Toolbar>
 				</BlockControls>,
 				<section
-					className={ classes }
 					id={ anchor }
+					className={ 
+						classes 
+					}
 					style={ {
 						...BackgroundOptionsInlineStyles( props ),
 					} }
-					data-logo-color={
-						LogoColorOptionsDataAttr( props )
-					}
+					data-component-name={ dataComponentName }
+					data-component-options={ dataComponentOptions }
+					data-logo-color={ LogoColorOptionsDataAttr( props ) }
 				>
 					{ BackgroundOptionsVideoOutput( props ) }
 					{ ScrollerOptionsOutput( props ) }
 					<div className={ classnames(
 						'flex-grid',
 						`component-alignment-${verticalAligment}`,
+						`component-${dataComponentName.toString().toLowerCase()}`
 					) }>
 						<InnerBlocks />
 					</div>
