@@ -6,7 +6,7 @@
 
 @mixin primary-light-italic {
 	font-family: $primaryLightItalic;
-	font-style: normal;
+	font-style: italic;
 	font-weight: 300;
 }
 
@@ -18,7 +18,7 @@
 
 @mixin primary-regular-italic {
 	font-family: $primaryRegularItalic;
-	font-style: normal;
+	font-style: italic;
 	font-weight: 400;
 }
 
@@ -30,7 +30,7 @@
 
 @mixin primary-medium-italic {
 	font-family: $primaryMediumItalic;
-	font-style: normal;
+	font-style: italic;
 	font-weight: 500;
 }
 
@@ -42,7 +42,7 @@
 
 @mixin primary-semi-italic {
 	font-family: $primarySemiItalic;
-	font-style: normal;
+	font-style: italic;
 	font-weight: 600;
 }
 
@@ -54,7 +54,7 @@
 
 @mixin primary-bold-italic {
 	font-family: $primaryBoldItalic;
-	font-style: normal;
+	font-style: italic;
 	font-weight: 700;
 }
 
@@ -66,7 +66,7 @@
 
 @mixin secondary-light-italic {
 	font-family: $secondaryLightItalic;
-	font-style: normal;
+	font-style: italic;
 	font-weight: 300;
 }
 
@@ -78,7 +78,7 @@
 
 @mixin secondary-regular-italic {
 	font-family: $secondaryRegularItalic;
-	font-style: normal;
+	font-style: italic;
 	font-weight: 400;
 }
 
@@ -91,7 +91,7 @@
 
 @mixin secondary-medium-italic {
 	font-family: $secondaryMediumItalic;
-	font-style: normal;
+	font-style: italic;
 	font-weight: 500;
 }
 
@@ -103,7 +103,7 @@
 
 @mixin secondary-semi-italic {
 	font-family: $secondarySemiItalic;
-	font-style: normal;
+	font-style: italic;
 	font-weight: 600;
 }
 
@@ -115,7 +115,7 @@
 
 @mixin secondary-bold-italic {
 	font-family: $secondaryBoldItalic;
-	font-style: normal;
+	font-style: italic;
 	font-weight: 700;
 }
 
@@ -151,7 +151,7 @@
 
 @mixin tertiary-medium-italic {
 	font-family: $tertiaryMediumItalic;
-	font-style: normal;
+	font-style: italic;
 	font-weight: 500;
 }
 
@@ -163,7 +163,7 @@
 
 @mixin tertiary-semi-italic {
 	font-family: $tertiarySemiItalic;
-	font-style: normal;
+	font-style: italic;
 	font-weight: 600;
 }
 
@@ -175,6 +175,6 @@
 
 @mixin tertiary-bold-italic {
 	font-family: $tertiaryBoldItalic;
-	font-style: normal;
+	font-style: italic;
 	font-weight: 700;
 }
