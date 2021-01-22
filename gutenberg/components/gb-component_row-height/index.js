@@ -1,6 +1,4 @@
-/**
- * WordPress dependencies
- */
+// WordPress dependencies
 const { __ } = wp.i18n;
 
 const {
@@ -18,9 +16,7 @@ const {
 	SelectControl,
 } = wp.components;
 
-/**
- * Internal dependencies
- */
+// Internal dependencies
 import RowHeightOptionsAttributes from './attributes';
 import RowHeightOptionsClasses from './classes';
 // import './editor.scss';
@@ -33,7 +29,6 @@ export {
 
 function RowHeightOptions( props ) {
 	const setRowHeight = value => props.setAttributes( { rowHeight: value } );
-
 	const rowHeightSelect = () => {
 
 		return (
@@ -67,7 +62,6 @@ function RowHeightOptions( props ) {
 									label: __( 'Full Height (100% Screen Height)' ),
 									value: 'full-height',
 								},
-
 							] }
 						/>
 					</PanelRow>
@@ -76,11 +70,9 @@ function RowHeightOptions( props ) {
 		);
 	};
 
-
-
 	return (
 		<PanelBody
-			title={ __( 'Row Height' ) }
+			title={ __( 'Height' ) }
 			className="flexlayout-row-height-options"
 			initialOpen={ false }
 		>
