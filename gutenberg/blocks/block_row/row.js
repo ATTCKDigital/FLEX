@@ -241,7 +241,7 @@ export default registerBlockType(
 					<div className={ classnames(
 						'flex-grid',
 						`component-alignment-${verticalAligment}`,
-						`component-${dataComponentName.toString().toLowerCase()}`
+						dataComponentName && `component-${dataComponentName.toString().toLowerCase()}`
 					) }>
 						<InnerBlocks />
 					</div>
