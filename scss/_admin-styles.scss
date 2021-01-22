@@ -56,7 +56,9 @@ body {
 	border: 1px solid hsla(125, 100%, 40%, .2) !important;
 
 	margin-bottom: 1px;
-	margin-top: 1px;
+
+	// Needs to be enough space to trigger the new block [+] button
+	margin-top: 10px;
 
 	// Padding suppresses block padding
 	// padding: 5px; 

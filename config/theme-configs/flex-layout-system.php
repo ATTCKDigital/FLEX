@@ -24,10 +24,16 @@ namespace FLEX_LAYOUT_SYSTEM;
 defined('ABSPATH') || exit;
 
 // Components
+include THEME_DIR . '/gutenberg/components/gb-component_background-color/attributes.php';
+include THEME_DIR . '/gutenberg/components/gb-component_background-color/inline-styles.php';
+
 include THEME_DIR . '/gutenberg/components/gb-component_background-options/attributes.php';
 include THEME_DIR . '/gutenberg/components/gb-component_background-options/classes.php';
 include THEME_DIR . '/gutenberg/components/gb-component_background-options/inline-styles.php';
 include THEME_DIR . '/gutenberg/components/gb-component_background-options/video.php';
+
+include THEME_DIR . '/gutenberg/components/gb-component_border/attributes.php';
+include THEME_DIR . '/gutenberg/components/gb-component_border/classes.php';
 
 include THEME_DIR . '/gutenberg/components/gb-component_columns/attributes.php';
 include THEME_DIR . '/gutenberg/components/gb-component_columns/classes.php';
@@ -44,17 +50,11 @@ include THEME_DIR . '/gutenberg/components/gb-component_padding/classes.php';
 include THEME_DIR . '/gutenberg/components/gb-component_row-height/attributes.php';
 include THEME_DIR . '/gutenberg/components/gb-component_row-height/classes.php';
 
-include THEME_DIR . '/gutenberg/components/gb-component_text-colors/attributes.php';
-include THEME_DIR . '/gutenberg/components/gb-component_text-colors/classes.php';
-
 include THEME_DIR . '/gutenberg/components/gb-component_scroller/attributes.php';
 include THEME_DIR . '/gutenberg/components/gb-component_scroller/scroller-output.php';
 
-include THEME_DIR . '/gutenberg/components/gb-component_border/attributes.php';
-include THEME_DIR . '/gutenberg/components/gb-component_border/classes.php';
-
-include THEME_DIR . '/gutenberg/components/gb-component_background-color/attributes.php';
-include THEME_DIR . '/gutenberg/components/gb-component_background-color/inline-styles.php';
+include THEME_DIR . '/gutenberg/components/gb-component_text-colors/attributes.php';
+include THEME_DIR . '/gutenberg/components/gb-component_text-colors/classes.php';
 
 
 // Dynamic Blocks

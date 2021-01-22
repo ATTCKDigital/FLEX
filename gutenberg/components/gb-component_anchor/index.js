@@ -1,6 +1,4 @@
-/**
- * WordPress dependencies
- */
+// WordPress dependencies
 const { __ } = wp.i18n;
 
 const {
@@ -9,9 +7,7 @@ const {
 	TextControl,
 } = wp.components
 
-/**
- * Internal dependencies
- */
+// Internal dependencies
 import AnchorOptionsAttributes from './attributes';
 
 // Export for ease of importing in individual blocks.
@@ -21,6 +17,7 @@ export {
 
 function AnchorOptions( props ) {
 	const setAnchor = value => props.setAttributes( { anchor: value } );
+	
 	return (
 		<PanelBody
 			title={ __( 'HTML Anchor' ) }

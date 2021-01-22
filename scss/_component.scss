@@ -38,10 +38,10 @@
 }
 
 .component-column {
-
 	&.column-align-left {
 		display: block !important;
-		float: left !important;
+		margin-left: 0 !important;
+		margin-right: auto !important;
 	}
 
 	&.column-align-center {
@@ -52,7 +52,8 @@
 
 	&.column-align-right {
 		display: block !important;
-		float: right !important;
+		margin-left: auto !important;
+		margin-right: 0 !important;
 	}
 }
 

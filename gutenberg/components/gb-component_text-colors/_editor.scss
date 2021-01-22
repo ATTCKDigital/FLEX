@@ -5,19 +5,17 @@
 // Enqueued after style.scss.
 //--------------------------------------------------------------
 .wds-background-options {
-
 	.blocks-base-control {
 		width: 100%;
-	} // .blocks-base-control
+	}
 
 	.components-button {
-
 		svg {
 			position: relative;
 			top: 5px;
-		} // svg
-	} // .components-button
-} // .wds-background-options
+		}
+	}
+}
 
 //-----------------------------------------
 // Video Background
@@ -38,9 +36,8 @@
 		top: 50%;
 		width: 100%;
 		z-index: -1;
-	} // .video-container
-} // .has-video-background
-
+	}
+}
 
 //-----------------------------------------
 // Image Background
@@ -49,14 +46,13 @@
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
-} // .has-image-background
+}
 
 $yPositions: top, center, bottom;
 $xPositions: left, right, center;
 
 @each $yPosition in $yPositions{
   	@each $xPosition in $xPositions{
-
 		.component-background-#{$xPosition}-#{$yPosition} { 
 			background-position: #{$xPosition} #{$yPosition};
 		}
@@ -64,14 +60,12 @@ $xPositions: left, right, center;
 }
 
 @each $xPosition in $xPositions{
-
 	.component-background-position-x-#{$xPosition} { 
 		background-position-x: #{$xPosition};
 	}
 }
 
 @each $yPosition in $yPositions{
-
 	.component-background-position-y-#{$yPosition} { 
 		background-position-y: #{$yPosition};
 	}

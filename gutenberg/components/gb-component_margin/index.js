@@ -1,6 +1,4 @@
-/**
- * WordPress dependencies
- */
+// WordPress dependencies
 const { __ } = wp.i18n;
 
 const {
@@ -18,9 +16,7 @@ const {
 	SelectControl,
 } = wp.components;
 
-/**
- * Internal dependencies
- */
+// Internal dependencies
 import MarginOptionsAttributes from './attributes';
 import MarginOptionsClasses from './classes';
 // import './editor.scss';
@@ -63,7 +59,6 @@ function MarginOptions( props ) {
 	const setMarginDesktopLeft = value => props.setAttributes( { marginDesktopLeft: value } );
 
 	const marginSelect = () => {
-
 		return (
 			<div className="margin-wrapper">
 				<p>Inherit uses prev screen size setting.</p>
@@ -1021,7 +1016,7 @@ function MarginOptions( props ) {
 
 	return (
 		<PanelBody
-			title={ __( 'Block Margins' ) }
+			title={ __( 'Margin' ) }
 			className="flexlayout-margin-options"
 			initialOpen={ false }
 		>

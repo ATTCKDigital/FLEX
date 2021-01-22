@@ -101,19 +101,19 @@ export default registerBlockType(
 			
 			return [
 				<InspectorControls>
-					<MarginOptions
-						{ ...props }
-					/>
-					<PaddingOptions
-						{ ...props }
-					/>
-					<BorderOptions
+					<BackgroundColorOptions
 						{ ...props }
 					/>
 					<TextColorOptions
 						{ ...props }
 					/>
-					<BackgroundColorOptions
+					<BorderOptions
+						{ ...props }
+					/>
+					<MarginOptions
+						{ ...props }
+					/>
+					<PaddingOptions
 						{ ...props }
 					/>
 					<PanelBody title={ __( 'Paragraph Alignment', 'flexlayout' ) } initialOpen={ false }>
@@ -146,9 +146,9 @@ export default registerBlockType(
 							// ...BorderOptionsClasses( props ),
 							...TextColorClasses( props ),
 						)}
-						formattingControls = { ['bold', 'italic', 'strikethrough', 'link'] }
 						identifier="content"
-						multiline='p'
+						formattingControls = { ['bold', 'italic', 'strikethrough', 'link'] }
+						multiline='p' // <-- This is a critical differentiatorfrom the heading block
 						onChange={ onChangeMessage }
 						onRemove={ () => onReplace( [] ) }
 						placeholder={ placeholder || __( 'Paragraph text…' ) }

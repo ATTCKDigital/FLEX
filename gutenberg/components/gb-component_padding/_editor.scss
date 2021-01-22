@@ -1,21 +1,15 @@
-//--------------------------------------------------------------
-// Editor Styles
-//
-/**** Padding ****/
-
-
 .padding-wrapper {
 	.padding-inner-wrapper {
-		width: 100%;
-		display: flex;
-		flex-wrap: wrap;
 		align-items: flex-end;
 		border-bottom: 1px solid darkgray;
+		display: flex;
+		flex-wrap: wrap;
     	padding-bottom: 14px;
+		width: 100%;
 
 		.components-panel__row {
-			width: 50%;
 			padding-right: 4%;
+			width: 50%;
 
 			&:nth-child(2n+1) {
 				padding-right: 0;
@@ -23,9 +17,8 @@
 		}
 
 		.components-panel__body-title {
-			width: 100%;
 			margin-bottom: 0;
+			width: 100%;
 		}
-		
 	}
 }

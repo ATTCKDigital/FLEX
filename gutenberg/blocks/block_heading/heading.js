@@ -1,13 +1,9 @@
-/**
- * Block dependencies
- */
+// Block dependencies
 import classnames from 'classnames';
 import HeadingToolbar from './heading-toolbar';
 import icons from '../../../js/icons.js';
 
-/**
- * Internal block libraries
- */
+// Internal block libraries
 const { __ } = wp.i18n;
 
 const {
@@ -16,10 +12,10 @@ const {
 
 const {
 	AlignmentToolbar,
-	BlockControls,
 	BlockAlignmentToolbar,
-	InspectorControls,
+	BlockControls,
 	InnerBlocks,
+	InspectorControls,
 	MediaUpload,
 	RichText,
 	URLInput,
@@ -37,27 +33,14 @@ const {
 	Tooltip,
 } = wp.components;
 
-/**
- * Internal dependencies
- */
-// Import all of our Margin Options requirements.
+// Internal dependencies
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
-
-// Import all of our Padding Options requirements.
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
-
-// Import all of our Border Options requirements.
 import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
-
-// Import all of our Text Color Options requirements.
 import TextColorOptions, { TextColorAttributes, TextColorClasses, TextColorInlineStyles } from '../../components/gb-component_text-colors';
-
-// Import all of our Background Options requirements.
 import BackgroundColorOptions, { BackgroundColorOptionsAttributes, BackgroundColorOptionsInlineStyles } from '../../components/gb-component_background-color';
 
-/**
-	* Register block
- */
+// Register block
 export default registerBlockType(
 	'flexlayout/heading',
 	{
@@ -121,7 +104,11 @@ export default registerBlockType(
 
 			const tagName = 'h' + level;
 
-			const onChangeMessage = content => { setAttributes( { content } ) };
+			const onChangeMessage = content => { 
+				setAttributes( { 
+					content 
+				} ) 
+			};
 
 			const onSelectImage = img => {
 				setAttributes({
@@ -139,19 +126,19 @@ export default registerBlockType(
 
 			return [
 				<InspectorControls>
-					<MarginOptions
-						{ ...props }
-					/>
-					<PaddingOptions
-						{ ...props }
-					/>
-					<BorderOptions
+					<BackgroundColorOptions
 						{ ...props }
 					/>
 					<TextColorOptions
 						{ ...props }
 					/>
-					<BackgroundColorOptions
+					<BorderOptions
+						{ ...props }
+					/>
+					<MarginOptions
+						{ ...props }
+					/>
+					<PaddingOptions
 						{ ...props }
 					/>
 					<PanelBody title={ __('Heading Settings' ) } initialOpen={ false }>
@@ -220,9 +207,9 @@ export default registerBlockType(
 					<RichText
 						className={ classnames(
 							`align-${align}`,
+							...BorderOptionsClasses( props ),
 							...MarginOptionsClasses( props ),
 							...PaddingOptionsClasses( props ),
-							...BorderOptionsClasses( props ),
 							...TextColorClasses( props ),
 						)}
 						identifier="content"

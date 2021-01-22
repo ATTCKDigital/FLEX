@@ -111,21 +111,24 @@ function render_heading_block($attributes) {
 	$wrapperClass .= border_options_classes($attributes);
 
 	// Build inline style values
-	$style = 'style="';
+	$style = '';
 
-	// — background color
-	if ($bgColor) {
-		$style .= 'background-color:' . $bgColor . ';';
+	if ($bgColor || $textColor) {
+		$style .= 'style="';
+
+		// — background color
+		if ($bgColor) {
+			$style .= 'background-color:' . $bgColor . ';';
+		}
+
+		// — text color
+		if ($textColor) {
+			$style .= 'color:' . $textColor . ';';
+		}
+
+		// End inline style attribute block
+		$style .= '"';
 	}
-
-	// — text color
-	if ($textColor) {
-		$style .= 'color:' . $textColor . ';';
-	}
-
-	// End inline style attribute block
-	$style .= '"';
-
 
 	// Parse links
 	if ($url) {
@@ -144,7 +147,12 @@ function render_heading_block($attributes) {
 		$image = '';
 	}
 
-	$output = "<div class=\"{$wrapperClass}\" {$style}>{$link}{$image}{$linkClose}<{$tagName} class=\"{$class}\">{$link}{$attributes['content']}{$linkClose}</{$tagName}></div>";
+	$output  = "<div class=\"{$wrapperClass}\" {$style}>";
+	$output .= 		"{$link}{$image}{$linkClose}";
+	$output .= 		"<{$tagName} class=\"{$class}\">";
+	$output .= 			"{$link}{$attributes['content']}{$linkClose}";
+	$output .= 		"</{$tagName}>";
+	$output .= "</div>";
 
 	return $output;
 }

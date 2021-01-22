@@ -11,7 +11,6 @@ use const FLEX_LAYOUT_SYSTEM\Components\Border\BORDER_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Border\border_options_classes;
 
 use const FLEX_LAYOUT_SYSTEM\Components\TextColors\TEXT_COLOR_ATTRIBUTES;
-// use function FLEX_LAYOUT_SYSTEM\Components\TextColors\text_color_inline_styles;
 
 use const FLEX_LAYOUT_SYSTEM\Components\BackgroundColorOptions\BACKGROUND_COLOR_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundColorOptions\background_color_options_inline_styles;
@@ -80,29 +79,25 @@ function render_paragraph_block($attributes) {
 	$wrapperClass .= padding_options_classes($attributes);
 	$wrapperClass .= border_options_classes($attributes);
 
-
 	// Build inline style values
 	$style = '';
 
 	if ($bgColor || $textColor) {
 		$style .= 'style="';
-	}
 
-	// — background color
-	if ($bgColor) {
-		$style .= ' background-color:' . $bgColor . ';';
-	}
+		// — background color
+		if ($bgColor) {
+			$style .= 'background-color:' . $bgColor . ';';
+		}
 
-	// — text color
-	if ($textColor) {
-		$style .= ' color:' . $textColor . ';';
-	}
+		// — text color
+		if ($textColor) {
+			$style .= 'color:' . $textColor . ';';
+		}
 
-	if ($bgColor || $textColor) {
 		// End inline style attribute block
 		$style .= '"';
 	}
-
 
 	// Parse links
 	if ($url) {
@@ -113,7 +108,11 @@ function render_paragraph_block($attributes) {
 		$linkClose = '';
 	}
 
-	$output = "<div class=\"{$wrapperClass} {$class}\" {$style}>{$link}{$attributes['content']}{$linkClose}</div>";
+	$output  = "<div class=\"{$wrapperClass} {$class}\" {$style}>";
+	// $output .= 		"<p class=\"{$class}\">";
+	$output .= 			"{$link}{$attributes['content']}{$linkClose}";
+	// $output .= 		"</p>";
+	$output .= "</div>";
 
 	return $output;
 }

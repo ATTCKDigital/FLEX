@@ -48,17 +48,17 @@ del {
 	font-family: inherit;
 }
 
-p, .body1, .body {
+p, 
+.body1, 
+.body {
 	font-size: 14px;
+	letter-spacing: 0;
 	line-height: 1.3;
 	margin-bottom: $gap;
-	letter-spacing: 0;
 	@include primary-regular;
-
 }
 
 p {
-
 	a {
 		color: color('text', 'link');
 		text-decoration: none;
@@ -99,7 +99,7 @@ th, tr, td {
 }
 
 
-/** Error & Message Styles **/
+// Error & Message Styles
 .error {
 	@extend .body;
 	color: red;

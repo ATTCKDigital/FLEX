@@ -1,10 +1,8 @@
 <?php 
 /**
- * Enable Blocks
  * Select blocks that should be available for the project.
- * Available Blocks
- * Enable your acf created blocks by using acf/block_name
- * Enable FLEX created blocks by using flexlayout/block_name
+ * — Enable your ACF created blocks by using acf/block_name
+ * — Enable FLEX created blocks by using flexlayout/block_name
  */
 $blocks = array(
 	'flexlayout/animated-gif',
@@ -12,7 +10,7 @@ $blocks = array(
 	'flexlayout/column', // REQUIRED
 	'flexlayout/feed',
 	'flexlayout/heading',
-	'flexlayout/hr',
+	// 'flexlayout/hr',
 	'flexlayout/image',
 	'flexlayout/list',
 	'flexlayout/paragraph',
@@ -22,12 +20,6 @@ $blocks = array(
 	'flexlayout/shortcode',
 	'flexlayout/source',
 	'flexlayout/socialmedia',
-		
-	//  DEPRECATED, replaced by List and Paragraph. 
-	// If your project is already using this, 
-	// leave it in the child theme.
-	// 'flexlayout/text',
-
 	'flexlayout/users',
 	'flexlayout/video'
 );
@@ -36,9 +28,10 @@ if ( !defined('FLEXLAYOUT_BLOCKS') ) {
 	define('FLEXLAYOUT_BLOCKS', $blocks);
 }
 
-// Add all of the acf blocks that should be registered. Only put the block name. 
+// Add all of the ACF blocks that should be registered. Only put the block name. 
 // The components must be named as described in the read me.
 $registerBlocks = array(
+	// 'acf/blockname'
 );
 
 if ( !defined('FLEXLAYOUT_REGISTER_BLOCKS') ) {

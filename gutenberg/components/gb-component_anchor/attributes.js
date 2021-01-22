@@ -3,11 +3,9 @@
  * @type {Object}
  */
 const AnchorOptionsAttributes = {
-
 	anchor: {
 		type: 'string',
 	},
-
 };
 
 export default AnchorOptionsAttributes;

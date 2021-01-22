@@ -63,7 +63,7 @@ function BorderOptions( props ) {
 							options={ [
 								{
 									label: __ ( 'Choose border style' ),
-									// value: null,
+									value: null,
 								},
 								{
 									label: __( 'None' ),

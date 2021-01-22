@@ -1,6 +1,4 @@
-/**
- * WordPress dependencies
- */
+// WordPress dependencies
 const { __ } = wp.i18n;
 
 const {
@@ -18,9 +16,7 @@ const {
 	SelectControl,
 } = wp.components;
 
-/**
- * Internal dependencies
- */
+// Internal dependencies
 import PaddingOptionsAttributes from './attributes';
 import PaddingOptionsClasses from './classes';
 // import './editor.scss';
@@ -63,7 +59,6 @@ function PaddingOptions( props ) {
 	const setPaddingDesktopLeft = value => props.setAttributes( { paddingDesktopLeft: value } );
 
 	const paddingSelect = () => {
-
 		return (
 			<div className="padding-wrapper">
 				<p>Inherit uses prev screen size setting.</p>
@@ -1029,11 +1024,9 @@ function PaddingOptions( props ) {
 		);
 	};
 
-
-
 	return (
 		<PanelBody
-			title={ __( 'Block Padding' ) }
+			title={ __( 'Padding' ) }
 			className="flexlayout-padding-options"
 			initialOpen={ false }
 		>

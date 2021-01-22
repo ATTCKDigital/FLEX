@@ -1,6 +1,6 @@
 @mixin primary-light {
 	font-family: $primaryLight;
-	font-style: normal;
+	font-style: italic;
 	font-weight: 300;
 }
 
@@ -60,7 +60,7 @@
 
 @mixin secondary-light {
 	font-family: $secondaryLight;
-	font-style: normal;
+	font-style: italic;
 	font-weight: 300;
 }
 
@@ -121,7 +121,7 @@
 
 @mixin tertiary-light {
 	font-family: $tertiaryLight;
-	font-style: normal;
+	font-style: italic;
 	font-weight: 300;
 }
 

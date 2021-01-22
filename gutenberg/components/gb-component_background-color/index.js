@@ -1,15 +1,11 @@
-/**
- * WordPress dependencies
- */
+// WordPress dependencies
 const { __ } = wp.i18n;
 
 const {
 	PanelColorSettings,
 } = wp.blockEditor;
 
-/**
- * Internal dependencies
- */
+// Internal dependencies
 import BackgroundColorOptionsAttributes from './attributes';
 import BackgroundColorOptionsInlineStyles from './inline-styles';
 

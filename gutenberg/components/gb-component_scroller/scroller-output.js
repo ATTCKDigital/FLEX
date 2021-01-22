@@ -3,8 +3,8 @@
  * @param {object} props - The block object.
  * @return {string} The scroller output container.
  */
-function ScrollerOptionsOutput( props ) {
-	if ( props.attributes.showScroller ) {
+function ScrollerOptionsOutput(props) {
+	if (props.attributes.showScroller) {
 		return (
 			<mark
 				className="scrollerActive icon-scroller"

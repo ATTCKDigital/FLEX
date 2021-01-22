@@ -7,6 +7,7 @@
 
 	$postID = get_the_ID();
 	
+	// Add background image or color settings from page properties
 	$bodyBackground = get_field('body_background_desktop', $postID);
 	$bodyBackgroundMobile = get_field('body_background_mobile', $postID);
 	$bodyBackgroundColor = get_field('body_background_color', $postID);
@@ -36,23 +37,22 @@
 				}
 			</style>
 		<?php
-	} //endif body background 
+	}
 
-	if (have_posts()) : while (have_posts()) : the_post();
+	if (have_posts()) : 
+		while (have_posts()) : the_post();
+			// If using Gutenberg blocks
 			if ( has_blocks( $post->post_content ) ) {
-				// If the using blocks
 				the_content();
+			
+			// If using Classic Editor
 			} else {
-				// If using Classic Editor
 				echo Utils::render_template('components/component_post/page.php');
-
-			} // end Gutenberg check
-		endwhile; // endwhile default loop
+			}
+		endwhile;
 	else:
-		?>
-			<p>Sorry, no pages matched your criteria.</p>
-		<?php
-	endif; // endif default loop
+		_e("Sorry, no pages matched your criteria.");
+	endif;
 
 	get_footer();
 ?>
