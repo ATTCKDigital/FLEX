@@ -1,16 +1,14 @@
 /**
- * Set the attributes to be displayed in the Scroller Options panel.
+ * Set the attributes to be displayed in the Background Options panel.
  * @type {Object}
  */
-const ScrollerOptionsAttributes = {
-	showScroller: {
-		type: 'boolean',
-		default: false,
-	},
-	scrollerId: {
+const DataComponentNameAttributes = {
+	dataComponentName: {
 		type: 'string',
 	},
-
+	dataComponentOptions: {
+		type: 'string',
+	},
 };
 
-export default ScrollerOptionsAttributes;
+export default DataComponentNameAttributes;

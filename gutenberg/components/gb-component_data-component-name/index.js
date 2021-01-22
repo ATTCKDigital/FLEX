@@ -1,71 +1,44 @@
-/**
- * WordPress dependencies
- */
+// WordPress dependencies
 const { __ } = wp.i18n;
 
 const {
-	ColorPalette,
-	PanelColorSettings,
-	MediaUpload,
-} = wp.blockEditor;
-
-const {
-	Button,
-	Dashicon,
 	PanelBody,
 	PanelRow,
-	CheckboxControl,
 	TextControl,
-} = wp.components;
+} = wp.components
 
-/**
- * Internal dependencies
- */
-import ScrollerOptionsAttributes from './attributes';
-import ScrollerOptionsOutput from './scroller-output';
-
-// import './editor.scss';
+// Internal dependencies
+import DataComponentNameAttributes from './attributes';
 
 // Export for ease of importing in individual blocks.
 export {
-	ScrollerOptionsAttributes,
-	ScrollerOptionsOutput
+	DataComponentNameAttributes,
 };
 
-function ScrollerOptions( props ) {
-	const setShowScroller = value => props.setAttributes( { showScroller: value } );
-	const setScrollerId = value => props.setAttributes( { scrollerId: value } );
-	const showScrollerID = () => {
-		if ( props.attributes.showScroller ) {
-			return (
-				<TextControl
-					label={__("Scroller ID", "flexlayout")}
-					help={__("Set ID to scroll to. ID should already be set on row to scroll to.", "flexlayout")}
-					value={props.attributes.scrollerId}
-					onChange={setScrollerId}
-				/>
-			);
-		}
-	};
-
+function DataComponentNameOptions( props ) {
+	const setComponentName = value => props.setAttributes( { dataComponentName: value } );
+	const setComponentOptions = value => props.setAttributes( { dataComponentOptions: value } );
+	
 	return (
 		<PanelBody
-			title={ __( 'Scroller Options' ) }
-			className="flexlayout-scroller-options"
+			title={ __( 'FLEX JS Component Name' ) }
+			className="flexlayout-componentname-options"
 			initialOpen={ false }
 		>
 			<PanelRow>
-				<CheckboxControl
-					heading={__("Show scroller?", "flexlayout")}
-					label={__("Yes", "flexlayout")}
-					help={__("Adds a scroll down arrow to the row", "flexlayout")}
-					onChange={setShowScroller}
-					checked={props.attributes.showScroller}
+				<TextControl
+						label="Component Name(s) (e.g., Parallax, Popup)"
+						value={ props.attributes.dataComponentName }
+						onChange={ setComponentName }
 				/>
-				{ showScrollerID() }
+				<TextControl
+						label="Component Options JSON (e.g., { 'loop': true })"
+						value={ props.attributes.dataComponentOptions }
+						onChange={ setComponentOptions }
+				/>
 			</PanelRow>
 		</PanelBody>
 	);
 }
 
-export default ScrollerOptions;
+export default DataComponentNameOptions;
