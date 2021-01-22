@@ -8,7 +8,7 @@ function PaddingOptionsClasses( props ) {
 		props.attributes.paddingTop && props.attributes.paddingTop !== 'inherit' ? `padding-top-${ props.attributes.paddingTop }` : null,
 		props.attributes.paddingRight && props.attributes.paddingRight !== 'inherit' ? `padding-right-${ props.attributes.paddingRight }` : null,
 		props.attributes.paddingLeft && props.attributes.paddingLeft !== 'inherit' ? `padding-left-${ props.attributes.paddingLeft }` : null,
-		props.attributes.paddingBottom && props.attributes.paddingBottom !== 'inherit' ? `padding-bottom-${ props.attributes.paddingPhonePlusBottom }` : null,
+		props.attributes.paddingBottom && props.attributes.paddingBottom !== 'inherit' ? `padding-bottom-${ props.attributes.paddingBottom }` : null,
 		
 		props.attributes.paddingPhoneTop && props.attributes.paddingPhoneTop !== 'inherit' ? `padding-phone-top-${ props.attributes.paddingPhoneTop }` : null,
 		props.attributes.paddingPhoneRight && props.attributes.paddingPhoneRight !== 'inherit' ? `padding-phone-right-${ props.attributes.paddingPhoneRight }` : null,
