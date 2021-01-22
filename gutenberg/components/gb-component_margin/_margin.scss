@@ -5,6 +5,9 @@
  * Use class "margin-size-position-xx" for margins used in all screen sizes
  * ie: margin-small-top-1x where the number before x is the multiplier for 
  * the increment (avoids having to remember your multiplication tables :) )
+ *
+ * NOTE: This is using a double-class specificity hack in order to overtake other 
+ * grid margin settings in the FLEX editor. -DP
  */
 @each $position in $positions {
 	@each $screensize in $screensizes {
@@ -13,7 +16,7 @@
 				@if $screensize != default {
 					// Limit Geometric growth multiplier to 3x
 					@if $i < 4 {
-						.margin-#{$screensize}-#{$position}-#{$i+1}x-geo { 
+						.margin-#{$screensize}-#{$position}-#{$i+1}x-geo.margin-#{$screensize}-#{$position}-#{$i+1}x-geo { 
 							@include mediaquery(#{$screensize}) {
 								// This is the correct function for the 8, 16, 32, 64 sequence
 								// I.e., Geometric growth
@@ -23,7 +26,7 @@
 						}
 					}
 
-					.margin-#{$screensize}-#{$position}-#{$i}x { 
+					.margin-#{$screensize}-#{$position}-#{$i}x.margin-#{$screensize}-#{$position}-#{$i}x { 
 						@include mediaquery(#{$screensize}) {
 							margin-#{$position}: #{$i * $counterIncrement}px;
 						}
@@ -34,7 +37,7 @@
 				@if $screensize == default {
 					// Limit Geometric growth multiplier to 3x
 					@if $i < 4 {
-						.margin-#{$position}-#{$i+1}x-geo { 
+						.margin-#{$position}-#{$i+1}x-geo.margin-#{$position}-#{$i+1}x-geo { 
 							// This is the correct function for the 8, 16, 32, 64 sequence
 							// I.e., Geometric growth
 							// https://www.mathway.com/popular-problems/Algebra/965626
@@ -42,7 +45,7 @@
 						}
 					}
 
-					.margin-#{$position}-#{$i}x { 
+					.margin-#{$position}-#{$i}x.margin-#{$position}-#{$i}x { 
 						margin-#{$position}: #{$i * $counterIncrement}px;
 					}
 				} 
