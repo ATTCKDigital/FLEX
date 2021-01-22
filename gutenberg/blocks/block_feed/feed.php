@@ -29,6 +29,26 @@ function register_feed_block() {
 					'type' => 'string',
 					'default' => '',
 				],
+				'postType' => [
+					'type' => 'string',
+					'default' => '',
+				],
+				'categories' => [
+					'type' => 'array',
+					'default' => '',
+				],
+				'maxFeed' => [
+					'type' => 'string',
+					'default' => '',
+				],
+				'columnNumber' => [
+					'type' => 'string',
+					'default' => '',
+				],
+				'postPerPage' => [
+					'type' => 'Number',
+					'default' => 0,
+				],
 			],
 			MARGIN_OPTIONS_ATTRIBUTES,
 			PADDING_OPTIONS_ATTRIBUTES
@@ -45,10 +65,21 @@ function render_feed_block($attributes) {
 	$class .= margin_options_classes($attributes);
 	$class .= padding_options_classes($attributes);
 
-	$recent_posts = wp_get_recent_posts( [
-		'numberposts' => 3,
+	// Hero
+
+	// Category Tabs
+
+	// RECENT POSTS
+	$selectedCategory = $_GET['categoryId'] ?? $attributes['categories'][0]['id'];
+
+	$query = [
+		'numberposts' => $attributes['postPerPage'],
+		'post_type'		=> $attributes['postType'],
 		'post_status' => 'publish',
-	] );
+		'category' 		=> $selectedCategory
+	] ;
+
+	$recent_posts = wp_get_recent_posts( $query );
 
 	if ( empty( $recent_posts ) ) {
 		return '<p>No posts</p>';
@@ -79,7 +110,12 @@ function render_feed_block($attributes) {
 		$feedItems  .= '<div class="feed-item">'.$thumbnail.'<div class="feed-info margin-bottom-2x"><span class="eyebrow display-block margin-bottom-1x">'.$displayCategories.'</span><h2 class="headline6 margin-bottom-1x">'.get_the_title($postID).'</h2><p class="margin-bottom-1x">'.$excerpt.'</p><span class="eyebrow display-block margin-bottom-1x">'.get_the_time('F j, Y').'</span></div></div>';
 	}
 
-	$output = "<div class=\"component-archive-feed {$class}\"><div class=\"feed-items load-items padding-bottom-3x\">{$feedItems}</div>";
+	$output = "
+	<div class=\"component-archive-feed {$class}\">
+		<div class=\"feed-items load-items padding-bottom-3x\">
+			{$feedItems}
+		</div>
+	</div>";
 
 	return $output;
 }
