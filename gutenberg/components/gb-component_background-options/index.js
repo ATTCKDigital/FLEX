@@ -1,6 +1,4 @@
-/**
- * WordPress dependencies
- */
+// WordPress dependencies
 const { __ } = wp.i18n;
 
 const {
@@ -18,9 +16,7 @@ const {
 	TextControl,
 } = wp.components;
 
-/**
- * Internal dependencies
- */
+// Internal dependencies
 import BackgroundOptionsAttributes from './attributes';
 import BackgroundOptionsClasses from './classes';
 import BackgroundOptionsInlineStyles from './inline-styles';
@@ -427,13 +423,13 @@ function BackgroundOptions( props ) {
 				}
 			</div>
 		);
-
 	};
 
 	const colorPanelSelect = () => {
 		if ( 'color' !== props.attributes.backgroundType ) {
 			return '';
 		}
+
 		return (
 			<PanelColorSettings
 				title={ __( 'Background Color' ) }
@@ -451,7 +447,7 @@ function BackgroundOptions( props ) {
 
 	return (
 		<PanelBody
-			title={ __( 'Background Options' ) }
+			title={ __( 'Background' ) }
 			className="wds-background-options"
 			initialOpen={ false }
 		>

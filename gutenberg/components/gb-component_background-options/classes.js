@@ -17,7 +17,6 @@ function BackgroundOptionsClasses( props ) {
 		{ 'component-background-center-center': 'center' === props.attributes.backgroundPositionX && 'center' === props.attributes.backgroundPositionY },
 		{ 'component-background-center-top': 'center' === props.attributes.backgroundPositionX && 'top' === props.attributes.backgroundPositionY },
 		{ 'component-background-center-bottom': 'center' === props.attributes.backgroundPositionX && 'bottom' === props.attributes.backgroundPositionY },
-
 	];
 }
 
