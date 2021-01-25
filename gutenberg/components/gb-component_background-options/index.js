@@ -141,12 +141,12 @@ function BackgroundOptions( props ) {
 								value={ props.attributes.backgroundPositionX ? props.attributes.backgroundPositionX : '' }
 								options={ [
 									{
-										label: __( 'Center' ),
-										value: 'center',
-									},
-									{
 										label: __( 'Left' ),
 										value: 'left',
+									},
+									{
+										label: __( 'Center' ),
+										value: 'center',
 									},
 									{
 										label: __( 'Right' ),

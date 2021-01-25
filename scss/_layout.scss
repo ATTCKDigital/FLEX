@@ -143,3 +143,39 @@
 .relative {
 	position: relative !important;
 }
+
+.offset-bottom {
+	position: relative;
+
+	&--25  { bottom: -25%;  }
+	&--50  { bottom: -50%;  }
+	&--75  { bottom: -75%;  }
+	&--100 { bottom: -100%; }
+}
+
+.offset-left {
+	position: relative;
+
+	&--25  { left: -25%;  }
+	&--50  { left: -50%;  }
+	&--75  { left: -75%;  }
+	&--100 { left: -100%; }
+}
+
+.offset-right {
+	position: relative;
+
+	&--25  { right: -25%;  }
+	&--50  { right: -50%;  }
+	&--75  { right: -75%;  }
+	&--100 { right: -100%; }
+}
+
+.offset-top {
+	position: relative;
+
+	&--25  { top: -25%;  }
+	&--50  { top: -50%;  }
+	&--75  { top: -75%;  }
+	&--100 { top: -100%; }
+}
