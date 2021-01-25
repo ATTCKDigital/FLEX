@@ -1,9 +1,9 @@
 /**
- * Caching function
+ * Caches DOM elements using jQuery-style selector
+ *
  * Usage: $$({selector}) returned cached element if previously used
  * or caches upon first use.
  */
-
 console.log('loaded', '/FLEX\t/js\t/cached-dom-elements.js');
 
 import $ from 'jquery';

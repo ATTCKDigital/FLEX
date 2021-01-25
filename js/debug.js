@@ -1,4 +1,5 @@
 import FLEX from './clientNamespace';
+import $$ from 		'../components/component_cached-dom-elements/cached-dom-elements';
 import GlobalEvents from './global-events';
 
 // const Debug = {
@@ -9,7 +10,8 @@ import GlobalEvents from './global-events';
 // };
 
 FLEX.debug = (function () {
-	var debugModeStatus = false;
+	var _debugModeStatus = false;
+	var _breakpointsModeStatus = false;
 
 	function bindEvents() {
 		// Only bind keyboard events if already in debug mode
@@ -31,13 +33,17 @@ FLEX.debug = (function () {
 	}
 
 	// Set body class attribute for CSS debugging help
-	function bodyClassSet(status) {
+	function bodyClassSet(status, className) {
 		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.bodyClassSet(status: ' + status + ')');
 
+		if (FLEX.isUndefined(className)) {
+			className = 'debug';
+		}
+
 		if (status === true) {
-			$('body').addClass('debug');
+			$('body').addClass(className);
 		} else {
-			$('body').removeClass('debug');
+			$('body').removeClass(className);
 		}
 	}
 
@@ -66,8 +72,9 @@ FLEX.debug = (function () {
 	function debugModeStatusDetect(successCallback) {
 		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.debugModeStatusDetect()');
 
-		// Default value
+		// Default values
 		var debugMode = false;
+		var showBreakpoints = false;
 
 		switch (true) {
 			// Check URL var
@@ -77,6 +84,14 @@ FLEX.debug = (function () {
 
 			case FLEX.queryVariables.get('debug') === 'false':
 				debugMode = false;
+				break;
+
+			case FLEX.queryVariables.get('showBreakpoints') === 'true':
+				showBreakpoints = true;
+				break;
+
+			case FLEX.queryVariables.get('showBreakpoints') === 'false':
+				showBreakpoints = false;
 				break;
 
 			// Check cookies from previous session
@@ -92,15 +107,39 @@ FLEX.debug = (function () {
 		if (debugModeStatusSet(debugMode)) {
 			successCallback();
 		}
+
+		// Set the debug value and run the callback if debugging is active
+		if (breakpointsModeStatusSet(showBreakpoints)) {
+			bodyClassSet(showBreakpoints, 'showBreakpoints');
+		}
+	}
+
+	function breakpointsModeStatusGet() {
+		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.breakpointsModeStatusGet(), breakpointsModeStatus: ' + breakpointsModeStatus);
+
+		return _breakpointsModeStatus;
+	}
+
+	// Manages access to debugModeStatus variable and enforce type
+	function breakpointsModeStatusSet(status) {
+		// Enforce type
+		if (typeof status !== "boolean") {
+			// Revert to previous value if invalid type passed
+			status = _breakpointsModeStatus;
+		}
+
+		showCSSBreakpoints(status);
+
+		return _breakpointsModeStatus = status;
 	}
 
 	function debugModeStatusGet() {
 		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.debugModeStatusGet(), debugModeStatus: ' + debugModeStatus);
 
-		return debugModeStatus;
+		return _debugModeStatus;
 	}
 
-	// Manages access to debugModeStatus variable and enforces type
+	// Manages access to debugModeStatus variable and enforce type
 	function debugModeStatusSet(status) {
 		// Enforce type
 		if (typeof status !== "boolean") {
@@ -110,7 +149,7 @@ FLEX.debug = (function () {
 
 		cookiesSet(status);
 
-		return debugModeStatus = status;
+		return _debugModeStatus = status;
 	}
 
 	// Runs only when in debug mode
@@ -216,6 +255,7 @@ FLEX.debug = (function () {
 			});
 
 			// Expose text value on resize
+			/* Don't need these since we moved this to the CSS file
 			$(document.body)
 				.on("FLEX.resize", function () {
 					FLEX.GlobalEvents.onlysmall(function () {
@@ -258,7 +298,7 @@ FLEX.debug = (function () {
 						$('.breakpoint-current').show().text('Breakpoint is 5xl');
 					});
 				});
-
+			*/
 		}
 
 		if (typeof $ !== 'undefined' && status === false) {

@@ -11,22 +11,27 @@ ObjectAssign.polyfill();
 // Import all JS components explicitly.
 // Required
 // Launch TODO: Comment out any unused components for production. -DP
-import $$ from './cached-dom-elements';
-import Analytics from '../components/component_analytics/analytics';
-import AnimatedGif from '../gutenberg/blocks/block_animated-gif/swap-gif';
-import Bookmark from '../components/component_bookmark/bookmark';
-import CalendarLink from '../components/component_calendarlink/calendarlink';
-import ElementsInViewport from './elements-in-viewport';
-import GDPR from '../components/component_footer/gdpr';
-import LoadMore from './load-more';
-import Nav from '../components/component_nav/nav';
-import Parallax from './parallax';
-import Reserve from '../components/component_reserve/reserve';
-import ScrollTo from './scroll-to';
-import Share from '../components/component_share/share';
-import Timer from '../components/component_timer/timer';
-import Video from '../gutenberg/blocks/block_video/play-video';
-import VideoThumb from '../gutenberg/components/gb-component_background-options/video-thumb';
+// Global utility components (REQUIRED)
+import $$ from 					'../components/component_cached-dom-elements/cached-dom-elements';
+import Analytics from 			'../components/component_analytics/analytics';
+import ElementsInViewport from 	'../components/component_elements-in-viewport/elements-in-viewport';
+import LoadMore from 			'../components/component_load-more/load-more';
+import GDPR from 				'../components/component_gdpr/gdpr';
+import Parallax from 			'../components/component_parallax/parallax';
+import ScrollTo from 			'../components/component_scroll-to/scroll-to';
+
+// Interactive components
+import Bookmark from 			'../components/component_bookmark/bookmark';
+import CalendarLink from 		'../components/component_calendarlink/calendarlink';
+import Nav from 				'../components/component_nav/nav';
+import Reserve from 			'../components/component_reserve/reserve';
+import Share from 				'../components/component_share/share';
+import Timer from 				'../components/component_timer/timer';
+
+// Gutenberg block components
+import AnimatedGif from 		'../gutenberg/blocks/block_animated-gif/swap-gif';
+import Video from 				'../gutenberg/blocks/block_video/play-video';
+import VideoThumb from 			'../gutenberg/components/gb-component_background-options/video-thumb';
 
 // Project Specific
 const childComponents = FLEX.ChildComponents || {};

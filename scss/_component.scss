@@ -57,6 +57,15 @@
 	}
 }
 
+.component-image-background, 
+.component-color-background, 
+.component-video-background {
+	background-size: cover;
+	background-position: right center;
+	background-repeat: no-repeat;
+	min-height: 100%;
+}
+
 .component-image-background {
 	background-position: center center;
 	background-repeat: no-repeat;
@@ -104,6 +113,18 @@
 	}
 }
 
+// Applys same settings for non FLEX layouts
+.body-padding {
+	max-width: $siteWidth;
+	padding-left: 20px;
+	padding-right: 20px;
+
+	@include mediaquery(desktop)  {
+		max-width: inherit;
+		padding: 0;
+	}
+}
+
 // Row block in 2 widths
 .component-row-wide {
 	margin: 0 auto;
@@ -115,7 +136,6 @@
 	@include mediaquery(desktop)  {
 		padding: 0;
 	}
-
 }
 
 // Remove padding on a row without making it full bleed
@@ -136,8 +156,7 @@
 	height: 100%;
 }
 
-//Fixed row heights
-
+// Fixed row heights
 .component-row-height-none {
 	height: 100%;
 }
@@ -213,5 +232,79 @@
 	}
 }
 
+.component-video-background {
+	// Otherwise box-shadows get cut off
+	// overflow: hidden;
+	overflow: visible;
+	position: relative;
 
+	.video-container {
+		height: 100%;
+		position: absolute;
+		z-index: -1;
+	}
 
+	&.align-video-right {
+		.video-container {
+			right: 0;
+		}
+	}
+
+	&.video-width-50 { .video-container { width: 50%; } }
+	&.video-width-60 { .video-container { width: 60%; } }
+	&.video-width-70 { .video-container { width: 70%; } }
+	&.video-width-80 { .video-container { width: 80%; } }
+	&.video-width-90 { .video-container { width: 90%; } }
+	&.video-width-100 { .video-container { width: 100%; } }
+
+	&.full-video-container {
+		.video-container {
+			left: 50%;
+			min-height: 100%;
+			min-width: 100%;
+			object-fit: cover;
+			object-position: center center;
+			opacity: 0;
+			transform: translate(-50%, -50%);
+			top: 50%;
+			width: 100%;
+		}
+	}
+	
+	.video-thumbnail-wrapper {
+		height: 100%;
+		min-height: 100%;
+		min-width: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: -1;
+		opacity: 1;
+		transition: opacity .1s ease-in, z-index .1s ease-in;
+
+		img {
+			height: 100%;
+			left: 50%;
+			min-height: 100%;
+			min-width: 100%;
+			object-fit: cover;
+			object-position: center center;
+			position: absolute;
+			transform: translate(-50%, -50%);
+			top: 50%;
+			width: 100%;
+		}
+	}
+
+	.playingVideo {
+		.video-thumbnail-wrapper {
+			opacity: 0;
+			z-index: -2;
+		}
+
+		.video-container {
+			opacity: 1;
+		}
+	}
+}

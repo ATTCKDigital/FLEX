@@ -1,7 +1,6 @@
 import $ from 'jquery';
 
 function ScrollTo($el) {
-
 	function ScrollToAnchor() {
 		var anchor = $(this).attr('data-anchor');
 		var row = $('body').find('#'+anchor);

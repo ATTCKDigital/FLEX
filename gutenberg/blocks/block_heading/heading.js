@@ -206,7 +206,7 @@ export default registerBlockType(
 					/>
 					<RichText
 						className={ classnames(
-							`align-${align}`,
+							`text-align-${align}`,
 							...BorderOptionsClasses( props ),
 							...MarginOptionsClasses( props ),
 							...PaddingOptionsClasses( props ),

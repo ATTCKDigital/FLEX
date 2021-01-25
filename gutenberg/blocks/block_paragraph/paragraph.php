@@ -71,7 +71,7 @@ function render_paragraph_block($attributes) {
 	$componentName = 'paragraph';
 	$class = 'component-' . $componentName . ' component ';
 	$class .= $attributes['className'];
-	$class .= " align-{$attributes['align']}";
+	$class .= " text-align-{$attributes['align']}";
 
 	// Build wrapper classes
 	$wrapperClass = 'component-' . $componentName . '-wrapper ';

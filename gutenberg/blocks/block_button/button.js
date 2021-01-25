@@ -79,13 +79,13 @@ export default registerBlockType(
 		edit: props => {
 			const {
 				attributes: {
-					content,
 					align,
-					placeholder,
-					url,
+					content,
 					content2,
-					url2,
-					target
+					placeholder,
+					target,
+					url,
+					url2
 				},
 				className,
 				setAttributes,
@@ -101,7 +101,7 @@ export default registerBlockType(
 							value={ align }
 							onChange={ ( nextAlign ) => {
 								setAttributes( {
-									align: nextAlign
+									textAlign: nextAlign
 								} );
 							} }
 						/>

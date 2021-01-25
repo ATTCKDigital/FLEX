@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import FLEX from '../../js/clientNamespace';
-import $$ from '../../js/cached-dom-elements';
+import $$ from '../component_cached-dom-elements/cached-dom-elements';
 
 /**
  * Shows countdown timer

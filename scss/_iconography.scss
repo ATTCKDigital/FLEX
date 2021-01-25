@@ -113,17 +113,14 @@
 	}
 }
 
-//Creates a larger target space for the hamburger. Apple's iPhone Human Interface Guidelines recommends a minimum target size of 44 pixels wide 44 pixels tall.
+// Creates a larger target space for the hamburger. Apple's iPhone Human Interface Guidelines 
+// recommends a minimum target size of 44 pixels wide 44 pixels tall.
 .hamburger-wrapper {
 	position: absolute;
 	top: 0;
 	right: 0;
 	height: 70px;
 	width: 70px;
-
-	@include mediaquery(tablet-landscape)  {
-		display: none;
-	}
 }
 
 // 3 line hamburger animates to an X when "navOpen" class is added to the body
@@ -168,7 +165,6 @@
 			top: 8px;
 			transform: rotate(-45deg);
 		}
-
 	}
 }
 

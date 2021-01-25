@@ -25,10 +25,8 @@
 		));
 	?>
 	<?php echo Utils::render_template('config/theme-includes/pinterest-verify.php'); ?>
-
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() . "/dist/style.css"; ?>" type="text/css" media="screen" />
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() . "/dist/print.css"; ?>" type="text/css" media="print" />
 	<?php echo Utils::render_template('config/theme-includes/typekit.php'); ?>
@@ -36,6 +34,7 @@
 	<?php echo Utils::render_template('config/theme-includes/facebook-pixel.php'); ?>
 	<?php wp_head(); ?>
 	<?php
+		// Add for JS usage by components like countdown timers and such.
 		$currentHour = date('H');
 		$currentMinute = date('i');
 		$currentSecond = date('s');
@@ -49,7 +48,7 @@
 	<?php echo Utils::render_template('config/theme-includes/hubspot-tracking-code.php'); ?>
 	<?php echo Utils::render_template('config/theme-includes/social-media.php'); ?>
 
-	<?php //see global-events.js for usage ?>
+	<?php // See global-events.js for usage ?>
 	<div class="breakpoint global"></div>
 	<div class="breakpoint phone"></div>
 	<div class="breakpoint tablet-portrait"></div>

@@ -1,5 +1,5 @@
 <?php // Global Footer ?>
-<section class="component-row-full component-footer component-row">
+<section class="component-row-full component-footer component-row body-padding">
 	<div class="flex-grid component-alignment-top component-row-wide padding-global-top-2x padding-global-bottom-2x padding-left-1x padding-right-1x padding-desktop-left-0x padding-desktop-right-0x">
 		<div class="flex-12-12 padding-top-10x padding-bottom-2x">
 			<a href="/" class="logo-wrapper">

@@ -16,6 +16,12 @@
 
 	}
 
+	.hamburger-wrapper {
+		@include mediaquery(tablet-landscape)  {
+			display: none;
+		}
+	}
+
 	.hideNav & {
 		top: -($navMobileHeight);
 
@@ -130,7 +136,7 @@
 
 		&.current-menu-item {
 			a:after {
-				background-color: $black;
+				background-color: $base-color;
 				opacity: 1;
 			}
 		}
@@ -140,7 +146,7 @@
 				opacity: .7;
 
 				a:after {
-					background-color: $black;
+					background-color: $base-color;
 					opacity: .7;
 				}
 			}

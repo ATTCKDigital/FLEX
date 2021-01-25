@@ -1,11 +1,11 @@
 /*!
- * FLEX v1.11.17.19
+ * FLEX v1.21.1.23
  *
  * Copyright JS Foundation and other contributors
  * Released under the MIT license
  * https://js.foundation/
  *
- * Date: 2019-01-01
+ * Date: 2021-01-23
  */
 
 // Load order: First, before 
@@ -20,7 +20,7 @@ import cssVars from 'css-vars-ponyfill';
 import GlobalEvents from './global-events';
 import Loader from './load-components';
 
-// Support for native css variables in legacy browsers
+// Support for native CSS variables in legacy browsers
 cssVars();
 
 // Initiate Global Component Loader and Global Events.
