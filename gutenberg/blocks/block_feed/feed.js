@@ -20,7 +20,9 @@ const {
 	PanelRow,
 	Spinner,
 	SelectControl,
-	RangeControl
+	RangeControl,
+	ToggleControl,
+	FormTokenField
 } = wp.components;
 const {
 	withSelect
@@ -55,6 +57,10 @@ export default registerBlockType(
 			postType: {
 				type: 'string',
 				default: 'post'
+			},
+			paginationActive: {
+				type: 'bool',
+				default: true
 			},
 			postPerPage: {
 				type: Number,
@@ -113,24 +119,23 @@ export default registerBlockType(
 							/>
 						</PanelRow>
 						<PanelRow>
-						<SelectControl
-							multiple
-							label={__('Categories')}
-							options={categories && categories.map(({id, name}) => ({label: name, value: id}))}
-							onChange={(id) => {
-								const category = categories.find(item => {
-									return item.id == id
-								})
-
-								setAttributes( { 
-									categories: [
-										...attributes.categories,
-										category
-									]
-								})
-							}}
-							value={attributes.categories}
-						/>
+							<FormTokenField
+								label="Select Category"
+								value={ attributes.categories.map(category => category.name) }
+								suggestions={ categories && categories.map(category => category.name) }
+								onChange={ tokens => { 
+									const selectedCategories = categories.filter(category => 
+										tokens.some(token => 
+											category.name.toLowerCase() === token.toLowerCase()
+										)
+									)
+												
+									setAttributes({
+										categories: selectedCategories
+									})
+								}}
+								placeholder="Select Categories"
+							/>
 						</PanelRow>
 						<PanelRow>
 							<RangeControl
@@ -148,6 +153,22 @@ export default registerBlockType(
 				<div className={classnames(
 						'component-archive-feed',
 					)}>
+					<div>
+						<ul>
+							{attributes.categories && attributes.categories.map(category => {
+								return (
+									<li className={'category-tab'}>
+										<a>
+											{category.name}
+										</a>
+									</li>
+								);
+							})}
+							<li>
+								<a></a>
+							</li>
+						</ul>
+					</div>
 					<ul className={'feed-items'}>
 						{posts.map(post => {
 							return (

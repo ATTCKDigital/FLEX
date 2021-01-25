@@ -64,13 +64,31 @@ function render_feed_block($attributes) {
 	$class = $attributes['className'];
 	$class .= margin_options_classes($attributes);
 	$class .= padding_options_classes($attributes);
+	$categories = $attributes['categories'];
+	$tabs = '';
 
-	// Hero
+	//Category Tabs
+	if (!empty($categories)) {
+		$tabs .= "
+		<div class=\"category-tabs\"> 
+			<ul>
+		";
 
-	// Category Tabs
+		foreach ($categories as $category) {
+			$tabs .= "
+			<li>
+				<a href=\"?categoryId={$category['id']}\">{$category['name']}</a>
+			</li>
+			";
+		}
+
+		$tabs .= "
+			</ul>
+		</div>";
+	}
 
 	// RECENT POSTS
-	$selectedCategory = $_GET['categoryId'] ?? $attributes['categories'][0]['id'];
+	$selectedCategory = $_GET['categoryId'] ?? $categories[0]['id'];
 
 	$query = [
 		'numberposts' => $attributes['postPerPage'],
@@ -82,7 +100,13 @@ function render_feed_block($attributes) {
 	$recent_posts = wp_get_recent_posts( $query );
 
 	if ( empty( $recent_posts ) ) {
-		return '<p>No posts</p>';
+		$output = "
+		<div class=\"component-archive-feed {$class}\">
+			{$tabs}
+			<p>No posts</p>
+		</div>";
+
+		return $output;
 	}
 
 	$feedItems = '';
@@ -112,6 +136,7 @@ function render_feed_block($attributes) {
 
 	$output = "
 	<div class=\"component-archive-feed {$class}\">
+		{$tabs}
 		<div class=\"feed-items load-items padding-bottom-3x\">
 			{$feedItems}
 		</div>
