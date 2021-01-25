@@ -57,6 +57,27 @@
 	}
 }
 
+.component-image-background {
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	&.component-image-background-wide {
+		&:before {
+			content: '';
+			display: block;
+			background-repeat: no-repeat;
+			background-size: 50%;
+			background-position: center center;
+			bottom: -100%;
+			left: 0;
+			position: absolute;
+			right: 0;
+			top: -100%;
+		}
+	}
+}
+
 .component-row {
 	height: auto;
 	position: relative;

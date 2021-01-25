@@ -5,9 +5,11 @@
  * — Enable FLEX created blocks by using flexlayout/block_name
  */
 $blocks = array(
+	'flexlayout/column', // REQUIRED
+	'flexlayout/row', // REQUIRED
+	
 	'flexlayout/animated-gif',
 	'flexlayout/button',
-	'flexlayout/column', // REQUIRED
 	'flexlayout/feed',
 	'flexlayout/heading',
 	// 'flexlayout/hr',
@@ -15,7 +17,6 @@ $blocks = array(
 	'flexlayout/list',
 	'flexlayout/paragraph',
 	'flexlayout/quote',
-	'flexlayout/row', // REQUIRED
 	'flexlayout/share',
 	'flexlayout/shortcode',
 	'flexlayout/source',
