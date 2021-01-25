@@ -58,17 +58,29 @@ export default registerBlockType(
 				type: 'string',
 				default: 'post'
 			},
-			paginationActive: {
-				type: 'bool',
-				default: true
-			},
 			postPerPage: {
 				type: Number,
 				default: 12
 			},
+			columnNumber: {
+				type: Number,
+				default: 3,
+			},
 			categories: {
 				type: 'array',
 				default: []
+			},
+			paginationActive: {
+				type: Boolean,
+				default: true
+			},
+			filterActive: {
+				type: Boolean,
+				default: true
+			},
+			showExcerpt: {
+				type: Boolean,
+				default: false
 			},
 			...MarginOptionsAttributes,
 			...PaddingOptionsAttributes,
@@ -102,7 +114,7 @@ export default registerBlockType(
 			return [
 				<InspectorControls>
 				
-					<PanelBody title={__('Feed Post Type')}>
+					<PanelBody title={__('Post Settings')}>
 						<PanelRow>
 							<SelectControl
 								key="post-type"
@@ -144,6 +156,41 @@ export default registerBlockType(
 									onChange={ postPerPage => setAttributes( { postPerPage } ) }
 									min={ 1 }
 									max={ 20 }
+							/>
+						</PanelRow>
+						<PanelRow>
+							<RangeControl
+									label="Post Per Row"
+									value={ attributes.columnNumber ?? 3 }
+									onChange={ columnNumber => setAttributes( { columnNumber } ) }
+									min={ 1 }
+									max={ 8 }
+							/>
+						</PanelRow>
+					</PanelBody>
+					<PanelBody title="Options">
+						<PanelRow>
+							<ToggleControl
+								label="Show Pagination"
+								help={ attributes.paginationActive ? 'Pagination Activated' : 'Pagination Deactivated' }
+								checked={ attributes.paginationActive }
+								onChange={ paginationActive => setAttributes( { paginationActive } ) }
+							/>
+						</PanelRow>
+						<PanelRow>
+							<ToggleControl
+								label="Show Filter"
+								help={ attributes.filterActive ? 'Filter Activated' : 'Filter Deactivated' }
+								checked={ attributes.filterActive }
+								onChange={ filterActive => setAttributes( { filterActive } ) }
+							/>
+						</PanelRow>
+						<PanelRow>
+							<ToggleControl
+								label="Show Excerpt"
+								help={ attributes.showExcerpt ? 'Excerpt is active' : 'Filter Deactivated' }
+								checked={ attributes.showExcerpt }
+								onChange={ filterActive => setAttributes( { filterActive } ) }
 							/>
 						</PanelRow>
 					</PanelBody>
