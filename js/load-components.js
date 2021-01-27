@@ -17,7 +17,7 @@ import AnimatedGif from '../gutenberg/blocks/block_animated-gif/swap-gif';
 import Bookmark from '../components/component_bookmark/bookmark';
 import CalendarLink from '../components/component_calendarlink/calendarlink';
 import ElementsInViewport from './elements-in-viewport';
-import FeedFilter from '../gutenberg/blocks/block_feed/feed-filter';
+import PostsFilter from '../gutenberg/blocks/block_posts/posts-filter';
 import GDPR from '../components/component_footer/gdpr';
 import LoadMore from './load-more';
 import Nav from '../components/component_nav/nav';
@@ -40,7 +40,6 @@ FLEX.Components = Object.assign({
 	'Bookmark': Bookmark,
 	'CalendarLink': CalendarLink,
 	'ElementsInViewport': ElementsInViewport,
-	'FeedFilter': FeedFilter,
 	'GDPR': GDPR,
 	'LoadMore': LoadMore,
 	'Nav': Nav,
@@ -49,6 +48,7 @@ FLEX.Components = Object.assign({
 	'Share': Share,
 	'Timer': Timer,
 	'Parallax': Parallax,
+	'PostsFilter': PostsFilter,
 	'Video': Video,
 	'VideoThumb': VideoThumb
 }, childComponents);

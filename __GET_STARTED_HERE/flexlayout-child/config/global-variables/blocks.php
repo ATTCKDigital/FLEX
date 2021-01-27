@@ -10,6 +10,7 @@ $blocks = array(
 	'flexlayout/column', //REQUIRED
 	'flexlayout/button',
 	'flexlayout/feed',
+	'flexlayout/posts',
 	'flexlayout/heading',
 	'flexlayout/image',
 	'flexlayout/quote',
