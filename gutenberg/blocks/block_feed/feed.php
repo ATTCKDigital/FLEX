@@ -38,8 +38,8 @@ function register_feed_block() {
 					'default' => '',
 				],
 				'columnNumber' => [
-					'type' => 'string',
-					'default' => '',
+					'type' => 'Number',
+					'default' => 4,
 				],
 				'paginationActive' => [
 					'type' => 'bool',
@@ -75,37 +75,37 @@ function render_feed_block($attributes) {
 	$categories = $attributes['categories'];
 	$showExcerpt = $attributes['showExcerpt'];
 	$filterActive = $attributes['filterActive'];
+	$columnNumber = $attributes['columnNumber'];
 	$tabs = '';
 	$postFilter = '';
 	$orderby = 'date';
 	$order = $_GET['order'] ?? 'DESC';
 	$pagination = '';
-	$query_string = '?' . $_SERVER['QUERY_STRING'] . '&' ?? '?';
-	
+
 	// Filter
 	if ($filterActive) {
 		$postFilter .= "
-			<form>
+			<div>
 				<label>Sort by:</label>
-				<select name=\"order\" class=\"dropdown\" onchange=\"this.form.submit()\">
-					<option value=\"ASC\">NEW</option>
-					<option value=\"DESC\">OLD</option>
+				<select name=\"order\" class=\"dropdown\">
+					<option value=\"ASC\" " . ($order == 'ASC' ? 'selected' : '') . ">NEW</option>
+					<option value=\"DESC\" " . ($order == 'DESC' ? 'selected' : '') . ">OLD</option>
 				</select>
-			</form>
-		";
+			</div>
+		";	
 	}
 
 	// Category Tabs
 	if ( !empty( $categories ) ) {
 		$tabs .= "
-		<div class=\"category-tabs\"> 
-			<ul class=\"tabs\">
+		<div class=\"categories\"> 
+			<ul class=\"cat-list\">
 		";
 
 		foreach ( $categories as $category ) {
 			$tabs .= "
-			<li class=\"tab\">
-				<a href=\"{$query_string}categoryId={$category['id']}\">{$category['name']}</a>
+			<li class=\"cat-item\">
+				<button class=\"cat-button\" name=\"category\" value=\"{$category['id']}\">{$category['name']}</button>
 			</li>
 			";
 		}
@@ -116,7 +116,7 @@ function render_feed_block($attributes) {
 	}
 
 	// RECENT POSTS
-	$selectedCategory = $_GET['categoryId'] ?? $categories[0]['id'];
+	$selectedCategory = $_GET['category'] ?? $categories[0]['id'];
 	
 	$paged = get_query_var('paged')
 	? get_query_var('paged')
@@ -129,7 +129,7 @@ function render_feed_block($attributes) {
 		'cat' 						=> 	$selectedCategory,
 		'order'						=> 	$order,
 		'orderby'					=>	$orderby,
-		'paged' => $paged,
+		'paged' 					=> 	$paged,
 	] ;
 
 	$recent_posts = new \WP_Query( $query );
@@ -157,10 +157,12 @@ function render_feed_block($attributes) {
 				'format' => '?paged=%#%',
 				'end_size' => 2,
 				'mid_size' => 4,
-				'prev_next' => false,
+				'prev_next' => true,
+				'prev_text' => '',
+				'next_text' => '',
 				'add_fragment' => '',
 				'total' => $recent_posts->max_num_pages
-			]) .	
+			]) .
 		"</nav>";
 
 
@@ -192,7 +194,7 @@ function render_feed_block($attributes) {
 		}
 		
 		$feedItems  .= '
-			<div class="feed-item">'.
+			<div class="feed-item" style="width: '. 100 / $columnNumber .'%;">'.
 				$thumbnail.
 				'<div class="feed-info margin-bottom-2x">
 					<span class="eyebrow display-block margin-bottom-1x">'.
@@ -211,12 +213,14 @@ function render_feed_block($attributes) {
 
 	wp_reset_postdata();
 
+	$permalink = get_the_permalink();
+
 	$output = "
-	<div class=\"component-archive-feed {$class}\">
-		<div class=\"top-bar\">
+	<div class=\"component-archive-feed {$class}\" data-component-name=\"FeedFilter\">
+		<form action=\"{$permalink}\" class=\"top-bar filter-form\" method=\"get\">
 			{$tabs}
 			{$postFilter}
-		</div>
+		</form>
 		<div class=\"feed-items load-items padding-bottom-3x\">
 			{$feedItems}
 		</div>

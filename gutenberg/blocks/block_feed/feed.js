@@ -205,9 +205,7 @@ export default registerBlockType(
 							{attributes.categories && attributes.categories.map(category => {
 								return (
 									<li className={'category-tab'}>
-										<a>
-											{category.name}
-										</a>
+										{category.name}
 									</li>
 								);
 							})}
@@ -219,12 +217,12 @@ export default registerBlockType(
 					<ul className={'feed-items'}>
 						{posts.map(post => {
 							return (
-								<li className={'feed-item'}>
-									<h2 class="headline6">
+								<li className={'feed-item'} style={{flex: 1 / attributes.columnNumber}}>
+									<div class="is-style-headline6">
 										<a className={className} href={post.link}>
 											{post.title.rendered}
 										</a>
-									</h2>
+									</div>
 								</li>
 							);
 						})}
