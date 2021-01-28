@@ -160,22 +160,24 @@ function render_posts_block($attributes) {
 	// Pagination
 
 	$pagination .= "
-		<nav class=\"pagination-nav\" role=\"navigation\" aria-label=\"Pagination Navigation\">" .
-			paginate_links([
-				'base' => str_replace(999999999,
-					'%#%',
-					esc_url(get_pagenum_link(999999999))),
-				'current' => max(1, $paged),
-				'format' => '?paged=%#%',
-				'end_size' => 2,
-				'mid_size' => 4,
-				'prev_next' => true,
-				'prev_text' => '',
-				'next_text' => '',
-				'add_fragment' => '',
-				'total' => $recent_posts->max_num_pages
-			]) .
-		"</nav>";
+		<nav class=\"pagination-nav\" role=\"navigation\" aria-label=\"Pagination Navigation\">
+			<div class=\"pagination-wrapper\">" .
+				paginate_links([
+					'base' => str_replace(999999999,
+						'%#%',
+						esc_url(get_pagenum_link(999999999))),
+					'current' => max(1, $paged),
+					'format' => '?paged=%#%',
+					'end_size' => 2,
+					'mid_size' => 4,
+					'prev_next' => true,
+					'prev_text' => '',
+					'next_text' => '',
+					'add_fragment' => '',
+					'total' => $recent_posts->max_num_pages
+				]) .
+		"	</div>
+		</nav>";
 
 
 	$postsItems = '';
@@ -212,7 +214,7 @@ function render_posts_block($attributes) {
 		}
 		
 		$postsItems .= '
-			<li class="posts-item post-category-'. $category->name .'" style="width: '. 100 / $columnNumber .'%;">
+			<li class="posts-item post-category-'. $categories[0]->slug .'" style="width: '. 100 / $columnNumber .'%;">
 				<div class="posts-item-wrapper">'.
 					$thumbnail.
 					'<div class="post-content">'.
