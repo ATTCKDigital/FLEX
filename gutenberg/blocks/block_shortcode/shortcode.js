@@ -1,12 +1,8 @@
-/**
- * Block dependencies
- */
+// Block dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js'
 
-/**
- * Internal block libraries
- */
+// Internal block libraries
 const { __ } = wp.i18n;
 const {
 	registerBlockType,
@@ -20,30 +16,22 @@ const {
 	Toolbar,
 	Tooltip,
 	Dashicon
-
 } = wp.components;
 
-/**
- * Internal dependencies
- */
-// Import all of our Margin Options requirements.
+// Internal dependencies
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
-// Import all of our Border Options requirements.
 import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
-// Import all of our Padding Options requirements.
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
 
-
-/**
-	* Register block
- */
+// Register block
 export default registerBlockType(
 	'flexlayout/shortcode',
 	{
 		title: __( 'Shortcode' ),
 		description: __( 'Display Wordpress shortcodes.' ),
 		category: 'common',
-		icon: 'plus',
+		// icon: 'plus',
+		icon: icons.wordpress,
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__( 'Shortcode', 'flexlayout' ),

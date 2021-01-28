@@ -47,7 +47,8 @@ export default registerBlockType(
 		title: __( 'Heading' ),
 		description: __( 'Introduce new sections and organize content to help visitors (and search engines) understand the structure of your content.' ),
 		category: 'common',
-		icon: 'heading',
+		// icon: 'heading',
+		icon: icons.heading,
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__( 'Text', 'flexlayout' ),

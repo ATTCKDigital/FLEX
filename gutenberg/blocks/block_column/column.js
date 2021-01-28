@@ -48,7 +48,8 @@ export default registerBlockType(
 		title: __( 'Column' ),
 		description: __( 'Creates a column wrapper to support inner blocks.', 'flexlayout' ),
 		category: 'layout',
-		icon: 'columns',
+		// icon: 'columns',
+		icon: icons.columns,
 		// parent: ['flexlayout/row'],
 		keywords: [
 			__( 'Flex', 'flexlayout' ),
