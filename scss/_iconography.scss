@@ -116,37 +116,57 @@
 // Creates a larger target space for the hamburger. Apple's iPhone Human Interface Guidelines 
 // recommends a minimum target size of 44 pixels wide 44 pixels tall.
 .hamburger-wrapper {
+	align-items: center;
+	display: flex;
+	height: 70px;
+	justify-content: space-around;
 	position: absolute;
 	top: 0;
 	right: 0;
-	height: 70px;
+	transition: all .3s ease-in-out;
 	width: 70px;
+
+	.navOpen & {
+		// Translate horizontally to the left, taking into 
+		// consideration the device, wrapper and hamburger widths
+		transform: translateX(calc(-100vw + 50px + 20px));
+	}
+
+	@include mediaquery(tablet-landscape)  {
+		display: none;
+	}
 }
 
-// 3 line hamburger animates to an X when "navOpen" class is added to the body
+// 3 line hamburger animates to an X 
+// when "navOpen" class is added to the body
 .hamburger {
 	background-color: transparent;
+	border-radius: 0;
+	border-top: 2px solid $black;
 	cursor: pointer;
 	display: block;
 	height: 18px;
-	border-radius: 0;
-	border-top: 2px solid $black;
 	position: absolute;
 	right: 23px;
 	top: 25px;
+	transition: background-color .2s ease-in, border-radius .2s ease-in;
 	width: 24px;
 	z-index: 100;
-	transition: background-color .2s ease-in, border-radius .2s ease-in;
 
-	&:after, &:before {
+	&:after, 
+	&:before {
 		background-color: $black;
 		content: '';
 		height: 2px;
 		left: 0;
 		position: absolute;
 		top: 6px;
-		width: 100%;
 		transition: all .2s ease-in;
+		width: 100%;
+
+		.home:not(.backgroundNav):not(.navOpen) & {
+			background-color: $white;
+		}
 	}
 
 	&:after {
