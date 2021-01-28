@@ -30,7 +30,8 @@
 		}
 	}
 
-	.navOpen &, .navOpen.hideNav & {
+	.navOpen &, 
+	.navOpen.hideNav & {
 		top: 0;
 	}
 
@@ -151,6 +152,5 @@
 				}
 			}
 		}
-
 	}
 }

@@ -2,20 +2,20 @@
 	background: rgba(0, 0, 0, 0.9);
 	border: 1px solid rgba(255, 255, 255, 0);
 	border-radius: $gap*4;
-    bottom: 16px;
+	bottom: 16px;
 	height: auto;
 	left: 16px;
 	padding: 0;
 	position: fixed;
-    right: 16px;
+	right: 16px;
 	width: auto;
 	z-index: 999;
 
-    @include mediaquery(tablet-portrait) {
+	@include mediaquery(tablet-portrait) {
 		bottom: $gap*2;
-    	left: auto;
+		left: auto;
 		right: $gap*2;
-    }
+	}
 
 	.body-text {
 		p {

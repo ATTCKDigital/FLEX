@@ -1,5 +1,6 @@
 .cta, 
 .is-style-cta {
+	@include font-size($font-size-body-text);
 	background-color: transparent;
 	border-color: $black;
 	border-radius: 0;
