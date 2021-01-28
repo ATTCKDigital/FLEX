@@ -114,13 +114,15 @@ body {
 
 .block-editor-button-block-appender.block-list-appender__toggle>svg {
 	background: transparent;
+	fill: #000;
 }
 
 .edit-post-visual-editor .block-editor-inserter .components-button.block-list-appender__toggle {
 	// background: hsl(0deg 0% 100% / 50%);
 	background: hsla(0, 0, 100%, 50%);
-	border: 1px solid #8aacf0;
-	border-radius: 30px;
+	// border: 1px solid #8aacf0; // Light blue
+	border: 2px solid #555;
+	border-radius: 4px;
 	height: 30px;
 	outline: 0;
 	padding: 5px;
@@ -294,16 +296,29 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	flex-wrap: wrap;
 }
 
-.components-toolbar__control.components-button[data-subscript]:after {
-	font-size: 11px;
-	right: auto;
-	left: 15px;
-}
+.components-toolbar__control {
+	&.components-button {
+		&[data-subscript] {
+			&:after {
+				font-size: 11px;
+				left: 15px;
+				right: auto;
+			}
+		}
 
-.components-toolbar__control.components-button[data-subscript] svg.dashicons-heading {
-	height: 25px;
-	width: 25px;
+		svg {
+			&.dashicons-heading {
+				height: 25px;
+				width: 25px;
+			}
 
+			.components-panel__body.is-opened & {
+				left: -3px;
+				position: relative;
+				top: 5px;
+			}
+		}
+	}
 }
 
 .block-library-button__inline-link.heading-url {
@@ -400,19 +415,33 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	color: black;
 }
 
+.edit-post-visual-editor__post-title-wrapper {
+	.editor-post-title {
+		margin-top: 0;
+	}
+}
+
 .editor-post-title__block .editor-post-title__input, 
 .block-editor-post-title__block .block-editor-post-title__input, 
 .editor-post-permalink,
 .block-editor-post-permalink {
-	border: 1px solid #59524c;
+	border: 1px solid #999;
+	border-radius: 4px;
 	box-shadow: none;
+	color: #555;
+	height: auto;
+	font-size: 3rem;
+	font-weight: 100;
+	padding-bottom: 8px;
+	padding-top: 8px;
+	padding-left: 24px;
 }
 
 .editor-post-title__block:not(.is-focus-mode).is-selected .editor-post-title__input, 
 .editor-post-title__block:not(.is-focus-mode):not(.has-fixed-toolbar):not(.is-selected) .editor-post-title__input:hover {
 	box-shadow: none;
-	border-width: 1px;
-	border-color: #59524c;
+	border-color: #black;
+	color: black;
 }
 
 .component-animated-gif {
@@ -437,8 +466,24 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 			max-width: none;
 		}
 	}
-}
 
+	&.editor-post-title {
+		&.editor-post-title__block {
+			// Undo the hidden page title label.
+			// TODO: Find out why it's hidden in the first place. -DP
+			.components-visually-hidden {
+				clip: unset;
+				clip-path: unset;
+				height: auto;
+				margin: initial;
+				overflow: visible;
+				padding: initial;
+				position: relative;
+				width: auto;
+			}
+		}
+	}
+}
 
 .wp-block-flexlayout-row {
 	background-color: rgba(237, 100, 149, .1);
