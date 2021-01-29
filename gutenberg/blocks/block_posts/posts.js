@@ -212,7 +212,7 @@ export default registerBlockType(
 						<PanelRow>
 							<ToggleControl
 								label="Show Category"
-								help={ attributes.showCategory ? 'Category is Hidden' : 'Category Visible' }
+								help={ attributes.showCategory ? 'Category is Visible' : 'Category Hidden' }
 								checked={ attributes.showCategory }
 								onChange={ showCategory => setAttributes( { showCategory } ) }
 							/>
@@ -225,33 +225,78 @@ export default registerBlockType(
 						'component-archive-posts',
 					)}>
 					<div>
-						<ul>
-							{attributes.categories && attributes.categories.map(category => {
-								return (
-									<li className={'category-tab'}>
-										{category.name}
+						{
+							attributes.showCategory && 
+							(
+								<ul class="cat-list" style={{marginBottom: "20px", paddingLeft: "0"}}>
+									{attributes.categories && attributes.categories.map(category => {
+										return (
+											<li class="cat-item">
+												<button class="cat-button cat-events" className={'cat-' + category.slug} style={{width: '100%'}}>{category.name}</button>
+											</li>
+										);
+									})}
+									<li>
+										<a></a>
 									</li>
-								);
-							})}
-							<li>
-								<a></a>
-							</li>
-						</ul>
+								</ul>
+							)
+						}
+						{
+							attributes.filterActive && 
+							(
+								<div class="sort-filter" style={{marginBottom: "20px"}}>
+									<label>Sort by</label>
+									<div class="dropdown">
+										<label role="button" class="dropdown-select" tabindex="0">Old</label>
+										<ul class="dropdown-list" style={{paddingLeft: "0"}}>
+											<li class="dropdown-option">
+												<button class="dropdown-button" name="order" value="ASC">New</button>
+											</li>
+											<li class="dropdown-option option-selected">
+												<button class="dropdown-button" name="order" value="DESC">Old</button>
+											</li>
+										</ul> 
+									</div> 
+								</div>
+							)
+						}
 					</div>
-					<ul className={'posts-items'}>
+					<ul className={'posts-items'} style={{paddingLeft: "0"}}>
 						{posts.map(post => {
 							return (
-								<li className={'posts-item'} style={{flex: 1 / attributes.columnNumber}}>
-									<div class="is-style-headline6">
-										<a className={className} href={post.link}>
-											{post.title.rendered}
-										</a>
-										<a className="cta-link" href={post.link}>{attributes.ctaText}</a>
+								<li class="posts-item post-category-events" style={{width: 100 / attributes.columnNumber + '%'}}>
+									<div class="posts-item-wrapper">
+										<div class="image-wrapper">
+											<img src="http://local.newclassrooms.org/wp-content/uploads/IMG_8471-scaled-1.jpg" 
+											class="attachment-post-thumbnail size-post-thumbnail wp-post-image prepare-in-view element-in-view" 
+											alt="" 
+											loading="lazy" 
+											></img>
+										</div>
+										<div class="post-content">
+											<h2 class="post-title" style={{paddingLeft: "0", margin: "0"}}>{post.title.rendered}</h2>
+											<span class="post-date prepare-in-view element-in-view">January 22, 2021</span>
+											<a class="cta-link" href="">{attributes.ctaText}</a>
+										</div>
 									</div>
 								</li>
 							);
 						})}
 					</ul>
+					{
+						attributes.paginationActive && (
+							<nav class="pagination-nav">
+								<div class="pagination-wrapper" style={{marginTop: "20px"}}>
+									<span class="prev page-numbers"></span>	
+									<span aria-current="page" class="page-numbers current prepare-in-view element-in-view">1</span>
+									<span class="page-numbers">2</span>
+									<span class="page-numbers">3</span>
+									<span class="next page-numbers"></span>	
+								</div>
+							</nav>
+						)
+					}
 				</div>
 			];
 		}) // end withAPIData
