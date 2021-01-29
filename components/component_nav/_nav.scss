@@ -16,6 +16,12 @@
 
 	}
 
+	.hamburger-wrapper {
+		@include mediaquery(tablet-landscape)  {
+			display: none;
+		}
+	}
+
 	.hideNav & {
 		top: -($navMobileHeight);
 
@@ -24,7 +30,8 @@
 		}
 	}
 
-	.navOpen &, .navOpen.hideNav & {
+	.navOpen &, 
+	.navOpen.hideNav & {
 		top: 0;
 	}
 
@@ -130,7 +137,7 @@
 
 		&.current-menu-item {
 			a:after {
-				background-color: $black;
+				background-color: color('brand', 'primary');
 				opacity: 1;
 			}
 		}
@@ -140,11 +147,10 @@
 				opacity: .7;
 
 				a:after {
-					background-color: $black;
+					background-color: color('brand', 'primary');
 					opacity: .7;
 				}
 			}
 		}
-
 	}
 }

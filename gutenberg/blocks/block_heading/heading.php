@@ -102,7 +102,7 @@ function render_heading_block($attributes) {
 	$class = 'component-' . $componentName . ' component ';
 	$class .= $attributes['className'];
 	$class .= $headlineClass;
-	$class .= " align-{$attributes['align']}";
+	$class .= " text-align-{$attributes['align']}";
 	
 	// Build wrapper classes
 	$wrapperClass = 'component-' . $componentName . '-wrapper ';

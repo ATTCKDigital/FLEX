@@ -23,9 +23,13 @@ a {
 	}
 }
 
-small {
-	font-size: 12px;
+del {
+	color: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	font-family: inherit;
 }
+
 
 em, i {
 	color: inherit;
@@ -41,11 +45,8 @@ hr {
 	margin: 25px auto;
 }
 
-del {
-	color: inherit;
-	font-size: inherit;
-	line-height: inherit;
-	font-family: inherit;
+small {
+	font-size: 12px;
 }
 
 p, 
@@ -79,13 +80,6 @@ span {
 	font-style: inherit;
 }
 
-u {
-	color: inherit;
-	font-family: inherit;
-	font-size: inherit;
-	font-style: inherit;
-}
-
 strong, b {
 	color: inherit;
 	font-family: inherit;
@@ -98,6 +92,12 @@ th, tr, td {
 	color: inherit;
 }
 
+u {
+	color: inherit;
+	font-family: inherit;
+	font-size: inherit;
+	font-style: inherit;
+}
 
 // Error & Message Styles
 .error {
@@ -105,15 +105,20 @@ th, tr, td {
 	color: red;
 }
 
-.underline {
-	// for use in WYSIWYG as <u></u> was deprecated in 4.7+
-	display: inline;
-	font-family: inherit;
-	font-size:inherit;
-	font-style:inherit;
-	font-weight:inherit;
-	line-height: inherit;
-	text-decoration:underline;
+.display-block {
+	display: block;
+}
+
+.display-inline-block {
+	display: inline-block;
+}
+
+.lowercase {
+	text-transform: lowercase;
+}
+
+.nocase {
+	text-transform: none;
 }
 
 .strikethrough {
@@ -127,27 +132,23 @@ th, tr, td {
 	text-decoration: line-through;
 }
 
-.lowercase {
-	text-transform: lowercase;
-}
-
-.nocase {
-	text-transform: none;
+.underline {
+	// for use in WYSIWYG as <u></u> was deprecated in 4.7+
+	display: inline;
+	font-family: inherit;
+	font-size:inherit;
+	font-style:inherit;
+	font-weight:inherit;
+	line-height: inherit;
+	text-decoration:underline;
 }
 
 .uppercase {
 	text-transform: uppercase;
 }
 
-.display-block {
-	display: block;
-}
-
-.display-inline-block {
-	display: inline-block;
-}
-
-.text-columns, .is-style-text-columns {
+.text-columns, 
+.is-style-text-columns {
 	@include mediaquery(tablet-landscape) {
 		column-count: 2;
 		column-gap: $gap*15;
@@ -157,7 +158,8 @@ th, tr, td {
 	}
 }
 
-.list-columns, .is-style-list-columns {
+.list-columns, 
+.is-style-list-columns {
 	column-count: 2;
 	column-gap: $gap*10;
 	column-break-inside: avoid; /* Chrome, Safari, Opera */

@@ -1,10 +1,15 @@
 // Allows JS to access CSS breakpoints
 .breakpoint {
+	color: black;
 	display: none;
-	height: 0;
-	padding: 10px;
-	position: absolute;
-	width: 0;
+	height: 20px;
+	padding: 10px 60px 10px 10px;
+	position: fixed;
+	right: 10px;
+	text-align: left;
+	top: 10px;
+	width: 300px;
+	z-index: 999999;
 }
 
 .breakpoint-current {
@@ -38,52 +43,107 @@ body {
 				background-color: transparent;
 			}
 		}
+	}
 
-		@include mediaquery(phone)  {
-			border-color: orange;
+	&.debug,
+	&.showBreakpoints {
+		.breakpoint {
+			align-items: center;
 
-			.breakpoint.phone {
+			&:after {
+				color: white;
 				display: block;
+				font-size: 0.7rem;
+				font-weight: bold;
+				letter-spacing: 0.3rem;
+				position: relative;
+				text-transform: uppercase;
+				width: 100%;
 			}
-		}
 
-		@include mediaquery(tablet-portrait)  {
-			border-color: yellow;
+			&.phone {
+				background: orange !important;
 
-			.breakpoint.tablet-portrait {
-				display: block;
+				&:after {
+					content: 'breakpoint: phone';
+				}
+
+				@include mediaquery(phone)  {
+					display: flex;
+				}
 			}
-		}
 
-		@include mediaquery(tablet-landscape)  {
-			border-color: green;
+			&.phone-plus {
+				background: #BADA55 !important;
 
-			.breakpoint.tablet-landscape {
-				display: block;
+				&:after {
+					content: 'breakpoint: phone-plus';
+				}
+
+				@include mediaquery(phone-plus)  {
+					display: flex;
+				}
 			}
-		}
 
-		@include mediaquery(desktop)  {
-			border-color: blue;
+			&.tablet-portrait {
+				background: yellow !important;
 
-			.breakpoint.xl {
-				display: block;
+				&:after {
+					color: black;
+					content: 'breakpoint: tablet-portrait';
+				}
+
+				@include mediaquery(tablet-portrait)  {
+					display: flex;
+				}
 			}
-		}
 
-		@include mediaquery(xl) {
-			border-color: purple;
+			&.tablet-landscape {
+				background: green !important;
 
-			.breakpoint.xl {
-				display: block;
+				&:after {
+					content: 'breakpoint: tablet-landscape';
+				}
+
+				@include mediaquery(tablet-landscape)  {
+					display: flex;
+				}
 			}
-		}
 
-		@include mediaquery(xl2) {
-			border-color: black;
+			&.desktop {
+				background: blue !important;
 
-			.breakpoint.xl2 {
-				display: block;
+				&:after {
+					content: 'breakpoint: desktop';
+				}
+
+				@include mediaquery(desktop)  {
+					display: flex;
+				}
+			}
+
+			&.xl {
+				background: purple !important;
+
+				&:after {
+					content: 'breakpoint: xl';
+				}
+
+				@include mediaquery(xl) {
+					display: flex;
+				}
+			}
+
+			&.xl2 {
+				background: black !important;
+
+				&:after {
+					content: 'breakpoint: xl2';
+				}
+
+				@include mediaquery(xl2) {
+					display: flex;
+				}
 			}
 		}
 	}

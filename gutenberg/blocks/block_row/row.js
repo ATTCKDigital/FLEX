@@ -48,7 +48,8 @@ export default registerBlockType(
 		title: __( 'Row' ),
 		description: __( 'Creates a row wrapper to support inner blocks with set column widths.', 'flexlayout' ),
 		category: 'layout',
-		icon: 'editor-table',
+		// icon: 'editor-table',
+		icon: icons.rows,
 		keywords: [
 			__( 'Flex', 'flexlayout' ),
 			__( 'Layout', 'flexlayout' ),
@@ -165,7 +166,9 @@ export default registerBlockType(
 								className={ classnames(
 									'components-icon-button',
 									'components-toolbar__control',
-									{ 'is-active': reverseMobile },
+									{
+										'is-active': reverseMobile
+									},
 								) }
 								onClick={ () => setAttributes( { reverseMobile: ! reverseMobile } ) }
 							>
@@ -184,7 +187,7 @@ export default registerBlockType(
 									) }
 									onClick={ () => setAttributes( { verticalAligment: 'top' } ) }
 								>
-									{ icons.topAlign }
+									{ icons.alignTop }
 								</Button>
 							</Tooltip>
 							<Tooltip text={ __( 'Vertical align columns - Center', 'flexlayout' )  }>
@@ -196,7 +199,7 @@ export default registerBlockType(
 									) }
 									onClick={ () => setAttributes( { verticalAligment: 'center' } ) }
 								>
-									{ icons.centerAlign }
+									{ icons.alignCenter }
 								</Button>
 							</Tooltip>
 							<Tooltip text={ __( 'Vertical align columns - Bottom', 'flexlayout' )  }>
@@ -208,7 +211,7 @@ export default registerBlockType(
 									) }
 									onClick={ () => setAttributes( { verticalAligment: 'bottom' } ) }
 								>
-									{ icons.bottomAlign }
+									{ icons.alignBottom }
 								</Button>
 							</Tooltip>
 							<Tooltip text={ __( 'Vertical align columns - Stretch', 'flexlayout' )  }>
@@ -220,7 +223,7 @@ export default registerBlockType(
 									) }
 									onClick={ () => setAttributes( { verticalAligment: 'stretch' } ) }
 								>
-									{ icons.stretchAlign }
+									{ icons.appsSort }
 								</Button>
 							</Tooltip>
 						</ButtonGroup>

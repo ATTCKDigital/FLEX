@@ -1,8 +1,8 @@
 console.log('loaded', '/FLEX\t/js\t/global-events.js');
 
-import FLEX from './clientNamespace';
-import $$ from './cached-dom-elements';
-import Debug from './debug';
+import FLEX from 	'./clientNamespace';
+import $$ from 		'../components/component_cached-dom-elements/cached-dom-elements';
+import Debug from 	'./debug';
 
 // global-events
 FLEX.GlobalEvents = {};
@@ -584,12 +584,12 @@ FLEX.GlobalEvents.initGlobalEvents = function () {
 	$(window).on('load', function () {
 		$(document.body).addClass('window-loaded');
 
-		// Adding for QB-OBS blackout modal fade out on load animation (2sec)
+		// 2 second delay
 		setTimeout(function () {
 			$(document.body).addClass('window-has-been-loaded-for-two-seconds');
 		}, 2000);
 
-		// Adding for QB-OBS hero page load animation (5sec)
+		// 5 second delay
 		setTimeout(function () {
 			$(document.body).addClass('window-has-been-loaded-for-five-seconds');
 		}, 5000);
@@ -599,7 +599,8 @@ FLEX.GlobalEvents.initGlobalEvents = function () {
 	$(function () {
 		$(document.body).addClass('dom-loaded');
 
-		// After page has loaded and x seconds have elapsed. Set time as needed or create multiple time functions/classes
+		// After page has loaded and x seconds have elapsed. Set time as needed or 
+		// create multiple time functions/classes
 		setTimeout(function () {
 			$(document.body).addClass('dom-has-been-loaded-for-five-seconds');
 		}, 5000);

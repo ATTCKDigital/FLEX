@@ -5,17 +5,23 @@
 /** Fade Me In **/
 // Set initial styles before "faded-in" class added
 // TODO: Rename to "transition-when-visible"
+// .transition-when-visible,
 .prepare-in-view {
 	opacity: .5;
-	transition: opacity .3s;
+
+	// Restricting transition to 'opacity' prevents other effects 
+	// (e.g., background color) from transitioning smoothly
+	// transition: opacity .3s;
+	transition: all .3s;
 
 	&.element-in-view {
 		opacity: 1;
-		transition: opacity .3s;
+		transition: all .3s;
 	}
 }
 
 // TODO: Rename to "transitioned-into-view"
+// .transitioned-into-view,
 .element-in-view {
 	opacity: 1;
 

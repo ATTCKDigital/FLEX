@@ -1,8 +1,13 @@
 /**
  * Parallax component
+ *
+ * Enables background image parallax effects
+ * TODO: Add more usage info here.
  */
+console.log('loaded', '/FLEX\t/js\t/cached-dom-elements.js');
+
 import $ from 'jquery';
-import $$ from './cached-dom-elements';
+import $$ from '../component_cached-dom-elements/cached-dom-elements';
 
 function Parallax($el, params={}) {
 	const defaults = {};

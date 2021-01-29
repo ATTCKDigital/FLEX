@@ -4,7 +4,6 @@ $light: rgba(254, 243, 224, 0.52);
 
 .entry-content .wp-block-flexlayout-text-alignment-toolbar,
 .wp-block-flexlayout-text-alignment-toolbar {
-
     background: $light;
     border: 5px $dark solid;
     padding: 1rem;
@@ -22,5 +21,4 @@ $light: rgba(254, 243, 224, 0.52);
     li {
         list-style-position: inside;
     }
-
 }

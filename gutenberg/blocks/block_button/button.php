@@ -5,6 +5,7 @@ use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
 
 add_action( 'init', __NAMESPACE__ . '\register_button_block' );
+
 /**
  * Register the dynamic block.
  *
@@ -19,8 +20,10 @@ function register_button_block() {
 	}
 
 	// Hook server side rendering into render callback
-	register_block_type( 'flexlayout/button', [
-		'attributes'	  => array_merge(
+	register_block_type(
+		'flexlayout/button', 
+		[
+		'attributes' => array_merge(
 			[
 				'content' => [
 					'type' => 'string',
@@ -56,12 +59,10 @@ function register_button_block() {
 	] );
 }
 
-/**
- * Server rendering for /blocks/heading
- */
+// Server rendering for /blocks/heading
 function render_button_block($attributes) {
 	$buttonClass = $attributes['className'];
-	$class = " align-{$attributes['align']}";
+	$class = " text-align-{$attributes['align']}";
 	$class .= margin_options_classes($attributes);
 
 	$content1 = array_key_exists('content', $attributes) ? $attributes['content'] : null;

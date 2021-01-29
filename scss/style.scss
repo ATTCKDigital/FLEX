@@ -1,8 +1,8 @@
-/**
- * Parent theme (FLEX) SASS files
- */
-
 // General variables and setup
+//
+// NOTE: Import order shouldn't be changed in this group as subsequent
+// files rely on mixins and variables in files included earlier
+// TODO: Find better way to enforce load order. -DP
 @import 'css-vars';
 @import 'sass-utils';
 @import 'reset';
@@ -23,17 +23,14 @@
 @import 'popups-overlays';
 @import 'animations';
 @import 'images';
-@import '../gutenberg/components/gb-component_padding/_padding.scss';
-@import '../gutenberg/components/gb-component_margin/_margin.scss';
-
-@import '../gutenberg/blocks/block_image/_image.scss';
-@import '../gutenberg/blocks/block_button/_buttons.scss';
-@import '../gutenberg/blocks/block_heading/_heading.scss';
 @import 'iconography';
 @import 'forms';
 @import 'styleguide';
 
-// Blocks
+// Gutenberg Blocks
+@import '../gutenberg/blocks/block_image/_image.scss';
+@import '../gutenberg/blocks/block_button/_buttons.scss';
+@import '../gutenberg/blocks/block_heading/_heading.scss';
 @import '../gutenberg/blocks/block_quote/_quote.scss';
 @import '../gutenberg/blocks/block_social_media/_social-media.scss';
 @import '../gutenberg/blocks/block_video/_video.scss';
@@ -41,16 +38,20 @@
 @import '../gutenberg/blocks/block_hr/_hr.scss';
 @import '../gutenberg/blocks/block_posts/_posts.scss';
 
-// Components
-@import '../components/component_archive-feed/archive-feed';
+// Gutenberg Components
+@import '../gutenberg/components/gb-component_padding/_padding.scss';
+@import '../gutenberg/components/gb-component_margin/_margin.scss';
+
+// FLEX Components
+// @import '../components/component_archive-feed/archive-feed';
 @import '../components/component_footer/footer';
-@import '../components/component_footer/gdpr';
+@import '../components/component_gdpr/gdpr';
 @import '../components/component_nav/nav';
-@import '../components/component_reserve/reserve';
-@import '../components/component_calendarlink/calendarlink';
-@import '../components/component_timer/timer';
-@import '../components/component_newsletter/newsletter';
-@import '../components/component_share/share';
-@import '../components/component_social-media/social-media';
-@import '../components/component_twitter/twitter';
-@import '../components/component_post/post-header';
+// @import '../components/component_reserve/reserve';
+// @import '../components/component_calendarlink/calendarlink';
+// @import '../components/component_timer/timer';
+// @import '../components/component_newsletter/newsletter';
+// @import '../components/component_share/share';
+// @import '../components/component_social-media/social-media';
+// @import '../components/component_twitter/twitter';
+// @import '../components/component_post/post-header';
