@@ -24,7 +24,6 @@ import ScrollTo from 			'../components/component_scroll-to/scroll-to';
 import Bookmark from 			'../components/component_bookmark/bookmark';
 import CalendarLink from 		'../components/component_calendarlink/calendarlink';
 import Nav from 				'../components/component_nav/nav';
-import PostsFilter from '../gutenberg/blocks/block_posts/posts-filter';
 import Reserve from 			'../components/component_reserve/reserve';
 import Share from 				'../components/component_share/share';
 import Timer from 				'../components/component_timer/timer';
@@ -53,7 +52,6 @@ FLEX.Components = Object.assign({
 	'Share': Share,
 	'Timer': Timer,
 	'Parallax': Parallax,
-	'PostsFilter': PostsFilter,
 	'Video': Video,
 	'VideoThumb': VideoThumb
 }, childComponents);
