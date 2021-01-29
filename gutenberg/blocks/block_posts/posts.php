@@ -90,35 +90,61 @@ function render_posts_block($attributes) {
 	$postFilter = '';
 	$orderby = 'date';
 	$order = $_GET['order'] ?? 'DESC';
+	$orderOptions = [
+		[
+			'value' => 'ASC',
+			'text'  => _('New'),
+			'selected' => $order == 'ASC'
+		],
+		[
+			'value' => 'DESC',
+			'text'  => _('Old'),
+			'selected' => $order == 'DESC'
+		],
+	];
 	$pagination = '';
 	$selectedCategory = $_GET['category'] ?? $categories[0]['id'];
 
-	// Filter
+	// Sort Filter
 	if ($filterActive) {
+		$selectedIndex = array_search(true, array_column($orderOptions, 'selected'));
+		
 		$postFilter .= "
 			<div class=\"sort-filter\">
 				<label>". __("Sort by") ."</label>
-				<select name=\"order\" class=\"dropdown\">
-					<option value=\"ASC\" " . ($order == 'ASC' ? 'selected' : '') . ">". __("New") ."</option>
-					<option value=\"DESC\" " . ($order == 'DESC' ? 'selected' : '') . ">". __("Old") ."</option>
-				</select>
-			</div>
-		";	
+				<div class=\"dropdown\">
+					<label role=\"button\" class=\"dropdown-select\" tabindex=\"0\">{$orderOptions[$selectedIndex]['text']}</label>
+					<ul class=\"dropdown-list\">";
+
+		foreach ($orderOptions as $option) {
+			$postFilter .= 	
+				"<li class=\"dropdown-option" . ($option['selected'] ? ' option-selected' : '') . "\">
+					<button class=\"dropdown-button\" name=\"order\" value=\"{$option['value']}\">{$option['text']}</button>
+				</li>";
+		}
+
+		$postFilter .= "
+					</ul> 
+				</div> 
+			</div>";	
 	}
 
 	// Category Tabs
 	if ( !empty( $categories ) ) {
+		$selectedCategoryIndex = array_search($selectedCategory, array_column($categories, 'id'));
+
 		$tabs .= "
 		<div class=\"categories\"> 
+			<label role=\"button\" class=\"cat-dropdown cat-button cat-{$categories[$selectedCategoryIndex]['slug']} active\" tabindex=\"0\">{$categories[$selectedCategoryIndex]['name']}</label>
 			<ul class=\"cat-list\">
 		";
 
 		foreach ( $categories as $category ) {
 			$active = $selectedCategory == $category['id'] ? ' active' : '';
-
+// style=\"width:". (100 /  count($categories)) ."%;\"
 			$tabs .= "
-			<li class=\"cat-item cat-{$category['slug']}{$active}\" style=\"width=". (100 /  count($categories)) ."%;\">
-				<button class=\"cat-button\" name=\"category\" value=\"{$category['id']}\">{$category['name']}</button>
+			<li class=\"cat-item\">
+				<button class=\"cat-button cat-{$category['slug']}{$active}\" name=\"category\" value=\"{$category['id']}\">{$category['name']}</button>
 			</li>
 			";
 		}

@@ -12,17 +12,13 @@
     font-size: 1rem;
     cursor: pointer;
     text-align: center;
-
-    &:hover,
-    &:focus {
-      opacity: .5;
-    }
   }
 
   .posts-items {
     display: flex;
     flex-wrap: wrap;
-    padding-bottom: 32px;
+    // padding-bottom: 32px;
+    list-style: none;
   }
 
   .top-bar {
@@ -32,10 +28,7 @@
 
   .cat-list {
     display: flex;
-
-    .cat-item {
-      // display: flex;
-    }
+    list-style: none;
 
     .cat-item + .cat-item {
       margin-left: 40px;
@@ -46,6 +39,22 @@
     position: relative;
     top: 0;
     left: 0;
+
+    &:hover,
+    &:focus,
+    &:focus-within {
+      .cat-dropdown:after {
+        transform: rotate(180deg);
+      }
+
+      .cat-list {
+        display: block;
+
+        @include mediaquery('tablet-landscape') {
+          display: flex;
+        }
+      }
+    }
   }
 
   .pagination-nav {
@@ -53,6 +62,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
 
     .page-numbers {
       &.current {
@@ -88,11 +98,106 @@
   .pagination-wrapper {
     display: flex;
     align-items: center;
+    justify-content: center;
     position: relative;
     padding: 0 54px;
   }
 
   .sort-filter {
     display: flex;
+  }
+
+  .dropdown {
+    position: relative;
+
+    &.active,
+    &:hover {
+      .dropdown-select {
+        &:after {
+          transform: rotate(180deg);
+        }
+      }
+
+      .dropdown-list {
+        display: flex;
+      }
+    }
+  }
+
+  .dropdown-select {
+    padding-left: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    @include mediaquery('tablet-landscape') {
+      padding: 0 10px;
+    }
+    
+    &::after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid $defaultTextColor;
+      transition: transform .3s;
+      margin-left: 10px;
+      margin-bottom: 2px;
+    }
+  }
+
+  .option-selected {
+    display: none;
+  }
+
+  .dropdown-list {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    border: 1px $borderColor solid;
+    overflow: hidden;
+    width: 100%;
+    z-index: 10;
+  }
+
+  .dropdown-button {
+    background: $white;
+    font-weight: 600;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+  }
+
+  .cat-list {
+    display: none;
+  
+    @include mediaquery('tablet-landscape') {
+      display: block;
+    }
+  }
+
+  .cat-dropdown {
+    display: block;
+    cursor: pointer;
+
+    @include mediaquery('tablet-landscape') {
+      display: none;
+    }
+
+    &::after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid $defaultTextColor;
+      transition: transform .3s;
+      margin-left: 10px;
+      margin-bottom: 2px;
+    }
   }
 }
