@@ -123,7 +123,7 @@ export default registerBlockType(
 			return [
 				<InspectorControls>
 				
-					<PanelBody title={__('Post Settings')}>
+					<PanelBody title={__('Posts Settings')}>
 						<PanelRow>
 							<SelectControl
 								key="post-type"
@@ -176,15 +176,6 @@ export default registerBlockType(
 									max={ 8 }
 							/>
 						</PanelRow>
-					</PanelBody>
-					<PanelBody title="Options">
-						<PanelRow>
-							<TextControl
-								label="CTA Link Text"
-								value={ attributes.ctaText }
-								onChange={  ctaText => setAttributes( { ctaText } ) }
-							/>
-						</PanelRow>
 						<PanelRow>
 							<ToggleControl
 								label="Show Pagination"
@@ -199,6 +190,15 @@ export default registerBlockType(
 								help={ attributes.filterActive ? 'Filter Activated' : 'Filter Deactivated' }
 								checked={ attributes.filterActive }
 								onChange={ filterActive => setAttributes( { filterActive } ) }
+							/>
+						</PanelRow>
+					</PanelBody>
+					<PanelBody title="Single Post Options">
+						<PanelRow>
+							<TextControl
+								label="CTA Link Text"
+								value={ attributes.ctaText }
+								onChange={  ctaText => setAttributes( { ctaText } ) }
 							/>
 						</PanelRow>
 						<PanelRow>
@@ -225,23 +225,15 @@ export default registerBlockType(
 						'component-archive-posts',
 					)}>
 					<div>
-						{
-							attributes.showCategory && 
-							(
-								<ul class="cat-list" style={{marginBottom: "20px", paddingLeft: "0"}}>
-									{attributes.categories && attributes.categories.map(category => {
-										return (
-											<li class="cat-item">
-												<button class="cat-button cat-events" className={'cat-' + category.slug} style={{width: '100%'}}>{category.name}</button>
-											</li>
-										);
-									})}
-									<li>
-										<a></a>
+						<ul class="cat-list" style={{marginBottom: "20px", paddingLeft: "0"}}>
+							{attributes.categories && attributes.categories.map(category => {
+								return (
+									<li class="cat-item">
+										<button class="cat-button cat-events" className={'cat-' + category.slug} style={{width: '100%'}}>{category.name}</button>
 									</li>
-								</ul>
-							)
-						}
+								);
+							})}
+						</ul>
 						{
 							attributes.filterActive && 
 							(
@@ -264,8 +256,9 @@ export default registerBlockType(
 					</div>
 					<ul className={'posts-items'} style={{paddingLeft: "0"}}>
 						{posts.map(post => {
+							let category = attributes.categories.find(item => item.id === post.categories[0]);
 							return (
-								<li class="posts-item post-category-events" style={{width: 100 / attributes.columnNumber + '%'}}>
+								<li class="posts-item post-category-events" className={'post-category-' + (category.slug)} style={{width: 100 / attributes.columnNumber + '%'}}>
 									<div class="posts-item-wrapper">
 										<div class="image-wrapper">
 											<img src="http://local.newclassrooms.org/wp-content/uploads/IMG_8471-scaled-1.jpg" 
@@ -275,6 +268,11 @@ export default registerBlockType(
 											></img>
 										</div>
 										<div class="post-content">
+											{
+												attributes.showCategory && (
+													<span class="category-name prepare-in-view element-in-view"><a href="">{category.name}</a></span>
+												)
+											}
 											<h2 class="post-title" style={{paddingLeft: "0", margin: "0"}}>{post.title.rendered}</h2>
 											<span class="post-date prepare-in-view element-in-view">January 22, 2021</span>
 											<a class="cta-link" href="">{attributes.ctaText}</a>
