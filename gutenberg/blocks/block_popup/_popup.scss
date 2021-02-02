@@ -1,0 +1,23 @@
+.component-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+
+  .active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .popup-background-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+  }
+}

@@ -69,6 +69,7 @@ include(locate_template('/gutenberg/blocks/block_hr/hr.php'));
 include(locate_template('/gutenberg/blocks/block_image/image.php'));
 include(locate_template('/gutenberg/blocks/block_list/list.php'));
 include(locate_template('/gutenberg/blocks/block_paragraph/paragraph.php'));
+include(locate_template('/gutenberg/blocks/block_popup/popup.php'));
 include(locate_template('/gutenberg/blocks/block_quote/quote.php'));
 include(locate_template('/gutenberg/blocks/block_row/row.php'));
 include(locate_template('/gutenberg/blocks/block_shortcode/shortcode.php'));
