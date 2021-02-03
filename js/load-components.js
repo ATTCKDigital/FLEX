@@ -14,10 +14,10 @@ ObjectAssign.polyfill();
 // Global utility components (REQUIRED)
 import $$ from 					'../components/component_cached-dom-elements/cached-dom-elements';
 import Analytics from 			'../components/component_analytics/analytics';
-import ElementsInViewport from 	'../components/component_elements-in-viewport/elements-in-viewport';
 import LoadMore from 			'../components/component_load-more/load-more';
 import GDPR from 				'../components/component_gdpr/gdpr';
 import Parallax from 			'../components/component_parallax/parallax';
+import ScrollIn from 			'../components/component_scroll-in/scroll-in';
 import ScrollTo from 			'../components/component_scroll-to/scroll-to';
 
 // Interactive components
@@ -43,11 +43,11 @@ FLEX.Components = Object.assign({
 	'AnimatedGif': AnimatedGif,
 	'Bookmark': Bookmark,
 	'CalendarLink': CalendarLink,
-	'ElementsInViewport': ElementsInViewport,
 	'GDPR': GDPR,
 	'LoadMore': LoadMore,
 	'Nav': Nav,
 	'Reserve': Reserve,
+	'ScrollIn': ScrollIn,
 	'ScrollTo': ScrollTo,
 	'Share': Share,
 	'Timer': Timer,
