@@ -59,6 +59,14 @@
 .hidden {
 	display: none !important;
 	visibility: hidden;
+
+	.wp-block & {
+		.wp-admin & {
+			display: inherit !important;
+			opacity: .5;
+			visibility: visible;
+		}
+	}
 }
 
 // Hide visually and from screenreaders, but maintain layout

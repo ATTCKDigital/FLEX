@@ -1,5 +1,13 @@
 // Button styles for Gutenberg Editor
 .component-button-editor {
+	.block-library-button__inline-link {
+		span.dashicons {
+			float: left;
+			margin-right: 8px;
+			padding: 8px 0 8px 0;
+		}
+	}
+
 	.cta {
 		@extend .cta;
 
@@ -20,16 +28,16 @@
 		}
 	}
 
-	.wp-block-button__link {
-		@extend .cta;
-		// border-radius: 0;
-		overflow: inherit;
-	}
-
 	.editor-rich-text__tinymce[data-is-placeholder-visible=true].wp-block-button__link {
 		background: transparent;
 		border: 0;
 		position: absolute;
+	}
+
+	.wp-block-button__link {
+		@extend .cta;
+		// border-radius: 0;
+		overflow: inherit;
 	}
 
 	&.align-center {

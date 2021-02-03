@@ -61,6 +61,10 @@ export default registerBlockType(
 				type: 'string',
 				default: ''
 			},
+			verticalAlignment: {
+				type: 'string',
+				default: 'top'
+			},
 			...AnchorOptionsAttributes,
 			...BackgroundOptionsAttributes,
 			...BorderOptionsAttributes,
@@ -85,6 +89,7 @@ export default registerBlockType(
 					advancedId,
 					dataComponentName,
 					dataComponentOptions,
+					verticalAlignment,
 				},
 				className,
 				setAttributes,
@@ -121,6 +126,46 @@ export default registerBlockType(
 							setAttributes( { align: nextAlign } );
 						} }
 					/>
+					<Toolbar>
+						<ButtonGroup>
+							<Tooltip text={ __( 'Vertical align content - Top', 'flexlayout' )  }>
+								<Button
+									className={ classnames(
+										'components-icon-button',
+										'components-toolbar__control',
+										{ 'is-active': props.attributes.verticalAlignment === 'top' },
+									) }
+									onClick={ () => setAttributes( { verticalAlignment: 'top' } ) }
+								>
+									{ icons.alignTop }
+								</Button>
+							</Tooltip>
+							<Tooltip text={ __( 'Vertical align content - Center', 'flexlayout' )  }>
+								<Button
+									className={ classnames(
+										'components-icon-button',
+										'components-toolbar__control',
+										{ 'is-active': props.attributes.verticalAlignment === 'center' },
+									) }
+									onClick={ () => setAttributes( { verticalAlignment: 'center' } ) }
+								>
+									{ icons.alignCenter }
+								</Button>
+							</Tooltip>
+							<Tooltip text={ __( 'Vertical align content - Bottom', 'flexlayout' )  }>
+								<Button
+									className={ classnames(
+										'components-icon-button',
+										'components-toolbar__control',
+										{ 'is-active': props.attributes.verticalAlignment === 'bottom' },
+									) }
+									onClick={ () => setAttributes( { verticalAlignment: 'bottom' } ) }
+								>
+									{ icons.alignBottom }
+								</Button>
+							</Tooltip>
+						</ButtonGroup>
+					</Toolbar>
 				</BlockControls>,
 				<div
 					id={ anchor }
@@ -157,6 +202,7 @@ const customClassName = createHigherOrderComponent( ( BlockListBlock ) => {
 						className={ classnames(
 								'component-column',
 								`column-align-${props.attributes.align}`,
+								`component-column-verticalAlignment-${props.attributes.verticalAlignment}`,
 								...BackgroundOptionsClasses( props ),
 								...BorderOptionsClasses( props ),
 								...MarginOptionsClasses( props ),

@@ -83,6 +83,12 @@ body {
 		min-width: 100px;
 	}
 
+	.component-image {
+		.components-button {
+			margin: $gap;
+		}
+	}
+
 	.component-quote {
 		cite {
 			background: white;
@@ -90,6 +96,21 @@ body {
 			line-height: 2.30769231;
 			margin: 0 2px;
 			padding: 5px 15px;
+		}
+	}
+
+	// .components-block,
+	// .components-block,
+	*[class^="components-"] {
+		svg {
+			left: -3px;
+			position: relative;
+			top: 5px;
+
+			&.dashicons-heading {
+				height: 25px;
+				width: 25px;
+			}
 		}
 	}
 
@@ -106,27 +127,44 @@ body {
 		// 	display: block;
 		// }
 	}
+
+	&.wp-block {
+
+	}
 }
 
 .block-editor-block-styles {
 	background: linear-gradient(45deg, rgba(255, 0, 0, .1), rgba(0, 0, 255, .1));
 }
 
-.block-editor-button-block-appender.block-list-appender__toggle>svg {
-	background: transparent;
-	fill: #000;
+.block-editor-button-block-appender {
+	&.block-list-appender__toggle {
+		> svg {
+			background: transparent;
+			fill: #333;
+			left: auto;
+			top: auto;
+		}
+	}
 }
 
-.edit-post-visual-editor .block-editor-inserter .components-button.block-list-appender__toggle {
-	// background: hsl(0deg 0% 100% / 50%);
-	background: hsla(0, 0, 100%, 50%);
-	// border: 1px solid #8aacf0; // Light blue
-	border: 2px solid #555;
-	border-radius: 4px;
-	height: 30px;
-	outline: 0;
-	padding: 5px;
-	width: 30px;
+.edit-post-visual-editor {
+	// Square buttons with plus icon
+	.block-editor-inserter {
+		.components-button {
+			&.block-list-appender__toggle {
+				// background: hsl(0deg 0% 100% / 50%);
+				background: hsla(0, 0, 100%, 50%);
+				// border: 1px solid #8aacf0; // Light blue
+				border: 1px solid #555;
+				border-radius: 4px;
+				height: 30px;
+				outline: 0;
+				padding: 5px;
+				width: 30px;
+			}
+		}
+	}
 }
 
 .editor-inner-blocks .editor-block-list__block-edit,
@@ -276,19 +314,33 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 // 	text-align: right;
 // }
 
+.block-library-button__inline-link {
+	&.heading-url {
+		width: 100%;
+		margin-bottom: $gap*4;
+
+		input {
+			width: 100%;
+		}
+	}
+}
+
+#poststuff .stuffbox>h3, 
+#poststuff h2, #poststuff h3.hndle,
 .edit-post-meta-boxes-area #poststuff h2.hndle span {
-	font-size: 13px;
 	color: black;
+	font-size: 13px;
+	font-weight: 500;
 }
 
 .text-columns, 
 .is-style-text-columns .mce-content-body {
 	@include mediaquery(tablet-landscape) {
+		break-inside: avoid;
+		column-break-inside: avoid; /* Chrome, Safari, Opera */
 		column-count: 2;
 		column-gap: $gap*15;
-		column-break-inside: avoid; /* Chrome, Safari, Opera */
 		page-break-inside: avoid; /* Firefox */
-		break-inside: avoid;
 	}
 }
 
@@ -305,28 +357,6 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 				right: auto;
 			}
 		}
-
-		svg {
-			&.dashicons-heading {
-				height: 25px;
-				width: 25px;
-			}
-
-			.components-panel__body.is-opened & {
-				left: -3px;
-				position: relative;
-				top: 5px;
-			}
-		}
-	}
-}
-
-.block-library-button__inline-link.heading-url {
-	width: 100%;
-	margin-bottom: $gap*4;
-
-	input {
-		width: 100%;
 	}
 }
 
@@ -439,8 +469,9 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 
 .editor-post-title__block:not(.is-focus-mode).is-selected .editor-post-title__input, 
 .editor-post-title__block:not(.is-focus-mode):not(.has-fixed-toolbar):not(.is-selected) .editor-post-title__input:hover {
+	background: #fef8ee;
 	box-shadow: none;
-	border-color: #black;
+	border-color: black;
 	color: black;
 }
 
@@ -449,6 +480,12 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 		display: block;
 		margin: 0 auto 10px;
 	}
+}
+
+.interface-interface-skeleton__footer {
+	// bottom: 20px;
+	bottom: 0;
+	position: fixed;
 }
 
 // Styles for grid, row and column within editor

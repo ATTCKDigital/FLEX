@@ -1,35 +1,45 @@
-/**
- * Element in Viewport
- * Tracks when an element is in the view port.
- * Default behavior is to fade in specific elements - this behavior/animation/transition is handled via css
- */
 import $ from 'jquery';
 import $$ from '../component_cached-dom-elements/cached-dom-elements';
 
-function ElementsInViewport($el) {
-	var _inViewElementsOffsetIndex = [];
+console.log('loaded', '/FLEX\t/js\t/components\t/component_scroll-in\t/scroll-in.js');
+
+/**
+ * Scroll In
+ * Tracks when an element is in the view port.
+ * Default behavior is to fade in specific elements - this behavior/animation/transition is handled via css
+ * TODO: Add more useage info.
+ * TODO: Add options JSON for different effects. JSON could include timing & premade effects.
+ */
+function ScrollIn($el) {
+	console.log('/scroll-in.js', 'ScrollIn()');
+
+	var _detectElementsInViewOffsetIndex = [];
 	var _scrollstopTimer = 0;
 	var _currentScrollTop = $(window).scrollTop();
 	var _viewportHeight = $(window).outerHeight();
 
 	function bindEvents() {
-		console.log('/FLEX/\tjs/\telements-in-viewport.js', 'bindEvents()');
+		console.log('/FLEX/\tjs/\tscroll-in.js', 'bindEvents()');
         // $(document.body).on('FLEXLAYOUT.apploaded', hideElements);
 
 		$(document.body).on('FLEX.scroll', function (e, data) {
-			// Reset timer to trigger ElementsInViewport
+			// console.log('/FLEX/\tjs/\tscroll-in.js', 'FLEX.scroll()');
+
+			// Reset timer to trigger ScrollIn
 			_scrollstopTimer = 0;
 
 			_currentScrollTop = data.currentScrollTop;
 
 			// Check the current scroll offset against the DOM element offset array
-			inViewElements();
+			detectElementsInView();
 		});
 
 		// Include check for page resize as well since that
 		// can potentially cause the page to scroll
 		$(document.body).on('FLEX.resize', function () {
-			// Reset timer to trigger ElementsInViewport
+			// console.log('/FLEX/\tjs/\tscroll-in.js', 'FLEX.resize()');
+
+			// Reset timer to trigger ScrollIn
 			_scrollstopTimer = 0;
 
 			_viewportHeight = $(window).outerHeight();
@@ -39,12 +49,12 @@ function ElementsInViewport($el) {
 	}
 
 	function checkTimer() {
-		// console.log('/FLEX/\tjs/\telements-in-viewport.js', 'checkTimer()');
+		// console.log('/FLEX/\tjs/\tscroll-in.js', 'checkTimer()');
 
 		// Check if user stopped scrolling for more than two seconds and show anything that
 		// would be visible but hasn't hit the vertical scroll threshold yet
 		if (_scrollstopTimer > 500 && _scrollstopTimer !== 1) {
-			inViewElements(_viewportHeight);
+			detectElementsInView(_viewportHeight);
 
 			// Stop the timer once it runs once, until the next time the user scrolls
 			// which will trigger this again
@@ -55,9 +65,8 @@ function ElementsInViewport($el) {
 		}
 	}
 
-	// TODO: Rename this method name to something comprehensible. -DP
-	function inViewElements(scrollThreshold) {
-		// console.log('/FLEX/\tjs/\telements-in-viewport.js', 'inViewElements()');
+	function detectElementsInView(scrollThreshold) {
+		// console.log('/FLEX/\tjs/\tscroll-in.js', 'detectElementsInView()');
 
 		// Set Default scroll threshold
 		if (typeof scrollThreshold === 'undefined') {
@@ -76,9 +85,9 @@ function ElementsInViewport($el) {
 	}
 
 	function hideAllElements() {
-		console.log('/FLEX/\tjs/\telements-in-viewport.js', 'hideAllElements()');
+		console.log('/FLEX/\tjs/\tscroll-in.js', 'hideAllElements()');
 
-        // Don't hide these elements
+		// Don't hide these elements
 		$('.component-header').addClass('no-element-in-view');
 		$('.component-footer').addClass('no-element-in-view');
 		$('.component-gdpr p').addClass('no-element-in-view');
@@ -87,6 +96,7 @@ function ElementsInViewport($el) {
 
         // Set default elements to hide
         var elementsToHide = 'h3, h4, h5, h6, p, span, .cta, img, .category-list, .area-inner';
+        // TODO: Add some way to merge this with some project setting / JSON object
 
         // Check for elements override from child
         var elementsToHideOverride = $(document.body).attr('data-elements-to-hide');
@@ -109,11 +119,11 @@ function ElementsInViewport($el) {
 	}
 
 	function indexAllElements() {
-		console.log('/FLEX/\tjs/\telements-in-viewport.js', 'indexAllElements()');
+		console.log('/FLEX/\tjs/\tscroll-in.js', 'indexAllElements()');
 
 		$('.element-in-view').each(function () {
 			// Convert offset values to strings since they're floats and not a valid array ID
-			_inViewElementsOffsetIndex.push({
+			_detectElementsInViewOffsetIndex.push({
 				'offset': $(this).offset().top,
 				'element': $(this)
 			});
@@ -121,6 +131,8 @@ function ElementsInViewport($el) {
 	}
 
 	this.init = function($el) {
+		console.log('/FLEX/\tjs/\tscroll-in.js', 'init()');
+
 		bindEvents();
 		hideAllElements();
 
@@ -135,4 +147,4 @@ function ElementsInViewport($el) {
 	return this.init($el);
 }
 
-export default ElementsInViewport;
+export default ScrollIn;

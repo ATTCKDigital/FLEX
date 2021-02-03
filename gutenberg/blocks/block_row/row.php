@@ -67,7 +67,7 @@ function register_row_block() {
 					'type' => 'boolean',
 					'default' => false,
 				],
-				'verticalAligment' => [
+				'verticalAlignment' => [
 					'type' => 'string',
 					'default' => 'top',
 				],
@@ -141,7 +141,7 @@ function render_row_block($attributes, $content) {
 	$innerContent = background_options_video_output($attributes);
 	$innerContent .= scroller_options_output($attributes);
 
-	$innerContent .= "<div class=\"flex-grid component-row-{$attributes['blockAlignment']} component-alignment-{$attributes['verticalAligment']}\">{$content}</div>";
+	$innerContent .= "<div class=\"flex-grid component-row-{$attributes['blockAlignment']} component-row-verticalAlignment-{$attributes['verticalAlignment']}\">{$content}</div>";
 
 	$output = "<section{$id} class=\"{$class}\" data-section-id=\"{$sectionDataId}\" data-logo-color=\"{$dataLogoColor}\" style=\"{$style}\" {$dataComponentName} {$dataComponentOptions}>{$styleBlock}{$innerContent}</section>";
 

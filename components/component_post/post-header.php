@@ -1,7 +1,7 @@
 <?php // Single Post Header ?>
 <section class="component-row">adsadsadsdasasd
 	<?php if(has_post_thumbnail()){ ?>
-		<div class="flex-grid component-row-full component-alignment-top">
+		<div class="flex-grid component-row-full component-row-verticalAlignment-top">
 			<div class="column flex-tablet-landscape-12-12 flex-tablet-portrait-12-12 flex-12-12">
 				<div class="component-post-header">
 					<div class="featured-image">
@@ -11,7 +11,7 @@
 			</div>
 		</div>	
 	<?php } ?>
-	<div class="flex-grid component-row-wide component-alignment-top">
+	<div class="flex-grid component-row-wide component-row-verticalAlignment-top">
 		<div class="column flex-tablet-landscape-1-12 flex-tablet-portrait-1-12 flex-0-12"></div>
 		<div class="column flex-tablet-landscape-10-12 flex-tablet-portrait-10-12 flex-12-12">
 			<div class="component-post-header">

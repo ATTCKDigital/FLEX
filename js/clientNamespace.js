@@ -80,6 +80,12 @@ FLEX.cookies = (function () {
 FLEX.enforce = (function () {
 	/**
 	 * Logs error messages to console
+	 * 
+	 * Usages: 
+	 * — FLEX.enforce.required(varName, [errorMessage]);
+	 * — FLEX.enforce.type(varName, type, [errorMessage]);
+	 * — FLEX.enforce.custom(boolean, callbackFunction);
+	 * 
 	 * @param {string} errorMessage Message to display
 	 * @param {string|object} errorType Category of error, object format: { 'errorType': '{string} typeName' }
 	 * @return {boolean} True if defined, else undefined & an error message

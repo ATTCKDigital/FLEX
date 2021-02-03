@@ -86,14 +86,29 @@ export default registerBlockType(
 
 		},
 		edit: props => {
-			const { attributes: { imgID, imgURL, gifID, gifURL, url, caption, align, placeholder},
-				className, setAttributes, isSelected } = props;
+			const { 
+				attributes: { 
+					imgID, 
+					imgURL, 
+					gifID, 
+					gifURL, 
+					url, 
+					caption, 
+					align, 
+					placeholder
+				},
+				className, 
+				setAttributes, 
+				isSelected 
+			} = props;
+
 			const onSelectImage = img => {
 				setAttributes( {
 					imgID: img.id,
 					imgURL: img.url,
 				} );
 			};
+
 			const onRemoveImage = () => {
 				setAttributes({
 					imgID: null,
@@ -107,12 +122,14 @@ export default registerBlockType(
 					gifURL: gif.url,
 				} );
 			};
+
 			const onRemoveGif = () => {
 				setAttributes({
 					gifID: null,
 					gifURL: null,
 				});
 			}
+
 			return [
 				<InspectorControls>
 					<PanelBody title={ __( 'Heading Settings' ) }>
@@ -234,9 +251,7 @@ export default registerBlockType(
 							`image-wrapper`,
 							`align-${align}`,
 						)}>
-
 							{ isSelected ? (
-
 								<Button
 									className="remove-image"
 									onClick={ onRemoveGif }
@@ -251,7 +266,6 @@ export default registerBlockType(
 
 						</div>
 					)}
-
 				</div>
 			];
 		},
