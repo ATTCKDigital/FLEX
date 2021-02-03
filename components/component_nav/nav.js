@@ -1,11 +1,17 @@
 import $ from 'jquery';
 
+console.log('loaded', '/FLEX\t/js\t/components\t/component_nav\t/nav.js');
+
 // Global Nav & Header behavior
 function Nav($el) {
+	console.log('/nav.js', 'Nav()');
+
 	// Cache the body
 	var $body = $('body');
 
 	function navToggle() {
+		console.log('/FLEX/\tcomponents/\tcomponent-nav/\tnav.js', 'navToggle()');
+
 		// Open nav on hamburger click
 		$body.toggleClass('navOpen');
 		$el.find('.openNav').removeClass('openSubNav');
@@ -14,29 +20,39 @@ function Nav($el) {
 	}
 
 	function searchToggle() {
+		console.log('/FLEX/\tcomponents/\tcomponent-nav/\tnav.js', 'searchToggle()');
+
 		// Open search on click
 		$body.toggleClass('searchOpen');
 		$body.removeClass('navOpen');
 	}
 
 	function toggleSubNav(e) {
+		console.log('/FLEX/\tcomponents/\tcomponent-nav/\tnav.js', 'toggleSubNav()');
+
 		e.preventDefault();
 		$(this).parent().toggleClass('openSubNav').siblings().removeClass('openSubNav');
 		$body.toggleClass('openSubNav');
 	}
 
 	function openSubNav(e) {
+		console.log('/FLEX/\tcomponents/\tcomponent-nav/\tnav.js', 'openSubNav()');
+
 		e.preventDefault();
 		$(this).addClass('openSubNav').siblings().removeClass('openSubNav');
 		$body.addClass('openSubNav');
 	}
 
 	function closeSubNav() {
+		console.log('/FLEX/\tcomponents/\tcomponent-nav/\tnav.js', 'closeSubNav()');
+
 		$el.find('.menu-item-has-children').removeClass('openSubNav');
 		$body.removeClass('openSubNav');
 	}
 
 	function userScrolled() {
+		console.log('/FLEX/\tcomponents/\tcomponent-nav/\tnav.js', 'userScrolled()');
+
 		// Check if user is scrolled on page load so that the nav is hidden when they refresh the page
 		if ($(window).scrollTop() >= 10) {
 			$('body').addClass('hideNav');
@@ -44,6 +60,8 @@ function Nav($el) {
 	}
 
 	function scrolledNav($el) {
+		console.log('/FLEX/\tcomponents/\tcomponent-nav/\tnav.js', 'scrolledNav()');
+
 		// Bind to scroll
 		$(document.body).bind('FLEXLAYOUT.scroll', function (e, data) {
 			// Show/hide nav bar background color
@@ -79,6 +97,8 @@ function Nav($el) {
 	}
 
 	function logoColor($el) {
+		console.log('/FLEX/\tcomponents/\tcomponent-nav/\tnav.js', 'logoColor()');
+
 		// Change the logo color as you scroll down the page. Can also be used to change the hamburger color. 
 		// Make color changes using CSS.
 		var row = $('.component-row');
@@ -114,6 +134,8 @@ function Nav($el) {
 	}
 
 	function bindEvents() {
+		console.log('/FLEX/\tcomponents/\tcomponent-nav/\tnav.js', 'bindEvents()');
+
 		$el = $el;
 		$el.find('.hamburger-wrapper').on('click', navToggle);
 
@@ -125,6 +147,11 @@ function Nav($el) {
 
 			// If we're hovering outside the nav, close the nav.
 			$(document).on('mouseover',function (e) {
+				// But, only if the nev is already open
+				if (!$body.hasClass('openSubNav')) {
+					return;
+				}
+
 				let $target = $(e.target);
 
 				if (!$target.is('.main-header') && !$target.closest('.main-header').length) {
@@ -142,6 +169,8 @@ function Nav($el) {
 	}
 
 	this.init = function ($el) {
+		console.log('/FLEX/\tcomponents/\tcomponent-nav/\tnav.js', 'init()');
+
 		bindEvents();
 
 		return this;

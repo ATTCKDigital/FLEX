@@ -1,14 +1,19 @@
 /**
  * Parallax component
  *
- * Enables background image parallax effects
- * TODO: Add more usage info here.
+ * Enables parallax effects to DOM elements and background images.
+ * Can be applied to DIVs and SECTION elements.
+ * TODO: Add more useage info.
+ * TODO: Add options JSON for different effects. JSON could include multiplier for more/less effect
  */
 console.log('loaded', '/FLEX\t/js\t/cached-dom-elements.js');
 
 import $ from 'jquery';
 import $$ from '../component_cached-dom-elements/cached-dom-elements';
 
+/**
+ * Offets either the relative position of valid $el, else the background image position.
+ */
 function Parallax($el, params={}) {
 	const defaults = {};
 
@@ -82,7 +87,24 @@ function Parallax($el, params={}) {
 
 			// console.log('Parallax.js > finalOffset: ', finalOffset, $el.prop('nodeName'));
 			// TODO: (DP) Add different effects for each element
-			if ($el.prop('nodeName') === 'DIV') {
+			var elementIsValid = false;
+
+			// TODO: (DP) Find out whether these element names need to be uppercase.
+			switch (true) {
+				case $el.prop('nodeName') === 'DIV':
+					elementIsValid = true;
+					break;
+
+				case $el.prop('nodeName') === 'SECTION':
+					elementIsValid = true;
+					break;
+
+				default:
+					// No default
+					break;
+			}
+
+			if (elementIsValid) {
 				var validContent = true;
 
 				// Don't apply this effect to...
