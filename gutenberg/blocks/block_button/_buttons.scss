@@ -1,5 +1,10 @@
+.component-button {
+	// TODO: Add button styles here. -DP
+}
+
 .cta, 
 .is-style-cta {
+	@include primary-regular;
 	@include font-size($font-size-body-text);
 	background-color: transparent;
 	border-color: $black;
@@ -76,5 +81,13 @@
 	&.cta-inactive {
 		pointer-events: none;
 		opacity: .5;
+	}
+
+	&.cta-small {
+		font-size: 0.77692rem;
+		font-weight: 600;
+		letter-spacing: 0.14rem;
+		min-height: auto;
+		padding: 14px 29px;
 	}
 }

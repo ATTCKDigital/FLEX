@@ -119,10 +119,14 @@ export default registerBlockType(
 							`component-button-editor`,
 							`component-button`,
 							`align-${align}`,
-							...MarginOptionsClasses( props ),)}>
+							...MarginOptionsClasses( props )
+						)}>
 					<RichText
 						identifier="content"
-						className={ classnames('wp-block-button__link', className)}
+						className={ classnames(
+							'wp-block-button__link', 
+							className
+						)}
 						tagName={ tagName }
 						value={ content }
 						onChange={ ( value ) => setAttributes( { content: value } ) }
@@ -140,7 +144,11 @@ export default registerBlockType(
 								value={ url }
 								onChange={ ( value ) => setAttributes( { url: value } ) }
 							/>
-							<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
+							<IconButton 
+								// icon="editor-break" 
+								icon={ icons.check }
+								label={ __( 'Apply' ) } 
+								type="submit" />
 						</form>
 					) }
 					{/*<RichText
