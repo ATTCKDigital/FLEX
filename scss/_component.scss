@@ -4,8 +4,8 @@
 }
 
 // Bottom align elements in a row
-.component-alignment-bottom,
-.component-alignment-bottom .editor-block-list__layout {
+.component-row-verticalAlignment-bottom,
+.component-row-verticalAlignment-bottom .editor-block-list__layout {
 	display: flex;
 	align-items: flex-end;
 	align-content: flex-end;
@@ -13,8 +13,8 @@
 }
 
 // Center align elements in a row
-.component-alignment-center, 
-.component-alignment-center .editor-block-list__layout {
+.component-row-verticalAlignment-center, 
+.component-row-verticalAlignment-center .editor-block-list__layout {
 	display: flex;
 	align-items: center;
 	align-content: center;
@@ -22,38 +22,67 @@
 }
 
 // Stretch elements in a row
-.component-alignment-stretch, 
-.component-alignment-stretch .editor-block-list__layout {
-	display: flex;
+.component-row-verticalAlignment-stretch, 
+.component-row-verticalAlignment-stretch .editor-block-list__layout {
 	align-items: stretch;
+	display: flex;
 	height: 100%;
 }
 
 // Top align elements in a row
-.component-alignment-top, 
-.component-alignment-top .editor-block-list__layout {
+.component-row-verticalAlignment-top, 
+.component-row-verticalAlignment-top .editor-block-list__layout {
 	display: flex;
 	align-items: flex-start;
 	align-content: flex-start;
 }
 
 .component-column {
-	&.column-align-left {
-		display: block !important;
-		margin-left: 0 !important;
-		margin-right: auto !important;
+	&.column-align-left.column-align-left {
+		// Left is the default so leave this alone.
+		// display: block !important;
+		// margin-left: 0 !important;
+		// margin-right: auto !important;
 	}
 
-	&.column-align-center {
-		display: block !important;
-		margin-left: auto !important;
-		margin-right: auto !important;
+	&.column-align-center.column-align-center {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+
+		// display: flex;
+		// justify-content: center;
 	}
 
-	&.column-align-right {
-		display: block !important;
-		margin-left: auto !important;
-		margin-right: 0 !important;
+	&.column-align-right.column-align-right {
+		display: block;
+		margin-left: auto;
+		margin-right: 0;
+
+		// This messes with normal column layout settings
+		// display: flex;
+		// justify-content: right;
+	}
+
+	&.component-column-verticalAlignment-bottom.component-column-verticalAlignment-bottom {
+		// align-items: flex-end;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+	}
+
+	&.component-column-verticalAlignment-center.component-column-verticalAlignment-center {
+		// align-items: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	&.component-column-verticalAlignment-top.component-column-verticalAlignment-top {
+		// This is the default, so don't set anything or it 
+		// will override other FLEX row/column layout settings
+		// align-items: flex-start;
+		// display: flex;
 	}
 }
 
