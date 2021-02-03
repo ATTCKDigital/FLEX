@@ -70,7 +70,7 @@ export default registerBlockType(
 				type: 'boolean',
 				default: false,
 			},
-			verticalAligment: {
+			verticalAlignment: {
 				type: 'string',
 				default: 'top',
 			},
@@ -106,7 +106,7 @@ export default registerBlockType(
 					dataComponentOptions,
 					dataSectionId,
 					reverseMobile, 
-					verticalAligment, 
+					verticalAlignment, 
 				}, 
 				className, 
 				setAttributes 
@@ -183,9 +183,9 @@ export default registerBlockType(
 									className={ classnames(
 										'components-icon-button',
 										'components-toolbar__control',
-										{ 'is-active': props.attributes.verticalAligment === 'top' },
+										{ 'is-active': props.attributes.verticalAlignment === 'top' },
 									) }
-									onClick={ () => setAttributes( { verticalAligment: 'top' } ) }
+									onClick={ () => setAttributes( { verticalAlignment: 'top' } ) }
 								>
 									{ icons.alignTop }
 								</Button>
@@ -195,9 +195,9 @@ export default registerBlockType(
 									className={ classnames(
 										'components-icon-button',
 										'components-toolbar__control',
-										{ 'is-active': props.attributes.verticalAligment === 'center' },
+										{ 'is-active': props.attributes.verticalAlignment === 'center' },
 									) }
-									onClick={ () => setAttributes( { verticalAligment: 'center' } ) }
+									onClick={ () => setAttributes( { verticalAlignment: 'center' } ) }
 								>
 									{ icons.alignCenter }
 								</Button>
@@ -207,9 +207,9 @@ export default registerBlockType(
 									className={ classnames(
 										'components-icon-button',
 										'components-toolbar__control',
-										{ 'is-active': props.attributes.verticalAligment === 'bottom' },
+										{ 'is-active': props.attributes.verticalAlignment === 'bottom' },
 									) }
-									onClick={ () => setAttributes( { verticalAligment: 'bottom' } ) }
+									onClick={ () => setAttributes( { verticalAlignment: 'bottom' } ) }
 								>
 									{ icons.alignBottom }
 								</Button>
@@ -219,9 +219,9 @@ export default registerBlockType(
 									className={ classnames(
 										'components-icon-button',
 										'components-toolbar__control',
-										{ 'is-active': props.attributes.verticalAligment === 'stretch' },
+										{ 'is-active': props.attributes.verticalAlignment === 'stretch' },
 									) }
-									onClick={ () => setAttributes( { verticalAligment: 'stretch' } ) }
+									onClick={ () => setAttributes( { verticalAlignment: 'stretch' } ) }
 								>
 									{ icons.appsSort }
 								</Button>
@@ -247,7 +247,7 @@ export default registerBlockType(
 					{ ScrollerOptionsOutput( props ) }
 					<div className={ classnames(
 						'flex-grid',
-						`component-alignment-${verticalAligment}`,
+						`component-row-verticalAlignment-${verticalAlignment}`,
 						dataComponentName && `component-${dataComponentName}`
 					) }>
 						<InnerBlocks />

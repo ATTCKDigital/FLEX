@@ -62,7 +62,9 @@ function register_button_block() {
 // Server rendering for /blocks/heading
 function render_button_block($attributes) {
 	$buttonClass = $attributes['className'];
-	$class = " text-align-{$attributes['align']}";
+	$buttonClass = $attributes['className']; //''; 
+	$class = " text-align-{$attributes['align']} ";
+	$class .= $attributes['className'];
 	$class .= margin_options_classes($attributes);
 
 	$content1 = array_key_exists('content', $attributes) ? $attributes['content'] : null;

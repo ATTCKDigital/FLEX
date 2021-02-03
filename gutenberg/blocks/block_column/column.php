@@ -53,7 +53,10 @@ function register_column_block() {
 				'dataComponentOptions' => [
 					'type' => 'string',
 				],
-				
+				'verticalAlignment' => [
+					'type' => 'string',
+					'default' => 'top',
+				],
 			],
 			BACKGROUND_OPTIONS_ATTRIBUTES,
 			PADDING_OPTIONS_ATTRIBUTES,
@@ -80,6 +83,9 @@ function render_column_block($attributes, $content) {
 
 	// Apply alignment setting
 	$class .= array_key_exists('align', $attributes) ? " column-align-{$attributes['align']}" : "";
+
+	// Apply vertical alignment setting
+	$class .= array_key_exists('verticalAlignment', $attributes) ? " component-column-verticalAlignment-{$attributes['verticalAlignment']}" : "";
 
 	// Apply relative link id (e.g., page.html#link)
 	$id = array_key_exists('anchor', $attributes) ? " id=\"{$attributes['anchor']}\"" : "";

@@ -1,5 +1,6 @@
 // Allows JS to access CSS breakpoints
 .breakpoint {
+	text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
 	color: black;
 	display: none;
 	height: 20px;
@@ -8,7 +9,7 @@
 	right: 10px;
 	text-align: left;
 	top: 10px;
-	width: 300px;
+	width: 350px;
 	z-index: 999999;
 }
 

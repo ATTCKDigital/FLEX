@@ -21,7 +21,7 @@ function DataComponentNameOptions( props ) {
 	
 	return (
 		<PanelBody
-			title={ __( 'FLEX JS Component Name' ) }
+			title={ __( 'FLEX Component' ) }
 			className="flexlayout-componentname-options"
 			initialOpen={ false }
 		>

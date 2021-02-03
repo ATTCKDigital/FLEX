@@ -58,13 +58,18 @@ FLEX.debug = (function () {
 	}
 
 	// Manage debug cookies
-	function cookiesSet(status) {
-		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.cookiesSet(status: ' + status + ')');
+	// @param string cookieName
+	// @param boolean status 
+	function cookiesSet(cookieName, status) {
+		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.cookiesSet(cookieName: ' + cookieName + ', status: ' + status + ')');
+
+		// Enforce required cookieName parameter
+		FLEX.enforce.required(cookieName);
 
 		if (status === true) {
-			FLEX.cookies.set('debug', status);
+			FLEX.cookies.set(cookieName, status);
 		} else {
-			FLEX.cookies.remove('debug');
+			FLEX.cookies.remove(cookieName);
 		}
 	}
 
@@ -122,6 +127,8 @@ FLEX.debug = (function () {
 
 	// Manages access to debugModeStatus variable and enforce type
 	function breakpointsModeStatusSet(status) {
+		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.breakpointsModeStatusSet(), status: ' + status);
+		
 		// Enforce type
 		if (typeof status !== "boolean") {
 			// Revert to previous value if invalid type passed
@@ -147,7 +154,7 @@ FLEX.debug = (function () {
 			status = debugModeStatus;
 		}
 
-		cookiesSet(status);
+		cookiesSet('debug', status);
 
 		return _debugModeStatus = status;
 	}
@@ -156,7 +163,7 @@ FLEX.debug = (function () {
 	function debuggingDisable() {
 		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.debuggingDisable()');
 		bodyClassSet(false);
-		cookiesSet(false);
+		cookiesSet('debug', false);
 		showCSSBreakpoints(false);
 
 		// Don't want to turn off syntax coloring if 
@@ -172,7 +179,7 @@ FLEX.debug = (function () {
 
 		enhancedConsoleLoggingSet(true);
 		bodyClassSet(true);
-		cookiesSet(true);
+		cookiesSet('debug', true);
 		showCSSBreakpoints(true);
 	}
 
@@ -304,6 +311,17 @@ FLEX.debug = (function () {
 		if (typeof $ !== 'undefined' && status === false) {
 			// Hide the breakpoints if false is passed as param
 			$(".breakpoint-current").hide();
+		}
+
+		// Manage cookies
+		if (status === false) { 
+			// Remove cookie
+			cookiesSet('showBreakpoints', false);
+		}
+
+		if (status === true) { 
+			// Remove cookie
+			cookiesSet('showBreakpoints', true);
 		}
 	}
 

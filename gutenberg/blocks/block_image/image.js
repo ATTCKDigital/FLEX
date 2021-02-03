@@ -185,8 +185,14 @@ export default registerBlockType(
 									<URLInput
 										value={ url }
 										onChange={ ( value ) => setAttributes( { url: value } ) }
-									/>
-									<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
+										/>
+									<IconButton 
+										className="block-align-right"
+										// icon="editor-break" 
+										icon={ icons.check }
+										label={ __( 'Apply' ) } 
+										type="submit" 
+										/>
 								</form>
 							) : null }
 							<img
