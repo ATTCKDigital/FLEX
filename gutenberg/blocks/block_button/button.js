@@ -28,6 +28,7 @@ const {
 
 // Internal dependencies
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
+import DataComponentNameOptions, { DataComponentNameAttributes } from '../../components/gb-component_data-component-name';
 
 // Register block
 export default registerBlockType(
@@ -67,6 +68,7 @@ export default registerBlockType(
 				type: 'boolean',
 				default: 'false'
 			},
+			...DataComponentNameAttributes,
 			...MarginOptionsAttributes
 		},
 		styles: [
@@ -85,7 +87,9 @@ export default registerBlockType(
 					placeholder,
 					target,
 					url,
-					url2
+					url2,
+					dataComponentName,
+					dataComponentOptions,
 				},
 				className,
 				setAttributes,
@@ -114,13 +118,20 @@ export default registerBlockType(
 					<MarginOptions
 						{ ...props }
 					/>
+					<DataComponentNameOptions
+						{ ...props }
+					/>
 				</InspectorControls>,
-				<div className={classnames(
-							`component-button-editor`,
-							`component-button`,
-							`align-${align}`,
-							...MarginOptionsClasses( props )
-						)}>
+				<div 
+					className={classnames(
+						`component-button-editor`,
+						`component-button`,
+						`align-${align}`,
+						...MarginOptionsClasses( props )
+					)}
+					data-component-name={ dataComponentName } 
+					data-component-options={ dataComponentOptions }
+				>
 					<RichText
 						identifier="content"
 						className={ classnames(
