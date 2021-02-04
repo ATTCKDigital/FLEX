@@ -1,6 +1,7 @@
 <?php
 // TODO: 
 // - ADD OPTION FOR OPEN POPUP ON INIT
+// - ADD OPTION FOR ALIGN (TOP RIGHT BOTTOM LEFT)
 
 namespace FLEX_LAYOUT_SYSTEM\Blocks\Popup;
 
@@ -88,8 +89,6 @@ function render_popup_block($attributes, $content) {
 	// Popup Name
 	$popupName = $attributes['popupName'];
 
-	// Apply alignment setting
-	$class .= array_key_exists('align', $attributes) ? " column-align-{$attributes['align']}" : "";
 
 	// Apply relative link id (e.g., page.html#link)
 	$id = array_key_exists('anchor', $attributes) ? " id=\"{$attributes['anchor']}\"" : "";

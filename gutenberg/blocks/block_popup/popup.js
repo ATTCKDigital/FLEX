@@ -10,22 +10,13 @@ const {
 } = wp.blocks;
 
 const {
-	AlignmentToolbar,
-	BlockAlignmentToolbar,
-	BlockControls,
 	InspectorControls,
 	InnerBlocks,
 } = wp.blockEditor;
 
 const {
-	Button,
-	ButtonGroup,
-	Dashicon,
-	IconButton,
 	PanelBody,
 	PanelRow,
-	Toolbar,
-	Tooltip,
 	RangeControl,
 	TextControl,
 } = wp.components;
@@ -55,10 +46,6 @@ export default registerBlockType(
 			__( 'Popup', 'flexlayout' ),
 		],
 		attributes: {
-			align: {
-				type: 'string',
-				default: ''
-			},
 			popupName: {
 				type: 'string',
 				default: ''
@@ -77,7 +64,6 @@ export default registerBlockType(
 		edit: props => {
 			const {
 				attributes: {
-					align,
 					backgroundOpacity,
 					advancedId,
 					dataComponentName,
@@ -127,18 +113,9 @@ export default registerBlockType(
 						{ ...props }
 					/>
 				</InspectorControls>,
-				<BlockControls>
-					<AlignmentToolbar
-						value={ align }
-						onChange={ ( nextAlign ) => {
-							setAttributes( { align: nextAlign } );
-						} }
-					/>
-				</BlockControls>,
 				<div
 					className={
 						className,
-						`column-align-${align}`,
 						`component-${dataComponentName}`
 					}
 					data-component-name={ dataComponentName } 
@@ -172,7 +149,6 @@ const customClassName = createHigherOrderComponent( ( BlockListBlock ) => {
 						{ ...props }
 						className={ classnames(
 								'component-popup',
-								`column-align-${props.attributes.align}`,
 								...BackgroundOptionsClasses( props ),
 								...BorderOptionsClasses( props ),
 								...MarginOptionsClasses( props ),
