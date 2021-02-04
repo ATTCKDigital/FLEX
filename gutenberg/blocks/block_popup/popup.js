@@ -27,6 +27,7 @@ const {
 	Toolbar,
 	Tooltip,
 	RangeControl,
+	TextControl,
 } = wp.components;
 
 const {
@@ -58,6 +59,10 @@ export default registerBlockType(
 				type: 'string',
 				default: ''
 			},
+			popupName: {
+				type: 'string',
+				default: ''
+			},
 			backgroundOpacity: {
 				type: Number,
 				default: 1
@@ -73,10 +78,11 @@ export default registerBlockType(
 			const {
 				attributes: {
 					align,
+					backgroundOpacity,
 					advancedId,
 					dataComponentName,
 					dataComponentOptions,
-					backgroundOpacity,
+					popupName,
 				},
 				className,
 				setAttributes,
@@ -84,6 +90,13 @@ export default registerBlockType(
 
 			return [
 				<InspectorControls>
+						<PanelRow>
+							<TextControl
+								label="Popup Name"
+								value={ popupName }
+								onChange={  popupName => setAttributes( { popupName } ) }
+							/>
+					</PanelRow>
 					<PanelBody title={__('Background Settings')}>
 						<BackgroundOptions
 							{ ...props }
@@ -128,7 +141,6 @@ export default registerBlockType(
 						`column-align-${align}`,
 						`component-${dataComponentName}`
 					}
-					style={{position: 'relative'}}
 					data-component-name={ dataComponentName } 
 					data-component-options={ dataComponentOptions }
 				>

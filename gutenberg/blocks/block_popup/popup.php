@@ -1,4 +1,7 @@
 <?php
+// TODO: 
+// - ADD OPTION FOR OPEN POPUP ON INIT
+
 namespace FLEX_LAYOUT_SYSTEM\Blocks\Popup;
 
 use const FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\BACKGROUND_OPTIONS_ATTRIBUTES;
@@ -44,6 +47,10 @@ function register_popup_block() {
 					'type' => 'string',
 					'default' => '',
 				],
+				'popupName' => [
+					'type' => 'string',
+					'default' => '',
+				],
 				'backgroundOpacity' => [
 					'type' => 'Number',
 					'default' => 100,
@@ -78,6 +85,9 @@ function render_popup_block($attributes, $content) {
 	$class .= border_options_classes($attributes);
 	$class .= column_options_classes($attributes);
 
+	// Popup Name
+	$popupName = $attributes['popupName'];
+
 	// Apply alignment setting
 	$class .= array_key_exists('align', $attributes) ? " column-align-{$attributes['align']}" : "";
 
@@ -98,7 +108,13 @@ function render_popup_block($attributes, $content) {
 
 	// Apply background images
 	$style = background_options_inline_styles($attributes);
-	$style .= ' opacity:' . $attributes['backgroundOpacity'];
+	$overlay = '';
+	
+	if (!empty($style)) {
+		$style .= ' opacity:' . $attributes['backgroundOpacity'];
+		$overlay = "<div class=\"popup-background-overlay\" style=\"{$style}\"></div>";
+	}
+
 	$mobileImage = background_options_mobile_styles($attributes);
 	$desktopImage = background_options_desktop_styles($attributes);
 
@@ -111,11 +127,13 @@ function render_popup_block($attributes, $content) {
 	// Video will only appear if the popup has content
 	$innerContent = background_options_video_output($attributes);
 
-	// $output = "
-	// 	<section{$id} class=\"{$class}\" data-section-id=\"section-{$sectionDataId}\" {$dataComponentName} {$dataComponentOptions}>
-	// 		<div class=\"popup-background-overlay\" style=\"{$style}\"></div>
-	// 		{$styleBlock}{$content}{$innerContent}
-	// 	</section>";
+	$output = "
+	<script type=\"text/template\" data-popup-tpl=\"{$popupName}\">
+		<div {$id} class=\"{$class}\" data-section-id=\"section-{$sectionDataId}\" {$dataComponentName} {$dataComponentOptions}>
+			{$overlay}
+			{$styleBlock}{$content}{$innerContent}
+		</div>
+	</script>";
 
-	// return $output;
+	return $output;
 }
