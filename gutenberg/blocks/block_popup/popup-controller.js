@@ -1,10 +1,10 @@
+import Loader from '../../../js/load-components';
+
 function PopupController($el) {
 
 	var popupNames;
 	var $popup;
 	var $popupEl;
-	var $popupOverlay;
-	var $closeButton;
 	var $buttons;
 
 	function bindEvents() {
@@ -33,20 +33,33 @@ function PopupController($el) {
 
 		$( "body" ).append($popup.html());
 		$popupEl = $('.component-popup');
-		$popupOverlay = $('.popup-background-overlay', $popupEl);
-		$closeButton = $('.close-button', $popupEl);
 
-		$popupOverlay.on('click', (e) => {
+		initComponents();
+
+		let $popupOverlay = $('.popup-background-overlay', $popupEl);
+		let $closeButton = $('.close-button', $popupEl);
+
+		bindClosePopup($popupOverlay);
+		bindClosePopup($closeButton);
+	}
+
+	function bindClosePopup($el) {
+		$el.on('click', (e) => {
 			e.preventDefault();
 
 			closePopup()
 		});
+	}
 
-		$closeButton.on('click', (e) => {
-			e.preventDefault();
+	function initComponents() {
+		console.log('/FLEX/\tguttenberg /\tblocks/\t Popup Controller', 'initComponents()');
 
-			closePopup()
-		});
+		let $componentElements = $('[data-component-name]', $popupEl);
+		console.log($componentElements);
+
+		$componentElements.each(function() {
+			Loader.loadComponent($(this))
+		})
 	}
 
 	function closePopup() {
