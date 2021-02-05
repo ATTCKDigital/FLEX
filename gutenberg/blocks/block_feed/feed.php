@@ -72,19 +72,23 @@ function render_feed_block($attributes) {
 
 		$categories = get_the_category($postID);
 		$arrayCategories =  array();
+		$displayCategories = '';
 
 		if ($categories) {
 			foreach ($categories as $category) {
-				$arrayCategories[] = '<a href="/category/'.$category->slug.'">'.$category->name.'</a>';
+				// Categories changed to span temporarily 
+				// $arrayCategories[] = '<a href="/category/'.$category->slug.'">'.$category->name.'</a>';
+				$arrayCategories[] = '<span>'.$category->name.'</span>';
+
 			}
-			$displayCategories = implode( ', ', $arrayCategories );;
+			$displayCategories = implode( ', ', $arrayCategories );
 		}
 
 		if ($thumbnail) {
-			$thumbnail = '<div class="image-wrapper margin-bottom-1x">'.get_the_post_thumbnail($postID).'</div>';
+			$thumbnail = '<div class="image-wrapper">'.get_the_post_thumbnail($postID).'</div>';
 		} else {
 			$thumbnail = '
-			<div class="image-wrapper margin-bottom-1x no-image">
+			<div class="image-wrapper no-image">
 				<img src="'.get_field('fallback_image', 'options').'" 
 					alt="'.get_field('fallback_image_alt', 'options').'" 
 					title="'.get_field('fallback_image_alt', 'options').'" 
@@ -94,11 +98,11 @@ function render_feed_block($attributes) {
 		
 		$feedItems  .= '
 			<a class="feed-item" href="'.$link.'">'.$thumbnail.'
-				<div class="feed-info margin-bottom-2x">
-					<span class="eyebrow display-block margin-bottom-1x feed-category">'.$displayCategories.'</span>
-					<h2 class="headline6 margin-bottom-1x feed-title">'.get_the_title($postID).'</h2>
-					<p class="margin-bottom-1x feed-excerpt">'.$excerpt.'</p>
-					<span class="eyebrow display-block margin-bottom-1x feed-date">'.get_the_time('F j, Y').'</span>
+				<div class="feed-info">
+					<span class="feed-category">'.$displayCategories.'</span>
+					<h2 class="headline6 feed-title">'.get_the_title($postID).'</h2>
+					<span class="feed-date">'.get_the_time('F j, Y').'</span>
+					<p class="feed-excerpt">'.$excerpt.'</p>
 				</div>
 			</a>';
 	}
