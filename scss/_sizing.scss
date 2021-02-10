@@ -1,8 +1,8 @@
 // Global settings (i.e., don't change or override)
 // Override in themes/projectName/scss/_sizing.scss
 $positions					: top, left, bottom, right;
-$xPositions					: left, center, right;
-$yPositions					: top, center, bottom;
+$xPositions					: center, left, right;
+$yPositions					: bottom, center, top;
 $screensizes				: default, phone, phone-plus, tablet-portrait, tablet-landscape, desktop, xl, xl2;
 $counterIncrement 			: 8; // e.g., .padding-top-2x { padding-top: 8px; }
 $x 							: 30; // e.g., .padding-desktop-top-30x { padding-top: 120px; }
