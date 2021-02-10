@@ -6,7 +6,7 @@ $yPositions					: top, center, bottom;
 $screensizes				: default, phone, phone-plus, tablet-portrait, tablet-landscape, desktop, xl, xl2;
 $counterIncrement 			: 8; // e.g., .padding-top-2x { padding-top: 8px; }
 $x 							: 30; // e.g., .padding-desktop-top-30x { padding-top: 120px; }
-$units						: px, pc, vh, vw, gap;
+$units						: px, pc, vh, vw, x;
 $gridColumns				: 12, 24;
 // x is the max number of loops the padding and margins mixin should run
 //gap and increment should be the same value. 2 variables are required, one without px
