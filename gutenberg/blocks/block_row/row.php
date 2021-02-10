@@ -119,13 +119,22 @@ function render_row_block($attributes, $content) {
 	$desktopImage = background_options_desktop_styles($attributes);
 	$wideImage = background_options_background_image_wide_styles($attributes);
 
+
+	// For the optional CSS class
+	// TODO: (DP) Remove this in production, testing.
+	// if ($wideImage) {
+		$isWide = '-wide';
+	// } else {
+	// 	$isWide = '';
+	// }
+
 	if ($mobileImage || $desktopImage) {
 		$styleBlock  = "<style>";
-		$styleBlock .= 		".component-image-background.component-image-background-wide[data-section-id=\"{$sectionDataId}\"]:{$wideImage}{";
+		$styleBlock .= 		".component-image-background.component-image-background" . $isWide . "[data-section-id=\"{$sectionDataId}\"]$wideImage{";
 		$styleBlock .= 			"{$mobileImage}";
 		$styleBlock .= 		"}";
 		$styleBlock .= 		"@media only screen and (min-width: 768px){";
-		$styleBlock .= 			".component-image-background.component-image-background-wide[data-section-id=\"{$sectionDataId}\"]{$wideImage}{";
+		$styleBlock .= 			".component-image-background.component-image-background" . $isWide . "[data-section-id=\"{$sectionDataId}\"]$wideImage{";
 		$styleBlock .= 				"{$desktopImage}";
 		$styleBlock .= 			"}";
 		$styleBlock .= 		"}";
