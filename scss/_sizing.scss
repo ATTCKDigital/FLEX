@@ -1,11 +1,13 @@
-$gap						: 16px;
-$siteWidth					: 1024px;
-$navMobileHeight			: 70px;
-$navHeight					: 120px;
+// Global settings (i.e., don't change or override)
+// Override in themes/projectName/scss/_sizing.scss
 $positions					: top, left, bottom, right;
+$xPositions					: left, center, right;
+$yPositions					: top, center, bottom;
 $screensizes				: default, phone, phone-plus, tablet-portrait, tablet-landscape, desktop, xl, xl2;
 $counterIncrement 			: 8; // e.g., .padding-top-2x { padding-top: 8px; }
 $x 							: 30; // e.g., .padding-desktop-top-30x { padding-top: 120px; }
+$units						: px, pc, vh, vw, gap;
+$gridColumns				: 12, 24;
 // x is the max number of loops the padding and margins mixin should run
 //gap and increment should be the same value. 2 variables are required, one without px
 
@@ -27,6 +29,31 @@ $max-tablet-landscape		: 1023px;
 $max-desktop				: 1099px;
 $max-xl						: 1279px;
 $max-xl2					: 1439px;
+
+@mixin font-size($fs-map) {
+	@each $fs-breakpoint, $fs-font-size in $fs-map {
+		@include mediaquery($fs-breakpoint) {
+			font-size: px-to-rem($fs-font-size);
+		}
+	}
+}
+
+/**
+ * Converts px to rem 
+ * — USAGE:  font-size: px-to-rem(12px);
+ */
+@function px-to-rem($size) {
+	$remSize: $size / 13px;
+	@return #{$remSize}rem;
+}
+
+// Project specific settings
+// Override in themes/projectName/scss/_sizing.scss
+$gap						: 16px;
+$siteWidth					: 1024px;
+$navMobileHeight			: 70px;
+$navHeight					: 120px;
+$navWidth					: 1300px;
 
 // Fixed row heights
 $small-row-mobile			: 50vh;
@@ -139,20 +166,3 @@ $font-size-headline6: (
 	'xl'				: 20px,
 	'xl2'				: 20px,
 );
-
-@mixin font-size($fs-map) {
-	@each $fs-breakpoint, $fs-font-size in $fs-map {
-		@include mediaquery($fs-breakpoint) {
-			font-size: px-to-rem($fs-font-size);
-		}
-	}
-}
-
-/**
- * Converts px to rem 
- * — USAGE:  font-size: px-to-rem(12px);
- */
-@function px-to-rem($size) {
-	$remSize: $size / 13px;
-	@return #{$remSize}rem;
-}
