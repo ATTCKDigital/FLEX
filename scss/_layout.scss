@@ -150,38 +150,38 @@ $valueIncrements: 10;
 					@each $position in $positions {
 
 						// Handle '$gap' specially
-						@if $unit == 'gap' {
-							.offset-margin-#{$position}-#{$i}#{$unit} { margin-#{$position}: #{$i}$gap }
-							.offset-margin-#{$position}--#{$i}#{$unit} { margin-#{$position}: -#{$i}$gap }
+						@if $unit == 'x' {
+							.offset-margin-#{$position}-#{$i}#{$unit} { margin-#{$position}: #{$i * $gap + 'px'} }
+							.offset-margin-#{$position}--#{$i}#{$unit} { margin-#{$position}: -#{$i * $gap + 'px'} }
 						}
 
 						// Handle '%' specially
-						@if $unit == 'pc' {
+						@else if $unit == 'pc' {
 							.offset-margin-#{$position}-#{$i}#{$unit} { margin-#{$position}: #{$i + '%'}; }
 							.offset-margin-#{$position}--#{$i}#{$unit} { margin-#{$position}: -#{$i + '%'}; }
 						}
 
-						@if $unit != 'gap' & $unit != 'pc' {
+						@else {
 							.offset-margin-#{$position}-#{$i}#{$unit} { margin-#{$position}: #{$i}#{$unit} }
 							.offset-margin-#{$position}--#{$i}#{$unit} { margin-#{$position}: -#{$i}#{$unit} }
 						}
 					}
 
-					@if $unit == 'gap' {
-						.height-#{$i}#{$unit} { height: #{$i}$gap; }
-						.width-#{$i}#{$unit} { width: #{$i}$gap; }
-						.max-height-#{$i}#{$unit} { max-height: #{$i}$gap; }
-						.max-width-#{$i}#{$unit} { max-width: #{$i}$gap; }
+					@if $unit == 'x' {
+						.height-#{$i}#{$unit} { height: #{$i * $gap + 'px'} }
+						.width-#{$i}#{$unit} { width: #{$i * $gap + 'px'} }
+						.max-height-#{$i}#{$unit} { max-height: #{$i * $gap + 'px'} }
+						.max-width-#{$i}#{$unit} { max-width: #{$i * $gap + 'px'} }
 					}
 
-					@if $unit == 'pc' {
+					@else if $unit == 'pc' {
 						.height-#{$i}#{$unit} { height: #{$i + '%'}; }
 						.width-#{$i}#{$unit} { width: #{$i + '%'}; }
 						.max-height-#{$i}#{$unit} { max-height: #{$i + '%'}; }
 						.max-width-#{$i}#{$unit} { max-width: #{$i + '%'}; }
 					}
 
-					@if $unit != 'gap' & $unit != 'pc' {
+					@else {
 						.height-#{$i}#{$unit} { height: #{$i}#{$unit}; }
 						.width-#{$i}#{$unit} { width: #{$i}#{$unit}; }
 						.max-height-#{$i}#{$unit} { max-height: #{$i}#{$unit}; }
@@ -226,43 +226,43 @@ $valueIncrements: 10;
 						@each $position in $positions {
 
 							// Handle '$gap' specially
-							@if $unit == 'gap' {
-								.offset-margin-#{$screensize}-#{$position}-#{$i}#{$unit} { margin-#{$position}: #{$i}$gap; }
-								.offset-margin-#{$screensize}-#{$position}--#{$i}#{$unit} { margin-#{$position}: -#{$i}$gap; }
+							@if $unit == 'x' {
+								.offset-margin-#{$screensize}-#{$position}-#{$i}#{$unit} { margin-#{$position}: #{$i * $gap}; }
+								.offset-margin-#{$screensize}-#{$position}--#{$i}#{$unit} { margin-#{$position}: -#{$i * $gap}; }
 							}
 
 							// Handle '%' specially
-							@if $unit == 'pc' {
+							@else if $unit == 'pc' {
 								.offset-margin-#{$screensize}-#{$position}-#{$i}#{$unit} { margin-#{$position}: #{$i + '%'}; }
 								.offset-margin-#{$screensize}-#{$position}--#{$i}#{$unit} { margin-#{$position}: -#{$i + '%'}; }
 							}
 
-							@if $unit != 'pc' & $unit != 'gap' {
-								.offset-margin-#{$screensize}-#{$position}-#{$i}#{$unit} { margin-#{$position}: #{$i}#{$unit}; }
-								.offset-margin-#{$screensize}-#{$position}--#{$i}#{$unit} { margin-#{$position}: -#{$i}#{$unit}; }
+							@else {
+								.offset-margin-#{$screensize}-#{$position}-#{$i}#{$unit} { margin-#{$position}: #{$i + $unit}; }
+								.offset-margin-#{$screensize}-#{$position}--#{$i}#{$unit} { margin-#{$position}: -#{$i + $unit}; }
 							}
 						}
 
-					@if $unit == 'gap' {
-						.height-#{$screensize}-#{$i}#{$unit} { height: #{$i}$gap; }
-						.width-#{$screensize}-#{$i}#{$unit} { width: #{$i}$gap; }
-						.max-height-#{$screensize}-#{$i}#{$unit} { max-height: #{$i}$gap; }
-						.max-width-#{$screensize}-#{$i}#{$unit} { max-width: #{$i}$gap; }
-					}
+						@if $unit == 'x' {
+							.height-#{$screensize}-#{$i}#{$unit} { height: #{$i * $gap + 'px'}; }
+							.width-#{$screensize}-#{$i}#{$unit} { width: #{$i * $gap + 'px'}; }
+							.max-height-#{$screensize}-#{$i}#{$unit} { max-height: #{$i * $gap + 'px'}; }
+							.max-width-#{$screensize}-#{$i}#{$unit} { max-width: #{$i * $gap + 'px'}; }
+						}
 
-					@if $unit == 'pc' {
-						.height-#{$screensize}-#{$i}#{$unit} { height: #{$i + '%'}; }
-						.width-#{$screensize}-#{$i}#{$unit} { width: #{$i + '%'}; }
-						.max-height-#{$screensize}-#{$i}#{$unit} { max-height: #{$i + '%'}; }
-						.max-width-#{$screensize}-#{$i}#{$unit} { max-width: #{$i + '%'}; }
-					}
+						@else if $unit == 'pc' {
+							.height-#{$screensize}-#{$i}#{$unit} { height: #{$i + '%'}; }
+							.width-#{$screensize}-#{$i}#{$unit} { width: #{$i + '%'}; }
+							.max-height-#{$screensize}-#{$i}#{$unit} { max-height: #{$i + '%'}; }
+							.max-width-#{$screensize}-#{$i}#{$unit} { max-width: #{$i + '%'}; }
+						}
 
-					@if $unit != 'gap' & $unit != 'pc' {
-						.height-#{$screensize}-#{$i}#{$unit} { height: #{$i}#{$unit}; }
-						.width-#{$screensize}-#{$i}#{$unit} { width: #{$i}#{$unit}; }
-						.max-height-#{$screensize}-#{$i}#{$unit} { max-height: #{$i}#{$unit}; }
-						.max-width-#{$screensize}-#{$i}#{$unit} { max-width: #{$i}#{$unit}; }
-					}
+						@else {
+							.height-#{$screensize}-#{$i}#{$unit} { height: #{$i}#{$unit}; }
+							.width-#{$screensize}-#{$i}#{$unit} { width: #{$i}#{$unit}; }
+							.max-height-#{$screensize}-#{$i}#{$unit} { max-height: #{$i}#{$unit}; }
+							.max-width-#{$screensize}-#{$i}#{$unit} { max-width: #{$i}#{$unit}; }
+						}
 					}
 				}
 			}
