@@ -31,7 +31,13 @@ const {
 
 // Internal dependencies
 import AnchorOptions, { AnchorOptionsAttributes } from '../../components/gb-component_anchor';
-import BackgroundOptions, { BackgroundOptionsAttributes, BackgroundOptionsClasses, BackgroundOptionsInlineStyles, BackgroundOptionsVideoOutput, BackgroundOptionsImageWide } from '../../components/gb-component_background-options';
+import BackgroundOptions, { 
+	BackgroundOptionsAttributes, 
+	BackgroundOptionsClasses, 
+	BackgroundOptionsInlineStyles, 
+	BackgroundOptionsVideoOutput, 
+	BackgroundOptionsImageWide 
+} from '../../components/gb-component_background-options';
 import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
 import DataComponentNameOptions, { DataComponentNameAttributes } from '../../components/gb-component_data-component-name';
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';

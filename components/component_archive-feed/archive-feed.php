@@ -23,10 +23,10 @@
 									</a>
 								</div>
 								<div class="feed-info margin-bottom-2x">
-									<span class="eyebrow display-block margin-bottom-1x"><?php the_category(', '); ?></span>
-									<h2 class="headline6 margin-bottom-1x"><a href="<?php the_permalink();?>"><?php the_title();?></a></h2>
-									<p class="margin-bottom-1x"><?= excerpt(20);?></p>
-									<span class="eyebrow display-block margin-bottom-1x"><?php the_time('F j, Y');?></span>
+									<span class="eyebrow display-block margin-bottom-1x feed-category"><?php the_category(', '); ?></span>
+									<h2 class="headline6 margin-bottom-1x feed-title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h2>
+									<p class="margin-bottom-1x feed-excerpt"><?= the_excerpt(20);?></p>
+									<span class="eyebrow display-block margin-bottom-1x feed-date"><?php the_time('F j, Y');?></span>
 								</div>
 							</div>
 					<?php

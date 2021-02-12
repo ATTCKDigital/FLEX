@@ -28,36 +28,6 @@ export {
 };
 
 function PaddingOptions( props ) {
-	// const setPaddingTop = value => props.setAttributes( { paddingTop: value } );
-	// const setPaddingRight = value => props.setAttributes( { paddingRight: value } );
-	// const setPaddingBottom = value => props.setAttributes( { paddingBottom: value } );
-	// const setPaddingLeft = value => props.setAttributes( { paddingLeft: value } );
-	
-	// const setPaddingPhoneTop = value => props.setAttributes( { paddingPhoneTop: value } );
-	// const setPaddingPhoneRight = value => props.setAttributes( { paddingPhoneRight: value } );
-	// const setPaddingPhoneBottom = value => props.setAttributes( { paddingPhoneBottom: value } );
-	// const setPaddingPhoneLeft = value => props.setAttributes( { paddingPhoneLeft: value } );
-
-	// const setPaddingPhonePlusTop = value => props.setAttributes( { paddingPhonePlusTop: value } );
-	// const setPaddingPhonePlusRight = value => props.setAttributes( { paddingPhonePlusRight: value } );
-	// const setPaddingPhonePlusBottom = value => props.setAttributes( { paddingPhonePlusBottom: value } );
-	// const setPaddingPhonePlusLeft = value => props.setAttributes( { paddingPhonePlusLeft: value } );
-	
-	// const setPaddingTabletPortraitTop = value => props.setAttributes( { paddingTabletPortraitTop: value } );
-	// const setPaddingTabletPortraitRight = value => props.setAttributes( { paddingTabletPortraitRight: value } );
-	// const setPaddingTabletPortraitBottom = value => props.setAttributes( { paddingTabletPortraitBottom: value } );
-	// const setPaddingTabletPortraitLeft = value => props.setAttributes( { paddingTabletPortraitLeft: value } );
-	
-	// const setPaddingTabletLandscapeTop = value => props.setAttributes( { paddingTabletLandscapeTop: value } );
-	// const setPaddingTabletLandscapeRight = value => props.setAttributes( { paddingTabletLandscapeRight: value } );
-	// const setPaddingTabletLandscapeBottom = value => props.setAttributes( { paddingTabletLandscapeBottom: value } );
-	// const setPaddingTabletLandscapeLeft = value => props.setAttributes( { paddingTabletLandscapeLeft: value } );
-	
-	// const setPaddingDesktopTop = value => props.setAttributes( { paddingDesktopTop: value } );
-	// const setPaddingDesktopRight = value => props.setAttributes( { paddingDesktopRight: value } );
-	// const setPaddingDesktopBottom = value => props.setAttributes( { paddingDesktopBottom: value } );
-	// const setPaddingDesktopLeft = value => props.setAttributes( { paddingDesktopLeft: value } );
-
 	const setPadding = (which, value) => {
 		let paddingEdited = '';
 		let paddingEditedCount = 0;
