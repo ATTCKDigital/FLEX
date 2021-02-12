@@ -31,7 +31,7 @@ function register_posts_block() {
 				],
 				'postType' => [
 					'type' => 'string',
-					'default' => '',
+					'default' => 'post',
 				],
 				'categories' => [
 					'type' => 'array',
@@ -39,7 +39,7 @@ function register_posts_block() {
 				],
 				'columnNumber' => [
 					'type' => 'Number',
-					'default' => 4,
+					'default' => 3,
 				],
 				'paginationActive' => [
 					'type' => 'bool',
@@ -63,7 +63,11 @@ function register_posts_block() {
 				],
 				'postPerPage' => [
 					'type' => 'Number',
-					'default' => 0,
+					'default' => 12,
+				],
+				'excerptWordLimit' => [
+					'type' => 'Number',
+					'default' => 19,
 				],
 			],
 			MARGIN_OPTIONS_ATTRIBUTES,
@@ -104,6 +108,9 @@ function render_posts_block($attributes) {
 	];
 	$pagination = '';
 	$selectedCategory = $_GET['category'] ?? $categories[0]['id'];
+	$permalink = get_the_permalink();
+
+	// var_dump($attributes);
 
 	// Sort Filter
 	if ($filterActive) {
@@ -164,19 +171,25 @@ function render_posts_block($attributes) {
 		'posts_per_page' 	=> 	$attributes['postPerPage'],
 		'post_type'				=> 	$attributes['postType'],
 		'post_status' 		=> 	'publish',
-		'cat' 						=> 	$selectedCategory,
+		'cat' 						=> 	(int)$selectedCategory,
 		'order'						=> 	$order,
 		'orderby'					=>	$orderby,
 		'paged' 					=> 	$paged,
 	] ;
 
+	// var_dump($query);
+
 	$recent_posts = new \WP_Query( $query );
+	// var_dump($recent_posts);
+	// print_r($recent_posts->request);
 
 	if ( !$recent_posts->have_posts() ) {
 		$output = "
 		<div class=\"component-archive-posts {$class}\">
-			{$tabs}
-			{$postFilter}
+			<form action=\"{$permalink}\" class=\"top-bar filter-form\" method=\"get\">
+				{$tabs}
+				{$postFilter}
+			</form>
 			<p>No posts</p>
 		</div>";
 
@@ -213,13 +226,22 @@ function render_posts_block($attributes) {
 
 		$ctaLink = '';
 		$thumbnail = get_post_thumbnail_id();
-		$excerpt = $showExcerpt ? 
-			'<p class="excerpt>' . wp_trim_words( get_the_content(), 60 ) . '</p>' :
-			'';
-
+		$excerpt = '';
 		$categories = get_the_category();
 		$arrayCategories =  array();
 		$displayCategories = '';
+
+		if ($showExcerpt) {
+			$excerpt = wp_trim_words( get_the_excerpt(), $attributes['excerptWordLimit'], '' );
+
+			if (empty($excerpt)) {
+				$excerpt = wp_trim_words( get_the_content(), $attributes['excerptWordLimit'], '' );
+			}
+
+			var_dump($excerpt);
+
+			$excerpt = '<p class="post-excerpt">' . $excerpt . '</p>';
+		}
 
 		if ($categories && $showCategory) {
 			$displayCategories .= '<span class="category-name">';
@@ -241,7 +263,7 @@ function render_posts_block($attributes) {
 		
 		$postsItems .= '
 			<li class="posts-item post-category-'. $categories[0]->slug .'" style="width: '. 100 / $columnNumber .'%;">
-				<div class="posts-item-wrapper">'.
+				<a class="posts-item-wrapper" href="'.get_the_permalink() .'">'.
 					$thumbnail.
 					'<div class="post-content">'.
 						$displayCategories.
@@ -254,16 +276,14 @@ function render_posts_block($attributes) {
 						'</span>'.
 						$ctaLink.
 					'</div>
-				</div>
+				</a>
 			</li>';
 	}
 
 	wp_reset_postdata();
 
-	$permalink = get_the_permalink();
-
 	$output = "
-	<div class=\"component-archive-posts {$class}\" data-component-name=\"PostsFilter\">
+	<div class=\"component-archive-posts {$class}\">
 		<form action=\"{$permalink}\" class=\"top-bar filter-form\" method=\"get\">
 			{$tabs}
 			{$postFilter}

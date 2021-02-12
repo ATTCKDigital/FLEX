@@ -61,11 +61,15 @@ export default registerBlockType(
 			},
 			ctaText: {
 				type: 'string',
-				default: 'post'
+				default: 'Read More'
 			},
 			postPerPage: {
 				type: Number,
 				default: 12
+			},
+			excerptWordLimit: {
+				type: Number,
+				default: 19
 			},
 			columnNumber: {
 				type: Number,
@@ -120,6 +124,9 @@ export default registerBlockType(
 			if (0 === posts.length) {
 				return <p>{__('No Posts', 'flexlayout')}</p>;
 			}
+
+			console.log(categories);
+
 			return [
 				<InspectorControls>
 				
@@ -210,6 +217,15 @@ export default registerBlockType(
 							/>
 						</PanelRow>
 						<PanelRow>
+							<RangeControl
+									label="Post Excerpt Word Length"
+									value={ attributes.excerptWordLimit ?? 15 }
+									onChange={ excerptWordLimit => setAttributes( { excerptWordLimit } ) }
+									min={ 1 }
+									max={ 50 }
+							/>
+						</PanelRow>
+						<PanelRow>
 							<ToggleControl
 								label="Show Category"
 								help={ attributes.showCategory ? 'Category is Visible' : 'Category Hidden' }
@@ -220,7 +236,6 @@ export default registerBlockType(
 					</PanelBody>
 				</InspectorControls>,
 				
-				//okatodo: Make an Inspector control panel with post type and category selection and push that info back into the posts above
 				<div className={classnames(
 						'component-archive-posts',
 					)}>
@@ -256,13 +271,14 @@ export default registerBlockType(
 					</div>
 					<ul className={'posts-items'} style={{paddingLeft: "0"}}>
 						{posts.map(post => {
+							console.log(post);
 							let category = attributes.categories.find(item => item.id === post.categories[0]);
 							return (
 								<li class="posts-item post-category-events" className={'post-category-' + (category.slug)} style={{width: 100 / attributes.columnNumber + '%'}}>
 									<div class="posts-item-wrapper">
 										<div class="image-wrapper">
 											<img src="http://local.newclassrooms.org/wp-content/uploads/IMG_8471-scaled-1.jpg" 
-											class="attachment-post-thumbnail size-post-thumbnail wp-post-image prepare-in-view element-in-view" 
+											class="attachment-post-thumbnail size-post-thumbnail wp-post-image" 
 											alt="" 
 											loading="lazy" 
 											></img>
@@ -270,11 +286,12 @@ export default registerBlockType(
 										<div class="post-content">
 											{
 												attributes.showCategory && (
-													<span class="category-name prepare-in-view element-in-view"><a href="">{category.name}</a></span>
+													<span class="category-name"><a href="">{category.name}</a></span>
 												)
 											}
 											<h2 class="post-title" style={{paddingLeft: "0", margin: "0"}}>{post.title.rendered}</h2>
-											<span class="post-date prepare-in-view element-in-view">January 22, 2021</span>
+											<span class="post-date">January 22, 2021</span>
+											<p class="post-excerpt">{post.excerpt.raw.split(" ").splice(0,attributes.excerptWordLimit).join(" ")}</p>
 											<a class="cta-link" href="">{attributes.ctaText}</a>
 										</div>
 									</div>
@@ -287,7 +304,7 @@ export default registerBlockType(
 							<nav class="pagination-nav">
 								<div class="pagination-wrapper" style={{marginTop: "20px"}}>
 									<span class="prev page-numbers"></span>	
-									<span aria-current="page" class="page-numbers current prepare-in-view element-in-view">1</span>
+									<span aria-current="page" class="page-numbers current">1</span>
 									<span class="page-numbers">2</span>
 									<span class="page-numbers">3</span>
 									<span class="next page-numbers"></span>	
