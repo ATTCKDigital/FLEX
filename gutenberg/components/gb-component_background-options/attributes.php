@@ -1,5 +1,4 @@
 <?php
-
 namespace FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions;
 
 const BACKGROUND_OPTIONS_ATTRIBUTES = [

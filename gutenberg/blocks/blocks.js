@@ -4,7 +4,7 @@
 import "./block_animated-gif/animated-gif";
 import "./block_button/button";
 import "./block_column/column";
-// import "./block_feed/feed";
+import "./block_feed/feed";
 import "./block_heading/heading";
 import "./block_image/image";
 import "./block_list/list";
@@ -17,5 +17,5 @@ import "./block_shortcode/shortcode";
 import "./block_source/source";
 // import "./block_users/users";
 import "./block_video/video";
-import "./block_hr/hr";
 import "./block_popup/popup";
+// import "./block_hr/hr";
