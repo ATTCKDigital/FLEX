@@ -270,10 +270,10 @@ function render_posts_block($attributes) {
 						'<h2 class="post-title">'.
 							get_the_title().
 						'</h2>'.
-						$excerpt.
 						'<span class="post-date">'.
 							get_the_time('F j, Y').
 						'</span>'.
+						$excerpt.
 						$ctaLink.
 					'</div>
 				</a>
