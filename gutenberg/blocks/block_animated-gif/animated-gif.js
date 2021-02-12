@@ -1,8 +1,12 @@
-// Block dependencies
+/**
+ * Block dependencies
+ */
 import classnames from 'classnames';
 import icons from '../../../js/icons.js'
 
-// Internal block libraries
+/**
+ * Internal block libraries
+ */
 const { __ } = wp.i18n;
 const {
 	registerBlockType,
@@ -24,13 +28,20 @@ const {
 	PanelBody
 } = wp.components;
 
-// Internal dependencies
+/**
+ * Internal dependencies
+ */
+// Import all of our Margin Options requirements.
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
+// Import all of our Border Options requirements.
 import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
+// Import all of our Padding Options requirements.
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
 
 
-// Register image block
+/**
+ * Register image block
+ */
 export default registerBlockType(
 	'flexlayout/animated-gif',
 	{
@@ -72,6 +83,7 @@ export default registerBlockType(
 			...MarginOptionsAttributes,
 			...PaddingOptionsAttributes,
 			...BorderOptionsAttributes,
+
 		},
 		edit: props => {
 			const { 

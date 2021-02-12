@@ -29,10 +29,6 @@ function register_feed_block() {
 					'type' => 'string',
 					'default' => '',
 				],
-				'excerptWordLimit' => [
-					'type' => 'Number',
-					'default' => 19,
-				],
 			],
 			MARGIN_OPTIONS_ATTRIBUTES,
 			PADDING_OPTIONS_ATTRIBUTES
@@ -63,48 +59,24 @@ function render_feed_block($attributes) {
 	foreach ( $recent_posts as $post ) {
 		$postID  = $post['ID'];
 		$thumbnail = get_post_thumbnail_id($postID);
-		$link = get_the_permalink($post['ID']);
-		$excerpt = wp_trim_words( get_the_excerpt($postID), $attributes['excerptWordLimit'], '' );
-
-		if (empty($excerpt)) {
-			$excerpt = wp_trim_words( get_the_content($postID), $attributes['excerptWordLimit'], '' );
-		}
-
+		$excerpt = wp_trim_words( get_the_content($postID), 60 );
 		$categories = get_the_category($postID);
 		$arrayCategories =  array();
-		$displayCategories = '';
 
 		if ($categories) {
 			foreach ($categories as $category) {
-				// Categories changed to span temporarily 
-				// $arrayCategories[] = '<a href="/category/'.$category->slug.'">'.$category->name.'</a>';
-				$arrayCategories[] = '<span>'.$category->name.'</span>';
-
+				$arrayCategories[] = '<a href="/category/'.$category->slug.'">'.$category->name.'</a>';
 			}
-			$displayCategories = implode( ', ', $arrayCategories );
+			$displayCategories = implode( ', ', $arrayCategories );;
 		}
 
 		if ($thumbnail) {
-			$thumbnail = '<div class="image-wrapper">'.get_the_post_thumbnail($postID).'</div>';
+			$thumbnail = '<div class="image-wrapper margin-bottom-1x">'.get_the_post_thumbnail($postID).'</div>';
 		} else {
-			$thumbnail = '
-			<div class="image-wrapper no-image">
-				<img src="'.get_field('fallback_image', 'options').'" 
-					alt="'.get_field('fallback_image_alt', 'options').'" 
-					title="'.get_field('fallback_image_alt', 'options').'" 
-				/>
-			</div>';
+			$thumbnail = '<div class="image-wrapper margin-bottom-1x no-image"><img src="'.get_field('fallback_image', 'options').'" alt="'.get_field('fallback_image_alt', 'options').'" title="'.get_field('fallback_image_alt', 'options').'" /></div>';
 		}
 		
-		$feedItems  .= '
-			<a class="feed-item" href="'.$link.'">'.$thumbnail.'
-				<div class="feed-info">
-					<span class="feed-category">'.$displayCategories.'</span>
-					<h2 class="headline6 feed-title">'.get_the_title($postID).'</h2>
-					<span class="feed-date">'.get_the_time('F j, Y').'</span>
-					<p class="feed-excerpt">'.$excerpt.'</p>
-				</div>
-			</a>';
+		$feedItems  .= '<div class="feed-item">'.$thumbnail.'<div class="feed-info margin-bottom-2x"><span class="eyebrow display-block margin-bottom-1x">'.$displayCategories.'</span><h2 class="headline6 margin-bottom-1x">'.get_the_title($postID).'</h2><p class="margin-bottom-1x">'.$excerpt.'</p><span class="eyebrow display-block margin-bottom-1x">'.get_the_time('F j, Y').'</span></div></div>';
 	}
 
 	$output = "<div class=\"component-archive-feed {$class}\"><div class=\"feed-items load-items padding-bottom-3x\">{$feedItems}</div>";

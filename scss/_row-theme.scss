@@ -7,9 +7,8 @@
 	top: 0;
 }
 
-// From _sizing.scss
-// $yPositions: top, center, bottom;
-// $xPositions: left, right, center;
+$yPositions: top, center, bottom;
+$xPositions: left, right, center;
 
 @each $yPosition in $yPositions {
   	@each $xPosition in $xPositions {

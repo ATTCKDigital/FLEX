@@ -66,7 +66,7 @@ include(locate_template('/gutenberg/blocks/block_column/column.php'));
 include(locate_template('/gutenberg/blocks/block_feed/feed.php'));
 include(locate_template('/gutenberg/blocks/block_posts/posts.php'));
 include(locate_template('/gutenberg/blocks/block_heading/heading.php'));
-// include(locate_template('/gutenberg/blocks/block_hr/hr.php'));
+include(locate_template('/gutenberg/blocks/block_hr/hr.php'));
 include(locate_template('/gutenberg/blocks/block_image/image.php'));
 include(locate_template('/gutenberg/blocks/block_list/list.php'));
 include(locate_template('/gutenberg/blocks/block_paragraph/paragraph.php'));

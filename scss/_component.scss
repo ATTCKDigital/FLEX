@@ -38,15 +38,6 @@
 }
 
 .component-column {
-	// Fixes 50/50% column spacing error
-	// font-size: 0;
-
-	// ...but shouldn't cascade down to the children, otherwise they
-	// become hidden.
-	p, h1, h2, h3, h4, h5, h6, span, div, section, span, ul, ol, li {
-		// font-size: inherit;
-	}
-
 	&.column-align-left.column-align-left {
 		// Left is the default so leave this alone.
 		// display: block !important;
@@ -118,7 +109,6 @@
 			background-position: center center;
 			bottom: -100%;
 			left: 0;
-			pointer-events: none;
 			position: absolute;
 			right: 0;
 			top: -100%;
