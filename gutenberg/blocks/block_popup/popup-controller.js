@@ -55,7 +55,6 @@ function PopupController($el) {
 		console.log('/FLEX/\tguttenberg /\tblocks/\t Popup Controller', 'initComponents()');
 
 		let $componentElements = $('[data-component-name]', $popupEl);
-		console.log($componentElements);
 
 		$componentElements.each(function() {
 			Loader.loadComponent($(this))
@@ -77,11 +76,9 @@ function PopupController($el) {
 		}
 
 		$buttons = $(`.open-popup-button`, $el);
-		console.log({'buttons': $buttons});
 
 		if (!$buttons) return;
     
-		console.log(popupNames);
 
 		bindEvents();
 
