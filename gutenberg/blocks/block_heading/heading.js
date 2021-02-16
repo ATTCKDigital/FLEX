@@ -24,6 +24,7 @@ const {
 const {
 	Button,
 	ButtonGroup,
+	CheckboxControl,
 	Dashicon,
 	IconButton,
 	PanelBody,
@@ -33,12 +34,19 @@ const {
 	Tooltip,
 } = wp.components;
 
+const { 
+	setState, 
+	withSelect, 
+	withDispatch 
+} = wp.data;
+
+
 // Internal dependencies
+import BackgroundColorOptions, { BackgroundColorOptionsAttributes, BackgroundColorOptionsInlineStyles } from '../../components/gb-component_background-color';
+import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
-import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
 import TextColorOptions, { TextColorAttributes, TextColorClasses, TextColorInlineStyles } from '../../components/gb-component_text-colors';
-import BackgroundColorOptions, { BackgroundColorOptionsAttributes, BackgroundColorOptionsInlineStyles } from '../../components/gb-component_background-color';
 
 // Register block
 export default registerBlockType(
@@ -63,6 +71,14 @@ export default registerBlockType(
 			content: {
 				type: 'string',
 				default: '',
+			},
+			hangingQuote: {
+				type: 'boolean',
+				default: false
+			},
+			hangingQuoteClass: {
+				type: 'string',
+				default: 'hide-hanging-quote'
 			},
 			imgURL: {
 				type: 'string',
@@ -92,11 +108,13 @@ export default registerBlockType(
                 attributes: {
                 	align,
                 	content,
-                	placeholder,
+                	hangingQuote,
+                	hangingQuoteClass,
                 	imgID,
                 	imgURL,
                 	isSelected,
                 	level,
+                	placeholder,
                 	url
                 },
 				className,
@@ -105,10 +123,28 @@ export default registerBlockType(
 
 			const tagName = 'h' + level;
 
+			const HangingQuoteCheckbox = (a, b) => {
+				console.log('HangingQuoteCheckbox, props.attributes.hangingQuote: a: b: ', props.attributes.hangingQuote, typeof props.attributes.hangingQuote, a, b);
+
+				// Not sure why this comes through as an Object when it is initialized as false.
+				if (typeof props.attributes.hangingQuote === Object) {
+					props.attributes.hangingQuote = false;
+				}
+
+				return (
+					<CheckboxControl
+						label="Show hanging quote"
+						help="Adds a left-hanging quote graphic"
+						checked={ props.attributes.hangingQuote }
+						onChange={ setHangingQuote }
+					/>
+				)
+			};
+
 			const onChangeMessage = content => { 
-				setAttributes( { 
-					content 
-				} ) 
+				setAttributes({
+					content
+				});
 			};
 
 			const onSelectImage = img => {
@@ -123,7 +159,24 @@ export default registerBlockType(
 					imgID: null,
 					imgURL: null,
 				});
+			};
+
+			const setHangingQuote = value => {
+				// console.log('HangingQuoteCheckbox, value: ', value, typeof value, value === true);
+
+				// console.log('value: ', value);
+				props.setAttributes( { hangingQuote: value } );
+
+				if (value === true) {
+					props.setAttributes( { hangingQuoteClass: 'show-hanging-quote' } );
+				} else {
+					props.setAttributes( { hangingQuoteClass: 'hide-hanging-quote' } );
+				}
 			}
+
+			const svgHeight = {
+				height: 0
+			};
 
 			return [
 				<InspectorControls>
@@ -144,7 +197,12 @@ export default registerBlockType(
 					/>
 					<PanelBody title={ __('Heading Settings' ) } initialOpen={ false }>
 						<p>{ __( 'HTML Element' ) }</p>
-						<HeadingToolbar minLevel={ 1 } maxLevel={ 7 } selectedLevel={ level } onChange={ ( newLevel ) => setAttributes( { level: newLevel } ) } />
+						<HeadingToolbar 
+							minLevel={ 1 } 
+							maxLevel={ 7 } 
+							selectedLevel={ level } 
+							onChange={ ( newLevel ) => setAttributes( { level: newLevel } ) } 
+						/>
 						<p>{ __( 'Text Alignment' ) }</p>
 						<AlignmentToolbar
 							value={ align }
@@ -152,6 +210,9 @@ export default registerBlockType(
 								setAttributes( { align: nextAlign } );
 							} }
 						/>
+						<p>
+							<HangingQuoteCheckbox />
+						</p>
 						<p>{ __( 'Optional URL' ) }</p>
 						<form
 							className="block-library-button__inline-link heading-url"
@@ -200,14 +261,26 @@ export default registerBlockType(
 				</InspectorControls>,
 				<div className={classnames(
 					`component-heading`,
+					`${hangingQuoteClass}`,
 					className
 				)}>
+					<img 
+						// Use empty SVG to trigger onload event 
+						// Onload hack fires when block is added
+						className="onload-hack-pp"
+						height="0"
+						width="0"
+						onLoad={ setHangingQuote }
+						src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' %3E%3Cpath d=''/%3E%3C/svg%3E"
+						style={ svgHeight }
+					/>
 					<img
 						src={ imgURL }
 					/>
 					<RichText
 						className={ classnames(
 							`text-align-${align}`,
+							`${hangingQuoteClass}`,
 							...BorderOptionsClasses( props ),
 							...MarginOptionsClasses( props ),
 							...PaddingOptionsClasses( props ),

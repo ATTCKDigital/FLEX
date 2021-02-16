@@ -1,11 +1,7 @@
-/**
- * External dependencies
- */
+// External dependencies
 import { range } from 'lodash';
 
-/**
- * WordPress dependencies
- */
+// WordPress dependencies
 const { __, sprintf } = wp.i18n;
 const { Component } = wp.element;
 const { Toolbar } = wp.components;
@@ -24,11 +20,16 @@ class HeadingToolbar extends Component {
 
 	render() {
 		const {
-			minLevel, maxLevel, selectedLevel, onChange 
+			minLevel, 
+			maxLevel, 
+			selectedLevel, 
+			onChange 
 		} = this.props;
 
 		return (
-			<Toolbar controls={ range( minLevel, maxLevel ).map( ( index ) => this.createLevelControl( index, selectedLevel, onChange ) ) } />
+			<Toolbar controls={ 
+				range( minLevel, maxLevel ).map( ( index ) => this.createLevelControl( index, selectedLevel, onChange ) ) 
+			} />
 		);
 	}
 }
