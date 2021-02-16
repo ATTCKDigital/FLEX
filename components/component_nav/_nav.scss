@@ -63,15 +63,15 @@
 
 	.main-nav {
 		@include mediaquery-max-width(tablet-landscape) {
-			//Mobile only mediaquery so less overrides are necessary
-			position: absolute;
-			top: 0;
-			right: -100vw;
+			// Mobile only mediaquery so less overrides are necessary
 			background-color: white;
 			height: 100vh;
-			width: 100%;
-			transition: right .3s ease-in;
 			padding-top: calc(#{$navMobileHeight} + 20px);
+			position: absolute;
+			right: -100vw;
+			top: 0;
+			transition: right .3s ease-in;
+			width: 100%;
 
 			.navOpen & {
 				right: 0;
