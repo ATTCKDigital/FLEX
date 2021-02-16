@@ -143,7 +143,7 @@ export default registerBlockType(
 				</BlockControls>,
 				<div className={classnames(
 					`component-image`,
-					`align-${align}`,
+					`block-align-${align}`,
 					...MarginOptionsClasses( props ),
 					...PaddingOptionsClasses( props ),
 					...BorderOptionsClasses( props )
@@ -167,7 +167,7 @@ export default registerBlockType(
 					) : (
 						<div className={classnames(
 							`image-wrapper`,
-							`align-${align}`,
+							`block-align-${align}`,
 						)}>
 							{ isSelected ? (
 								<Button
