@@ -39,7 +39,9 @@
 
 .component-column {
 	// Fixes 50/50% column spacing error
-	// font-size: 0;
+	body:not(.wp-admin) & {
+		font-size: 0;
+	}
 
 	// ...but shouldn't cascade down to the children, otherwise they
 	// become hidden.
