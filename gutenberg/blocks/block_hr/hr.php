@@ -52,7 +52,9 @@ function register_hr_block() {
 
 // Server rendering for /blocks/image
 function render_hr_block($attributes) {
-	$class = " {$attributes['className']}";
+	$hrClassName = array_key_exists('className', $attributes) ? $attributes['className'] : null;
+
+	$class = " " . $hrClassName;
 	$class .= margin_options_classes($attributes);
 	$class .= padding_options_classes($attributes);
 
