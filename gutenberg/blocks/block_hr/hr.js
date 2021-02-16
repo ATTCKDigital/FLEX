@@ -53,7 +53,7 @@ export default registerBlockType(
 		title: __( 'Horizontal line', 'flexlayout' ),
 		description: __( 'A horizontal line.', 'flexlayout'),
 		category: 'common',
-		icon: 'minus',
+		icon: icons.minus,
 		// icon: 'heading',
 		// parent: ['flexlayout/column'],
 		keywords: [

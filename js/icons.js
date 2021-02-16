@@ -269,4 +269,8 @@ icons.wordpress = <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
 			c23.437,0,42.503,19.068,42.503,42.505C90.996,71.928,71.928,90.997,48.492,90.997z"/>
 	</svg>;
 
+icons.minus = <svg xmlns="http://www.w3.org/2000/svg" width="145" height="24" viewBox="0 0 145 24" fill="none">
+<rect width="145" height="24" rx="1" fill="#404040"/>
+</svg>;
+
 export default icons;
