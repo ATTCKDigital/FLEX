@@ -4,6 +4,7 @@
 import "./block_animated-gif/animated-gif";
 import "./block_button/button";
 import "./block_column/column";
+import "./block_posts/posts";
 import "./block_feed/feed";
 import "./block_heading/heading";
 import "./block_image/image";
