@@ -274,7 +274,7 @@ export default registerBlockType(
 							console.log(post);
 							let category = attributes.categories.find(item => item.id === post.categories[0]);
 							return (
-								<li class="posts-item post-category-events" className={'post-category-' + (category.slug)} style={{width: 100 / attributes.columnNumber + '%'}}>
+								<li class="posts-item post-category-events" className={'post-category-' + (category && category.slug)} style={{width: 100 / attributes.columnNumber + '%'}}>
 									<div class="posts-item-wrapper">
 										<div class="image-wrapper">
 											<img src="http://local.newclassrooms.org/wp-content/uploads/IMG_8471-scaled-1.jpg" 
