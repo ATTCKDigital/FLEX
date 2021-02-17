@@ -37,7 +37,6 @@ export default registerBlockType(
 		title: __('Posts'),
 		description: __('A posts of selected post type.'),
 		category: 'common',
-		// icon: icons.feed,
 		icon: 'format-aside',
 		// parent: ['flexlayout/column'],
 		keywords: [
@@ -261,17 +260,10 @@ export default registerBlockType(
 					</div>
 					<ul className={'posts-items'} style={{paddingLeft: "0"}}>
 						{posts.map(post => {
-							console.log('posts.js', 'post: ', post);
-							
+							console.log(post);
 							let category = attributes.categories.find(item => item.id === post.categories[0]);
-
-							if (typeof category === 'undefined') {
-								// Initialize with empty object so the property accessing doesn't throw errors
-								category = {};
-							}
-
 							return (
-								<li class="posts-item post-category-events" className={'post-category-' + (category.slug)} style={{width: 100 / attributes.columnNumber + '%'}}>
+								<li class="posts-item post-category-events" className={'post-category-' + (category && category.slug)} style={{width: 100 / attributes.columnNumber + '%'}}>
 									<div class="posts-item-wrapper">
 										<div class="image-wrapper">
 											<img src="http://local.newclassrooms.org/wp-content/uploads/IMG_8471-scaled-1.jpg" 
