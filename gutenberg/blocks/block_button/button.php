@@ -87,10 +87,13 @@ function render_button_block($attributes) {
 
 	// Apply data-component-name
 	$dataComponentName = array_key_exists('dataComponentName', $attributes) ? " data-component-name=\"{$attributes['dataComponentName']}\"" : "";
-	// var_dump($attributes['dataComponentOptions']);
-	$dataOptions = htmlspecialchars($attributes['dataComponentOptions']);
-	$dataComponentOptions = array_key_exists('dataComponentOptions', $attributes) ? " data-component-options=\"{$dataOptions}\"" : "";
+	$dataComponentOptions = "";
 
+	if (array_key_exists('dataComponentOptions', $attributes)) {
+		$dataOptions = htmlspecialchars($attributes['dataComponentOptions']);
+		$dataComponentOptions = " data-component-options=\"{$dataOptions}\"";
+	}
+	
 	// FLEX JS components get initialized when a DOM element has 
 	// a 'component' class attribute AND a data-component-name attribute
 	// NOTE: data-component-options is optional but must be stringified JSON
