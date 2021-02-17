@@ -64,12 +64,14 @@ function register_image_block() {
 
 // Server rendering for /blocks/image
 function render_image_block($attributes) {
-	$class = " {$attributes['className']}";
+	$class = '';
+	$class .= " {$attributes['className']}";
 	$class .= margin_options_classes($attributes);
 	$class .= padding_options_classes($attributes);
 	$class .= border_options_classes($attributes);
+	$class .= " block-align-{$attributes['align']}";
 
-	$classInner = " align-{$attributes['align']}";
+	$classInner = '';
 
 	if (array_key_exists('CSSWidth', $attributes)) {
 		$CSSWidth = 'style="width:' . $attributes['CSSWidth'] . '"';

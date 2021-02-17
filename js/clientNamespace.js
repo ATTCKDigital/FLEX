@@ -346,9 +346,29 @@ FLEX.insertDecimal = function (num) {
 	return num;
 }
 
-// Alias for common typecheck
+// Aliass for common typechecks
 FLEX.isUndefined = function (value) {
 	return typeof value === 'undefined';
+}
+
+FLEX.isUndefinedOrNull = function (value) {
+	// Default value
+	var returnValue = false;
+
+	switch (true) {
+		case typeof value === 'undefined':
+			returnValue = true;
+			// break; // Let these pass through
+
+		case value == null:
+			returnValue = true;
+			// break;
+
+		default: 
+			break;
+	}
+
+	return returnValue;
 }
 
 /**

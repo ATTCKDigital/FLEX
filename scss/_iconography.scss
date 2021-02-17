@@ -48,6 +48,7 @@
 	text-align: center;
 	width: 40px;
 	opacity: 1;
+	text-decoration: none;
 	transition: opacity .3s ease-out;
 
 	@include mediaquery(tablet-landscape)  {
@@ -77,6 +78,7 @@
 .play {
 	background-color: color('brand', 'accent');
 	border-radius: 50%;
+	cursor: pointer;
 	display: block;
 	height: 100px;
 	left: 0;
@@ -94,7 +96,6 @@
 		border-style: solid;
 		border-width: 19px 0 19px 38px;
 		content: '';
-		cursor: pointer;
 		height: 0;
 		left: 34px;
 		position: absolute;
@@ -126,7 +127,9 @@
 	.navOpen & {
 		// Translate horizontally to the left, taking into 
 		// consideration the device, wrapper and hamburger widths
-		transform: translateX(calc(-100vw + 50px + 20px));
+		// TODO: (DP) Find out which design this was meant for, because
+		// moving the close icon to the left overlaps the logo.
+		// transform: translateX(calc(-100vw + 50px + 20px));
 	}
 
 	@include mediaquery(tablet-landscape)  {
@@ -152,7 +155,7 @@
 
 	&:after, 
 	&:before {
-		background-color: $black;
+		background-color: $white;
 		content: '';
 		height: 2px;
 		left: 0;

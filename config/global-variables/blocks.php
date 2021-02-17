@@ -7,16 +7,16 @@
 $blocks = array(
 	'flexlayout/column', // REQUIRED
 	'flexlayout/row', // REQUIRED
-	
 	'flexlayout/popup',
 	'flexlayout/animated-gif',
 	'flexlayout/button',
 	'flexlayout/feed',
 	'flexlayout/heading',
-	// 'flexlayout/hr',
+	'flexlayout/hr',
 	'flexlayout/image',
 	'flexlayout/list',
 	'flexlayout/paragraph',
+	'flexlayout/posts',
 	'flexlayout/quote',
 	'flexlayout/share',
 	'flexlayout/shortcode',

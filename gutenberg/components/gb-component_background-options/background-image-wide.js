@@ -45,6 +45,8 @@ function BackgroundOptionsImageWide( props ) {
 				{ styles }
 			</style>
 		);
+	} else {
+		return false;
 	}
 }
 

@@ -19,9 +19,9 @@ add_action( 'init', __NAMESPACE__ . '\register_heading_block' );
 
 /**
  * Register the dynamic block.
- *
+ * 
  * @since 2.1.0
- *
+ * 
  * @return void
  */
 function register_heading_block() {
@@ -34,33 +34,37 @@ function register_heading_block() {
 	register_block_type( 'flexlayout/heading', [
 		'attributes' => array_merge(
 			[
-				'content' => [
-					'type' => 'string',
-					'default' => '',
-				],
-				'level' => [
-					'type' => 'number',
-					'default' => 2,
-				],
 				'align' => [
 					'type' => 'string',
 					'default' => 'left'
 				],
-				'placeholder' => [
-					'type' => 'string',
-				],
-				'url' => [
-					'type' => 'string',
-				],
 				'className' => [
 					'type' => 'string',
 					'default' => '',
+				],
+				'content' => [
+					'type' => 'string',
+					'default' => '',
+				],
+				'hangingQuote' => [
+					'type' => 'boolean',
+					'default' => false
 				],
 				'imgURL' => [
 					'type' => 'string',
 				],
 				'imgID' => [
 					'type' => 'number',
+				],
+				'level' => [
+					'type' => 'number',
+					'default' => 2,
+				],
+				'placeholder' => [
+					'type' => 'string',
+				],
+				'url' => [
+					'type' => 'string',
 				],
 			],
 			MARGIN_OPTIONS_ATTRIBUTES,
@@ -109,6 +113,15 @@ function render_heading_block($attributes) {
 	$wrapperClass .= margin_options_classes($attributes);
 	$wrapperClass .= padding_options_classes($attributes);
 	$wrapperClass .= border_options_classes($attributes);
+
+	// Hanging quote option
+	$hangingQuote = array_key_exists('hangingQuote', $attributes) ? $attributes['hangingQuote'] : null;
+
+	if ($hangingQuote) {
+		$wrapperClass .= ' show-hanging-quote hanging-quote-' . $hangingQuote;
+	} else {
+		$wrapperClass .= ' hide-hanging-quote hanging-quote-' . $hangingQuote;
+	}
 
 	// Build inline style values
 	$style = '';

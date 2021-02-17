@@ -279,7 +279,11 @@ $justifyContent: 'flex-end';
 
 		@each $xPosition in $xPositions {
 			.text-align-#{$breakpoint}#{$xPosition} { text-align: #{$xPosition}; }
-			.block-align-#{$breakpoint}#{$xPosition} { float: #{$xPosition} !important; }
+
+			@if $xPosition == 'center' {
+				.block-align-#{$breakpoint}#{$xPosition} { margin-left: auto !important; margin-right: auto !important; }
+			}
+
 
 			@each $yPosition in $yPositions {
 				.background-position-#{$breakpoint}#{$xPosition}-#{$yPosition} {

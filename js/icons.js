@@ -251,7 +251,7 @@ icons.videoOld = <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' 
 		<path d='M21 3H3c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.11-.9-2-2-2zm0 14H3V5h18v12zm-5-6l-7 4V7z' />
 	</svg>;
 
-icons.wordpress = <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" enable-background="0 0 96.98 96.98">
+icons.wordpress = <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 96 96" enable-background="0 0 24 24">
 		<path d="M49.16,51.833L37.694,85.152c3.425,1.004,7.046,1.558,10.798,1.558c4.449,0,8.719-0.77,12.689-2.167
 			c-0.102-0.164-0.195-0.338-0.271-0.527L49.16,51.833z"/>
 		<path d="M10.272,48.488c0,15.129,8.792,28.202,21.541,34.396l-18.23-49.949C11.463,37.688,10.272,42.948,10.272,48.488z"/>
@@ -268,5 +268,9 @@ icons.wordpress = <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
 			 M48.492,90.997c-23.44,0-42.507-19.067-42.507-42.509c0-23.438,19.066-42.505,42.507-42.505
 			c23.437,0,42.503,19.068,42.503,42.505C90.996,71.928,71.928,90.997,48.492,90.997z"/>
 	</svg>;
+
+icons.minus = <svg xmlns="http://www.w3.org/2000/svg" width="145" height="24" viewBox="0 0 145 24" fill="none">
+<rect width="145" height="24" rx="1" fill="#404040"/>
+</svg>;
 
 export default icons;
