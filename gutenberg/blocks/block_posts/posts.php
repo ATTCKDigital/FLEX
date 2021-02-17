@@ -107,10 +107,8 @@ function render_posts_block($attributes) {
 		],
 	];
 	$pagination = '';
-	$selectedCategory = $_GET['category'] ?? $categories[0]['id'];
+	$selectedCategory = $_GET['category'] ?? $categories[0]['id'] ?? '';
 	$permalink = get_the_permalink();
-
-	// var_dump($attributes);
 
 	// Sort Filter
 	if ($filterActive) {
