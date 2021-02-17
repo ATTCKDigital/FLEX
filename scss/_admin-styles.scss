@@ -513,6 +513,10 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	}
 }
 
+.wp-block.component-popup {
+	z-index: auto;
+}
+
 .interface-interface-skeleton__footer {
 	// bottom: 20px;
 	bottom: 0;

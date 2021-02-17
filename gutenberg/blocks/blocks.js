@@ -18,4 +18,5 @@ import "./block_shortcode/shortcode";
 import "./block_source/source";
 // import "./block_users/users";
 import "./block_video/video";
+import "./block_popup/popup";
 import "./block_hr/hr";

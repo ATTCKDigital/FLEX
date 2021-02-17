@@ -52,6 +52,12 @@ function register_button_block() {
 					'type' => 'string',
 					'default' => ''
 				],
+				'dataComponentName' => [
+					'type' => 'string',
+				],
+				'dataComponentOptions' => [
+					'type' => 'string',
+				],
 			],
 			MARGIN_OPTIONS_ATTRIBUTES
 		),
@@ -79,10 +85,24 @@ function render_button_block($attributes) {
 		$targetAttr = ' target="_blank"';
 	}
 
+	// Apply data-component-name
+	$dataComponentName = array_key_exists('dataComponentName', $attributes) ? " data-component-name=\"{$attributes['dataComponentName']}\"" : "";
+	// var_dump($attributes['dataComponentOptions']);
+	$dataOptions = htmlspecialchars($attributes['dataComponentOptions']);
+	$dataComponentOptions = array_key_exists('dataComponentOptions', $attributes) ? " data-component-options=\"{$dataOptions}\"" : "";
+
+	// FLEX JS components get initialized when a DOM element has 
+	// a 'component' class attribute AND a data-component-name attribute
+	// NOTE: data-component-options is optional but must be stringified JSON
+	if (array_key_exists('dataComponentName', $attributes)) {
+		$dataComponentNameLowercase = strtolower($attributes['dataComponentName']);
+		$class .= ' component component-' . $dataComponentNameLowercase;
+	}
+
 	$button1 = null;
 	
 	if ($content1 && $url1) {
-		$button1 = "<a href=\"{$url1}\" {$targetAttr} class=\"cta {$buttonClass}\">{$content1}</a>";
+		$button1 = "<a href=\"{$url1}\" {$targetAttr} class=\"cta {$buttonClass}\" {$dataComponentName} {$dataComponentOptions}>{$content1}</a>";
 	}
 
 	$button2 = null;
@@ -94,7 +114,7 @@ function render_button_block($attributes) {
 	$output = '';
 
 	if ($button1 || $button2) {
-		$output = "<div class=\"component-button component {$class}\">{$button1}{$button2}</div>";
+		$output = "<div class=\"component-button component {$class}\"  {$dataComponentName} {$dataComponentOptions}>{$button1}{$button2}</div>";
 	}
 
 	return $output;

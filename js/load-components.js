@@ -30,6 +30,7 @@ import Timer from 				'../components/component_timer/timer';
 
 // Gutenberg block components
 import AnimatedGif from 		'../gutenberg/blocks/block_animated-gif/swap-gif';
+import PopupController from  '../gutenberg/blocks/block_popup/popup-controller';
 import Video from 				'../gutenberg/blocks/block_video/play-video';
 import VideoThumb from 			'../gutenberg/components/gb-component_background-options/video-thumb';
 
@@ -52,6 +53,7 @@ FLEX.Components = Object.assign({
 	'Share': Share,
 	'Timer': Timer,
 	'Parallax': Parallax,
+	'PopupController': PopupController,
 	'Video': Video,
 	'VideoThumb': VideoThumb
 }, childComponents);
