@@ -115,7 +115,7 @@ export default registerBlockType(
 				return <p>{__('No Posts', 'flexlayout')}</p>;
 			}
 
-			console.log('posts.js', 'categories: ', categories);
+			// console.log('posts.js', 'categories: ', categories);
 
 			return [
 				<InspectorControls>
@@ -260,7 +260,7 @@ export default registerBlockType(
 					</div>
 					<ul className={'posts-items'} style={{paddingLeft: "0"}}>
 						{posts.map(post => {
-							console.log(post);
+							// console.log(post);
 							let category = attributes.categories.find(item => item.id === post.categories[0]);
 							return (
 								<li class="posts-item post-category-events" className={'post-category-' + (category && category.slug)} style={{width: 100 / attributes.columnNumber + '%'}}>
