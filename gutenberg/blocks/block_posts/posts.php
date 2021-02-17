@@ -256,7 +256,7 @@ function render_posts_block($attributes) {
 		}
 
 		if (!empty($ctaText)) {
-			$ctaLink .= '<a class="cta-link" href="'. get_the_permalink() .'">'. $ctaText .'</a>';
+			$ctaLink .= '<div class="cta-link">'. $ctaText .'</div>';
 		}
 		
 		$postsItems .= '
