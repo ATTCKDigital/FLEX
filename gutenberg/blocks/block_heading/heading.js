@@ -73,7 +73,7 @@ export default registerBlockType(
 				default: '',
 			},
 			hangingQuote: {
-				type: 'boolean',
+				type: Boolean,
 				default: false
 			},
 			hangingQuoteClass: {
@@ -105,18 +105,18 @@ export default registerBlockType(
 
 		edit: props => {
 			const {
-                attributes: {
-                	align,
-                	content,
-                	hangingQuote,
-                	hangingQuoteClass,
-                	imgID,
-                	imgURL,
-                	isSelected,
-                	level,
-                	placeholder,
-                	url
-                },
+				attributes: {
+					align,
+					content,
+					hangingQuote,
+					hangingQuoteClass,
+					imgID,
+					imgURL,
+					isSelected,
+					level,
+					placeholder,
+					url
+				},
 				className,
 				setAttributes
 			} = props;
@@ -124,12 +124,7 @@ export default registerBlockType(
 			const tagName = 'h' + level;
 
 			const HangingQuoteCheckbox = (a, b) => {
-				console.log('HangingQuoteCheckbox, props.attributes.hangingQuote: a: b: ', props.attributes.hangingQuote, typeof props.attributes.hangingQuote, a, b);
-
-				// Not sure why this comes through as an Object when it is initialized as false.
-				if (typeof props.attributes.hangingQuote === Object) {
-					props.attributes.hangingQuote = false;
-				}
+				// console.log('HangingQuoteCheckbox, props.attributes.hangingQuote: a: b: ', props.attributes.hangingQuote, typeof props.attributes.hangingQuote, a, b);
 
 				return (
 					<CheckboxControl
@@ -161,11 +156,12 @@ export default registerBlockType(
 				});
 			};
 
-			const setHangingQuote = value => {
+			const setHangingQuote = (value) => {
 				// console.log('HangingQuoteCheckbox, value: ', value, typeof value, value === true);
 
-				// console.log('value: ', value);
-				props.setAttributes( { hangingQuote: value } );
+				console.log('value: ', value);
+				props.setAttributes( { hangingQuote: value === true } );
+				console.log('props: ', props);
 
 				if (value === true) {
 					props.setAttributes( { hangingQuoteClass: 'show-hanging-quote' } );

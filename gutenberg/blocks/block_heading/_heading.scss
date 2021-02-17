@@ -30,13 +30,18 @@
 		&:before {
 			background: url(../assets/images/Quotation.svg) 0 0 no-repeat;
 			background-size: contain;
-			content: '"';
+			content: '';
 			position: absolute;
-			left: -2rem;
-			right: 0;
-
-			height: 55px;
+			left: 0;
+			height: 50px;
 			width: 60px;
+			top: -15px;
+
+			@include mediaquery('tablet-landscape') {
+				left: -95px;
+				top: 0;
+				height: 55px;
+			}
 		}
 	}
 }
