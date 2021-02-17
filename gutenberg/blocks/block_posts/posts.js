@@ -1,12 +1,8 @@
-/**
- * Block dependencies
- */
+// Block dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js'
 
-/**
- * Internal block libraries
- */
+// Internal block libraries
 const { __ } = wp.i18n;
 const {
 	registerBlockType,
@@ -30,24 +26,18 @@ const {
 } = wp.data;
 
 
-/**
- * Internal dependencies
- */
-// Import all of our Margin Options requirements.
+// Internal dependencies
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
-// Import all of our Text Color Options requirements.
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
 
-/**
-	* Register block
- */
+// Register block
 export default registerBlockType(
 	'flexlayout/posts',
 	{
 		title: __('Posts'),
 		description: __('A posts of selected post type.'),
 		category: 'common',
-		icon: icons.feed,
+		icon: 'format-aside',
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__('Posts', 'flexlayout'),
@@ -125,7 +115,7 @@ export default registerBlockType(
 				return <p>{__('No Posts', 'flexlayout')}</p>;
 			}
 
-			console.log(categories);
+			console.log('posts.js', 'categories: ', categories);
 
 			return [
 				<InspectorControls>
@@ -141,7 +131,6 @@ export default registerBlockType(
 									typesList.map(type => ({
 										label: __(type.name),
 										value: type.slug,
-										
 									}))
 								}
 							/>
@@ -167,20 +156,20 @@ export default registerBlockType(
 						</PanelRow>
 						<PanelRow>
 							<RangeControl
-									label="Post Per Page"
-									value={ attributes.postPerPage ?? 1 }
-									onChange={ postPerPage => setAttributes( { postPerPage } ) }
-									min={ 1 }
-									max={ 20 }
+								label="Post Per Page"
+								value={ attributes.postPerPage ?? 1 }
+								onChange={ postPerPage => setAttributes( { postPerPage } ) }
+								min={ 1 }
+								max={ 20 }
 							/>
 						</PanelRow>
 						<PanelRow>
 							<RangeControl
-									label="Post Per Row"
-									value={ attributes.columnNumber ?? 3 }
-									onChange={ columnNumber => setAttributes( { columnNumber } ) }
-									min={ 1 }
-									max={ 8 }
+								label="Post Per Row"
+								value={ attributes.columnNumber ?? 3 }
+								onChange={ columnNumber => setAttributes( { columnNumber } ) }
+								min={ 1 }
+								max={ 8 }
 							/>
 						</PanelRow>
 						<PanelRow>
@@ -218,11 +207,11 @@ export default registerBlockType(
 						</PanelRow>
 						<PanelRow>
 							<RangeControl
-									label="Post Excerpt Word Length"
-									value={ attributes.excerptWordLimit ?? 15 }
-									onChange={ excerptWordLimit => setAttributes( { excerptWordLimit } ) }
-									min={ 1 }
-									max={ 50 }
+								label="Post Excerpt Word Length"
+								value={ attributes.excerptWordLimit ?? 15 }
+								onChange={ excerptWordLimit => setAttributes( { excerptWordLimit } ) }
+								min={ 1 }
+								max={ 50 }
 							/>
 						</PanelRow>
 						<PanelRow>

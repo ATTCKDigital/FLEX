@@ -20,4 +20,23 @@
 			}
 		}
 	}
+
+	// TODO: (DP) Eventually use this:
+	// https://developer.mozilla.org/en-US/docs/Web/CSS/hanging-punctuation
+	.show-hanging-quote &,
+	&.show-hanging-quote {
+		position: relative;
+
+		&:before {
+			background: url(../assets/images/Quotation.svg) 0 0 no-repeat;
+			background-size: contain;
+			content: '"';
+			position: absolute;
+			left: -2rem;
+			right: 0;
+
+			height: 55px;
+			width: 60px;
+		}
+	}
 }
