@@ -200,4 +200,11 @@
       margin-bottom: 2px;
     }
   }
+
+  .image-wrapper {
+    .empty-image,
+    &.no-image img {
+      display: none;
+    }
+  }
 }
