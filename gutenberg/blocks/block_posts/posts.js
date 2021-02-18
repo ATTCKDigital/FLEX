@@ -94,6 +94,7 @@ export default registerBlockType(
 
 			const query = {
 				per_page: postPerPage,
+				_embed: true,
 			}
 			return {
 
@@ -260,16 +261,20 @@ export default registerBlockType(
 					</div>
 					<ul className={'posts-items'} style={{paddingLeft: "0"}}>
 						{posts.map(post => {
-							// console.log(post);
 							let category = attributes.categories.find(item => item.id === post.categories[0]);
+							const media = post.featured_media 
+							? post._embedded['wp:featuredmedia'][0].source_url
+							: null;
+
 							return (
 								<li class="posts-item post-category-events" className={'post-category-' + (category && category.slug)} style={{width: 100 / attributes.columnNumber + '%'}}>
 									<div class="posts-item-wrapper">
 										<div class="image-wrapper">
-											<img src="http://local.newclassrooms.org/wp-content/uploads/IMG_8471-scaled-1.jpg" 
-											class="attachment-post-thumbnail size-post-thumbnail wp-post-image" 
-											alt="" 
-											loading="lazy" 
+											<img 
+												src={media ?? ''}
+												className={"attachment-post-thumbnail size-post-thumbnail wp-post-image " + (media ? '' : 'empty-image')} 
+												alt="" 
+												loading="lazy" 
 											></img>
 										</div>
 										<div class="post-content">
