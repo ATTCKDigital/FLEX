@@ -37,7 +37,8 @@ export default registerBlockType(
 		title: __( 'Button', 'flexlayout' ),
 		description: __( 'Prompt visitors to take action with a custom button.', 'flexlayout' ),
 		category: 'common',
-		icon: icons.button,
+		icon: 'button',
+		// icon: icons.button,
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__( 'Text', 'flexlayout' ),

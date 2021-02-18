@@ -31,7 +31,8 @@ export default registerBlockType(
 		description: __( 'Display Wordpress shortcodes.' ),
 		category: 'common',
 		// icon: 'plus',
-		icon: icons.wordpress,
+		// icon: icons.wordpress,
+		icon: 'shortcode',
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__( 'Shortcode', 'flexlayout' ),

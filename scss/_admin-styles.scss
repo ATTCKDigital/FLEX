@@ -271,6 +271,17 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	}
 }
 
+.block-editor-inserter__block-list {
+	.button {
+		.dashicons, 
+		.dashicons-before:before {
+			font-size: 40px !important;
+			height: 40px !important;
+			width: 40px !important;
+		}
+	}
+}
+
 .components-panel {
 	p {
 		font-size: px-to-rem(10px);

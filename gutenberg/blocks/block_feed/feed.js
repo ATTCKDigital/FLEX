@@ -1,12 +1,8 @@
-/**
- * Block dependencies
- */
+// Block dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js'
 
-/**
- * Internal block libraries
- */
+// Internal block libraries
 const { __ } = wp.i18n;
 const {
 	registerBlockType,
@@ -28,24 +24,19 @@ const {
 } = wp.data;
 
 
-/**
- * Internal dependencies
- */
-// Import all of our Margin Options requirements.
+// Internal dependencies
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
-// Import all of our Text Color Options requirements.
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
 
-/**
-	* Register block
- */
+// Register block
 export default registerBlockType(
 	'flexlayout/feed',
 	{
 		title: __('Feed'),
 		description: __('A feed of posts.'),
 		category: 'common',
-		icon: icons.feed,
+		icon: 'welcome-widgets-menus',
+		// icon: icons.feed,
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__('Feed', 'flexlayout'),

@@ -48,7 +48,8 @@ export default registerBlockType(
 		title: __( 'List' ),
 		description: __( 'A text list block' ),
 		category: 'common',
-		icon: 'list-view',
+		// icon: 'list-view',
+		icon: 'editor-ul',
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__( 'Text', 'flexlayout' ),

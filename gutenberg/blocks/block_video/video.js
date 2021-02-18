@@ -42,7 +42,8 @@ export default registerBlockType(
 		title: __( 'Video' ),
 		// description: __( 'Add a video that plays inline', 'flexlayout' ),
 		category: 'common',
-		icon: icons.video,
+		// icon: icons.video,
+		icon: 'youtube',
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__( 'Video', 'flexlayout' ),

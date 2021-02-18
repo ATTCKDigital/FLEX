@@ -159,9 +159,9 @@ export default registerBlockType(
 			const setHangingQuote = (value) => {
 				// console.log('HangingQuoteCheckbox, value: ', value, typeof value, value === true);
 
-				console.log('value: ', value);
+				// console.log('value: ', value);
 				props.setAttributes( { hangingQuote: value === true } );
-				console.log('props: ', props);
+				// console.log('props: ', props);
 
 				if (value === true) {
 					props.setAttributes( { hangingQuoteClass: 'show-hanging-quote' } );

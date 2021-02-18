@@ -37,7 +37,8 @@ export default registerBlockType(
 		title: __( 'Animated GIF', 'flexlayout' ),
 		description: __( 'A block for large animated gif files.', 'flexlayout'),
 		category: 'common',
-		icon: icons.gif,
+		// icon: icons.gif,
+		icon: 'format-video',
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__( 'Image', 'flexlayout' ),

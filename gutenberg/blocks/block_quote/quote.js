@@ -49,7 +49,8 @@ export default registerBlockType(
 		title: __( 'Quote' ),
 		description: __( 'A stylized pull quote with a source' ),
 		category: 'common',
-		icon: 'editor-quote',
+		// icon: 'editor-quote',
+		icon: 'format-quote',
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__( 'Text', 'flexlayout' ),

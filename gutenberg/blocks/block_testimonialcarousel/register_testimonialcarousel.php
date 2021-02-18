@@ -16,7 +16,7 @@ function register_block_testimonialcarousel() {
 			'description'		=> __('A custom Testimonial Carousel block.'),
 			'render_callback'	=> 'block_render_callback_testimonialcarousel',
 			'category'			=> 'common',
-			'icon'				=> 'update',
+			'icon'				=> 'testimonial',
 			'keywords'			=> array( 'testimonialcarousel' ),
 			'parent'			=> ['flexlayout/column'],
 			'mode'				=> 'edit'

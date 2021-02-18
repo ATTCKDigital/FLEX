@@ -41,7 +41,8 @@ export default registerBlockType(
 		description: __( 'Creates a popup to support popup buttons.', 'flexlayout' ),
 		category: 'layout',
 		// icon: 'columns',
-		icon: icons.columns,
+		// icon: icons.columns,
+		icon: 'format-status',
 		keywords: [
 			__( 'Popup', 'flexlayout' ),
 		],

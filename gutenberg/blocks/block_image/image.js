@@ -41,7 +41,8 @@ export default registerBlockType(
 		title: __( 'Image', 'flexlayout' ),
 		description: __( 'Upload an image.', 'flexlayout'),
 		category: 'common',
-		icon: icons.upload,
+		// icon: icons.upload,
+		icon: 'format-image',
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__( 'Image', 'flexlayout' ),
