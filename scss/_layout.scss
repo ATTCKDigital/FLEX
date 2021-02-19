@@ -393,13 +393,13 @@ $justifyContent: 'flex-end';
 	// .block-align-center-xl { @include mediaquery(xl) { margin: 0 auto !important; } }
 	// .block-align-center-xl2 { @include mediaquery(xl2) { margin: 0 auto !important; } }
 
-	// .block-align-center-max-phone { @include mediaquery-max-width(phone) { margin: 0 auto !important; } }
-	// .block-align-center-max-phone-plus { @include mediaquery-max-width(phone-plus) { margin: 0 auto !important; } }
-	// .block-align-center-max-tablet-portrait { @include mediaquery-max-width(tablet-portrait) { margin: 0 auto !important; } }
-	// .block-align-center-max-tablet-landscape { @include mediaquery-max-width(tablet-landscape) { margin: 0 auto !important; } }
-	// .block-align-center-max-desktopt { @include mediaquery-max-width(desktop) { margin: 0 auto !important; } }
-	// .block-align-center-max-xl { @include mediaquery-max-width(xl) { margin: 0 auto !important; } }
-	// .block-align-center-max-xl2 { @include mediaquery-max-width(xl2) { margin: 0 auto !important; } }
+	.block-align-center-max-phone { @include mediaquery-max-width(phone) { margin: 0 auto !important; } }
+	.block-align-center-max-phone-plus { @include mediaquery-max-width(phone-plus) { margin: 0 auto !important; } }
+	.block-align-center-max-tablet-portrait { @include mediaquery-max-width(tablet-portrait) { margin: 0 auto !important; } }
+	.block-align-center-max-tablet-landscape { @include mediaquery-max-width(tablet-landscape) { margin: 0 auto !important; } }
+	.block-align-center-max-desktopt { @include mediaquery-max-width(desktop) { margin: 0 auto !important; } }
+	.block-align-center-max-xl { @include mediaquery-max-width(xl) { margin: 0 auto !important; } }
+	.block-align-center-max-xl2 { @include mediaquery-max-width(xl2) { margin: 0 auto !important; } }
 
 
 	.float-left,
@@ -619,13 +619,13 @@ $justifyContent: 'flex-end';
 	// .text-align-center-xl { @include mediaquery(xl) { text-align: center; } }
 	// .text-align-center-xl2 { @include mediaquery(xl2) { text-align: center; } }
 
-	// .text-align-center-max-phone { @include mediaquery-max-width(phone) { text-align: center; } }
-	// .text-align-center-max-phone-plus { @include mediaquery-max-width(phone-plus) { text-align: center; } }
-	// .text-align-center-max-tablet-portrait { @include mediaquery-max-width(tablet-portrait) { text-align: center; } }
-	// .text-align-center-max-tablet-landscape { @include mediaquery-max-width(tablet-landscape) { text-align: center; } }
-	// .text-align-center-max-desktopt { @include mediaquery-max-width(desktop) { text-align: center; } }
-	// .text-align-center-max-xl { @include mediaquery-max-width(xl) { text-align: center; } }
-	// .text-align-center-max-xl2 { @include mediaquery-max-width(xl2) { text-align: center; } }
+	.text-align-center-max-phone { @include mediaquery-max-width(phone) { text-align: center; } }
+	.text-align-center-max-phone-plus { @include mediaquery-max-width(phone-plus) { text-align: center; } }
+	.text-align-center-max-tablet-portrait { @include mediaquery-max-width(tablet-portrait) { text-align: center; } }
+	.text-align-center-max-tablet-landscape { @include mediaquery-max-width(tablet-landscape) { text-align: center; } }
+	.text-align-center-max-desktopt { @include mediaquery-max-width(desktop) { text-align: center; } }
+	.text-align-center-max-xl { @include mediaquery-max-width(xl) { text-align: center; } }
+	.text-align-center-max-xl2 { @include mediaquery-max-width(xl2) { text-align: center; } }
 
 	// .text-align-left-phone { @include mediaquery(phone) { text-align: left; } }
 	// .text-align-left-phone-plus { @include mediaquery(phone-plus) { text-align: left; } }
@@ -635,13 +635,13 @@ $justifyContent: 'flex-end';
 	// .text-align-left-xl { @include mediaquery(xl) { text-align: left; } }
 	// .text-align-left-xl2 { @include mediaquery(xl2) { text-align: left; } }
 
-	// .text-align-left-max-phone { @include mediaquery-max-width(phone) { text-align: left; } }
-	// .text-align-left-max-phone-plus { @include mediaquery-max-width(phone-plus) { text-align: left; } }
-	// .text-align-left-max-tablet-portrait { @include mediaquery-max-width(tablet-portrait) { text-align: left; } }
-	// .text-align-left-max-tablet-landscape { @include mediaquery-max-width(tablet-landscape) { text-align: left; } }
-	// .text-align-left-max-desktopt { @include mediaquery-max-width(desktop) { text-align: left; } }
-	// .text-align-left-max-xl { @include mediaquery-max-width(xl) { text-align: left; } }
-	// .text-align-left-max-xl2 { @include mediaquery-max-width(xl2) { text-align: left; } }
+	.text-align-left-max-phone { @include mediaquery-max-width(phone) { text-align: left; } }
+	.text-align-left-max-phone-plus { @include mediaquery-max-width(phone-plus) { text-align: left; } }
+	.text-align-left-max-tablet-portrait { @include mediaquery-max-width(tablet-portrait) { text-align: left; } }
+	.text-align-left-max-tablet-landscape { @include mediaquery-max-width(tablet-landscape) { text-align: left; } }
+	.text-align-left-max-desktopt { @include mediaquery-max-width(desktop) { text-align: left; } }
+	.text-align-left-max-xl { @include mediaquery-max-width(xl) { text-align: left; } }
+	.text-align-left-max-xl2 { @include mediaquery-max-width(xl2) { text-align: left; } }
 
 
 	// .text-align-right-phone { @include mediaquery(phone) { text-align: right; } }
@@ -652,13 +652,13 @@ $justifyContent: 'flex-end';
 	// .text-align-right-xl { @include mediaquery(xl) { text-align: right; } }
 	// .text-align-right-xl2 { @include mediaquery(xl2) { text-align: right; } }
 
-	// .text-align-right-max-phone { @include mediaquery-max-width(phone) { text-align: right; } }
-	// .text-align-right-max-phone-plus { @include mediaquery-max-width(phone-plus) { text-align: right; } }
-	// .text-align-right-max-tablet-portrait { @include mediaquery-max-width(tablet-portrait) { text-align: right; } }
-	// .text-align-right-max-tablet-landscape { @include mediaquery-max-width(tablet-landscape) { text-align: right; } }
-	// .text-align-right-max-desktopt { @include mediaquery-max-width(desktop) { text-align: right; } }
-	// .text-align-right-max-xl { @include mediaquery-max-width(xl) { text-align: right; } }
-	// .text-align-right-max-xl2 { @include mediaquery-max-width(xl2) { text-align: right; } }
+	.text-align-right-max-phone { @include mediaquery-max-width(phone) { text-align: right; } }
+	.text-align-right-max-phone-plus { @include mediaquery-max-width(phone-plus) { text-align: right; } }
+	.text-align-right-max-tablet-portrait { @include mediaquery-max-width(tablet-portrait) { text-align: right; } }
+	.text-align-right-max-tablet-landscape { @include mediaquery-max-width(tablet-landscape) { text-align: right; } }
+	.text-align-right-max-desktopt { @include mediaquery-max-width(desktop) { text-align: right; } }
+	.text-align-right-max-xl { @include mediaquery-max-width(xl) { text-align: right; } }
+	.text-align-right-max-xl2 { @include mediaquery-max-width(xl2) { text-align: right; } }
 
 	// .width-5-vh {  width: 5vh;  } @include mediaquery(phone) { .width-phone-5-vh {  width: 5vh;  } } @include mediaquery(phone-plus) { .width-phone-plus-5-vh {  width: 5vh;  } } @include mediaquery(tablet-portrait) { .width-tablet-portrait-5-vh {  width: 5vh;  } } @include mediaquery(tablet-landscape) { .width-tablet-landscape-5-vh {  width: 5vh;  } } @include mediaquery(desktop) { .width-desktop-5-vh {  width: 5vh;  } } @include mediaquery(xl) { .width-xl-5-vh {  width: 5vh;  } } @include mediaquery(xl2) { .width-5-vh {  width: 5vh;  } }
 	// .width-10-vh { width: 10vh; } @include mediaquery(phone) { .width-phone-10-vh { width: 10vh; } } @include mediaquery(phone-plus) { .width-phone-plus-10-vh { width: 10vh; } } @include mediaquery(tablet-portrait) { .width-tablet-portrait-10-vh { width: 10vh; } } @include mediaquery(tablet-landscape) { .width-tablet-landscape-10-vh { width: 10vh; } } @include mediaquery(desktop) { .width-desktop-10-vh { width: 10vh; } } @include mediaquery(xl) { .width-xl-10-vh { width: 10vh; } } @include mediaquery(xl2) { .width-10-vh { width: 10vh; } }
