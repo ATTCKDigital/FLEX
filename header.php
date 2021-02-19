@@ -51,6 +51,7 @@
 	<?php // See global-events.js for usage ?>
 	<div class="breakpoint global"></div>
 	<div class="breakpoint phone"></div>
+	<div class="breakpoint phone-plus"></div>
 	<div class="breakpoint tablet-portrait"></div>
 	<div class="breakpoint tablet-landscape"></div>
 	<div class="breakpoint desktop"></div>
