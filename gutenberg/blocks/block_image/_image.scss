@@ -8,15 +8,25 @@
 		height: auto;
 		max-width: 100%;
 		width: auto;
+
+		.block-align-center &,
+		.block-align-center & {
+			margin-left: auto;
+			margin-right: auto;
+		}
 	} 
 
-	.align-center {
+	.align-center,
+	&.align-center,
+	&.block-align-center {
 		img {
-			margin: 0 auto;
+			margin-left: auto;
+			margin-right: auto;
 		}
 	}
 
-	.align-right {
+	.align-right,
+	&.align-right {
 		img {
 			float: right;
 		}
