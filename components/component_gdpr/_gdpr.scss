@@ -46,10 +46,14 @@
 		align-items: center;
 		display: flex;
 		justify-content: space-evenly;
-		padding: $gap $gap $gap $gap*2;
+		padding: $gap*.5 $gap;
+
+		@include mediaquery(phone-plus) {
+			padding: $gap $gap $gap $gap*2;
+		}
 
 		p {
-			@include tertiary-light;
+			@include secondary-light;
 			color: rgba(255, 255, 255, 1);
 			display: block;
 			font-size: 0.9rem;
@@ -57,11 +61,20 @@
 			height: auto;
 			line-height: 1.1rem;
 			margin: 0;
-			margin-right: 16px;
 			opacity: .5;
-			padding: 0 10px 0 20px;
+			padding: 0;
 			position: relative;
 			transition: opacity .2s;
+
+			// Don't fade out text on touch devices
+			@include mediaquery-max-device-width(tablet-landscape) {
+				opacity: 1;
+			}
+
+			@include mediaquery(phone-plus) {
+				margin-right: 16px;
+				padding: 0 10px 0 20px;
+			}
 
 			@include mediaquery(tablet-portrait) {
 				font-size: inherit;
@@ -72,9 +85,14 @@
 		.cta {
 			min-width: 90px;
 			opacity: .5;
-			padding: 10px;
+			padding: 11px 10px 8px 10px;
 			transform: scale(.8);
 			transition: opacity .2s;
+
+			// Don't fade out text on touch devices
+			@include mediaquery-max-device-width(tablet-landscape) {
+				opacity: 1;
+			}
 
 			@include mediaquery(tablet-portrait) {
 				min-width: 110px;
