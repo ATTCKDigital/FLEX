@@ -371,15 +371,15 @@ $justifyContent: 'flex-end';
 
 .content {
 	// TODO: (DP) Make these responsive;
-	.flex-center-center { 	display: flex; align-items: center; justify-content: center; }
-	.flex-top-center { 		display: flex; align-items: flex-start; justify-content: center; }
-	.flex-bottom-center { 	display: flex; align-items: flex-end; justify-content: center; }
-	.flex-center-left { 	display: flex; align-items: center; justify-content: flex-start; }
-	.flex-top-left { 		display: flex; align-items: flex-start; justify-content: flex-start; }
-	.flex-bottom-left { 	display: flex; align-items: flex-end; justify-content: flex-start; }
-	.flex-center-right { 	display: flex; align-items: center; justify-content: flex-end; }
-	.flex-top-right { 		display: flex; align-items: flex-start; justify-content: flex-end; }
-	.flex-bottom-right { 	display: flex; align-items: flex-end; justify-content: flex-end; }
+	.flex-center-center.flex-center-center { 	display: flex; align-items: center; justify-content: center; }
+	.flex-top-center.flex-top-center { 		display: flex; align-items: flex-start; justify-content: center; }
+	.flex-bottom-center.flex-bottom-center { 	display: flex; align-items: flex-end; justify-content: center; }
+	.flex-center-left.flex-center-left { 	display: flex; align-items: center; justify-content: flex-start; }
+	.flex-top-left.flex-top-left { 		display: flex; align-items: flex-start; justify-content: flex-start; }
+	.flex-bottom-left.flex-bottom-left { 	display: flex; align-items: flex-end; justify-content: flex-start; }
+	.flex-center-right.flex-center-right { 	display: flex; align-items: center; justify-content: flex-end; }
+	.flex-top-right.flex-top-right { 		display: flex; align-items: flex-start; justify-content: flex-end; }
+	.flex-bottom-right.flex-bottom-right { 	display: flex; align-items: flex-end; justify-content: flex-end; }
 
 
 	// .center,
