@@ -25,37 +25,37 @@ function register_button_block() {
 		[
 		'attributes' => array_merge(
 			[
+				'align' => [
+					'type' => 'string',
+					'default' => 'left'
+				],
+				'className' => [
+					'type' => 'string',
+					'default' => ''
+				],
 				'content' => [
 					'type' => 'string',
 				],
 				'content2' => [
 					'type' => 'string',
 				],
-				'align' => [
+				'dataComponentName' => [
 					'type' => 'string',
-					'default' => 'left'
+				],
+				'dataComponentOptions' => [
+					'type' => 'string',
 				],
 				'placeholder' => [
 					'type' => 'string',
+				],
+				'target' => [
+					'type' => 'boolean',
+					'default' => false,
 				],
 				'url' => [
 					'type' => 'string',
 				],
 				'url2' => [
-					'type' => 'string',
-				],
-				'target' => [
-					'type' => 'boolean',
-					'default' => 'false',
-				],
-				'className' => [
-					'type' => 'string',
-					'default' => ''
-				],
-				'dataComponentName' => [
-					'type' => 'string',
-				],
-				'dataComponentOptions' => [
 					'type' => 'string',
 				],
 			],
@@ -81,7 +81,7 @@ function render_button_block($attributes) {
 
 	$targetAttr = null;
 
-	if ($attributes['target'] == 'true') {
+	if ($attributes['target'] == true) {
 		$targetAttr = ' target="_blank"';
 	}
 
