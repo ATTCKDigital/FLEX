@@ -11,7 +11,6 @@ $blocks = array(
 	'flexlayout/animated-gif',
 	'flexlayout/button',
 	'flexlayout/feed',
-	'flexlayout/posts',
 	'flexlayout/heading',
 	'flexlayout/hr',
 	'flexlayout/image',
