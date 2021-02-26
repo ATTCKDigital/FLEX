@@ -17,7 +17,7 @@
 
 	li {
 		@extend .body1 !optional;
-		margin-bottom: $gap*2;
+		margin-bottom: $gap*.5;
 	}
 
 	&.align-center, &.align-right {
