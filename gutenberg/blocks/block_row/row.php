@@ -122,11 +122,11 @@ function render_row_block($attributes, $content) {
 
 	// For the optional CSS class
 	// TODO: (DP) Remove this in production, testing.
-	// if ($wideImage) {
+	if ($wideImage) {
 		$isWide = '-wide';
-	// } else {
-	// 	$isWide = '';
-	// }
+	} else {
+		$isWide = '';
+	}
 
 	if ($mobileImage || $desktopImage) {
 		$styleBlock  = "<style>";
