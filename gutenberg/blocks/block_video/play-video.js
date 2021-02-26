@@ -76,9 +76,9 @@ function Video($el) {
 	function onPlayerReady(event) {
 		console.log('onPlayerReady(), $el: ', $el);
 
-		$el.on('click', function (e) {
-			console.log('testing event delegation, e.currentTarget: ', e.currentTarget);
-		});
+		// $el.on('click', function (e) {
+		// 	console.log('testing event delegation, e.currentTarget: ', e.currentTarget);
+		// });
 
 		// Once the player is ready, allow the user to interect with the video.
 		$el.on('click', '.video-wrapper[data-video-type="youtube"] .playVideo', function () {
@@ -160,12 +160,13 @@ function Video($el) {
 			$el.on('click', '.video-wrapper[data-video-type="upload"] .pauseVideo', pauseVideo);
 		}
 
+		// If there is a youtube video on the page, load the API
 		if ($el.find('.video-wrapper').attr('data-video-type') == 'youtube') {
-			// If there is a youtube video on the page, load the API
 			loadYoutubeApi();
 			loadPlayer();
 		}
 
+		// If there is a Brightcove video on the page, bind play/pause events
 		if ($el.find('.video-wrapper').attr('data-video-type') === 'brightcove') {
 			$el.on('click', '.video-wrapper[data-video-type="brightcove"] .playVideo', playBrightcoveVideo);
 			$el.on('click', '.video-wrapper[data-video-type="brightcove"] .pauseVideo', pauseBrightcoveVideo);
