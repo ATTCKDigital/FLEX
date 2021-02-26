@@ -21,6 +21,7 @@ const {
 
 const {
 	Toolbar,
+	CheckboxControl,
 	Button,
 	Dashicon,
 	ButtonGroup,
@@ -66,6 +67,12 @@ export default registerBlockType(
 			brightcoveAccount: {
 				type: 'string',
 			},
+			controls: {
+				type: 'string'
+			},
+			showControls: {
+				type: 'string'
+			},
 			videoType: {
 				type: 'string',
 			},
@@ -91,6 +98,18 @@ export default registerBlockType(
 			const removeUploadVideo = () => 		props.setAttributes( { uploadVideo: null } );
 			
 			const setYoutubeVideo = value => 		props.setAttributes( { youtubeVideo: value } );
+
+			const setShowControls = value => {
+				console.log('setShowControls, value: ', value);
+
+				props.setAttributes( { showControls: value } );
+
+				if (value === 'true') {
+					props.setAttributes( { controls: 'controls' } );
+				} else {
+					props.setAttributes( { controls: '' } );
+				}
+			};
 			
 			const setBrightcoveAccount = value => 	props.setAttributes( { brightcoveAccount: value } );
 			const setBrightcoveVideo = value => 	props.setAttributes( { brightcoveVideo: value } );
@@ -104,6 +123,19 @@ export default registerBlockType(
 				...MarginOptionsClasses( props ),
 				...BorderOptionsClasses( props ),
 			);
+
+			const ShowControlsCheckbox = (value) => {
+				console.log('ShowControlsCheckbox, value: props.attributes.showControls: ', value, props.attributes.showControls);
+
+				return (
+					<CheckboxControl
+						label="Show video controls"
+						help="Shows play/pause/volume controls on hover"
+						checked={ props.attributes.showControls }
+						onChange={ setShowControls }
+					/>
+				)
+			};
 
 			// Only show thumbnail upload field only:
 			const thumbnailSelect = (e) => {
@@ -232,6 +264,7 @@ export default registerBlockType(
 								</p>
 							</div>
 						) : null }
+						<ShowControlsCheckbox />
 					</div>
 				);
 			};
@@ -275,14 +308,14 @@ export default registerBlockType(
 			};
 
 			const uploadVideoOutput = () => {
-				console.log('uploadVideoOutput: props:');
-				console.table(props);
+				// console.log('uploadVideoOutput: props:');
+				// console.table(props);
 
-				console.log('uploadVideoOutput: props.attributes:');
-				console.table(props.attributes);
+				// console.log('uploadVideoOutput: props.attributes:');
+				// console.table(props.attributes);
 
 				if ( 'upload' !== props.attributes.videoType ) {
-					console.log('uploadVideoOutput returning');
+					// console.log('uploadVideoOutput returning');
 					
 					return '';
 				}
@@ -298,12 +331,22 @@ export default registerBlockType(
 						) : null }
 						{/*Only show these controls in wp-admin*/}
 						{/*<mark className={'play'} data-video-type={'upload'}></mark>*/}
-						<video autoplay loop muted className="video-container video-container-overlay">
-							<source
-								type="video/mp4"
-								src={ props.attributes.uploadVideo ? props.attributes.uploadVideo.url : '' }
-							/>
-						</video>
+						{ props.attributes.controls ? (
+								<video autoplay loop muted controls className="video-container video-container-overlay">
+									<source
+										type="video/mp4"
+										src={ props.attributes.uploadVideo ? props.attributes.uploadVideo.url : '' }
+									/>
+								</video>
+							) : (
+								<video autoplay loop muted className="video-container video-container-overlay">
+									<source
+										type="video/mp4"
+										src={ props.attributes.uploadVideo ? props.attributes.uploadVideo.url : '' }
+									/>
+								</video>
+							)
+						}
 					</div>
 				);
 			};

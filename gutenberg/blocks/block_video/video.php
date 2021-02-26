@@ -37,6 +37,13 @@ function register_video_block() {
                	'uploadVideo' => [
 					'type' => 'object',
 				],
+				'controls' => [
+					'type' => 'string'
+				],
+				'showControls' => [
+					'type' => 'string',
+					'default' => ''
+				],
 				'videoThumbnail' => [
 					'type' => 'object',
 				],
@@ -72,6 +79,7 @@ function render_video_block($attributes, $content) {
 	$video = '';
 	$videoId = '';
 	$youtubeVideoId = '';
+	$showControls = true;
     $brightcoveVideoId = '';
     $brightcoveAccountId = '';
     $videoPlayerAttributes = '';
@@ -82,6 +90,7 @@ function render_video_block($attributes, $content) {
     $isYouTubeVideo = array_key_exists('youtubeVideo', $attributes);
     $hasYouTubeVideoURL = ($attributes['youtubeVideo'] !== "");
     $hasVideoThumbnail = array_key_exists('videoThumbnail', $attributes);
+    $showControls = array_key_exists('showControls', $attributes);
 
     // Insert thumbnail if one exists
 	if ($hasVideoThumbnail) {
@@ -99,6 +108,12 @@ function render_video_block($attributes, $content) {
 			// Save this flag for later
 			$isAutoplay = true;
 		}
+	}
+
+	if ($showControls) {
+		$videoPlayerAttributes .= ' controls [controls: ' . $showControls;
+	} else {
+		$videoPlayerAttributes .= ' [controls: ' . $showControls;
 	}
 
     // Handle uploaded videos
