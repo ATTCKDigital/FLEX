@@ -3,6 +3,12 @@
 		@include clearRow;
 	}
 
+	figcaption {
+		line-height: 1.3rem;
+		margin-bottom: $gap;
+		text-align: center;
+	}
+
 	img {
 		display: block;
 		height: auto;
