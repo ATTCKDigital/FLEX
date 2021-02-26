@@ -6,6 +6,11 @@
 	padding-bottom: $gap*4;
 	padding-top: $gap;
 
+	// Remove underline on footer links.
+	a {
+		text-decoration: none;
+	}
+
 	.logo-wrapper {
 		display: block;
 		width: 136px;
@@ -19,6 +24,12 @@
 
 		&:last-child {
 			margin-bottom: 0;
+		}
+	}
+
+	.menu-items {
+		a[href='#…'] {
+			visibility: hidden;
 		}
 	}
 
