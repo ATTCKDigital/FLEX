@@ -10,7 +10,7 @@
 		<div class="flex-grid component-row-wide component-alignment-top">
 			<div class="column flex-tablet-landscape-2-12 flex-tablet-portrait-2-12 flex-12-12"></div>
 			<div class="column flex-tablet-landscape-8-12 flex-tablet-portrait-8-12 flex-12-12">
-				<div class="component component-error-404">
+				<div class="component component-error-404 padding-top-16x padding-bottom-16x">
 					<?php echo Utils::render_template('config/theme-includes/error-404.php'); ?>
 				</div>
 			</div>
