@@ -1,5 +1,4 @@
 <?php
-
 namespace FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions;
 
 function background_options_classes( $attributes ) {
