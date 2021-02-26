@@ -20,9 +20,14 @@
 
 	.popup {
 		background: $white;
-		padding-bottom: 34%;
+		padding-bottom: 53.1%;
 		position: relative;
-		width: 60%;
+		width: 92%;
+
+		@include mediaquery(tablet-portrait) {
+			padding-bottom: 34%;
+			width: 60%;
+		}
 	}
 
 	.popup-content-container {
