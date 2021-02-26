@@ -23,7 +23,7 @@ function register_posts_block() {
 
 	// Hook server side rendering into render callback
 	register_block_type( 'flexlayout/posts', [
-		'attributes'	  => array_merge(
+		'attributes' => array_merge(
 			[
 				'className' => [
 					'type' => 'string',
@@ -81,6 +81,8 @@ function register_posts_block() {
  * Server rendering for /blocks/posts
  */
 function render_posts_block($attributes) {
+	echo "<!-- post block rendered -->";
+
 	$class = $attributes['className'];
 	$class .= margin_options_classes($attributes);
 	$class .= padding_options_classes($attributes);
@@ -167,17 +169,18 @@ function render_posts_block($attributes) {
 
 	$query = [
 		'posts_per_page' 	=> 	$attributes['postPerPage'],
-		'post_type'				=> 	$attributes['postType'],
+		'post_type'			=> 	$attributes['postType'],
 		'post_status' 		=> 	'publish',
-		'cat' 						=> 	(int)$selectedCategory,
-		'order'						=> 	$order,
-		'orderby'					=>	$orderby,
-		'paged' 					=> 	$paged,
+		'cat' 				=> 	(int)$selectedCategory,
+		'order'				=> 	$order,
+		'orderby'			=>	$orderby,
+		'paged' 			=> 	$paged,
 	] ;
 
 	// var_dump($query);
 
 	$recent_posts = new \WP_Query( $query );
+
 	// var_dump($recent_posts);
 	// print_r($recent_posts->request);
 

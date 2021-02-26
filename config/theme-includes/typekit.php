@@ -1,7 +1,6 @@
-<?php //TypeKit 
-
+<?php
 	$typekitURL = get_field('typekit_url', 'options');
 
-	if($typekitURL) {
-		echo '<link rel="stylesheet" href="'.$typekitURL.'">';
+	if ($typekitURL) {
+		echo '<link rel="stylesheet" href="' . $typekitURL . '">';
 	}

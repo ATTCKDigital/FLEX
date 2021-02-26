@@ -24,12 +24,18 @@ function PopupController($el) {
 		
 		const popupName = popupNames[index].popupName;
 
+		// If URL was used, open new browser window and exit this function
+		if (popupName.startsWith('http')) {
+			return window.open(popupName);
+		}
+
 		$popup = $(`[data-popup-tpl="${popupName}"]`);
 
 		if (!$popup) {
-      console.warn(`Can't find popup template "${popupName}"`);
-      return;
-    }
+      		console.warn(`Can't find popup template "${popupName}"`);
+
+      		return;
+    	}
 
 		$( "body" ).append($popup.html());
 		$popupEl = $('.component-popup');
