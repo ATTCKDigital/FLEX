@@ -44,6 +44,7 @@ const {
 // Internal dependencies
 import BackgroundColorOptions, { BackgroundColorOptionsAttributes, BackgroundColorOptionsInlineStyles } from '../../components/gb-component_background-color';
 import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
+import DataComponentNameOptions, { DataComponentNameAttributes } from '../../components/gb-component_data-component-name';
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
 import TextColorOptions, { TextColorAttributes, TextColorClasses, TextColorInlineStyles } from '../../components/gb-component_text-colors';
@@ -96,11 +97,12 @@ export default registerBlockType(
 			url: {
 				type: 'string',
 			},
+			...BackgroundColorOptionsAttributes,
+			...BorderOptionsAttributes,
+			...DataComponentNameAttributes,
 			...MarginOptionsAttributes,
 			...PaddingOptionsAttributes,
-			...BorderOptionsAttributes,
-			...TextColorAttributes,
-			...BackgroundColorOptionsAttributes
+			...TextColorAttributes
 		},
 
 		edit: props => {
@@ -108,6 +110,8 @@ export default registerBlockType(
 				attributes: {
 					align,
 					content,
+					dataComponentName,
+					dataComponentOptions,
 					hangingQuote,
 					hangingQuoteClass,
 					imgID,
@@ -239,7 +243,7 @@ export default registerBlockType(
 						) : (
 							<div className={classnames(
 								`image-wrapper`,
-								`align-${align}`,
+								`text-align-${align}`,
 							)}>
 								<Button
 									className="remove-image"
@@ -254,6 +258,9 @@ export default registerBlockType(
 							</div>
 						)}
 					</PanelBody>
+					<DataComponentNameOptions
+						{ ...props }
+					/>
 				</InspectorControls>,
 				<div className={classnames(
 					`component-heading`,
@@ -288,7 +295,7 @@ export default registerBlockType(
 						onRemove={ () => onReplace( [] ) }
 						placeholder={ placeholder || __( 'Heading text…' ) }
 						style={ {
-							textAlign: align,
+							// textAlign: align,
 							...TextColorInlineStyles( props ),
 							...BackgroundColorOptionsInlineStyles( props )
 						} }
