@@ -27,8 +27,8 @@ const {
 } = wp.components;
 
 // Internal dependencies
-import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
 import DataComponentNameOptions, { DataComponentNameAttributes } from '../../components/gb-component_data-component-name';
+import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
 
 // Register block
 export default registerBlockType(
@@ -46,28 +46,28 @@ export default registerBlockType(
 			__( 'CTA', 'flexlayout' ),
 		],
 		attributes: {
+			align: {
+				type: 'string',
+				default: 'left'
+			},
 			content: {
 				type: 'string',
 			},
 			content2: {
 				type: 'string',
 			},
-			url: {
-				type: 'string',
-			},
-			url2: {
-				type: 'string',
-			},
-			align: {
-				type: 'string',
-				default: 'left'
-			},
 			placeholder: {
 				type: 'string',
 			},
 			target: {
 				type: 'boolean',
-				default: 'false'
+				default: false
+			},
+			url: {
+				type: 'string',
+			},
+			url2: {
+				type: 'string',
 			},
 			...DataComponentNameAttributes,
 			...MarginOptionsAttributes
@@ -85,12 +85,12 @@ export default registerBlockType(
 					align,
 					content,
 					content2,
+					dataComponentName,
+					dataComponentOptions,
 					placeholder,
 					target,
 					url,
-					url2,
-					dataComponentName,
-					dataComponentOptions,
+					url2
 				},
 				className,
 				setAttributes,
@@ -101,12 +101,15 @@ export default registerBlockType(
 
 			return ([
 				<InspectorControls>
-					<PanelBody title={ __( 'Button Alignment', 'flexlayout' ) }>
+					<MarginOptions
+						{ ...props }
+					/>
+					<PanelBody title={ __( 'Button Settings', 'flexlayout' ) }>
 						<AlignmentToolbar
 							value={ align }
 							onChange={ ( nextAlign ) => {
 								setAttributes( {
-									textAlign: nextAlign
+									align: nextAlign
 								} );
 							} }
 						/>
@@ -116,9 +119,6 @@ export default registerBlockType(
 							onChange={target => setAttributes({ target })}
 					  	/>
 					</PanelBody>
-					<MarginOptions
-						{ ...props }
-					/>
 					<DataComponentNameOptions
 						{ ...props }
 					/>
@@ -127,7 +127,7 @@ export default registerBlockType(
 					className={classnames(
 						`component-button-editor`,
 						`component-button`,
-						`align-${align}`,
+						`text-align-${align}`,
 						...MarginOptionsClasses( props )
 					)}
 					data-component-name={ dataComponentName } 
