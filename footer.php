@@ -1,6 +1,6 @@
 	</main><!-- Close site <main> -->
 </div> <!-- Close content-container div -->
-<footer class="component-footer body-padding" role="contentinfo">
+<footer class="component-footer" role="contentinfo">
 	<?php echo Utils::render_template('components/component_footer/footer.php'); ?>
 </footer>
 <?php
