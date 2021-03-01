@@ -38,11 +38,12 @@ function register_video_block() {
 					'type' => 'object',
 				],
 				'controls' => [
-					'type' => 'string'
-				],
-				'showControls' => [
 					'type' => 'string',
 					'default' => ''
+				],
+				'showControls' => [
+					'type' => 'boolean',
+					'default' => false
 				],
 				'videoThumbnail' => [
 					'type' => 'object',
@@ -75,11 +76,10 @@ function render_video_block($attributes, $content) {
 	$class .= margin_options_classes($attributes);
 	$class .= border_options_classes($attributes);
 
-	// Initialize placeholder vars
+	// Initialize placeholder vars and defaults
 	$video = '';
 	$videoId = '';
 	$youtubeVideoId = '';
-	$showControls = true;
     $brightcoveVideoId = '';
     $brightcoveAccountId = '';
     $videoPlayerAttributes = '';
@@ -88,9 +88,11 @@ function render_video_block($attributes, $content) {
     $isAutoplay = false;
     $isUploadedVideo = array_key_exists('uploadVideo', $attributes);
     $isYouTubeVideo = array_key_exists('youtubeVideo', $attributes);
-    $hasYouTubeVideoURL = ($attributes['youtubeVideo'] !== "");
+    $hasYouTubeVideoURL = ($attributes['youtubeVideo'] !== '');
     $hasVideoThumbnail = array_key_exists('videoThumbnail', $attributes);
-    $showControls = array_key_exists('showControls', $attributes);
+    // $controls = $attributes['controls'];
+
+    // print_r($attributes);
 
     // Insert thumbnail if one exists
 	if ($hasVideoThumbnail) {
@@ -110,10 +112,9 @@ function render_video_block($attributes, $content) {
 		}
 	}
 
-	if ($showControls) {
-		$videoPlayerAttributes .= ' controls [controls: ' . $showControls;
-	} else {
-		$videoPlayerAttributes .= ' [controls: ' . $showControls;
+	// Default will be empty string, otherwise will be 'controls'
+	if ($attributes['controls'] == 'controls') {
+		$videoPlayerAttributes .= ' ' . $attributes['controls'];
 	}
 
     // Handle uploaded videos

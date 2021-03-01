@@ -32,6 +32,7 @@ const {
 	SelectControl,
 } = wp.components;
 
+
 // Internal dependencies
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
 import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
@@ -71,7 +72,7 @@ export default registerBlockType(
 				type: 'string'
 			},
 			showControls: {
-				type: 'string'
+				type: 'boolean'
 			},
 			videoType: {
 				type: 'string',
@@ -100,15 +101,15 @@ export default registerBlockType(
 			const setYoutubeVideo = value => 		props.setAttributes( { youtubeVideo: value } );
 
 			const setShowControls = value => {
-				console.log('setShowControls, value: ', value);
+				// console.log('setShowControls, value: type: ', value, typeof value);
 
-				props.setAttributes( { showControls: value } );
-
-				if (value === 'true') {
-					props.setAttributes( { controls: 'controls' } );
+				if (value === true) {
+					props.setAttributes( { 'controls': 'controls' } );
 				} else {
-					props.setAttributes( { controls: '' } );
+					props.setAttributes( { 'controls': '' } );
 				}
+
+				props.setAttributes( { 'showControls': value } );
 			};
 			
 			const setBrightcoveAccount = value => 	props.setAttributes( { brightcoveAccount: value } );
@@ -124,8 +125,8 @@ export default registerBlockType(
 				...BorderOptionsClasses( props ),
 			);
 
-			const ShowControlsCheckbox = (value) => {
-				console.log('ShowControlsCheckbox, value: props.attributes.showControls: ', value, props.attributes.showControls);
+			const ShowControlsCheckbox = () => {
+				// console.log('ShowControlsCheckbox, value: props.attributes.showControls: ', value, props.attributes.showControls);
 
 				return (
 					<CheckboxControl
@@ -308,14 +309,14 @@ export default registerBlockType(
 			};
 
 			const uploadVideoOutput = () => {
-				// console.log('uploadVideoOutput: props:');
-				// console.table(props);
+				console.log('uploadVideoOutput: props:');
+				console.table(props);
 
-				// console.log('uploadVideoOutput: props.attributes:');
-				// console.table(props.attributes);
+				console.log('uploadVideoOutput: props.attributes:');
+				console.table(props.attributes);
 
 				if ( 'upload' !== props.attributes.videoType ) {
-					// console.log('uploadVideoOutput returning');
+					console.log('uploadVideoOutput returning');
 					
 					return '';
 				}
@@ -331,7 +332,7 @@ export default registerBlockType(
 						) : null }
 						{/*Only show these controls in wp-admin*/}
 						{/*<mark className={'play'} data-video-type={'upload'}></mark>*/}
-						{ props.attributes.controls ? (
+						{ props.attributes.showControls ? (
 								<video autoplay loop muted controls className="video-container video-container-overlay">
 									<source
 										type="video/mp4"
