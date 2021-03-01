@@ -154,14 +154,15 @@
 	}
 }
 
-// Applys same standard page-width constraints for non FLEX layouts
+// Applies same standard page-width constraints for 
+// full-bleed non FLEX layouts
 .body-padding {
-	max-width: $siteWidth;
+	// max-width: $siteWidth;
 	padding-left: 20px;
 	padding-right: 20px;
 
 	@include mediaquery(desktop)  {
-		max-width: inherit;
+		// max-width: inherit;
 		padding: 0;
 	}
 }
@@ -174,7 +175,7 @@
 	position: relative;
 	width: 100%;
 
-	// Prevent this from effecting nested rows
+	// Prevent nested rows from having double padding
 	.component-row-wide {
 		padding: 0;
 	}
