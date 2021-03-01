@@ -742,6 +742,33 @@ $justifyContent: 'flex-end';
 	align-items: center;
 }
 
+.display-on-global.display-on-default { display: block; }
+@include mediaquery(phone) { .display-on-phone.display-on-phone { display: block; } }
+@include mediaquery(phone) { .display-on-phone-plus.display-on-phone-plus { display: block; } }
+@include mediaquery(tablet-portrait) { .display-on-tablet-portrait.display-on-tablet-portrait { display: block; } }
+@include mediaquery(tablet-landscape) { .display-on-tablet-landscape.display-on-tablet-landscape { display: block; } }
+@include mediaquery(desktop) { .display-on-desktop.display-on-desktop { display: block; } }
+@include mediaquery(xl) { .display-on-xl.display-on-xl { display: block; } }
+@include mediaquery(xl2) { .display-on-xl2.display-on-xl2 { display: block; } }
+
+.display-flex-on-default.display-flex-on-default { display: flex; }
+@include mediaquery(phone) { .display-flex-on-phone.display-flex-on-phone { display: flex; } }
+@include mediaquery(phone) { .display-flex-on-phone-plus.display-flex-on-phone-plus { display: flex; } }
+@include mediaquery(tablet-portrait) { .display-flex-on-tablet-portrait.display-flex-on-tablet-portrait { display: flex; } }
+@include mediaquery(tablet-landscape) { .display-flex-on-tablet-landscape.display-flex-on-tablet-landscape { display: flex; } }
+@include mediaquery(desktop) { .display-flex-on-desktop.display-flex-on-desktop { display: flex; } }
+@include mediaquery(xl) { .display-flex-on-xl.display-flex-on-xl { display: flex; } }
+@include mediaquery(xl2) { .display-flex-on-xl2.display-flex-on-xl2 { display: flex; } }
+
+.hide-on-default { display: none; }
+@include mediaquery(phone) { .hide-on-phone.hide-on-phone { display: none; } }
+@include mediaquery(phone-plus) { .hide-on-phone-plus.hide-on-phone-plus { display: none; } }
+@include mediaquery(tablet-portrait) { .hide-on-tablet-portrait.hide-on-tablet-portrait { display: none; } }
+@include mediaquery(tablet-landscape) { .hide-on-tablet-landscape.hide-on-tablet-landscape { display: none; } }
+@include mediaquery(desktop) { .hide-on-desktop.hide-on-desktop { display: none; } }
+@include mediaquery(xl) { .hide-on-xl.hide-on-xl { display: none; } }
+@include mediaquery(xl2) { .hide-on-xl2.hide-on-xl2 { display: none; } }
+
 // TODO: (DP) Organize these better.
 .img {
 	&--xxsmall img {
