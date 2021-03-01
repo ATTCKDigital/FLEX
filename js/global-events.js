@@ -479,6 +479,27 @@ FLEX.GlobalEvents.initGlobalEvents = function () {
 	var $window = $(window, FLEX.GlobalEvents.initGlobalEvents);
 	var self = this;
 
+	/**
+	 * Cancel any click events when there is a relative 
+	 * path of "#\"
+	 */
+	function cancelClicks(e) {
+		// Bind to all click events
+		$('body').on('click', 'a', function (e) {
+			var hasHrefVal = $(this).attr('href').indexOf('/#/');
+
+			// Match '#\' in URL
+			if (hasHrefVal > -1) {
+				e.preventDefault();
+
+				console.log('/FLEX/\tjs/\tglobal-events.js', 'initGlobalEvents().cancelClicks() > link click canceled, $(this): e: ', $(this), e);
+			}
+		});
+
+	}
+
+	cancelClicks();
+
 	/*** Detect scrolling and scrolling direction ***/
 	//USAGE
 	// Bind to scroll
