@@ -2,8 +2,7 @@
 /**
  * Template: 404
  * Description: Wordpress template for the 404 page.
- *
-**/
+ */
 	get_header();
 ?>
 	<section class="component-row padding-top-3x padding-tablet-landscape-top-6x padding-bottom-3x padding-tablet-landscape-bottom-6x component">

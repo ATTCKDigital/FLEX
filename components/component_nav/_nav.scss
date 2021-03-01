@@ -87,12 +87,11 @@
 
 	.menu-items {
 		@include mediaquery-max-width(tablet-landscape) {
-			//Mobile only mediaquery so less overrides are necessary
+			// Mobile only mediaquery so less overrides are necessary
 			text-align: center;
 		}
 
 		@include mediaquery(tablet-landscape)  {
-			//Large mobile + 
 			text-align: right;
 		}
 	}
@@ -103,14 +102,13 @@
 		@include primary-bold;
 
 		@include mediaquery-max-width(tablet-landscape) {
-			//Mobile only mediaquery so less overrides are necessary
+			// Mobile only mediaquery so less overrides are necessary
 			font-size: px-to-rem(18px);
 			margin-bottom: $gap;
 			display: block;
 		}
 
 		@include mediaquery(tablet-landscape)  {
-			//Large mobile + 
 			display: inline-block;
 			font-size: px-to-rem(16px);
 			margin-left: 30px;
