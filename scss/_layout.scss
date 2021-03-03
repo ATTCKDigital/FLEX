@@ -225,32 +225,63 @@ $justifyContent: 'flex-end';
 		// Create $valueMax number of variations
 		@for $i from 0 through $valueMax {
 
+			.valuemax-#{$valueMax}-i-#{$i} { color: #BADA55; }
+
 			// At each of $valueIncrements increments (e.g., 5, 10, 20)
 			@if $i % $valueIncrements == 0 {
+				.valuemax-match-screensize-#{$screensize}-breakpoint-#{$breakpoint}-valueIncrements-#{$valueIncrements}-i-#{$i} { color: red; }
 
 				// For each unit
 				@each $unit in $units {
+					.unit-is-#{$unit} { color: rebeccapurple; }
 
 					// For each position (top, left, bottom, right)
 					@each $position in $positions {
+						.position-is-#{$position} { color: #CCC; }
 
 						// Handle '$gap' specially
 						// TODO: (DP) These increments should be 1, 2, 3, 4, 5, 6, 7, 8... not 10, 20, 30, 40
 						@if $unit == 'x' {
-							.offset-margin-#{$breakpoint}#{$position}-#{$i}#{$unit} { margin-#{$position}: #{$i * $gap}; }
-							.offset-margin-#{$breakpoint}#{$position}--#{$i}#{$unit} { margin-#{$position}: -#{$i * $gap}; }
+							.unit-is-equal-to-x-i-is-#{$i}-#{$i <= 16} { color: black; }
+
+							// Only need to create up to 16x gap to match the FLEX admin
+							// Need to bump the counter up one since the $valueMax range is 150
+							@if (($i + 1) / 10) <= 16 {
+								.offset-margin-#{$breakpoint}#{$position}-#{(($i + 1) / 10)}#{$unit} { margin-#{$position}: #{(($i + 1) / 10) * $gap}; }
+								.offset-#{$breakpoint}#{$position}-#{(($i + 1) / 10)}#{$unit} { #{$position}: #{($i + 1) * $gap}; }
+
+								// Prevent --0's from being generated
+								@if $i != 0 {
+									.offset-margin-#{$breakpoint}#{$position}--#{(($i + 1) / 10)}#{$unit} { margin-#{$position}: -#{(($i + 1) / 10) * $gap}; }
+									.offset-#{$breakpoint}#{$position}--#{(($i + 1) / 10) }#{$unit} { #{$position}: -#{($i + 1) * $gap}; }
+								}
+							}
 						}
 
 						// Handle '%' specially
 						@else if $unit == 'pc' {
 							.offset-margin-#{$breakpoint}#{$position}-#{$i}#{$unit} { margin-#{$position}: #{$i + '%'}; }
-							.offset-margin-#{$breakpoint}#{$position}--#{$i}#{$unit} { margin-#{$position}: -#{$i + '%'}; }
+							.offset-#{$breakpoint}#{$position}-#{$i}#{$unit} { #{$position}: #{$i + '%'}; }
+
+							// Prevent --0's from being generated
+							@if $i != 0 {
+								.offset-margin-#{$breakpoint}#{$position}--#{$i}#{$unit} { margin-#{$position}: -#{$i + '%'}; }
+								.offset-#{$breakpoint}#{$position}--#{$i}#{$unit} { #{$position}: -#{$i + '%'}; }
+							}
 						}
 
 						@else {
 							.offset-margin-#{$breakpoint}#{$position}-#{$i}#{$unit} { margin-#{$position}: #{$i + $unit}; }
-							.offset-margin-#{$breakpoint}#{$position}--#{$i}#{$unit} { margin-#{$position}: -#{$i + $unit}; }
+							.offset-#{$breakpoint}#{$position}-#{$i}#{$unit} { #{$position}: #{$i + $unit}; }
+
+							// Prevent --0's from being generated
+							@if $i != 0 {
+								.offset-margin-#{$breakpoint}#{$position}--#{$i}#{$unit} { margin-#{$position}: -#{$i + $unit}; }
+								.offset-#{$breakpoint}#{$position}--#{$i}#{$unit} { #{$position}: -#{$i + $unit}; }
+							}
 						}
+
+						.offset-position-#{$position}-unit-#{$unit} { cursor: pointer; }
 					}
 
 					@if $unit == 'x' {
@@ -509,7 +540,7 @@ $justifyContent: 'flex-end';
 
 	// .offset-left--10-percent { bottom: -10%; }
 
-	// — Viewpport width offsets
+	// — Viewport width offsets
 	// —— Left Positive
 	// .offset-left-5-vw  { left: 5vw;   } @include mediaquery(phone) { .offset-phone-left-5-vw  { left: 5vw;   } } @include mediaquery(phone-plus) { .offset-phone-plus-left-5-vw  { left: 5vw;   } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-left-5-vw  { left: 5vw;   } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-left-5-vw  { left: 5vw;   } } @include mediaquery(desktop) { .offset-desktop-left-5-vw  { left: 5vw;   } } @include mediaquery(xl) { .offset-xl-left-5-vw  { left: 5vw;   } } @include mediaquery(xl2) { .offset-xl2-left-5-vw  { left: 5vw;   } }
 	// .offset-left-10-vw { left: 10vw;  } @include mediaquery(phone) { .offset-phone-left-10-vw { left: 10vw;  } } @include mediaquery(phone-plus) { .offset-phone-plus-left-10-vw { left: 10vw;  } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-left-10-vw { left: 10vw;  } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-left-10-vw { left: 10vw;  } } @include mediaquery(desktop) { .offset-desktop-left-10-vw { left: 10vw;  } } @include mediaquery(xl) { .offset-xl-left-10-vw { left: 10vw;  } } @include mediaquery(xl2) { .offset-xl2-left-10-vw { left: 10vw;  } }
