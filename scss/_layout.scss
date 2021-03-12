@@ -433,6 +433,16 @@ $justifyContent: 'flex-end';
 	.block-align-center-max-xl2 { @include mediaquery-max-width(xl2) { margin: 0 auto !important; } }
 
 
+	.display-flex.display-flex {
+		display: flex;
+	}
+
+	.display-flex-center-left.display-flex-center-left.display-flex-center-left.display-flex-center-left {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+	}
+
 	.float-left,
 	.block-align-left {
 		float: left !important;
