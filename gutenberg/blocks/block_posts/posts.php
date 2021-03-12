@@ -98,14 +98,14 @@ function render_posts_block($attributes) {
 	$order = $_GET['order'] ?? 'DESC';
 	$orderOptions = [
 		[
-			'value' => 'ASC',
-			'text'  => _('New'),
-			'selected' => $order == 'ASC'
+			'value' => 'DESC',
+			'text'  => _('Newest'),
+			'selected' => $order == 'DESC'
 		],
 		[
-			'value' => 'DESC',
-			'text'  => _('Old'),
-			'selected' => $order == 'DESC'
+			'value' => 'ASC',
+			'text'  => _('Oldest'),
+			'selected' => $order == 'ASC'
 		],
 	];
 	$pagination = '';
@@ -115,25 +115,25 @@ function render_posts_block($attributes) {
 	// Sort Filter
 	if ($filterActive) {
 		$selectedIndex = array_search(true, array_column($orderOptions, 'selected'));
-		
+
 		$postFilter .= "
 			<div class=\"sort-filter\">
-				<label>". __("Sort by") ."</label>
+				<label>" . __("Sort by") . "</label>
 				<div class=\"dropdown\">
 					<label role=\"button\" class=\"dropdown-select\" tabindex=\"0\">{$orderOptions[$selectedIndex]['text']}</label>
 					<ul class=\"dropdown-list\">";
+						foreach ($orderOptions as $option) {
+							$postFilter .=
+								"<li class=\"dropdown-option" . ($option['selected'] ? ' option-selected' : '') . "\">
+									<button class=\"dropdown-button\" name=\"order\" value=\"{$option['value']}\">{$option['text']}</button>
+								</li>";
+						}
 
-		foreach ($orderOptions as $option) {
-			$postFilter .= 	
-				"<li class=\"dropdown-option" . ($option['selected'] ? ' option-selected' : '') . "\">
-					<button class=\"dropdown-button\" name=\"order\" value=\"{$option['value']}\">{$option['text']}</button>
-				</li>";
-		}
-
-		$postFilter .= "
-					</ul> 
-				</div> 
-			</div>";	
+						$postFilter .= "
+					</ul>
+				</div>
+				<input type=\"hidden\" name=\"category\" value=\"{$selectedCategory}\">
+			</div>";
 	}
 
 	// Category Tabs
@@ -141,14 +141,14 @@ function render_posts_block($attributes) {
 		$selectedCategoryIndex = array_search($selectedCategory, array_column($categories, 'id'));
 
 		$tabs .= "
-		<div class=\"categories\"> 
+		<div class=\"categories\">
 			<label role=\"button\" class=\"cat-dropdown cat-button cat-{$categories[$selectedCategoryIndex]['slug']} active\" tabindex=\"0\">{$categories[$selectedCategoryIndex]['name']}</label>
 			<ul class=\"cat-list\">
 		";
 
 		foreach ( $categories as $category ) {
 			$active = $selectedCategory == $category['id'] ? ' active' : '';
-// style=\"width:". (100 /  count($categories)) ."%;\"
+			// style=\"width:". (100 /  count($categories)) ."%;\"
 			$tabs .= "
 			<li class=\"cat-item\">
 				<button class=\"cat-button cat-{$category['slug']}{$active}\" name=\"category\" value=\"{$category['id']}\">{$category['name']}</button>
@@ -158,11 +158,12 @@ function render_posts_block($attributes) {
 
 		$tabs .= "
 			</ul>
+			<input type=\"hidden\" name=\"order\" value=\"{$order}\">
 		</div>";
 	}
 
 	// RECENT POSTS
-	
+
 	$paged = get_query_var('paged')
 	? get_query_var('paged')
 	: 1;
@@ -187,7 +188,7 @@ function render_posts_block($attributes) {
 	if ( !$recent_posts->have_posts() ) {
 		$output = "
 		<div class=\"component-archive-posts {$class}\">
-			<form action=\"{$permalink}\" class=\"top-bar filter-form\" method=\"get\">
+			<form action=\"{$permalink}?category={$selectedCategory}\" class=\"top-bar filter-form\" method=\"get\">
 				{$tabs}
 				{$postFilter}
 			</form>
@@ -261,7 +262,7 @@ function render_posts_block($attributes) {
 		if (!empty($ctaText)) {
 			$ctaLink .= '<div class="cta-link">'. $ctaText .'</div>';
 		}
-		
+
 		$postsItems .= '
 			<li class="posts-item post-category-'. $categories[0]->slug .'" style="width: '. 100 / $columnNumber .'%;">
 				<a class="posts-item-wrapper" href="'.get_the_permalink() .'">'.
@@ -273,6 +274,8 @@ function render_posts_block($attributes) {
 						'</h2>'.
 						'<span class="post-date">'.
 							get_the_time('F j, Y').
+							' &nbsp; '.
+							get_field('author_name').
 						'</span>'.
 						$excerpt.
 						$ctaLink.
@@ -285,8 +288,10 @@ function render_posts_block($attributes) {
 
 	$output = "
 	<div class=\"component-archive-posts {$class}\">
-		<form action=\"{$permalink}\" class=\"top-bar filter-form\" method=\"get\">
+		<form action=\"{$permalink}\" class=\"top-bar\" method=\"get\">
 			{$tabs}
+		</form>
+		<form action=\"{$permalink}\" class=\"top-bar filter-form\" method=\"get\">
 			{$postFilter}
 		</form>
 		<ul class=\"posts-items load-items\">
