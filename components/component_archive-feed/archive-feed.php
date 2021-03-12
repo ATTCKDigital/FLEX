@@ -1,14 +1,14 @@
-<?php 
-	//Archive Feed 
+<?php
+	//Archive Feed
 ?>
 <section class="component-row padding-top-7x padding-bottom-7x component" data-component-name="LoadMore">
 	<div class="flex-grid component-row-wide component-alignment-top">
 		<div class="column flex-tablet-landscape-12-12 flex-tablet-portrait-12-12 flex-12-12">
 			<div class="component-archive-feed">
 				<div class="feed-items load-items padding-bottom-3x" data-post-type="<?= $this->postType;?>" data-term="<?= $this->term;?>" data-taxonomy="<?= $this->taxonomy;?>">
-					<?php 
-						if ($this->query->have_posts()) { 
-							while ($this->query->have_posts()) { 
+					<?php
+						if ($this->query->have_posts()) {
+							while ($this->query->have_posts()) {
 								$this->query->the_post();
 								$ID = get_the_ID();
 					?>
