@@ -78,7 +78,7 @@ icons.buttonThin = <svg enable-background="new 0 0 512 512" height="24" viewBox=
 // 			C512.001,116.971,495.399,76.892,465.255,46.748z"/>
 // 	</svg>;
 
-icons.check = <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+icons.check = <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
 		<path d="M22.319,4.431,8.5,18.249a1,1,0,0,1-1.417,0L1.739,12.9a1,1,0,0,0-1.417,0h0a1,1,0,0,0,0,1.417l5.346,5.345a3.008,3.008,0,0,0,4.25,0L23.736,5.847a1,1,0,0,0,0-1.416h0A1,1,0,0,0,22.319,4.431Z"/>
 	</svg>;
 
@@ -128,7 +128,7 @@ icons.paragraph = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" 
 	</svg>;
 
 // icons.remove = <svg width='20px' height='20px' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'>
-icons.remove = <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+icons.remove = <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 200 200">
 		<path d='m50 2.5c-26.199 0-47.5 21.301-47.5 47.5s21.301 47.5 47.5 47.5 47.5-21.301 47.5-47.5-21.301-47.5-47.5-47.5zm24.898 62.301l-10.199 10.199-14.801-14.801-14.801 14.801-10.199-10.199 14.801-14.801-14.801-14.801 10.199-10.199 14.801 14.801 14.801-14.801 10.199 10.199-14.801 14.801z'
 		/>
 	</svg>;
