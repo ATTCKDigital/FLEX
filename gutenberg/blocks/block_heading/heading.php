@@ -46,9 +46,9 @@ function register_heading_block() {
 					'type' => 'string',
 					'default' => '',
 				],
-				'hangingQuote' => [
-					'type' => 'boolean',
-					'default' => false
+				'hangingQuoteClass' => [
+					'type' => 'string',
+					'default' => ''
 				],
 				'imgURL' => [
 					'type' => 'string',
@@ -115,13 +115,15 @@ function render_heading_block($attributes) {
 	$wrapperClass .= border_options_classes($attributes);
 
 	// Hanging quote option
-	$hangingQuote = array_key_exists('hangingQuote', $attributes) ? $attributes['hangingQuote'] : null;
+	$wrapperClass .= ' ' . $attributes['hangingQuoteClass'];
+	
+	// $hangingQuote = array_key_exists('hangingQuote', $attributes) ? $attributes['hangingQuote'] : null;
 
-	if ($hangingQuote) {
-		$wrapperClass .= ' show-hanging-quote hanging-quote-' . $hangingQuote;
-	} else {
-		$wrapperClass .= ' hide-hanging-quote hanging-quote-' . $hangingQuote;
-	}
+	// if ($hangingQuote) {
+	// 	$wrapperClass .= ' show-hanging-quote hanging-quote-' . $hangingQuote;
+	// } else {
+	// 	$wrapperClass .= ' hide-hanging-quote hanging-quote-' . $hangingQuote;
+	// }
 
 	// Build inline style values
 	$style = '';

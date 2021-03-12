@@ -74,8 +74,7 @@ export default registerBlockType(
 				default: '',
 			},
 			hangingQuote: {
-				type: Boolean,
-				default: false
+				type: 'boolean'
 			},
 			hangingQuoteClass: {
 				type: 'string',
@@ -163,15 +162,13 @@ export default registerBlockType(
 			const setHangingQuote = (value) => {
 				// console.log('HangingQuoteCheckbox, value: ', value, typeof value, value === true);
 
-				// console.log('value: ', value);
-				props.setAttributes( { hangingQuote: value === true } );
-				// console.log('props: ', props);
-
 				if (value === true) {
 					props.setAttributes( { hangingQuoteClass: 'show-hanging-quote' } );
 				} else {
 					props.setAttributes( { hangingQuoteClass: 'hide-hanging-quote' } );
 				}
+
+				props.setAttributes( { hangingQuote: value } );
 			}
 
 			const svgHeight = {
