@@ -82,13 +82,57 @@
                 "white-nav": "White Nav",
                 "black-nav": "Black Nav"
             },
-            "default_value": [],
+            "default_value": false,
             "allow_null": 1,
             "multiple": 0,
             "ui": 0,
             "return_format": "value",
             "ajax": 0,
             "placeholder": ""
+        },
+        {
+            "key": "field_604a8232cf2bb",
+            "label": "Featured image",
+            "name": "hide_featured_image",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 0,
+            "choices": {
+                "hidden": "hidden"
+            },
+            "allow_custom": 0,
+            "default_value": [],
+            "layout": "horizontal",
+            "toggle": 0,
+            "return_format": "value",
+            "save_custom": 0
+        },
+        {
+            "key": "field_604a8244cf2bc",
+            "label": "Author name",
+            "name": "author_name",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 0,
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -96,7 +140,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "work"
+                "value": "post"
             }
         ],
         [
@@ -117,14 +161,14 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "areas"
+                "value": "post"
             }
         ],
         [
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "private-work"
+                "value": "post"
             }
         ]
     ],
@@ -134,7 +178,7 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1561658108
+    "modified": 1615548322
 }
