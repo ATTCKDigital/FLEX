@@ -95,6 +95,7 @@ body {
 
 	.component-image {
 		.components-button {
+			border: 1px solid #b9c8d0;
 			margin: $gap;
 		}
 	}
@@ -121,6 +122,21 @@ body {
 				height: 25px;
 				width: 25px;
 			}
+		}
+	}
+
+	.components-base-control.block-editor-url-input {
+		input[type=text] {
+			margin: -5px 10px;
+			width: 100%;
+		}
+	}
+
+	.components-checkbox-control__input-container {
+		svg {
+			left: -2px;
+			position: absolute;
+			top: -2px;
 		}
 	}
 
@@ -648,3 +664,16 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 .wp-core-ui img {
 	width: auto;
 }
+
+// TODO: (DP) Deprecate this.
+.nofloat { float: none; }
+
+.float-left.float-left { float: left; }
+.float-none.float-none { float: none; }
+.float-right.float-right { float: right; }
+
+.clear-left.clear-left { clear: left; }
+.clear-both.clear-both { clear: both; }
+.clear-right.clear-right { clear: right; }
+
+.position-relative.position-relative { position: relative; }

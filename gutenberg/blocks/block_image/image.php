@@ -53,6 +53,10 @@ function register_image_block() {
 					'type' => 'string',
 					'default' => ''
 				],
+				'opensNewWindow' => [
+					'type' => 'boolean',
+					'default' => false
+				]
 			],
 			MARGIN_OPTIONS_ATTRIBUTES,
 			PADDING_OPTIONS_ATTRIBUTES,
@@ -79,13 +83,20 @@ function render_image_block($attributes) {
 		$CSSWidth = '';
 	}
 
+	// Add external image link checkbox option
+	$target = '';
+
+	if ($attributes['opensNewWindow']) {
+		$target .= ' target="_new"';
+	}
+
 	$url = array_key_exists('url', $attributes) ? $attributes['url'] : null;
 	$caption = array_key_exists('caption', $attributes) ? $attributes['caption'] : null;
 	$imageID = array_key_exists('imgID', $attributes) ? $attributes['imgID'] : null;
 	$imageURL = wp_get_attachment_image($imageID, 'full');
 
 	if ($url) {
-		$image = '<a href="' . $url . '">' . $imageURL . '</a>';
+		$image = '<a href="' . $url . '"' . $target . '>' . $imageURL . '</a>';
 	} else {
 		$image = $imageURL;
 	}

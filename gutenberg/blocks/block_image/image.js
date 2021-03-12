@@ -22,6 +22,7 @@ const {
 
 const {
 	Button,
+	CheckboxControl,
 	Dashicon,
 	IconButton,
 	PanelBody,
@@ -72,6 +73,10 @@ export default registerBlockType(
 				type: 'string',
 				default: ''
 			},
+			opensNewWindow: {
+				type: 'boolean',
+				default: false
+			},
 			...MarginOptionsAttributes,
 			...PaddingOptionsAttributes,
 			...BorderOptionsAttributes
@@ -105,6 +110,21 @@ export default registerBlockType(
 					imgURL: null
 				});
 			}
+
+			const setOpenInNewWindow = value => {
+				props.setAttributes( { opensNewWindow: value } );
+			}
+
+			const NewWindowCheckbox = (a, b) => {
+				return (
+					<CheckboxControl
+						label='Open in new window.'
+						help=''
+						checked={ props.attributes.opensNewWindow }
+						onChange={ setOpenInNewWindow }
+					/>
+				)
+			};
 
 			return [
 				<InspectorControls>
@@ -174,26 +194,32 @@ export default registerBlockType(
 								<Button
 									className="remove-image"
 									onClick={ onRemoveImage }
-								>
-									{ icons.remove }
+									>
+									{ icons.remove } Remove image
 								</Button>
 							) : null }
 							{ isSelected ? (
 								<form
 									className="block-library-button__inline-link"
 									onSubmit={ ( event ) => event.preventDefault() }>
-									<Dashicon icon="admin-links" />
-									<URLInput
-										value={ url }
-										onChange={ ( value ) => setAttributes( { url: value } ) }
-										/>
-									<IconButton 
-										className="block-align-right"
+									<div class="margin-left-2x float-left">
+										<Dashicon icon="admin-links" className="float-left" />
+										<URLInput
+											value={ url }
+											className="float-left"
+											onChange={ ( value ) => setAttributes( { url: value } ) }
+											/>
+									</div>
+									<div class="margin-left-2x float-left position-relative">
+										<NewWindowCheckbox />
+									</div>
+									<Button 
+										className="block-align-right float-left clear-left"
 										// icon="editor-break" 
-										icon={ icons.check }
-										label={ __( 'Apply' ) } 
 										type="submit" 
-										/>
+										>
+										Apply changes
+									</Button>
 								</form>
 							) : null }
 							<img
