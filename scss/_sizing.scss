@@ -12,9 +12,9 @@ $gridColumns				: 12, 24;
 //gap and increment should be the same value. 2 variables are required, one without px
 
 // Breakpoints
-$default					: 0px;
-$phone						: 375px;
-$phone-plus                 : 414px;
+$default					: 0px; // iPhone 4 & 5
+$phone						: 375px; // iPhone 6, 7, 8, X
+$phone-plus                 : 414px; // iPhone Plus/Max
 $tablet-portrait			: 768px;
 $tablet-landscape			: 1024px;
 $desktop					: 1100px;
