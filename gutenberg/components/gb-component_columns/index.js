@@ -190,7 +190,7 @@ function ColumnOptions( props ) {
 									value: 'inherit',
 								},
 								{
-									label: __( 'Hide on mobile' ),
+									label: __( 'Hide on mobile plus' ),
 									value: '0',
 								},
 								{
