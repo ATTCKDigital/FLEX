@@ -263,6 +263,12 @@ function render_posts_block($attributes) {
 			$ctaLink .= '<div class="cta-link">'. $ctaText .'</div>';
 		}
 
+		$separator = ' &nbsp; ';
+
+		if (get_field('author_name')) {
+			$separator = ' &nbsp;|&nbsp; ';
+		}
+
 		$postsItems .= '
 			<li class="posts-item post-category-'. $categories[0]->slug .'" style="width: '. 100 / $columnNumber .'%;">
 				<a class="posts-item-wrapper" href="'.get_the_permalink() .'">'.
@@ -274,7 +280,7 @@ function render_posts_block($attributes) {
 						'</h2>'.
 						'<span class="post-date">'.
 							get_the_time('F j, Y').
-							' &nbsp; '.
+							$separator.
 							get_field('author_name').
 						'</span>'.
 						$excerpt.
