@@ -19,6 +19,7 @@
 		} else {
 			$ID = $post->ID;
 		}
+
 		echo Utils::render_template('config/theme-includes/meta-tags.php', array(
 			'ID' => $ID,
 			'wp' => $wp
@@ -38,12 +39,18 @@
 		$currentHour = date('H');
 		$currentMinute = date('i');
 		$currentSecond = date('s');
+
+		// Add environment flag if not production
+		if ($_SERVER['WPENGINE_ACCOUNT'] !== WPE_PROD) {
+			$serverEnvironment = 'data-server-environment="' . $_SERVER['WPENGINE_ACCOUNT'] . '"';
+		}
 	?>
 </head>
-<body <?php body_class('front-end');?> 
+<body <?php body_class('front-end'); ?> 
 	data-currentHour='<?= $currentHour ?>' 
 	data-currentMinute='<?= $currentMinute ?>' 
-	data-currentSecond='<?= $currentSecond ?>'>
+	data-currentSecond='<?= $currentSecond ?>'
+	<?= $serverEnvironment ?>>
 	<?php echo Utils::render_template('config/theme-includes/google-tag-manager-body.php'); ?>
 	<?php echo Utils::render_template('config/theme-includes/hubspot-tracking-code.php'); ?>
 	<?php echo Utils::render_template('config/theme-includes/social-media.php'); ?>
@@ -61,5 +68,5 @@
 
 	<?php echo Utils::render_template('config/theme-includes/svg-sprite.php'); ?>
 	<?php echo Utils::render_template('components/component_nav/nav.php'); ?>
-	<div class="content-container component" data-component-name="ScrollIn Analytics">
+	<div class="content-container component" data-component-name="ScrollIn Analytics CF7 WCAG">
 		<main class="content" role="main">
