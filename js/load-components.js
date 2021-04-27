@@ -1,6 +1,6 @@
 console.log('loaded', '/FLEX\t/js\t/load-components.js');
 
-import FLEX from './clientNamespace';
+import FLEX from './client-namespace';
 import Debug from './debug';
 import ObjectAssign from 'es6-object-assign';
 
@@ -8,17 +8,23 @@ import ObjectAssign from 'es6-object-assign';
 // TODO: figure out why this has to explicitly be in this file. - Author?
 ObjectAssign.polyfill();
 
+// Used to create dot character replacements for submit buttons
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/repeat
+import StringRepeat from 'string.prototype.repeat';
+
 // Import all JS components explicitly.
 // Required
 // Launch TODO: Comment out any unused components for production. -DP
 // Global utility components (REQUIRED)
 import $$ from 					'../components/component_cached-dom-elements/cached-dom-elements';
 import Analytics from 			'../components/component_analytics/analytics';
+import CF7 from 				'../components/component_cf7/cf7';
 import LoadMore from 			'../components/component_load-more/load-more';
 import GDPR from 				'../components/component_gdpr/gdpr';
 import Parallax from 			'../components/component_parallax/parallax';
 import ScrollIn from 			'../components/component_scroll-in/scroll-in';
 import ScrollTo from 			'../components/component_scroll-to/scroll-to';
+import WCAG from	 			'../components/component_wcag/wcag';
 
 // Interactive components
 import Bookmark from 			'../components/component_bookmark/bookmark';
@@ -44,6 +50,7 @@ FLEX.Components = Object.assign({
 	'AnimatedGif': AnimatedGif,
 	'Bookmark': Bookmark,
 	'CalendarLink': CalendarLink,
+	'CF7': CF7,
 	'GDPR': GDPR,
 	'LoadMore': LoadMore,
 	'Nav': Nav,
@@ -55,7 +62,8 @@ FLEX.Components = Object.assign({
 	'Parallax': Parallax,
 	'PopupController': PopupController,
 	'Video': Video,
-	'VideoThumb': VideoThumb
+	'VideoThumb': VideoThumb,
+	'WCAG': WCAG
 }, childComponents);
 
 FLEX.Loader = {};
