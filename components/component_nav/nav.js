@@ -12,11 +12,33 @@ function Nav($el) {
 	function navToggle() {
 		console.log('/FLEX/\tcomponents/\tcomponent-nav/\tnav.js', 'navToggle()');
 
+		// Open nav on hamburger click or enter press when tab focused
+		var keyCode = e.keyCode || e.which;
+
+		// Detect enter key press
+		// 9 = tab
+		// 13 = enter
+		if (e.type === 'keyup' && typeof keyCode !== 'undefined' && keyCode !== 13) {
+			console.log('exiting, pressed the  ' + e.key + ' key ', keyCode);
+			return;
+		} else {
+			console.log('/newclassrooms/\tcomponents/\tcomponent-nav/\tnav.js', 'navToggle(), keyCode: ', keyCode, 'key: ', e.key, 'event: ', e);
+		}
+
 		// Open nav on hamburger click
 		$body.toggleClass('navOpen');
 		$el.find('.openNav').removeClass('openSubNav');
 		$el.find('.menu-back').removeClass('openSubNav');
 		$body.removeClass('searchOpen');
+
+		// If nav is open and hamburger is visible, 
+		// add tabindex attributes to nav links
+		if ($('.hamburger-wrapper').is(':visible') && $('body').hasClass('navOpen')) {
+			$('nav.main-nav .menu-item a').prop('tabindex', '0');
+		} else {
+			// Otherwise, remove them (i.e., make them not tabbable).
+			$('nav.main-nav .menu-item a').prop('tabindex', '-1');
+		}
 	}
 
 	function searchToggle() {
