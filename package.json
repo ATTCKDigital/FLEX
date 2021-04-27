@@ -80,7 +80,8 @@
 		"imagesloaded": "^4.1.2",
 		"jquery": "^3.5.1",
 		"jquery-bridget": "^2.0.1",
-		"lodash": "^4.17.20"
+		"lodash": "^4.17.20",
+		"string.prototype.repeat": "^1.0.0"
 	},
 	"husky": {
 		"hooks": {
