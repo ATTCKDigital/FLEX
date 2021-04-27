@@ -19,8 +19,7 @@
 		margin-bottom: $gap;
 		letter-spacing: -0.1px;
 		@include secondary-regular;
-		@include placeholder($black);
-
+		@include placeholder ($black);
 		@include mediaquery(tablet-landscape)  {
 			font-size: 16px;
 			letter-spacing: -0.15px;
@@ -38,8 +37,17 @@
 	}
 }
 
-//General Form Styles
-input[type="text"], input[type="email"], textarea {
+// General Form Styles
+input[type="text"],
+input[type="email"] {
+	.component-footer & {
+		@include placeholder(color('brand', 'white'));
+	}
+}
+
+input[type="text"],
+input[type="email"], 
+textarea {
 	border: 1px solid $borderColor;
 	font-size: px-to-rem(16px);
 	height: 48px;
