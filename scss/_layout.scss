@@ -246,14 +246,15 @@ $justifyContent: 'flex-end';
 
 							// Only need to create up to 16x gap to match the FLEX admin
 							// Need to bump the counter up one since the $valueMax range is 150
+							// TODO: (DP) Replacing +1 with +0 for now as it's causing errors.
 							@if (($i + 1) / 10) <= 16 {
-								.offset-margin-#{$breakpoint}#{$position}-#{(($i + 1) / 10)}#{$unit} { margin-#{$position}: #{(($i + 1) / 10) * $gap}; }
-								.offset-#{$breakpoint}#{$position}-#{(($i + 1) / 10)}#{$unit} { #{$position}: #{($i + 1) * $gap}; }
+								.offset-margin-#{$breakpoint}#{$position}-#{(($i + 1) / 10)}#{$unit} { margin-#{$position}: #{(($i + 0) / 10) * $gap}; }
+								.offset-#{$breakpoint}#{$position}-#{(($i + 0) / 10)}#{$unit} { #{$position}: #{($i + 0) * $gap}; }
 
 								// Prevent --0's from being generated
 								@if $i != 0 {
-									.offset-margin-#{$breakpoint}#{$position}--#{(($i + 1) / 10)}#{$unit} { margin-#{$position}: -#{(($i + 1) / 10) * $gap}; }
-									.offset-#{$breakpoint}#{$position}--#{(($i + 1) / 10) }#{$unit} { #{$position}: -#{($i + 1) * $gap}; }
+									.offset-margin-#{$breakpoint}#{$position}--#{(($i + 0) / 10)}#{$unit} { margin-#{$position}: -#{(($i + 0) / 10) * $gap}; }
+									.offset-#{$breakpoint}#{$position}--#{(($i + 0) / 10) }#{$unit} { #{$position}: -#{($i + 0) * $gap}; }
 								}
 							}
 						}
@@ -802,13 +803,13 @@ $justifyContent: 'flex-end';
 @include mediaquery(xl2) { .display-flex-on-xl2.display-flex-on-xl2 { display: flex; } }
 
 .hide-on-default { display: none; }
-@include mediaquery(phone) { .hide-on-phone.hide-on-phone { display: none; } }
-@include mediaquery(phone-plus) { .hide-on-phone-plus.hide-on-phone-plus { display: none; } }
-@include mediaquery(tablet-portrait) { .hide-on-tablet-portrait.hide-on-tablet-portrait { display: none; } }
-@include mediaquery(tablet-landscape) { .hide-on-tablet-landscape.hide-on-tablet-landscape { display: none; } }
-@include mediaquery(desktop) { .hide-on-desktop.hide-on-desktop { display: none; } }
-@include mediaquery(xl) { .hide-on-xl.hide-on-xl { display: none; } }
-@include mediaquery(xl2) { .hide-on-xl2.hide-on-xl2 { display: none; } }
+@include mediaquery(phone) { .hide-on-phone.hide-on-phone { display: none !important; } }
+@include mediaquery(phone-plus) { .hide-on-phone-plus.hide-on-phone-plus { display: none !important; } }
+@include mediaquery(tablet-portrait) { .hide-on-tablet-portrait.hide-on-tablet-portrait { display: none !important; } }
+@include mediaquery(tablet-landscape) { .hide-on-tablet-landscape.hide-on-tablet-landscape { display: none !important; } }
+@include mediaquery(desktop) { .hide-on-desktop.hide-on-desktop { display: none !important; } }
+@include mediaquery(xl) { .hide-on-xl.hide-on-xl { display: none !important; } }
+@include mediaquery(xl2) { .hide-on-xl2.hide-on-xl2 { display: none !important; } }
 
 // TODO: (DP) Organize these better.
 .img {
