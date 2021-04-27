@@ -74,21 +74,55 @@ function Video($el) {
 	}
 
 	function onPlayerReady(event) {
-		console.log('onPlayerReady(), $el: ', $el);
+		console.log('/FLEX/\tgutenberg/\tblocks/\tblock_video/\tplay-video.js', 'onPlayerReady()');
 
 		// $el.on('click', function (e) {
 		// 	console.log('testing event delegation, e.currentTarget: ', e.currentTarget);
 		// });
 
 		// Once the player is ready, allow the user to interect with the video.
-		$el.on('click', '.video-wrapper[data-video-type="youtube"] .playVideo', function () {
+		$el.on('click keypress', '.video-wrapper[data-video-type="youtube"] .playVideo', function (e) {
+			// Detect key press for WCAG compliance
+			var keyCode = e.keyCode || e.which;
+
+			// Detect key press
+			// 9 = tab
+			// 13 = enter
+			// 27 = esc
+			if (e.type === 'keypress' && typeof keyCode !== 'undefined' && keyCode !== 13) {
+				console.log('/FLEX/\tgutenberg/\tblocks/\tblock_video/\tplay-video.js', 'onPlayerReady(), .playVideo keypress › exiting, pressed the  ' + e.key + ', key: ' +  keyCode);
+				return;
+			} else {
+				console.log('/FLEX/\tgutenberg/\tblocks/\tblock_video/\tplay-video.js', 'onPlayerReady(), .playVideo keypress › pressed ' + e.key + ' key:' + e.type + ', keyCode: ' + keyCode);
+			}
+
 			// Play video
-			$el.addClass('playingVideo')
+			console.log('/FLEX/\tgutenberg/\tblocks/\tblock_video/\tplay-video.js', 'onPlayerReady(), adding playingVideo class');
+			$el.addClass('playingVideo');
 			event.target.playVideo();
+
+			// Focus close button
+			// $el.find('.pauseVideo').focus();
+			$('.close-button').focus();
 		});
 
-		$el.on('click', '.video-wrapper[data-video-type="youtube"] .pauseVideo', function () {
+		$el.on('click keypress', '.video-wrapper[data-video-type="youtube"] .pauseVideo', function (e) {
+			// Detect enter key press for WCAG compliance
+			var keyCode = e.keyCode || e.which;
+
+			// Detect key press
+			// 9 = tab
+			// 13 = enter
+			// 27 = esc
+			if (e.type === 'keypress' && typeof keyCode !== 'undefined' && keyCode !== 13) {
+				console.log('/FLEX/\tgutenberg/\tblocks/\tblock_video/\tplay-video.js', 'onPlayerReady(), .pauseVideo keypress › exiting, pressed the  ' + e.key + ', key: ' +  keyCode);
+				return;
+			} else {
+				console.log('/FLEX/\tgutenberg/\tblocks/\tblock_video/\tplay-video.js', 'onPlayerReady(), .pauseVideo keypress › pressed ' + e.key + ' key:' + e.type + ', key: ' + keyCode);
+			}
+
 			// Pause video
+			console.log('/FLEX/\tgutenberg/\tblocks/\tblock_video/\tplay-video.js', 'onPlayerReady(), removing playingVideo class');
 			$el.removeClass('playingVideo')
 			event.target.pauseVideo();
 		});

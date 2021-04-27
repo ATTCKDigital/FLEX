@@ -119,7 +119,8 @@ function render_video_block($attributes, $content) {
 
     // Handle uploaded videos
 	if ($isUploadedVideo) {
-		// Generate a random number to use for the player ID so we can have multiple players on the same page
+		// Generate a random number to use for the player ID 
+		// so we can have multiple players on the same page
 		$videoId = 'video-' . mt_rand(10,1000);
 		$video = '<video id="' . $videoId . '" ' . $videoPlayerAttributes . '><source type="video/mp4" src="' . $attributes['uploadVideo']['url'] . '" />Sorry, your browser doesn\'t support embedded videos.</video>';
 
@@ -146,8 +147,8 @@ function render_video_block($attributes, $content) {
 	
 	// Prevent player controls from showing
 	if (!$isAutoplay) {
-		$output .= 			"<mark class=\"playVideo play\" data-video-id=\"{$videoId}\" ></mark>";
-		$output .= 			"<mark class=\"pauseVideo close\" data-video-id=\"{$videoId}\"></mark>";
+		$output .= 			"<mark class=\"playVideo play\" data-video-id=\"{$videoId}\" tabindex=\"0\"></mark>";
+		$output .= 			"<mark class=\"pauseVideo close\" data-video-id=\"{$videoId}\" tabindex=\"0\"></mark>";
 	}
 
 	$output .= 			"{$video}";

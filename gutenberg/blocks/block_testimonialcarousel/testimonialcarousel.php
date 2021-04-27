@@ -35,7 +35,7 @@ $slides = get_field('testimonials');
                             <ul class="dots-component">
                                 <?php
                                 foreach ($slides as $i => $_slide) {
-                                    echo '<li class="dot"><a href="#' . $i . '"></a></li>';
+                                    echo '<li class="dot"><a href="#' . $i . '" aria-label="navigate to slide ' . $i . '"></a></li>';
                                 }
                                 ?>
                             </ul>
