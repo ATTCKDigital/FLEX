@@ -8,7 +8,7 @@ function PopupController($el) {
 	var $buttons;
 
 	function bindEvents() {
-		console.log('/FLEX/\tguttenberg /\tblocks/\t Popup Controller', 'bindEvents()');
+		console.log('/FLEX/\tgutenberg /\tblocks/\t Popup Controller', 'bindEvents()');
 
 		$buttons.each(function(index) {
 			$(this).on('click', function(e) {
@@ -20,13 +20,23 @@ function PopupController($el) {
 	}
 
 	function openPopup(index) {
-		console.log('/FLEX/\tguttenberg /\tblocks/\t Popup Controller', 'openPopup()');
+		console.log('/FLEX/\tgutenberg /\tblocks/\t Popup Controller', 'openPopup()');
 		
 		const popupName = popupNames[index].popupName;
 
 		// If URL was used, open new browser window and exit this function
-		if (popupName.startsWith('http')) {
-			return window.open(popupName);
+		switch (true) {
+			case popupName.startsWith('https://newclassrooms.org/icebergproblem'):
+				return window.open(popupName);
+				break;
+
+			case popupName.startsWith('https://newclassrooms.org/'):
+				return window.open(popupName, '_self');
+				break;
+
+			case popupName.startsWith('http'):
+				return window.open(popupName);
+				break;
 		}
 
 		$popup = $(`[data-popup-tpl="${popupName}"]`);
@@ -58,7 +68,7 @@ function PopupController($el) {
 	}
 
 	function initComponents() {
-		console.log('/FLEX/\tguttenberg /\tblocks/\t Popup Controller', 'initComponents()');
+		console.log('/FLEX/\tgutenberg /\tblocks/\t Popup Controller', 'initComponents()');
 
 		let $componentElements = $('[data-component-name]', $popupEl);
 
@@ -72,7 +82,7 @@ function PopupController($el) {
 	}
 
 	this.init = function ($el) {
-		console.log('/FLEX/\tguttenberg /\tblocks/\t Popup Controller', 'init()');
+		console.log('/FLEX/\tgutenberg /\tblocks/\t Popup Controller', 'init()');
 
 		$el = $el;
 		popupNames = $el.data('componentOptions');
@@ -85,7 +95,6 @@ function PopupController($el) {
 
 		if (!$buttons) return;
     
-
 		bindEvents();
 
 		return this;
