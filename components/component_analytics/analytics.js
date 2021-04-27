@@ -1,4 +1,4 @@
-// Global google analytics event tracking
+// Global Google Analytics event tracking
 function Analytics($el) {
 	console.log('/analytics.js', 'Analytics()');
 
