@@ -103,14 +103,21 @@ function render_row_block($attributes, $content) {
 
 	// Apply data-component-name
 	$dataComponentName = array_key_exists('dataComponentName', $attributes) ? " data-component-name=\"{$attributes['dataComponentName']}\"" : "";
-	$dataComponentOptions = array_key_exists('dataComponentOptions', $attributes) ? " data-component-options=\"{$attributes['dataComponentOptions']}\"" : "";
+	// $dataComponentOptions = array_key_exists('dataComponentOptions', $attributes) ? " data-component-options=\"{$attributes['dataComponentOptions']}\"" : "";
+
+	$dataComponentOptions = "";
+
+	if (array_key_exists('dataComponentOptions', $attributes)) {
+		$dataOptions = htmlspecialchars($attributes['dataComponentOptions']);
+		$dataComponentOptions = " data-component-options=\"{$dataOptions}\"";
+	}
 
 	// FLEX JS components get initialized when a DOM element has 
 	// a 'component' class attribute AND a data-component-name attribute
 	// NOTE: data-component-options is optional but must be stringified JSON
 	if (array_key_exists('dataComponentName', $attributes)) {
 		$dataComponentNameLowercase = strtolower($attributes['dataComponentName']);
-		$class .= ' component component-' . $dataComponentName;
+		$class .= ' component component-' . $dataComponentNameLowercase;
 	}
 
 	// Apply background images
