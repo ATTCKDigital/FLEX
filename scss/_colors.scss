@@ -70,6 +70,19 @@ $brand-colors: (
 	}
 }
 
+// @mixin placeholder {
+// 	::-webkit-input-placeholder {@content}
+// 	:-moz-placeholder           {@content}
+// 	::-moz-placeholder          {@content}
+// 	:-ms-input-placeholder      {@content}
+// }
+
+// @include placeholder {
+// 	font-style:italic;
+// 	color: white;
+// 	font-weight:100;
+// }
+
 /**** Color classes ****/
 // Use dynamically generated color classes as follows:
 //
