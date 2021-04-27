@@ -74,7 +74,7 @@ function register_column_block() {
 function render_column_block($attributes, $content) {
 	$sectionDataId = mt_rand(10,1000);
 	$class = 'component-column';
-	$class .= ' ' . $attributes['className'];
+	$class .= ' ' . $attributes['className'] . ' ';
 	$class .= background_options_classes($attributes);
 	$class .= padding_options_classes($attributes);
 	$class .= margin_options_classes($attributes);
@@ -92,7 +92,14 @@ function render_column_block($attributes, $content) {
 
 	// Apply data-component-name
 	$dataComponentName = array_key_exists('dataComponentName', $attributes) ? " data-component-name=\"{$attributes['dataComponentName']}\"" : "";
-	$dataComponentOptions = array_key_exists('dataComponentOptions', $attributes) ? " data-component-options=\"{$attributes['dataComponentOptions']}\"" : "";
+	// $dataComponentOptions = array_key_exists('dataComponentOptions', $attributes) ? " data-component-options=\"{$attributes['dataComponentOptions']}\"" : "";
+
+	$dataComponentOptions = "";
+
+	if (array_key_exists('dataComponentOptions', $attributes)) {
+		$dataOptions = htmlspecialchars($attributes['dataComponentOptions']);
+		$dataComponentOptions = " data-component-options=\"{$dataOptions}\"";
+	}
 
 	// FLEX JS components get initialized when a DOM element has 
 	// a 'component' class attribute AND a data-component-name attribute
