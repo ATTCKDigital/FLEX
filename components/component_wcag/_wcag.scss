@@ -1,0 +1,18 @@
+#skipToMainContent {
+	background: white;
+	color: black;
+	display: block;
+	font-size: 1rem;
+	left: $gap;
+	opacity: 0;
+	padding: $gap $gap*1.5;
+	position: absolute;
+	top: $gap;
+	// visibility: hidden;
+	z-index: 999;
+
+	&:focus {
+		opacity: 1;
+		// visibility: visible;
+	}
+}
