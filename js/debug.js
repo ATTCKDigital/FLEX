@@ -1,4 +1,4 @@
-import FLEX from './clientNamespace';
+import FLEX from './client-namespace';
 import $$ from 		'../components/component_cached-dom-elements/cached-dom-elements';
 import GlobalEvents from './global-events';
 
@@ -193,6 +193,26 @@ FLEX.debug = (function () {
 		}
 	}
 
+	// Controls when console logging can be enabled
+	// I.e., not in production
+	function enhancedConsoleLoggingDetect() {
+		// Turn off by default
+		var showConsoleLogs = false;
+
+		// ...unless overridden in client-namespace.js
+		if (!FLEX.isUndefined(FLEX.showConsoleLogs)) {
+			showConsoleLogs = FLEX.showConsoleLogs;
+		}
+
+		// ...or if we're in production 
+		// (data attribute will only be visible in non-production environments)
+		if (FLEX.isUndefined($('body').attr('data-server-environment'))) {
+			showConsoleLogs = false;
+		}
+
+		enhancedConsoleLoggingSet(showConsoleLogs);
+	}
+
 	// Turn console logging on or off
 	function enhancedConsoleLoggingSet(status) {
 		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.enableEnhancedConsoleLoggingSet(status: ' + status + ')');
@@ -329,8 +349,8 @@ FLEX.debug = (function () {
 	function init() {
 		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.init()');
 
-		// Turn off console by default (unless overridden)
-		enhancedConsoleLoggingSet(FLEX.showConsoleLogs);
+		// Enable enhanced console logging
+		enhancedConsoleLoggingDetect();
 
 		// Check for URL or cookie setting
 		debugModeStatusDetect(debuggingEnable);

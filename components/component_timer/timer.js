@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import FLEX from '../../js/clientNamespace';
+import FLEX from '../../js/client-namespace';
 import $$ from '../component_cached-dom-elements/cached-dom-elements';
 
 /**

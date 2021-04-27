@@ -1,6 +1,6 @@
 console.log('loaded', '/FLEX\t/js\t/global-events.js');
 
-import FLEX from 	'./clientNamespace';
+import FLEX from 	'./client-namespace';
 import $$ from 		'../components/component_cached-dom-elements/cached-dom-elements';
 import Debug from 	'./debug';
 
@@ -483,7 +483,7 @@ FLEX.GlobalEvents.initGlobalEvents = function () {
 	 * Cancel any click events when there is a relative 
 	 * path of "#\"
 	 */
-	function cancelClicks(e) {
+	function cancelRelativePathLinkClicks(e) {
 		// Bind to all click events
 		$('body').on('click', 'a', function (e) {
 			var hasHrefVal = $(this).attr('href').indexOf('/#/');
@@ -492,13 +492,13 @@ FLEX.GlobalEvents.initGlobalEvents = function () {
 			if (hasHrefVal > -1) {
 				e.preventDefault();
 
-				console.log('/FLEX/\tjs/\tglobal-events.js', 'initGlobalEvents().cancelClicks() > link click canceled, $(this): e: ', $(this), e);
+				console.log('/FLEX/\tjs/\tglobal-events.js', 'initGlobalEvents().cancelRelativePathLinkClicks() > link click canceled, $(this): e: ', $(this), e);
 			}
 		});
-
 	}
 
-	cancelClicks();
+	// Execute on load
+	cancelRelativePathLinkClicks();
 
 	/*** Detect scrolling and scrolling direction ***/
 	//USAGE
