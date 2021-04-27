@@ -1,6 +1,6 @@
 /**
  * Declares the global namespace, 
- * TODO: Add the ns() utility for declaring sub-namespaces.
+ * TODO: (DP) Add the ns() utility for declaring sub-namespaces.
  */
 "use strict";
 
@@ -24,21 +24,11 @@ var FLEX = {
 	// Forces debug state without needing ?debug=true
 	debugOverride: false,
 
+	// Functionality added to this namespace in global-events.js
+	Globals: {},
+
 	// Exposes verbose, colored console logs
 	showConsoleLogs: true
-};
-
-FLEX.Globals = {};
-
-// Fire up the chopper
-FLEX.init = function () {
-	// Retrieve URL vars
-	this.queryVariables.getAll();
-
-	// Detect debug mode
-	this.debug.init();
-
-	return this;
 };
 
 // Cookie manager
@@ -48,7 +38,7 @@ FLEX.cookies = (function () {
 
 		var expires = new Date();
 		expires.setTime(expires.getTime() + (expiry * 24 * 60 * 60 * 1000));
-		document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+		document.cookie = key + '=' + value + ';path=/;expires=' + expires.toUTCString();
 	}
 
 	function get(key) {
@@ -247,7 +237,7 @@ FLEX.enforce = (function () {
 })();
 
 FLEX.formatPhoneNumber = function (phoneNumberString) {
-	console.log('/FLEX/js/clientNamespace', 'formatPhoneNumber()');
+	console.log('/FLEX/js/client-namespace', 'formatPhoneNumber()');
 	console.log('/— phoneNumberString: ', phoneNumberString);
 
 	var cleaned = ('' + phoneNumberString).replace(/\D/g, '')
@@ -346,7 +336,7 @@ FLEX.insertDecimal = function (num) {
 	return num;
 }
 
-// Aliass for common typechecks
+// Alias for common typechecks
 FLEX.isUndefined = function (value) {
 	return typeof value === 'undefined';
 }
@@ -371,11 +361,6 @@ FLEX.isUndefinedOrNull = function (value) {
 	return returnValue;
 }
 
-/**
- * 
- * str: 
- * num:
- */
 FLEX.truncateString = function (str, num) {
 	// https://medium.com/@DylanAttal/truncate-a-string-in-javascript-41f33171d5a8
 	console.log('/FLEX/js/global-events.js', 'truncateString()');
@@ -393,11 +378,22 @@ FLEX.truncateString = function (str, num) {
 	return str.slice(0, num) + '...';
 };
 
+// Fire up the chopper
+FLEX.init = function () {
+	// Retrieve URL vars
+	this.queryVariables.getAll();
+
+	// Detect debug mode
+	this.debug.init();
+
+	return this;
+};
+
 // Initiate Global Component Loader and Global Events.
 $(function() {
 	FLEX.init();
 });
 
-console.log('loaded', '/FLEX\t/js\t/clientNamespace.js');
+console.log('loaded', '/FLEX\t/js\t/client-namespace.js');
 
 export default FLEX;
