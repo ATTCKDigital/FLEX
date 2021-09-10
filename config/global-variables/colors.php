@@ -7,60 +7,91 @@
 $colors = array(
 	array(
 		'default'     => '#1d1d1d',
-		'description' => 'Set your site\'s primary brand color here.',
-		'label'       => 'Brand Primary Color',
+		'description' => '',
+		'label'       => 'Brand Primary',
 		'slug'        => 'color-brand-primary',
 	),
 	array(
 		'default'     => '#838383',
-		'description' => 'Set your site\'s secondary brand color here.',
-		'label'       => 'Secondary Brand Color',
+		'description' => '',
+		'label'       => 'Secondary Brand',
 		'slug'        => 'color-brand-secondary',
 	),
 
 	array(
 		'default'     => '#feb400',
-		'description' => 'Set your site\'s brand accent color here.',
-		'label'       => 'Brand Accent Color',
+		'description' => '',
+		'label'       => 'Brand Accent',
 		'slug'        => 'color-brand-accent',
 	),
 
 	array(
 		'default'     => '#1d1d1d',
-		'description' => 'Set your site\'s body text color here.',
-		'label'       => 'Body Text Color',
+		'description' => '',
+		'label'       => 'Body Text',
 		'slug'        => 'color-text-body',
 	),
 	array(
 		'default'     => '#9e7700',
-		'description' => 'Set your site\'s link color here.',
-		'label'       => 'Link Color',
+		'description' => '',
+		'label'       => 'Links',
 		'slug'        => 'color-text-link',
 	),
 
 	array(
 		'default'     => '#ffce2b',
-		'description' => 'Set your site\'s hover color here.',
-		'label'       => 'Link Hover Color',
+		'description' => '',
+		'label'       => 'Link Hover',
 		'slug'        => 'color-text-hover',
 	),
 
 	array(
 		'default'     => '#FFFFFF',
-		'description' => 'Default White',
-		'label'       => 'Default White Color',
+		'description' => '',
+		'label'       => 'Default White',
 		'slug'        => 'color-default-white',
 	),
 
 	array(
 		'default'     => '#000000',
-		'description' => 'Default Black',
-		'label'       => 'Default Black Color',
+		'description' => '',
+		'label'       => 'Default Black',
 		'slug'        => 'color-default-black',
 	),
+
+    array(
+        'default'     => '#F3D09E',
+        'description' => '',
+        'label'       => 'Primary #1',
+        'slug'        => 'color-primary-one',
+    ),
+
+    array(
+        'default'     => '#F0E27B',
+        'description' => '',
+        'label'       => 'Primary #2',
+        'slug'        => 'color-primary-two',
+    ),
+
+    array(
+        'default'     => '#59869F',
+        'description' => '',
+        'label'       => 'Primary #3',
+        'slug'        => 'color-primary-three',
+    ),
+
+    array(
+        'default'     => '#FFE591',
+        'description' => '',
+        'label'       => 'Primary #3 (muted)',
+        'slug'        => 'color-primary-three-muted',
+    )
 
 );
 
 if ( !defined('FLEXLAYOUT_COLORS') ) {
 	define('FLEXLAYOUT_COLORS', $colors);
 }
+
+// TODO: Add colors for approved, caution, failed, and unavailable. -DP
+// Styleguide example: https://drive.google.com/drive/u/0/folders/1yHp7fSb62S2gZEnpkZ6_yIfM6EeezQd5
