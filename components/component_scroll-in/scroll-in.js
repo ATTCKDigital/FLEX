@@ -80,6 +80,7 @@ function ScrollIn($el) {
 			// Add class to elements once they are halfway up the screen
 			if (thisElementOffset < verticalScrollThreshold) {
 				$(this).addClass('element-in-view');
+				$(this).trigger('FLEX.scrollIn');
 			}
 		});
 	}
