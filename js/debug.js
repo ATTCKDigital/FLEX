@@ -14,17 +14,18 @@ FLEX.debug = (function () {
 	var _breakpointsModeStatus = false;
 
 	function bindEvents() {
-		// Only bind keyboard events if already in debug mode
-		if ($('body').hasClass('debug')) {
+		// Only bind keyboard events if already in 
+		// debug mode (only on desktop)
+		// if ($('body').hasClass('debug')) {
+		if (FLEX.cookies.get('debug') === 'true') {// && hamburgerNavIsNotVisible) {
 			$(document).on('keydown', function (e) {
 				switch (true) {
 					// Shift + D toggles debug mode
 					case e.key == 'D':
 						debuggingToggle();
-
 						break;
 
-					// do nothing
+					// Else, do nothing.
 					default:
 						break;
 				}
@@ -110,6 +111,9 @@ FLEX.debug = (function () {
 
 		// Set the debug value and run the callback if debugging is active
 		if (debugModeStatusSet(debugMode)) {
+			// NOTE: Passing the `true` param will suppress color overlays on initial load. 
+			// This way we can work in debug mode without having to turn it off on every page reload. -DP
+			// successCallback(true);
 			successCallback();
 		}
 
@@ -171,16 +175,19 @@ FLEX.debug = (function () {
 		// enhancedConsoleLoggingSet(false);
 	}
 
-	function debuggingEnable() {
+	function debuggingEnable(suppressColors) {
 		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.debuggingEnable()');
 		console.log('');
 		console.log('******* DEBUGGING ENABLED *******');
 		console.log('');
 
 		enhancedConsoleLoggingSet(true);
-		bodyClassSet(true);
 		cookiesSet('debug', true);
 		showCSSBreakpoints(true);
+
+		if (suppressColors !== true) {
+			bodyClassSet(true);
+		}
 	}
 
 	function debuggingToggle() {
