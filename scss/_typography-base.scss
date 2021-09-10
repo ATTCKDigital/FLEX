@@ -39,7 +39,7 @@ em, i {
 }
 
 hr {
-	background: $borderColor;
+	background: color('secondary', 'lighterGray');
 	border: 0;
 	height: 1px;
 	margin: 25px auto;
@@ -149,6 +149,8 @@ u {
 
 .text-columns, 
 .is-style-text-columns {
+	column-gap: $gap;
+
 	@include mediaquery(tablet-landscape) {
 		column-count: 2;
 		column-gap: $gap*15;
@@ -161,54 +163,58 @@ u {
 .list-columns, 
 .is-style-list-columns {
 	column-count: 2;
-	column-gap: $gap*10;
+	column-gap: $gap;
 	column-break-inside: avoid; /* Chrome, Safari, Opera */
 	page-break-inside: avoid; /* Firefox */
 	break-inside: avoid;
+
+	@include mediaquery(tablet-landscape) {
+		column-gap: $gap*10;
+	}
 }
 
 .headline1,
 .is-style-headline1 {
-	line-height: 1.25;
-	letter-spacing: -.5px;
 	@include secondary-semi;
 	@include font-size($font-size-headline1);
+	letter-spacing: -.5px;
+	line-height: 1.25;
 }	
 
 .headline2,
 .is-style-headline2 {
-	line-height: 1.375;
-	letter-spacing: -.5px;
 	@include secondary-semi;
 	@include font-size($font-size-headline2);
+	letter-spacing: -.5px;
+	line-height: 1.375;
 }	
 
 .headline3,
 .is-style-headline3 {
-	line-height: 1.25;
 	@include primary-semi;
 	@include font-size($font-size-headline3);
+	line-height: 1.25;
 }
 
 .headline4,
 .is-style-headline4 {
-	line-height: 1.41;
 	@include primary-semi;
 	@include font-size($font-size-headline4);
+	line-height: 1.41;
 }	
 
 .headline5,
 .is-style-headline5 {
-	line-height: 1.3;
-	letter-spacing: .2px;
 	@include primary-semi;
 	@include font-size($font-size-headline5);
+	letter-spacing: .2px;
+	line-height: 1.3;
 }
 
 .headline6,
 .is-style-headline6 {
-	line-height: 1.4;
-	letter-spacing: .2px;
 	@include primary-semi;
 	@include font-size($font-size-headline6);
+	line-height: 1.4;
+	letter-spacing: .2px;
 }
