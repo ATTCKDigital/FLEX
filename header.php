@@ -56,7 +56,7 @@
 	<?php echo Utils::render_template('config/theme-includes/social-media.php'); ?>
 
 	<?php // See global-events.js for usage ?>
-	<div class="breakpoint global"></div>
+	<div class="breakpoint default global"></div>
 	<div class="breakpoint phone"></div>
 	<div class="breakpoint phone-plus"></div>
 	<div class="breakpoint tablet-portrait"></div>
