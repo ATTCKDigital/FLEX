@@ -2,7 +2,8 @@
 
 /** Page cover modal **/
 .page-cover-modal {
-	background-color: $modalColor; //change color to spec in colors
+	// Change color to spec in colors
+	background-color: $modalColor;
 	bottom: 0;
 	height: 100vh;
 	left: 0;
@@ -15,7 +16,7 @@
 	width: 100%;
 	z-index: 10010;
 
-	//once dom is loaded, remove modal
+	// Once dom is loaded, remove modal
 	.dom-loaded & {
 		z-index: -1;
 		opacity: 0;
@@ -24,12 +25,13 @@
 
 
 /** Pop ups **/
-.video-popup, .image-popup {
+.video-popup, 
+.image-popup {
 	height: 100vh;
 	overflow: hidden;
 	position: fixed;
 	width: 100%;
-	background-color: $popupColor;  //change color to spec in colors
+	background-color: $popupColor; // Change color to spec in colors
 	z-index: 1000;
 	display: none;
 	top: 0;
@@ -71,7 +73,7 @@
 	left: 0;
 
 	.form-popup-inner {
-		background-color: $white;
+		background-color: color('secondary', 'white');
 		position: relative;
 		max-width: 596px;
 		width: 90%;
@@ -92,7 +94,7 @@
 	overflow: hidden;
 	position: fixed;
 	width: 100%;
-	background-color: $black;
+	background-color: color('secondary', 'black');
 	z-index: 999;
 	display: none;
 	top: 0;
