@@ -70,6 +70,12 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 .flex-0-12, 
 .flex-0-24 {
 	display: none;
+
+	.wp-admin & {
+		display: inline-block;
+		*display: inline;
+		opacity: .5;
+	}
 }
 
 .flex-1-24 {
@@ -211,6 +217,12 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 .flex-0-12imp, 
 .flex-0-24imp {
 	display: none !important;
+
+		.wp-admin & {
+			display: inline-block;
+			*display: inline;
+			opacity: .5;
+		}
 }
 
 .flex-1-24imp {
@@ -400,6 +412,12 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-phone-0-12, 
 	.flex-phone-0-24 {
 		display: none;
+
+		.wp-admin & {
+			display: inline-block;
+			*display: inline;
+			opacity: .5;
+		}
 	}
 
 	.flex-phone-1-24 {
@@ -540,6 +558,12 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-phone-0-12imp, 
 	.flex-phone-0-24imp {
 		display: none !important;
+
+		.wp-admin & {
+			display: inline-block;
+			*display: inline;
+			opacity: .5;
+		}
 	}
 
 	.flex-phone-1-24imp {
@@ -730,6 +754,12 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-phone-plus-0-12, 
 	.flex-phone-plus-0-24 {
 		display: none;
+
+		.wp-admin & {
+			display: inline-block;
+			*display: inline;
+			opacity: .5;
+		}
 	}
 
 	.flex-phone-plus-1-24 {
@@ -870,6 +900,12 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-phone-plus-0-12imp, 
 	.flex-phone-plus-0-24imp {
 		display: none !important;
+
+		.wp-admin & {
+			display: inline-block;
+			*display: inline;
+			opacity: .5;
+		}
 	}
 
 	.flex-phone-plus-1-24imp {
@@ -1060,6 +1096,12 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-tablet-portrait-0-12, 
 	.flex-tablet-potrait-0-24 {
 		display: none;
+
+		.wp-admin & {
+			display: inline-block;
+			*display: inline;
+			opacity: .5;
+		}
 	}
 
 
@@ -1201,6 +1243,12 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-tablet-portrait-0-12imp, 
 	.flex-tablet-potrait-0-24imp {
 		display: none !important;
+
+		.wp-admin & {
+			display: inline-block;
+			*display: inline;
+			opacity: .5;
+		}
 	}
 
 
@@ -1392,6 +1440,12 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-tablet-landscape-0-12, 
 	.flex-tablet-landscape-0-24 {
 		display: none;
+
+		.wp-admin & {
+			display: inline-block;
+			*display: inline;
+			opacity: .5;
+		}
 	}
 
 	.flex-tablet-landscape-1-24 {
@@ -1532,6 +1586,12 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-tablet-landscape-0-12imp, 
 	.flex-tablet-landscape-0-24imp {
 		display: none !important;
+
+		.wp-admin & {
+			display: inline-block;
+			*display: inline;
+			opacity: .5;
+		}
 	}
 
 	.flex-tablet-landscape-1-24imp {
@@ -1722,6 +1782,12 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-desktop-0-12, 
 	.flex-desktop-0-24 {
 		display: none;
+
+		.wp-admin & {
+			display: inline-block;
+			*display: inline;
+			opacity: .5;
+		}
 	}
 
 	.flex-desktop-1-24 {
@@ -1862,6 +1928,12 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-desktop-0-12imp, 
 	.flex-desktop-0-24imp {
 		display: none !important;
+
+		.wp-admin & {
+			display: inline-block;
+			*display: inline;
+			opacity: .5;
+		}
 	}
 
 	.flex-desktop-1-24imp {
@@ -2052,6 +2124,12 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-xl-0-12, 
 	.flex-xl-0-24 {
 		display: none;
+
+		.wp-admin & {
+			display: inline-block;
+			*display: inline;
+			opacity: .5;
+		}
 	}
 
 	.flex-xl-1-24 {
@@ -2191,6 +2269,12 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-xl-0-12imp, 
 	.flex-xl-0-24imp {
 		display: none !important;
+
+		.wp-admin & {
+			display: inline-block;
+			*display: inline;
+			opacity: .5;
+		}
 	}
 
 	.flex-xl-1-24imp {
@@ -2380,6 +2464,12 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-2xl-0-12, 
 	.flex-2xl-0-24 {
 		display: none;
+
+		.wp-admin & {
+			display: inline-block;
+			*display: inline;
+			opacity: .5;
+		}
 	}
 
 	.flex-2xl-1-24 {
@@ -2519,6 +2609,12 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-2xl-0-12imp, 
 	.flex-2xl-0-24imp {
 		display: none !important;
+
+		.wp-admin & {
+			display: inline-block;
+			*display: inline;
+			opacity: .5;
+		}
 	}
 
 	.flex-2xl-1-24imp {
