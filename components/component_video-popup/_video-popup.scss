@@ -1,6 +1,6 @@
 .component-video-popup {
 	align-items: center;
-	background: rgba($black, .5);
+	background: rgba(color('secondary', 'black'), .5);
 	display: flex;
 	height: 100%;
 	justify-content: center;
@@ -19,7 +19,7 @@
 	}
 
 	.popup {
-		background: $white;
+		background: color('secondary', 'white');
 		padding-bottom: 53.1%;
 		position: relative;
 		width: 92%;
@@ -31,7 +31,7 @@
 	}
 
 	.popup-content-container {
-		background-color: $black;
+		background-color: color('secondary', 'black');
 		height: calc(100% - 14px);
 		left: 0;
 		margin: 7px;
@@ -49,12 +49,12 @@
 
 	.close-button {
 		align-items: center;
-		// background-color: $white;
+		// background-color: color('secondary', 'white');
 		background: url(../assets/images/Close_Button.svg);
 		background-repeat: no-repeat;
 		background-position: 50%;
 		background-size: contain;
-		border: 1px $black solid;
+		border: 1px color('secondary', 'black') solid;
 		border-radius: 100%;
 		cursor: pointer;
 		display: flex;

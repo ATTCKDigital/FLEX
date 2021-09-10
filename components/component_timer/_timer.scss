@@ -80,7 +80,7 @@
 	}
 
 	span {
-		color: $white;
+		color: color('secondary', 'white');
 		display: inline-block;
 
 		// Include for right side positioned labels
@@ -118,7 +118,7 @@
 	.digit {
 		// background: rgba(255, 255, 255, .1);
 		border-radius: 5px;
-		color: $white;
+		color: color('secondary', 'white');
 		display: inline-block;
 		font-size: 2rem;
 		padding: 8px 7px 5px 6px;

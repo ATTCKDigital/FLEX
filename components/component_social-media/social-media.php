@@ -9,7 +9,6 @@
 	global $youtube;
 	global $pinterest;
 	global $github;
-
 ?>
 
 <div class="component-social-media component">

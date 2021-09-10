@@ -86,7 +86,6 @@ function CF7($el) {
 		replacementSubmitTextValue += ' '.repeat((originalSubmitTextValue.length / 3));
 
 		var submitTextValue = (isInProgress) ? replacementSubmitTextValue : $form.data('originalSubmitTextValue'); //&#x22EF;'; // 
-		
 		var $submitButton = $('input[type=submit]', $form);
 
 		if (typeof $form === 'undefined') {

@@ -19,7 +19,7 @@
 
 	.body-text {
 		p {
-			color: $white;
+			color: color('secondary', 'white');
 			font-size: px-to-rem(13px);
 			line-height: 1.6;
 

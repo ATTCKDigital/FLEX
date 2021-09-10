@@ -7,13 +7,13 @@
 	}
 
 	::placeholder{
-		color: $white;
+		color: color('secondary', 'white');
 	} 
 
 	input[type=email] {
 		background-color: transparent;
 		border: 1px solid rgba(255, 255, 255, .5);
-		color: $white;
+		color: color('secondary', 'white');
 		margin-bottom: $gap;
 	}
 

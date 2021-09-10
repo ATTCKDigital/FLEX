@@ -2,7 +2,7 @@
 // Override with custom styles in child theme
 .component-share {
 	@include tertiary-regular;
-    border: 2px solid $white;
+    border: 2px solid color('secondary', 'white');
     border-radius: 90px;
     margin: 0 auto;
     overflow: hidden;
@@ -16,7 +16,7 @@
     .share-list {
     	.caption2 {
     		@include tertiary-bold;
-    		font-size: px-to-rem(16px);
+    		font-size: px-to-rem(26px);
 
     		@include mediaquery(tablet-portrait) {
     			padding-right: $gap;

@@ -1,8 +1,8 @@
 .component-reserve {
+	margin-bottom: 20px;
 	text-align: center;
-    margin-bottom: 20px;
 
-    li {
+	li {
 		background: color('brand', 'accent');
 		border-left: 1px solid #979797;
 		color: color('brand', 'primary');
@@ -13,7 +13,7 @@
 		width: 25%;
 
 		@include mediaquery(tablet-portrait) {
-			color: $white;
+			color: color('secondary', 'white');
 			width: auto;
 
 			&:first-child {
@@ -29,15 +29,15 @@
 		&.active,
 		&:hover {
 			background: #21008C;
-			color: $white;
+			color: color('secondary', 'white');
 		}
 
 		&:hover {
 			cursor: pointer;
 		}
 
-    	a {
-    		@include tertiary-light;
+		a {
+			@include tertiary-light;
 			position: relative;
 			text-transform: uppercase;
 			top: 0px;
@@ -45,6 +45,6 @@
 			@include mediaquery(tablet-portrait) {
 				top: -30px;
 			}
-    	}
-    }
+		}
+	}
 }
