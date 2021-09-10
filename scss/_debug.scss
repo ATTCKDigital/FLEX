@@ -1,16 +1,31 @@
 // Allows JS to access CSS breakpoints
 .breakpoint {
-	text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+	border-radius: $gap;
 	color: black;
 	display: none;
 	height: 20px;
-	padding: 10px 60px 10px 10px;
+	opacity: 1;
+	padding: $gap/4 $gap;
 	position: fixed;
 	right: 10px;
 	text-align: left;
+	text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
 	top: 10px;
-	width: 350px;
+	transition: opacity .2 ease-in-out;
+	width: auto;
 	z-index: 999999;
+
+
+	// https://stackoverflow.com/questions/6063308/touch-css-pseudo-class-or-something-similar
+	//-webkit-tap-highlight-color: ???;
+
+	&:hover {
+		// display: none;
+
+		// NOTE: Changing opacity shows all other lower 
+		// breakpoints, which looks bad. -DP
+		opacity: .25;
+	}
 }
 
 .breakpoint-current {
@@ -44,6 +59,30 @@ body {
 				background-color: transparent;
 			}
 		}
+
+		// Accessibility tests
+		// https://matthiasott.com/notes/debugging-html-with-advanced-css-selectors
+		svg:not(path):not(g) {
+			color: hsla(210, 100%, 100%, 0.9) !important;
+			background: hsla(210, 100%,  50%, 0.5) !important; 
+			outline: solid 0.25rem hsla(210, 100%, 100%, 0.5) !important;
+		}
+
+		// Targets lists that have something other than an <li> inside
+		:is(ul, ol) > *:not(li) {
+			outline: 2px dotted red !important;
+		}
+
+		// Targets img elements without alt attributes
+		img:not([alt]) {
+			background: red !important;
+			border: 1px solid red !important;
+		}
+
+		// Targets div elements inside span elements
+		span > :not(abbr):not(audio):not(b):not(bdo):not(br):not(button):not(canvas):not(cite):not(code):not(command):not(data):not(datalist):not(dfn):not(em):not(embed):not(i):not(iframe):not(img):not(input):not(kbd):not(keygen):not(label):not(mark):not(math):not(meter):not(noscript):not(object):not(output):not(picture):not(progress):not(q):not(ruby):not(samp):not(script):not(select):not(small):not(span):not(strong):not(sub):not(sup):not(svg):not(textarea):not(time):not(var):not(video):not(wbr) {
+			outline: 3px dashed red !important;
+		}
 	}
 
 	&.debug,
@@ -52,106 +91,125 @@ body {
 			align-items: center;
 
 			&:after {
-				color: white;
+				color: color('secondary', 'white');
 				display: block;
+				font-family: sans-serif;
 				font-size: 0.7rem;
 				font-weight: bold;
 				letter-spacing: 0.3rem;
 				position: relative;
 				text-transform: uppercase;
+				top: 1px;
 				width: 100%;
 			}
 
-			&.phone {
-				background: orange !important;
-
-				&:after {
-					content: 'breakpoint: phone';
-				}
-
-				@include mediaquery(phone)  {
+			&.default {
+				@include mediaquery-min-max-width(default, phone) {
+					background: linear-gradient(160deg, red, #ff9966) !important;
 					display: flex;
+					text-shadow: 1px 1px rgba(100, 0, 0, .4);
+
+					&:after {
+						content: 'breakpoint: default';
+					}
 				}
 			}
 
-			&.phone-plus {
-				background: #BADA55 !important;
+			@include mediaquery-min-max-width(phone, phone-plus) {
+				&.phone {
+					background: linear-gradient(160deg, orange, #fffc66) !important;
+					text-shadow: 1px 1px rgba(255, 255, 255, .5);
+					display: flex;
 
-				&:after {
-					content: 'breakpoint: phone-plus';
+					&:after {
+						color: color('secondary', 'black');
+						content: 'breakpoint: phone';
+					}
 				}
 
-				@include mediaquery(phone-plus)  {
+				&.default {
+					display: none;
+				}
+			}
+
+			@include mediaquery-min-max-width(phone-plus, tablet-portrait)  {
+				&.phone-plus {
+					background: linear-gradient(160deg, lime, #66ffc9) !important;
 					display: flex;
+					text-shadow: 1px 1px rgba(255, 255, 255, .5);
+
+					&:after {
+						color: color('secondary', 'black');
+						content: 'breakpoint: phone-plus';
+					}
+				}
+
+				&.default,
+				&.phone {
+					display: none;
 				}
 			}
 
 			&.tablet-portrait {
-				background: yellow !important;
-
-				&:after {
-					color: black;
-					content: 'breakpoint: tablet-portrait';
-				}
-
-				@include mediaquery(tablet-portrait)  {
+				@include mediaquery-min-max-width(tablet-portrait, tablet-landscape)  {
+					background: linear-gradient(160deg, yellow, #ffffcc) !important;
 					display: flex;
+					text-shadow: 1px 1px rgba(0, 0, 0, .1);
+
+					&:after {
+						color: color('secondary', 'black');
+						content: 'breakpoint: tablet-portrait';
+					}
 				}
 			}
 
 			&.tablet-landscape {
-				background: green !important;
-
-				&:after {
-					content: 'breakpoint: tablet-landscape';
-				}
-
-				@include mediaquery(tablet-landscape)  {
+				@include mediaquery-min-max-width(tablet-landscape, desktop)  {
+					background: linear-gradient(160deg, green, #81b814) !important;
 					display: flex;
+					text-shadow: 1px 1px rgba(0, 100, 0, 0.4);
+
+					&:after {
+						content: 'breakpoint: tablet-landscape';
+					}
 				}
 			}
 
 			&.desktop {
-				background: blue !important;
-
-				&:after {
-					content: 'breakpoint: desktop';
-				}
-
-				@include mediaquery(desktop)  {
+				@include mediaquery-min-max-width(desktop, xl)  {
+					background: linear-gradient(160deg, blue, #6699ff) !important;
 					display: flex;
+					text-shadow: 1px 1px rgba(0, 0, 100, 0.4);
+
+					&:after {
+						content: 'breakpoint: desktop';
+					}
 				}
 			}
 
 			&.xl {
-				background: purple !important;
-
-				&:after {
-					content: 'breakpoint: xl';
-				}
-
-				@include mediaquery(xl) {
+				@include mediaquery-min-max-width(xl, xl2)  {
+					background: linear-gradient(160deg, purple, #4c0099) !important;
 					display: flex;
+					text-shadow: 1px 1px rgba(50, 0, 100, 0.4);
+
+					&:after {
+						content: 'breakpoint: xl';
+					}
 				}
 			}
 
 			&.xl2 {
-				background: black !important;
-
-				&:after {
-					content: 'breakpoint: xl2';
-				}
-
 				@include mediaquery(xl2) {
+					background: linear-gradient(160deg, black, #616161) !important;
 					display: flex;
+					text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
+
+					&:after {
+						content: 'breakpoint: xl2';
+					}
 				}
 			}
 		}
 	}
-}
-
-svg:not(path):not(g) {
-	color: hsla(210, 100%, 100%, 0.9) !important;
-	background: hsla(210, 100%,  50%, 0.5) !important; 
-	outline: solid 0.25rem hsla(210, 100%, 100%, 0.5) !important;
 }
