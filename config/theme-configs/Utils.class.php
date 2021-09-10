@@ -1,7 +1,7 @@
 <?php
 	/**
 	 * PHP Templating class. Works similar to Mustache, Underscore, etc. Use
-	 *  Utils::render_template() to instantiate.
+	 * Utils::render_template() to instantiate.
 	 */
 	class Template {
 		private $args;
