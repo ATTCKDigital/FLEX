@@ -70,7 +70,8 @@
 }
 
 // Hide visually and from screenreaders, but maintain layout
-.invisible {
+.invisible,
+.visibility-hidden {
 	visibility: hidden;
 
 	.wp-admin & {
