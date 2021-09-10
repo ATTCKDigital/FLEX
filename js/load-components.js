@@ -28,15 +28,17 @@ import WCAG from	 			'../components/component_wcag/wcag';
 
 // Interactive components
 import Bookmark from 			'../components/component_bookmark/bookmark';
-import CalendarLink from 		'../components/component_calendarlink/calendarlink';
+import CalendarLink from 		'../components/component_calendar-link/calendarlink';
+import CopyLink from 			'../components/component_copy-link/copylink';
 import Nav from 				'../components/component_nav/nav';
 import Reserve from 			'../components/component_reserve/reserve';
 import Share from 				'../components/component_share/share';
 import Timer from 				'../components/component_timer/timer';
+import VideoPopup from 			'../components/component_video-popup/video-popup';
 
 // Gutenberg block components
 import AnimatedGif from 		'../gutenberg/blocks/block_animated-gif/swap-gif';
-import PopupController from  '../gutenberg/blocks/block_popup/popup-controller';
+import PopupController from  	'../gutenberg/blocks/block_popup/popup-controller';
 import Video from 				'../gutenberg/blocks/block_video/play-video';
 import VideoThumb from 			'../gutenberg/components/gb-component_background-options/video-thumb';
 
@@ -49,7 +51,7 @@ FLEX.Components = Object.assign({
 	'Analytics': Analytics,
 	'AnimatedGif': AnimatedGif,
 	'Bookmark': Bookmark,
-	'CalendarLink': CalendarLink,
+	'CopyLink': CopyLink,
 	'CF7': CF7,
 	'GDPR': GDPR,
 	'LoadMore': LoadMore,
@@ -62,6 +64,7 @@ FLEX.Components = Object.assign({
 	'Parallax': Parallax,
 	'PopupController': PopupController,
 	'Video': Video,
+	'VideoPopup': VideoPopup,
 	'VideoThumb': VideoThumb,
 	'WCAG': WCAG
 }, childComponents);
