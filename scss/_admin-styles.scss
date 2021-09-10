@@ -75,7 +75,7 @@ body {
 	}
 
 	&.is-selected {
-		border: 1px solid hsla(219, 79%, 66%, 0.5) !important;
+		border: 1px dotted hsla(219, 79%, 60%, 0.5) !important;
 	}
 
 	.block-editor-url-input {
@@ -159,8 +159,27 @@ body {
 	}
 }
 
+.block-editor-block-preview__container {
+	.block-editor-block-preview__content {
+		background: linear-gradient(45deg, #0072ff, #00c54f);
+	}
+}
+
+// NOTE: This class name might have been missing the 
+// suffix as seen in the rule below. -DP
 .block-editor-block-styles {
-	background: linear-gradient(45deg, rgba(255, 0, 0, .1), rgba(0, 0, 255, .1));
+	background: linear-gradient(45deg, rgba(0, 0, 255, .1), rgba(255, 0, 0, .1));
+}
+
+.block-editor-block-styles__item-preview {
+	background: linear-gradient(45deg, #0072ff, #00c54f);
+}
+
+.block-editor-block-switcher__preview__popover,
+.block-editor-block-switcher__popover__preview__parent {
+	// TODO: Figure out why the block styles preview popup loads 
+	// errors instead of the block preview. -DP
+	display: none !important;
 }
 
 .block-editor-button-block-appender {
@@ -493,9 +512,16 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	color: #444;
 }
 
-.editor-block-styles .editor-styles-wrapper p {
-	font-size: unset;
-	line-height: unset;
+.editor-block-styles .editor-styles-wrapper {
+	p {
+		font-size: unset;
+		line-height: unset;
+	}
+
+	&.block-editor-block-preview__container {
+		// Color behind custom block style thumbnails
+		background: transparent;
+	}
 }
 
 .components-popover, 
@@ -658,7 +684,7 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 }
 
 .wp-core-ui .cta {
-	border: 1px solid $borderColor;
+	border: 1px solid color('secondary', 'lighterGray');
 }
 
 .wp-core-ui img {
