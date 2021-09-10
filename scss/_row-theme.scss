@@ -50,11 +50,11 @@
 	}
 
 	.component-#{$position}-border, .component-#{$position}-border-default, .wp-block .component-#{$position}-border-default > .flex-grid {
-		border-#{$position}: 1px solid $borderColor;
+		border-#{$position}: 1px solid color('secondary', 'lighterGray');
 	}
 
 	.component-#{$position}-border-white, .wp-block .component-#{$position}-border-white > .flex-grid {
-		border-#{$position}: 1px solid $white;
+		border-#{$position}: 1px solid color('secondary', 'white');
 	}
 
 	.component-#{$position}-border-brand-primary, .wp-block .component-#{$position}-border-brand-primary > .flex-grid {
@@ -70,18 +70,18 @@
 	}
 
 	.component-#{$position}-border-black, .wp-block .component-#{$position}-border-black > .flex-grid {
-		border-#{$position}: 1px solid $black;
+		border-#{$position}: 1px solid color('secondary', 'black');
 	}
 
 	.component-#{$position}-border-mobile {
 		@include mediaquery-max-width(tablet-portrait) {
-			border-#{$position}: 1px solid $borderColor;
+			border-#{$position}: 1px solid color('secondary', 'lighterGray');
 		}
 	}
 
 	.component-#{$position}-border-tablet-portrait-up {
 		@include mediaquery(tablet-portrait)  {
-			border-#{$position}: 1px solid $borderColor;
+			border-#{$position}: 1px solid color('secondary', 'lighterGray');
 		}
 	}
 }
