@@ -1,6 +1,6 @@
 {
     "key": "group_5b16e72af37f3",
-    "title": "Social Media Sharing",
+    "title": "Meta tags",
     "fields": [
         {
             "key": "field_5b16e77a1d9a3",
@@ -161,6 +161,30 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
+        },
+        {
+            "key": "field_61117da8cf88a",
+            "label": "noindex",
+            "name": "noindex",
+            "type": "checkbox",
+            "instructions": "Will add a noindex meta tag to the body. \r\nhttps:\/\/developers.google.com\/search\/docs\/advanced\/crawling\/block-indexing",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "hide": "hide"
+            },
+            "allow_custom": 0,
+            "default_value": [],
+            "layout": "vertical",
+            "toggle": 0,
+            "return_format": "value",
+            "wpml_cf_preferences": 0,
+            "save_custom": 0
         }
     ],
     "location": [
@@ -168,35 +192,7 @@
             {
                 "param": "post_type",
                 "operator": "!=",
-                "value": "schema"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "!=",
-                "value": "areas"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "!=",
-                "value": "work"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "!=",
-                "value": "page"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "!=",
-                "value": "post"
+                "value": "wpcf7r_leads"
             }
         ]
     ],
@@ -206,7 +202,7 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1556647479
+    "modified": 1628536286
 }
