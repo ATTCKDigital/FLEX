@@ -1,7 +1,7 @@
 // share on social media buttons
 .share-button {
 	border-radius: 4px;
-	color: $white;
+	color: color('secondary', 'white');
 	cursor: pointer;
 	display: inline-block;
 	height: 56px;
@@ -81,33 +81,47 @@
 	border-radius: 50%;
 	cursor: pointer;
 	display: block;
-	height: 100px;
+	height: 60px;
 	left: 0;
 	margin: 0 auto;
-	opacity: 1;
+	// opacity: 1;
 	position: absolute;
 	right: 0;
-	top: calc(50% - 50px);
-	transition: opacity .3s ease-in;
-	width: 100px;
+	top: calc(50% - 30px);
+	transition: all .3s ease-in;
+	width: 60px;
 	z-index: 2;
 
+	@include mediaquery(tablet-portrait) {
+		border-radius: 50%;
+		height: 100px;
+		top: calc(50% - 50px);
+		width: 100px;
+	}
+
 	&:after {
-		border-color: transparent transparent transparent $white;
+		border-color: transparent transparent transparent color('secondary', 'white');
 		border-style: solid;
-		border-width: 19px 0 19px 38px;
+		border-width: 11px 0 11px 22px;
 		content: '';
 		height: 0;
-		left: 34px;
+		left: 22px;
 		position: absolute;
-		top: 30px;
+		top: 18px;
 		width: 0;
 		z-index: 12;
+
+		@include mediaquery(tablet-portrait) {
+			border-width: 19px 0 19px 38px;
+			left: 34px;
+			top: 30px;
+		}
 	}
 
 	&:hover {
 		@include mediaquery(tablet-landscape)  {
-			opacity: .5;
+			// opacity: .5;
+			background-color: color('secondary', 'lightGray');
 		}
 	}
 }
@@ -143,7 +157,7 @@
 .hamburger {
 	background-color: transparent;
 	border-radius: 0;
-	border-top: 2px solid $black;
+	border-top: 2px solid color('secondary', 'black');
 	cursor: pointer;
 	display: block;
 	height: 18px;
@@ -156,7 +170,7 @@
 
 	&:after, 
 	&:before {
-		background-color: $white;
+		background-color: color('secondary', 'white');
 		content: '';
 		height: 2px;
 		left: 0;
@@ -166,7 +180,7 @@
 		width: 100%;
 
 		.home:not(.backgroundNav):not(.navOpen) & {
-			background-color: $white;
+			background-color: color('secondary', 'white');
 		}
 	}
 
@@ -203,7 +217,7 @@
 	&:after, &:before {
 		content: '';
 		position: absolute;
-		background-color: $black;
+		background-color: color('secondary', 'black');
 		height: 2px;	
 		width: 18px;		
 	}
@@ -223,7 +237,7 @@
 	&.close-white {
 
 		&:after, &:before {
-			background-color: $white;
+			background-color: color('secondary', 'white');
 		}
 	}
 

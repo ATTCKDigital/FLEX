@@ -1,3 +1,4 @@
+// Variable values in _sizing.scss
 $mediaQueries: (
 	'none'				: $default,
 	'default'			: $default,
@@ -40,11 +41,16 @@ $minDeviceHeightMediaQueries: (
 	}
 }
 
-// Use this mobile-first mixin, primarily.
-@mixin mediaquery($breakpoint) {
-	@media only screen and (min-width: _get($mediaQueries, #{$breakpoint})) {
+@mixin mediaquery-min-max-width($breakpointMin, $breakpointMax) {
+	@media only screen and (min-width: _get($mediaQueries, #{$breakpointMin})) and (max-width: _get($mediaQueries, #{$breakpointMax})) {
 		@content;
-	}
+	}	
+}
+
+@mixin mediaquery-min-max-device-width($breakpointMin, $breakpointMax) {
+	@media only screen and (min-device-width: _get($mediaQueries, #{$breakpointMin})) and (max-device-width: _get($mediaQueries, #{$breakpointMax})) {
+		@content;
+	}	
 }
 
 @mixin mediaquery-min-device-width($breakpoint) {
@@ -53,7 +59,6 @@ $minDeviceHeightMediaQueries: (
 	}
 }
 
-// These need to be used very infrequently, if at all.
 @mixin mediaquery-max-width($breakpoint) {
 	@media only screen and (max-width: _get($maxMediaQueries, #{$breakpoint})) {
 		@content;
