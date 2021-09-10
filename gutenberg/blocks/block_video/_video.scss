@@ -73,17 +73,56 @@
 }
 
 // Responsive Aspect Ratio Videos
-.video-wrapper,
-.embed-youtube {
+.embed-youtube, 
+.video-wrapper {
 	display: block;
 	height: 0;
 	overflow: hidden;
-	padding-bottom: 56.25%;
+
+	// This was causing black bars on top and bottom
+	// padding-bottom: 56.25%;
+	// padding-bottom: 52.1%;
+	padding-bottom: 53.3%;
 	position: relative;
 	width: 100%;
 	z-index: 1;
 
-	iframe, video, .video-js {
+	@include mediaquery(phone) {
+		padding-bottom: 53.8%;
+	}
+
+	@include mediaquery(phone-plus) {
+		padding-bottom: 52.8%;
+
+		.popup & {
+			padding-bottom: 54.9%;
+		}
+	}
+
+	@include mediaquery(tablet-landscape) {
+		.popup & {
+			padding-bottom: 54.6%;
+		}
+	}
+
+	@include mediaquery(desktop) {
+		padding-bottom: 55%;
+
+		.popup & {
+			padding-bottom: 55.1%;
+		}
+	}
+
+	@include mediaquery(xl2) {
+		.popup & {
+			padding-bottom: 55.3%;
+		}
+	}
+
+	iframe, 
+	video, 
+	.video-js {
+		background: transparent;
 		bottom: 0;
 		height: 100%;
 		left: 0;
@@ -95,15 +134,15 @@
 
 	.video-thumbnail-wrapper {
 		height: 100%;
+		left: 0;
 		min-height: 100%;
 		min-width: 100%;
+		opacity: 1;
 		position: absolute;
 		top: 0;
-		left: 0;
+		transition: opacity .1s ease-in, z-index .1s ease-in;
 		width: 100%;
 		z-index: 1;
-		opacity: 1;
-		transition: opacity .1s ease-in, z-index .1s ease-in;
 
 		img {
 			height: 100%;
@@ -117,5 +156,18 @@
 			top: 50%;
 			width: 100%;
 		}
+	}
+}
+
+.video-wrapper {
+	background: color('secondary', 'white');
+	border: 8px solid white;
+	border-radius: 8px;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, .20);
+
+	@include mediaquery(tablet-portrait) {
+		border: 12px solid white;
+		border-radius: 16px;
+		box-shadow: 0px 8px 16px rgba(0, 0, 0, .20);
 	}
 }
