@@ -1,23 +1,31 @@
 function AnimatedGif($el) {
-	
+	var _loaded = false;
+
 	function swapGif() {
-		var gif = $el.find('.image-wrapper').attr('data-gif-src');
-		var image = $el.find('img');
+		// Ensure load only happens once
+		if (_loaded === false) {
+			var gif = $el.find('.image-wrapper').attr('data-gif-src');
+			var image = $el.find('img');
 
-		//remove the srcset, we don't need
-		$(image).attr('srcset', '');
+			// Remove the srcset, we don't need
+			$(image).attr('srcset', '');
 
-		//swap the placeholder image src with the gif src
-		$(image).attr('src', gif);
+			// Swap the placeholder image src with the gif src
+			$(image).attr('src', gif);
 
+			_loaded = true;
+		}
 	}
 
-	
 	this.init = function ($el) {
 		$el = $el;
-		//after window is loading, swap out the gifs
-		$(window).on('load', swapGif);
 
+		// After window is loading, swap out the gifs
+		// TODO: Enable this with options JSON var. -DP
+		// $(window).on('load', swapGif);
+
+		// After element has scrolled into view, swap in the gif
+		$el.on('FLEX.scrollIn', swapGif);
 
 		return this;
 	}

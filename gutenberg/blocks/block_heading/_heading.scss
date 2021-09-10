@@ -37,7 +37,7 @@
 			width: 60px;
 			top: -15px;
 
-			@include mediaquery('tablet-landscape') {
+			@include mediaquery(tablet-landscape) {
 				left: -95px;
 				top: 0;
 				height: 55px;

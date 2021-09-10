@@ -4,38 +4,42 @@ import icons from '../../../js/icons.js'
 
 // Internal block libraries
 const { __ } = wp.i18n;
-const {
-	registerBlockType,
-} = wp.blocks;
-const {
-	Editable,
-	MediaUpload,
-	InspectorControls,
-	URLInput,
-	RichText,
-	AlignmentToolbar
 
-} = wp.blockEditor;
+// WordPress dependencies
+const { registerBlockType } = wp.blocks;
+
 const {
-	Toolbar,
+	AlignmentToolbar,
+	BlockAlignmentToolbar,
+	BlockControls,
+	Editable,
+	InspectorControls,
+	MediaUpload,
+	RichText,
+	URLInput
+} = wp.blockEditor;
+
+const {
 	Button,
 	Dashicon,
 	IconButton,
-	PanelBody
+	PanelBody,
+	TextControl,
+	Toolbar
 } = wp.components;
 
 // Internal dependencies
+import DataComponentNameOptions, { DataComponentNameAttributes } from '../../components/gb-component_data-component-name';
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
 import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
-
 
 // Register image block
 export default registerBlockType(
 	'flexlayout/animated-gif',
 	{
 		title: __( 'Animated GIF', 'flexlayout' ),
-		description: __( 'A block for large animated gif files.', 'flexlayout'),
+		description: __( 'Swaps in large animated gif files on Scroll-In.', 'flexlayout'),
 		category: 'common',
 		// icon: icons.gif,
 		icon: 'format-video',
@@ -45,11 +49,16 @@ export default registerBlockType(
 			__( 'MediaUpload', 'flexlayout' ),
 		],
 		attributes: {
-			imgURL: {
+			align: {
+				type: 'string',
+				default: 'center'
+			},
+			caption: {
 				type: 'string',
 			},
-			imgID: {
-				type: 'number',
+			CSSWidth: {
+				type: 'string',
+				default: ''
 			},
 			gifURL: {
 				type: 'string',
@@ -57,34 +66,37 @@ export default registerBlockType(
 			gifID: {
 				type: 'number',
 			},
-			url: {
+			imgURL: {
 				type: 'string',
 			},
-			caption: {
-				type: 'string',
+			imgID: {
+				type: 'number',
 			},
 			placeholder: {
 				type: 'string',
 			},
-			align: {
+			url: {
 				type: 'string',
-				default: 'center'
 			},
+			...BorderOptionsAttributes,
+			...DataComponentNameAttributes,
 			...MarginOptionsAttributes,
 			...PaddingOptionsAttributes,
-			...BorderOptionsAttributes,
 		},
 		edit: props => {
 			const { 
 				attributes: { 
-					imgID, 
-					imgURL, 
+					align, 
+					caption,
+					CSSWidth,
+					dataComponentName,
+					dataComponentOptions, 
 					gifID, 
 					gifURL, 
-					url, 
-					caption, 
-					align, 
-					placeholder
+					imgID, 
+					imgURL, 
+					placeholder,
+					url
 				},
 				className, 
 				setAttributes, 
@@ -121,35 +133,55 @@ export default registerBlockType(
 
 			return [
 				<InspectorControls>
-					<PanelBody title={ __( 'Heading Settings' ) }>
-						<p>{ __( 'Image Alignment' ) }</p>
-						<AlignmentToolbar
-							value={ align }
-							onChange={ ( nextAlign ) => {
-								setAttributes( { align: nextAlign } );
-							} }
-						/>
-					</PanelBody>
+					<BorderOptions
+						{ ...props }
+					/>
 					<MarginOptions
 						{ ...props }
 					/>
 					<PaddingOptions
 						{ ...props }
 					/>
-					<BorderOptions
+					<PanelBody title={ __( 'Image Settings' ) }>
+						<p>{ __( 'Alignment' ) }</p>
+						<AlignmentToolbar
+							value={ align }
+							onChange={ ( nextAlign ) => {
+								setAttributes( { align: nextAlign } );
+							} }
+						/>
+						<p>{ __( ' CSS Width (100%, 50px, auto, etc.)' ) }</p>
+						<TextControl
+							value={ CSSWidth }
+							onChange={ ( nextCSSWidth ) => {
+								setAttributes( { CSSWidth: nextCSSWidth } );
+							} }
+						/>
+					</PanelBody>
+					<DataComponentNameOptions
 						{ ...props }
 					/>
 				</InspectorControls>,
-				<div className={classnames(
-					`component-animated-gif`,
-					`align-${align}`,
-					...MarginOptionsClasses( props ),
-					...PaddingOptionsClasses( props ),
-					...BorderOptionsClasses( props ),
-				)}>
-
+				<BlockControls>
+					<AlignmentToolbar
+						value={ align }
+						onChange={ ( nextAlign ) => {
+							setAttributes( { align: nextAlign } );
+						} }
+					/>
+				</BlockControls>,
+				<div 
+					className={classnames(
+						`component-image component-animated-gif`,
+						`block-align-${align}`,
+						...MarginOptionsClasses( props ),
+						...PaddingOptionsClasses( props ),
+						...BorderOptionsClasses( props ),
+					)}
+					data-component-name={ dataComponentName } 
+					data-component-options={ dataComponentOptions }
+				>
 					{ ! imgID ? (
-
 						<MediaUpload
 							onSelect={ onSelectImage }
 							type="image"
@@ -165,16 +197,12 @@ export default registerBlockType(
 							) }
 						>
 						</MediaUpload>
-
 					) : (
-
 						<div className={classnames(
 							`image-wrapper`,
 							`align-${align}`,
 						)}>
-
 							{ isSelected ? (
-
 								<Button
 									className="remove-image"
 									onClick={ onRemoveImage }
@@ -215,9 +243,7 @@ export default registerBlockType(
 							) : null }
 						</div>
 					)}
-
 					{ ! gifID ? (
-
 						<MediaUpload
 							onSelect={ onSelectGif }
 							type="image"
@@ -233,12 +259,10 @@ export default registerBlockType(
 							) }
 						>
 						</MediaUpload>
-
 					) : (
-
 						<div className={classnames(
 							`image-wrapper`,
-							`align-${align}`,
+							`block-align-${align}`,
 						)}>
 							{ isSelected ? (
 								<Button
@@ -248,11 +272,9 @@ export default registerBlockType(
 									{ icons.remove }
 								</Button>
 							) : null }
-
 							<img
 								src={ gifURL }
 							/>
-
 						</div>
 					)}
 				</div>
