@@ -34,13 +34,13 @@ html {
 }
 
 body {
-	font-smoothing: antialiased;
-	color: $defaultTextColor;
+	@include primary-regular;
+	color: color('text', 'body');
 	font-size: 13px;
+	font-smoothing: antialiased;
 	height: 100%;
 	min-height: 100vh;
 	overflow-x: hidden;
-	@include primary-regular;
 
 	&.popupOpen {
 		// Prevents background from scrolling when PopUp is activated, optional 
