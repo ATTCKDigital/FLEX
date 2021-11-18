@@ -40,6 +40,8 @@ export default registerBlockType(
 			__( 'Text', 'flexlayout' ),
 			__( 'Source', 'flexlayout' ),
 			__( 'Code', 'flexlayout' ),
+			__( 'src', 'flexlayout' ),
+			__( 'html', 'flexlayout' ),
 		],
 		attributes: {
 			content: {
