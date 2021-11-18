@@ -66,7 +66,7 @@ function PaddingOptions( props ) {
 			<div className="padding-wrapper">
 				<p>Inherit uses prev screen size setting.</p>
 				<div className="padding-inner-wrapper">
-					<h2 className="components-panel__body-title">Padding</h2>
+					<h2 className="components-panel__body-title">Default Padding</h2>
 					<PanelRow>
 						<SelectControl
 							key="padding-top"
@@ -221,7 +221,7 @@ function PaddingOptions( props ) {
 					</PanelRow>
 				</div>
 				<div className="padding-inner-wrapper">
-					<h2 className="components-panel__body-title">Mobile Padding</h2>
+					<h2 className="components-panel__body-title">Phone Padding</h2>
 					<PanelRow>
 						<SelectControl
 							key="padding-phone-top"
@@ -377,7 +377,7 @@ function PaddingOptions( props ) {
 				</div>
 
 				<div className="padding-inner-wrapper">
-					<h2 className="components-panel__body-title">Mobile Plus Padding</h2>
+					<h2 className="components-panel__body-title">Phone-Plus Padding</h2>
 					<PanelRow>
 						<SelectControl
 							key="padding-phone-plus-top"
@@ -533,7 +533,7 @@ function PaddingOptions( props ) {
 				</div>
 
 				<div className="padding-inner-wrapper">
-					<h2 className="components-panel__body-title">Tablet Portrait Padding</h2>
+					<h2 className="components-panel__body-title">Tablet-Portrait Padding</h2>
 					<PanelRow>
 						<SelectControl
 							key="padding-tablet-portrait-top"
@@ -688,7 +688,7 @@ function PaddingOptions( props ) {
 					</PanelRow>
 				</div>
 				<div className="padding-inner-wrapper">
-					<h2 className="components-panel__body-title">Tablet Landscape Padding</h2>
+					<h2 className="components-panel__body-title">Tablet-Landscape Padding</h2>
 					<PanelRow>
 						<SelectControl
 							key="padding-tablet-landscape-top"
@@ -964,6 +964,316 @@ function PaddingOptions( props ) {
 							label={ __( 'Left' ) }
 							value={ props.attributes.paddingDesktopLeft ? props.attributes.paddingDesktopLeft : '' }
 							onChange={ (e) => setPadding('paddingDesktopLeft', e) }
+							options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
+									label: __( '0' ),
+									value: '0x',
+								},
+								{
+									label: __( '1x' ),
+									value: '1x',
+								},
+								{
+									label: __( '2x' ),
+									value: '2x',
+								},
+								{
+									label: __( '4x' ),
+									value: '4x',
+								},
+								{
+									label: __( '8x' ),
+									value: '8x',
+								},
+								{
+									label: __( '16x' ),
+									value: '16x',
+								},
+							] }
+						/>
+					</PanelRow>
+				</div>
+				<div className="padding-inner-wrapper">
+					<h2 className="components-panel__body-title">Xl Padding</h2>
+					<PanelRow>
+						<SelectControl
+							key="padding-xl-top"
+							label={ __( 'Top' ) }
+							value={ props.attributes.paddingXlTop ? props.attributes.paddingXlTop : '' }
+							onChange={ (e) => setPadding('paddingXlTop', e) }
+							options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
+									label: __( '0' ),
+									value: '0x',
+								},
+								{
+									label: __( '1x' ),
+									value: '1x',
+								},
+								{
+									label: __( '2x' ),
+									value: '2x',
+								},
+								{
+									label: __( '4x' ),
+									value: '4x',
+								},
+								{
+									label: __( '8x' ),
+									value: '8x',
+								},
+								{
+									label: __( '16x' ),
+									value: '16x',
+								},
+							] }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<SelectControl
+							key="padding-xl-right"
+							label={ __( 'Right' ) }
+							value={ props.attributes.paddingXlRight ? props.attributes.paddingXlRight : '' }
+							onChange={ (e) => setPadding('paddingXlRight', e) }
+							options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
+									label: __( '0' ),
+									value: '0x',
+								},
+								{
+									label: __( '1x' ),
+									value: '1x',
+								},
+								{
+									label: __( '2x' ),
+									value: '2x',
+								},
+								{
+									label: __( '4x' ),
+									value: '4x',
+								},
+								{
+									label: __( '8x' ),
+									value: '8x',
+								},
+								{
+									label: __( '16x' ),
+									value: '16x',
+								},
+							] }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<SelectControl
+							key="padding-xl-bottom"
+							label={ __( 'Bottom' ) }
+							value={ props.attributes.paddingXlBottom ? props.attributes.paddingXlBottom : '' }
+							onChange={ (e) => setPadding('paddingXlBottom', e) }
+							options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
+									label: __( '0' ),
+									value: '0x',
+								},
+								{
+									label: __( '1x' ),
+									value: '1x',
+								},
+								{
+									label: __( '2x' ),
+									value: '2x',
+								},
+								{
+									label: __( '4x' ),
+									value: '4x',
+								},
+								{
+									label: __( '8x' ),
+									value: '8x',
+								},
+								{
+									label: __( '16x' ),
+									value: '16x',
+								},
+							] }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<SelectControl
+							key="padding-xl-left"
+							label={ __( 'Left' ) }
+							value={ props.attributes.paddingXlLeft ? props.attributes.paddingXlLeft : '' }
+							onChange={ (e) => setPadding('paddingXlLeft', e) }
+							options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
+									label: __( '0' ),
+									value: '0x',
+								},
+								{
+									label: __( '1x' ),
+									value: '1x',
+								},
+								{
+									label: __( '2x' ),
+									value: '2x',
+								},
+								{
+									label: __( '4x' ),
+									value: '4x',
+								},
+								{
+									label: __( '8x' ),
+									value: '8x',
+								},
+								{
+									label: __( '16x' ),
+									value: '16x',
+								},
+							] }
+						/>
+					</PanelRow>
+				</div>
+				<div className="padding-inner-wrapper">
+					<h2 className="components-panel__body-title">Xl2 Padding</h2>
+					<PanelRow>
+						<SelectControl
+							key="padding-xl2-top"
+							label={ __( 'Top' ) }
+							value={ props.attributes.paddingXl2Top ? props.attributes.paddingXl2Top : '' }
+							onChange={ (e) => setPadding('paddingXl2Top', e) }
+							options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
+									label: __( '0' ),
+									value: '0x',
+								},
+								{
+									label: __( '1x' ),
+									value: '1x',
+								},
+								{
+									label: __( '2x' ),
+									value: '2x',
+								},
+								{
+									label: __( '4x' ),
+									value: '4x',
+								},
+								{
+									label: __( '8x' ),
+									value: '8x',
+								},
+								{
+									label: __( '16x' ),
+									value: '16x',
+								},
+							] }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<SelectControl
+							key="padding-xl2-right"
+							label={ __( 'Right' ) }
+							value={ props.attributes.paddingXl2Right ? props.attributes.paddingXl2Right : '' }
+							onChange={ (e) => setPadding('paddingXl2Right', e) }
+							options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
+									label: __( '0' ),
+									value: '0x',
+								},
+								{
+									label: __( '1x' ),
+									value: '1x',
+								},
+								{
+									label: __( '2x' ),
+									value: '2x',
+								},
+								{
+									label: __( '4x' ),
+									value: '4x',
+								},
+								{
+									label: __( '8x' ),
+									value: '8x',
+								},
+								{
+									label: __( '16x' ),
+									value: '16x',
+								},
+							] }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<SelectControl
+							key="padding-xl2-bottom"
+							label={ __( 'Bottom' ) }
+							value={ props.attributes.paddingXl2Bottom ? props.attributes.paddingXl2Bottom : '' }
+							onChange={ (e) => setPadding('paddingXl2Bottom', e) }
+							options={ [
+								{
+									label: __( 'Inherit' ),
+									value: 'inherit',
+								},
+								{
+									label: __( '0' ),
+									value: '0x',
+								},
+								{
+									label: __( '1x' ),
+									value: '1x',
+								},
+								{
+									label: __( '2x' ),
+									value: '2x',
+								},
+								{
+									label: __( '4x' ),
+									value: '4x',
+								},
+								{
+									label: __( '8x' ),
+									value: '8x',
+								},
+								{
+									label: __( '16x' ),
+									value: '16x',
+								},
+							] }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<SelectControl
+							key="padding-xl2-left"
+							label={ __( 'Left' ) }
+							value={ props.attributes.paddingXl2Left ? props.attributes.paddingXl2Left : '' }
+							onChange={ (e) => setPadding('paddingXl2Left', e) }
 							options={ [
 								{
 									label: __( 'Inherit' ),

@@ -6,6 +6,11 @@
  * ie: padding-small-top-1x where the number before x is the multiplier for
  * the increment (avoids having to remember your multiplication tables :) )
  *
+ * Variables imported from _sizing.scss:
+ * -------------------------------------
+ * — $positions: top, bottom, left, right;
+ * — $screensizes: default, phone, phone-plus, tablet-portrait, tablet-landscape, desktop, xl, xl2;;
+ * 
  * NOTE: This is using a double-class specificity hack in order to overtake other 
  * grid margin settings in the FLEX editor. -DP
  */

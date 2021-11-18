@@ -85,6 +85,34 @@ const PaddingOptionsAttributes = {
 	paddingDesktopLeft: {
 		type: 'string',
 	},
+
+
+	paddingXlTop: {
+		type: 'string',
+	},
+	paddingXlRight: {
+		type: 'string',
+	},
+	paddingXlBottom: {
+		type: 'string',
+	},	
+	paddingXlLeft: {
+		type: 'string',
+	},
+
+
+	paddingXl2Top: {
+		type: 'string',
+	},
+	paddingXl2Right: {
+		type: 'string',
+	},
+	paddingXl2Bottom: {
+		type: 'string',
+	},	
+	paddingXl2Left: {
+		type: 'string',
+	},
 };
 
 export default PaddingOptionsAttributes;

@@ -34,6 +34,16 @@ function PaddingOptionsClasses( props ) {
 		props.attributes.paddingDesktopRight && props.attributes.paddingDesktopRight !== 'inherit'? `padding-desktop-right-${ props.attributes.paddingDesktopRight }` : null,
 		props.attributes.paddingDesktopLeft && props.attributes.paddingDesktopLeft !== 'inherit'? `padding-desktop-left-${ props.attributes.paddingDesktopLeft }` : null,
 		props.attributes.paddingDesktopBottom && props.attributes.paddingDesktopBottom !== 'inherit'? `padding-desktop-bottom-${ props.attributes.paddingDesktopBottom }` : null,
+
+		props.attributes.paddingXlTop && props.attributes.paddingXlTop !== 'inherit' ? `padding-xl-top-${ props.attributes.paddingXlTop }` : null,
+		props.attributes.paddingXlRight && props.attributes.paddingXlRight !== 'inherit'? `padding-xl-right-${ props.attributes.paddingXlRight }` : null,
+		props.attributes.paddingXlLeft && props.attributes.paddingXlLeft !== 'inherit'? `padding-xl-left-${ props.attributes.paddingXlLeft }` : null,
+		props.attributes.paddingXlBottom && props.attributes.paddingXlBottom !== 'inherit'? `padding-xl-bottom-${ props.attributes.paddingXlBottom }` : null,
+
+		props.attributes.paddingXl2Top && props.attributes.paddingXl2Top !== 'inherit' ? `padding-xl2-top-${ props.attributes.paddingXl2Top }` : null,
+		props.attributes.paddingXl2Right && props.attributes.paddingXl2Right !== 'inherit'? `padding-xl2-right-${ props.attributes.paddingXl2Right }` : null,
+		props.attributes.paddingXl2Left && props.attributes.paddingXl2Left !== 'inherit'? `padding-xl2-left-${ props.attributes.paddingXl2Left }` : null,
+		props.attributes.paddingXl2Bottom && props.attributes.paddingXl2Bottom !== 'inherit'? `padding-xl2-bottom-${ props.attributes.paddingXl2Bottom }` : null,
 	];
 }
 

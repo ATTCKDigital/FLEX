@@ -33,5 +33,15 @@ function padding_options_classes( $attributes ) {
 	$class .= array_key_exists('paddingDesktopLeft', $attributes) && $attributes['paddingDesktopLeft'] != 'inherit' ? " padding-desktop-left-{$attributes['paddingDesktopLeft']} " :'';
 	$class .= array_key_exists('paddingDesktopBottom', $attributes) && $attributes['paddingDesktopBottom'] != 'inherit' ? " padding-desktop-bottom-{$attributes['paddingDesktopBottom']} " :'';
 
+	$class .= array_key_exists('paddingXlTop', $attributes) && $attributes['paddingXlTop'] != 'inherit' ? " padding-xl-top-{$attributes['paddingXlTop']} " :'';
+	$class .= array_key_exists('paddingXlRight', $attributes) && $attributes['paddingXlRight'] != 'inherit' ? " padding-xl-right-{$attributes['paddingXlRight']} " :'';
+	$class .= array_key_exists('paddingXlLeft', $attributes) && $attributes['paddingXlLeft'] != 'inherit' ? " padding-xl-left-{$attributes['paddingXlLeft']} " :'';
+	$class .= array_key_exists('paddingXlBottom', $attributes) && $attributes['paddingXlBottom'] != 'inherit' ? " padding-xl-bottom-{$attributes['paddingXlBottom']} " :'';
+
+	$class .= array_key_exists('paddingXl2Top', $attributes) && $attributes['paddingXl2Top'] != 'inherit' ? " padding-xl2-top-{$attributes['paddingXl2Top']} " :'';
+	$class .= array_key_exists('paddingXl2Right', $attributes) && $attributes['paddingXl2Right'] != 'inherit' ? " padding-xl2-right-{$attributes['paddingXl2Right']} " :'';
+	$class .= array_key_exists('paddingXl2Left', $attributes) && $attributes['paddingXl2Left'] != 'inherit' ? " padding-xl2-left-{$attributes['paddingXl2Left']} " :'';
+	$class .= array_key_exists('paddingXl2Bottom', $attributes) && $attributes['paddingXl2Bottom'] != 'inherit' ? " padding-xl2-bottom-{$attributes['paddingXl2Bottom']} " :'';
+
 	return $class;
 }
