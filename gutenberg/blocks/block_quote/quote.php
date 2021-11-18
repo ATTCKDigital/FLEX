@@ -114,7 +114,7 @@ function render_quote_block($attributes) {
 
 	$style = background_options_inline_styles($attributes);
 
-	$output = "<div class=\"{$class}\" style=\"{$style}\"><h5 class=\"quote-text\"{$textStyle}>{$attributes['content']}</h5>{$image}{$contentSource}{$contentCompany}</div>";
+	$output = "<div class=\"{$class}\" style=\"{$style}\"><p class=\"quote-text\"{$textStyle}>{$attributes['content']}</p>{$image}{$contentSource}{$contentCompany}</div>";
 
 	return $output;
 }
