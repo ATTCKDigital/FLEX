@@ -1,5 +1,5 @@
 .component-testimonialcarousel {
-	background: $white;
+	background: color('secondary', 'white');
 	padding-bottom: 75px;
 	padding-top: 60px;
 
@@ -14,7 +14,7 @@
 		font-style: italic;
 		line-height: 1.6;
 
-		@include mediaquery('desktop') {
+		@include mediaquery(desktop) {
 			font-size: 24px;
 		}
 	}
