@@ -11,12 +11,16 @@
 			<?php 
 				$customLogoID = get_theme_mod( 'custom_logo' );
 				$customLogoURL = wp_get_attachment_image_url( $customLogoID , 'full' );
+				$customLogoSRC = wp_get_attachment_image_src( $customLogoID , 'full' );
 			?>
 			<img 
-				src="<?= $customLogoURL;?>" 
-				class="nav-logo" 
 				alt="<?= bloginfo('name');?>" 
-				title="<?= bloginfo('name');?>" />
+				class="nav-logo" 
+				height="<?= $customLogoSRC[1] ?>"
+				src="<?= $customLogoURL;?>" 
+				title="<?= bloginfo('name');?>" 
+				width="<?= $customLogoSRC[2] ?>"
+				/>
 		</a>
 		<div class="hamburger-wrapper">
 			<mark class="hamburger"></mark>
