@@ -36,7 +36,6 @@
 
 	.wp-block-button__link {
 		@extend .cta;
-		// border-radius: 0;
 		overflow: inherit;
 	}
 
@@ -72,11 +71,5 @@
 		@extend .cta-negative;
 	}
 
-	color: $black;
+	color: color('secondary', 'black');
 }
-
-// .editor-block-styles__item[aria-label="Default"] .editor-block-styles__item-preview,
-// .editor-block-styles__item[aria-label="Solid"] .editor-block-styles__item-preview,
-// .editor-block-styles__item[aria-label="Accent"] .editor-block-styles__item-preview { 
-// 	background: $black;
-// }

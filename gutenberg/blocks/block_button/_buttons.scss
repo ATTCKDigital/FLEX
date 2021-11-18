@@ -7,12 +7,12 @@
 	@include primary-regular;
 	@include font-size($font-size-body-text);
 	background-color: transparent;
-	border-color: $black;
+	border-color: color('secondary', 'black');
 	border-radius: 0;
-	border: 1px solid $black;
+	border: 1px solid color('secondary', 'black');
 	box-shadow: none;
 	box-sizing: border-box;
-	color:  $black;
+	color:  color('secondary', 'black');
 	cursor: pointer;
 	display: inline-block;
 	font-size: px-to-rem(16px);
@@ -34,8 +34,8 @@
 
 	&.cta-solid, 
 	&.is-style-cta-solid {
-		background-color: $white;
-		color:  $black;
+		background-color: color('secondary', 'white');
+		color:  color('secondary', 'black');
 
 		@include mediaquery(desktop) {
 			&:hover {
@@ -49,13 +49,13 @@
 	&.is-style-cta-accent {
 		border-color: color('brand', 'accent');
 		background-color: color('brand', 'accent');
-		color: $white;
+		color: color('secondary', 'white');
 		transition: background .4s ease-out, border-color .4s ease-out, color .4s ease-out;
 
 		@include mediaquery(desktop) {
 			&:hover {
-				background: $white;
-				border-color: $white;
+				background: color('secondary', 'white');
+				border-color: color('secondary', 'white');
 				color: color('brand', 'accent');
 			}
 		}
@@ -63,16 +63,16 @@
 
 	&.cta-negative, 
 	&.is-style-cta-negative {
-		border-color: $white;
-		color: $white;
 		background: transparent;
+		border-color: color('secondary', 'white');
+		color: color('secondary', 'white');
 		opacity: 1;
 		transition: opacity .3s ease-out;
 		
 		@include mediaquery(desktop)  {
 			&:hover {
 				background: transparent;
-				border-color: $white;
+				border-color: color('secondary', 'white');
 				opacity: .5;
 			}
 		}
@@ -80,8 +80,8 @@
 
 	&.cta-disabled,
 	&.cta-inactive {
-		pointer-events: none;
 		opacity: .5;
+		pointer-events: none;
 	}
 
 	&.cta-small {
@@ -90,5 +90,9 @@
 		letter-spacing: 0.14rem;
 		min-height: auto;
 		padding: 14px 29px;
+	}
+
+	&.round {
+		border-radius: $gap*4;
 	}
 }

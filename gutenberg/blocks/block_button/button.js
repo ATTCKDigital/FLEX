@@ -5,14 +5,14 @@ import icons from '../../../js/icons.js';
 // Internal block libraries
 const { __ } = wp.i18n;
 
-const {
-	registerBlockType,
-} = wp.blocks;
+// WordPress dependencies
+const { registerBlockType } = wp.blocks;
 
 const {
-	RichText,
 	AlignmentToolbar,
+	InnerBlocks,
 	InspectorControls,
+	RichText,
 	URLInput
 } = wp.blockEditor;
 
@@ -53,9 +53,6 @@ export default registerBlockType(
 			content: {
 				type: 'string',
 			},
-			content2: {
-				type: 'string',
-			},
 			placeholder: {
 				type: 'string',
 			},
@@ -66,12 +63,12 @@ export default registerBlockType(
 			url: {
 				type: 'string',
 			},
-			url2: {
-				type: 'string',
-			},
 			...DataComponentNameAttributes,
 			...MarginOptionsAttributes
 		},
+
+		innerBlocks: [],
+
 		styles: [
 			{ name: 'cta', label: __( 'Default', 'block style' ), isDefault: true },
 			{ name: 'cta-solid', label: __( 'Solid', 'block style' ) },
@@ -84,13 +81,11 @@ export default registerBlockType(
 				attributes: {
 					align,
 					content,
-					content2,
 					dataComponentName,
 					dataComponentOptions,
 					placeholder,
 					target,
 					url,
-					url2
 				},
 				className,
 				setAttributes,
@@ -101,9 +96,6 @@ export default registerBlockType(
 
 			return ([
 				<InspectorControls>
-					<MarginOptions
-						{ ...props }
-					/>
 					<PanelBody title={ __( 'Button Settings', 'flexlayout' ) }>
 						<AlignmentToolbar
 							value={ align }
@@ -119,6 +111,9 @@ export default registerBlockType(
 							onChange={target => setAttributes({ target })}
 					  	/>
 					</PanelBody>
+					<MarginOptions
+						{ ...props }
+					/>
 					<DataComponentNameOptions
 						{ ...props }
 					/>
@@ -163,29 +158,6 @@ export default registerBlockType(
 								type="submit" />
 						</form>
 					) }
-					{/*<RichText
-						identifier="content2"
-						className={ classnames('wp-block-button__link', className)}
-						tagName={ tagName }
-						value={ content2 }
-						onChange={ ( value ) => setAttributes( { content2: value } ) }
-						onRemove={ () => onReplace( [] ) }
-						formattingControls={ [] }
-						placeholder={ placeholder || __( 'Button text…' ) }
-						keepPlaceholderOnFocus
-					/>
-					{ isSelected && (
-						<form
-							className="block-library-button__inline-link"
-							onSubmit={ ( event ) => event.preventDefault() }>
-							<Dashicon icon="admin-links" />
-							<URLInput
-								value={ url2 }
-								onChange={ ( value ) => setAttributes( { url2: value } ) }
-							/>
-							<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
-						</form>
-					) }*/}
 				</div>
 			]);
 		},

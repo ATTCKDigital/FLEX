@@ -6,9 +6,13 @@ import icons from '../../../js/icons.js';
 // Internal block libraries
 const { __ } = wp.i18n;
 
-const {
-	registerBlockType,
-} = wp.blocks;
+// WordPress dependencies
+const { registerBlockType } = wp.blocks;
+
+// Added 3/26/20 - https://ibenic.com/enable-inner-blocks-gutenberg/
+// wp.editor.InnerBlocks.Content is deprecated. 
+// Please use wp.blockEditor.InnerBlocks.Content instead.
+// const { InnerBlocks } = wp.editor;
 
 const {
 	AlignmentToolbar,
@@ -26,11 +30,11 @@ const {
 	ButtonGroup,
 	CheckboxControl,
 	Dashicon,
-	IconButton,
 	PanelBody,
 	PanelRow,
 	TextControl,
 	Toolbar,
+	ToolbarButton,
 	Tooltip,
 } = wp.components;
 
@@ -39,7 +43,6 @@ const {
 	withSelect, 
 	withDispatch 
 } = wp.data;
-
 
 // Internal dependencies
 import BackgroundColorOptions, { BackgroundColorOptionsAttributes, BackgroundColorOptionsInlineStyles } from '../../components/gb-component_background-color';
@@ -53,48 +56,47 @@ import TextColorOptions, { TextColorAttributes, TextColorClasses, TextColorInlin
 export default registerBlockType(
 	'flexlayout/heading',
 	{
-		title: __( 'Heading' ),
-		description: __( 'Introduce new sections and organize content to help visitors (and search engines) understand the structure of your content.' ),
-		category: 'common',
-		// icon: 'heading',
-		icon: icons.heading,
+		'title': __( 'Heading', 'flexlayout' ),
+		'description': __( 'Introduce new sections and organize content to help visitors (and search engines) understand the structure of your content.', 'flexlayout' ),
+		'category': 'common',
+		'icon': icons.heading,
 		// parent: ['flexlayout/column'],
-		keywords: [
+		'keywords': [
 			__( 'Text', 'flexlayout' ),
 			__( 'Heading', 'flexlayout' ),
 			__( 'Header', 'flexlayout' ),
 		],
-		attributes: {
-			align: {
-				type: 'string',
-				default: 'left'
+		'attributes': {
+			'align': {
+				'type': 'string',
+				'default': 'left'
 			},
-			content: {
-				type: 'string',
-				default: '',
+			'content': {
+				'type': 'string',
+				'default': ''
 			},
-			hangingQuote: {
-				type: 'boolean'
+			'hangingQuote': {
+				'type': 'boolean'
 			},
-			hangingQuoteClass: {
-				type: 'string',
-				default: 'hide-hanging-quote'
+			'hangingQuoteClass': {
+				'type': 'string',
+				'default': 'hide-hanging-quote'
 			},
-			imgURL: {
-				type: 'string',
+			'imgID': {
+				'type': 'number',
 			},
-			imgID: {
-				type: 'number',
+			'imgURL': {
+				'type': 'string',
 			},
-			level: {
-				type: 'number',
-				default: 2,
+			'level': {
+				'type': 'number',
+				'default': 2,
 			},
-			placeholder: {
-				type: 'string',
+			'placeholder': {
+				'type': 'string',
 			},
-			url: {
-				type: 'string',
+			'url': {
+				'type': 'string',
 			},
 			...BackgroundColorOptionsAttributes,
 			...BorderOptionsAttributes,
@@ -102,6 +104,22 @@ export default registerBlockType(
 			...MarginOptionsAttributes,
 			...PaddingOptionsAttributes,
 			...TextColorAttributes
+		},
+
+		innerBlocks: [],
+
+		styles: [
+			{ 'name': 'headline1', 'label': __('Headline 1', 'block style'), 'isDefault': true },
+			{ 'name': 'headline2', 'label': __('Headline 2', 'block style') },
+			{ 'name': 'headline3', 'label': __('Headline 3', 'block style') },
+			{ 'name': 'headline4', 'label': __('Headline 4', 'block style') },
+			{ 'name': 'headline5', 'label': __('Headline 5', 'block style') },
+			{ 'name': 'headline6', 'label': __('Headline 6', 'block style') }
+		],
+
+		supports: {
+			// Turn off ability to edit HTML of block content
+			html: false,
 		},
 
 		edit: props => {
@@ -198,28 +216,36 @@ export default registerBlockType(
 							minLevel={ 1 } 
 							maxLevel={ 7 } 
 							selectedLevel={ level } 
-							onChange={ ( newLevel ) => setAttributes( { level: newLevel } ) } 
+							onChange={ ( newLevel ) => setAttributes( { 'level': newLevel } ) } 
 						/>
+						<hr />
 						<p>{ __( 'Text Alignment' ) }</p>
 						<AlignmentToolbar
 							value={ align }
 							onChange={ ( nextAlign ) => {
-								setAttributes( { align: nextAlign } );
+								setAttributes( { 'align': nextAlign } );
 							} }
 						/>
+						<hr />
 						<p>
 							<HangingQuoteCheckbox />
 						</p>
+						<hr />
 						<p>{ __( 'Optional URL' ) }</p>
 						<form
 							className="block-library-button__inline-link heading-url"
 							onSubmit={ ( event ) => event.preventDefault() }>
 							<URLInput
 								value={ url }
-								onChange={ ( value ) => setAttributes( { url: value } ) }
+								onChange={ ( value ) => setAttributes( { 'url': value } ) }
 							/>
-							<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
+							<Button 
+								icon="editor-break" 
+								text={ __( 'Apply' ) } 
+								// type="submit" 
+							/>
 						</form>
+						<hr />
 						<p>{ __( 'Icon left of the Heading' ) }</p>
 						{ ! imgID ? (
 							<MediaUpload
@@ -248,7 +274,6 @@ export default registerBlockType(
 								>
 									{ icons.remove }
 								</Button>
-
 								<img
 									src={ imgURL }
 								/>
@@ -259,11 +284,15 @@ export default registerBlockType(
 						{ ...props }
 					/>
 				</InspectorControls>,
-				<div className={classnames(
-					`component-heading`,
-					`${hangingQuoteClass}`,
-					className
-				)}>
+				<div 
+					className={classnames(
+						`component-heading`,
+						`${hangingQuoteClass}`,
+						className
+					)}
+					data-component-name={ props.attributes.dataComponentName }
+					data-component-options={ props.attributes.dataComponentOptions }
+				>
 					<img 
 						// Use empty SVG to trigger onload event 
 						// Onload hack fires when block is added
@@ -300,43 +329,42 @@ export default registerBlockType(
 					/>
 				</div>
 			];
-
 		},
 
 		save() {
 			return null;
 		},
-
 	},
 );
 
+
 // Add default styles
-wp.blocks.registerBlockStyle( 'flexlayout/heading', {
-    name: 'headline1',
-    label: 'Headline 1'
-} );
+// wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+//     name: 'headline1',
+//     label: 'Headline 1'
+// } );
 
-wp.blocks.registerBlockStyle( 'flexlayout/heading', {
-    name: 'headline2',
-    label: 'Headline 2'
-} );
+// wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+//     name: 'headline2',
+//     label: 'Headline 2'
+// } );
 
-wp.blocks.registerBlockStyle( 'flexlayout/heading', {
-    name: 'headline3',
-    label: 'Headline 3'
-} );
+// wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+//     name: 'headline3',
+//     label: 'Headline 3'
+// } );
 
-wp.blocks.registerBlockStyle( 'flexlayout/heading', {
-    name: 'headline4',
-    label: 'Headline 4'
-} );
+// wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+//     name: 'headline4',
+//     label: 'Headline 4'
+// } );
 
-wp.blocks.registerBlockStyle( 'flexlayout/heading', {
-    name: 'headline5',
-    label: 'Headline 5'
-} );
+// wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+//     name: 'headline5',
+//     label: 'Headline 5'
+// } );
 
-wp.blocks.registerBlockStyle( 'flexlayout/heading', {
-    name: 'headline6',
-    label: 'Headline 6'
-} );
+// wp.blocks.registerBlockStyle( 'flexlayout/heading', {
+//     name: 'headline6',
+//     label: 'Headline 6'
+// } );

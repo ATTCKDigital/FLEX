@@ -36,9 +36,6 @@ function register_button_block() {
 				'content' => [
 					'type' => 'string',
 				],
-				'content2' => [
-					'type' => 'string',
-				],
 				'dataComponentName' => [
 					'type' => 'string',
 				],
@@ -53,9 +50,6 @@ function register_button_block() {
 					'default' => false,
 				],
 				'url' => [
-					'type' => 'string',
-				],
-				'url2' => [
 					'type' => 'string',
 				],
 			],
@@ -73,12 +67,9 @@ function render_button_block($attributes) {
 	$class .= $attributes['className'];
 	$class .= margin_options_classes($attributes);
 
-	$content1 = array_key_exists('content', $attributes) ? $attributes['content'] : null;
-	$url1 = array_key_exists('url', $attributes) ? $attributes['url'] : null;
+	$content = array_key_exists('content', $attributes) ? $attributes['content'] : null;
+	$url = array_key_exists('url', $attributes) ? $attributes['url'] : null;
 	
-	$content2 = array_key_exists('content2', $attributes) ? $attributes['content2'] : null;
-	$url2 = array_key_exists('url2', $attributes) ? $attributes['url2'] : null;
-
 	$targetAttr = null;
 
 	if ($attributes['target'] == true) {
@@ -102,22 +93,18 @@ function render_button_block($attributes) {
 		$class .= ' component component-' . $dataComponentNameLowercase;
 	}
 
-	$button1 = null;
+	$button = null;
 	
-	if ($content1 && $url1) {
-		$button1 = "<a href=\"{$url1}\" {$targetAttr} class=\"cta {$buttonClass}\" {$dataComponentName} {$dataComponentOptions}>{$content1}</a>";
-	}
-
-	$button2 = null;
-	
-	if ($content2 && $url2) {
-		$button2 = "<a href=\"{$url2}\" {$targetAttr} class=\"cta {$buttonClass}\">{$content2}</a>";
+	if ($content && $url) {
+		$button = "<a href=\"{$url}\" {$targetAttr} class=\"cta {$buttonClass}\">{$content}</a>";
 	}
 
 	$output = '';
 
-	if ($button1 || $button2) {
-		$output = "<div class=\"component-button component {$class}\"  {$dataComponentName} {$dataComponentOptions}>{$button1}{$button2}</div>";
+	if ($button) {
+		$output  = "<div class=\"component-button component {$class}\" {$dataComponentName} {$dataComponentOptions}>";
+		$output .= 		"{$button}";
+		$output .= "</div>";
 	}
 
 	return $output;
