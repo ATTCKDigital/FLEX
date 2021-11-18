@@ -42,19 +42,19 @@ function register_posts_block() {
 					'default' => 3,
 				],
 				'paginationActive' => [
-					'type' => 'bool',
-					'default' => '',
+					'type' => 'Boolean',
+					'default' => true,
 				],
 				'filterActive' => [
 					'type' => 'Boolean',
 					'default' => true,
 				],
 				'showExcerpt' => [
-					'type' => 'bool',
+					'type' => 'Boolean',
 					'default' => false,
 				],
 				'showCategory' => [
-					'type' => 'bool',
+					'type' => 'Boolean',
 					'default' => false,
 				],
 				'ctaText' => [
@@ -77,13 +77,14 @@ function register_posts_block() {
 	] );
 }
 
-/**
- * Server rendering for /blocks/posts
- */
+// Server rendering for /blocks/posts
 function render_posts_block($attributes) {
-	echo "<!-- post block rendered -->";
+	// echo "<!-- post block rendered -->";
 
-	$class = $attributes['className'];
+	// Leading space is needed to separate from other 
+	// class attribute values that may be present.
+	$class = ' ';
+	$class .= $attributes['className'];
 	$class .= margin_options_classes($attributes);
 	$class .= padding_options_classes($attributes);
 	$categories = $attributes['categories'];
@@ -109,7 +110,9 @@ function render_posts_block($attributes) {
 		],
 	];
 	$pagination = '';
+	$paginationActive = $attributes['paginationActive'];
 	$selectedCategory = $_GET['category'] ?? $categories[0]['id'] ?? '';
+	$selectedCategorySlug = '';
 	$permalink = get_the_permalink();
 
 	// Sort Filter
@@ -136,7 +139,7 @@ function render_posts_block($attributes) {
 			</div>";
 	}
 
-	// Category Tabs
+	// Category tabs
 	if ( !empty( $categories ) ) {
 		$selectedCategoryIndex = array_search($selectedCategory, array_column($categories, 'id'));
 
@@ -147,7 +150,14 @@ function render_posts_block($attributes) {
 		";
 
 		foreach ( $categories as $category ) {
-			$active = $selectedCategory == $category['id'] ? ' active' : '';
+			// $active = $selectedCategory == $category['id'] ? ' active' : '';
+			$active = '';
+
+			if ($selectedCategory == $category['id']) {
+				$active = ' active';
+				$selectedCategorySlug = $category['slug'];
+			}
+
 			// style=\"width:". (100 /  count($categories)) ."%;\"
 			$tabs .= "
 			<li class=\"cat-item\">
@@ -162,8 +172,7 @@ function render_posts_block($attributes) {
 		</div>";
 	}
 
-	// RECENT POSTS
-
+	// Recent posts
 	$paged = get_query_var('paged')
 	? get_query_var('paged')
 	: 1;
@@ -187,7 +196,7 @@ function render_posts_block($attributes) {
 
 	if ( !$recent_posts->have_posts() ) {
 		$output = "
-		<div class=\"component-archive-posts {$class}\">
+		<div class=\"component-archive-posts{$class}\">
 			<form action=\"{$permalink}?category={$selectedCategory}\" class=\"top-bar filter-form\" method=\"get\">
 				{$tabs}
 				{$postFilter}
@@ -199,27 +208,27 @@ function render_posts_block($attributes) {
 	}
 
 	// Pagination
-
-	$pagination .= "
-		<nav class=\"pagination-nav\" role=\"navigation\" aria-label=\"Pagination Navigation\">
-			<div class=\"pagination-wrapper\">" .
-				paginate_links([
-					'base' => str_replace(999999999,
-						'%#%',
-						esc_url(get_pagenum_link(999999999))),
-					'current' => max(1, $paged),
-					'format' => '?paged=%#%',
-					'end_size' => 2,
-					'mid_size' => 4,
-					'prev_next' => true,
-					'prev_text' => '',
-					'next_text' => '',
-					'add_fragment' => '',
-					'total' => $recent_posts->max_num_pages
-				]) .
-		"	</div>
-		</nav>";
-
+	if ($paginationActive) {
+		$pagination .= "
+			<nav class=\"pagination-nav\" role=\"navigation\" aria-label=\"Pagination Navigation\">
+				<div class=\"pagination-wrapper\">" .
+					paginate_links([
+						'base' => str_replace(999999999,
+							'%#%',
+							esc_url(get_pagenum_link(999999999))),
+						'current' => max(1, $paged),
+						'format' => '?paged=%#%',
+						'end_size' => 2,
+						'mid_size' => 4,
+						'prev_next' => true,
+						'prev_text' => '',
+						'next_text' => '',
+						'add_fragment' => '',
+						'total' => $recent_posts->max_num_pages
+					]) .
+			"	</div>
+			</nav>";
+	}
 
 	$postsItems = '';
 
@@ -269,8 +278,10 @@ function render_posts_block($attributes) {
 			$separator = ' &nbsp;|&nbsp; ';
 		}
 
+			// <li class="posts-item post-category-'. $categories[0]->slug .'" style="width: '. 100 / $columnNumber .'%;">
+		
 		$postsItems .= '
-			<li class="posts-item post-category-'. $categories[0]->slug .'" style="width: '. 100 / $columnNumber .'%;">
+			<li class="posts-item post-category-'. $selectedCategorySlug .'" style="width: '. 100 / $columnNumber .'%;">
 				<a class="posts-item-wrapper" href="'.get_the_permalink() .'">'.
 					$thumbnail.
 					'<div class="post-content">'.
@@ -293,7 +304,7 @@ function render_posts_block($attributes) {
 	wp_reset_postdata();
 
 	$output = "
-	<div class=\"component-archive-posts {$class}\">
+	<div class=\"component-archive-posts{$class}\">
 		<form action=\"{$permalink}\" class=\"top-bar\" method=\"get\">
 			{$tabs}
 		</form>
