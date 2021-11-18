@@ -26,29 +26,38 @@ export {
 };
 
 function BorderOptions( props ) {
-	const setBorderTop = value => {
-		// if (value !== 'choose') {
-			props.setAttributes( { borderTop: value } );
-		// }
+	const setBorder = (which, value) => {
+		let borderEdited = '';
+		let borderEditedCount = 0;
+
+		// Save prop
+		props.setAttributes( { [which]: value } );
+
+		// Check local var since no callback after attribute 
+		// has been set which the function below will find.
+		// https://github.com/WordPress/gutenberg/issues/5596
+		if (typeof value !== 'undefined' && value.toLowerCase() !== 'inherit') {
+			borderEditedCount++;
+		}
+
+		// Loop over all padding options and 
+		// check if any changed values aren't 'Inherit'
+		for (const property in BorderOptionsAttributes) {
+			if (typeof props.attributes[property] !== 'undefined' && props.attributes[property].toLowerCase() !== 'inherit') {
+				borderEditedCount++;
+			}
+		}
+
+		if (borderEditedCount > 0) {
+			props.setAttributes( { borderEdited: `(${borderEditedCount} set)` } );
+		}
+
+		return '';
 	}
 
-	const setBorderRight = value => {
-		// if (value !== 'choose') {
-			props.setAttributes( { borderRight: value } );
-		// }
-	}
-
-	const setBorderBottom = value => {
-		// if (value !== 'choose') {
-			props.setAttributes( { borderBottom: value } );
-		// }
-	}
-
-	const setBorderLeft = value => {
-		// if (value !== 'choose') {
-			props.setAttributes( { borderLeft: value } );
-		// }
-	}
+	const svgHeight = {
+		height: 0
+	};
 
 	const borderSelect = () => {
 		return (
@@ -59,11 +68,11 @@ function BorderOptions( props ) {
 							key="border-top"
 							label={ __( 'Top' ) }
 							value={ props.attributes.borderTop ? props.attributes.borderTop : '' }
-							onChange={ setBorderTop }
+							onChange={ (e) => setBorder('borderTop', e) }
 							options={ [
 								{
 									label: __ ( 'Choose border style' ),
-									value: null,
+									value: 'inherit',
 								},
 								{
 									label: __( 'None' ),
@@ -99,11 +108,11 @@ function BorderOptions( props ) {
 							key="border-right"
 							label={ __( 'Right' ) }
 							value={ props.attributes.borderRight ? props.attributes.borderRight : '' }
-							onChange={ setBorderRight }
+							onChange={ (e) => setBorder('borderRight', e) }
 							options={ [
 								{
 									label: __ ( 'Choose border style' ),
-									value: null,
+									value: 'inherit',
 								},
 								{
 									label: __( 'None' ),
@@ -139,11 +148,11 @@ function BorderOptions( props ) {
 							key="border-bottom"
 							label={ __( 'Bottom' ) }
 							value={ props.attributes.borderBottom ? props.attributes.borderBottom : '' }
-							onChange={ setBorderBottom }
+							onChange={ (e) => setBorder('borderBottom', e) }
 							options={ [
 								{
 									label: __ ( 'Choose border style' ),
-									value: null,
+									value: 'inherit',
 								},
 								{
 									label: __( 'None' ),
@@ -179,11 +188,11 @@ function BorderOptions( props ) {
 							key="border-left"
 							label={ __( 'Left' ) }
 							value={ props.attributes.borderLeft ? props.attributes.borderLeft : '' }
-							onChange={ setBorderLeft }
+							onChange={ (e) => setBorder('borderLeft', e) }
 							options={ [
 								{
 									label: __ ( 'Choose border style' ),
-									value: null,
+									value: 'inherit',
 								},
 								{
 									label: __( 'None' ),
@@ -224,9 +233,20 @@ function BorderOptions( props ) {
 	return (
 		<PanelBody
 			title={ __( 'Border' ) }
+			title={ __( 'Border ' + ( props.attributes.borderEdited || setBorder() ) ) }
 			className="flexlayout-border-options"
 			initialOpen={ false }
 		>
+		<img 
+			// Use empty SVG to trigger onload event 
+			// Onload hack fires when block is added
+			className="onload-hack-pp"
+			height="0"
+			width="0"
+			onLoad={ setBorder }
+			src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' %3E%3Cpath d=''/%3E%3C/svg%3E"
+			style={ svgHeight }
+			></img>
 			<PanelRow>
 				{ borderSelect() }
 			</PanelRow>
