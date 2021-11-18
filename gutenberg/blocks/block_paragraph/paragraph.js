@@ -1,15 +1,18 @@
-// WordPress dependencies
+// Block dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js';
 
 // Internal dependencies
 const { wp } = window;
-
 const { __ } = wp.i18n;
 
-const {
-	registerBlockType,
-} = wp.blocks;
+// WordPress dependencies
+const { registerBlockType } = wp.blocks;
+
+// Added 3/26/20 - https://ibenic.com/enable-inner-blocks-gutenberg/
+// wp.editor.InnerBlocks.Content is deprecated. 
+// Please use wp.blockEditor.InnerBlocks.Content instead.
+// const { InnerBlocks } = wp.editor;
 
 const {
 	AlignmentToolbar,
@@ -31,6 +34,7 @@ const {
 	PanelRow,
 	TextControl,
 	Toolbar,
+	ToolbarButton,
 	Tooltip,
 } = wp.components;
 
@@ -45,14 +49,15 @@ import BackgroundColorOptions, { BackgroundColorOptionsAttributes, BackgroundCol
 export default registerBlockType(
 	'flexlayout/paragraph',
 	{
-		title: __( 'Paragraph' ),
-		description: __( 'A simple text block' ),
+		title: __( 'Paragraph', 'flexlayout' ),
+		description: __( 'A simple text block', 'flexlayout' ),
 		category: 'common',
-		// icon: 'editor-paragraph',
 		icon: icons.paragraph,
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__( 'Text', 'flexlayout' ),
+			__( 'a', 'flexlayout' ),
+			__( 'p', 'flexlayout' ),
 			__( 'Paragraph', 'flexlayout' ),
 			__( 'WYSIWYG', 'flexlayout' ),
 			__( 'TinyMCE', 'flexlayout' ),
@@ -76,6 +81,8 @@ export default registerBlockType(
 			...BackgroundColorOptionsAttributes
 		},
 
+		innerBlocks: [],
+
 		styles: [
 			{ name: 'body1', label: __( 'Default', 'block style' ), isDefault: true },
 			{ name: 'body2', label: __( 'Body 2', 'block style' ) },
@@ -95,6 +102,8 @@ export default registerBlockType(
 			} = props;
 
 			const onChangeMessage = content => { 
+				console.log('onChangeMessage: ', onChangeMessage);
+
 				setAttributes( { 
 					content 
 				} ); 
@@ -163,8 +172,10 @@ export default registerBlockType(
 				</div>
 			];
 		},
+
 		save() {
 			return null;
 		},
 	},
 );
+

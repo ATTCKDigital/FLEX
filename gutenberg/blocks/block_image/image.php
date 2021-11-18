@@ -29,14 +29,9 @@ function register_image_block() {
 	register_block_type( 'flexlayout/image', [
 		'attributes' => array_merge(
 			[
-				'imgURL' => [
+				'align' => [
 					'type' => 'string',
-				],
-				'imgID' => [
-					'type' => 'number',
-				],
-				'url' => [
-					'type' => 'string',
+					'default' => 'center'
 				],
 				'caption' => [
 					'type' => 'string',
@@ -45,22 +40,33 @@ function register_image_block() {
 					'type' => 'string',
 					'default' => ''
 				],
-				'align' => [
-					'type' => 'string',
-					'default' => 'center'
-				],
 				'CSSWidth' => [
 					'type' => 'string',
 					'default' => ''
 				],
+				'dataComponentName' => [
+					'type' => 'string',
+				],
+				'dataComponentOptions' => [
+					'type' => 'string',
+				],
+				'imgURL' => [
+					'type' => 'string',
+				],
+				'imgID' => [
+					'type' => 'number',
+				],
 				'opensNewWindow' => [
 					'type' => 'boolean',
 					'default' => false
+				],
+				'url' => [
+					'type' => 'string',
 				]
 			],
+			BORDER_OPTIONS_ATTRIBUTES,
 			MARGIN_OPTIONS_ATTRIBUTES,
-			PADDING_OPTIONS_ATTRIBUTES,
-			BORDER_OPTIONS_ATTRIBUTES
+			PADDING_OPTIONS_ATTRIBUTES
 		),
 		'render_callback' => __NAMESPACE__ . '\render_image_block',
 	] );
@@ -75,15 +81,14 @@ function render_image_block($attributes) {
 	$class .= border_options_classes($attributes);
 	$class .= " block-align-{$attributes['align']}";
 
-	$classInner = '';
-
+	// CSS width property
 	if (array_key_exists('CSSWidth', $attributes)) {
 		$CSSWidth = 'style="width:' . $attributes['CSSWidth'] . '"';
 	} else {
 		$CSSWidth = '';
 	}
 
-	// Add external image link checkbox option
+	// External image link checkbox option
 	$target = '';
 
 	if ($attributes['opensNewWindow']) {
@@ -107,7 +112,29 @@ function render_image_block($attributes) {
 		$caption = '';
 	}
 
-	$output = '<div class="component-image component ' . $class . '" ' . $CSSWidth . '><div class="image-wrapper' . $classInner . '">' . $image . $caption . '</div></div>';
+	// Apply data-component-name
+	$dataComponentName = array_key_exists('dataComponentName', $attributes) ? "{$attributes['dataComponentName']}" : "";
+	$dataComponentOptions = "";
+
+	if (array_key_exists('dataComponentOptions', $attributes)) {
+		$dataOptions = htmlspecialchars($attributes['dataComponentOptions']);
+		$dataComponentOptions = " data-component-options=\"{$dataOptions}\"";
+	}
+	
+	// FLEX JS components get initialized when a DOM element has 
+	// a 'component' class attribute AND a data-component-name attribute
+	// NOTE: data-component-options is optional but must be stringified JSON
+	if (array_key_exists('dataComponentName', $attributes)) {
+		$dataComponentNameLowercase = strtolower($attributes['dataComponentName']);
+		$class .= ' component component-' . $dataComponentNameLowercase;
+	}
+
+	$output = "<div class=\"component-image component {$class}\" {$CSSWidth} data-component-name=\"{$dataComponentName}\" {$dataComponentOptions}>";
+	$output .= 		"<div class=\"image-wrapper\">";
+	$output .= 			"{$image}";
+	$output .=			"{$caption}";
+	$output .= 		"</div>";
+	$output .= "</div>";
 
 	return $output;
 }

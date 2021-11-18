@@ -1,6 +1,19 @@
 .component-list {
-	.is-style-list-columns ul, .is-style-list-columns ol {
-		@extend .list-columns !optional;
+	a {
+		color: color('text', 'link');
+		text-decoration: none;
+		transition: color .05s ease-out;
+
+		@include mediaquery(desktop)  {
+			&:hover {
+				color: color('text', 'hover');
+			}
+		}
+	}
+
+	li {
+		@extend .body1 !optional;
+		margin-bottom: $gap*.5;
 	}
 
 	ol {
@@ -15,27 +28,17 @@
 		margin-left: 20px;
 	}
 
-	li {
-		@extend .body1 !optional;
-		margin-bottom: $gap*.5;
+	.is-style-list-columns ul, 
+	.is-style-list-columns ol {
+		@extend .list-columns !optional;
 	}
 
-	&.align-center, &.align-right {
-		ol, ul {
+	&.align-center, 
+	&.align-right {
+		ol, 
+		ul {
 			list-style-position: inside;
 			margin-left: 0;
-		}
-	}
-
-	a {
-		color: color('text', 'link');
-		text-decoration: none;
-		transition: color .05s ease-out;
-
-		@include mediaquery(desktop)  {
-			&:hover {
-				color: color('text', 'hover');
-			}
 		}
 	}
 }

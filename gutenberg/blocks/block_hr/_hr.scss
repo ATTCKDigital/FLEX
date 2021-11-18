@@ -1,17 +1,27 @@
-/**
- * HR Block Styles
- */
+// FLEX HR Block Styles
 .component-hr {
 	background-color: color('brand', 'accent');
 	border: 0;
 	height: 2px;
 	width: 100%;
 
-	&.medium {
+	&.medium,
+	&.hr-medium {
 		width: 60%;
 	}
 
-	&.short {
+	&.short, 
+	&.hr-short {
 		width: 20%;
+	}
+
+	&.thick,
+	&.hr-thick {
+		height: 4px;
+	}
+
+	&.thin,
+	&.hr-thin {
+		height: 1px;
 	}
 }

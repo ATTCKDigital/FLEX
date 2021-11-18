@@ -101,7 +101,7 @@ function render_paragraph_block($attributes) {
 
 	// Parse links
 	if ($url) {
-		$link = '<a href="'.$url.'">';
+		$link = '<a href="' . $url . '">';
 		$linkClose = '</a>';
 	} else {
 		$link = '';

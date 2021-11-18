@@ -5,9 +5,8 @@ import icons from '../../../js/icons.js';
 // Internal block libraries
 const { __ } = wp.i18n;
 
-const {
-	registerBlockType,
-} = wp.blocks;
+// WordPress dependencies
+const { registerBlockType } = wp.blocks;
 
 const {
 	AlignmentToolbar,
@@ -31,8 +30,9 @@ const {
 } = wp.components;
 
 // Internal dependencies
-import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
 import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
+import DataComponentNameOptions, { DataComponentNameAttributes } from '../../components/gb-component_data-component-name';
+import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
 
 // Register image block
@@ -47,39 +47,41 @@ export default registerBlockType(
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__( 'Image', 'flexlayout' ),
+			__( 'Img', 'flexlayout' ),
 			__( 'MediaUpload', 'flexlayout' )
 		],
 		attributes: {
-			imgURL: {
-				type: 'string'
-			},
-			imgID: {
-				type: 'number'
-			},
-			url: {
-				type: 'string'
-			},
-			caption: {
-				type: 'string'
-			},
-			placeholder: {
-				type: 'string'
-			},
 			align: {
 				type: 'string',
 				default: 'center'
+			},
+			caption: {
+				type: 'string'
 			},
 			CSSWidth: {
 				type: 'string',
 				default: ''
 			},
+			imgID: {
+				type: 'number'
+			},
+			imgURL: {
+				type: 'string'
+			},
 			opensNewWindow: {
 				type: 'boolean',
 				default: false
 			},
+			placeholder: {
+				type: 'string'
+			},
+			url: {
+				type: 'string'
+			},
+			...BorderOptionsAttributes,
+			...DataComponentNameAttributes,
 			...MarginOptionsAttributes,
-			...PaddingOptionsAttributes,
-			...BorderOptionsAttributes
+			...PaddingOptionsAttributes
 		},
 		edit: props => {
 			const {
@@ -87,6 +89,8 @@ export default registerBlockType(
 					align,
 					caption,
 					CSSWidth,
+					dataComponentName,
+					dataComponentOptions, 
 					imgID,
 					imgURL,
 					placeholder,
@@ -128,13 +132,13 @@ export default registerBlockType(
 
 			return [
 				<InspectorControls>
+					<BorderOptions
+						{ ...props }
+					/>
 					<MarginOptions
 						{ ...props }
 					/>
 					<PaddingOptions
-						{ ...props }
-					/>
-					<BorderOptions
 						{ ...props }
 					/>
 					<PanelBody title={ __( 'Image Settings', 'flexlayout' ) }>
@@ -153,6 +157,9 @@ export default registerBlockType(
 							} }
 						/>
 					</PanelBody>
+					<DataComponentNameOptions
+						{ ...props }
+					/>
 				</InspectorControls>,
 				<BlockControls>
 					<AlignmentToolbar
@@ -162,13 +169,17 @@ export default registerBlockType(
 						} }
 					/>
 				</BlockControls>,
-				<div className={classnames(
-					`component-image`,
-					`block-align-${align}`,
-					...MarginOptionsClasses( props ),
-					...PaddingOptionsClasses( props ),
-					...BorderOptionsClasses( props )
-				)}>
+				<div 
+					className={classnames(
+						`component-image`,
+						`block-align-${align}`,
+						...MarginOptionsClasses( props ),
+						...PaddingOptionsClasses( props ),
+						...BorderOptionsClasses( props )
+					)}
+					data-component-name={ dataComponentName } 
+					data-component-options={ dataComponentOptions }
+				>
 					{ ! imgID ? (
 						<MediaUpload
 							onSelect={ onSelectImage }
