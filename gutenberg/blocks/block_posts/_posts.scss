@@ -5,19 +5,18 @@
 	button {
 		display: inline-block;
 		border: none;
-		padding: 1rem 2rem;
-		margin: 0;
-		text-decoration: none;
-		color: $defaultTextColor;
-		font-size: 1rem;
+		color: color('text', 'body');
 		cursor: pointer;
+		font-size: 1rem;
+		margin: 0;
+		padding: 1rem 2rem;
 		text-align: center;
+		text-decoration: none;
 	}
 
 	.posts-items {
 		display: flex;
 		flex-wrap: wrap;
-		// padding-bottom: 32px;
 		list-style: none;
 	}
 
@@ -36,9 +35,9 @@
 	}
 
 	.categories {
+		left: 0;
 		position: relative;
 		top: 0;
-		left: 0;
 
 		&:hover,
 		&:focus,
@@ -50,7 +49,7 @@
 			.cat-list {
 				display: block;
 
-				@include mediaquery('tablet-landscape') {
+				@include mediaquery(tablet-landscape) {
 					display: flex;
 				}
 			}
@@ -58,16 +57,16 @@
 	}
 
 	.pagination-nav {
-		width: 100%;
+		align-items: center;
 		display: flex;
 		justify-content: center;
-		align-items: center;
 		margin-top: 20px;
+		width: 100%;
 
 		.page-numbers {
 			&.current {
+				border-bottom: 1px solid color('text', 'body');
 				cursor: pointer;
-				border-bottom: 1px solid $defaultTextColor;
 			}
 		}
 
@@ -77,7 +76,7 @@
 
 		.next,
 		.prev {
-			border: solid $defaultTextColor;
+			border: solid color('text', 'body');
 			border-width: 0 3px 3px 0;
 			display: inline-block;
 			padding: 3px;
@@ -96,11 +95,11 @@
 	}
 
 	.pagination-wrapper {
-		display: flex;
 		align-items: center;
+		display: flex;
 		justify-content: center;
-		position: relative;
 		padding: 0 54px;
+		position: relative;
 	}
 
 	.sort-filter {
@@ -125,26 +124,26 @@
 	}
 
 	.dropdown-select {
-		padding-left: 10px;
-		font-weight: 600;
+		align-items: center;
 		cursor: pointer;
 		display: flex;
-		align-items: center;
+		font-weight: 600;
+		padding-left: 10px;
 
-		@include mediaquery('tablet-landscape') {
+		@include mediaquery(tablet-landscape) {
 			padding: 0 10px;
 		}
 		
 		&::after {
 			content: '';
-			width: 0;
 			height: 0;
 			border-left: 5px solid transparent;
 			border-right: 5px solid transparent;
-			border-top: 5px solid $defaultTextColor;
-			transition: transform .3s;
+			border-top: 5px solid color('text', 'body');
 			margin-left: 10px;
 			margin-bottom: 2px;
+			transition: transform .3s;
+			width: 0;
 		}
 	}
 
@@ -153,51 +152,51 @@
 	}
 
 	.dropdown-list {
+		border: 1px color('secondary', 'lighterGray') solid;
 		display: none;
 		flex-direction: column;
+		left: 0;
+		overflow: hidden;
 		position: absolute;
 		top: 100%;
-		left: 0;
-		border: 1px $borderColor solid;
-		overflow: hidden;
 		width: 100%;
 		z-index: 10;
 	}
 
 	.dropdown-button {
-		background: $white;
+		background: color('secondary', 'white');
 		font-weight: 600;
 		padding: 10px;
-		width: 100%;
 		text-align: left;
+		width: 100%;
 	}
 
 	.cat-list {
 		display: none;
 	
-		@include mediaquery('tablet-landscape') {
+		@include mediaquery(tablet-landscape) {
 			display: block;
 		}
 	}
 
 	.cat-dropdown {
-		display: block;
 		cursor: pointer;
+		display: block;
 
-		@include mediaquery('tablet-landscape') {
+		@include mediaquery(tablet-landscape) {
 			display: none;
 		}
 
 		&::after {
-			content: '';
-			width: 0;
-			height: 0;
 			border-left: 5px solid transparent;
 			border-right: 5px solid transparent;
-			border-top: 5px solid $defaultTextColor;
+			border-top: 5px solid color('text', 'body');
+			content: '';
+			height: 0;
 			transition: transform .3s;
-			margin-left: 10px;
 			margin-bottom: 2px;
+			margin-left: 10px;
+			width: 0;
 		}
 	}
 

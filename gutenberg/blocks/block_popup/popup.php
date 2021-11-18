@@ -130,7 +130,12 @@ function render_popup_block($attributes, $content) {
 	<script type=\"text/template\" data-popup-tpl=\"{$popupName}\">
 		<div {$id} class=\"{$class}\" data-section-id=\"section-{$sectionDataId}\" {$dataComponentName} {$dataComponentOptions}>
 			{$overlay}
-			{$styleBlock}{$content}{$innerContent}
+			<div class=\"popup\">
+				<button class=\"close-button\" aria-label=\"close popup\"></button>
+				<div class=\"popup-content-container\">
+					{$styleBlock}{$content}{$innerContent}
+				</div>
+			</div>
 		</div>
 	</script>";
 
