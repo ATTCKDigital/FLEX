@@ -1,13 +1,9 @@
-/**
- * WordPress dependencies
- */
+// WordPress dependencies
 import { Component } from '@wordpress/element';
 import { BACKSPACE, DELETE, F10 } from '@wordpress/keycodes';
 import classnames from 'classnames';
 
-/**
- * Internal dependencies
- */
+// Internal dependencies
 const { wp } = window;
 const { __ } = wp.i18n;
 const {
@@ -15,32 +11,32 @@ const {
 	InnerBlocks,
 } = wp.blockEditor;
 
-// Import all of our Margin Options requirements.
+// Internal dependencies
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
-// Import all of our Padding Options requirements.
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
-// Import all of our Border Options requirements.
 import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
-// Import all of our Background Options requirements.
 import BackgroundColorOptions, { BackgroundColorOptionsAttributes, BackgroundColorOptionsInlineStyles } from '../../components/gb-component_background-color';
-
 
 function isTmceEmpty( editor ) {
 	// When tinyMce is empty the content seems to be:
 	// <p><br data-mce-bogus="1"></p>
 	// avoid expensive checks for large documents
 	const body = editor.getBody();
+
 	if ( body.childNodes.length > 1 ) {
 		return false;
 	} else if ( body.childNodes.length === 0 ) {
 		return true;
 	}
+
 	if ( body.childNodes[ 0 ].childNodes.length > 1 ) {
 		return false;
 	}
+
 	return /^\n?$/.test( body.innerText || body.textContent );
 }
 
+// Register block
 export default class ClassicEdit extends Component {
 	constructor( props ) {
 		super( props );
@@ -82,6 +78,7 @@ export default class ClassicEdit extends Component {
 	initialize() {
 		const { clientId } = this.props;
 		const { settings } = window.wpEditorL10n.tinymce;
+		
 		wp.oldEditor.initialize( `editor-${ clientId }`, {
 			tinymce: {
 				...settings,

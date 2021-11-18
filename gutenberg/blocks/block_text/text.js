@@ -1,43 +1,50 @@
-/**
- * WordPress dependencies
- */
+// Block dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js'
 import edit from './text-edit';
 
-/**
- * Internal block libraries
- */
+// Internal dependencies
+const { wp } = window;
 const { __ } = wp.i18n;
+
+const { registerBlockType } = wp.blocks;
+
 const {
-	registerBlockType,
-} = wp.blocks;
-const {
-	InspectorControls,
+	AlignmentToolbar,
+	BlockAlignmentToolbar,
+	BlockControls,
 	InnerBlocks,
+	InspectorControls,
+	MediaUpload,
+	RichText,
+	URLInput,
 } = wp.blockEditor;
 
-/**
- * Internal dependencies
- */
-// Import all of our Margin Options requirements.
+const {
+	Button,
+	ButtonGroup,
+	Dashicon,
+	IconButton,
+	PanelBody,
+	PanelRow,
+	TextControl,
+	Toolbar,
+	ToolbarButton,
+	Tooltip,
+} = wp.components;
+
+// Internal dependencies
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
-// Import all of our Border Options requirements.
 import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
-// Import all of our Padding Options requirements.
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
-// Import all of our Text Color Options requirements.
 import TextColorOptions, { TextColorAttributes, TextColorClasses, TextColorInlineStyles } from '../../components/gb-component_text-colors';
-// Import all of our Background Options requirements.
 import BackgroundColorOptions, { BackgroundColorOptionsAttributes, BackgroundColorOptionsInlineStyles } from '../../components/gb-component_background-color';
 
-/**
- * Register block
- */
+// Register block
 export default registerBlockType(
 	'flexlayout/text',
 	{
-		title: __( 'Text', 'block title' ),
+		title: __( 'Text', 'Rich Text' ),
 		description: __( 'Provides a rich-text editing toolbar' ),
 		icon: icons.text,
 		category: 'common',
@@ -46,6 +53,7 @@ export default registerBlockType(
 			__( 'Text', 'flexlayout' ),
 			__( 'WYSIWYG', 'flexlayout' ),
 			__( 'TinyMCE', 'flexlayout' ),
+			__( 'p', 'flexlayout' ),
 		],
 		attributes: {
 			content: {
@@ -56,6 +64,7 @@ export default registerBlockType(
 			...BorderOptionsAttributes,
 			...BackgroundColorOptionsAttributes
 		},
+		innerBlocks: [],
 		supports: {
 			className: true,
 			customClassName: true,
@@ -64,10 +73,90 @@ export default registerBlockType(
 			reusable: false,
 		},
 
-		edit,
+		edit: props => {
+			const { 
+				attributes: { 
+					align,
+					content, 
+					placeholder
+				}, 
+				className,
+				setAttributes
+			} = props;
 
+			const onChangeMessage = content => { 
+				console.log('onChangeMessage: ', onChangeMessage);
+
+				setAttributes( { 
+					content 
+				} ); 
+			};
+			
+			return [
+				<InspectorControls>
+					<BackgroundColorOptions
+						{ ...props }
+					/>
+					<TextColorOptions
+						{ ...props }
+					/>
+					<BorderOptions
+						{ ...props }
+					/>
+					<MarginOptions
+						{ ...props }
+					/>
+					<PaddingOptions
+						{ ...props }
+					/>
+					<PanelBody title={ __( 'Paragraph Alignment', 'flexlayout' ) } initialOpen={ false }>
+						<p>{ __( ' Alignment', 'flexlayout' ) }</p>
+						<AlignmentToolbar
+							value={ align }
+							initialOpen={ false }
+							onChange={ ( nextAlign ) => {
+								setAttributes( { align: nextAlign } );
+							} }
+						/>
+					</PanelBody>
+				</InspectorControls>,
+				<div
+					className={ classnames(
+						`component-paragraph`,
+						`align-${align}`,
+						className,
+						...MarginOptionsClasses( props ),
+						...PaddingOptionsClasses( props ),
+						...BorderOptionsClasses( props ),
+						...TextColorClasses( props ),
+					)}
+				>
+					<RichText
+						className={ classnames(
+							// `align-${align}`,
+							// ...MarginOptionsClasses( props ),
+							// ...PaddingOptionsClasses( props ),
+							// ...BorderOptionsClasses( props ),
+							...TextColorClasses( props ),
+						)}
+						identifier="content"
+						formattingControls = { ['bold', 'italic', 'strikethrough', 'link'] }
+						multiline='p' // <-- This is a critical differentiatorfrom the heading block
+						onChange={ onChangeMessage }
+						onRemove={ () => onReplace( [] ) }
+						placeholder={ placeholder || __( 'Rich text…' ) }
+						style={ {
+							textAlign: align,
+							...TextColorInlineStyles( props ),
+							...BackgroundColorOptionsInlineStyles( props )
+						} }
+						value={ content }
+					/>
+				</div>
+			];
+		},
 		save() {
-			return null;
+			return <InnerBlocks.Content />;
 		},
 	},
 );
