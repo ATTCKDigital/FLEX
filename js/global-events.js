@@ -640,6 +640,31 @@ FLEX.GlobalEvents.initGlobalEvents = function () {
 	});
 };
 
+// Add jQuery support for passive event listeners
+// Improves page speed performance: 
+// — https://web.dev/uses-passive-event-listeners/?utm_source=lighthouse&utm_medium=unknown
+// — https://stackoverflow.com/questions/60357083/does-not-use-passive-listeners-to-improve-scrolling-performance-lighthouse-repo
+$.event.special.touchstart = {
+    setup: function( _, ns, handle ) {
+        this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
+    }
+};
+$.event.special.touchmove = {
+    setup: function( _, ns, handle ) {
+        this.addEventListener("touchmove", handle, { passive: !ns.includes("noPreventDefault") });
+    }
+};
+$.event.special.wheel = {
+    setup: function( _, ns, handle ){
+        this.addEventListener("wheel", handle, { passive: true });
+    }
+};
+$.event.special.mousewheel = {
+    setup: function( _, ns, handle ){
+        this.addEventListener("mousewheel", handle, { passive: true });
+    }
+};
+
 
 // Trigger scroll event in case anything is in a partial-state waiting
 // for scroll (e.g., initial nav opacity)
