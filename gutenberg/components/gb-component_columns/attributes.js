@@ -35,6 +35,10 @@ const ColumnOptionsAttributes = {
 		type: 'string',
 		default: 'inherit',
 	},
+	columnXL2: {
+		type: 'string',
+		default: 'inherit',
+	},
 	column24Default: {
 		type: 'string',
 	},
@@ -51,6 +55,9 @@ const ColumnOptionsAttributes = {
 		type: 'string',
 	},	
 	column24XL: {
+		type: 'string',
+	},
+	column24XL2: {
 		type: 'string',
 	},
 };

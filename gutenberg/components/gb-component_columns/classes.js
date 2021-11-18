@@ -12,6 +12,7 @@ function ColumnOptionsClasses( props ) {
 		props.attributes.columnTabletLandscape && props.attributes.columnTabletLandscape !== 'inherit' ? `flex-tablet-landscape-${ props.attributes.columnTabletLandscape }-${ props.attributes.columnCount }` : null,
 		props.attributes.columnDesktop && props.attributes.columnDesktop !== 'inherit' ? `flex-desktop-${ props.attributes.columnDesktop }-${ props.attributes.columnCount }` : null,
 		props.attributes.columnXL && props.attributes.columnXL !== 'inherit' ? `flex-xl-${ props.attributes.columnXL }-${ props.attributes.columnCount }` : null,
+		props.attributes.columnXL2 && props.attributes.columnXL2 !== 'inherit' ? `flex-xl2-${ props.attributes.columnXL2 }-${ props.attributes.columnCount }` : null,
 	];
 }
 

@@ -33,6 +33,10 @@ const COLUMN_OPTIONS_ATTRIBUTES = [
 		'type' => 'string',
 		'default' => 'inherit',
 	],
+	'columnXL2' => [
+		'type' => 'string',
+		'default' => 'inherit',
+	],
 	'column24Default' => [
 		'type' => 'string',
 	],
@@ -49,6 +53,9 @@ const COLUMN_OPTIONS_ATTRIBUTES = [
 		'type' => 'string',
 	],	
 	'column24XL' => [
+		'type' => 'string',
+	],
+	'column24XL2' => [
 		'type' => 'string',
 	],
 ];

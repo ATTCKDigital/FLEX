@@ -10,5 +10,6 @@ function column_options_classes( $attributes ) {
 	$class .= array_key_exists('columnTabletLandscape', $attributes) && $attributes['columnTabletLandscape'] != 'inherit' ? " flex-tablet-landscape-{$attributes['columnTabletLandscape']}-{$attributes['columnCount']}" : '';
 	$class .= array_key_exists('columnDesktop', $attributes) && $attributes['columnDesktop'] != 'inherit' ? " flex-desktop-{$attributes['columnDesktop']}-{$attributes['columnCount']}" : '';
 	$class .= array_key_exists('columnXL', $attributes) && $attributes['columnXL'] != 'inherit' ? " flex-xl-{$attributes['columnXL']}-{$attributes['columnCount']}" : '';
+	$class .= array_key_exists('columnXL2', $attributes) && $attributes['columnXL2'] != 'inherit' ? " flex-xl2-{$attributes['columnXL2']}-{$attributes['columnCount']}" : '';
 	return $class;
 }
