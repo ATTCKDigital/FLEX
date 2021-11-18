@@ -34,6 +34,16 @@ function MarginOptionsClasses( props ) {
 		props.attributes.marginDesktopRight && props.attributes.marginDesktopRight !== 'inherit'? `margin-desktop-right-${ props.attributes.marginDesktopRight }` : null,
 		props.attributes.marginDesktopLeft && props.attributes.marginDesktopLeft !== 'inherit'? `margin-desktop-left-${ props.attributes.marginDesktopLeft }` : null,
 		props.attributes.marginDesktopBottom && props.attributes.marginDesktopBottom !== 'inherit'? `margin-desktop-bottom-${ props.attributes.marginDesktopBottom }` : null,
+
+		props.attributes.marginXlTop && props.attributes.marginXlTop !== 'inherit' ? `margin-xl-top-${ props.attributes.marginXlTop }` : null,
+		props.attributes.marginXlRight && props.attributes.marginXlRight !== 'inherit'? `margin-xl-right-${ props.attributes.marginXlRight }` : null,
+		props.attributes.marginXlLeft && props.attributes.marginXlLeft !== 'inherit'? `margin-xl-left-${ props.attributes.marginXlLeft }` : null,
+		props.attributes.marginXlBottom && props.attributes.marginXlBottom !== 'inherit'? `margin-xl-bottom-${ props.attributes.marginXlBottom }` : null,
+
+		props.attributes.marginXl2Top && props.attributes.marginXl2Top !== 'inherit' ? `margin-xl2-top-${ props.attributes.marginXl2Top }` : null,
+		props.attributes.marginXl2Right && props.attributes.marginXl2Right !== 'inherit'? `margin-xl2-right-${ props.attributes.marginXl2Right }` : null,
+		props.attributes.marginXl2Left && props.attributes.marginXl2Left !== 'inherit'? `margin-xl2-left-${ props.attributes.marginXl2Left }` : null,
+		props.attributes.marginXl2Bottom && props.attributes.marginXl2Bottom !== 'inherit'? `margin-xl2-bottom-${ props.attributes.marginXl2Bottom }` : null,
 	];
 }
 

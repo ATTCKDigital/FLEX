@@ -28,6 +28,14 @@ function margin_options_classes( $attributes ) {
 	$class .= array_key_exists('marginDesktopRight', $attributes) && $attributes['marginDesktopRight'] != 'inherit' ? " margin-desktop-right-{$attributes['marginDesktopRight']} " :'';
 	$class .= array_key_exists('marginDesktopLeft', $attributes) && $attributes['marginDesktopLeft'] != 'inherit' ? " margin-desktop-left-{$attributes['marginDesktopLeft']} " :'';
 	$class .= array_key_exists('marginDesktopBottom', $attributes) && $attributes['marginDesktopBottom'] != 'inherit' ? " margin-desktop-bottom-{$attributes['marginDesktopBottom']} " :'';
+	$class .= array_key_exists('marginXlTop', $attributes) && $attributes['marginXlTop'] != 'inherit' ? " margin-desktop-top-{$attributes['marginXlTop']} " :'';
+	$class .= array_key_exists('marginXlRight', $attributes) && $attributes['marginXlRight'] != 'inherit' ? " margin-desktop-right-{$attributes['marginXlRight']} " :'';
+	$class .= array_key_exists('marginXlLeft', $attributes) && $attributes['marginXlLeft'] != 'inherit' ? " margin-desktop-left-{$attributes['marginXlLeft']} " :'';
+	$class .= array_key_exists('marginXlBottom', $attributes) && $attributes['marginXlBottom'] != 'inherit' ? " margin-desktop-bottom-{$attributes['marginXlBottom']} " :'';
+	$class .= array_key_exists('marginXl2Top', $attributes) && $attributes['marginXl2Top'] != 'inherit' ? " margin-desktop-top-{$attributes['marginXl2Top']} " :'';
+	$class .= array_key_exists('marginXl2Right', $attributes) && $attributes['marginXl2Right'] != 'inherit' ? " margin-desktop-right-{$attributes['marginXl2Right']} " :'';
+	$class .= array_key_exists('marginXl2Left', $attributes) && $attributes['marginXl2Left'] != 'inherit' ? " margin-desktop-left-{$attributes['marginXl2Left']} " :'';
+	$class .= array_key_exists('marginXl2Bottom', $attributes) && $attributes['marginXl2Bottom'] != 'inherit' ? " margin-desktop-bottom-{$attributes['marginXl2Bottom']} " :'';
 
 	return $class;
 }

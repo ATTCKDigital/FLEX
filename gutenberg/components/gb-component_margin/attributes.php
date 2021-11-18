@@ -84,4 +84,32 @@ const MARGIN_OPTIONS_ATTRIBUTES = [
 	 'marginDesktopLeft' => [
 		 'type' => 'string',
 	 ],
+
+
+	 'marginXlTop' => [
+		 'type' => 'string',
+	 ],
+	 'marginXlRight' => [
+		 'type' => 'string',
+	 ],
+	 'marginXlBottom' => [
+		 'type' => 'string',
+	 ],
+	 'marginXlLeft' => [
+		 'type' => 'string',
+	 ],
+
+
+	 'marginXl2Top' => [
+		 'type' => 'string',
+	 ],
+	 'marginXl2Right' => [
+		 'type' => 'string',
+	 ],
+	 'marginXl2Bottom' => [
+		 'type' => 'string',
+	 ],
+	 'marginXl2Left' => [
+		 'type' => 'string',
+	 ],
 ];
