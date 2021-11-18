@@ -27,7 +27,7 @@ function DataComponentNameOptions( props ) {
 		>
 			<PanelRow>
 				<TextControl
-						label="Component Name(s) (e.g., Carousel, ColorTile, Newsletter, VideoPopup)"
+						label="Component Name(s) (e.g., Carousel, ColorTile, CopyLink, DropdownSection, Newsletter, VideoPopup), & remember to add 'component' to Additional CSS class(es) below."
 						value={ props.attributes.dataComponentName }
 						onChange={ setComponentName }
 				/>
