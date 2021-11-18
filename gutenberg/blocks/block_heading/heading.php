@@ -42,6 +42,12 @@ function register_heading_block() {
 					'type' => 'string',
 					'default' => '',
 				],
+				'dataComponentName' => [
+					'type' => 'string',
+				],
+				'dataComponentOptions' => [
+					'type' => 'string',
+				],
 				'content' => [
 					'type' => 'string',
 					'default' => '',
@@ -50,11 +56,11 @@ function register_heading_block() {
 					'type' => 'string',
 					'default' => ''
 				],
-				'imgURL' => [
-					'type' => 'string',
-				],
 				'imgID' => [
 					'type' => 'number',
+				],
+				'imgURL' => [
+					'type' => 'string',
 				],
 				'level' => [
 					'type' => 'number',
@@ -125,6 +131,23 @@ function render_heading_block($attributes) {
 	// 	$wrapperClass .= ' hide-hanging-quote hanging-quote-' . $hangingQuote;
 	// }
 
+	// Apply data-component-name
+	$dataComponentName = array_key_exists('dataComponentName', $attributes) ? " data-component-name=\"{$attributes['dataComponentName']}\"" : "";
+	$dataComponentOptions = "";
+
+	if (array_key_exists('dataComponentOptions', $attributes)) {
+		$dataOptions = htmlspecialchars($attributes['dataComponentOptions']);
+		$dataComponentOptions = " data-component-options=\"{$dataOptions}\"";
+	}
+	
+	// FLEX JS components get initialized when a DOM element has 
+	// a `component` class attribute AND a `data-component-name` attribute
+	// NOTE: data-component-options is optional but must be stringified JSON
+	if (array_key_exists('dataComponentName', $attributes)) {
+		$dataComponentNameLowercase = strtolower($attributes['dataComponentName']);
+		$class .= ' component component-' . $dataComponentNameLowercase;
+	}
+
 	// Build inline style values
 	$style = '';
 
@@ -147,7 +170,7 @@ function render_heading_block($attributes) {
 
 	// Parse links
 	if ($url) {
-		$link = '<a href="'.$url.'">';
+		$link = '<a href="' . $url . '">';
 		$linkClose = '</a>';
 	} else {
 		$link = '';
@@ -164,10 +187,12 @@ function render_heading_block($attributes) {
 
 	$output  = "<div class=\"{$wrapperClass}\" {$style}>";
 	$output .= 		"{$link}{$image}{$linkClose}";
-	$output .= 		"<{$tagName} class=\"{$class}\">";
+	$output .= 		"<{$tagName} class=\"{$class}\" {$dataComponentName} {$dataComponentOptions}>";
 	$output .= 			"{$link}{$attributes['content']}{$linkClose}";
 	$output .= 		"</{$tagName}>";
 	$output .= "</div>";
+
+	// $output = $attributes['content'];
 
 	return $output;
 }
