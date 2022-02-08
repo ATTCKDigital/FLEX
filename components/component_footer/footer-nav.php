@@ -6,6 +6,6 @@
 			echo Utils::render_template('config/theme-includes/menu.php', array(
 				'menuLocation' => 'footer',
 			));
-		?>		
+		?>
 	</ul>
 </nav>
