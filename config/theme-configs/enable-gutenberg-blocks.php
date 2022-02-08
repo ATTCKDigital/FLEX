@@ -10,4 +10,4 @@ function flexlayout_allowed_block_types( $allowed_blocks ) {
 	return $blocks;
 }
 
-add_filter( 'allowed_block_types', 'flexlayout_allowed_block_types' );
+add_filter( 'allowed_block_types_all', 'flexlayout_allowed_block_types' );
