@@ -4,6 +4,8 @@
 	 * Description: Wordpress template for search results
 	 *
 	 */
+	echo '<!-- Template: FLEX/search.php -->';
+
 	get_header();
 
 	$searchQuery = get_search_query();
