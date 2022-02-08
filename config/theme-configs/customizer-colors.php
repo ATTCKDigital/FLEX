@@ -112,8 +112,11 @@ function tabor_gutenberg_colors() {
 
 	// Create new PHP file with vars
 	$cssVarsFile = fopen(get_template_directory().'/scss/_css-vars.scss', 'w');
+
+	// NOTE: If you are getting this error:
+	// Warning: fwrite() expects parameter 1 to be resource, bool given in ...
+	// TODO: Include solution here. -DP
 	fwrite($cssVarsFile, $cssVars);
-	
 }
 
 add_action( 'after_setup_theme', 'tabor_gutenberg_colors' );
