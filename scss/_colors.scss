@@ -4,7 +4,7 @@ $popupColor: rgba(0, 0, 0, .7);
 // $defaultTextColor: var(--color-text-body);
 // $borderColor: #DFDFDF;
 // $white: #FFFFFF;
-// $black: #000000;
+$black: #000000;
 
 // Brand
 $brand-color-key: 'red' !default;
@@ -18,8 +18,14 @@ $brand-colors: (
 		'secondary':var(--color-brand-secondary),
 		'accent': 	var(--color-brand-accent),
 	),
+	'primary': (
+		'one':		var(--color-primary-one),
+		'two':		var(--color-primary-two),
+		'three':	var(--color-primary-three),
+		'three-muted':var(--color-primary-three-muted),
+	),
 	'secondary': (
-		'black':      #000000,
+		'black':	  #000000,
 		'green': 	  #6D8D6F,
 		'grey': 	  #5E7185,
 		'pink': 	  #D48D86,
@@ -27,7 +33,9 @@ $brand-colors: (
 		'lightGray':  #CCCCCC,
 		'lighterGray':#DFDFDF, // color('secondary', 'lighterGray')
 		'purple': 	  #873B75,
-		'white':      #FFFFFF,
+		'white':	  #FFFFFF,
+		'one': 		  #D6CECC,
+		'two': 		  #F1EAE3,
 	),
 	'text': (
 		'body': 	var(--color-text-body),

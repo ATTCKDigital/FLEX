@@ -61,7 +61,9 @@ textarea {
 	height: 200px;
 }
 
-label, .wpcf7-list-item-label, .wpcf7-checkbox .wpcf7-list-item-label {
+label, 
+.wpcf7-list-item-label, 
+.wpcf7-checkbox .wpcf7-list-item-label {
 	display: block;
 	font-size: px-to-rem(15px);
 	letter-spacing: .2px;
