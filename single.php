@@ -5,39 +5,58 @@
  * Copy template and rename single-customposttype.php to create 
  * different templates for Custom Post Types (CPTs).
  */
+	echo '<!-- Template: FLEX/single.php -->';
+
 	get_header();
 
 	$postID = get_the_ID();
 	
-	if (post_password_required()) {
-		// If post is password protected, get the password form.
-		// Edit form markup in child theme: config/theme-configs/password-protection.php
-		echo get_the_password_form(); 
-	} else {
-		if (have_posts()) : while (have_posts()) : the_post();
-				echo Utils::render_template('components/component_post/post-header.php');
+	// Add background image or color settings from page properties
+	$bodyBackground = get_field('body_background_desktop', $postID);
+	$bodyBackgroundMobile = get_field('body_background_mobile', $postID);
+	$bodyBackgroundColor = get_field('body_background_color', $postID);
 
-				// If using Gutenberg blocks
-				if (has_blocks($post->post_content)) {
-					the_content();
-
-
-				// If using Classic Editor
-				} else {
-					echo Utils::render_template('components/component_post/post-content.php');
+	if ($bodyBackground || $bodyBackgroundMobile || $bodyBackgroundColor) {
+		?>
+			<style type="text/css">
+				body {
+					background-image: url('<?= wp_get_attachment_image_url( $bodyBackground, 'full' );?>');
+					background-repeat: no-repeat;
+					background-position: top center;
+					background-size: 100% auto;
+					background-color: <?= $bodyBackgroundColor;?>
 				}
 
-				echo Utils::render_template('components/component_post/post-footer.php');
-				endwhile;
-		else:
-			//show the 404 error message if there is no content for this page
-			echo Utils::render_template('config/theme-includes/error-404.php');
+				@media only screen and (max-width: 1099px) {
+					body {
+						background-size: cover;
+					}
+				}
 
-		endif;
-
-		// Reset the query after we are done outputting the page
-		wp_reset_query();
+				@media only screen and (max-width: 1023px) {
+					body {
+						background-image: url('<?= wp_get_attachment_image_url( $bodyBackgroundMobile, 'full' );?>');
+						background-size: cover;
+					}
+				}
+			</style>
+		<?php
 	}
-	
+
+	if (have_posts()) : 
+		while (have_posts()) : the_post();
+			// If using Gutenberg blocks
+			if ( has_blocks( $post->post_content ) ) {
+				the_content();
+			
+			// If using Classic Editor
+			} else {
+				echo Utils::render_template('components/component_post/page.php');
+			}
+		endwhile;
+	else:
+		_e("Sorry, no pages matched your criteria.");
+	endif;
+
 	get_footer();
 ?>
