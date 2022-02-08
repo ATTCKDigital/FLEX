@@ -8,11 +8,11 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/ATTCKDigital/BuildTemplateWordPress.git"
+		"url": "git+https://github.com/ATTCKDigital/FLEX.git"
 	},
 	"author": "ATTCK",
 	"bugs": {
-		"url": "https://github.com/ATTCKDigital/BuildTemplateWordPress/issues"
+		"url": "https://github.com/ATTCKDigital/FLEX/issues"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.3.4",
