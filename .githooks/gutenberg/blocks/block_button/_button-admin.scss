@@ -64,7 +64,7 @@
 		@extend .cta-negative;
 	}
 
-	color: $black;
+	color: color('secondary', 'black');
 }
 
 // .editor-block-styles__item[aria-label="Default"] .editor-block-styles__item-preview,

@@ -135,7 +135,7 @@
 
 		&.current-menu-item {
 			a:after {
-				background-color: $black;
+				background-color: color('secondary', 'black');
 				opacity: 1;
 			}
 		}
@@ -145,7 +145,7 @@
 				opacity: .7;
 
 				a:after {
-					background-color: $black;
+					background-color: color('secondary', 'black');
 					opacity: .7;
 				}
 			}
