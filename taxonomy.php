@@ -1,9 +1,12 @@
 <?php
 	/**
 	 * Template: Taxonomy Archive
-	 * Description: Wordpress template for a taxonomy archive page. Copy and re-name to taxonomy-taxonomyname-termname.php for taxonomy specific archives.
-	 *
+	 * Description: Wordpress template for a taxonomy archive page. 
+	 * Copy and re-name to taxonomy-taxonomyname-termname.php for 
+	 * taxonomy specific archives.
 	 */
+	echo '<!-- Template: FLEX/taxonomy.php -->';
+
     get_header();
 
     $term = get_queried_object(); 
