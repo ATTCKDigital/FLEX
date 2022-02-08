@@ -37,19 +37,19 @@
 	}
 
 	.quote-source {
+		@include primary-regular;
 		display: block;
 		font-size: px-to-rem(16px);
 		margin-bottom: $gap;
-		@include primary-regular;
 	}
 
 	.quote-company {
+		@include eyebrow-semi;
 		color: color('text', 'primary');
 		display: block;
 		font-size: px-to-rem(12px);
 		text-transform: uppercase;
 		letter-spacing: 2px;
-		@include secondary-semi;
 	}
 
 	.image-wrapper {
