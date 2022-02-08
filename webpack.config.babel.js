@@ -1,12 +1,13 @@
 import CopyPlugin from 'copy-webpack-plugin';
 import ImageminPlugin from 'imagemin-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+// import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+import SpritePlugin from 'extract-svg-sprite-webpack-plugin';
 import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
-import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
 import WebpackNotifierPlugin from 'webpack-notifier';
 import { sync } from 'glob';
-
 import path from 'path';
 import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
@@ -65,7 +66,7 @@ module.exports = smp.wrap({
 		'wysiwyg': path.resolve(__dirname, './scss/wysiwyg.scss'),
 	},
 
-	devtool: isDevEnv ? 'cheap-eval-source-map' : false,
+	devtool: isDevEnv ? 'cheap-module-source-map' : false,
 	mode: process.env.NODE_ENV,
 	target: 'web',
 	watch: isDevEnv,
@@ -95,15 +96,15 @@ module.exports = smp.wrap({
 				use: {
 					loader: 'babel-loader',
 					options: {
-							// TODO: these should not be necessary
-							// should be included via .bablerc
-							// but for some crazy reason admin.js won't compile without these
-							presets: [
-								'@wordpress/default',
-								'@babel/env',
-								'@babel/react',
-							],
-						}
+						// TODO: these should not be necessary
+						// should be included via .bablerc
+						// but for some crazy reason admin.js won't compile without these
+						presets: [
+							'@wordpress/default',
+							'@babel/env',
+							'@babel/react',
+						],
+					}
 				},
 			},
 			{
@@ -118,6 +119,10 @@ module.exports = smp.wrap({
 				],
 			},
 			{
+				test: /\.svg$/,
+				loader: SpritePlugin.loader
+			},
+			{
 				test: /\.(sa|sc|c)ss$/,
 				use: [
 					// 'production' !== process.env.NODE_ENV ? 'style-loader' : MiniCssExtractPlugin.loader,
@@ -125,14 +130,21 @@ module.exports = smp.wrap({
 					{
 						loader: 'css-loader',
 						options: {
-							sourceMap: isDevEnv
+							sourceMap: isDevEnv,
+							url: false
 						}
+					},
+					{
+						loader: SpritePlugin.cssLoader
 					},
 					{
 						loader: 'postcss-loader',
 						options: {
-							config: {
-								path: path.resolve(__dirname, './postcss.config.js'),
+							postcssOptions: {
+								config: path.resolve(__dirname, './postcss.config.js')
+								// config: {
+								// 	path: path.resolve(__dirname, './postcss.config.js'),
+								// },
 							},
 							sourceMap: isDevEnv
 						}
@@ -150,16 +162,17 @@ module.exports = smp.wrap({
 
 	optimization: {
 		minimizer: [
-			new UglifyJsPlugin({}),
-			new OptimizeCSSAssetsPlugin({
-				cssProcessorPluginOptions: {
-					preset: ['default', {
-						discardComments: {
-							removeAll: true
-						}
-					}],
-				},
-			}),
+			new TerserPlugin(),
+			new CssMinimizerPlugin()
+			// new OptimizeCSSAssetsPlugin({
+			// 	cssProcessorPluginOptions: {
+			// 		preset: ['default', {
+			// 			discardComments: {
+			// 				removeAll: true
+			// 			}
+			// 		}],
+			// 	},
+			// }),
 		],
 	},
 
@@ -167,10 +180,12 @@ module.exports = smp.wrap({
 		...plugins,
 		new WebpackNotifierPlugin(),
 
+		new SpritePlugin(),
+
 		new MiniCssExtractPlugin({
 			filename: '[name].css',
 			chunkFilename: '[id].[hash].css',
-			path: path.resolve(__dirname, './dist/css'),
+			// path: path.resolve(__dirname, './dist/css'),
 		}),
 
 		// Copy contents of ./assets -> ./dist
