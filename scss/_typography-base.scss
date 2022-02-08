@@ -45,32 +45,32 @@ hr {
 	margin: 25px auto;
 }
 
-small {
-	font-size: 12px;
+.link {
+	color: color('text', 'link');
+	text-decoration: none;
+	transition: color .3s ease-out;
+
+	@include mediaquery(desktop) {
+		&:hover {
+			color: color('text', 'hover');
+		}
+	}
 }
 
-p, 
-.body1, 
-.body {
+p {
+	@include primary-regular;
 	font-size: 14px;
 	letter-spacing: 0;
 	line-height: 1.3;
 	margin-bottom: $gap;
-	@include primary-regular;
+
+	a {
+		@extend .link;
+	} 
 }
 
-p {
-	a {
-		color: color('text', 'link');
-		text-decoration: none;
-		transition: color .3s ease-out;
-
-		@include mediaquery(desktop)  {
-			&:hover {
-				color: color('text', 'hover');
-			}
-		}
-	} 
+small {
+	font-size: 12px;
 }
 
 span {
@@ -99,10 +99,10 @@ u {
 	font-style: inherit;
 }
 
-// Error & Message Styles
-.error {
-	@extend .body;
-	color: red;
+// TODO: Notate the distinction between body and body1. -DP
+.body1, 
+.body {
+	@extend p;
 }
 
 .display-block {
@@ -113,64 +113,9 @@ u {
 	display: inline-block;
 }
 
-.lowercase {
-	text-transform: lowercase;
-}
-
-.nocase {
-	text-transform: none;
-}
-
-.strikethrough {
-	// for use in WYSIWYG 
-	display: inline;
-	font-family: inherit;
-	font-size:inherit;
-	font-style:inherit;
-	font-weight:inherit;
-	line-height: inherit;
-	text-decoration: line-through;
-}
-
-.underline {
-	// for use in WYSIWYG as <u></u> was deprecated in 4.7+
-	display: inline;
-	font-family: inherit;
-	font-size:inherit;
-	font-style:inherit;
-	font-weight:inherit;
-	line-height: inherit;
-	text-decoration:underline;
-}
-
-.uppercase {
-	text-transform: uppercase;
-}
-
-.text-columns, 
-.is-style-text-columns {
-	column-gap: $gap;
-
-	@include mediaquery(tablet-landscape) {
-		column-count: 2;
-		column-gap: $gap*15;
-		column-break-inside: avoid; /* Chrome, Safari, Opera */
-		page-break-inside: avoid; /* Firefox */
-		break-inside: avoid;
-	}
-}
-
-.list-columns, 
-.is-style-list-columns {
-	column-count: 2;
-	column-gap: $gap;
-	column-break-inside: avoid; /* Chrome, Safari, Opera */
-	page-break-inside: avoid; /* Firefox */
-	break-inside: avoid;
-
-	@include mediaquery(tablet-landscape) {
-		column-gap: $gap*10;
-	}
+.error {
+	@extend .body;
+	color: red;
 }
 
 .headline1,
@@ -217,4 +162,64 @@ u {
 	@include font-size($font-size-headline6);
 	line-height: 1.4;
 	letter-spacing: .2px;
+}
+
+.list-columns, 
+.is-style-list-columns {
+	column-count: 2;
+	column-gap: $gap;
+	column-break-inside: avoid; /* Chrome, Safari, Opera */
+	page-break-inside: avoid; /* Firefox */
+	break-inside: avoid;
+
+	@include mediaquery(tablet-landscape) {
+		column-gap: $gap*10;
+	}
+}
+
+.lowercase {
+	text-transform: lowercase;
+}
+
+.nocase {
+	text-transform: none;
+}
+
+// For use in WYSIWYG
+.strikethrough {
+	display: inline;
+	font-family: inherit;
+	font-size:inherit;
+	font-style:inherit;
+	font-weight:inherit;
+	line-height: inherit;
+	text-decoration: line-through;
+}
+
+.text-columns, 
+.is-style-text-columns {
+	column-gap: $gap;
+
+	@include mediaquery(tablet-landscape) {
+		break-inside: avoid;
+		column-count: 2;
+		column-gap: $gap*15;
+		column-break-inside: avoid; /* Chrome, Safari, Opera */
+		page-break-inside: avoid; /* Firefox */
+	}
+}
+
+.underline {
+	// for use in WYSIWYG as <u></u> was deprecated in 4.7+
+	display: inline;
+	font-family: inherit;
+	font-size:inherit;
+	font-style:inherit;
+	font-weight:inherit;
+	line-height: inherit;
+	text-decoration:underline;
+}
+
+.uppercase {
+	text-transform: uppercase;
 }
