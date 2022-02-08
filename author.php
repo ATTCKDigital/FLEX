@@ -4,6 +4,8 @@
  * Description: Wordpress template for an author page. 
  *
 **/
+	echo '<!-- Template: FLEX/author.php -->';
+	
     get_header();
 
     $postID = get_the_ID();

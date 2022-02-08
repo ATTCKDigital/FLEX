@@ -4,6 +4,8 @@
 	 * Description: Wordpress template for a archive page.
 	 *
 	 **/
+	echo '<!-- Template: FLEX/archive.php -->';
+	
     get_header();
 
     $term = get_queried_object(); 

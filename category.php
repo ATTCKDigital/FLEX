@@ -4,6 +4,7 @@
 	 * Description: Wordpress template for a category archive page. Copy and re-name to category-termname.php for category specific archives.
 	 *
 	 */
+	echo '<!-- Template: FLEX/category.php -->';
     get_header();
 
     $term = get_queried_object(); 
