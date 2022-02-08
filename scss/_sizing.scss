@@ -14,7 +14,7 @@ $gridColumns				: 12, 24;
 // Breakpoints
 $default					: 0px; // iPhone 4 & 5
 $phone						: 375px; // iPhone 6, 7, 8, X
-$phone-plus                 : 414px; // iPhone Plus/Max
+$phone-plus					: 414px; // iPhone Plus/Max
 $tablet-portrait			: 768px;
 $tablet-landscape			: 1024px;
 $desktop					: 1100px;
@@ -43,7 +43,7 @@ $max-xl2					: 1439px;
  * — USAGE:  font-size: px-to-rem(12px);
  */
 @function px-to-rem($size) {
-	$remSize: $size / 13px;
+	$remSize: calc($size / 13px);
 	@return #{$remSize}rem;
 }
 
