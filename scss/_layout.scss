@@ -323,14 +323,16 @@ $justifyContent: 'flex-end';
 							// Need to bump the counter up one since the $valueMax range is 150
 							// TODO: (DP) Replacing +1 with +0 for now as it's causing errors.
 							@if (($i + 1) / 10) <= 16 {
-								.offset-margin-#{$breakpoint}#{$position}-#{(($i + 1) / 10)}#{$unit} { margin-#{$position}: #{(($i + 0) / 10) * $gap}; }
-								.offset-#{$breakpoint}#{$position}-#{(($i + 0) / 10)}#{$unit} { #{$position}: #{($i + 0) * $gap}; }
+								// -----------------------------------------------------v previously set to '1' and was causing build error around 0.1x being invalid CSS
+								.offset-margin-#{$breakpoint}#{$position}-#{(calc(($i + 0) / 10))}#{$unit} { margin-#{$position}: #{(calc(($i + 0) / 10)) * $gap}; }
+								.offset-#{$breakpoint}#{$position}-#{(calc(($i + 0) / 10))}#{$unit} { #{$position}: #{($i + 0) * $gap}; }
 
 								// Prevent --0's from being generated
-								@if $i != 0 {
-									.offset-margin-#{$breakpoint}#{$position}--#{(($i + 0) / 10)}#{$unit} { margin-#{$position}: -#{(($i + 0) / 10) * $gap}; }
-									.offset-#{$breakpoint}#{$position}--#{(($i + 0) / 10) }#{$unit} { #{$position}: -#{($i + 0) * $gap}; }
-								}
+								// NOTE: Figure out why I thought 0's shouldn't be generated. -DP
+								// @if $i != 0 {
+									.offset-margin-#{$breakpoint}#{$position}--#{(($i + 0) / 10)}#{$unit} { margin-#{$position}: -#{(calc(($i + 0) / 10)) * $gap}; }
+									.offset-#{$breakpoint}#{$position}--#{(calc(($i + 0) / 10)) }#{$unit} { #{$position}: -#{($i + 0) * $gap}; }
+								// }
 							}
 						}
 
@@ -719,7 +721,9 @@ $justifyContent: 'flex-end';
 	.overflow-visible.overflow-visible { overflow: visible; }
 	.overflow-hidden.overflow-hidden { overflow: hidden; }
 
-	.relative {
+	.relative,
+	.positionrelative,
+	.positionRelative {
 		position: relative !important;
 	}
 
