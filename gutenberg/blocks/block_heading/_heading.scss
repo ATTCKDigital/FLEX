@@ -31,16 +31,16 @@
 			background: url(../assets/images/Quotation.svg) 0 0 no-repeat;
 			background-size: contain;
 			content: '';
-			position: absolute;
-			left: 0;
 			height: 50px;
-			width: 60px;
+			left: 0;
+			position: absolute;
 			top: -15px;
+			width: 60px;
 
 			@include mediaquery(tablet-landscape) {
+				height: 55px;
 				left: -95px;
 				top: 0;
-				height: 55px;
 			}
 		}
 	}
