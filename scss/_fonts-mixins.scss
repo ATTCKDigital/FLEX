@@ -1,3 +1,4 @@
+/* Headings */
 @mixin primary-light {
 	font-family: $primaryLight;
 	font-style: italic;
@@ -60,10 +61,11 @@
 
 @mixin secondary-light {
 	font-family: $secondaryLight;
-	font-style: italic;
+	font-style: normal;
 	font-weight: 300;
 }
 
+/* Body copy */
 @mixin secondary-light-italic {
 	font-family: $secondaryLightItalic;
 	font-style: italic;
@@ -118,9 +120,10 @@
 	font-weight: 700;
 }
 
+/* Subheadings */
 @mixin tertiary-light {
 	font-family: $tertiaryLight;
-	font-style: italic;
+	font-style: normal;
 	font-weight: 300;
 }
 
@@ -176,4 +179,100 @@
 	font-family: $tertiaryBoldItalic;
 	font-style: italic;
 	font-weight: 700;
+}
+
+/* Eyebrows */
+@mixin eyebrow-base {
+	/* Override in child theme */
+	text-transform: uppercase;
+}
+
+@mixin eyebrow-light {
+	@include eyebrow-base;
+	font-family: $eyebrowLight;
+	font-style: italic;
+	font-weight: 300;
+}
+
+@mixin eyebrow-light-italic {
+	@include eyebrow-base;
+	font-family: $eyebrowLight;
+	font-style: italic;
+	font-weight: 300;
+}
+
+@mixin eyebrow-regular {
+	@include eyebrow-base;
+	font-family: $eyebrowRegular;
+	font-style: normal;
+	font-weight: 300;
+}
+
+@mixin eyebrow-regular-italic {
+	@include eyebrow-base;
+	font-family: $eyebrowRegular;
+	font-style: normal;
+	font-weight: 300;
+}
+
+@mixin eyebrow-medium {
+	@include eyebrow-base;
+	font-family: $eyebrowMedium;
+	font-style: normal;
+	font-weight: 500;
+}
+
+@mixin eyebrow-medium-italic {
+	@include eyebrow-base;
+	font-family: $eyebrowMediumItalic;
+	font-style: italic;
+	font-weight: 500;
+}
+
+@mixin eyebrow-semi {
+	@include eyebrow-base;
+	font-family: $eyebrowSemi;
+	font-style: normal;
+	font-weight: 600;
+}
+
+@mixin eyebrow-semi-italic {
+	@include eyebrow-base;
+	font-family: $eyebrowSemiItalic;
+	font-style: italic;
+	font-weight: 600;
+}
+
+@mixin eyebrow-bold {
+	@include eyebrow-base;
+	font-family: $eyebrowBold;
+	font-style: normal;
+	font-weight: 700;
+}
+
+@mixin eyebrow-bold-italic {
+	@include eyebrow-base;
+	font-family: $eyebrowBoldItalic;
+	font-style: italic;
+	font-weight: 700;
+}
+
+@mixin eyebrow-small {
+	@include eyebrow-base;
+	font-family: $eyebrowLight;
+	font-size: 0.8rem;
+	font-weight: 100;
+	letter-spacing: 0.05rem;
+}
+
+.eyebrow-bold {
+	@include eyebrow-bold;
+}
+
+.eyebrow-bold-italic {
+	@include eyebrow-bold-italic;
+}
+
+.eyebrow-small {
+	@include eyebrow-small;
 }
