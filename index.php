@@ -5,6 +5,8 @@
 	 * is being used as the front page or on separate static page. If home.php 
 	 * does not exist, WordPress will use index.php.
 	 */
+	echo '<!-- Template: FLEX/index.php -->';
+
 	get_header();
 
 	$maxPages = $wp_query->max_num_pages; //Find the max number of pages for the query, necessary for "Load More"

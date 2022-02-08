@@ -6,6 +6,8 @@
 	 * does not exist, WordPress will use index.php.
 	 *
 	 */
+    echo '<!-- Template: FLEX/home.php -->';
+
     get_header();
 
     // Find the max number of pages for the query, necessary for "Load More"
