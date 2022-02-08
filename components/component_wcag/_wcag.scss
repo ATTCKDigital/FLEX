@@ -21,13 +21,12 @@
 // https://css-tricks.com/the-focus-visible-trick/
 :focus:not(:focus-visible) { outline: none }
 
-
 /* Focusing the button with a keyboard will show a dashed black line. */
 button:focus-visible,
 input[type="submit"]:focus-visible {
 	outline: 2px solid #0d53c2;
 }
-  
+
 /* Focusing the button with a mouse, 
 // touch, or stylus will show a subtle drop shadow. */
 button:focus:not(:focus-visible),
