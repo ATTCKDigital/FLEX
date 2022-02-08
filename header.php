@@ -68,5 +68,7 @@
 
 	<?php echo Utils::render_template('config/theme-includes/svg-sprite.php'); ?>
 	<?php echo Utils::render_template('components/component_nav/nav.php'); ?>
-	<div class="content-container component" data-component-name="ScrollIn Analytics CF7 WCAG">
+	<div 
+		class="content-container component" 
+		data-component-name="ScrollIn Analytics CF7 WCAG">
 		<main class="content" role="main">
