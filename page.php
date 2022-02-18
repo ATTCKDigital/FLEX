@@ -22,7 +22,7 @@
 					background-repeat: no-repeat;
 					background-position: top center;
 					background-size: 100% auto;
-					background-color: <?= $bodyBackgroundColor;?>
+					background-color: <?= $bodyBackgroundColor; ?>
 				}
 
 				@media only screen and (max-width: 1099px) {
