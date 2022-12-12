@@ -14,7 +14,7 @@ $colors = array(
 	array(
 		'default'     => '#838383',
 		'description' => '',
-		'label'       => 'Secondary Brand',
+		'label'       => 'Brand Secondary',
 		'slug'        => 'color-brand-secondary',
 	),
 
