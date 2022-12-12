@@ -9,7 +9,7 @@ function Nav($el) {
 	// Cache the body
 	var $body = $('body');
 
-	function navToggle() {
+	function navToggle(e) {
 		console.log('/FLEX/\tcomponents/\tcomponent-nav/\tnav.js', 'navToggle()');
 
 		// Open nav on hamburger click or enter press when tab focused
@@ -22,7 +22,7 @@ function Nav($el) {
 			console.log('exiting, pressed the  ' + e.key + ' key ', keyCode);
 			return;
 		} else {
-			console.log('/newclassrooms/\tcomponents/\tcomponent-nav/\tnav.js', 'navToggle(), keyCode: ', keyCode, 'key: ', e.key, 'event: ', e);
+			console.log('/FLEX/\tcomponents/\tcomponent-nav/\tnav.js', 'navToggle(), keyCode: ', keyCode, 'key: ', e.key, 'event: ', e);
 		}
 
 		// Open nav on hamburger click

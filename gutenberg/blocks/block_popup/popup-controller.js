@@ -32,11 +32,11 @@ function PopupController($el) {
 
 		// If URL was used, open new browser window and exit this function
 		switch (true) {
-			case popupName.startsWith('https://newclassrooms.org/icebergproblem'):
+			case popupName.startsWith('https://projectdomain.org/subfolder'):
 				return window.open(popupName);
 				break;
 
-			case popupName.startsWith('https://newclassrooms.org/'):
+			case popupName.startsWith('https://projectdomain.org/'):
 				return window.open(popupName, '_self');
 				break;
 

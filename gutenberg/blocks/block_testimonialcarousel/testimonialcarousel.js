@@ -2,14 +2,14 @@
 function TestimonialCarousel($el) {
 	// Cache the body
 	function bindEvents() {
-		console.log('/newclassrooms/\tcomponents/\tcomponent_testimonialcarousel/\ttestimonialcarousel.js', 'bindEvents()');
+		console.log('/FLEX/\tblocks/\tblock_testimonialcarousel/\ttestimonialcarousel.js', 'bindEvents()');
 
 		// Render on window resize
 		$(document.body).on('FLEX.resize', render);
 	}
 
 	function render() {
-		console.log('/newclassrooms/\tcomponents/\tcomponent_testimonialcarousel/\ttestimonialcarousel.js', 'render()');
+		console.log('/FLEX/\tblocks/\tblock_testimonialcarousel/\ttestimonialcarousel.js', 'render()');
 	}
 
 	this.init = function ($el) {
