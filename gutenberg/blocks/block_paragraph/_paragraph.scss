@@ -16,19 +16,20 @@
 		}
 	}
 
-	.is-style-body1 p,
-	.is-style-body1 {
+	.is-style-body1,
+	.is-style-body1 p {
 		@extend .body1 !optional;
 	}
 
-	.is-style-body2 p,
-	.is-style-body2 {
+	.is-style-body2,
+	.is-style-body2 p {
 		@extend .body2 !optional;
 	}
 
-	.is-style-body3 p,
-	.is-style-body3 {
+	.is-style-body3,
+	.is-style-body3 p {
 		@extend .body3 !optional;
+		color: blue;
 	}
 
 	&.is-style-text-columns .mce-content-body {

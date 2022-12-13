@@ -42,15 +42,15 @@ function register_heading_block() {
 					'type' => 'string',
 					'default' => '',
 				],
+				'content' => [
+					'type' => 'string',
+					'default' => '',
+				],
 				'dataComponentName' => [
 					'type' => 'string',
 				],
 				'dataComponentOptions' => [
 					'type' => 'string',
-				],
-				'content' => [
-					'type' => 'string',
-					'default' => '',
 				],
 				'hangingQuoteClass' => [
 					'type' => 'string',
@@ -61,6 +61,9 @@ function register_heading_block() {
 				],
 				'imgURL' => [
 					'type' => 'string',
+				],
+				'isSelected' => [
+					'type' => 'boolean',
 				],
 				'level' => [
 					'type' => 'number',

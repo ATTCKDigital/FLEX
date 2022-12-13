@@ -7,7 +7,6 @@
 $blocks = array(
 	'flexlayout/column', // REQUIRED
 	'flexlayout/row', // REQUIRED
-	'flexlayout/popup',
 	'flexlayout/animated-gif',
 	'flexlayout/button',
 	'flexlayout/feed',
@@ -16,6 +15,7 @@ $blocks = array(
 	'flexlayout/image',
 	'flexlayout/list',
 	'flexlayout/paragraph',
+	'flexlayout/popup',
 	'flexlayout/posts',
 	'flexlayout/quote',
 	'flexlayout/share',
@@ -23,7 +23,14 @@ $blocks = array(
 	'flexlayout/source',
 	'flexlayout/socialmedia',
 	'flexlayout/users',
-	'flexlayout/video'
+	'flexlayout/video',
+	'core/buttons',
+	'core/classic',
+	'core/embed',
+	'core/list',
+	'core/more',
+	'core/separator',
+	'core/table'
 );
 
 if ( !defined('FLEXLAYOUT_BLOCKS') ) {

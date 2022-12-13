@@ -1,21 +1,20 @@
 address, 
 .footer-link {
-	font-size: px-to-rem(14px);
+	@include primary-regular;
 	display: block;
 	font-style: normal;
 	line-height: 1.4;
-	@include primary-regular;
 }
 
 a {
 	color: inherit;
 	cursor: pointer;
-	text-decoration: none;
 	font-family: inherit;
 	font-size: inherit;
 	font-weight: inherit;
 	line-height: inherit;
 	letter-spacing: inherit;
+	text-decoration: none;
 
 	@include mediaquery(desktop)  {
 		&:hover {
@@ -33,9 +32,9 @@ del {
 
 em, i {
 	color: inherit;
+	font-family: inherit;
 	font-size: inherit;
 	line-height: inherit;
-	font-family: inherit;
 }
 
 hr {
@@ -59,7 +58,6 @@ hr {
 
 p {
 	@include primary-regular;
-	font-size: 14px;
 	letter-spacing: 0;
 	line-height: 1.3;
 	margin-bottom: $gap;

@@ -1,3 +1,5 @@
+console.log('FLEX/gutenberg/blocks/block_heading/heading.js');
+
 // Block dependencies
 import classnames from 'classnames';
 import HeadingToolbar from './heading-toolbar';
@@ -60,7 +62,6 @@ export default registerBlockType(
 		'description': __( 'Introduce new sections and organize content to help visitors (and search engines) understand the structure of your content.', 'flexlayout' ),
 		'category': 'common',
 		'icon': icons.heading,
-		// parent: ['flexlayout/column'],
 		'keywords': [
 			__( 'Text', 'flexlayout' ),
 			__( 'Heading', 'flexlayout' ),
@@ -76,7 +77,8 @@ export default registerBlockType(
 				'default': ''
 			},
 			'hangingQuote': {
-				'type': 'boolean'
+				'type': 'boolean',
+				'default': false
 			},
 			'hangingQuoteClass': {
 				'type': 'string',
@@ -87,6 +89,9 @@ export default registerBlockType(
 			},
 			'imgURL': {
 				'type': 'string',
+			},
+			'isSelected': {
+				'type': 'boolean',
 			},
 			'level': {
 				'type': 'number',
@@ -181,10 +186,15 @@ export default registerBlockType(
 				// console.log('HangingQuoteCheckbox, value: ', value, typeof value, value === true);
 
 				if (value === true) {
+					// console.log('show');
 					props.setAttributes( { hangingQuoteClass: 'show-hanging-quote' } );
 				} else {
+					// console.log('hide');
+					value = false;
 					props.setAttributes( { hangingQuoteClass: 'hide-hanging-quote' } );
 				}
+
+				// console.log('value: ', value);
 
 				props.setAttributes( { hangingQuote: value } );
 			}
@@ -331,9 +341,14 @@ export default registerBlockType(
 			];
 		},
 
-		save() {
+		save(data) {
+			// console.log('heading.js > save(data:) "', data.attributes.content, '" ', data);
+
 			return null;
 		},
+		// save(data) {
+		// 	return null;
+		// },
 	},
 );
 

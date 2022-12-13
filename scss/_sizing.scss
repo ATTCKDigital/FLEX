@@ -69,14 +69,14 @@ $large-row					: 700px;
 // — Font sizes will be converted to rems.
 // — USAGE:  @include font-size($font-size)
 $font-size-body-text: (
-	'default'			: 13px,
-	'phone'				: 13px,
-	'phone-plus'		: 13px,
-	'tablet-portrait'	: 15px,
-	'tablet-landscape'	: 17px,
-	'desktop'			: 17px,
-	'xl'				: 17px,
-	'xl2'				: 17px,
+	'default'			: 15px,
+	'phone'				: 17px,
+	'phone-plus'		: 20px,
+	'tablet-portrait'	: 22px,
+	'tablet-landscape'	: 22px,
+	'desktop'			: 22px,
+	'xl'				: 22px,
+	'xl2'				: 22px,
 );
 
 $font-size-body-text2: (
@@ -88,6 +88,17 @@ $font-size-body-text2: (
 	'desktop'			: 18px,
 	'xl'				: 18px,
 	'xl2'				: 18px,
+);
+
+$font-size-body-text3: (
+	'default'			: 10px,
+	'phone'				: 10px,
+	'phone-plus'		: 10px,
+	'tablet-portrait'	: 10px,
+	'tablet-landscape'	: 16px,
+	'desktop'			: 16px,
+	'xl'				: 16px,
+	'xl2'				: 16px,
 );
 
 $font-size-default: (

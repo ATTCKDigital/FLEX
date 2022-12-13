@@ -703,3 +703,8 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 .clear-right.clear-right { clear: right; }
 
 .position-relative.position-relative { position: relative; }
+
+html :where(.editor-styles-wrapper) p {
+	font-size: inherit;
+	line-height: inherit;
+}

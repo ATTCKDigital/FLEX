@@ -1,41 +1,37 @@
 // Styles for content within a WYSIWYG.
 // All WYSIWYG content should be wrapped in a "body-text" div
-.body1,
-.is-style-body1 p,
-.is-style-body1 {
-	font-size: 14px;
+.body1 p,
+.is-style-body1 p {
+	@include primary-regular;
 	letter-spacing: 0;
 	line-height: 1.3;
 	margin-bottom: $gap;
-	@include primary-regular;
 
 	&:last-child {
 		margin-bottom: 0;
 	}
 }
 
-.body2,
-.is-style-body2 p,
-.is-style-body2 {
-	font-size: 16px;
+.body2 p,
+.is-style-body2 p {
+	@include primary-regular;
 	letter-spacing: 0;
 	line-height: 1.3;
 	margin-bottom: $gap;
-	@include primary-regular;
+	color: purple;
 
 	&:last-child {
 		margin-bottom: 0;
 	}
 }
 
-.body3,
-.is-style-body3 p,
-.is-style-body3 {
-	font-size: 12px;
+.body3 p,
+.is-style-body3 p {
+	@include primary-regular;
 	letter-spacing: 0;
 	line-height: 1.3;
 	margin-bottom: $gap;
-	@include primary-regular;
+	color: #bada55;
 
 	&:last-child {
 		margin-bottom: 0;
@@ -45,7 +41,7 @@
 .body-text,
 .mce-content-body {
 	p {
-		@extend .body1 !optional;
+		// @extend .body1 !optional;
 	}
 
 	img {
