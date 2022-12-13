@@ -27,9 +27,14 @@ class HeadingToolbar extends Component {
 
 	render() {
 		const { minLevel, maxLevel, selectedLevel, onChange } = this.props;
+
 		return (
 			<Toolbar controls={ range( minLevel, maxLevel ).map( ( index ) => this.createLevelControl( index, selectedLevel, onChange ) ) } />
 		);
+
+		// Not sure why this was in here but it was breaking the heading level toolbar.
+		// Above version is working @ 12/13/22. -DP
+		// <Toolbar label="Levels" controls={ range( minLevel, maxLevel ).map( ( index ) => this.createLevelControl( index, selectedLevel, onChange ) ) } />
 	}
 }
 
