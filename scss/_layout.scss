@@ -893,40 +893,6 @@ $justifyContent: 'flex-end';
 @include mediaquery(xl2) { .hide-on-xl2.hide-on-xl2 { display: none !important; } }
 
 // TODO: (DP) Organize these better.
-.img--xxsmall img {
-	height: 32px;
-}
-
-.img--xsmall img {
-	height: 64px;
-}
-
-.img--small img {
-	height: 77px;
-}
-
-.img--medium img {
-	height: 88px;
-}
-
-.img--newsletter img {
-	height: 80px;
-}
-
-.img--rounded img {
-	border-radius: 8px;
-}
-
-.img--rounded-small img {
-	border-radius: 8px;
-}
-
-.scroll-locked--mobile {
-	@include mediaquery-max-device-width(tablet-landscape) {
-		overflow: hidden;
-	}
-}
-
 .component-table {
 	border: 1px solid color('secondary', 'lightGray');
 	display: flex;
@@ -961,6 +927,44 @@ $justifyContent: 'flex-end';
 		&:last-child {
 			border-bottom: 0;
 		}
+	}
+}
+
+.height100pc.height100pc {
+	height: 100%;
+}
+
+.img--xxsmall img {
+	height: 32px;
+}
+
+.img--xsmall img {
+	height: 64px;
+}
+
+.img--small img {
+	height: 77px;
+}
+
+.img--medium img {
+	height: 88px;
+}
+
+.img--newsletter img {
+	height: 80px;
+}
+
+.img--rounded img {
+	border-radius: 8px;
+}
+
+.img--rounded-small img {
+	border-radius: 8px;
+}
+
+.scroll-locked--mobile {
+	@include mediaquery-max-device-width(tablet-landscape) {
+		overflow: hidden;
 	}
 }
 
