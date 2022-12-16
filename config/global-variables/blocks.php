@@ -24,7 +24,7 @@ $blocks = array(
 	'flexlayout/socialmedia',
 	'flexlayout/users',
 	'flexlayout/video',
-	'core/buttons',
+	// 'core/buttons',
 	'core/classic',
 	'core/embed',
 	'core/list',

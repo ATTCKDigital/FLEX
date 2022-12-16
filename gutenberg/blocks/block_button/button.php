@@ -16,6 +16,7 @@ add_action( 'init', __NAMESPACE__ . '\register_button_block' );
 function register_button_block() {
 	// Only load if Gutenberg is available.
 	if ( ! function_exists( 'register_block_type' ) ) {
+		echo "function register_block_type ! exists";
 		return;
 	}
 
@@ -95,7 +96,12 @@ function render_button_block($attributes) {
 
 	$button = null;
 	
-	if ($content && $url) {
+	if (!$url) {
+		// Set default URL to site root
+		$url = "";
+	}
+
+	if ($content) {
 		$button = "<a href=\"{$url}\" {$targetAttr} class=\"cta {$buttonClass}\">{$content}</a>";
 	}
 
@@ -105,6 +111,10 @@ function render_button_block($attributes) {
 		$output  = "<div class=\"component-button component {$class}\" {$dataComponentName} {$dataComponentOptions}>";
 		$output .= 		"{$button}";
 		$output .= "</div>";
+	}
+
+	if (!$output) {
+		$output = "Button is missing required fields";
 	}
 
 	return $output;
