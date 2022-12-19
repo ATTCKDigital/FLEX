@@ -34,7 +34,7 @@ import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '..
 export default registerBlockType(
 	'flexlayout/button',
 	{
-		title: __( 'Button', 'flexlayout' ),
+		title: __( 'Buttons', 'flexlayout' ),
 		description: __( 'Prompt visitors to take action with a custom button.', 'flexlayout' ),
 		category: 'common',
 		icon: 'button',
