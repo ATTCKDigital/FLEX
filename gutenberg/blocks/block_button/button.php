@@ -98,11 +98,13 @@ function render_button_block($attributes) {
 	
 	if (!$url) {
 		// Set default URL to site root
-		$url = "";
+		$url = "/";
 	}
 
 	if ($content) {
 		$button = "<a href=\"{$url}\" {$targetAttr} class=\"cta {$buttonClass}\">{$content}</a>";
+	} else {
+		$button = "<a href=\"{$url}\" {$targetAttr} class=\"cta {$buttonClass}\">Click me</a>";
 	}
 
 	$output = '';
