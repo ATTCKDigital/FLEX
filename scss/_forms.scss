@@ -39,6 +39,7 @@
 
 // General Form Styles
 input[type="text"],
+input[type="tel"], 
 input[type="email"] {
 	.component-footer & {
 		@include placeholder(color('brand', 'white'));
@@ -46,19 +47,26 @@ input[type="email"] {
 }
 
 input[type="text"],
+input[type="tel"],
 input[type="email"], 
 textarea {
-	border: 1px solid color('secondary', 'lighterGray');
+	@include primary-regular;
+	border: 1px solid color('brand', 'primary');
 	font-size: px-to-rem(16px);
 	height: 48px;
 	letter-spacing: .2px;
 	padding: 0 20px;
 	width: 100%;
-	@include primary-regular;
 }
 
 textarea {
 	height: 200px;
+}
+
+.wpcf7 {
+	br {
+		display: none;
+	}
 }
 
 label, 
@@ -196,12 +204,36 @@ label,
 	margin-bottom: 0;
 	position: relative;
 
+	.select-container & {
+		position: relative;
+
+		&:after {
+			content: '';
+			display: block;
+			border-left: 1px solid color('brand', 'primary');
+			border-bottom: 1px solid color('brand', 'primary');
+			height: 10px;
+			right: 5px;
+			pointer-events: none;
+			position: absolute;
+			top: 10px;
+			transform: rotate(-45deg);
+			width: 10px;
+		}
+
+		select {
+			border-radius: 0;
+			padding-right: 25px;
+			white-space: pre-wrap;
+		}
+	}
 }
 
 .wpcf7-not-valid-tip {
 	@extend .body;
 	color: red;
 	display: block;
+	font-size: 1.2rem;
 	margin-top: $gap * .25;
 	opacity: 1;
 	text-transform: none;
