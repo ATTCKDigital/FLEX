@@ -4,9 +4,8 @@
 
 /** Fade Me In **/
 // Set initial styles before "faded-in" class added
-// TODO: Rename to "transition-when-visible"
-// .transition-when-visible,
-.prepare-in-view {
+// TODO: Replace "prepare-in-view" with "transition-when-visible"
+.transition-when-visible {
 	opacity: .5;
 
 	// Restricting transition to 'opacity' prevents other effects 
@@ -14,15 +13,14 @@
 	// transition: opacity .3s;
 	transition: all .3s;
 
-	&.element-in-view {
+	&.transitioned-into-view {
 		opacity: 1;
 		transition: all .3s;
 	}
 }
 
-// TODO: Rename to "transitioned-into-view"
-// .transitioned-into-view,
-.element-in-view {
+// TODO: Replace "element-in-view" with "transitioned-into-view"
+.transitioned-into-view {
 	opacity: 1;
 
 	img {

@@ -3,29 +3,29 @@
 // NOTE: Import order shouldn't be changed in this group as subsequent
 // files rely on mixins and variables in files included earlier
 // TODO: Find better way to enforce load order. -DP
-@import 'css-vars';
-@import 'sass-utils';
-@import 'reset';
-@import 'sizing';
-@import 'media-queries';
-@import 'grid';
-@import 'colors';
-@import 'fonts';
-@import 'fonts-mixins';
-@import 'typography-base';
-@import 'body-text';
-@import 'global';
-@import 'layout';
-@import 'debug';
-@import 'component';
-@import 'hidden';
-@import 'row-theme';
-@import 'popups-overlays';
-@import 'animations';
-@import 'images';
-@import 'iconography';
-@import 'forms';
-@import 'styleguide';
+@import '_css-vars';
+@import '_sass-utils';
+@import '_reset';
+@import '_sizing';
+@import '_media-queries';
+@import '_grid';
+@import '_colors';
+@import '_fonts';
+@import '_fonts-mixins';
+@import '_typography-base';
+@import '_body-text';
+@import '_global';
+@import '_layout';
+@import '_debug';
+@import '_component';
+@import '_hidden';
+@import '_row-theme';
+@import '_popups-overlays';
+@import '_animations';
+@import '_images';
+@import '_iconography';
+@import '_forms';
+@import '_styleguide';
 
 // Gutenberg Blocks
 @import '../gutenberg/blocks/block_image/_image.scss';

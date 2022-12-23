@@ -49,7 +49,7 @@ function ScrollIn($el) {
 	}
 
 	function checkTimer() {
-		console.log('/FLEX/\tjs/\tscroll-in.js', 'checkTimer()');
+		// console.log('/FLEX/\tjs/\tscroll-in.js', 'checkTimer()');
 
 		// Check if user stopped scrolling for more than two seconds and show anything that
 		// would be visible but hasn't hit the vertical scroll threshold yet
@@ -68,14 +68,14 @@ function ScrollIn($el) {
 	}
 
 	function detectElementsInView(scrollThreshold) {
-		console.log('/FLEX/\tjs/\tscroll-in.js', 'detectElementsInView()');
+		console.log('/FLEX/\tjs/\tscroll-in.js', 'detectElementsInView(), scrollThreshold: ', scrollThreshold);
 
 		// Set Default scroll threshold
 		if (typeof scrollThreshold === 'undefined') {
 			scrollThreshold = _viewportHeight*.8;
 		}
 
-		$.each($$('.prepare-in-view'), function (index, value) {
+		$.each($$('.transition-when-visible'), function (index, value) {
 			var verticalScrollThreshold = (_currentScrollTop + scrollThreshold);
 			var thisElementOffset = $(this).offset().top;
 
@@ -83,7 +83,7 @@ function ScrollIn($el) {
 			if (thisElementOffset < verticalScrollThreshold) {
 				console.log('/FLEX/\tjs/\tscroll-in.js', 'detectElementsInView(), showing $(this): ', $(this));
 
-				$(this).addClass('element-in-view');
+				$(this).addClass('transitioned-into-view');
 				$(this).trigger('FLEX.scrollIn');
 			}
 		});
@@ -99,24 +99,24 @@ function ScrollIn($el) {
 		$('.component-gdpr .cta').addClass('no-element-in-view');
 		$('.area-inner h4, .area-inner p').addClass('no-element-in-view');
 
-        // Set default elements to hide
-        var elementsToHide = 'h3, h4, h5, h6, p, span, .cta, img, .category-list, .area-inner';
-        // TODO: Add some way to merge this with some project setting / JSON object
+		// Set default elements to hide
+		var elementsToHide = 'h3, h4, h5, h6, p, span, .cta, img, .category-list, .area-inner';
+		// TODO: Add some way to merge this with some project setting / JSON object
 
-        // Check for elements override from child
-        var elementsToHideOverride = $(document.body).attr('data-elements-to-hide');
+		// Check for elements override from child
+		var elementsToHideOverride = $(document.body).attr('data-elements-to-hide');
 
-        if (typeof elementsToHideOverride !== 'undefined') {
-            elementsToHide = elementsToHideOverride;
-        }
+		if (typeof elementsToHideOverride !== 'undefined') {
+			elementsToHide = elementsToHideOverride;
+		}
 
-        // First, hide all elements
-		$('body').find(elementsToHide).addClass('prepare-in-view');
+		// First, hide all elements
+		$('body').find(elementsToHide).addClass('transition-when-visible');
 
 		// Add elements that need to be manipulated here
 		$('body').find(elementsToHide).each(function (index, value) {
 			if (!$(this).hasClass('no-element-in-view') && !$(this).parents('.no-element-in-view').length) {
-				$(this).addClass('prepare-in-view');
+				$(this).addClass('transition-when-visible');
 			}
 		});
 
@@ -126,7 +126,7 @@ function ScrollIn($el) {
 	function indexAllElements() {
 		console.log('/FLEX/\tjs/\tscroll-in.js', 'indexAllElements()');
 
-		$('.element-in-view').each(function () {
+		$('.transitioned-into-view').each(function () {
 			// Convert offset values to strings since they're floats and not a valid array ID
 			_detectElementsInViewOffsetIndex.push({
 				'offset': $(this).offset().top,
