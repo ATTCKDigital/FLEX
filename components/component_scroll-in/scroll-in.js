@@ -20,7 +20,7 @@ function ScrollIn($el) {
 
 	function bindEvents() {
 		console.log('/FLEX/\tjs/\tscroll-in.js', 'bindEvents()');
-        // $(document.body).on('FLEXLAYOUT.apploaded', hideElements);
+		// $(document.body).on('FLEXLAYOUT.apploaded', hideElements);
 
 		$(document.body).on('FLEX.scroll', function (e, data) {
 			// console.log('/FLEX/\tjs/\tscroll-in.js', 'FLEX.scroll()');
@@ -49,11 +49,13 @@ function ScrollIn($el) {
 	}
 
 	function checkTimer() {
-		// console.log('/FLEX/\tjs/\tscroll-in.js', 'checkTimer()');
+		console.log('/FLEX/\tjs/\tscroll-in.js', 'checkTimer()');
 
 		// Check if user stopped scrolling for more than two seconds and show anything that
 		// would be visible but hasn't hit the vertical scroll threshold yet
 		if (_scrollstopTimer > 500 && _scrollstopTimer !== 1) {
+			console.log('/FLEX/\tjs/\tscroll-in.js', 'checkTimer(), timer is up');
+
 			detectElementsInView(_viewportHeight);
 
 			// Stop the timer once it runs once, until the next time the user scrolls
@@ -66,7 +68,7 @@ function ScrollIn($el) {
 	}
 
 	function detectElementsInView(scrollThreshold) {
-		// console.log('/FLEX/\tjs/\tscroll-in.js', 'detectElementsInView()');
+		console.log('/FLEX/\tjs/\tscroll-in.js', 'detectElementsInView()');
 
 		// Set Default scroll threshold
 		if (typeof scrollThreshold === 'undefined') {
@@ -79,6 +81,8 @@ function ScrollIn($el) {
 
 			// Add class to elements once they are halfway up the screen
 			if (thisElementOffset < verticalScrollThreshold) {
+				console.log('/FLEX/\tjs/\tscroll-in.js', 'detectElementsInView(), showing $(this): ', $(this));
+
 				$(this).addClass('element-in-view');
 				$(this).trigger('FLEX.scrollIn');
 			}
