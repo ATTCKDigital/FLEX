@@ -45,6 +45,7 @@
 			$serverEnvironment = 'data-server-environment="' . $_SERVER['WPENGINE_ACCOUNT'] . '"';
 		}
 	?>
+	<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwlXlgqIUr5XhxttqLhsF4FUn82KeeBWY&callback=initMap"></script>
 </head>
 <body <?php body_class('front-end'); ?> 
 	data-currentHour='<?= $currentHour ?>' 
