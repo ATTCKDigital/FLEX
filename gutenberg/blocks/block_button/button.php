@@ -119,7 +119,7 @@ function render_button_block($attributes) {
 		$output = "Button is missing required fields";
 	}
 
-	$output = "<div>BUTTON</div>";
+	// $output = "<div>BUTTON</div>";
 
 	return $output;
 }
