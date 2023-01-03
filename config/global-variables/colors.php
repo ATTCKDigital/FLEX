@@ -1,4 +1,6 @@
 <?php
+echo "\n<!-- FLEX/config/global-variables/colors.php -->\n"; 
+
 /**
  * Theme attribute of colors is needed in base theme only, not child theme
  * (see `/config/theme-configs/customizer-colors.php/` for attribute usage)
@@ -59,33 +61,33 @@ $colors = array(
 		'slug'        => 'color-default-black',
 	),
 
-    array(
-        'default'     => '#F3D09E',
-        'description' => '',
-        'label'       => 'Primary #1',
-        'slug'        => 'color-primary-one',
-    ),
+	array(
+		'default'     => '#F3D09E',
+		'description' => '',
+		'label'       => 'Primary #1',
+		'slug'        => 'color-primary-one',
+	),
 
-    array(
-        'default'     => '#F0E27B',
-        'description' => '',
-        'label'       => 'Primary #2',
-        'slug'        => 'color-primary-two',
-    ),
+	array(
+		'default'     => '#F0E27B',
+		'description' => '',
+		'label'       => 'Primary #2',
+		'slug'        => 'color-primary-two',
+	),
 
-    array(
-        'default'     => '#59869F',
-        'description' => '',
-        'label'       => 'Primary #3',
-        'slug'        => 'color-primary-three',
-    ),
+	array(
+		'default'     => '#59869F',
+		'description' => '',
+		'label'       => 'Primary #3',
+		'slug'        => 'color-primary-three',
+	),
 
-    array(
-        'default'     => '#FFE591',
-        'description' => '',
-        'label'       => 'Primary #3 (muted)',
-        'slug'        => 'color-primary-three-muted',
-    )
+	array(
+		'default'     => '#FFE591',
+		'description' => '',
+		'label'       => 'Primary #3 (muted)',
+		'slug'        => 'color-primary-three-muted',
+	)
 
 );
 

@@ -1,4 +1,5 @@
 <?php
+// echo "<!-- FLEX/config/theme-configs/Utils.class.php -->\n"; 
 	/**
 	 * PHP Templating class. Works similar to Mustache, Underscore, etc. Use
 	 * Utils::render_template() to instantiate.

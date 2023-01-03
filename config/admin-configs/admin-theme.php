@@ -1,4 +1,6 @@
 <?php
+// echo "<!-- FLEX/config/admin-configs/admin-theme.php -->\n"; 
+
 /*** Admin Color Schemes ***/
 //Set admin color schemes depending on env variable (var is set in .env)
 function update_user_option_admin_color( $color_scheme ) {
@@ -11,14 +13,15 @@ function update_user_option_admin_color( $color_scheme ) {
 	} else {
 		$color_scheme = 'coffee';
 	}
-    return $color_scheme;
+
+	return $color_scheme;
 }
 add_filter( 'get_user_option_admin_color', 'update_user_option_admin_color', 5 );
 
 //Add custom color scheme
 function additional_admin_color_schemes() {
-  //Get the theme directory
-  $theme_dir = get_stylesheet_directory_uri();
+	//Get the theme directory
+	$theme_dir = get_stylesheet_directory_uri();
 	global $_wp_admin_css_colors;
 		
 	$color_name = $_wp_admin_css_colors['sunrise']->name;

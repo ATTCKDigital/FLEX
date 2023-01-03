@@ -1,17 +1,14 @@
-/**
- * Block dependencies
- */
+console.log('loaded', '/FLEX\t/gutenberg\t/blocks\t/block_hr\t/hr.js');
+
+// Block dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js';
 
-/**
- * Internal block libraries
- */
+// Internal block libraries
 const { __ } = wp.i18n;
 
-const {
-	registerBlockType,
-} = wp.blocks;
+// WordPress dependencies
+const { registerBlockType } = wp.blocks;
 
 const {
 	AlignmentToolbar,
@@ -32,21 +29,12 @@ const {
 	Tooltip,
 } = wp.components;
 
-/**
- * Internal dependencies
- */
-// Import all of our Margin Options requirements.
+// Internal dependencies
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
-
-// Import all of our Padding Options requirements.
 import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
-
-// Import all of our Background Options requirements.
 import BackgroundColorOptions, { BackgroundColorOptionsAttributes, BackgroundColorOptionsInlineStyles } from '../../components/gb-component_background-color';
 
-/**
- * Register image block
- */
+// Register block
 export default registerBlockType(
 	'flexlayout/hr',
 	{
@@ -54,6 +42,7 @@ export default registerBlockType(
 		description: __( 'A horizontal line.', 'flexlayout'),
 		category: 'common',
 		icon: icons.minus,
+		example: {},
 		// icon: 'heading',
 		// parent: ['flexlayout/column'],
 		keywords: [
