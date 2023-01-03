@@ -1,3 +1,5 @@
+console.log('FLEX/gutenberg/blocks/block_column/column.js');
+
 // Block dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js'

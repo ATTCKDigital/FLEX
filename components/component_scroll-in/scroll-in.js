@@ -11,7 +11,7 @@ console.log('loaded', '/FLEX\t/js\t/components\t/component_scroll-in\t/scroll-in
  * TODO: Add options JSON for different effects. JSON could include timing & premade effects.
  */
 function ScrollIn($el) {
-	console.log('/scroll-in.js', 'ScrollIn()');
+	// console.log('/scroll-in.js', 'ScrollIn()');
 
 	var _detectElementsInViewOffsetIndex = [];
 	var _scrollstopTimer = 0;
@@ -19,7 +19,7 @@ function ScrollIn($el) {
 	var _viewportHeight = $(window).outerHeight();
 
 	function bindEvents() {
-		console.log('/FLEX/\tjs/\tscroll-in.js', 'bindEvents()');
+		// console.log('/FLEX/\tjs/\tscroll-in.js', 'bindEvents()');
 		// $(document.body).on('FLEXLAYOUT.apploaded', hideElements);
 
 		$(document.body).on('FLEX.scroll', function (e, data) {
@@ -54,7 +54,7 @@ function ScrollIn($el) {
 		// Check if user stopped scrolling for more than two seconds and show anything that
 		// would be visible but hasn't hit the vertical scroll threshold yet
 		if (_scrollstopTimer > 500 && _scrollstopTimer !== 1) {
-			console.log('/FLEX/\tjs/\tscroll-in.js', 'checkTimer(), timer is up');
+			// console.log('/FLEX/\tjs/\tscroll-in.js', 'checkTimer(), timer is up');
 
 			detectElementsInView(_viewportHeight);
 
@@ -68,7 +68,7 @@ function ScrollIn($el) {
 	}
 
 	function detectElementsInView(scrollThreshold) {
-		console.log('/FLEX/\tjs/\tscroll-in.js', 'detectElementsInView(), scrollThreshold: ', scrollThreshold);
+		// console.log('/FLEX/\tjs/\tscroll-in.js', 'detectElementsInView(), scrollThreshold: ', scrollThreshold);
 
 		// Set Default scroll threshold
 		if (typeof scrollThreshold === 'undefined') {
@@ -81,7 +81,7 @@ function ScrollIn($el) {
 
 			// Add class to elements once they are halfway up the screen
 			if (thisElementOffset < verticalScrollThreshold) {
-				console.log('/FLEX/\tjs/\tscroll-in.js', 'detectElementsInView(), showing $(this): ', $(this));
+				// console.log('/FLEX/\tjs/\tscroll-in.js', 'detectElementsInView(), showing $(this): ', $(this));
 
 				$(this).addClass('transitioned-into-view');
 				$(this).trigger('FLEX.scrollIn');
@@ -90,7 +90,7 @@ function ScrollIn($el) {
 	}
 
 	function hideAllElements() {
-		console.log('/FLEX/\tjs/\tscroll-in.js', 'hideAllElements()');
+		// console.log('/FLEX/\tjs/\tscroll-in.js', 'hideAllElements()');
 
 		// Don't hide these elements
 		$('.component-header').addClass('no-element-in-view');
@@ -124,7 +124,7 @@ function ScrollIn($el) {
 	}
 
 	function indexAllElements() {
-		console.log('/FLEX/\tjs/\tscroll-in.js', 'indexAllElements()');
+		// console.log('/FLEX/\tjs/\tscroll-in.js', 'indexAllElements()');
 
 		$('.transitioned-into-view').each(function () {
 			// Convert offset values to strings since they're floats and not a valid array ID
@@ -136,7 +136,7 @@ function ScrollIn($el) {
 	}
 
 	this.init = function($el) {
-		console.log('/FLEX/\tjs/\tscroll-in.js', 'init()');
+		// console.log('/FLEX/\tjs/\tscroll-in.js', 'init()');
 
 		bindEvents();
 		hideAllElements();

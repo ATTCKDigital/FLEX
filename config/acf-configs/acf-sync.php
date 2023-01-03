@@ -1,4 +1,6 @@
 <?php
+// echo "<!-- FLEX/config/acf-configs/acf-sync.php -->\n"; 
+
 /*** ACF Local JSON and Sync ***/
 // ACF syncs fields based on field group json files. 
 // ACF blocks will save their json to the block folder when using ACF Local JSON Manager Plugin.  Prior to creating new ACF block fields, select the correct block from the "Local JSON" menu in the admin toolbar. This will save the file to the correct location.
