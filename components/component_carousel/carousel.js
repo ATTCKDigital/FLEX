@@ -1,8 +1,10 @@
+console.log('loaded', '/FLEX\t/components\t/component_carousel\t/carousel.js');
+
 /**
  * Carousel component
  */
 function Carousel ($el, params={}) {
-	console.log('/newclassrooms/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'Carousel()');
+	console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'Carousel()');
 
 	const defaults = {
 		'accessibility': true,
@@ -30,7 +32,8 @@ function Carousel ($el, params={}) {
 	var options = $.extend(true, {}, defaults, params);
 
 	function bindEvents() {
-		console.log('/newclassrooms/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'bindEvents()');
+		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'bindEvents()');
+		
 		// Arrow click events
 		$el.on('carousel.goPrev', goPrev);
 		$el.on('carousel.goNext', goNext);
@@ -82,13 +85,19 @@ function Carousel ($el, params={}) {
 		});
 
 		// Auto-scroll every five seconds
-		// setInterval(function () {
-		// 	$('.nav.next', $el).click();
-		// }, 5000);
+		setInterval(function () {
+			// NOTE: (DP) Evidently, the event listener noted above is not catching the transition 
+			// end event anymore. So, we're going to make sure to reset the value here manually.
+			// TODO: (DP) Find out if this event spec changed recently.
+			CSStransitionInProgress = false;
+			// $('.nav.next', $el).click();
+			goNext();
+		}, 5000);
 	}
 
 	function detectSwipes() {
-		console.log('/newclassrooms/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'detectSwipes()');
+		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'detectSwipes()');
+		
 		let start = null;
 		let carousel = $('.component-carousel', $el);
 
@@ -121,7 +130,8 @@ function Carousel ($el, params={}) {
 	}
 
 	function go() {
-		console.log('/newclassrooms/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'go()');
+		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'go()');
+		
 		// Indicate CSS transition is in progress
 		CSStransitionInProgress = true;
 
@@ -152,7 +162,8 @@ function Carousel ($el, params={}) {
 	}
 
 	function goNext() {
-		console.log('/newclassrooms/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'goNext()');
+		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'goNext(), CSStransitionInProgress:', CSStransitionInProgress);
+		
 		// Proceed only if no CSS transition is in progress
 		if (CSStransitionInProgress) return;
 
@@ -176,11 +187,14 @@ function Carousel ($el, params={}) {
 			prevIndex = slidesLength;
 		}
 
+		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'goNext(), index:', index);
+
 		go();
 	}
 
 	function goPrev() {
-		console.log('/newclassrooms/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'goPrev()');
+		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'goPrev()');
+		
 		// Proceed only if no CSS transition is in progress
 		if (CSStransitionInProgress) return;
 
@@ -213,7 +227,8 @@ function Carousel ($el, params={}) {
 	}
 
 	function goTo(arg) {
-		console.log('/newclassrooms/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'ar()');
+		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'ar()');
+		
 		// Proceed only if no CSS transition is in progress
 		if (CSStransitionInProgress) return;
 
@@ -244,10 +259,11 @@ function Carousel ($el, params={}) {
 	}
 
 	function render() {
-		console.log('/newclassrooms/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'render()');
+		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'render()');
+		
 		$dotsContainer = $('.dots-component', $el);
 		$slidesContainer = $('.slides', $el);
-		$slides = $('.slides > li', $el);
+		$slides = $('.slides > .slide', $el);
 
 		console.log('/— $slides: ', {}, $slides.length, $slides);
 
@@ -267,7 +283,8 @@ function Carousel ($el, params={}) {
 	 * Initializes all default active states
 	 */
 	function setActiveItems() {
-		console.log('/newclassrooms/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'setActiveItems()');
+		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'setActiveItems()');
+		
 		// - first LI of first UL
 		$('.slides.active li', $el).eq(0).addClass('active');
 
@@ -302,7 +319,8 @@ function Carousel ($el, params={}) {
 	 * @param {Number} current - Zero-based current slide number.
 	 */
 	function updateDots(current) {
-		console.log('/newclassrooms/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'curren()');
+		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'updateDots(current:)', current);
+		
 		$dotsContainer.each(function () {
 			$(this).find('li.dot').removeClass('active');
 			$(this).find('li.dot').eq(current).addClass('active');
@@ -310,7 +328,8 @@ function Carousel ($el, params={}) {
 	}
 
 	this.init = function ($el) {
-		console.log('/newclassrooms/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'e()');
+		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'init', 'e()');
+		
 		bindEvents();
 		render();
 
