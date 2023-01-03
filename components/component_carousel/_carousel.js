@@ -1,3 +1,5 @@
+console.log('loaded', '/FLEX\t/components\t/component_carousel\t/_carousel.js');
+
 // Global carousel
 function _carousel($el) {
 	// Cache the body
