@@ -29,6 +29,7 @@ import WCAG from	 			'../components/component_wcag/wcag';
 // Interactive components
 import Bookmark from 			'../components/component_bookmark/bookmark';
 import CalendarLink from 		'../components/component_calendar-link/calendarlink';
+import Carousel from 			'../components/component_carousel/carousel';
 import CopyLink from 			'../components/component_copy-link/copylink';
 import Nav from 				'../components/component_nav/nav';
 import Reserve from 			'../components/component_reserve/reserve';
@@ -51,6 +52,7 @@ FLEX.Components = Object.assign({
 	'Analytics': Analytics,
 	'AnimatedGif': AnimatedGif,
 	'Bookmark': Bookmark,
+	'Carousel': Carousel,
 	'CopyLink': CopyLink,
 	'CF7': CF7,
 	'GDPR': GDPR,
@@ -74,11 +76,15 @@ FLEX.Loader = {};
 // Components with JS functionality can be defined via data attribute.
 // Supports multiple components separated by space.
 FLEX.Loader.loadComponents = function () {
+	console.log('/FLEX/\tjs	/\tload-components.js/', 'loadComponents()');
+
 	FLEX.Loader.loadedComponents = [];
 
 	var self = this;
 
 	$('.component').each(function () {
+		console.log('/FLEX/\tjs	/\tload-components.js/', 'loadComponents(), each .component');
+
 		// Gracefully fail if no component name has been defined
 		if (!$(this).attr('data-component-name')) {
 			return;
@@ -86,6 +92,8 @@ FLEX.Loader.loadComponents = function () {
 
 		var $this = $(this);
 		var componentNames = $this.attr('data-component-name');
+
+		console.log('/FLEX/\tjs	/\tload-components.js/', 'loadComponents(), each .component', componentNames);
 
 		// For Legacy support, replace any commas with spaces first
 		componentNames = componentNames.replace(',', ' ');
@@ -102,7 +110,11 @@ FLEX.Loader.loadComponents = function () {
 			instances = [];
 		}
 
+		console.log('/FLEX/\tjs	/\tload-components.js/', 'loadComponents(), each instances', instances);
+
 		$.each(componentNames, function (i, el) {
+			console.log('/FLEX/\tjs	/\tload-components.js/', 'loadComponents(), each componentNames, i: el: ', i, el);
+
 			let componentName = el;
 
 			// Exit if not in component list
@@ -130,6 +142,8 @@ FLEX.Loader.loadComponents = function () {
 
 FLEX.Loader.loadComponent = function ($el) {
 	var componentName = $el.attr('data-component-name');
+
+	console.log('/FLEX/\tjs	/\tload-components.js/', 'loadComponent(el:)', componentName);
 
 	if (typeof componentName === 'undefined') return;
 
