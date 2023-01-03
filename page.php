@@ -3,7 +3,7 @@
 	 * Template: Default
 	 * Description: Wordpress template for a plain page.
 	 */
-	echo '<!-- Template: FLEX/page.php -->';
+	// echo '<!-- Template: FLEX/page.php -->';
 
 	get_header();
 
