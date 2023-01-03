@@ -1,3 +1,5 @@
+console.log('FLEX/gutenberg/blocks/block_feed/feed.js');
+
 // Block dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js'
@@ -36,6 +38,7 @@ export default registerBlockType(
 		description: __('A feed of posts.'),
 		category: 'common',
 		icon: 'welcome-widgets-menus',
+		example: {},
 		// icon: icons.feed,
 		// parent: ['flexlayout/column'],
 		keywords: [

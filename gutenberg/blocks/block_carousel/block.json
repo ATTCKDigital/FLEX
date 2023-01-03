@@ -1,0 +1,17 @@
+{
+	"name"				: "carousel",
+	"title"				: "Carousel",
+	"description"		: "A custom carousel block.",
+	"category"			: "formatting",
+	"icon"				: "slides",
+	"xstyle": "fakestyle",
+	"xscript": "fakescript",
+	"acf": {
+		"renderCallback": "render_carousel_block",
+		"xrenderTemplate": "FLEX/gutenberg/blocks/block_carousel/carousel.php",
+		"xrenderTemplate": "carousel.php",
+		"postTypes": ["post", "page"]
+	},
+	"keywords"			: ["carousell", "sliderr"],
+	"align"				: "full"
+}

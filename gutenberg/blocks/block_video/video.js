@@ -46,6 +46,7 @@ export default registerBlockType(
 		category: 'common',
 		// icon: icons.video,
 		icon: 'youtube',
+		example: {},
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__( 'Video', 'flexlayout' ),

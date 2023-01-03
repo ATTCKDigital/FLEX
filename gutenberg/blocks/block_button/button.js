@@ -1,3 +1,5 @@
+console.log('FLEX/gutenberg/blocks/block_button/button.js');
+
 // Block dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js';
@@ -38,6 +40,7 @@ export default registerBlockType(
 		description: __( 'Prompt visitors to take action with a custom button.', 'flexlayout' ),
 		category: 'common',
 		icon: 'button',
+		example: {},
 		// icon: icons.button,
 		// parent: ['flexlayout/column'],
 		keywords: [

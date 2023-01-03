@@ -62,6 +62,7 @@ export default registerBlockType(
 		'description': __( 'Introduce new sections and organize content to help visitors (and search engines) understand the structure of your content.', 'flexlayout' ),
 		'category': 'common',
 		'icon': icons.heading,
+		'example': {},
 		'keywords': [
 			__( 'Text', 'flexlayout' ),
 			__( 'Heading', 'flexlayout' ),

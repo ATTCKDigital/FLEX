@@ -51,6 +51,7 @@ export default registerBlockType(
 		category: 'common',
 		// icon: 'editor-quote',
 		icon: 'format-quote',
+		example: {},
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__( 'Text', 'flexlayout' ),

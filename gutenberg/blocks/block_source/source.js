@@ -34,6 +34,7 @@ export default registerBlockType(
 		description: __( 'Display code snippets that respect your spacing and tabs.' ),
 		category: 'common',
 		icon: 'editor-code',
+		example: {},
 		// icon: icons.source,
 		// parent: ['flexlayout/column'],
 		keywords: [

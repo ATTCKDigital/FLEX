@@ -50,6 +50,7 @@ export default registerBlockType(
 		description: __( 'Display links to your social media accounts. Accounts are set in Global Settings ', 'flexlayout'),
 		category: 'common',
 		icon: icons.social,
+		example: {},
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__( 'Social media', 'flexlayout' ),

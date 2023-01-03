@@ -50,6 +50,7 @@ export default registerBlockType(
 		description: __( 'Displays share tools. Accounts are set in Global Settings ', 'flexlayout'),
 		category: 'common',
 		icon: icons.share,
+		example: {},
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__( 'Social media', 'flexlayout' ),

@@ -44,6 +44,7 @@ export default registerBlockType(
 		category: 'common',
 		// icon: icons.upload,
 		icon: 'format-image',
+		example: {},
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__( 'Map', 'flexlayout' ),

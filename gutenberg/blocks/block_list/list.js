@@ -50,6 +50,7 @@ export default registerBlockType(
 		category: 'common',
 		// icon: 'list-view',
 		icon: 'editor-ul',
+		example: {},
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__( 'Text', 'flexlayout' ),

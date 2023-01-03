@@ -1,3 +1,5 @@
+console.log('FLEX/gutenberg/blocks/block_animated-gif/animated-gif.js');
+
 // Block dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js'
@@ -43,6 +45,7 @@ export default registerBlockType(
 		category: 'common',
 		// icon: icons.gif,
 		icon: 'format-video',
+		example: {},
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__( 'Image', 'flexlayout' ),

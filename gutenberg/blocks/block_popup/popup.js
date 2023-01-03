@@ -43,6 +43,7 @@ export default registerBlockType(
 		// icon: 'columns',
 		// icon: icons.columns,
 		icon: 'format-status',
+		example: {},
 		keywords: [
 			__( 'Popup', 'flexlayout' ),
 		],

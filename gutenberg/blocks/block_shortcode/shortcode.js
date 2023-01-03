@@ -33,6 +33,7 @@ export default registerBlockType(
 		// icon: 'plus',
 		// icon: icons.wordpress,
 		icon: 'shortcode',
+		example: {},
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__( 'Shortcode', 'flexlayout' ),

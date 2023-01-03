@@ -54,6 +54,7 @@ export default registerBlockType(
 		description: __( 'A list of WordPress users.' ),
 		category: 'common',
 		icon: icons.users,
+		example: {},
 		parent: ['flexlayout/column'],
 		keywords: [
 			__( 'Staff', 'flexlayout' ),

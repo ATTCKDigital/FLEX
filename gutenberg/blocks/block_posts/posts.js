@@ -38,6 +38,7 @@ export default registerBlockType(
 		description: __('A posts of selected post type.'),
 		category: 'common',
 		icon: 'format-aside',
+		example: {},
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__('Posts', 'flexlayout'),

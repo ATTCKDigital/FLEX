@@ -53,6 +53,7 @@ export default registerBlockType(
 		description: __( 'A simple text block', 'flexlayout' ),
 		category: 'common',
 		icon: icons.paragraph,
+		example: {},
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__( 'Text', 'flexlayout' ),

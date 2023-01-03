@@ -48,6 +48,7 @@ export default registerBlockType(
 		description: __( 'Provides a rich-text editing toolbar' ),
 		icon: icons.text,
 		category: 'common',
+		example: {},
 		// parent: ['flexlayout/column'],
 		keywords: [
 			__( 'Text', 'flexlayout' ),
