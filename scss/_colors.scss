@@ -57,6 +57,12 @@ $brand-colors: (
 	)
 );
 
+// Helpers
+.color-brand-primary { color: color('brand', 'primary'); }
+.color-brand-secondary { color: color('brand', 'secondary'); }
+.color-black { color: color('default', 'black'); }
+.color-white { color: color('default', 'white'); }
+
 /** Generate colors **/
 // Usage: color('key', 'variant');
 @function color($key: 'debug', $variant: $brand-color-key) {
