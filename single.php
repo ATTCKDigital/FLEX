@@ -46,13 +46,14 @@
 	if (have_posts()) : 
 		while (have_posts()) : the_post();
 			// If using Gutenberg blocks
-			if ( has_blocks( $post->post_content ) ) {
-				the_content();
+			// if ( has_blocks( $post->post_content ) ) {
+				// echo "<!-- using blocks -->\n";
+				// the_content();
 			
 			// If using Classic Editor
-			} else {
+			// } else {
 				echo Utils::render_template('components/component_post/page.php');
-			}
+			// }
 		endwhile;
 	else:
 		_e("Sorry, no pages matched your criteria.");
