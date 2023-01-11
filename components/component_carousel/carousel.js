@@ -79,6 +79,10 @@ function Carousel ($el, params={}) {
 
 		detectSwipes();
 
+		function randomInteger(min, max) {
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+
 		// Listen for CSS3 transition animation end
 		$el.find('li').on('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd', function () {
 			CSStransitionInProgress = false;
@@ -92,7 +96,7 @@ function Carousel ($el, params={}) {
 			CSStransitionInProgress = false;
 			// $('.nav.next', $el).click();
 			goNext();
-		}, 5000);
+		}, randomInteger(4000, 6000));
 	}
 
 	function detectSwipes() {
