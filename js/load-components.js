@@ -1,8 +1,9 @@
-console.log('loaded', '/FLEX\t/js\t/load-components.js');
 
 import FLEX from './client-namespace';
 import Debug from './debug';
 import ObjectAssign from 'es6-object-assign';
+
+if (!FLEX.isProd) { console.log('loaded', '/FLEX\t/js\t/load-components.js'); }
 
 // ie11 object assign polyfill
 // TODO: figure out why this has to explicitly be in this file. - Author?
@@ -101,7 +102,6 @@ FLEX.Loader.loadComponents = function () {
 
 		// Now, split by space
 		componentNames = componentNames.split(' ');
-
 
 		// A stack of JS components associated with this DOM element.
 		let instances = $this.data('component-instances');

@@ -6,10 +6,12 @@
  * TODO: Add more useage info.
  * TODO: Add options JSON for different effects. JSON could include multiplier for more/less effect
  */
-console.log('loaded', '/FLEX\t/js\t/cached-dom-elements.js');
 
 import $ from 'jquery';
 import $$ from '../component_cached-dom-elements/cached-dom-elements';
+import FLEX from 'FLEX/js/client-namespace';
+
+if (!FLEX.isProd) { console.log('loaded', '/FLEX\t/js\t/cached-dom-elements.js'); }
 
 /**
  * Offets either the relative position of valid $el, else the background image position.
@@ -25,6 +27,8 @@ function Parallax($el, params={}) {
 	var $elOuterHeight = $el.outerHeight();
 
 	function bindEvents() {
+		console.log('/FLEX/\tcomponents/\tcomponent-parallax/\tparallax.js', 'bindEvents()');
+
 		// Start offsetting the background-position-y value
 		// on scroll when we reach data-scroll-start
 		$(document.body).on('FLEX.scroll', parallaxGo);
@@ -37,6 +41,8 @@ function Parallax($el, params={}) {
 	}
 
 	function calculateScrollStart() {
+		console.log('/FLEX/\tcomponents/\tcomponent-parallax/\tparallax.js', 'calculateScrollStart()');
+
 		// Based on container height relative to viewport center
 		var containerHeight = $el.outerHeight();
 		var containerOffsetTop = $el.offset().top;
@@ -48,6 +54,8 @@ function Parallax($el, params={}) {
 	}
 
 	function parallaxGo(e, data) {
+		console.log('/FLEX/\tcomponents/\tcomponent-parallax/\tparallax.js', 'parallaxGo(e, data)');
+
 		var distanceToViewportTop = $el.offset().top - data.currentScrollTop;
 		var distanceScrolled = data.currentScrollTop;
 
@@ -104,6 +112,8 @@ function Parallax($el, params={}) {
 					break;
 			}
 
+			console.log('/FLEX/\tcomponents/\tcomponent-parallax/\tparallax.js', 'parallaxGo(e, data), elementIsValid: ' + elementIsValid);
+
 			if (elementIsValid) {
 				var validContent = true;
 
@@ -111,7 +121,7 @@ function Parallax($el, params={}) {
 				switch (true) {
 					// containers with H1 inside
 					case ($el.find('h1').length > 0):
-						validContent = false;
+						// validContent = false;
 						break;
 
 					// elements with .no-parallax class and their children
@@ -142,6 +152,8 @@ function Parallax($el, params={}) {
 					default: break;
 				}
 
+				console.log('/FLEX/\tcomponents/\tcomponent-parallax/\tparallax.js', 'parallaxGo(e, data), validContent: ' + validContent);
+
 				if (validContent) {
 					$el.css({
 						'position': 'relative',
@@ -162,6 +174,8 @@ function Parallax($el, params={}) {
 	// Animations won't apply to elemnents that aren't
 	// positioned with a default top value
 	function setDefaultStyles() {
+		console.log('/FLEX/\tcomponents/\tcomponent-parallax/\tparallax.js', 'setDefaultStyles()');
+
 		$el.css({
 			'position': 'relative',
 			'top': 0
@@ -169,6 +183,8 @@ function Parallax($el, params={}) {
 	}
 
 	this.init = function ($el) {
+		console.log('/FLEX/\tcomponents/\tcomponent-parallax/\tparallax.js', 'init()');
+
 		bindEvents();
 		calculateScrollStart();
 		// setDefaultStyles();

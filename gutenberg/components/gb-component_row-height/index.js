@@ -29,8 +29,8 @@ export {
 
 function RowHeightOptions( props ) {
 	const setRowHeight = value => props.setAttributes( { rowHeight: value } );
+	const setRowHeightMobile = value => props.setAttributes( { rowHeightMobile: value } );
 	const rowHeightSelect = () => {
-
 		return (
 			<div className="row-height-wrapper">
 				<div className="row-height-inner-wrapper">
@@ -41,6 +41,35 @@ function RowHeightOptions( props ) {
 							help={__( 'Select a fixed row height. Useful for heroes.' )}
 							value={ props.attributes.rowHeight ? props.attributes.rowHeight : '' }
 							onChange={ setRowHeight }
+							options={ [
+								{
+									label: __( 'No fixed height' ),
+									value: 'none',
+								},
+								{
+									label: __( 'Small' ),
+									value: 'small',
+								},
+								{
+									label: __( 'Medium' ),
+									value: 'medium',
+								},
+								{
+									label: __( 'Large' ),
+									value: 'large',
+								},
+								{
+									label: __( 'Full Height (100% Screen Height)' ),
+									value: 'full-height',
+								},
+							] }
+						/>
+						<SelectControl
+							key="row-height"
+							label={ __( 'Select Mobile Row Height' ) }
+							help={__( 'Select a fixed row height. Useful for heroes.' )}
+							value={ props.attributes.rowHeightMobile ? props.attributes.rowHeightMobile : '' }
+							onChange={ setRowHeightMobile }
 							options={ [
 								{
 									label: __( 'No fixed height' ),

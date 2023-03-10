@@ -1,10 +1,11 @@
 import $ from 'jquery';
+import FLEX from 'FLEX/js/client-namespace';
 
-console.log('loaded', '/FLEX\t/js\t/components\t/component_nav\t/nav.js');
+if (!FLEX.isProd) { console.log('loaded', '/FLEX\t/js\t/components\t/component_nav\t/nav.js'); }
 
 // Global Nav & Header behavior
 function Nav($el) {
-	console.log('/nav.js', 'Nav()');
+	console.log('/FLEX/\tcomponents/\tcomponent-nav/\tnav.js', 'Nav()');
 
 	// Cache the body
 	var $body = $('body');
@@ -85,48 +86,47 @@ function Nav($el) {
 		console.log('/FLEX/\tcomponents/\tcomponent-nav/\tnav.js', 'scrolledNav()');
 
 		// Bind to scroll
-		$(document.body).bind('FLEXLAYOUT.scroll', function (e, data) {
+		$(document.body).bind('FLEX.scroll', function (e, data) {
+			// console.log('/FLEX/\tcomponents/\tcomponent-nav/\tnav.js, scrolledNav', 'FLEX.scroll(e:)');
+
 			// Show/hide nav bar background color
 			var scroll = data.currentScrollTop;
 
-			// Enable nav peek only on home page and HCP pages (en & fr) per ZH@SQNY 12/4/19
-			if ($('body').hasClass('page-home') || $('body').hasClass('page-professionnels-de-la-sante') || $('body').hasClass('page-healthcare-providers')) {
-				//add a class after short scroll to add background color etc
-				if (scroll >= 10) {
-					if (!$('body').hasClass('backgroundNav')) {
-						$('body').addClass('backgroundNav');
-					}
+			// Add a class after short scroll to add background color etc
+			if (scroll >= 10) {
+				if (!$('body').hasClass('backgroundNav')) {
+					$('body').addClass('backgroundNav');
 				}
+			}
 
-				// Hide nav entirely once scrolled past a certain distance
-				if (scroll >= 300) {
-					if (!$('body').hasClass('hideNav')) {
-						$('body').addClass('hideNav');
-					}
+			// Hide nav entirely once scrolled past a certain distance
+			if (scroll >= 300) {
+				if (!$('body').hasClass('hideNav')) {
+					$('body').addClass('hideNav');
 				}
+			}
 
-				// Show again as soon as they start scrolling back up
-				if (data.scrollDirection === 'up') {
-					$('body').removeClass('hideNav');
-				}
+			// Show again as soon as they start scrolling back up
+			if (data.scrollDirection === 'up') {
+				$('body').removeClass('hideNav');
+			}
 
-				// Show again as soon as they start scrolling back up
-				if (data.scrollDirection === 'up' && scroll <= 10) {
-					$('body').removeClass('hideNav backgroundNav');
-				}
+			// Show again as soon as they start scrolling back up
+			if (data.scrollDirection === 'up' && scroll <= 10) {
+				$('body').removeClass('hideNav backgroundNav');
 			}
 		});
 	}
 
-	function logoColor($el) {
+	function changeLogoColorOnScroll($el) {
 		console.log('/FLEX/\tcomponents/\tcomponent-nav/\tnav.js', 'logoColor()');
 
 		// Change the logo color as you scroll down the page. Can also be used to change the hamburger color. 
 		// Make color changes using CSS.
 		var row = $('.component-row');
-		var footer = $('.global-footer').offset().top
+		var footer = $('.component-footer').eq(0).offset().top
 
-		$(document.body).bind('FLEXLAYOUT.scroll', function (e, data) {
+		$(document.body).bind('FLEX.scroll', function (e, data) {
 			var viewportHeight = data.viewportHeight;
 			var scrollTop = data.currentScrollTop;
 
@@ -134,7 +134,9 @@ function Nav($el) {
 				var rowTop = $(this).offset().top;
 				var logoColor = $(this).data('logo-color');
 
-				if (rowTop <= scrollTop + 20 ) {
+				// console.log('logoColor: ', logoColor);
+
+				if (rowTop <= scrollTop + 20) {
 					if (logoColor == 'logo-color-white') {
 						$body.addClass('logoLight').removeClass('logoDark');
 					}
@@ -144,12 +146,12 @@ function Nav($el) {
 					}
 				}
 
-				if (scrollTop == 0 ) {
+				if (scrollTop == 0) {
 					$body.removeClass('logoDark logoLight');
 				}
 			});
 
-			if ( scrollTop >= footer ) {
+			if (scrollTop >= footer) {
 					$body.addClass('logoLight').removeClass('logoDark');
 			}
 		});
@@ -161,6 +163,7 @@ function Nav($el) {
 		$el = $el;
 		$el.find('.hamburger-wrapper').on('click', navToggle);
 
+		changeLogoColorOnScroll();
 		scrolledNav();
 
 		// Use this if subnav is triggered on hover
@@ -169,7 +172,7 @@ function Nav($el) {
 
 			// If we're hovering outside the nav, close the nav.
 			$(document).on('mouseover',function (e) {
-				// But, only if the nev is already open
+				// But, only if the nav is already open
 				if (!$body.hasClass('openSubNav')) {
 					return;
 				}

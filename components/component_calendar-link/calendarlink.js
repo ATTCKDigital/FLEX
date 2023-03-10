@@ -1,4 +1,7 @@
 import $ from 'jquery';
+import FLEX from 'FLEX/js/client-namespace';
+
+if (!FLEX.isProd) { console.log('loaded', '/FLEX\t/components\t/component-calendar-link\t/calendarlink.js'); }
 
 /**
  * Display a calendar selector
@@ -20,7 +23,7 @@ function CalendarLink($el) {
 	}
 
 	this.init = function ($el) {
-		console.log('loaded', 'CalendarLink.init()');
+		console.log('/FLEX\t/components\t/component-calendar-link\t/calendarlink.js', 'CalendarLink.init()');
 
 		bindEvents();
 

@@ -4,7 +4,7 @@
 	min-height: 0;
 	max-height: 1000px;
 
-	@include mediaquery(tablet-portrait)  {
+	@include mediaquery(tablet-portrait) {
 		min-height: 624px;
 		max-height: 1000px;
 	}

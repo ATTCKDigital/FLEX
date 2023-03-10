@@ -1,3 +1,6 @@
+// https://stackoverflow.com/questions/61330432/sasserror-there-is-no-module-with-the-namespace-math
+@use 'sass:math';
+
 // Helper Classes
 @mixin allCenter() {
 	align-items: center;
@@ -127,7 +130,7 @@ a:not(.cta) {
 
 	.component-column {
 		border-right: 1px solid color('secondary', 'lightGray');
-		padding: $gap/2 $gap;
+		padding: math.div($gap, 2) $gap;
 
 		&:last-child {
 			border: 0;
@@ -322,7 +325,8 @@ $justifyContent: 'flex-end';
 							// Only need to create up to 16x gap to match the FLEX admin
 							// Need to bump the counter up one since the $valueMax range is 150
 							// TODO: (DP) Replacing +1 with +0 for now as it's causing errors.
-							@if (($i + 1) / 10) <= 16 {
+							// @if (($i + 1) / 10) <= 16 {
+							@if math.div($i + 0, 10) <= 16 {
 								// -----------------------------------------------------v previously set to '1' and was causing build error around 0.1x being invalid CSS
 								.offset-margin-#{$breakpoint}#{$position}-#{(calc(($i + 0) / 10))}#{$unit} { margin-#{$position}: #{(calc(($i + 0) / 10)) * $gap}; }
 								.offset-#{$breakpoint}#{$position}-#{(calc(($i + 0) / 10))}#{$unit} { #{$position}: #{($i + 0) * $gap}; }
@@ -330,7 +334,7 @@ $justifyContent: 'flex-end';
 								// Prevent --0's from being generated
 								// NOTE: Figure out why I thought 0's shouldn't be generated. -DP
 								// @if $i != 0 {
-									.offset-margin-#{$breakpoint}#{$position}--#{(($i + 0) / 10)}#{$unit} { margin-#{$position}: -#{(calc(($i + 0) / 10)) * $gap}; }
+									.offset-margin-#{$breakpoint}#{$position}--#{math.div($i + 0, 10)}#{$unit} { margin-#{$position}: -#{(calc(($i + 0) / 10)) * $gap}; }
 									.offset-#{$breakpoint}#{$position}--#{(calc(($i + 0) / 10)) }#{$unit} { #{$position}: -#{($i + 0) * $gap}; }
 								// }
 							}
@@ -449,10 +453,10 @@ $justifyContent: 'flex-end';
 
 			// For each fractional column increment 
 			@for $i from 0 through $gridColumn {
-				.flex-column-offset-#{$breakpoint}#{$i}-#{$gridColumn} { margin-left: (#{($i / $gridColumn) * 100 + '%'}); }
+				.flex-column-offset-#{$breakpoint}#{$i}-#{$gridColumn} { margin-left: (#{math.div($i, $gridColumn) * 100 + '%'}); }
 
 				// Negative offsets
-				.flex-column-offset-#{$breakpoint}-#{$i}-#{$gridColumn} { margin-left: #{($i / $gridColumn) * -100 + '%'}; }
+				.flex-column-offset-#{$breakpoint}-#{$i}-#{$gridColumn} { margin-left: #{math.div($i, $gridColumn) * -100 + '%'}; }
 			}
 		}
 	}
@@ -539,85 +543,85 @@ $justifyContent: 'flex-end';
 	.float-none.float-none { float: none; }
 	.float-right.float-right { float: right; }
 
-	// .offset-bottom-10  { margin-bottom: -10%;  }
-	// .offset-bottom-20  { margin-bottom: -20%;  }
-	// .offset-bottom-30  { margin-bottom: -30%;  }
-	// .offset-bottom-40  { margin-bottom: -40%;  }
-	// .offset-bottom-50  { margin-bottom: -50%;  }
-	// .offset-bottom-60  { margin-bottom: -60%;  }
-	// .offset-bottom-70  { margin-bottom: -70%;  }
-	// .offset-bottom-80  { margin-bottom: -80%;  }
-	// .offset-bottom-90  { margin-bottom: -90%;  }
-	// .offset-bottom-100  { margin-bottom: -100%;  }
+	// .offset-bottom-10 { margin-bottom: -10%;  }
+	// .offset-bottom-20 { margin-bottom: -20%;  }
+	// .offset-bottom-30 { margin-bottom: -30%;  }
+	// .offset-bottom-40 { margin-bottom: -40%;  }
+	// .offset-bottom-50 { margin-bottom: -50%;  }
+	// .offset-bottom-60 { margin-bottom: -60%;  }
+	// .offset-bottom-70 { margin-bottom: -70%;  }
+	// .offset-bottom-80 { margin-bottom: -80%;  }
+	// .offset-bottom-90 { margin-bottom: -90%;  }
+	// .offset-bottom-100 { margin-bottom: -100%;  }
 
-	// .offset-right-10  { margin-right: -10%;  }
-	// .offset-right-20  { margin-right: -20%;  }
-	// .offset-right-30  { margin-right: -30%;  }
-	// .offset-right-40  { margin-right: -40%;  }
-	// .offset-right-50  { margin-right: -50%;  }
-	// .offset-right-60  { margin-right: -60%;  }
-	// .offset-right-70  { margin-right: -70%;  }
-	// .offset-right-80  { margin-right: -80%;  }
-	// .offset-right-90  { margin-right: -90%;  }
-	// .offset-right-100  { margin-right: -100%;  }
+	// .offset-right-10 { margin-right: -10%;  }
+	// .offset-right-20 { margin-right: -20%;  }
+	// .offset-right-30 { margin-right: -30%;  }
+	// .offset-right-40 { margin-right: -40%;  }
+	// .offset-right-50 { margin-right: -50%;  }
+	// .offset-right-60 { margin-right: -60%;  }
+	// .offset-right-70 { margin-right: -70%;  }
+	// .offset-right-80 { margin-right: -80%;  }
+	// .offset-right-90 { margin-right: -90%;  }
+	// .offset-right-100 { margin-right: -100%;  }
 
-	// .offset-top-10  { margin-top: -10%;  }
-	// .offset-top-20  { margin-top: -20%;  }
-	// .offset-top-30  { margin-top: -30%;  }
-	// .offset-top-40  { margin-top: -40%;  }
-	// .offset-top-50  { margin-top: -50%;  }
-	// .offset-top-60  { margin-top: -60%;  }
-	// .offset-top-70  { margin-top: -70%;  }
-	// .offset-top-80  { margin-top: -80%;  }
-	// .offset-top-90  { margin-top: -90%;  }
-	// .offset-top-100  { margin-top: -100%;  }
+	// .offset-top-10 { margin-top: -10%;  }
+	// .offset-top-20 { margin-top: -20%;  }
+	// .offset-top-30 { margin-top: -30%;  }
+	// .offset-top-40 { margin-top: -40%;  }
+	// .offset-top-50 { margin-top: -50%;  }
+	// .offset-top-60 { margin-top: -60%;  }
+	// .offset-top-70 { margin-top: -70%;  }
+	// .offset-top-80 { margin-top: -80%;  }
+	// .offset-top-90 { margin-top: -90%;  }
+	// .offset-top-100 { margin-top: -100%;  }
 
-	// .offset-left-10  { margin-left: -10%;  }
-	// .offset-left-20  { margin-left: -20%;  }
-	// .offset-left-30  { margin-left: -30%;  }
-	// .offset-left-40  { margin-left: -40%;  }
-	// .offset-left-50  { margin-left: -50%;  }
-	// .offset-left-60  { margin-left: -60%;  }
-	// .offset-left-70  { margin-left: -70%;  }
-	// .offset-left-80  { margin-left: -80%;  }
-	// .offset-left-90  { margin-left: -90%;  }
-	// .offset-left-100  { margin-left: -100%;  }
+	// .offset-left-10 { margin-left: -10%;  }
+	// .offset-left-20 { margin-left: -20%;  }
+	// .offset-left-30 { margin-left: -30%;  }
+	// .offset-left-40 { margin-left: -40%;  }
+	// .offset-left-50 { margin-left: -50%;  }
+	// .offset-left-60 { margin-left: -60%;  }
+	// .offset-left-70 { margin-left: -70%;  }
+	// .offset-left-80 { margin-left: -80%;  }
+	// .offset-left-90 { margin-left: -90%;  }
+	// .offset-left-100 { margin-left: -100%;  }
 
 
 
 	// .offset-bottom {
 	// 	position: relative;
 
-	// 	&--25  { bottom: -25%;  }
-	// 	&--50  { bottom: -50%;  }
-	// 	&--75  { bottom: -75%;  }
+	// 	&--25 { bottom: -25%;  }
+	// 	&--50 { bottom: -50%;  }
+	// 	&--75 { bottom: -75%;  }
 	// 	&--100 { bottom: -100%; }
 	// }
 
 	// .offset-left {
 	// 	position: relative;
 
-	// 	&--25  { left: -25%;  }
-	// 	&--50  { left: -50%;  }
-	// 	&--75  { left: -75%;  }
+	// 	&--25 { left: -25%;  }
+	// 	&--50 { left: -50%;  }
+	// 	&--75 { left: -75%;  }
 	// 	&--100 { left: -100%; }
 	// }
 
 	// .offset-right {
 	// 	position: relative;
 
-	// 	&--25  { right: -25%;  }
-	// 	&--50  { right: -50%;  }
-	// 	&--75  { right: -75%;  }
+	// 	&--25 { right: -25%;  }
+	// 	&--50 { right: -50%;  }
+	// 	&--75 { right: -75%;  }
 	// 	&--100 { right: -100%; }
 	// }
 
 	// .offset-top {
 	// 	position: relative;
 
-	// 	&--25  { top: -25%;  }
-	// 	&--50  { top: -50%;  }
-	// 	&--75  { top: -75%;  }
+	// 	&--25 { top: -25%;  }
+	// 	&--50 { top: -50%;  }
+	// 	&--75 { top: -75%;  }
 	// 	&--100 { top: -100%; }
 	// }
 
@@ -631,7 +635,7 @@ $justifyContent: 'flex-end';
 
 	// — Viewport width offsets
 	// —— Left Positive
-	// .offset-left-5-vw  { left: 5vw;   } @include mediaquery(phone) { .offset-phone-left-5-vw  { left: 5vw;   } } @include mediaquery(phone-plus) { .offset-phone-plus-left-5-vw  { left: 5vw;   } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-left-5-vw  { left: 5vw;   } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-left-5-vw  { left: 5vw;   } } @include mediaquery(desktop) { .offset-desktop-left-5-vw  { left: 5vw;   } } @include mediaquery(xl) { .offset-xl-left-5-vw  { left: 5vw;   } } @include mediaquery(xl2) { .offset-xl2-left-5-vw  { left: 5vw;   } }
+	// .offset-left-5-vw { left: 5vw;   } @include mediaquery(phone) { .offset-phone-left-5-vw { left: 5vw;   } } @include mediaquery(phone-plus) { .offset-phone-plus-left-5-vw { left: 5vw;   } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-left-5-vw { left: 5vw;   } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-left-5-vw { left: 5vw;   } } @include mediaquery(desktop) { .offset-desktop-left-5-vw { left: 5vw;   } } @include mediaquery(xl) { .offset-xl-left-5-vw { left: 5vw;   } } @include mediaquery(xl2) { .offset-xl2-left-5-vw { left: 5vw;   } }
 	// .offset-left-10-vw { left: 10vw;  } @include mediaquery(phone) { .offset-phone-left-10-vw { left: 10vw;  } } @include mediaquery(phone-plus) { .offset-phone-plus-left-10-vw { left: 10vw;  } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-left-10-vw { left: 10vw;  } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-left-10-vw { left: 10vw;  } } @include mediaquery(desktop) { .offset-desktop-left-10-vw { left: 10vw;  } } @include mediaquery(xl) { .offset-xl-left-10-vw { left: 10vw;  } } @include mediaquery(xl2) { .offset-xl2-left-10-vw { left: 10vw;  } }
 	// .offset-left-20-vw { left: 20vw;  } @include mediaquery(phone) { .offset-phone-left-20-vw { left: 20vw;  } } @include mediaquery(phone-plus) { .offset-phone-plus-left-20-vw { left: 20vw;  } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-left-20-vw { left: 20vw;  } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-left-20-vw { left: 20vw;  } } @include mediaquery(desktop) { .offset-desktop-left-20-vw { left: 20vw;  } } @include mediaquery(xl) { .offset-xl-left-20-vw { left: 20vw;  } } @include mediaquery(xl2) { .offset-xl2-left-20-vw { left: 20vw;  } }
 	// .offset-left-25-vw { left: 25vw;  } @include mediaquery(phone) { .offset-phone-left-25-vw { left: 25vw;  } } @include mediaquery(phone-plus) { .offset-phone-plus-left-25-vw { left: 25vw;  } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-left-25-vw { left: 25vw;  } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-left-25-vw { left: 25vw;  } } @include mediaquery(desktop) { .offset-desktop-left-25-vw { left: 25vw;  } } @include mediaquery(xl) { .offset-xl-left-25-vw { left: 25vw;  } } @include mediaquery(xl2) { .offset-xl2-left-25-vw { left: 25vw;  } }
@@ -652,7 +656,7 @@ $justifyContent: 'flex-end';
 	// .offset-left-100-vw{ left: 100vw; } @include mediaquery(phone) { .offset-phone-left-100-vw{ left: 100vw; } } @include mediaquery(phone-plus) { .offset-phone-plus-left-100-vw{ left: 100vw; } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-left-100-vw{ left: 100vw; } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-left-100-vw{ left: 100vw; } } @include mediaquery(desktop) { .offset-desktop-left-100-vw{ left: 100vw; } } @include mediaquery(xl) { .offset-xl-left-100-vw{ left: 100vw; } } @include mediaquery(xl2) { .offset-xl2-left-100-vw{ left: 100vw; } }
 
 	// // —— Left Negative
-	// .offset-left--5-vw  { left: -5vw;   } @include mediaquery(phone) { .offset-phone-left--5-vw  { left: -5vw;   } } @include mediaquery(phone-plus) { .offset-phone-plus-left--5-vw  { left: -5vw;   } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-left--5-vw  { left: -5vw;   } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-left--5-vw  { left: -5vw;   } } @include mediaquery(desktop) { .offset-desktop-left--5-vw  { left: -5vw;   } } @include mediaquery(xl) { .offset-xl-left--5-vw  { left: -5vw;   } } @include mediaquery(xl2) { .offset-xl2-left--5-vw  { left: -5vw;   } }
+	// .offset-left--5-vw { left: -5vw;   } @include mediaquery(phone) { .offset-phone-left--5-vw { left: -5vw;   } } @include mediaquery(phone-plus) { .offset-phone-plus-left--5-vw { left: -5vw;   } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-left--5-vw { left: -5vw;   } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-left--5-vw { left: -5vw;   } } @include mediaquery(desktop) { .offset-desktop-left--5-vw { left: -5vw;   } } @include mediaquery(xl) { .offset-xl-left--5-vw { left: -5vw;   } } @include mediaquery(xl2) { .offset-xl2-left--5-vw { left: -5vw;   } }
 	// .offset-left--10-vw { left: -10vw;  } @include mediaquery(phone) { .offset-phone-left--10-vw { left: -10vw;  } } @include mediaquery(phone-plus) { .offset-phone-plus-left--10-vw { left: -10vw;  } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-left--10-vw { left: -10vw;  } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-left--10-vw { left: -10vw;  } } @include mediaquery(desktop) { .offset-desktop-left--10-vw { left: -10vw;  } } @include mediaquery(xl) { .offset-xl-left--10-vw { left: -10vw;  } } @include mediaquery(xl2) { .offset-xl2-left--10-vw { left: -10vw;  } }
 	// .offset-left--20-vw { left: -20vw;  } @include mediaquery(phone) { .offset-phone-left--20-vw { left: -20vw;  } } @include mediaquery(phone-plus) { .offset-phone-plus-left--20-vw { left: -20vw;  } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-left--20-vw { left: -20vw;  } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-left--20-vw { left: -20vw;  } } @include mediaquery(desktop) { .offset-desktop-left--20-vw { left: -20vw;  } } @include mediaquery(xl) { .offset-xl-left--20-vw { left: -20vw;  } } @include mediaquery(xl2) { .offset-xl2-left--20-vw { left: -20vw;  } }
 	// .offset-left--25-vw { left: -25vw;  } @include mediaquery(phone) { .offset-phone-left--25-vw { left: -25vw;  } } @include mediaquery(phone-plus) { .offset-phone-plus-left--25-vw { left: -25vw;  } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-left--25-vw { left: -25vw;  } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-left--25-vw { left: -25vw;  } } @include mediaquery(desktop) { .offset-desktop-left--25-vw { left: -25vw;  } } @include mediaquery(xl) { .offset-xl-left--25-vw { left: -25vw;  } } @include mediaquery(xl2) { .offset-xl2-left--25-vw { left: -25vw;  } }
@@ -674,7 +678,7 @@ $justifyContent: 'flex-end';
 
 	// // — Viewport height offsets
 	// // —— Top Positive
-	// .offset-top-5-vh  { top: 5vh;   } @include mediaquery(phone) { .offset-phone-top-5-vh  { top: 5vh;   } } @include mediaquery(phone-plus) { .offset-phone-plus-top-5-vh  { top: 5vh;   } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-top-5-vh  { top: 5vh;   } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-top-5-vh  { top: 5vh;   } } @include mediaquery(desktop) { .offset-desktop-top-5-vh  { top: 5vh;   } } @include mediaquery(xl) { .offset-xl-top-5-vh  { top: 5vh;   } } @include mediaquery(xl2) { .offset-xl2-top-5-vh  { top: 5vh;   } }
+	// .offset-top-5-vh { top: 5vh;   } @include mediaquery(phone) { .offset-phone-top-5-vh { top: 5vh;   } } @include mediaquery(phone-plus) { .offset-phone-plus-top-5-vh { top: 5vh;   } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-top-5-vh { top: 5vh;   } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-top-5-vh { top: 5vh;   } } @include mediaquery(desktop) { .offset-desktop-top-5-vh { top: 5vh;   } } @include mediaquery(xl) { .offset-xl-top-5-vh { top: 5vh;   } } @include mediaquery(xl2) { .offset-xl2-top-5-vh { top: 5vh;   } }
 	// .offset-top-10-vh { top: 10vh;  } @include mediaquery(phone) { .offset-phone-top-10-vh { top: 10vh;  } } @include mediaquery(phone-plus) { .offset-phone-plus-top-10-vh { top: 10vh;  } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-top-10-vh { top: 10vh;  } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-top-10-vh { top: 10vh;  } } @include mediaquery(desktop) { .offset-desktop-top-10-vh { top: 10vh;  } } @include mediaquery(xl) { .offset-xl-top-10-vh { top: 10vh;  } } @include mediaquery(xl2) { .offset-xl2-top-10-vh { top: 10vh;  } }
 	// .offset-top-15-vh { top: 15vh;  } @include mediaquery(phone) { .offset-phone-top-15-vh { top: 15vh;  } } @include mediaquery(phone-plus) { .offset-phone-plus-top-15-vh { top: 15vh;  } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-top-15-vh { top: 15vh;  } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-top-15-vh { top: 15vh;  } } @include mediaquery(desktop) { .offset-desktop-top-15-vh { top: 15vh;  } } @include mediaquery(xl) { .offset-xl-top-15-vh { top: 15vh;  } } @include mediaquery(xl2) { .offset-xl2-top-15-vh { top: 15vh;  } }
 	// .offset-top-20-vh { top: 20vh;  } @include mediaquery(phone) { .offset-phone-top-20-vh { top: 20vh;  } } @include mediaquery(phone-plus) { .offset-phone-plus-top-20-vh { top: 20vh;  } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-top-20-vh { top: 20vh;  } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-top-20-vh { top: 20vh;  } } @include mediaquery(desktop) { .offset-desktop-top-20-vh { top: 20vh;  } } @include mediaquery(xl) { .offset-xl-top-20-vh { top: 20vh;  } } @include mediaquery(xl2) { .offset-xl2-top-20-vh { top: 20vh;  } }
@@ -696,7 +700,7 @@ $justifyContent: 'flex-end';
 	// .offset-top-100-vh{ top: 100vh; } @include mediaquery(phone) { .offset-phone-top-100-vh{ top: 100vh; } } @include mediaquery(phone-plus) { .offset-phone-plus-top-100-vh{ top: 100vh; } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-top-100-vh{ top: 100vh; } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-top-100-vh{ top: 100vh; } } @include mediaquery(desktop) { .offset-desktop-top-100-vh{ top: 100vh; } } @include mediaquery(xl) { .offset-xl-top-100-vh{ top: 100vh; } } @include mediaquery(xl2) { .offset-xl2-top-100-vh{ top: 100vh; } }
 
 	// // —— Top Negative
-	// .offset-top--5-vh  { top: -5vh;   } @include mediaquery(phone) { .offset-phone-top--5-vh  { top: -5vh;   } } @include mediaquery(phone-plus) { .offset-phone-plus-top--5-vh  { top: -5vh;   } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-top--5-vh  { top: -5vh;   } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-top--5-vh  { top: -5vh;   } } @include mediaquery(desktop) { .offset-desktop-top--5-vh  { top: -5vh;   } } @include mediaquery(xl) { .offset-xl-top--5-vh  { top: -5vh;   } } @include mediaquery(xl2) { .offset-xl2-top--5-vh  { top: -5vh;   } }
+	// .offset-top--5-vh { top: -5vh;   } @include mediaquery(phone) { .offset-phone-top--5-vh { top: -5vh;   } } @include mediaquery(phone-plus) { .offset-phone-plus-top--5-vh { top: -5vh;   } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-top--5-vh { top: -5vh;   } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-top--5-vh { top: -5vh;   } } @include mediaquery(desktop) { .offset-desktop-top--5-vh { top: -5vh;   } } @include mediaquery(xl) { .offset-xl-top--5-vh { top: -5vh;   } } @include mediaquery(xl2) { .offset-xl2-top--5-vh { top: -5vh;   } }
 	// .offset-top--10-vh { top: -10vh;  } @include mediaquery(phone) { .offset-phone-top--10-vh { top: -10vh;  } } @include mediaquery(phone-plus) { .offset-phone-plus-top--10-vh { top: -10vh;  } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-top--10-vh { top: -10vh;  } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-top--10-vh { top: -10vh;  } } @include mediaquery(desktop) { .offset-desktop-top--10-vh { top: -10vh;  } } @include mediaquery(xl) { .offset-xl-top--10-vh { top: -10vh;  } } @include mediaquery(xl2) { .offset-xl2-top--10-vh { top: -10vh;  } }
 	// .offset-top--15-vh { top: -15vh;  } @include mediaquery(phone) { .offset-phone-top--15-vh { top: -15vh;  } } @include mediaquery(phone-plus) { .offset-phone-plus-top--15-vh { top: -15vh;  } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-top--15-vh { top: -15vh;  } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-top--15-vh { top: -15vh;  } } @include mediaquery(desktop) { .offset-desktop-top--15-vh { top: -15vh;  } } @include mediaquery(xl) { .offset-xl-top--15-vh { top: -15vh;  } } @include mediaquery(xl2) { .offset-xl2-top--15-vh { top: -15vh;  } }
 	// .offset-top--20-vh { top: -20vh;  } @include mediaquery(phone) { .offset-phone-top--20-vh { top: -20vh;  } } @include mediaquery(phone-plus) { .offset-phone-plus-top--20-vh { top: -20vh;  } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-top--20-vh { top: -20vh;  } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-top--20-vh { top: -20vh;  } } @include mediaquery(desktop) { .offset-desktop-top--20-vh { top: -20vh;  } } @include mediaquery(xl) { .offset-xl-top--20-vh { top: -20vh;  } } @include mediaquery(xl2) { .offset-xl2-top--20-vh { top: -20vh;  } }
@@ -904,13 +908,13 @@ $justifyContent: 'flex-end';
 		}
 
 		.component-column {
-			padding: $gap/4 !important;
+			padding: math.div($gap, 4) !important;
 		}
 	}
 
 	.component-column {
 		border-right: 1px solid color('secondary', 'lightGray');
-		padding: $gap/2 $gap;
+		padding: math.div($gap, 2) $gap;
 
 		// p {
 		// 	font-size: 16px;

@@ -10,7 +10,7 @@
 		height: 300px;
 		overflow: hidden;
 
-		@include mediaquery(tablet-landscape)  {
+		@include mediaquery(tablet-landscape) {
 			height: 400px;
 		}
 
@@ -19,7 +19,7 @@
     		object-position: center center;
 	  		height: 300px;
 
-			@include mediaquery(tablet-landscape)  {
+			@include mediaquery(tablet-landscape) {
 				height: 400px;
 			}
 		}

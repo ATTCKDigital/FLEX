@@ -46,6 +46,26 @@
 	}
 }
 
+.component-heading.has-image {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+
+	img {
+		height: auto;
+		margin-right: $gap*5;
+		max-height: 30px;
+		max-width: 45px;
+		width: auto;
+
+		@include mediaquery(tablet-portrait) {
+			margin-right: $gap*2;
+			max-width: 80px;
+			max-height: 50px;
+		}
+	}
+}
+
 .component-heading-wrapper {
 	width: 100%;
 }

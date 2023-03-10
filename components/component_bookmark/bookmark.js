@@ -1,4 +1,7 @@
 import $ from 'jquery';
+import FLEX from 'FLEX/js/client-namespace';
+
+if (!FLEX.isProd) { console.log('loaded', '/FLEX\t/components\t/component_analytics\t/bookmark.js'); }
 
 /**
  * Display a calendar selector
@@ -36,7 +39,5 @@ function Bookmark($el) {
 
 	return this.init($el);
 }
-
-console.log('loaded', '/FLEX\t/components\t/component_analytics\t/bookmark.js');
 
 export default Bookmark;

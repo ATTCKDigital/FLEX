@@ -1,10 +1,6 @@
 // Default
 $modalColor: #ffffff;
 $popupColor: rgba(0, 0, 0, .7);
-// $defaultTextColor: var(--color-text-body);
-// $borderColor: #DFDFDF;
-// $white: #FFFFFF;
-$black: #000000;
 
 // Brand
 $brand-color-key: 'red' !default;
@@ -31,7 +27,7 @@ $brand-colors: (
 		'pink': 	  #D48D86,
 		'lightBlue':  #E8F2F9,
 		'lightGray':  #CCCCCC,
-		'lighterGray':#DFDFDF, // color('secondary', 'lighterGray')
+		'lighterGray':#DFDFDF,
 		'purple': 	  #873B75,
 		'white':	  #FFFFFF,
 		'one': 		  #D6CECC,
@@ -59,8 +55,8 @@ $brand-colors: (
 
 
 // Helpers
-.color-brand-primary { color: color('brand', 'primary'); }
-.color-brand-secondary { color: color('brand', 'secondary'); }
+// .color-brand-primary { color: color('brand', 'primary'); }
+// .color-brand-secondary { color: color('brand', 'secondary'); }
 .color-black { color: color('default', 'black'); }
 .color-white { color: color('default', 'white'); }
 
@@ -99,9 +95,9 @@ $brand-colors: (
 
 // @mixin placeholder {
 // 	::-webkit-input-placeholder {@content}
-// 	:-moz-placeholder           {@content}
-// 	::-moz-placeholder          {@content}
-// 	:-ms-input-placeholder      {@content}
+// 	:-moz-placeholder          {@content}
+// 	::-moz-placeholder         {@content}
+// 	:-ms-input-placeholder     {@content}
 // }
 
 // @include placeholder {
@@ -141,5 +137,16 @@ $brand-colors: (
 		.color-#{$key}-#{$variant} {
 			color: #{$color};
 		}
+	}
+}
+
+.color-text-body {
+	[data-logo-color="logo-color-dark"] &,
+	.blog &, 
+	.category &, 
+	.tag &, 
+	.single-post &, 
+	.white-nav & {
+		color: color('brand', 'primary');
 	}
 }

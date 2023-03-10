@@ -1,4 +1,6 @@
-console.log('loaded', '/FLEX\t/gutenberg\t/blocks\t/block_hr\t/hr.js');
+import FLEX from 'FLEX/js/client-namespace';
+
+if (!FLEX.isProd) { console.log('loaded', '/FLEX\t/gutenberg\t/blocks\t/block_hr\t/hr.js'); }
 
 // Block dependencies
 import classnames from 'classnames';

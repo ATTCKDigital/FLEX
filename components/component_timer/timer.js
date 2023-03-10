@@ -2,6 +2,8 @@ import $ from 'jquery';
 import FLEX from '../../js/client-namespace';
 import $$ from '../component_cached-dom-elements/cached-dom-elements';
 
+
+if (!FLEX.isProd) { console.log('loaded', '/FLEX\t/js\t/components\t/component_timer\t/timer.js'); }
 /**
  * Shows countdown timer
  */
@@ -500,8 +502,7 @@ function Timer($el, options) {
 	}
 
 	this.init = function ($el) {
-		console.log('/src/scripts/FLEX.js', 'Timer.init()');
-		console.log('loaded', 'Timer.init()');
+		console.log('/FLEX\t/js\t/components\t/component_timer\t/timer.js', 'init()');
 
 		// bindEvents();
 		render();

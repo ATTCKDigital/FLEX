@@ -1,6 +1,4 @@
 <?php
-echo "\n<!-- FLEX/config/global-variables/blocks.php -->\n"; 
-
 /** Enable Blocks
  * Select blocks that should be available for the project.
  * Available Blocks

@@ -11,6 +11,17 @@
 			}
 		}
 
+		[data-logo-color="logo-color-light"] & {
+			color: color('text', 'hover');
+
+			@include mediaquery(desktop) {
+				&:hover {
+					opacity: 1;
+					color: color('secondary', 'white');
+				}
+			}
+		}
+
 		.links-white & {
 			color: color('secondary', 'white');
 		}

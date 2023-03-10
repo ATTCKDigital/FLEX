@@ -4,7 +4,7 @@
 		text-decoration: none;
 		transition: color .05s ease-out;
 
-		@include mediaquery(desktop)  {
+		@include mediaquery(desktop) {
 			&:hover {
 				color: color('text', 'hover');
 			}

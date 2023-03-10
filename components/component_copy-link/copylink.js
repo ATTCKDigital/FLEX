@@ -1,4 +1,7 @@
 import $ from 'jquery';
+import FLEX from 'FLEX/js/client-namespace';
+
+if (!FLEX.isProd) { console.log('loaded', '/FLEX\t/js\t/components\t/component_copy-link\t/copylink.js'); }
 
 /**
  * Copies link URL to clipboard and optionally 
@@ -54,7 +57,7 @@ function CopyLink($el) {
 	}
 
 	this.init = function ($el) {
-		console.log('loaded', 'CopyLink.init()');
+		console.log('/FLEX\t/js\t/components\t/component_copy-link\t/copylink.js', 'CopyLink.init()');
 
 		bindEvents();
 

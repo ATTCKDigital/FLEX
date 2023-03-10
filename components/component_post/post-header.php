@@ -1,5 +1,5 @@
 <?php // Single Post Header ?>
-<section class="component-row">adsadsadsdasasd
+<section class="component-row">
 	<?php if(has_post_thumbnail()){ ?>
 		<div class="flex-grid component-row-full component-row-verticalAlignment-top">
 			<div class="column flex-tablet-landscape-12-12 flex-tablet-portrait-12-12 flex-12-12">

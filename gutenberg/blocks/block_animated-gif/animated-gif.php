@@ -122,8 +122,10 @@ function render_animated_gif_block($attributes) {
 		$class .= ' component component-' . $dataComponentNameLowercase;
 	}
 
+	$getGifURL = (isset($gifURL[0])) ? $gifURL[0] : '';
+
 	$output =  "<div class=\"component-animated-gif component {$class}\" {$CSSWidth} data-component-name=\"AnimatedGif {$dataComponentName}\" {$dataComponentOptions}>";
-	$output .= 		"<div class=\"image-wrapper\" data-gif-src=\"{$gifURL[0]}\">";
+	$output .= 		"<div class=\"image-wrapper\" data-gif-src=\"{$getGifURL}\">";
 	$output .= 			"{$image}";
 	$output .=			"{$caption}";
 	$output .=		"</div>";

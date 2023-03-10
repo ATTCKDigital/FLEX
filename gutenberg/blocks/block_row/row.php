@@ -20,6 +20,7 @@ use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
 
 use const FLEX_LAYOUT_SYSTEM\Components\RowHeight\ROW_HEIGHT_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\RowHeight\row_height_options_classes;
+use function FLEX_LAYOUT_SYSTEM\Components\RowHeight\row_height_mobile_options_classes;
 
 use const FLEX_LAYOUT_SYSTEM\Components\Scroller\SCROLLER_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Scroller\scroller_options_output;
@@ -97,6 +98,7 @@ function render_row_block($attributes, $content) {
 	$class .= margin_options_classes($attributes);
 	$class .= border_options_classes($attributes);
 	$class .= row_height_options_classes($attributes);
+	$class .= row_height_mobile_options_classes($attributes);
 
 	// Apply relative link id (e.g., page.html#link)
 	$id = array_key_exists('anchor', $attributes) ? " id=\"{$attributes['anchor']}\"" : "";

@@ -1,3 +1,8 @@
+::selection {
+	background: color('brand', 'accent');
+	color: color('brand', 'primary');
+}
+
 address, 
 .footer-link {
 	@include primary-regular;
@@ -16,7 +21,7 @@ a {
 	letter-spacing: inherit;
 	text-decoration: none;
 
-	@include mediaquery(desktop)  {
+	@include mediaquery(desktop) {
 		&:hover {
 		}
 	}
@@ -56,15 +61,28 @@ hr {
 	}
 }
 
-p {
+p,
+// .body1,
+.body {
 	@include primary-regular;
+	font-size: 14px;
 	letter-spacing: 0;
 	line-height: 1.3;
 	margin-bottom: $gap;
+}
 
+p {
 	a {
-		@extend .link;
-	} 
+		color: color('text', 'link');
+		text-decoration: none;
+		transition: color .3s ease-out;
+
+		@include mediaquery(desktop) {
+			&:hover {
+				color: color('text', 'hover');
+			}
+		}
+	}
 }
 
 small {
@@ -97,10 +115,24 @@ u {
 	font-style: inherit;
 }
 
-// TODO: Notate the distinction between body and body1. -DP
-.body1, 
-.body {
-	@extend p;
+
+/** Error & Message Styles **/
+.error {
+	@extend .body;
+	color: red;
+}
+
+/** Helper Classes **/
+.align-center {
+	text-align: center;
+}
+
+.align-left {
+	text-align: left;
+}
+
+.align-right {
+	text-align: right;
 }
 
 .display-block {
@@ -122,7 +154,7 @@ u {
 	@include font-size($font-size-headline1);
 	letter-spacing: -.5px;
 	line-height: 1.25;
-}	
+}
 
 .headline2,
 .is-style-headline2 {
@@ -130,7 +162,7 @@ u {
 	@include font-size($font-size-headline2);
 	letter-spacing: -.5px;
 	line-height: 1.375;
-}	
+}
 
 .headline3,
 .is-style-headline3 {
@@ -144,7 +176,7 @@ u {
 	@include primary-semi;
 	@include font-size($font-size-headline4);
 	line-height: 1.41;
-}	
+}
 
 .headline5,
 .is-style-headline5 {
@@ -171,7 +203,7 @@ u {
 	break-inside: avoid;
 
 	@include mediaquery(tablet-landscape) {
-		column-gap: $gap*10;
+		column-gap: $gap*5;
 	}
 }
 
@@ -196,13 +228,12 @@ u {
 
 .text-columns, 
 .is-style-text-columns {
-	column-gap: $gap;
-
-	@include mediaquery(tablet-landscape) {
+	@include mediaquery(tablet-portrait) {
 		break-inside: avoid;
-		column-count: 2;
-		column-gap: $gap*15;
 		column-break-inside: avoid; /* Chrome, Safari, Opera */
+		column-count: 2;
+		// column-gap: $gap;
+		column-gap: $gap*6;
 		page-break-inside: avoid; /* Firefox */
 	}
 }

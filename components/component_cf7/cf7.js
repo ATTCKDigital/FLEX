@@ -1,6 +1,7 @@
 import $ from 'jquery';
+import FLEX from 'FLEX/js/client-namespace';
 
-console.log('loaded', '/FLEX\t/js\t/components\t/component_cf7\t/cf7.js');
+if (!FLEX.isProd) { console.log('loaded', '/FLEX\t/js\t/components\t/component_cf7\t/cf7.js'); }
 
 /**
  * Contact Form 7 helper

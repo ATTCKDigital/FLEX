@@ -9,9 +9,11 @@
  */
 
 // Load order: First, before 
-console.log('loaded', '/FLEX\t/js\t/app.js');
 
 import $ from 'jquery';
+
+var isProd = (typeof $('body').attr('data-server-environment'));
+if (!isProd) { console.log('loaded', '/FLEX\t/js\t/app.js'); }
 
 // https://stackoverflow.com/questions/34338411/how-to-import-jquery-using-es6-syntax
 window.$ = window.jQuery = $;

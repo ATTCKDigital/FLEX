@@ -38,7 +38,7 @@
 	left: 0;
 
 	iframe {
-		@include mediaquery(tablet-landscape)  {
+		@include mediaquery(tablet-landscape) {
 			bottom: 0;
 			height: 100%;
 			left: 0;
@@ -55,7 +55,7 @@
 		margin: 0 auto;
 		position: relative;
 
-		@include mediaquery(tablet-landscape)  {
+		@include mediaquery(tablet-landscape) {
 			max-width: 70%;
 		}
 	}
@@ -79,7 +79,7 @@
 		width: 90%;
 		padding: 40px;
 
-		@include mediaquery(tablet-landscape)  {
+		@include mediaquery(tablet-landscape) {
 			padding: 85px;
 		}
 	}

@@ -2,7 +2,7 @@ import CopyPlugin from 'copy-webpack-plugin';
 import ImageminPlugin from 'imagemin-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
-// import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import SpritePlugin from 'extract-svg-sprite-webpack-plugin';
 import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
@@ -17,6 +17,7 @@ const smp = new SpeedMeasurePlugin({
 });
 
 const isDevEnv = 'production' !== process.env.NODE_ENV;
+console.log('FLEX/webpack.config.babel.js › isDevEnv: ' + isDevEnv);
 
 const devPlugins = [];
 
@@ -164,30 +165,27 @@ module.exports = smp.wrap({
 		minimizer: [
 			new TerserPlugin(),
 			new CssMinimizerPlugin()
-			// new OptimizeCSSAssetsPlugin({
-			// 	cssProcessorPluginOptions: {
-			// 		preset: ['default', {
-			// 			discardComments: {
-			// 				removeAll: true
-			// 			}
-			// 		}],
-			// 	},
-			// }),
+			new OptimizeCSSAssetsPlugin({
+				cssProcessorPluginOptions: {
+					preset: ['default', {
+						discardComments: {
+							removeAll: true
+						}
+					}],
+				},
+			}),
 		],
 	},
 
 	plugins: [
 		...plugins,
 		new WebpackNotifierPlugin(),
-
 		new SpritePlugin(),
-
 		new MiniCssExtractPlugin({
 			filename: '[name].css',
 			chunkFilename: '[id].[hash].css',
 			// path: path.resolve(__dirname, './dist/css'),
 		}),
-
 		// Copy contents of ./assets -> ./dist
 		new CopyPlugin([
 			{

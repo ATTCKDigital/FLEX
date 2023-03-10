@@ -72,6 +72,10 @@ function register_column_block() {
  * Server rendering for /blocks/column
  */
 function render_column_block($attributes, $content) {
+	// echo "<!-- content: \n";
+	// print_r($content);
+	// echo "\n-->\n";
+
 	$sectionDataId = mt_rand(10,1000);
 	$class = 'component-column';
 	$class .= ' ' . $attributes['className'] . ' ';
@@ -106,7 +110,10 @@ function render_column_block($attributes, $content) {
 	// NOTE: data-component-options is optional but must be stringified JSON
 	if (array_key_exists('dataComponentName', $attributes)) {
 		$dataComponentNameLowercase = strtolower($attributes['dataComponentName']);
-		$class .= ' component component-' . $dataComponentNameLowercase;
+
+		if (isset($dataComponentNameLowercase)) {
+			$class .= ' component component-' . $dataComponentNameLowercase;
+		}
 	}
 
 	// Apply background images
@@ -123,7 +130,9 @@ function render_column_block($attributes, $content) {
 	// Video will only appear if the column has content
 	$innerContent = background_options_video_output($attributes);
 
-	$output = "<section{$id} class=\"{$class}\" data-section-id=\"section-{$sectionDataId}\" style=\"{$style}\" {$dataComponentName} {$dataComponentOptions}>{$styleBlock}{$content}{$innerContent}</section>";
+	$output  = "<section{$id} class=\"{$class}\" data-section-id=\"section-{$sectionDataId}\" style=\"{$style}\" {$dataComponentName} {$dataComponentOptions}>";
+	$output .= "	{$styleBlock}{$content}{$innerContent}";
+	$output .= "</section>";
 
 	return $output;
 }

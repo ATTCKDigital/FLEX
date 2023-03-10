@@ -4,9 +4,10 @@
  * Usage: $$({selector}) returned cached element if previously used
  * or caches upon first use.
  */
-console.log('loaded', '/FLEX\t/js\t/cached-dom-elements.js');
-
 import $ from 'jquery';
+import FLEX from 'FLEX/js/client-namespace';
+
+if (!FLEX.isProd) { console.log('loaded', '/FLEX\t/js\t/cached-dom-elements.js'); }
 
 window.cachedDomElements = (function () {
 	var cachedElements = {};

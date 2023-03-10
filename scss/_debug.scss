@@ -5,7 +5,7 @@
 	display: none;
 	height: 20px;
 	opacity: 1;
-	padding: $gap/4 $gap;
+	padding: calc($gap/4) $gap;
 	position: fixed;
 	right: 10px;
 	text-align: left;
@@ -132,7 +132,7 @@ body {
 				}
 			}
 
-			@include mediaquery-min-max-width(phone-plus, tablet-portrait)  {
+			@include mediaquery-min-max-width(phone-plus, tablet-portrait) {
 				&.phone-plus {
 					background: linear-gradient(160deg, lime, #66ffc9) !important;
 					display: flex;
@@ -151,7 +151,7 @@ body {
 			}
 
 			&.tablet-portrait {
-				@include mediaquery-min-max-width(tablet-portrait, tablet-landscape)  {
+				@include mediaquery-min-max-width(tablet-portrait, tablet-landscape) {
 					background: linear-gradient(160deg, yellow, #ffffcc) !important;
 					display: flex;
 					text-shadow: 1px 1px rgba(0, 0, 0, .1);
@@ -164,7 +164,7 @@ body {
 			}
 
 			&.tablet-landscape {
-				@include mediaquery-min-max-width(tablet-landscape, desktop)  {
+				@include mediaquery-min-max-width(tablet-landscape, desktop) {
 					background: linear-gradient(160deg, green, #81b814) !important;
 					display: flex;
 					text-shadow: 1px 1px rgba(0, 100, 0, 0.4);
@@ -176,7 +176,7 @@ body {
 			}
 
 			&.desktop {
-				@include mediaquery-min-max-width(desktop, xl)  {
+				@include mediaquery-min-max-width(desktop, xl) {
 					background: linear-gradient(160deg, blue, #6699ff) !important;
 					display: flex;
 					text-shadow: 1px 1px rgba(0, 0, 100, 0.4);
@@ -188,7 +188,7 @@ body {
 			}
 
 			&.xl {
-				@include mediaquery-min-max-width(xl, xl2)  {
+				@include mediaquery-min-max-width(xl, xl2) {
 					background: linear-gradient(160deg, purple, #4c0099) !important;
 					display: flex;
 					text-shadow: 1px 1px rgba(50, 0, 100, 0.4);

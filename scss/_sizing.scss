@@ -1,5 +1,11 @@
 // Global settings (i.e., don't change or override)
 // Override in themes/projectName/scss/_sizing.scss
+
+$gap						: 16px;
+$siteWidth					: 1024px;
+$navMobileHeight			: 70px;
+$navHeight					: 120px;
+$navWidth					: 1300px;
 $positions					: top, left, bottom, right;
 $xPositions					: center, left, right;
 $yPositions					: bottom, center, top;
@@ -12,6 +18,7 @@ $gridColumns				: 12, 24;
 //gap and increment should be the same value. 2 variables are required, one without px
 
 // Breakpoints
+$none						: 0px; // iPhone 4 & 5
 $default					: 0px; // iPhone 4 & 5
 $phone						: 375px; // iPhone 6, 7, 8, X
 $phone-plus					: 414px; // iPhone Plus/Max
@@ -30,30 +37,6 @@ $max-desktop				: 1099px;
 $max-xl						: 1279px;
 $max-xl2					: 1439px;
 
-@mixin font-size($fs-map) {
-	@each $fs-breakpoint, $fs-font-size in $fs-map {
-		@include mediaquery($fs-breakpoint) {
-			font-size: px-to-rem($fs-font-size);
-		}
-	}
-}
-
-/**
- * Converts px to rem 
- * — USAGE:  font-size: px-to-rem(12px);
- */
-@function px-to-rem($size) {
-	$remSize: calc($size / 13px);
-	@return #{$remSize}rem;
-}
-
-// Project specific settings
-// Override in themes/projectName/scss/_sizing.scss
-$gap						: 16px;
-$siteWidth					: 1024px;
-$navMobileHeight			: 70px;
-$navHeight					: 120px;
-$navWidth					: 1300px;
 
 // Fixed row heights
 $small-row-mobile			: 50vh;
@@ -62,6 +45,23 @@ $medium-row-mobile			: 100vh;
 $medium-row					: 500px;
 $large-row-mobile			: 100vh;
 $large-row					: 700px;
+
+//------- FROM OLD SITE -------/
+// $gap						: 4px;
+// $navMobileHeight			: 60px;
+// $navHeight					: 128px;
+// $counterIncrement 			: 4;
+// $siteWidthLarge 			: 1280px;
+// $x 							: 30; 
+
+//Fixed row heights
+// $small-row-mobile			: 35vh;
+// $small-row					: 500px;
+// $medium-row-mobile			: 60vh;
+// $medium-row					: 630px;
+// $large-row-mobile			: 75vh;
+// $large-row					: 700px;
+//------- END OLD SITE -------/
 
 // Responsive Font Size Map
 // — Add as many as needed.
@@ -177,3 +177,20 @@ $font-size-headline6: (
 	'xl'				: 20px,
 	'xl2'				: 20px,
 );
+
+@mixin font-size($fs-map) {
+	@each $fs-breakpoint, $fs-font-size in $fs-map {
+		@include mediaquery($fs-breakpoint) {
+			font-size: px-to-rem($fs-font-size);
+		}
+	}
+}
+
+/**
+ * Converts px to rem 
+ * — USAGE:  font-size: px-to-rem(12px);
+ */
+@function px-to-rem($size) {
+	$remSize: calc($size / 13px);
+	@return #{$remSize}rem;
+}

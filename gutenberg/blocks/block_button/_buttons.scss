@@ -19,7 +19,7 @@
 	line-height: 1;
 	min-height: 50px;
 	overflow: hidden;
-	padding: 10px 25px 9px;
+	padding: $gap $gap*1.5 calc($gap/2); //10px 25px 9px;
 	position: relative;
 	transition: background .4s ease-out, border-color .4s ease-out;
 	text-align: center;
@@ -68,12 +68,23 @@
 		color: color('secondary', 'white');
 		opacity: 1;
 		transition: opacity .3s ease-out;
+
+		[data-logo-color="logo-color-dark"] & {
+			border-color: color('brand', 'primary');
+			color: color('brand', 'primary');
+		}
 		
-		@include mediaquery(desktop)  {
+		@include mediaquery(desktop) {
 			&:hover {
 				background: transparent;
 				border-color: color('secondary', 'white');
 				opacity: .5;
+
+				[data-logo-color="logo-color-dark"] & {
+					background: color('brand', 'accent');
+					border-color: color('brand', 'accent');
+					color: color('brand', 'primary');
+				}
 			}
 		}
 	}

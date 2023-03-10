@@ -1,3 +1,5 @@
+console.log('FLEX/gutenberg/blocks/block_paragraph/paragraph.js');
+
 // Block dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js';
@@ -88,10 +90,16 @@ export default registerBlockType(
 			{ name: 'body1', label: __( 'Default', 'block style' ), isDefault: true },
 			{ name: 'body2', label: __( 'Body 2', 'block style' ) },
 			{ name: 'body3', label: __( 'Body 3', 'block style' ) },
+			{ name: 'subheadline1', label: __( 'Subheadline 1', 'block style' ) },
+			{ name: 'subheadline2', label: __( 'Subheadline 2', 'block style' ) },
 			{ name: 'text-columns', label: __( '2 Column Text', 'block style' ) },
 		],
 
 		edit: props => {
+			console.log('paragraph.js > edit, props.attributes: ', props.attributes);
+			console.log('paragraph.js > edit, props: ');
+			console.table(props);
+
 			const { 
 				attributes: { 
 					align,
@@ -103,7 +111,7 @@ export default registerBlockType(
 			} = props;
 
 			const onChangeMessage = content => { 
-				console.log('onChangeMessage: ', onChangeMessage);
+				console.log('paragraph.js > edit, onChangeMessage: ', onChangeMessage);
 
 				setAttributes( { 
 					content 
@@ -143,19 +151,19 @@ export default registerBlockType(
 						`component-paragraph`,
 						`align-${align}`,
 						className,
-						...MarginOptionsClasses( props ),
-						...PaddingOptionsClasses( props ),
-						...BorderOptionsClasses( props ),
-						...TextColorClasses( props ),
+						...MarginOptionsClasses(props),
+						...PaddingOptionsClasses(props),
+						...BorderOptionsClasses(props),
+						...TextColorClasses(props),
 					)}
 				>
 					<RichText
 						className={ classnames(
 							// `align-${align}`,
-							// ...MarginOptionsClasses( props ),
-							// ...PaddingOptionsClasses( props ),
-							// ...BorderOptionsClasses( props ),
-							...TextColorClasses( props ),
+							// ...MarginOptionsClasses(props),
+							// ...PaddingOptionsClasses(props),
+							// ...BorderOptionsClasses(props),
+							...TextColorClasses(props),
 						)}
 						identifier="content"
 						formattingControls = { ['bold', 'italic', 'strikethrough', 'link'] }
@@ -165,8 +173,8 @@ export default registerBlockType(
 						placeholder={ placeholder || __( 'Paragraph text…' ) }
 						style={ {
 							textAlign: align,
-							...TextColorInlineStyles( props ),
-							...BackgroundColorOptionsInlineStyles( props )
+							...TextColorInlineStyles(props),
+							...BackgroundColorOptionsInlineStyles(props)
 						} }
 						value={ content }
 					/>
@@ -174,9 +182,10 @@ export default registerBlockType(
 			];
 		},
 
-		save() {
+		save(data) {
+			console.log('paragraph.js > save(data:) "', data.attributes.content, '" ', data);
+
 			return null;
 		},
 	},
 );
-

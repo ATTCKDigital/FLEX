@@ -4,6 +4,8 @@
  */
 "use strict";
 
+import $ from 'jquery';
+
 // Namespace & config
 var FLEX = {
 	// Used by debug.js to parse which .breakpoint element is(':visible')
@@ -28,7 +30,11 @@ var FLEX = {
 	Globals: {},
 
 	// Exposes verbose, colored console logs
-	showConsoleLogs: true
+	showConsoleLogs: true,
+
+	// Set false by default.
+	// Will be overridden by check below.
+	isProd: false
 };
 
 // Cookie manager
@@ -384,7 +390,9 @@ FLEX.init = function () {
 	this.queryVariables.getAll();
 
 	// Detect debug mode
-	this.debug.init();
+	if (typeof this.debug !== 'undefined' && typeof this.debug.init !== 'undefined') {
+		this.debug.init();
+	}
 
 	return this;
 };

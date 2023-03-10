@@ -2,22 +2,20 @@
 	height: $navMobileHeight;
 	left: 0;
 	position: fixed;
-	position: relative;
 	right: 0;
 	top: 0;
 	transition: top .3s ease-in;
 	width: 100%;
 	z-index: 1000;
 
-	@include mediaquery(tablet-landscape)  {
+	@include mediaquery(tablet-landscape) {
 		align-items: center;
 		display: flex;
 		height: $navHeight;
-
 	}
 
 	.hamburger-wrapper {
-		@include mediaquery(tablet-landscape)  {
+		@include mediaquery(tablet-landscape) {
 			display: none;
 		}
 	}
@@ -25,7 +23,7 @@
 	.hideNav & {
 		top: -($navMobileHeight);
 
-		@include mediaquery(tablet-landscape)  {
+		@include mediaquery(tablet-landscape) {
 			top: -($navHeight);
 		}
 	}
@@ -44,7 +42,7 @@
 		padding: $gap*.75;
 		width: 100%;
 
-		@include mediaquery(desktop)  {
+		@include mediaquery(desktop) {
 			padding: $gap*.75 0;
 		}
 	}
@@ -78,7 +76,7 @@
 			}
 		}
 
-		@include mediaquery(tablet-landscape)  {
+		@include mediaquery(tablet-landscape) {
 			//Large mobile + 
 			margin-left: 80px;
 			width: calc(100% - 160px);
@@ -91,7 +89,7 @@
 			text-align: center;
 		}
 
-		@include mediaquery(tablet-landscape)  {
+		@include mediaquery(tablet-landscape) {
 			text-align: right;
 		}
 	}
@@ -108,7 +106,7 @@
 			display: block;
 		}
 
-		@include mediaquery(tablet-landscape)  {
+		@include mediaquery(tablet-landscape) {
 			display: inline-block;
 			font-size: px-to-rem(16px);
 			margin-left: 30px;
@@ -140,7 +138,7 @@
 			}
 		}
 
-		@include mediaquery(desktop)  {
+		@include mediaquery(desktop) {
 			&:hover {
 				opacity: .7;
 

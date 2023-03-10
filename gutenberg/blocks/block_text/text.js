@@ -1,3 +1,5 @@
+console.log('FLEX/gutenberg/blocks/block_text/text.js');
+
 // Block dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js'
@@ -8,6 +10,11 @@ const { wp } = window;
 const { __ } = wp.i18n;
 
 const { registerBlockType } = wp.blocks;
+
+// Added 3/26/20 - https://ibenic.com/enable-inner-blocks-gutenberg/
+// wp.editor.InnerBlocks.Content is deprecated. 
+// Please use wp.blockEditor.InnerBlocks.Content instead.
+// const { InnerBlocks } = wp.editor;
 
 const {
 	AlignmentToolbar,
@@ -33,6 +40,11 @@ const {
 	Tooltip,
 } = wp.components;
 
+// const {
+// 	InspectorControls,
+// 	InnerBlocks,
+// } = wp.editor;
+
 // Internal dependencies
 import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
 import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
@@ -40,14 +52,15 @@ import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from 
 import TextColorOptions, { TextColorAttributes, TextColorClasses, TextColorInlineStyles } from '../../components/gb-component_text-colors';
 import BackgroundColorOptions, { BackgroundColorOptionsAttributes, BackgroundColorOptionsInlineStyles } from '../../components/gb-component_background-color';
 
+
 // Register block
 export default registerBlockType(
 	'flexlayout/text',
 	{
-		title: __( 'Text', 'Rich Text' ),
+		title: __( 'Text', 'flexlayout' ),
 		description: __( 'Provides a rich-text editing toolbar' ),
-		icon: icons.text,
 		category: 'common',
+		icon: icons.text,
 		example: {},
 		// parent: ['flexlayout/column'],
 		keywords: [
@@ -57,28 +70,46 @@ export default registerBlockType(
 			__( 'p', 'flexlayout' ),
 		],
 		attributes: {
+			align: {
+				type: 'string',
+				default: 'left',
+			},
 			content: {
+				type: 'string',
+				default: '',
+			},
+			placeholder: {
 				type: 'string',
 			},
 			...MarginOptionsAttributes,
 			...PaddingOptionsAttributes,
 			...BorderOptionsAttributes,
+			...TextColorAttributes,
 			...BackgroundColorOptionsAttributes
 		},
-		innerBlocks: [],
-		supports: {
-			className: true,
-			customClassName: true,
-			// Hide 'Add to Reusable Blocks' on Classic blocks. Showing it causes a
-			// confusing UX, because of its similarity to the 'Convert to Blocks' button.
-			reusable: false,
-		},
 
-		edit: props => {
+		innerBlocks: [],
+
+		// styles: [
+		// 	{ name: 'body1', label: __( 'Default', 'block style' ), isDefault: true },
+		// 	{ name: 'body2', label: __( 'Body 2', 'block style' ) },
+		// 	{ name: 'body3', label: __( 'Body 3', 'block style' ) },
+		// 	{ name: 'subheadline1', label: __( 'Subheadline 1', 'block style' ) },
+		// 	{ name: 'subheadline2', label: __( 'Subheadline 2', 'block style' ) },
+		// 	{ name: 'text-columns', label: __( '2 Column Text', 'block style' ) },
+		// ],
+
+		edit,
+
+		xedit: props => {
+			console.log('text.js > edit, props.attributes: ', props.attributes);
+			console.log('text.js > edit, props: ');
+			console.table(props);
+
 			const { 
-				attributes: { 
+				attributes: {
 					align,
-					content, 
+					content,
 					placeholder
 				}, 
 				className,
@@ -86,11 +117,11 @@ export default registerBlockType(
 			} = props;
 
 			const onChangeMessage = content => { 
-				console.log('onChangeMessage: ', onChangeMessage);
+				console.log('text.js > edit, onChangeMessage: ', onChangeMessage);
 
-				setAttributes( { 
+				setAttributes({
 					content 
-				} ); 
+				});
 			};
 			
 			return [
@@ -123,22 +154,22 @@ export default registerBlockType(
 				</InspectorControls>,
 				<div
 					className={ classnames(
-						`component-paragraph`,
+						`component-text`,
 						`align-${align}`,
 						className,
-						...MarginOptionsClasses( props ),
-						...PaddingOptionsClasses( props ),
-						...BorderOptionsClasses( props ),
-						...TextColorClasses( props ),
+						...MarginOptionsClasses(props),
+						...PaddingOptionsClasses(props),
+						...BorderOptionsClasses(props),
+						...TextColorClasses(props),
 					)}
 				>
 					<RichText
 						className={ classnames(
 							// `align-${align}`,
-							// ...MarginOptionsClasses( props ),
-							// ...PaddingOptionsClasses( props ),
-							// ...BorderOptionsClasses( props ),
-							...TextColorClasses( props ),
+							// ...MarginOptionsClasses(props),
+							// ...PaddingOptionsClasses(props),
+							// ...BorderOptionsClasses(props),
+							...TextColorClasses(props),
 						)}
 						identifier="content"
 						formattingControls = { ['bold', 'italic', 'strikethrough', 'link'] }
@@ -146,18 +177,23 @@ export default registerBlockType(
 						onChange={ onChangeMessage }
 						onRemove={ () => onReplace( [] ) }
 						placeholder={ placeholder || __( 'Rich text…' ) }
-						style={ {
-							textAlign: align,
-							...TextColorInlineStyles( props ),
-							...BackgroundColorOptionsInlineStyles( props )
-						} }
+						// style={{
+						// 	textAlign: align,
+						// 	...TextColorInlineStyles(props),
+						// 	...BackgroundColorOptionsInlineStyles(props)
+						// }}
 						value={ content }
 					/>
 				</div>
 			];
 		},
-		save() {
-			return <InnerBlocks.Content />;
+
+		save(data) {
+			console.log('text.js > save(data:) "');
+			console.log(data.attributes.content, '" ', data);
+
+			// return <InnerBlocks.Content />;
+			return null;
 		},
 	},
 );

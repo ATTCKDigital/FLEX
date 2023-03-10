@@ -6,6 +6,7 @@
 function RowHeightOptionsClasses( props ) {
 	return [
 		props.attributes.rowHeight ? `component-row-height-${ props.attributes.rowHeight }` : null,
+		props.attributes.rowHeightMobile ? `component-row-height-mobile-${ props.attributes.rowHeight }` : null,
 	];
 }
 

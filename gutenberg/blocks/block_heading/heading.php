@@ -111,15 +111,15 @@ function render_heading_block($attributes) {
 	$image = array_key_exists('imgID', $attributes) ? $attributes['imgID'] : null;
 
 	// Build component classes
-	$componentName = 'heading';
-	$class = 'component-' . $componentName . ' component ';
-	$class .= $attributes['className'];
+	// $componentName = 'heading';
+	// $class = 'component-' . $componentName . ' component ';
+	$class = $attributes['className'];
 	$class .= $headlineClass;
 	$class .= " text-align-{$attributes['align']}";
 	
 	// Build wrapper classes
-	$wrapperClass = 'component-' . $componentName . '-wrapper ';
-	$wrapperClass .= margin_options_classes($attributes);
+	// $wrapperClass = 'component-' . $componentName . '-wrapper ';
+	$wrapperClass = margin_options_classes($attributes);
 	$wrapperClass .= padding_options_classes($attributes);
 	$wrapperClass .= border_options_classes($attributes);
 
@@ -183,12 +183,13 @@ function render_heading_block($attributes) {
 	// Parse images
 	if ($image) {
 		$image = wp_get_attachment_image($attributes['imgID'], 'full');
-		$class .= ' has-image';
+		$imageClass = ' has-image';
 	} else {
 		$image = '';
+		$imageClass = '';
 	}
 
-	$output  = "<div class=\"{$wrapperClass}\" {$style}>";
+	$output  = "<div class=\"component-heading component{$imageClass} {$wrapperClass}\" {$style}>";
 	$output .= 		"{$link}{$image}{$linkClose}";
 	$output .= 		"<{$tagName} class=\"{$class}\" {$dataComponentName} {$dataComponentOptions}>";
 	$output .= 			"{$link}{$attributes['content']}{$linkClose}";

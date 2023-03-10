@@ -1,9 +1,13 @@
-// Component Settings
+// https://stackoverflow.com/questions/61330432/sasserror-there-is-no-module-with-the-namespace-math
+// math.div vs. calc() reasons: https://stackoverflow.com/questions/70760284/is-there-a-use-case-where-you-would-use-math-div-in-scss-sass-instead-of-a-cal
+@use 'sass:math';
+
 .component {
 	width: 100%;
 }
 
 // Bottom align elements in a row
+.component-alignment-bottom,
 .component-row-verticalAlignment-bottom,
 .component-row-verticalAlignment-bottom .editor-block-list__layout {
 	display: flex;
@@ -13,6 +17,7 @@
 }
 
 // Center align elements in a row
+.component-alignment-center,
 .component-row-verticalAlignment-center, 
 .component-row-verticalAlignment-center .editor-block-list__layout {
 	display: flex;
@@ -22,6 +27,7 @@
 }
 
 // Stretch elements in a row
+.component-alignment-stretch,
 .component-row-verticalAlignment-stretch, 
 .component-row-verticalAlignment-stretch .editor-block-list__layout {
 	align-items: stretch;
@@ -30,6 +36,7 @@
 }
 
 // Top align elements in a row
+.component-alignment-top,
 .component-row-verticalAlignment-top, 
 .component-row-verticalAlignment-top .editor-block-list__layout {
 	display: flex;
@@ -161,17 +168,15 @@
 // Applies same standard page-width constraints for 
 // full-bleed non FLEX layouts
 .body-padding {
-	// max-width: $siteWidth;
-	padding-left: $gap/2;
-	padding-right: $gap/2;
+	padding-left: math.div($gap, 2);
+	padding-right: math.div($gap, 2);
 
-	@include mediaquery(desktop)  {
+	@include mediaquery(desktop) {
 		padding-left: $gap;
-		padding-right: $gap;		
+		padding-right: $gap;
 	}
 
-	@include mediaquery(desktop)  {
-		// max-width: inherit;
+	@include mediaquery(desktop) {
 		padding: 0;
 	}
 }
@@ -180,7 +185,7 @@
 .component-row-wide {
 	margin: 0 auto;
 	max-width: $siteWidth;
-	padding: 0 $gap/2;
+	padding: 0 $gap * 2;
 	position: relative;
 	width: 100%;
 
@@ -189,11 +194,7 @@
 		padding: 0;
 	}
 
-	@include mediaquery(phone)  {
-		padding: 0 $gap;
-	}
-
-	@include mediaquery(desktop)  {
+	@include mediaquery(desktop) {
 		padding: 0;
 	}
 }
@@ -225,19 +226,17 @@
 	height: $small-row-mobile;
 	overflow: hidden;
 
-	@include mediaquery(tablet-portrait)  {
+	@include mediaquery(tablet-portrait) {
 		height: $small-row;
-
 	}
 
 	.wp-admin & {
 		min-height: $small-row-mobile;
 		height: auto;
 
-		@include mediaquery(tablet-portrait)  {
+		@include mediaquery(tablet-portrait) {
 			min-height: $small-row;
 			height: auto;
-
 		}
 	}
 }
@@ -246,19 +245,17 @@
 	height: $medium-row-mobile;
 	overflow: hidden;
 
-	@include mediaquery(tablet-portrait)  {
+	@include mediaquery(tablet-portrait) {
 		height: $medium-row;
-
 	}
 
 	.wp-admin & {
 		min-height: $medium-row-mobile;
 		height: auto;
 
-		@include mediaquery(tablet-portrait)  {
+		@include mediaquery(tablet-portrait) {
 			min-height: $medium-row;
 			height: auto;
-
 		}
 	}
 }
@@ -267,16 +264,15 @@
 	height: $large-row-mobile;
 	overflow: hidden;
 
-	@include mediaquery(tablet-portrait)  {
+	@include mediaquery(tablet-portrait) {
 		height: $large-row;
-
 	}
 
 	.wp-admin & {
 		min-height: $large-row-mobile;
 		height: auto;
 
-		@include mediaquery(tablet-portrait)  {
+		@include mediaquery(tablet-portrait) {
 			min-height: $large-row;
 			height: auto;
 		}

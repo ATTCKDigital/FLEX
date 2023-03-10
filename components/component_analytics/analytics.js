@@ -1,4 +1,7 @@
-// Global Google Analytics event tracking
+import FLEX from 'FLEX/js/client-namespace';
+
+if (!FLEX.isProd) { console.log('loaded', '/FLEX\t/components\t/component_analytics\t/analytics.js'); }
+
 function Analytics($el) {
 	console.log('/analytics.js', 'Analytics()');
 
@@ -117,7 +120,5 @@ function Analytics($el) {
 
 	return this.init($el);
 }
-
-console.log('loaded', '/FLEX\t/components\t/component_analytics\t/analytics.js');
 
 export default Analytics;

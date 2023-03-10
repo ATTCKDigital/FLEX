@@ -1,4 +1,6 @@
-console.log('loaded', '/FLEX\t/components\t/component_carousel\t/carousel.js');
+import FLEX from '../../../FLEX/js/client-namespace';
+
+if (!FLEX.isProd) { console.log('loaded', '/FLEX\t/components\t/component_carousel\t/carousel.js'); }
 
 /**
  * Carousel component

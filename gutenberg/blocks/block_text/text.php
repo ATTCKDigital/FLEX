@@ -61,26 +61,52 @@ function register_text_block() {
  * Server rendering for /blocks/text
  */
 function render_text_block($attributes) {
-	$class = 'component-text component';
-	$class .= ' '.$attributes['className'];
-	$class .= " align-{$attributes['align']}";
-	$class .= margin_options_classes($attributes);
-	$class .= padding_options_classes($attributes);
-	$class .= border_options_classes($attributes);
+	return "text block here";
+	
+	$className = $attributes['className'];
 
-	$style = background_color_options_inline_styles($attributes);
-
+	$bgColor = array_key_exists('backgroundColor', $attributes) ? $attributes['backgroundColor'] : null;
 	$textColor = array_key_exists('textColor', $attributes) ? $attributes['textColor'] : null;
 
-	if ($textColor) {
-		$textStyle = ' color:'.$textColor.';';
-	} else {
-		$textStyle = '';
+	// Build component classes
+	$componentName = 'text';
+	$class = 'xcomponent-' . $componentName . ' component ';
+	$class .= ' ' . $attributes['className'];
+	$class .= " text-align-{$attributes['align']}";
+	// $class .= " align-{$attributes['align']}";
+
+	// Build wrapper classes
+	$wrapperClass = 'ycomponent-' . $componentName . '-wrapper ';
+	$wrapperClass .= margin_options_classes($attributes);
+	$wrapperClass .= padding_options_classes($attributes);
+	$wrapperClass .= border_options_classes($attributes);
+
+	// Build inline style values
+	$style = '';
+	// $style = background_color_options_inline_styles($attributes);
+
+	if ($bgColor || $textColor) {
+		$style .= 'style="';
+
+		// — background color
+		if ($bgColor) {
+			$style .= 'background-color:' . $bgColor . ';';
+		}
+
+		// — text color
+		if ($textColor) {
+			$style .= 'color:' . $textColor . ';';
+		}
+
+		// End inline style attribute block
+		$style .= '"';
 	}
 
-	$style .= $textStyle;
+	// $style .= $textStyle;
 
-	$output = "<div class=\"{$class}\" style=\"{$style}\"><div class=\"body-text\">{$attributes['content']}</div></div>";
+	$output  = "<div class=\"{$class}\" style=\"{$style}\">";
+	$output .= 		"<div class=\"body-text\">{$attributes['content']}</div>";
+	$output .= "</div>";
 
 	return $output;
 }

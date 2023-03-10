@@ -1,4 +1,5 @@
-console.log('loaded', '/FLEX\t/js\t/global-events.js');
+var isProd = (typeof $('body').attr('data-server-environment'));
+if (!isProd) { console.log('loaded', '/FLEX\t/js\t/global-events.js'); }
 
 import FLEX from 	'./client-namespace';
 import $$ from 		'../components/component_cached-dom-elements/cached-dom-elements';

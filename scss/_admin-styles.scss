@@ -141,10 +141,6 @@ body {
 	}
 
 	.wp-block {
-		// margin-left: auto;
-		// margin-right: auto;
-		// width: 100%;
-
 		// Otherwise without content, you can't 
 		// select the block easily.
 		min-width: 100px;
@@ -198,9 +194,7 @@ body {
 	.block-editor-inserter {
 		.components-button {
 			&.block-list-appender__toggle {
-				// background: hsl(0deg 0% 100% / 50%);
-				background: hsla(0, 0, 100%, 50%);
-				// border: 1px solid #8aacf0; // Light blue
+				background: rgba(255, 255, 255, .5);
 				border: 1px solid #555;
 				border-radius: 4px;
 				height: 30px;
@@ -293,8 +287,8 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 
 .editor-block-list__layout .editor-block-list__block.is-selected > .editor-block-list__block-edit:before,
 .block-editor-block-list__layout .block-editor-block-list__block.is-selected > .block-editor-block-list__block-edit:before {
-	outline: 2px dashed cornflowerblue;
 	box-shadow: none;
+	outline: 2px dashed cornflowerblue;
 }
 
 .components-button:disabled, 
@@ -624,14 +618,16 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 
 	.editor-block-list__layout,
 	.block-editor-block-list__layout {
-	    align-content: flex-start;
+		align-content: flex-start;
 		display: flex;
-	    flex-flow: row wrap;
-	    margin: 0;
+		flex-flow: row wrap;
+		margin: 0;
 
-	    .editor-block-list__block,
-	    .block-editor-block-list__block {
+		.editor-block-list__block,
+		.block-editor-block-list__block {
 			border: 1px dotted hsla(219, 79%, 66%, 0.2);
+			border-left: 0 !important;
+			border-right: 0 !important;
 
 			&.is-hovered {
 				background: hsla(219, 79%, 66%, 0.2);

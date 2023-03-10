@@ -1,5 +1,5 @@
 import FLEX from './client-namespace';
-import $$ from 		'../components/component_cached-dom-elements/cached-dom-elements';
+import $$ from '../components/component_cached-dom-elements/cached-dom-elements';
 import GlobalEvents from './global-events';
 
 // const Debug = {
@@ -222,7 +222,7 @@ FLEX.debug = (function () {
 
 	// Turn console logging on or off
 	function enhancedConsoleLoggingSet(status) {
-		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.enableEnhancedConsoleLoggingSet(status: ' + status + ')');
+		if (!FLEX.isProd) { console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.enableEnhancedConsoleLoggingSet(status: ' + status + ')'); }
 
 		// Console event override
 		var _log = console.log;
@@ -354,7 +354,7 @@ FLEX.debug = (function () {
 
 	// Determine if we are in debugging mode
 	function init() {
-		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.init()');
+		if (!FLEX.isProd) { console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.init()'); }
 
 		// Enable enhanced console logging
 		enhancedConsoleLoggingDetect();

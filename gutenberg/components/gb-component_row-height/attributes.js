@@ -6,7 +6,9 @@ const RowHeightOptionsAttributes = {
 	rowHeight: {
 		type: 'string',
 	},
-	
+	rowHeightMobile: {
+		type: 'string',
+	},
 };
 
 export default RowHeightOptionsAttributes;

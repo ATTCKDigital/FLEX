@@ -6,4 +6,7 @@ const ROW_HEIGHT_OPTIONS_ATTRIBUTES = [
 	'rowHeight' => [
 		'type' => 'string',
 	],
+	'rowHeightMobile' => [
+		'type' => 'string',
+	],
 ];

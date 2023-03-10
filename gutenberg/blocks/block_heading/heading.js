@@ -343,7 +343,7 @@ export default registerBlockType(
 		},
 
 		save(data) {
-			// console.log('heading.js > save(data:) "', data.attributes.content, '" ', data);
+			console.log('heading.js > save(data:) "', data.attributes.content, '" ', data);
 
 			return null;
 		},

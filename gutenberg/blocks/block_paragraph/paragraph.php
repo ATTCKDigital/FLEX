@@ -49,7 +49,7 @@ function register_paragraph_block() {
 			],
 			MARGIN_OPTIONS_ATTRIBUTES,
 			PADDING_OPTIONS_ATTRIBUTES,
-			BORDER_OPTIONS_ATTRIBUTES,		
+			BORDER_OPTIONS_ATTRIBUTES,
 			TEXT_COLOR_ATTRIBUTES,
 			BACKGROUND_COLOR_OPTIONS_ATTRIBUTES
 		),
@@ -109,9 +109,7 @@ function render_paragraph_block($attributes) {
 	}
 
 	$output  = "<div class=\"{$wrapperClass} {$class}\" {$style}>";
-	// $output .= 		"<p class=\"{$class}\">";
 	$output .= 			"{$link}{$attributes['content']}{$linkClose}";
-	// $output .= 		"</p>";
 	$output .= "</div>";
 
 	return $output;

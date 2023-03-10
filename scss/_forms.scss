@@ -20,7 +20,7 @@
 		letter-spacing: -0.1px;
 		@include secondary-regular;
 		@include placeholder (color('secondary', 'black'));
-		@include mediaquery(tablet-landscape)  {
+		@include mediaquery(tablet-landscape) {
 			font-size: 16px;
 			letter-spacing: -0.15px;
 		}
@@ -89,20 +89,24 @@ label,
 	}
 
 	.wpcf7-list-item-label {
-		display: block;
 		cursor: pointer;
+		display: block;
 		padding-left: $gap*3;
 		position: relative;
 
 		&:after {
-			border-radius: 50%;
 			border: 1px solid color('secondary', 'lighterGray');
+			border-radius: 50%;
 			content: '';
 			height: 20px;
 			left: 0;
 			position: absolute;
 			top: 2px;
 			width: 20px;
+
+			[data-logo-color="logo-color-dark"] & {
+				border-color: color('brand', 'primary');
+			}
 		}
 
 		&:before {
@@ -124,10 +128,18 @@ label,
 
 		&:checked + .wpcf7-list-item-label:after {
 			background-color: color('secondary', 'lighterGray');
+
+			[data-logo-color="logo-color-dark"] & {
+				background-color: color('brand', 'primary');
+			}
 		}
 
 		&:checked + .wpcf7-list-item-label:before {
 			background-color: color('secondary', 'lighterGray');
+
+			[data-logo-color="logo-color-dark"] & {
+				background-color: color('brand', 'primary');
+			}
 		}
 	}
 }
@@ -153,6 +165,10 @@ label,
 			position: absolute;
 			top: -1px;
 			width: 24px;
+
+			[data-logo-color="logo-color-dark"] & {
+				border-color: color('brand', 'primary');
+			}
 		}
 
 		&:before {

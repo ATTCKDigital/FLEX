@@ -1,7 +1,8 @@
 import $ from 'jquery';
 import $$ from '../component_cached-dom-elements/cached-dom-elements';
+import FLEX from 'FLEX/js/client-namespace';
 
-console.log('loaded', '/FLEX\t/js\t/components\t/component_scroll-in\t/scroll-in.js');
+if (!FLEX.isProd) { console.log('loaded', '/FLEX\t/js\t/components\t/component_scroll-in\t/scroll-in.js'); }
 
 /**
  * Scroll In
