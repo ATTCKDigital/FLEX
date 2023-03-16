@@ -1,6 +1,4 @@
 <?php
-echo "\n<!-- FLEX/config/global-variables/colors.php -->\n"; 
-
 /**
  * Theme attribute of colors is needed in base theme only, not child theme
  * (see `/config/theme-configs/customizer-colors.php/` for attribute usage)
