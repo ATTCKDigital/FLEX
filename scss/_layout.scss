@@ -303,7 +303,9 @@ $justifyContent: 'flex-end';
 		// Create $valueMax number of variations
 		@for $i from 0 through $valueMax {
 
-			.valuemax-#{$valueMax}-i-#{$i} { color: #BADA55; }
+			.valuemax-#{$valueMax}-i-#{$i} { 
+				//color: #BADA55; 
+			}
 
 			// At each of $valueIncrements increments (e.g., 5, 10, 20)
 			@if $i % $valueIncrements == 0 {
@@ -311,11 +313,15 @@ $justifyContent: 'flex-end';
 
 				// For each unit
 				@each $unit in $units {
-					.unit-is-#{$unit} { color: rebeccapurple; }
+					.unit-is-#{$unit} { 
+						color: rebeccapurple;
+					}
 
 					// For each position (top, left, bottom, right)
 					@each $position in $positions {
-						.position-is-#{$position} { color: #CCC; }
+						.position-is-#{$position} { 
+							color: #CCC;
+						}
 
 						// Handle '$gap' specially
 						// TODO: (DP) These increments should be 1, 2, 3, 4, 5, 6, 7, 8... not 10, 20, 30, 40
