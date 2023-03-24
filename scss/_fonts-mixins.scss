@@ -66,6 +66,18 @@
 }
 
 /* Body copy */
+@mixin secondary-thin {
+	font-family: $secondaryThin;
+	font-style: italic;
+	font-weight: 100;
+}
+
+@mixin secondary-thin-italic {
+	font-family: $secondaryThinItalic;
+	font-style: italic;
+	font-weight: 100;
+}
+
 @mixin secondary-light-italic {
 	font-family: $secondaryLightItalic;
 	font-style: italic;
@@ -190,7 +202,6 @@
 @mixin eyebrow-light {
 	@include eyebrow-base;
 	font-family: $eyebrowLight;
-	font-style: italic;
 	font-weight: 300;
 }
 

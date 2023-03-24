@@ -1,4 +1,7 @@
-<?php // Plain text page content ?>
+<?php 
+	// Plain text page content 
+	echo "<!-- FLEX/components/component_post/page.php -->\n";
+?>
 <section class="component-row padding-top-15x padding-bottom-7x">
 	<div class="flex-grid component-row-wide component-alignment-top">
 		<div class="column flex-tablet-landscape-2-12 flex-tablet-portrait-1-12 flex-0-12"></div>

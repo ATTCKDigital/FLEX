@@ -98,7 +98,7 @@ function render_image_block($attributes) {
 	$url = array_key_exists('url', $attributes) ? $attributes['url'] : null;
 	$caption = array_key_exists('caption', $attributes) ? $attributes['caption'] : null;
 	$imageID = array_key_exists('imgID', $attributes) ? $attributes['imgID'] : null;
-	$imageURL = wp_get_attachment_image($imageID, 'full');
+	$imageURL = wp_get_attachment_image($imageID, 'full', $CSSWidth);
 
 	if ($url) {
 		$image = '<a href="' . $url . '"' . $target . '>' . $imageURL . '</a>';

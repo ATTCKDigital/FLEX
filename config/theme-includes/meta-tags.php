@@ -1,6 +1,8 @@
 <?php
 /*** OG Meta tags ***/
 
+echo "<!-- FLEX/config/theme-includes/meta-tags.php -->\n";
+
 // Noindex
 $noindex = get_field('noindex', $this->ID);
 
@@ -48,6 +50,9 @@ if (!$description) {
 	$description = get_bloginfo('description');
 }
 
+// Remove quotes
+$description = str_replace('"', "", $description);
+
 
 // Meta Description
 $metaDescription = get_field('meta_description', $this->ID);
@@ -67,6 +72,9 @@ if (!$metaDescription) {
 	// If there is no user defined excerpt, use the blog description
 	$metaDescription = get_bloginfo('description');
 }
+
+// Remove quotes
+$metaDescription = str_replace('"', "", $metaDescription);
 
 
 // OG Type

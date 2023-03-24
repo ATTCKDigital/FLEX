@@ -13,6 +13,14 @@
 		display: block;
 		height: auto;
 		max-width: 100%;
+		
+		// NOTE: (DP) Defaulting to 100% image width as the image 
+		// component has a container where width can be defined.
+		// NOTE: (DP) On second thought, adding a width-100pc specific class 
+		// to override edge-cases where necessary as it causes too much 
+		// distortion on average to other images.
+		// width: 100%;
+
 		width: auto;
 
 		.block-align-center &,
