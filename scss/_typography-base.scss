@@ -147,6 +147,14 @@ u {
 	color: red;
 }
 
+.font-weight-100.font-weight-100.font-weight-100 { font-weight: 100; }
+.font-weight-200.font-weight-200.font-weight-200 { font-weight: 200; }
+.font-weight-300.font-weight-300.font-weight-300 { font-weight: 300; }
+.font-weight-400.font-weight-400.font-weight-400 { font-weight: 400; }
+.font-weight-500.font-weight-500.font-weight-500 { font-weight: 500; }
+.font-weight-600.font-weight-600.font-weight-600 { font-weight: 600; }
+.font-weight-700.font-weight-700.font-weight-700 { font-weight: 700; }
+
 .headline1,
 .is-style-headline1 {
 	@include secondary-semi;

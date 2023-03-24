@@ -978,7 +978,14 @@ $justifyContent: 'flex-end';
 	}
 }
 
-.width-auto.width-auto.width-auto { // Specificity hack. -DP
+// NOTE: (DP) Specificity override hacks
+.width-100pc-img.width-100pc-img.width-100pc-img {
+	img {
+		width: 100%;
+	}
+}
+
+.width-auto.width-auto.width-auto {
 	width: auto;
 }
 
