@@ -61,8 +61,6 @@ function register_slides_block() {
 	echo "<!-- \n";
 	echo "blockPath: ";
 	echo $blockPath;
-	// echo "blockType:\n";
-	// print_r($blockType);
 	echo " -->\n";
 
 	echo "<!-- slides block registered -->\n";
