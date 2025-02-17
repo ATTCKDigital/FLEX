@@ -194,7 +194,7 @@
 		padding: 0;
 	}
 
-	@include mediaquery(desktop) {
+	@include mediaquery(xl) {
 		padding: 0;
 	}
 }
@@ -285,6 +285,34 @@
 
 	.component-row {
 		height: 100%;
+	}
+}
+
+@include mediaquery-max-width(tablet-landscape) {
+	.component-row-height-mobile-full-height {
+		height: 100vh;
+		overflow: hidden;
+
+		.component-row {
+			height: 100%;
+		}
+	}
+}
+
+@include mediaquery-max-width(tablet-landscape) {
+	.component-row-height-mobile-small {
+		height: $small-row-mobile;
+		min-height: $small-row-mobile;
+	}
+
+	.component-row-height-mobile-medium {
+		height: $medium-row-mobile;
+		min-height: $medium-row-mobile;
+	}
+
+	.component-row-height-mobile-large {
+		height: $large-row-mobile;
+		min-height: $large-row-mobile;
 	}
 }
 
