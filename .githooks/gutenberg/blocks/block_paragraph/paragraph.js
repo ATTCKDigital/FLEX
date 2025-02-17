@@ -123,7 +123,10 @@ export default registerBlockType(
 					<RichText
 						identifier="content"
 						value={ content }
-						onChange={ onChangeMessage }
+						onChange={ ( newContent ) => {
+							const updatedContent = newContent.replace( /\n/g, '<br>' ); // Replace \n with <br>
+							onChangeMessage( updatedContent );
+						} }
 						style={ {
 							textAlign: align,
 							...TextColorInlineStyles( props )
