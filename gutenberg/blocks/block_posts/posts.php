@@ -3,6 +3,7 @@ namespace FLEX_LAYOUT_SYSTEM\Blocks\Posts;
 
 use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
+
 use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
 
@@ -79,10 +80,6 @@ function register_posts_block() {
 
 // Server rendering for /blocks/posts
 function render_posts_block($attributes) {
-	// echo "<!-- post block rendered -->";
-
-	// Leading space is needed to separate from other 
-	// class attribute values that may be present.
 	$class = ' ';
 	$class .= $attributes['className'];
 	$class .= margin_options_classes($attributes);
@@ -91,231 +88,253 @@ function render_posts_block($attributes) {
 	$showExcerpt = $attributes['showExcerpt'];
 	$showCategory = $attributes['showCategory'];
 	$filterActive = $attributes['filterActive'];
-	$columnNumber = $attributes['columnNumber'];
+	$columnNumber = max(1, (int)$attributes['columnNumber']); // Ensure columnNumber is at least 1
 	$ctaText = $attributes['ctaText'];
 	$tabs = '';
 	$postFilter = '';
 	$orderby = 'date';
-	$order = $_GET['order'] ?? 'DESC';
+	$order = isset($_GET['order']) ? sanitize_text_field($_GET['order']) : 'DESC'; // Sanitize GET parameter
 	$orderOptions = [
 		[
 			'value' => 'DESC',
-			'text'  => _('Newest'),
+			'text'  => __('Newest'),
 			'selected' => $order == 'DESC'
 		],
 		[
 			'value' => 'ASC',
-			'text'  => _('Oldest'),
+			'text'  => __('Oldest'),
 			'selected' => $order == 'ASC'
 		],
 	];
 	$pagination = '';
 	$paginationActive = $attributes['paginationActive'];
-	$selectedCategory = $_GET['category'] ?? $categories[0]['id'] ?? '';
+	$selectedCategory = isset($_GET['category']) ? (int)sanitize_text_field($_GET['category']) : ''; // Sanitize and cast to integer
 	$selectedCategorySlug = '';
+	
+	if (!isset($GLOBALS['selectedCategorySlug'])) {
+        $GLOBALS['selectedCategorySlug'] = '';
+    }
+
 	$permalink = get_the_permalink();
 
 	// Sort Filter
 	if ($filterActive) {
 		$selectedIndex = array_search(true, array_column($orderOptions, 'selected'));
+		if ($selectedIndex === false) $selectedIndex = 0; // Handle case where selected index is not found
 
-		$postFilter .= "
-			<div class=\"sort-filter\">
-				<label>" . __("Sort by") . "</label>
+		$postFilter = sprintf(
+			"<div class=\"sort-filter\">
+				<label>%s</label>
 				<div class=\"dropdown\">
-					<label role=\"button\" class=\"dropdown-select\" tabindex=\"0\">{$orderOptions[$selectedIndex]['text']}</label>
-					<ul class=\"dropdown-list\">";
-						foreach ($orderOptions as $option) {
-							$postFilter .=
-								"<li class=\"dropdown-option" . ($option['selected'] ? ' option-selected' : '') . "\">
-									<button class=\"dropdown-button\" name=\"order\" value=\"{$option['value']}\">{$option['text']}</button>
-								</li>";
-						}
-
-						$postFilter .= "
-					</ul>
+					<label role=\"button\" class=\"dropdown-select\" tabindex=\"0\">%s</label>
+					<ul class=\"dropdown-list\">%s</ul>
 				</div>
-				<input type=\"hidden\" name=\"category\" value=\"{$selectedCategory}\">
-			</div>";
+				<input type=\"hidden\" name=\"category\" value=\"%s\">
+			</div>",
+			__('Sort by'),
+			esc_html($orderOptions[$selectedIndex]['text']),
+			implode('', array_map(function ($option) {
+				return sprintf(
+					"<li class=\"dropdown-option%s\">
+						<button class=\"dropdown-button\" name=\"order\" value=\"%s\">%s</button>
+					</li>",
+					$option['selected'] ? ' option-selected' : '',
+					esc_attr($option['value']),
+					esc_html($option['text'])
+				);
+			}, $orderOptions)),
+			esc_attr($selectedCategory)
+		);
 	}
 
 	// Category tabs
-	if ( !empty( $categories ) ) {
+	if (!empty($categories)) {
 		$selectedCategoryIndex = array_search($selectedCategory, array_column($categories, 'id'));
 
-		$tabs .= "
-		<div class=\"categories\">
-			<label role=\"button\" class=\"cat-dropdown cat-button cat-{$categories[$selectedCategoryIndex]['slug']} active\" tabindex=\"0\">{$categories[$selectedCategoryIndex]['name']}</label>
-			<ul class=\"cat-list\">
-		";
-
-		foreach ( $categories as $category ) {
-			// $active = $selectedCategory == $category['id'] ? ' active' : '';
-			$active = '';
-
-			if ($selectedCategory == $category['id']) {
-				$active = ' active';
-				$selectedCategorySlug = $category['slug'];
-			}
-
-			// style=\"width:". (100 /  count($categories)) ."%;\"
-			$tabs .= "
-			<li class=\"cat-item\">
-				<button class=\"cat-button cat-{$category['slug']}{$active}\" name=\"category\" value=\"{$category['id']}\">{$category['name']}</button>
-			</li>
-			";
+		if ($selectedCategoryIndex === false) {
+			$selectedCategoryIndex = 0;
 		}
 
-		$tabs .= "
-			</ul>
-			<input type=\"hidden\" name=\"order\" value=\"{$order}\">
-		</div>";
+		$tabs = sprintf(
+			"<div class=\"categories\">
+				<label role=\"button\" class=\"cat-dropdown cat-button cat-%s active\" tabindex=\"0\">%s</label>
+				<ul class=\"cat-list\">%s</ul>
+				<input type=\"hidden\" name=\"order\" value=\"%s\">
+			</div>",
+			esc_attr($categories[$selectedCategoryIndex]['slug']),
+			esc_html($categories[$selectedCategoryIndex]['name']),
+			implode('', array_map(function ($category) use ($selectedCategory) {
+				$active = $selectedCategory == $category['id'] ? ' active' : '';
+
+				if ($selectedCategory == $category['id']) {
+					// Update global variable
+					$GLOBALS['selectedCategorySlug'] = $category['slug'];
+				}
+
+				return sprintf(
+					"<li class=\"cat-item\">
+						<button class=\"cat-button cat-%s%s\" name=\"category\" value=\"%s\">%s</button>
+					</li>",
+					esc_attr($category['slug']),
+					$active,
+					esc_attr($category['id']),
+					esc_html($category['name'])
+				);
+			}, $categories)),
+			esc_attr($order)
+		);
 	}
 
-	// Recent posts
-	$paged = get_query_var('paged')
-	? get_query_var('paged')
-	: 1;
+	$paged = (int)get_query_var('paged') ?: 1; // Cast to integer
 
 	$query = [
-		'posts_per_page' 	=> 	$attributes['postPerPage'],
-		'post_type'			=> 	$attributes['postType'],
-		'post_status' 		=> 	'publish',
-		'cat' 				=> 	(int)$selectedCategory,
-		'order'				=> 	$order,
-		'orderby'			=>	$orderby,
-		'paged' 			=> 	$paged,
-	] ;
+		'posts_per_page' => $attributes['postPerPage'],
+		'post_type' => $attributes['postType'],
+		'post_status' => 'publish',
+		'cat' => $selectedCategory,
+		'order' => $order,
+		'orderby' => $orderby,
+		'paged' => $paged,
+	];
 
-	// var_dump($query);
+	$recent_posts = new \WP_Query($query);
 
-	$recent_posts = new \WP_Query( $query );
+	if (is_wp_error($recent_posts)) {
+		error_log("WP_Query error: " . $recent_posts->get_error_message());
+		return "Error fetching posts.";
+	}
 
-	// var_dump($recent_posts);
-	// print_r($recent_posts->request);
-
-	if ( !$recent_posts->have_posts() ) {
-		$output = "
-		<div class=\"component-archive-posts{$class}\">
-			<form action=\"{$permalink}?category={$selectedCategory}\" class=\"top-bar filter-form\" method=\"get\">
-				{$tabs}
-				{$postFilter}
-			</form>
-			<p>No posts</p>
-		</div>";
-
+	if (!$recent_posts->have_posts()) {
+		$output = sprintf(
+			"<div class=\"component-archive-posts%s\">
+				<form action=\"%s?category=%s\" class=\"top-bar filter-form\" method=\"get\">
+					%s
+					%s
+				</form>
+				<p>%s</p>
+			</div>",
+			esc_attr($class),
+			esc_url($permalink),
+			esc_attr($selectedCategory),
+			$tabs,
+			$postFilter,
+			__('No posts')
+		);
 		return $output;
 	}
 
-	// Pagination
 	if ($paginationActive) {
-		$pagination .= "
-			<nav class=\"pagination-nav\" role=\"navigation\" aria-label=\"Pagination Navigation\">
-				<div class=\"pagination-wrapper\">" .
-					paginate_links([
-						'base' => str_replace(999999999,
-							'%#%',
-							esc_url(get_pagenum_link(999999999))),
-						'current' => max(1, $paged),
-						'format' => '?paged=%#%',
-						'end_size' => 2,
-						'mid_size' => 4,
-						'prev_next' => true,
-						'prev_text' => '',
-						'next_text' => '',
-						'add_fragment' => '',
-						'total' => $recent_posts->max_num_pages
-					]) .
-			"	</div>
-			</nav>";
+		$pagination = sprintf(
+			"<nav class=\"pagination-nav\" role=\"navigation\" aria-label=\"Pagination Navigation\">
+				<div class=\"pagination-wrapper\">%s</div>
+			</nav>",
+			paginate_links([
+				'base' => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
+				'current' => max(1, $paged),
+				'format' => '?paged=%#%',
+				'end_size' => 2,
+				'mid_size' => 4,
+				'prev_next' => true,
+				'prev_text' => '',
+				'next_text' => '',
+				'add_fragment' => '',
+				'total' => $recent_posts->max_num_pages
+			])
+		);
 	}
 
 	$postsItems = '';
 
-	while ( $recent_posts->have_posts() ) {
-		$recent_posts -> the_post();
-
+	while ($recent_posts->have_posts()) {
+		$recent_posts->the_post();
 		$ctaLink = '';
-		$thumbnail = get_post_thumbnail_id();
+		$thumbnailId = get_post_thumbnail_id();
 		$excerpt = '';
-		$categories = get_the_category();
-		$arrayCategories =  array();
+		$postCategories = get_the_category();
+		$arrayCategories = [];
 		$displayCategories = '';
 
 		if ($showExcerpt) {
-			$excerpt = wp_trim_words( get_the_excerpt(), $attributes['excerptWordLimit'], '' );
-
+			$excerpt = wp_trim_words(get_the_excerpt(), $attributes['excerptWordLimit'], '');
 			if (empty($excerpt)) {
-				$excerpt = wp_trim_words( get_the_content(), $attributes['excerptWordLimit'], '' );
+				$content = get_the_content();
+				$excerpt = !empty($content) ? wp_trim_words($content, $attributes['excerptWordLimit'], '') : '';
 			}
-
-			var_dump($excerpt);
-
-			$excerpt = '<p class="post-excerpt">' . $excerpt . '</p>';
+			$excerpt = sprintf('<p class="post-excerpt">%s</p>', esc_html($excerpt));
 		}
 
-		if ($categories && $showCategory) {
-			$displayCategories .= '<span class="category-name">';
-			foreach ($categories as $category) {
-				$arrayCategories[] = '<a href="/category/'.$category->slug.'">'.$category->name.'</a>';
-			}
-			$displayCategories .= implode( ', ', $arrayCategories ) . '</span>';
+		if ($postCategories && $showCategory) {
+			$displayCategories = sprintf(
+				'<span class="category-name">%s</span>',
+				implode(', ', array_map(function ($category) {
+					return sprintf('<a href="%s">%s</a>', esc_url(get_category_link($category->term_id)), esc_html($category->name));
+				}, $postCategories))
+			);
 		}
 
-		if ($thumbnail) {
-			$thumbnail = '<div class="image-wrapper">'.get_the_post_thumbnail().'</div>';
-		} else {
-			$thumbnail = '<div class="image-wrapper no-image"><img src="'.get_field('fallback_image', 'options').'" alt="'.get_field('fallback_image_alt', 'options').'" title="'.get_field('fallback_image_alt', 'options').'" /></div>';
-		}
+		$fallbackImage = get_field('fallback_image', 'options');
+		$fallbackImageAlt = get_field('fallback_image_alt', 'options');
+		$thumbnail = $thumbnailId
+			? sprintf('<div class="image-wrapper">%s</div>', get_the_post_thumbnail())
+			: sprintf('<div class="image-wrapper no-image"><img src="%s" alt="%s" title="%s"></div>', esc_url($fallbackImage), esc_attr($fallbackImageAlt), esc_attr($fallbackImageAlt));
 
 		if (!empty($ctaText)) {
-			$ctaLink .= '<div class="cta-link">'. $ctaText .'</div>';
+			$ctaLink = sprintf('<span class="cta-link">%s</span>', esc_html($ctaText));
 		}
 
-		$separator = ' &nbsp; ';
+		$authorName = get_field('author_name');
+		$separator = !empty($authorName) ? ' &nbsp;|&nbsp; ' : ' &nbsp; ';
+		$authorName = $authorName ?: ''; // Provide a default if the field is empty
 
-		if (get_field('author_name')) {
-			$separator = ' &nbsp;|&nbsp; ';
-		}
-
-			// <li class="posts-item post-category-'. $categories[0]->slug .'" style="width: '. 100 / $columnNumber .'%;">
-		
-		$postsItems .= '
-			<li class="posts-item post-category-'. $selectedCategorySlug .'" style="width: '. 100 / $columnNumber .'%;">
-				<a class="posts-item-wrapper" href="'.get_the_permalink() .'">'.
-					$thumbnail.
-					'<div class="post-content">'.
-						$displayCategories.
-						'<h2 class="post-title">'.
-							get_the_title().
-						'</h2>'.
-						'<span class="post-date">'.
-							get_the_time('F j, Y').
-							$separator.
-							get_field('author_name').
-						'</span>'.
-						$excerpt.
-						$ctaLink.
-					'</div>
+		$width = $columnNumber > 0 ? (100 / $columnNumber) : 100;
+		$postsItems .= sprintf(
+			'<li class="posts-item post-category-%s" style="width: %s%%;">
+				<a class="posts-item-wrapper" href="%s">
+					%s
+					<div class="component-heading component">
+						<div class="post-content">
+							<div class="component-heading">
+								<h2 class="post-title">%s</h2>
+							</div>
+							<div class="component-paragraph-wrapper">
+								%s
+							</div>
+							<span class="post-date">%s%s%s</span>
+							%s
+					</div>
 				</a>
-			</li>';
+			</li>',
+			esc_attr($GLOBALS['selectedCategorySlug']),
+			esc_attr($width),
+			esc_url(get_the_permalink()),
+			$thumbnail,
+			// $displayCategories,
+			esc_html(get_the_title()),
+			$excerpt,
+			esc_html(get_the_time('F j, Y')),
+			$separator,
+			esc_html($authorName),
+			$ctaLink
+		);
 	}
 
 	wp_reset_postdata();
 
-	$output = "
-	<div class=\"component-archive-posts{$class}\">
-		<form action=\"{$permalink}\" class=\"top-bar\" method=\"get\">
-			{$tabs}
-		</form>
-		<form action=\"{$permalink}\" class=\"top-bar filter-form\" method=\"get\">
-			{$postFilter}
-		</form>
-		<ul class=\"posts-items load-items\">
-			{$postsItems}
-		</ul>
-		{$pagination}
-	</div>";
+	$output = sprintf(
+		"<div class=\"component-archive-posts%s\">
+			<form action=\"%s\" class=\"top-bar\" method=\"get\">%s</form>
+			<form action=\"%s\" class=\"top-bar filter-form\" method=\"get\">%s</form>
+			<ul class=\"posts-items load-items\">%s</ul>
+			%s
+		</div>",
+		esc_attr($class),
+		esc_url($permalink),
+		$tabs,
+		esc_url($permalink),
+		$postFilter,
+		$postsItems,
+		$pagination
+	);
 
 	return $output;
 }
