@@ -281,12 +281,12 @@ export default registerBlockType(
 										<div class="post-content">
 											{
 												attributes.showCategory && (
-													<span class="category-name"><a href="">{category.name}</a></span>
+													<span class="category-name"><a href="/categories/{category.name}">{category.name}</a></span>
 												)
 											}
 											<h2 class="post-title" style={{paddingLeft: "0", margin: "0"}}>{post.title.rendered}</h2>
-											<span class="post-date">January 22, 2021</span>
 											<p class="post-excerpt">{post.excerpt.raw.split(" ").splice(0,attributes.excerptWordLimit).join(" ")}</p>
+											<span class="post-date">{post.date}</span>
 											<a class="cta-link" href="">{attributes.ctaText}</a>
 										</div>
 									</div>

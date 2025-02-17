@@ -38,12 +38,10 @@ export default registerBlockType(
 	'flexlayout/popup',
 	{
 		title: __( 'Popup' ),
-		description: __( 'Works with "PopupController" FLEX component. Options format: {"popupName":"Popup Name"}.', 'flexlayout' ),
+		description: __( 'Creates a popup to support popup buttons.', 'flexlayout' ),
 		category: 'layout',
 		// icon: 'columns',
-		// icon: icons.columns,
-		icon: 'format-status',
-		example: {},
+		icon: icons.columns,
 		keywords: [
 			__( 'Popup', 'flexlayout' ),
 		],
