@@ -4,6 +4,8 @@
  */
 "use strict";
 
+console.log('clientNamespace.js');
+
 // Namespace & config
 var FLEX = {
 	breakpoints: [
