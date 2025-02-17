@@ -521,6 +521,7 @@ FLEX.GlobalEvents.initGlobalEvents = function () {
 	G.viewportHeight   = $window.outerHeight();
 	G.viewportWidth	= $window.outerWidth();
 	G.scrollInProgress = false;
+	G.keyDown = '';
 
     $window.on('scroll', function (e) {
 		G.currentScrollTop = $window.scrollTop();
@@ -538,6 +539,29 @@ FLEX.GlobalEvents.initGlobalEvents = function () {
 		});
 
 		G.lastScrollTop = G.currentScrollTop;
+	});
+
+	// Publish keypressed event
+	// Close any popups when esc key pressed
+	// TODO: (DP) Going to have to implement the event layer here
+	$(document.body).on('keydown', function (e) {
+		console.log('/FLEX/\tjs/\tglobal-events.js', 'document.body on keydown()');
+		// Detect key press for WCAG compliance
+		var keyCode = e.keyCode || e.which;
+
+		// Save keyCode globally for future reference
+		G.keyCode = keyCode;
+
+		console.log('/FLEX/\tcomponents/\tcomponent_video-popup/\tvideo-popup.js', 'document keypress › pressed ' + e.key + ' key:type ' + e.type + ', keyCode: ' + keyCode);
+
+		// Detect key press
+		// 9 = tab
+		// 13 = enter
+		// 27 = esc
+		$(document.body).trigger('FLEX.keydown', {
+			'e': e,
+			'keyCode': G.keyCode
+		});
 	});
 
 	// Detect screen orientation
