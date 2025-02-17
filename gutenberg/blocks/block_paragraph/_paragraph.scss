@@ -46,4 +46,8 @@
 	&.is-style-text-columns .mce-content-body {
 		@extend .text-columns;
 	}
+
+	p {
+		@extend .body1;
+	}
 }
