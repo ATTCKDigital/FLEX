@@ -1,4 +1,5 @@
 <?php
+echo "<!-- text.php start -->";
 namespace FLEX_LAYOUT_SYSTEM\Blocks\Text;
 
 use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
@@ -110,3 +111,5 @@ function render_text_block($attributes) {
 
 	return $output;
 }
+
+echo "<!-- text.php end -->";
