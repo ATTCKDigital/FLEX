@@ -737,6 +737,10 @@ $justifyContent: 'flex-end';
 		position: relative !important;
 	}
 
+	.text-align-justify {
+		text-align: justify;
+	}
+
 	// Needs to be at the top to avoid overriding the 
 	// specificity of the responsive rules below.
 	// .text-align-center { text-align: center; }
