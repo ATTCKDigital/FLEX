@@ -23,6 +23,14 @@ function PopupController($el) {
 				});
 			};
 		}(counter));
+
+		console.log('/FLEX/\tgutenberg/\tblocks/\tblock_popup/\tpopup-controller.js › binding FLEX.keydown');
+		
+		$(document.body).on('FLEX.keydown', function (e, data) {
+			if (data.keyCode === 27) {
+				closePopup();
+			} 
+		});
 	}
 
 	function openPopup(index) {
@@ -47,6 +55,7 @@ function PopupController($el) {
 
 		// ...Otherwise, use the popup template on the page
 		$popup = $(`[data-popup-tpl="${popupName}"]`);
+		console.log('/FLEX/\tgutenberg /\tblocks/\t Popup Controller', '$popup:', $popup);
 
 		// Exit with warning if no popup template is found
 		if (!$popup) {
@@ -88,8 +97,10 @@ function PopupController($el) {
 		});
 	}
 
-	function closePopup() {
-		$popupEl.remove();
+	function closePopup($el = $popupEl) {
+		if (typeof $el !== 'undefined') {
+			$popupEl.remove();
+		}
 	}
 
 	this.init = function ($el) {
