@@ -2,7 +2,7 @@ import CopyPlugin from 'copy-webpack-plugin';
 import ImageminPlugin from 'imagemin-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
-import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+// import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import SpritePlugin from 'extract-svg-sprite-webpack-plugin';
 import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
@@ -12,12 +12,14 @@ import path from 'path';
 import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 const smp = new SpeedMeasurePlugin({
 	disable: !process.env.MEASURE
 });
 
 const isDevEnv = 'production' !== process.env.NODE_ENV;
-console.log('FLEX/webpack.config.babel.js › isDevEnv: ' + isDevEnv);
+console.log('webpack.config.babel.js › process.env.NODE_ENV: ' + process.env.NODE_ENV);
 
 const devPlugins = [];
 
@@ -31,6 +33,22 @@ const productionPlugins = [
 ]
 
 const plugins = isDevEnv ? devPlugins : productionPlugins;
+
+const isDevOptimized = isDevEnv ? { minimize: false } : {
+		minimizer: [
+			new TerserPlugin(),
+			new CssMinimizerPlugin()
+			// new OptimizeCSSAssetsPlugin({
+			// 	cssProcessorPluginOptions: {
+			// 		preset: ['default', {
+			// 			discardComments: {
+			// 				removeAll: true
+			// 			}
+			// 		}],
+			// 	},
+			// }),
+		],
+	};
 
 /*
 JS:
@@ -67,10 +85,21 @@ module.exports = smp.wrap({
 		'wysiwyg': path.resolve(__dirname, './scss/wysiwyg.scss'),
 	},
 
-	devtool: isDevEnv ? 'cheap-module-source-map' : false,
+	// More options here: https://webpack.js.org/configuration/devtool/
+	// - (none) = fastest
+	// devtool: isDevEnv ? 'cheap-module-source-map' : false,
+	// devtool: isDevEnv ? 'eval' : false,
+	devtool: isDevEnv ? 'source-map' : false,
+
 	mode: process.env.NODE_ENV,
 	target: 'web',
 	watch: isDevEnv,
+
+	// https://webpack.js.org/configuration/stats/
+	stats: 'normal',
+	// stats: 'detailed',
+	// stats: 'verbose',
+	// stats: 'summary',
 
 	output: {
 		path: path.resolve(__dirname, './dist'),
@@ -79,14 +108,16 @@ module.exports = smp.wrap({
 
 	resolve: {
 		alias: {
-			// 'flexlayout': path.resolve(__dirname, '../FLEX'),
 			'FLEX': path.resolve(__dirname, '../FLEX'),
 		},
 		modules: [
-			path.resolve(__dirname, './js'),
-			// path.resolve(__dirname, './scss'),
+		path.resolve(__dirname, './js'),
 			'node_modules'
-		]
+		],
+		// NOTE: (DP) React profiling is always disabled so was trying to find a solution to enable it.
+		// https://gist.github.com/bvaughn/25e6233aeb1b4f0cdb8d8366e54a3977
+		// 'react-dom$': 'react-dom/profiling',
+		// 'scheduler/tracing': 'scheduler/tracing-profiling',
 	},
 
 	module: {
@@ -126,7 +157,10 @@ module.exports = smp.wrap({
 			{
 				test: /\.(sa|sc|c)ss$/,
 				use: [
-					// 'production' !== process.env.NODE_ENV ? 'style-loader' : MiniCssExtractPlugin.loader,
+					'style-loader',
+					{
+						loader: 'style-loader'
+					},
 					MiniCssExtractPlugin.loader,
 					{
 						loader: 'css-loader',
@@ -136,16 +170,10 @@ module.exports = smp.wrap({
 						}
 					},
 					{
-						loader: SpritePlugin.cssLoader
-					},
-					{
 						loader: 'postcss-loader',
 						options: {
 							postcssOptions: {
 								config: path.resolve(__dirname, './postcss.config.js')
-								// config: {
-								// 	path: path.resolve(__dirname, './postcss.config.js'),
-								// },
 							},
 							sourceMap: isDevEnv
 						}
@@ -161,31 +189,19 @@ module.exports = smp.wrap({
 		]
 	},
 
-	optimization: {
-		minimizer: [
-			new TerserPlugin(),
-			new CssMinimizerPlugin()
-			new OptimizeCSSAssetsPlugin({
-				cssProcessorPluginOptions: {
-					preset: ['default', {
-						discardComments: {
-							removeAll: true
-						}
-					}],
-				},
-			}),
-		],
-	},
+	optimization: isDevOptimized,
 
 	plugins: [
 		...plugins,
 		new WebpackNotifierPlugin(),
-		new SpritePlugin(),
+
+		// new SpritePlugin(),
+
 		new MiniCssExtractPlugin({
 			filename: '[name].css',
 			chunkFilename: '[id].[hash].css',
-			// path: path.resolve(__dirname, './dist/css'),
 		}),
+
 		// Copy contents of ./assets -> ./dist
 		new CopyPlugin([
 			{
@@ -193,6 +209,13 @@ module.exports = smp.wrap({
 				from: './',
 				to: path.resolve(__dirname, './dist/assets/server-side-assets'),
 			},
+			{
+				context: path.resolve(__dirname, './assets/images'),
+				from: './',
+				to: path.resolve(__dirname, './dist/assets/images'),
+			}
 		]),
+
+		new BundleAnalyzerPlugin(),
 	],
 });
