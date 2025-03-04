@@ -38,6 +38,10 @@ function register_posts_block() {
 					'type' => 'array',
 					'default' => '',
 				],
+				'filterCategories' => [
+					'type' => 'array',
+					'default' => '',
+				],
 				'columnNumber' => [
 					'type' => 'Number',
 					'default' => 3,
@@ -84,7 +88,10 @@ function render_posts_block($attributes) {
 	$class .= $attributes['className'];
 	$class .= margin_options_classes($attributes);
 	$class .= padding_options_classes($attributes);
+
 	$categories = $attributes['categories'];
+	// $filterCategories = $attributes['filterCategories'];
+    $filterCategoryIds = isset($attributes['filterCategories']) ? $attributes['filterCategories'] : [];
 	$showExcerpt = $attributes['showExcerpt'];
 	$showCategory = $attributes['showCategory'];
 	$filterActive = $attributes['filterActive'];
@@ -111,6 +118,20 @@ function render_posts_block($attributes) {
 	$selectedCategory = isset($_GET['category']) ? (int)sanitize_text_field($_GET['category']) : ''; // Sanitize and cast to integer
 	$selectedCategorySlug = '';
 	
+    // if (!empty($filterCategories)) {
+    //     // Extract category IDs from selected filter categories
+    //     foreach ($filterCategories as $category) {
+    //         if (isset($category['id'])) {
+    //             $filterCategoryIds[] = (int)$category['id'];
+    //         }
+    //     }
+    // }
+
+	// Add category filtering if filter categories are provided
+	if (!empty($filterCategoryIds)) {
+		$query_args['category__in'] = $filterCategoryIds;
+	}
+
 	if (!isset($GLOBALS['selectedCategorySlug'])) {
         $GLOBALS['selectedCategorySlug'] = '';
     }
@@ -196,6 +217,11 @@ function render_posts_block($attributes) {
 		'orderby' => $orderby,
 		'paged' => $paged,
 	];
+
+    // Add category filtering if filter categories are selected
+    if (!empty($filterCategoryIds)) {
+        $query['category__in'] = $filterCategoryIds;
+    }
 
 	$recent_posts = new \WP_Query($query);
 

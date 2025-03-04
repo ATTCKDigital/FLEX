@@ -70,6 +70,10 @@ export default registerBlockType(
 				type: 'array',
 				default: []
 			},
+			filterCategories: {
+				type: 'array',
+				default: []
+			},
 			paginationActive: {
 				type: Boolean,
 				default: true
@@ -91,19 +95,25 @@ export default registerBlockType(
 		},
 		edit: withSelect((select, ownProps) => {
 			const { getPostTypes, getEntityRecords } = select('core');
-			const { categories, postType, postPerPage } = ownProps.attributes;
+			const { categories, postType, postPerPage, filterCategories } = ownProps.attributes;
 
 			const query = {
 				per_page: postPerPage,
 				_embed: true,
 			}
-			return {
 
+			// Add category filter to the query if filterCategories is not empty
+			if (filterCategories && filterCategories.length > 0) {
+				query['categories'] = filterCategories.join(',');
+			}
+			
+			return {
 				typesList: getPostTypes(),
 				posts: getEntityRecords('postType', postType, query),
-				categories: getEntityRecords('taxonomy', 'category')
+				categories: getEntityRecords('taxonomy', 'category'),
+				filterCategories: getEntityRecords('taxonomy', 'category')
 			};
-		})(({ posts, categories, className, isSelected, setAttributes, typesList, attributes }) => {
+		})(({ posts, categories, filterCategories, className, isSelected, setAttributes, typesList, attributes }) => {
 
 			if (!posts) {
 				return (
@@ -154,6 +164,35 @@ export default registerBlockType(
 									})
 								}}
 								placeholder="Select Categories"
+							/>
+						</PanelRow>
+						<PanelRow>
+							<FormTokenField
+								label="Filter Categories"
+								xvalue={ attributes.filterCategories.map(category => category.name) }
+
+								value={
+									attributes.filterCategories && attributes.filterCategories.length
+										? attributes.filterCategories.map(catId => {
+											const catObj = filterCategories.find(cat => cat.id === catId);
+											return catObj ? catObj.name : '';
+										})
+										: []
+								}
+
+								suggestions={filterCategories ? filterCategories.map(category => category.name) : []}
+								onChange={tokens => {
+									const selectedFilterCategories = filterCategories
+										.filter(category => tokens.includes(category.name))
+										.map(category => category.id); // store only IDs
+
+										console.log("Selected Filter Categories IDs:", selectedFilterCategories); // Debugging line
+
+									setAttributes({
+										filterCategories: selectedFilterCategories
+									});
+								}}
+								placeholder="Filter Categories"
 							/>
 						</PanelRow>
 						<PanelRow>
