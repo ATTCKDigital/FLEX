@@ -76,6 +76,7 @@ STATIC ASSETS:
 
 module.exports = smp.wrap({
 	entry: {
+		jquery: 'jquery',
 		'main.js': path.resolve(__dirname, './js/app.js'),
 		'admin.js': path.resolve(__dirname, './js/admin.js'),
 		'style': path.resolve(__dirname, './scss/style.scss'),
@@ -193,6 +194,13 @@ module.exports = smp.wrap({
 
 	plugins: [
 		...plugins,
+
+		new webpack.ProvidePlugin({
+			$: 'jquery',
+			jQuery: 'jquery',
+			'window.jQuery': 'jquery',
+		}),
+
 		new WebpackNotifierPlugin(),
 
 		// new SpritePlugin(),
@@ -218,4 +226,8 @@ module.exports = smp.wrap({
 
 		new BundleAnalyzerPlugin(),
 	],
+
+	externals: {
+		jquery: 'jQuery'
+	}
 });

@@ -4,25 +4,33 @@
  */
 function _scripts() {
 	if (!is_admin()) {
-		//Deregister included jquery. Latest version will be included in main.js
-		wp_deregister_script('jquery');
-		wp_enqueue_script('jquery', "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js", array(), null, true);
+		// Ensure WordPress's jQuery is properly registered and enqueued
+		wp_enqueue_script('jquery');
 	}
-	//Compiled theme js file
-	wp_enqueue_script('afp_script', get_stylesheet_directory_uri() . "/dist/main.js", array(), null, true);
 
-
+	// Compiled theme js file, ensuring it depends on jQuery
+	wp_enqueue_script(
+		'afp_script',
+		get_stylesheet_directory_uri() . "/dist/main.js",
+		array('jquery'), // Declare jQuery as a dependency
+		null,
+		true
+	);
 
 	// Load more vars
-	wp_localize_script('afp_script', 'afp_vars', array(
+	wp_localize_script(
+		'afp_script',
+		'afp_vars',
+		array(
 			// Create nonce which we later will use to verify AJAX request
-			'afp_nonce' => wp_create_nonce( 'afp_nonce' ),
-			'afp_ajax_url' => admin_url( 'admin-ajax.php' ),
+			'afp_nonce' => wp_create_nonce('afp_nonce'),
+			'afp_ajax_url' => admin_url('admin-ajax.php'),
 		)
 	);
 }
 
 add_action('wp_enqueue_scripts', '_scripts', PHP_INT_MAX);
+
 
 // Deregister any unneeded plugin scripts here.
 function flexlayout_deregister_styles() {
