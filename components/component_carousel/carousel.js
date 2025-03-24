@@ -32,6 +32,8 @@ function Carousel ($el, params={}) {
 	var vwGaptoPx;
 	var maxVisibleSlides;
 	var carouselWidth;
+	var hoveredSlideImage;
+	var hoveredSlideThumbnailImage;
 
 	// Merge any options set on the DOM element with
 	// the component defaults set above
@@ -115,6 +117,52 @@ function Carousel ($el, params={}) {
 			// TODO: (DP) Add override options to prevent autoscroll. 
 			// goNext();
 		}, randomInteger(4000, 6000));
+
+		// Add pseudoelement styles for each carousel slide
+		$('.slide', $el).each(function (index, el) {
+			var thisSlideId = $(this).attr('data-section-id');
+			var thisSlideThumbnailImage = $('.image-wrapper img', this).attr('src');
+
+			console.log('thisSlideId: ', thisSlideId);
+
+			// Add anchor link to entire element
+			var anchorLink = $('a', this).attr('href');
+
+			$(el).on('click', function () {
+				if (typeof anchorLink !== 'undefined') {
+					window.location.href = anchorLink;
+				}
+			});
+
+			// Swaps out background for thumbnail on hover
+			if (thisSlideThumbnailImage !== 'none' && typeof thisSlideThumbnailImage !== 'undefined') {
+				$('<style>')
+					.attr('id', 'dynamic-style')
+					.html(`
+						.component-background[data-section-id="${thisSlideId}"]::before {
+						background-image: url(${thisSlideThumbnailImage});
+						background-size: cover;
+						background-position: center;
+						content: "";
+						position: absolute;
+						top: 0; left: 0; right: 0; bottom: 0;
+						opacity: 0;
+						}
+					`)
+					.appendTo('head');
+			}
+		});
+
+		// // Embedded image thumb hover state
+		// $('.slide', $el).on('mouseover', function () {
+		// 	// Fades out the thumbnail image
+		// 	$(this).addClass('hover');
+		// });
+
+		// $('.slide', $el).on('mouseout', function () {
+		// 	// Fades in the thumbnail image
+		// 	$(this).removeClass('hover');
+		// });
 	}
 
 	function detectSwipes() {
