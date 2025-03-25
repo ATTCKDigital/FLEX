@@ -26,8 +26,10 @@ import Parallax from 			'../components/component_parallax/parallax';
 import ScrollIn from 			'../components/component_scroll-in/scroll-in';
 import ScrollTo from 			'../components/component_scroll-to/scroll-to';
 import WCAG from	 			'../components/component_wcag/wcag';
+import HeightMatch from	 		'../components/component_height-match/height-match';
 
 // Interactive components
+import Accordion from 			'../components/component_accordion/accordion';
 import Bookmark from 			'../components/component_bookmark/bookmark';
 import CalendarLink from 		'../components/component_calendar-link/calendarlink';
 import Carousel from 			'../components/component_carousel/carousel';
@@ -50,6 +52,7 @@ const childComponents = FLEX.ChildComponents || {};
 // Add your components here so they get loaded.
 // Make sure to import them above first.
 FLEX.Components = Object.assign({
+	'Accordion': Accordion,
 	'Analytics': Analytics,
 	'AnimatedGif': AnimatedGif,
 	'Bookmark': Bookmark,
@@ -57,6 +60,7 @@ FLEX.Components = Object.assign({
 	'CopyLink': CopyLink,
 	'CF7': CF7,
 	'GDPR': GDPR,
+	'HeightMatch': HeightMatch,
 	'LoadMore': LoadMore,
 	'Nav': Nav,
 	'Reserve': Reserve,
