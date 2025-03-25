@@ -1,0 +1,21 @@
+.component-accordion {
+    border-top: 1px solid black;
+
+    .accordionContent {
+        display: block;
+        overflow: hidden;
+        position: relative;
+        transition: height .2s;
+    }
+
+    .accordionItem {
+        border-bottom: 1px solid black;
+        cursor: pointer;
+
+        &.open {
+            .accordionContent {
+                height: auto;
+            }
+        }
+    }
+}
