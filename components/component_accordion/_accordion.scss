@@ -12,9 +12,70 @@
         border-bottom: 1px solid black;
         cursor: pointer;
 
+        .accordionHeader {
+            .component-paragraph-wrapper {
+                position: relative;
+                padding-left: 6rem; // adjust as needed for spacing
+    
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: 0px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 58px;
+                    height: 58px;
+                    border: 1px solid #000;
+                    border-radius: 50%;
+                    background: transparent;
+                    z-index: 0;
+                }
+    
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: 20px;
+                    top: 50%;
+                    width: 22px;
+                    height: 1px;
+                    background-color: #000;
+                    transform: translateY(-50%);
+                    z-index: 1;
+                }
+    
+                p {
+                    position: relative;
+    
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        left: -53px;
+                        top: 50%;
+                        width: 1px;
+                        height: 21px;
+                        background-color: #000;
+                        transform: translateY(-50%) rotate(0deg);
+                        transform-origin: center;
+                        transition: transform .3s ease;
+                        z-index: 1;
+                    }
+                }
+            }
+        }
+    
         &.open {
             .accordionContent {
                 height: auto;
+            }
+
+            .accordionHeader {
+                .component-paragraph-wrapper {
+                    p {
+                        &::before {
+                            transform: translateY(-50%) rotate(90deg); // rotates vertical bar to flat
+                        }
+                    }
+                }
             }
         }
     }
