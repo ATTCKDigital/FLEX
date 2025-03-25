@@ -1,20 +1,10 @@
-// Allows JS to access CSS breakpoints
 .breakpoint {
-	border-radius: $gap;
-	color: black;
 	display: none;
-	height: 20px;
-	opacity: 1;
-	padding: calc($gap/4) $gap;
-	position: fixed;
-	right: 10px;
-	text-align: left;
-	text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
-	top: 10px;
-	transition: opacity .2 ease-in-out;
-	width: auto;
-	z-index: 999999;
-
+	height: 0;
+	overflow: hidden;
+	pointer-events: none;;
+	width: 0;
+	z-index: -1;
 
 	// https://stackoverflow.com/questions/6063308/touch-css-pseudo-class-or-something-similar
 	//-webkit-tap-highlight-color: ???;
@@ -48,6 +38,23 @@ body {
 		section {
 			outline: dotted .25rem greenyellow;
 			outline-offset: -.5rem;
+		}
+
+		.breakpoint {
+			border-radius: $gap;
+			color: black;
+			display: none;
+			height: 20px;
+			opacity: 1;
+			padding: calc($gap/4) $gap;
+			position: fixed;
+			right: 10px;
+			text-align: left;
+			text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+			top: 10px;
+			transition: opacity .2 ease-in-out;
+			width: auto;
+			z-index: 999999;
 		}
 
 		.component[data-component-name] {
@@ -210,6 +217,48 @@ body {
 					}
 				}
 			}
+		}
+	}
+
+	// Allows JS to access CSS breakpoints
+	.breakpoint {
+		// width: 100%;
+		// padding: 10px;
+	}
+
+	@include mediaquery(phone)  {
+		.breakpoint.phone {
+			display: block;
+		}
+	}
+
+	@include mediaquery(tablet-portrait)  {
+		.breakpoint.tablet-portrait {
+			display: block;
+		}
+	}
+
+	@include mediaquery(tablet-landscape)  {
+		.breakpoint.tablet-landscape {
+			display: block;
+		}
+	}
+
+	@include mediaquery(desktop)  {
+		.breakpoint.xl {
+			display: block;
+		}
+	}
+
+	@include mediaquery(xl) {
+		.breakpoint.xl {
+			display: block;
+		}
+	}
+
+	@include mediaquery(xl2) {
+		.breakpoint.xl2 {
+			display: block;
 		}
 	}
 }
