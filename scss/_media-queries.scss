@@ -8,7 +8,9 @@ $mediaQueries: (
 	'tablet-landscape'	: $tablet-landscape,
 	'desktop'			: $desktop,
 	'xl'				: $xl,
-	'xl2'				: $xl2
+	'xl2'				: $xl2,
+	'min-1318'			: '1318px',
+	'min-1800'			: '1800px'
 );
 
 $maxMediaQueries: (
@@ -22,7 +24,8 @@ $maxMediaQueries: (
 );
 
 $minHeightMediaQueries: (
-	'mbp13'		: '1000px'
+	'mbp13'		: '1000px',
+	'min-800'	: '800px',
 );
 
 $minDeviceHeightMediaQueries: (
