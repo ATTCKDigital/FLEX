@@ -20,20 +20,19 @@ function Carousel ($el, params={}) {
 			+'</svg><span class="sr-only">Next slide</span></button>'
 	};
 
-	var index = 0;
-	var nextIndex = 0;
-	var prevIndex = 0;
-	var CSStransitionInProgress = false;
-	var $dotsContainer;
-	var $slidesContainer;
-	var $slides;
-	var slidesLength;
-	var slideWidth;
-	var vwGaptoPx;
-	var maxVisibleSlides;
-	var carouselWidth;
-	var hoveredSlideImage;
-	var hoveredSlideThumbnailImage;
+	var _index = 0;
+	var _nextIndex = 0;
+	var _prevIndex = 0;
+	var _CSStransitionInProgress = false;
+	var _$dotsContainer;
+	var _$slidesContainer;
+	var _$slides;
+	var _slidesLength;
+	var _slideWidth;
+	var _vwGaptoPx;
+	var _maxVisibleSlides;
+	var _carouselWidth;
+	var _lastScrollableSlide;
 
 	// Merge any options set on the DOM element with
 	// the component defaults set above
@@ -54,7 +53,7 @@ function Carousel ($el, params={}) {
 			var $parent = $(this).closest('.dots-component');
 
 			// Get index of this dot compared to siblings
-			var index = $parent.find('a').index($(this));
+			_index = $parent.find('a').index($(this));
 
 			goTo(index);
 		});
@@ -103,7 +102,7 @@ function Carousel ($el, params={}) {
 		//$el.find('li, .slide, .slides, .slide-inner-container').on('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd', function () {
 		$el.find('*').on('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd', function () {
 			console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'CSStransition complete');
-			CSStransitionInProgress = false;
+			_CSStransitionInProgress = false;
 		});
 
 		// Auto-scroll every five seconds
@@ -122,8 +121,6 @@ function Carousel ($el, params={}) {
 		$('.slide', $el).each(function (index, el) {
 			var thisSlideId = $(this).attr('data-section-id');
 			var thisSlideThumbnailImage = $('.image-wrapper img', this).attr('src');
-
-			console.log('thisSlideId: ', thisSlideId);
 
 			// Add anchor link to entire element
 			var anchorLink = $('a', this).attr('href');
@@ -201,64 +198,62 @@ function Carousel ($el, params={}) {
 
 	// Can be used as references for moving slides around
 	function getSlideProperties() {
-		$dotsContainer = $('.dots-component', $el);
-		$slidesContainer = $('.slides', $el);
-		$slides = $('.slides .slide', $el);
+		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'getSlideProperties()');
 
-		console.log('/— $slides: ', {}, $slides.length, $slides);
+		_$dotsContainer = $('.dots-component', $el);
+		_$slidesContainer = $('.slides', $el);
+		_$slides = $('.slides .slide', $el);
 
-		slidesLength = $slides.length - 1;
+		_slidesLength = _$slides.length - 1;
 
 		// Get slide width value
-		console.log('slide 1 width: ', $el.find('.slide').eq(0), $el.find('.slide').eq(0).css('width'));
-		
 		// -- Take into account a 1vw gap;
-		vwGaptoPx = $(window).width() / 100;
+		_vwGaptoPx = $(window).width() / 100;
 
 		// Programatically set slide width so the site always loads showing three full slides
-		slideWidth = ($el.find('.slides').innerWidth() - (2 * vwGaptoPx)) / 3;
+		// - Determine what 1/3 width of available space is
+		_slideWidth = (_$slidesContainer.innerWidth() - (2 * _vwGaptoPx)) / 3;
 
-		$el.find('.slide').css('width', slideWidth);
-
-		//slideWidth = $el.find('.slide').eq(0).outerWidth(true);
+		// - Apply this to each slide width
+		_$slides.css('width', _slideWidth);
 
 		// Strip "px" from width value
-		slideWidth = parseFloat(slideWidth);
-
+		_slideWidth = parseFloat(_slideWidth);
+		
 		// - Get visible carousel width
-		carouselWidth = $slidesContainer.outerWidth();
-
+		_carouselWidth = _$slidesContainer.outerWidth();
+		
 		// - Calculate max number of visible slides
-		maxVisibleSlides = carouselWidth / slideWidth;
+		_maxVisibleSlides = Math.floor(_carouselWidth / _slideWidth);
 	}
 
 	function go() {
-		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'go(), index: ', index);
+		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'go(), _index: ', _index);
 		
 		// Indicate CSS transition is in progress
-		CSStransitionInProgress = true;
+		_CSStransitionInProgress = true;
 
-		$slides.eq(index).removeClass('previous next').addClass('active');
+		_$slides.eq(_index).removeClass('previous next').addClass('active');
 
-		for (var x = 0; x < $slides.length; x++) {
-			if (x < index) {
-				if (x === 0 && index === ($slides.length - 1)) {
-					$slides.eq(x).removeClass('previous next active').addClass('next');
+		for (var x = 0; x < _$slides.length; x++) {
+			if (x < _index) {
+				if (x === 0 && _index === (_$slides.length - 1)) {
+					_$slides.eq(x).removeClass('previous next active').addClass('next');
 				} else {
-					$slides.eq(x).removeClass('previous next active').addClass('previous');
+					_$slides.eq(x).removeClass('previous next active').addClass('previous');
 				}
 			}
 
-			if (x > index){
-				if (x === ($slides.length - 1) && index === 0) {
-					$slides.eq(x).removeClass('previous next active').addClass('previous');
+			if (x > _index){
+				if (x === (_$slides.length - 1) && _index === 0) {
+					_$slides.eq(x).removeClass('previous next active').addClass('previous');
 				} else {
-					$slides.eq(x).removeClass('previous next active').addClass('next');
+					_$slides.eq(x).removeClass('previous next active').addClass('next');
 				}
 			}
 		}
 
-		updateDots(index);
+		updateDots(_index);
 
 		moveSlideContainerInner();
 
@@ -268,76 +263,76 @@ function Carousel ($el, params={}) {
 	}
 
 	function goNext() {
-		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'goNext(), CSStransitionInProgress:', CSStransitionInProgress);
+		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'goNext(), _CSStransitionInProgress:', _CSStransitionInProgress);
 		
 		// Proceed only if no CSS transition is in progress
-		if (CSStransitionInProgress) return;
+		if (_CSStransitionInProgress) return;
 
 		if ($(this).hasClass('disabled')) { return; };
 
 		// If current active slide isn't at the end
 		// bump up index
-		if (index < slidesLength || index <= Math.ceil(maxVisibleSlides)) {
-			index = index + 1;
-			prevIndex = index - 1;
+		if (_index < _slidesLength || _index <= _lastScrollableSlide) {
+			_index = _index + 1;
+			_prevIndex = _index - 1;
 
 			// If current active slide still isn't at the end
 			// bump up nextIndex
-			if (index < slidesLength) {
-				nextIndex = index + 1;
+			if (_index < _slidesLength) {
+				_nextIndex = _index + 1;
 
 				$('.nav', $el).removeClass('disabled');
 
 				// Stop at max visible slides index
-				if (index > Math.ceil(maxVisibleSlides)) {
-					nextIndex = index - 1;
+				if (_index >= _lastScrollableSlide) {
+					_nextIndex = _index - 1;
 	
-					CSStransitionInProgress = false;
+					_CSStransitionInProgress = false;
 					$('.nav.next', $el).addClass('disabled');
 				}
 			} else {
-				// Otherwise, reset it to the beginning
+				// Otherwise, reset it to the beginning (if setting is present)
 				//nextIndex = 0;
 
 				// Otherwise, stop at current index
-				nextIndex = index - 1;
+				_nextIndex = _index - 1;
 
-				CSStransitionInProgress = false;
+				_CSStransitionInProgress = false;
 				$('.nav.next', $el).addClass('disabled');
 			}
 		} else {
-			index = 0;
-			nextIndex = index + 1;
-			prevIndex = slidesLength;
+			_index = 0;
+			_nextIndex = _index + 1;
+			_prevIndex = _slidesLength;
 
-			CSStransitionInProgress = false;
+			_CSStransitionInProgress = false;
 			$('.nav.next', $el).addClass('disabled');
 		}
-
-		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'goNext(), index:', index);
 
 		go();
 	}
 
 	function goPrev() {
+		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'goPrev()');
+
 		// Proceed only if no CSS transition is in progress
-		if (CSStransitionInProgress) return;
+		if (_CSStransitionInProgress) return;
 		
 		if ($(this).hasClass('disabled')) { return; };
 
 		// If current active slide isn't at the beginning
-		if (index > 0) {
+		if (_index > 0) {
 			// drop down index
-			index = index - 1;
+			_index = _index - 1;
 			
 			// [ ] [p] [i] [n] [ ]
-			nextIndex = index + 1;
+			_nextIndex = _index + 1;
 			
 			// If current active slide still isn't at the end,
-			if (index > 0) {
+			if (_index > 0) {
 				// drop down prevIndex.
 				// [p] [i] [n] [ ] [ ]
-				prevIndex = index - 1;
+				_prevIndex = _index - 1;
 
 				$('.nav', $el).removeClass('disabled');
 			} else {
@@ -347,9 +342,9 @@ function Carousel ($el, params={}) {
 				// prevIndex = $slides.length;
 
 				// Otherwise, stop at the beginning
-				prevIndex = index - 1;
+				_prevIndex = _index - 1;
 
-				CSStransitionInProgress = false;
+				_CSStransitionInProgress = false;
 				$('.nav.prev', $el).addClass('disabled');
 			}
 		} else {
@@ -359,15 +354,15 @@ function Carousel ($el, params={}) {
 			// prevIndex = index - 1;
 
 			// Otherwise, stop at the beginning
-			index = 0;
-			nextIndex = 1;
-			prevIndex = -1;
+			_index = 0;
+			_nextIndex = 1;
+			_prevIndex = -1;
 
-			CSStransitionInProgress = false;
+			_CSStransitionInProgress = false;
 			$('.nav.prev', $el).addClass('disabled');
 		}
 
-		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'goPrev(), index: ', index);
+		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'goPrev(), _index: ', _index);
 
 		go();
 	}
@@ -376,29 +371,29 @@ function Carousel ($el, params={}) {
 		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'ar()');
 		
 		// Proceed only if no CSS transition is in progress
-		if (CSStransitionInProgress) return;
+		if (_CSStransitionInProgress) return;
 
 		// If current active slide isn't at the beginning
-		if (index !== arg) {
+		if (_index !== arg) {
 			// go to index
-			index = arg;
+			_index = arg;
 
 			// If current active slide isn't at the end
-			if (index < slidesLength) {
-				nextIndex = index + 1;
+			if (_index < _slidesLength) {
+				_nextIndex = _index + 1;
 
 				// If current active slide isnt at the beginning,
-				if (index > 0) {
+				if (_index > 0) {
 					// drop down prevIndex.
 					// [p] [i] [n] [ ] [ ]
-					prevIndex = index - 1;
+					_prevIndex = _index - 1;
 				} else {
-					prevIndex = slidesLength;
+					_prevIndex = _slidesLength;
 				}
 			} else {
 				// TODO: (DP) Move this to passable options.
-				nextIndex = 0;
-				prevIndex = index - 1;
+				_nextIndex = 0;
+				_prevIndex = _index - 1;
 			}
 		}
 
@@ -406,32 +401,25 @@ function Carousel ($el, params={}) {
 	}
 
 	function moveSlideContainerInner() {
+		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'moveSlideContainerInner()');
+
 		// Find current active slide index
 		var activeSlideIndex = $el.find('.slide.active').index();
 
 		// Calculate left offset + gap
-		var leftOffset = ((activeSlideIndex * slideWidth) + (activeSlideIndex * vwGaptoPx)) * -1;
-
-		// Determine number of visible slides
-		// - Get visible carousel width
-		// carouselWidth = $slidesContainer.outerWidth();
-
-		// - Calculate max number of visible slides
-		// maxVisibleSlides = carouselWidth / slideWidth;
+		var leftOffset = ((activeSlideIndex * _slideWidth) + (activeSlideIndex * _vwGaptoPx)) * -1;
 
 		// Ensure the scrolling stops when the last slide has reached the right most edge of the screen
 		// - Calculate last slide index minus max visible slides
-		var lastScrollableSlide = Math.ceil($slides.length - maxVisibleSlides);
+		_lastScrollableSlide = Math.ceil(_$slides.length - _maxVisibleSlides);
 
 		// - Override leftOffset if at this boundary
-		if (activeSlideIndex >= lastScrollableSlide) {
-			leftOffset = ((lastScrollableSlide * slideWidth) + (lastScrollableSlide * vwGaptoPx)) * -1;
+		if (activeSlideIndex >= _lastScrollableSlide) {
+			leftOffset = ((_lastScrollableSlide * _slideWidth) + (_lastScrollableSlide * _vwGaptoPx)) * -1;
 
 			// Reset this since no animation will happen in this scenario
-			CSStransitionInProgress = false;
+			_CSStransitionInProgress = false;
 		}
-
-		console.log('left offset: ', activeSlideIndex, slideWidth, leftOffset);
 
 		// Move inner container
 		$el.find('.slides-container-inner').css({
@@ -446,7 +434,7 @@ function Carousel ($el, params={}) {
 		$('.nav.prev', $el).addClass('disabled');
 
 		// Hide dots if only one slide
-		if ($slides.length > 1) {
+		if (_$slides.length > 1) {
 			$('.dots-component', $el).css({
 				'visibility': 'visible'
 			});
@@ -465,23 +453,22 @@ function Carousel ($el, params={}) {
 		$('.slides.active li', $el).eq(0).addClass('active');
 
 		// Set active elements (because they aren't set via PHP):
-		for (var x = 0; x < $slides.length; x++) {
+		for (var x = 0; x < _$slides.length; x++) {
 			// Set next/prev of each slide
 			switch (true) {
 				// - first LI
 				case x === 0:
-					// $slidesContainer.eq(0).addClass('active');
-					$slides.eq(x).addClass('active');
+					_$slides.eq(x).addClass('active');
 					break;
 
 				// - last LI
-				case x === ($slides.length - 1):
-					$slides.eq(x).addClass('previous');
+				case x === (_$slides.length - 1):
+					_$slides.eq(x).addClass('previous');
 					break;
 
 				// - middle LIs
 				default:
-					$slides.eq(x).addClass('next');
+					_$slides.eq(x).addClass('next');
 					break;
 			}
 		}
@@ -497,7 +484,7 @@ function Carousel ($el, params={}) {
 	function updateDots(current) {
 		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'updateDots(current:)', current);
 		
-		$dotsContainer.each(function () {
+		_$dotsContainer.each(function () {
 			$(this).find('li.dot').removeClass('active');
 			$(this).find('li.dot').eq(current).addClass('active');
 		});
