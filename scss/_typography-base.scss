@@ -245,6 +245,11 @@ u {
 	}
 }
 
+.font-style-italic,
+.font-style-italic p {
+	font-style: italic;
+}
+
 .underline {
 	// for use in WYSIWYG as <u></u> was deprecated in 4.7+
 	display: inline;
