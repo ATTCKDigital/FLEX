@@ -502,7 +502,7 @@ FLEX.GlobalEvents.initGlobalEvents = function () {
 	cancelRelativePathLinkClicks();
 
 	/*** Detect scrolling and scrolling direction ***/
-	//USAGE
+	// USAGE:
 	// Bind to scroll
 	// $(document.body).bind('FLEX.scroll', function (e, data) {
 	// 		// if scroll is past or before x position
@@ -516,9 +516,21 @@ FLEX.GlobalEvents.initGlobalEvents = function () {
 	// 	    }
 	// 	});
 
+	// Account for address bar on mobile browsers
+	function setRealViewportHeight() {
+		// const vh = window.innerHeight * 0.01;
+		const vh = $window.innerHeight() * 0.01;
+		console.log('window.innerHeight(): ', $window.innerHeight(), 'window.innerHeight: ', window.innerHeight, 'vh: ', vh);
+
+		document.documentElement.style.setProperty('--vh', `${vh}px`);
+	}
+	
+	setRealViewportHeight();
+
 	G.currentScrollTop = $window.scrollTop();
 	G.lastScrollTop	= $window.scrollTop();
-	G.viewportHeight   = $window.outerHeight();
+	G.viewportHeight = $window.outerHeight();
+	G.viewportHeightInner = $window.innerHeight();
 	G.viewportWidth	= $window.outerWidth();
 	G.scrollInProgress = false;
 	G.keyDown = '';
@@ -656,13 +668,18 @@ FLEX.GlobalEvents.initGlobalEvents = function () {
 	$window.resize(function(e) {
 		G.viewportHeight = $window.outerHeight();
 		G.viewportWidth  = $window.outerWidth();
+		G.viewportHeightInner = $window.innerHeight();
 
 		$(document.body).trigger('FLEX.resize', {
 			'e': e,
 			'viewportHeight': G.viewportHeight,
-			'viewportWidth': G.viewportWidth
+			'viewportWidth': G.viewportWidth,
+			'viewportHeightInner': G.viewportHeightInner
 		});
 	});
+
+	// Send sitewide state notification
+	$(document.body).trigger('initGlobalEventsComplete');
 };
 
 // Add jQuery support for passive event listeners

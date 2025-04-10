@@ -270,8 +270,18 @@ FLEX.debug = (function () {
 		};
 	}
 
+	function showViewportDimensionsOnBreakpointLabel() {
+		console.log('showViewportDimensionsOnBreakpointLabel triggered');
+		$('.breakpoint').text(FLEX.Globals.viewportWidth + ' x ' + FLEX.Globals.viewportHeightInner + ': ');
+	}
+
 	function showCSSBreakpoints(status) {
 		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.showCSSBreakpoints(status: ' + status + ')');
+
+		// Append viewport width and height to the breakpoint label
+		$(document.body).on('initGlobalEventsComplete', function (e) {
+			showViewportDimensionsOnBreakpointLabel();
+		});
 
 		// Declares FLEX.GlobalEvents.xsOnly(), smOnly(), etc for running
 		// breakpoint-specific functionality.
@@ -288,51 +298,52 @@ FLEX.debug = (function () {
 				}
 			});
 
-			// Expose text value on resize
-			/* Don't need these since we moved this to the CSS file
-			$(document.body)
-				.on("FLEX.resize", function () {
-					FLEX.GlobalEvents.onlysmall(function () {
-						$('.breakpoint-current').show().text('Breakpoint is small');
-					});
-
-					FLEX.GlobalEvents.onlyphone(function () {
-						$('.breakpoint-current').show().text('Breakpoint is phone');
-					});
-
-					FLEX.GlobalEvents.onlytabletportrait(function () {
-						$('.breakpoint-current').show().text('Breakpoint is tablet portrait');
-					});
-
-					FLEX.GlobalEvents.onlytabletlandscape(function () {
-						$('.breakpoint-current').show().text('Breakpoint is tablet landscape');
-					});
-
-					FLEX.GlobalEvents.onlydesktop(function () {
-						$('.breakpoint-current').show().text('Breakpoint is desktop');
-					});
-
-					FLEX.GlobalEvents.onlyxl(function () {
-						$('.breakpoint-current').show().text('Breakpoint is xl');
-					});
-
-					FLEX.GlobalEvents.only2xl(function () {
-						$('.breakpoint-current').show().text('Breakpoint is 2xl');
-					});
-
-					FLEX.GlobalEvents.only3xl(function () {
-						$('.breakpoint-current').show().text('Breakpoint is 3xl');
-					});
-
-					FLEX.GlobalEvents.only4xl(function () {
-						$('.breakpoint-current').show().text('Breakpoint is 4xl');
-					});
-
-					FLEX.GlobalEvents.only5xl(function () {
-						$('.breakpoint-current').show().text('Breakpoint is 5xl');
-					});
+			// Expose viewport dimensions on resize
+			$(document.body).on("FLEX.resize", function () {
+				showViewportDimensionsOnBreakpointLabel();
+				
+				/* Don't need these since we moved this to the CSS file
+				FLEX.GlobalEvents.onlysmall(function () {
+					$('.breakpoint-current').show().text('Breakpoint is small');
 				});
-			*/
+
+				FLEX.GlobalEvents.onlyphone(function () {
+					$('.breakpoint-current').show().text('Breakpoint is phone');
+				});
+
+				FLEX.GlobalEvents.onlytabletportrait(function () {
+					$('.breakpoint-current').show().text('Breakpoint is tablet portrait');
+				});
+
+				FLEX.GlobalEvents.onlytabletlandscape(function () {
+					$('.breakpoint-current').show().text('Breakpoint is tablet landscape');
+				});
+
+				FLEX.GlobalEvents.onlydesktop(function () {
+					$('.breakpoint-current').show().text('Breakpoint is desktop');
+				});
+
+				FLEX.GlobalEvents.onlyxl(function () {
+					$('.breakpoint-current').show().text('Breakpoint is xl');
+				});
+
+				FLEX.GlobalEvents.only2xl(function () {
+					$('.breakpoint-current').show().text('Breakpoint is 2xl');
+				});
+
+				FLEX.GlobalEvents.only3xl(function () {
+					$('.breakpoint-current').show().text('Breakpoint is 3xl');
+				});
+
+				FLEX.GlobalEvents.only4xl(function () {
+					$('.breakpoint-current').show().text('Breakpoint is 4xl');
+				});
+
+				FLEX.GlobalEvents.only5xl(function () {
+					$('.breakpoint-current').show().text('Breakpoint is 5xl');
+				});
+				*/
+			});
 		}
 
 		if (typeof $ !== 'undefined' && status === false) {
