@@ -61,6 +61,24 @@
 }
 
 // Helpers
-.margin-bottom-20vh {
-	margin-bottom: 20vh;
+.margin-bottom-2vh  { margin-bottom: 2vh; }
+.margin-bottom-3vh  { margin-bottom: 3vh; }
+.margin-bottom-4vh  { margin-bottom: 4vh; }
+.margin-bottom-5vh  { margin-bottom: 5vh; }
+.margin-bottom-6vh  { margin-bottom: 6vh; }
+.margin-bottom-6-5vh{ margin-bottom: 6.5vh; }
+.margin-bottom-7vh  { margin-bottom: 7vh; }
+.margin-bottom-8vh  { margin-bottom: 8vh; }
+.margin-bottom-9vh  { margin-bottom: 9vh; }
+.margin-bottom-10vh { margin-bottom: 10vh; }
+.margin-bottom-11vh { margin-bottom: 11vh; }
+.margin-bottom-12vh { margin-bottom: 12vh; }
+.margin-bottom-13vh { margin-bottom: 13vh; }
+.margin-bottom-14vh { margin-bottom: 14vh; }
+.margin-bottom-20vh { margin-bottom: 20vh; }
+
+.margin-tablet-landscape-bottom-20vh {
+	@include mediaquery(tablet-landscape) {
+		margin-bottom: 20vh;
+	}
 }
