@@ -17,7 +17,7 @@ function background_options_video_output( $attributes ) {
 	// Construct HTML snippet
 	if ( $hasBackgroundType && $attributes['backgroundType'] == 'video' && $hasBackgroundVideo ) {
 		$video .= '<div class="component" data-component-name="VideoThumb">';
-		$video .= 	'<video class="video-container video-container-overlay" loop="true" muted="true" id="video-' . mt_rand(10,1000) . '">';
+		$video .= 	'<video class="video-container video-container-overlay" autoplay loop muted playsinline loop="true" muted="true" id="video-' . mt_rand(10,1000) . '">';
 		$video .= 		'<source type="video/mp4" src="' . $attributes['backgroundVideo']['url'] . '" />';
 		$video .= 	'</video>';
 
