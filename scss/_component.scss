@@ -63,8 +63,11 @@
 		// margin-right: auto !important;
 	}
 
-	&.column-align-center.column-align-center {
+	&.column-align-center {
 		display: block;
+	}
+
+	&.column-align-center.column-align-center {
 		margin-left: auto;
 		margin-right: auto;
 
@@ -72,8 +75,12 @@
 		// justify-content: center;
 	}
 
-	&.column-align-right.column-align-right {
+	// These specificity hacks are preventing .flex-0-12 from displaying: none;
+	&.column-align-right {
 		display: block;
+	}
+
+	&.column-align-right.column-align-right {
 		margin-left: auto;
 		margin-right: 0;
 
@@ -82,16 +89,22 @@
 		// justify-content: right;
 	}
 
+	&.component-column-verticalAlignment-bottom {
+		display: flex;
+	}
+
 	&.component-column-verticalAlignment-bottom.component-column-verticalAlignment-bottom {
 		// align-items: flex-end;
-		display: flex;
 		flex-direction: column;
 		justify-content: flex-end;
 	}
 
+	&.component-column-verticalAlignment-center {
+		display: flex;
+	}
+	
 	&.component-column-verticalAlignment-center.component-column-verticalAlignment-center {
 		// align-items: center;
-		display: flex;
 		flex-direction: column;
 		justify-content: center;
 	}
