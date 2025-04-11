@@ -15,7 +15,7 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	flex-wrap: wrap;
 }
 
-.flex-grid.flex-grid.flex-grid {
+.flex-grid.flex-grid {
 /**
  * Basic grid settings using flex-gridrid custom mediaqueries 
  */
@@ -234,28 +234,33 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 }
 
 .flex-1-24imp {
+	display: block !important;
 	width: 4.1667% !important;
 	*width: 4.1357% !important;
 }
 
 .flex-1-12imp,
 .flex-2-24imp {
+	display: block !important;
 	width: 8.3333% !important;
 	*width: 8.3023% !important;
 }
 
 .flex-3-24imp {
+	display: block !important;
 	width: 12.5000% !important;
 	*width: 12.4690% !important;
 }
 
 .flex-2-12imp,
 .flex-4-24imp {
+	display: block !important;
 	width: 16.6667% !important;
 	*width: 16.6357% !important;
 }
 
 .flex-5-24imp {
+	display: block !important;
 	width: 20.8333% !important;
 	*width: 20.8023% !important;
 }
@@ -263,11 +268,13 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 .flex-6-24imp,
 .flex-3-12imp,
 .flex-1-4imp {
+	display: block !important;
 	width: 25% !important;
 	*width: 24.9690% !important;
 }
 
 .flex-7-24imp {
+	display: block !important;
 	width: 29.1667% !important;
 	*width: 29.1357% !important;
 }
@@ -275,22 +282,26 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 .flex-8-24imp,
 .flex-4-12imp,
 .flex-1-3imp {
+	display: block !important;
 	width: 33.3333% !important;
 	*width: 33.3023% !important;
 }
 
 .flex-9-24imp {
+	display: block !important;
 	width: 37.5000% !important;
 	*width: 37.4690% !important;
 }
 
 .flex-10-24imp,
 .flex-5-12imp {
+	display: block !important;
 	width: 41.6667% !important;
 	*width: 41.6357% !important;
 }
 
 .flex-11-24imp {
+	display: block !important;
 	width: 45.8333% !important;
 	*width: 45.8023% !important;
 }
@@ -298,33 +309,39 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 .flex-12-24imp,
 .flex-6-12imp,
 .flex-1-2imp {
+	display: block !important;
 	width: 50% !important;
 	*width: 49.9690% !important;
 }
 
 .flex-13-24imp {
+	display: block !important;
 	width: 54.1667% !important;
 	*width: 54.1357% !important;
 }
 
 .flex-14-24imp,
 .flex-7-12imp {
+	display: block !important;
 	width: 58.3333% !important;
 	*width: 58.3023% !important;
 }
 
 .flex-15-24imp {
+	display: block !important;
 	width: 62.5000% !important;
 	*width: 62.4690% !important;
 }
 
 .flex-16-24imp,
 .flex-8-12imp {
+	display: block !important;
 	width: 66.6667% !important;
 	*width: 66.6357% !important;
 }
 
 .flex-17-24imp {
+	display: block !important;
 	width: 70.8333% !important;
 	*width: 70.8023% !important;
 }
@@ -332,39 +349,46 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 .flex-18-24imp,
 .flex-9-12imp,
 .flex-3-4imp {
+	display: block !important;
 	width: 75% !important;
 	*width: 74.9690% !important;
 }
 
 .flex-19-24imp {
+	display: block !important;
 	width: 79.1667% !important;
 	*width: 79.1357% !important;
 }
 
 .flex-20-24imp,
 .flex-10-12imp {
+	display: block !important;
 	width: 83.3333% !important;
 	*width: 83.3023% !important;
 }
 
 .flex-21-24imp {
+	display: block !important;
 	width: 87.5000% !important;
 	*width: 87.4690% !important;
 }
 
 .flex-22-24imp,
 .flex-11-12imp {
+	display: block !important;
 	width: 91.6667% !important;
 	*width: 91.6357% !important;
 }
 
 .flex-23-24imp {
+	display: block !important;
 	width: 95.8333% !important;
 	*width: 95.8023% !important;
 }
 
 .flex-24-24imp,
 .flex-12-12imp {
+	display: block !important;
 	width: 100% !important;
 }
 
@@ -580,28 +604,33 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	}
 
 	.flex-phone-1-24imp {
+		display: block !important;
 		width: 4.1667% !important;
 		*width: 4.1357% !important;
 	}
 
 	.flex-phone-1-12imp,
 	.flex-phone-2-24imp {
+		display: block !important;
 		width: 8.3333% !important;
 		*width: 8.3023% !important;
 	}
 
 	.flex-phone-3-24imp {
+		display: block !important;
 		width: 12.5000% !important;
 		*width: 12.4690% !important;
 	}
 
 	.flex-phone-4-24imp,
 	.flex-phone-2-12imp {
+		display: block !important;
 		width: 16.6667% !important;
 		*width: 16.6357% !important;
 	}
 	
 	.flex-phone-5-24imp {
+		display: block !important;
 		width: 20.8333% !important;
 		*width: 20.8023% !important;
 	}
@@ -609,11 +638,13 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-phone-6-24imp,
 	.flex-phone-3-12imp, 
 	.flex-phone-1-4imp {
+		display: block !important;
 		width: 25% !important;
 		*width: 24.9690% !important;
 	}
 
 	.flex-phone-7-24imp {
+		display: block !important;
 		width: 29.1667% !important;
 		*width: 29.1357% !important;
 	}
@@ -621,22 +652,26 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-phone-8-24imp,
 	.flex-phone-4-12imp,
 	.flex-phone-1-3imp {
+		display: block !important;
 		width: 33.3333% !important;
 		*width: 33.3023% !important;
 	}
 
 	.flex-phone-9-24imp {
+		display: block !important;
 		width: 37.5000% !important;
 		*width: 37.4690% !important;
 	}
 
 	.flex-phone-10-24imp,
 	.flex-phone-5-12imp {
+		display: block !important;
 		width: 41.6667% !important;
 		*width: 41.6357% !important;
 	}
 
 	.flex-phone-11-24imp {
+		display: block !important;
 		width: 45.8333% !important;
 		*width: 45.8023% !important;
 	}
@@ -644,33 +679,39 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-phone-12-24imp,
 	.flex-phone-6-12imp, 
 	.flex-phone-1-2imp {
+		display: block !important;
 		width: 50% !important;
 		*width: 49.9690% !important;
 	}
 
 	.flex-phone-13-24imp {
+		display: block !important;
 		width: 54.1667% !important;
 		*width: 54.1357% !important;
 	}
 
 	.flex-phone-14-24imp,
 	.flex-phone-7-12imp {
+		display: block !important;
 		width: 58.3333% !important;
 		*width: 58.3023% !important;
 	}
 
 	.flex-phone-15-24imp {
+		display: block !important;
 		width: 62.5000% !important;
 		*width: 62.4690% !important;
 	}
 
 	.flex-phone-16-24imp,
 	.flex-phone-8-12imp {
+		display: block !important;
 		width: 66.6667% !important;
 		*width: 66.6357% !important;
 	}
 
 	.flex-phone-17-24imp {
+		display: block !important;
 		width: 70.8333% !important;
 		*width: 70.8023% !important;
 	}
@@ -678,39 +719,46 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-phone-18-24imp,
 	.flex-phone-9-12imp,
 	.flex-phone-3-4imp {
+		display: block !important;
 		width: 75% !important;
 		*width: 74.9690% !important;
 	}
 
 	.flex-phone-19-24imp {
+		display: block !important;
 		width: 79.1667% !important;
 		*width: 79.1357% !important;
 	}
 
 	.flex-phone-20-24imp,
 	.flex-phone-10-12imp {
+		display: block !important;
 		width: 83.3333% !important;
 		*width: 83.3023% !important;
 	}
 
 	.flex-phone-21-24imp {
+		display: block !important;
 		width: 87.5000% !important;
 		*width: 87.4690% !important;
 	}
 
 	.flex-phone-22-24imp,
 	.flex-phone-11-12imp {
+		display: block !important;
 		width: 91.6667% !important;
 		*width: 91.6357% !important;
 	}
 
 	.flex-phone-23-24imp {
+		display: block !important;
 		width: 95.8333% !important;
 		*width: 95.8023% !important;
 	}
 
 	.flex-phone-24-24imp,
 	.flex-phone-12-12imp {
+		display: block !important;
 		width: 100% !important;
 	}
 }
@@ -927,28 +975,33 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	}
 
 	.flex-phone-plus-1-24imp {
+		display: block !important;
 		width: 4.1667% !important;
 		*width: 4.1357% !important;
 	}
 
 	.flex-phone-plus-1-12imp,
 	.flex-phone-plus-2-24imp {
+		display: block !important;
 		width: 8.3333% !important;
 		*width: 8.3023% !important;
 	}
 
 	.flex-phone-plus-3-24imp {
+		display: block !important;
 		width: 12.5000% !important;
 		*width: 12.4690% !important;
 	}
 
 	.flex-phone-plus-4-24imp,
 	.flex-phone-plus-2-12imp {
+		display: block !important;
 		width: 16.6667% !important;
 		*width: 16.6357% !important;
 	}
 	
 	.flex-phone-plus-5-24imp {
+		display: block !important;
 		width: 20.8333% !important;
 		*width: 20.8023% !important;
 	}
@@ -956,11 +1009,13 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-phone-plus-6-24imp,
 	.flex-phone-plus-3-12imp, 
 	.flex-phone-plus-1-4imp {
+		display: block !important;
 		width: 25% !important;
 		*width: 24.9690% !important;
 	}
 
 	.flex-phone-plus-7-24imp {
+		display: block !important;
 		width: 29.1667% !important;
 		*width: 29.1357% !important;
 	}
@@ -968,22 +1023,26 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-phone-plus-8-24imp,
 	.flex-phone-plus-4-12imp,
 	.flex-phone-plus-1-3imp {
+		display: block !important;
 		width: 33.3333% !important;
 		*width: 33.3023% !important;
 	}
 
 	.flex-phone-plus-9-24imp {
+		display: block !important;
 		width: 37.5000% !important;
 		*width: 37.4690% !important;
 	}
 
 	.flex-phone-plus-10-24imp,
 	.flex-phone-plus-5-12imp {
+		display: block !important;
 		width: 41.6667% !important;
 		*width: 41.6357% !important;
 	}
 
 	.flex-phone-plus-11-24imp {
+		display: block !important;
 		width: 45.8333% !important;
 		*width: 45.8023% !important;
 	}
@@ -991,33 +1050,39 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-phone-plus-12-24imp,
 	.flex-phone-plus-6-12imp, 
 	.flex-phone-plus-1-2imp {
+		display: block !important;
 		width: 50% !important;
 		*width: 49.9690% !important;
 	}
 
 	.flex-phone-plus-13-24imp {
+		display: block !important;
 		width: 54.1667% !important;
 		*width: 54.1357% !important;
 	}
 
 	.flex-phone-plus-14-24imp,
 	.flex-phone-plus-7-12imp {
+		display: block !important;
 		width: 58.3333% !important;
 		*width: 58.3023% !important;
 	}
 
 	.flex-phone-plus-15-24imp {
+		display: block !important;
 		width: 62.5000% !important;
 		*width: 62.4690% !important;
 	}
 
 	.flex-phone-plus-16-24imp,
 	.flex-phone-plus-8-12imp {
+		display: block !important;
 		width: 66.6667% !important;
 		*width: 66.6357% !important;
 	}
 
 	.flex-phone-plus-17-24imp {
+		display: block !important;
 		width: 70.8333% !important;
 		*width: 70.8023% !important;
 	}
@@ -1025,39 +1090,46 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-phone-plus-18-24imp,
 	.flex-phone-plus-9-12imp,
 	.flex-phone-plus-3-4imp {
+		display: block !important;
 		width: 75% !important;
 		*width: 74.9690% !important;
 	}
 
 	.flex-phone-plus-19-24imp {
+		display: block !important;
 		width: 79.1667% !important;
 		*width: 79.1357% !important;
 	}
 
 	.flex-phone-plus-20-24imp,
 	.flex-phone-plus-10-12imp {
+		display: block !important;
 		width: 83.3333% !important;
 		*width: 83.3023% !important;
 	}
 
 	.flex-phone-plus-21-24imp {
+		display: block !important;
 		width: 87.5000% !important;
 		*width: 87.4690% !important;
 	}
 
 	.flex-phone-plus-22-24imp,
 	.flex-phone-plus-11-12imp {
+		display: block !important;
 		width: 91.6667% !important;
 		*width: 91.6357% !important;
 	}
 
 	.flex-phone-plus-23-24imp {
+		display: block !important;
 		width: 95.8333% !important;
 		*width: 95.8023% !important;
 	}
 
 	.flex-phone-plus-24-24imp,
 	.flex-phone-plus-12-12imp {
+		display: block !important;
 		width: 100% !important;
 	}
 }
@@ -1276,28 +1348,33 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 
 
 	.flex-tablet-portrait-1-24imp {
+		display: block !important;
 		width: 4.1667% !important;
 		*width: 4.1357% !important;
 	}
 
 	.flex-tablet-portrait-1-12imp,
 	.flex-tablet-portrait-2-24imp {
+		display: block !important;
 		width: 8.3333% !important;
 		*width: 8.3023% !important;
 	}
 
 	.flex-tablet-portrait-3-24imp {
+		display: block !important;
 		width: 12.5000% !important;
 		*width: 12.4690% !important;
 	}
 
 	.flex-tablet-portrait-4-24imp,
 	.flex-tablet-portrait-2-12imp {
+		display: block !important;
 		width: 16.6667% !important;
 		*width: 16.6357% !important;
 	}
 
 	.flex-tablet-portrait-5-24imp {
+		display: block !important;
 		width: 20.8333% !important;
 		*width: 20.8023% !important;
 	}
@@ -1305,11 +1382,13 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-tablet-portrait-6-24imp,
 	.flex-tablet-portrait-3-12imp,
 	.flex-tablet-portrait-1-4imp {
+		display: block !important;
 		width: 25% !important;
 		*width: 24.9690% !important;
 	}
 
 	.flex-tablet-portrait-7-24imp {
+		display: block !important;
 		width: 29.1667% !important;
 		*width: 29.1357% !important;
 	}
@@ -1317,22 +1396,26 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-tablet-portrait-8-24imp,
 	.flex-tablet-portrait-4-12imp, 
 	.flex-tablet-portrait-1-3imp {
+		display: block !important;
 		width: 33.3333% !important;
 		*width: 33.3023% !important;
 	}
 
 	.flex-tablet-portrait-9-24imp {
+		display: block !important;
 		width: 37.5000% !important;
 		*width: 37.4690% !important;
 	}
 
 	.flex-tablet-portrait-10-24imp,
 	.flex-tablet-portrait-5-12imp {
+		display: block !important;
 		width: 41.6667% !important;
 		*width: 41.6357% !important;
 	}
 
 	.flex-tablet-portrait-11-24imp {
+		display: block !important;
 		width: 45.8333% !important;
 		*width: 45.8023% !important;
 	}
@@ -1340,33 +1423,39 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-tablet-portrait-12-24imp,
 	.flex-tablet-portrait-6-12imp,
 	.flex-tablet-portrait-1-2imp {
+		display: block !important;
 		width: 50% !important;
 		*width: 49.9690% !important;
 	}
 
 	.flex-tablet-portrait-13-24imp {
+		display: block !important;
 		width: 54.1667% !important;
 		*width: 54.1357% !important;
 	}
 
 	.flex-tablet-portrait-14-24imp,
 	.flex-tablet-portrait-7-12imp {
+		display: block !important;
 		width: 58.3333% !important;
 		*width: 58.3023% !important;
 	}
 
 	.flex-tablet-portrait-15-24imp {
+		display: block !important;
 		width: 62.5000% !important;
 		*width: 62.4690% !important;
 	}
 
 	.flex-tablet-portrait-16-24imp,
 	.flex-tablet-portrait-8-12imp {
+		display: block !important;
 		width: 66.6667% !important;
 		*width: 66.6357% !important;
 	}
 
 	.flex-tablet-portrait-17-24imp {
+		display: block !important;
 		width: 70.8333% !important;
 		*width: 70.8023% !important;
 	}
@@ -1374,39 +1463,46 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-tablet-portrait-18-24imp,
 	.flex-tablet-portrait-9-12imp,
 	.flex-tablet-portrait-3-4imp {
+		display: block !important;
 		width: 75% !important;
 		*width: 74.9690% !important;
 	}
 
 	.flex-tablet-portrait-19-24imp {
+		display: block !important;
 		width: 79.1667% !important;
 		*width: 79.1357% !important;
 	}
 
 	.flex-tablet-portrait-20-24imp,
 	.flex-tablet-portrait-10-12imp {
+		display: block !important;
 		width: 83.3333% !important;
 		*width: 83.3023% !important;
 	}
 
 	.flex-tablet-portrait-21-24imp {
+		display: block !important;
 		width: 87.5000% !important;
 		*width: 87.4690% !important;
 	}
 
 	.flex-tablet-portrait-22-24imp,
 	.flex-tablet-portrait-11-12imp {
+		display: block !important;
 		width: 91.6667% !important;
 		*width: 91.6357% !important;
 	}
 
 	.flex-tablet-portrait-23-24imp {
+		display: block !important;
 		width: 95.8333% !important;
 		*width: 95.8023% !important;
 	}
 
 	.flex-tablet-portrait-24-24imp,
 	.flex-tablet-portrait-12-12imp {
+		display: block !important;
 		width: 100% !important;
 	}
 }
@@ -1623,28 +1719,33 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	}
 
 	.flex-tablet-landscape-1-24imp {
+		display: block !important;
 		width: 4.1667% !important;
 		*width: 4.1357% !important;
 	}
 
 	.flex-tablet-landscape-1-12imp,
 	.flex-tablet-landscape-2-24imp {
+		display: block !important;
 		width: 8.3333% !important;
 		*width: 8.3023% !important;
 	}
 
 	.flex-tablet-landscape-3-24imp {
+		display: block !important;
 		width: 12.5000% !important;
 		*width: 12.4690% !important;
 	}
 
 	.flex-tablet-landscape-4-24imp,
 	.flex-tablet-landscape-2-12imp {
+		display: block !important;
 		width: 16.6667% !important;
 		*width: 16.6357% !important;
 	}
 
 	.flex-tablet-landscape-5-24imp {
+		display: block !important;
 		width: 20.8333% !important;
 		*width: 20.8023% !important;
 	}
@@ -1652,11 +1753,13 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-tablet-landscape-6-24imp,
 	.flex-tablet-landscape-3-12imp, 
 	.flex-tablet-landscape-1-4imp {
+		display: block !important;
 		width: 25% !important;
 		*width: 24.9690% !important;
 	}
 
 	.flex-tablet-landscape-7-24imp {
+		display: block !important;
 		width: 29.1667% !important;
 		*width: 29.1357% !important;
 	}
@@ -1664,22 +1767,26 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-tablet-landscape-8-24imp,
 	.flex-tablet-landscape-4-12imp, 
 	.flex-tablet-landscape-1-3imp {
+		display: block !important;
 		width: 33.3333% !important;
 		*width: 33.3023% !important;
 	}
 
 	.flex-tablet-landscape-9-24imp {
+		display: block !important;
 		width: 37.5000% !important;
 		*width: 37.4690% !important;
 	}
 
 	.flex-tablet-landscape-10-24imp,
 	.flex-tablet-landscape-5-12imp {
+		display: block !important;
 		width: 41.6667% !important;
 		*width: 41.6357% !important;
 	}
 
 	.flex-tablet-landscape-11-24imp {
+		display: block !important;
 		width: 45.8333% !important;
 		*width: 45.8023% !important;
 	}
@@ -1687,33 +1794,39 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-tablet-landscape-12-24imp,
 	.flex-tablet-landscape-6-12imp, 
 	.flex-tablet-landscape-1-2imp {
+		display: block !important;
 		width: 50% !important;
 		*width: 49.9690% !important;
 	}
 
 	.flex-tablet-landscape-13-24imp {
+		display: block !important;
 		width: 54.1667% !important;
 		*width: 54.1357% !important;
 	}
 
 	.flex-tablet-landscape-14-24imp,
 	.flex-tablet-landscape-7-12imp {
+		display: block !important;
 		width: 58.3333% !important;
 		*width: 58.3023% !important;
 	}
 
 	.flex-tablet-landscape-15-24imp {
+		display: block !important;
 		width: 62.5000% !important;
 		*width: 62.4690% !important;
 	}
 
 	.flex-tablet-landscape-16-24imp,
 	.flex-tablet-landscape-8-12imp {
+		display: block !important;
 		width: 66.6667% !important;
 		*width: 66.6357% !important;
 	}
 
 	.flex-tablet-landscape-17-24imp {
+		display: block !important;
 		width: 70.8333% !important;
 		*width: 70.8023% !important;
 	}
@@ -1721,39 +1834,46 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-tablet-landscape-18-24imp,
 	.flex-tablet-landscape-9-12imp,
 	.flex-tablet-landscape-3-4imp {
+		display: block !important;
 		width: 75% !important;
 		*width: 74.9690% !important;
 	}
 
 	.flex-tablet-landscape-19-24imp {
+		display: block !important;
 		width: 79.1667% !important;
 		*width: 79.1357% !important;
 	}
 
 	.flex-tablet-landscape-20-24imp,
 	.flex-tablet-landscape-10-12imp {
+		display: block !important;
 		width: 83.3333% !important;
 		*width: 83.3023% !important;
 	}
 
 	.flex-tablet-landscape-21-24imp {
+		display: block !important;
 		width: 87.5000% !important;
 		*width: 87.4690% !important;
 	}
 
 	.flex-tablet-landscape-22-24imp,
 	.flex-tablet-landscape-11-12imp {
+		display: block !important;
 		width: 91.6667% !important;
 		*width: 91.6357% !important;
 	}
 
 	.flex-tablet-landscape-23-24imp {
+		display: block !important;
 		width: 95.8333% !important;
 		*width: 95.8023% !important;
 	}
 
 	.flex-tablet-landscape-24-24imp,
 	.flex-tablet-landscape-12-12imp {
+		display: block !important;
 		width: 100% !important;
 	}
 }
@@ -1970,28 +2090,33 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	}
 
 	.flex-desktop-1-24imp {
+		display: block !important;
 		width: 4.1667% !important;
 		*width: 4.1357% !important;
 	}
 
 	.flex-desktop-1-12imp,
 	.flex-desktop-2-24imp {
+		display: block !important;
 		width: 8.3333% !important;
 		*width: 8.3023% !important;
 	}
 
 	.flex-desktop-3-24imp {
+		display: block !important;
 		width: 12.5000% !important;
 		*width: 12.4690% !important;
 	}
 
 	.flex-desktop-4-24imp,
 	.flex-desktop-2-12imp {
+		display: block !important;
 		width: 16.6667% !important;
 		*width: 16.6357% !important;
 	}
 
 	.flex-desktop-5-24imp {
+		display: block !important;
 		width: 20.8333% !important;
 		*width: 20.8023% !important;
 	}
@@ -1999,11 +2124,13 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-desktop-6-24imp,
 	.flex-desktop-3-12imp, 
 	.flex-desktop-1-4imp {
+		display: block !important;
 		width: 25% !important;
 		*width: 24.9690% !important;
 	}
 
 	.flex-desktop-7-24imp {
+		display: block !important;
 		width: 29.1667% !important;
 		*width: 29.1357% !important;
 	}
@@ -2011,22 +2138,26 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-desktop-8-24imp,
 	.flex-desktop-4-12imp, 
 	.flex-desktop-1-3imp {
+		display: block !important;
 		width: 33.3333% !important;
 		*width: 33.3023% !important;
 	}
 
 	.flex-desktop-9-24imp {
+		display: block !important;
 		width: 37.5000% !important;
 		*width: 37.4690% !important;
 	}
 
 	.flex-desktop-10-24imp,
 	.flex-desktop-5-12imp {
+		display: block !important;
 		width: 41.6667% !important;
 		*width: 41.6357% !important;
 	}
 
 	.flex-desktop-11-24imp {
+		display: block !important;
 		width: 45.8333% !important;
 		*width: 45.8023% !important;
 	}
@@ -2034,33 +2165,39 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-desktop-12-24imp,
 	.flex-desktop-6-12imp, 
 	.flex-desktop-1-2imp {
+		display: block !important;
 		width: 50% !important;
 		*width: 49.9690% !important;
 	}
 
 	.flex-desktop-13-24imp {
+		display: block !important;
 		width: 54.1667% !important;
 		*width: 54.1357% !important;
 	}
 
 	.flex-desktop-14-24imp,
 	.flex-desktop-7-12imp {
+		display: block !important;
 		width: 58.3333% !important;
 		*width: 58.3023% !important;
 	}
 
 	.flex-desktop-15-24imp {
+		display: block !important;
 		width: 62.5000% !important;
 		*width: 62.4690% !important;
 	}
 
 	.flex-desktop-16-24imp,
 	.flex-desktop-8-12imp {
+		display: block !important;
 		width: 66.6667% !important;
 		*width: 66.6357% !important;
 	}
 
 	.flex-desktop-17-24imp {
+		display: block !important;
 		width: 70.8333% !important;
 		*width: 70.8023% !important;
 	}
@@ -2068,39 +2205,46 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-desktop-18-24imp,
 	.flex-desktop-9-12imp,
 	.flex-desktop-3-4imp {
+		display: block !important;
 		width: 75% !important;
 		*width: 74.9690% !important;
 	}
 
 	.flex-desktop-19-24imp {
+		display: block !important;
 		width: 79.1667% !important;
 		*width: 79.1357% !important;
 	}
 
 	.flex-desktop-20-24imp,
 	.flex-desktop-10-12imp {
+		display: block !important;
 		width: 83.3333% !important;
 		*width: 83.3023% !important;
 	}
 
 	.flex-desktop-21-24imp {
+		display: block !important;
 		width: 87.5000% !important;
 		*width: 87.4690% !important;
 	}
 
 	.flex-desktop-22-24imp,
 	.flex-desktop-11-12imp {
+		display: block !important;
 		width: 91.6667% !important;
 		*width: 91.6357% !important;
 	}
 
 	.flex-desktop-23-24imp {
+		display: block !important;
 		width: 95.8333% !important;
 		*width: 95.8023% !important;
 	}
 
 	.flex-desktop-24-24imp,
 	.flex-desktop-12-12imp {
+		display: block !important;
 		width: 100% !important;
 	}
 }
@@ -2316,39 +2460,46 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	}
 
 	.flex-xl-1-24imp {
+		display: block !important;
 		width: 4.1667% !important;
 		*width: 4.1357% !important;
 	}
 
 	.flex-xl-1-12imp,
 	.flex-xl-2-24imp {
+		display: block !important;
 		width: 8.3333% !important;
 		*width: 8.3023% !important;
 	}
 
 	.flex-xl-3-24imp {
+		display: block !important;
 		width: 12.5000% !important;
 		*width: 12.4690% !important;
 	}
 
 	.flex-xl-4-24imp,
 	.flex-xl-2-12imp {
+		display: block !important;
 		width: 16.6667% !important;
 		*width: 16.6357% !important;
 	}
 
 	.flex-xl-5-24imp {
+		display: block !important;
 		width: 20.8333% !important;
 		*width: 20.8023% !important;
 	}
 
 	.flex-xl-6-24imp,
 	.flex-xl-3-12imp {
+		display: block !important;
 		width: 25% !important;
 		*width: 24.9690% !important;
 	}
 
 	.flex-xl-7-24imp {
+		display: block !important;
 		width: 29.1667% !important;
 		*width: 29.1357% !important;
 	}
@@ -2356,22 +2507,26 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-xl-8-24imp,
 	.flex-xl-4-12imp, 
 	.flex-xl-1-3imp {
+		display: block !important;
 		width: 33.3333% !important;
 		*width: 33.3023% !important;
 	}
 
 	.flex-xl-9-24imp {
+		display: block !important;
 		width: 37.5000% !important;
 		*width: 37.4690% !important;
 	}
 
 	.flex-xl-10-24imp,
 	.flex-xl-5-12imp {
+		display: block !important;
 		width: 41.6667% !important;
 		*width: 41.6357% !important;
 	}
 
 	.flex-xl-11-24imp {
+		display: block !important;
 		width: 45.8333% !important;
 		*width: 45.8023% !important;
 	}
@@ -2379,33 +2534,39 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-xl-12-24imp,
 	.flex-xl-6-12imp,
 	.flex-xl-1-2imp {
+		display: block !important;
 		width: 50% !important;
 		*width: 49.9690% !important;
 	}
 
 	.flex-xl-13-24imp {
+		display: block !important;
 		width: 54.1667% !important;
 		*width: 54.1357% !important;
 	}
 
 	.flex-xl-14-24imp,
 	.flex-xl-7-12imp {
+		display: block !important;
 		width: 58.3333% !important;
 		*width: 58.3023% !important;
 	}
 
 	.flex-xl-15-24imp {
+		display: block !important;
 		width: 62.5000% !important;
 		*width: 62.4690% !important;
 	}
 
 	.flex-xl-16-24imp,
 	.flex-xl-8-12imp {
+		display: block !important;
 		width: 66.6667% !important;
 		*width: 66.6357% !important;
 	}
 
 	.flex-xl-17-24imp {
+		display: block !important;
 		width: 70.8333% !important;
 		*width: 70.8023% !important;
 	}
@@ -2413,39 +2574,46 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-xl-18-24imp,
 	.flex-xl-9-12imp,
 	.flex-xl-3-4imp {
+		display: block !important;
 		width: 75% !important;
 		*width: 74.9690% !important;
 	}
 
 	.flex-xl-19-24imp {
+		display: block !important;
 		width: 79.1667% !important;
 		*width: 79.1357% !important;
 	}
 
 	.flex-xl-20-24imp,
 	.flex-xl-10-12imp {
+		display: block !important;
 		width: 83.3333% !important;
 		*width: 83.3023% !important;
 	}
 
 	.flex-xl-21-24imp {
+		display: block !important;
 		width: 87.5000% !important;
 		*width: 87.4690% !important;
 	}
 
 	.flex-xl-22-24imp,
 	.flex-xl-11-12imp {
+		display: block !important;
 		width: 91.6667% !important;
 		*width: 91.6357% !important;
 	}
 
 	.flex-xl-23-24imp {
+		display: block !important;
 		width: 95.8333% !important;
 		*width: 95.8023% !important;
 	}
 
 	.flex-xl-24-24imp,
 	.flex-xl-12-12imp {
+		display: block !important;
 		width: 100% !important;
 	}
 }
@@ -2661,39 +2829,46 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	}
 
 	.flex-2xl-1-24imp {
+		display: block !important;
 		width: 4.1667% !important;
 		*width: 4.1357% !important;
 	}
 
 	.flex-2xl-1-12imp,
 	.flex-2xl-2-24imp {
+		display: block !important;
 		width: 8.3333% !important;
 		*width: 8.3023% !important;
 	}
 
 	.flex-2xl-3-24imp {
+		display: block !important;
 		width: 12.5000% !important;
 		*width: 12.4690% !important;
 	}
 
 	.flex-2xl-4-24imp,
 	.flex-2xl-2-12imp {
+		display: block !important;
 		width: 16.6667% !important;
 		*width: 16.6357% !important;
 	}
 
 	.flex-2xl-5-24imp {
+		display: block !important;
 		width: 20.8333% !important;
 		*width: 20.8023% !important;
 	}
 
 	.flex-2xl-6-24imp,
 	.flex-2xl-3-12imp {
+		display: block !important;
 		width: 25% !important;
 		*width: 24.9690% !important;
 	}
 
 	.flex-2xl-7-24imp {
+		display: block !important;
 		width: 29.1667% !important;
 		*width: 29.1357% !important;
 	}
@@ -2701,22 +2876,26 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-2xl-8-24imp,
 	.flex-2xl-4-12imp, 
 	.flex-2xl-1-3imp {
+		display: block !important;
 		width: 33.3333% !important;
 		*width: 33.3023% !important;
 	}
 
 	.flex-2xl-9-24imp {
+		display: block !important;
 		width: 37.5000% !important;
 		*width: 37.4690% !important;
 	}
 
 	.flex-2xl-10-24imp,
 	.flex-2xl-5-12imp {
+		display: block !important;
 		width: 41.6667% !important;
 		*width: 41.6357% !important;
 	}
 
 	.flex-2xl-11-24imp {
+		display: block !important;
 		width: 45.8333% !important;
 		*width: 45.8023% !important;
 	}
@@ -2724,33 +2903,39 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-2xl-12-24imp,
 	.flex-2xl-6-12imp,
 	.flex-2xl-1-2imp {
+		display: block !important;
 		width: 50% !important;
 		*width: 49.9690% !important;
 	}
 
 	.flex-2xl-13-24imp {
+		display: block !important;
 		width: 54.1667% !important;
 		*width: 54.1357% !important;
 	}
 
 	.flex-2xl-14-24imp,
 	.flex-2xl-7-12imp {
+		display: block !important;
 		width: 58.3333% !important;
 		*width: 58.3023% !important;
 	}
 
 	.flex-2xl-15-24imp {
+		display: block !important;
 		width: 62.5000% !important;
 		*width: 62.4690% !important;
 	}
 
 	.flex-2xl-16-24imp,
 	.flex-2xl-8-12imp {
+		display: block !important;
 		width: 66.6667% !important;
 		*width: 66.6357% !important;
 	}
 
 	.flex-2xl-17-24imp {
+		display: block !important;
 		width: 70.8333% !important;
 		*width: 70.8023% !important;
 	}
@@ -2758,39 +2943,46 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-2xl-18-24imp,
 	.flex-2xl-9-12imp,
 	.flex-2xl-3-4imp {
+		display: block !important;
 		width: 75% !important;
 		*width: 74.9690% !important;
 	}
 
 	.flex-2xl-19-24imp {
+		display: block !important;
 		width: 79.1667% !important;
 		*width: 79.1357% !important;
 	}
 
 	.flex-2xl-20-24imp,
 	.flex-2xl-10-12imp {
+		display: block !important;
 		width: 83.3333% !important;
 		*width: 83.3023% !important;
 	}
 
 	.flex-2xl-21-24imp {
+		display: block !important;
 		width: 87.5000% !important;
 		*width: 87.4690% !important;
 	}
 
 	.flex-2xl-22-24imp,
 	.flex-2xl-11-12imp {
+		display: block !important;
 		width: 91.6667% !important;
 		*width: 91.6357% !important;
 	}
 
 	.flex-2xl-23-24imp {
+		display: block !important;
 		width: 95.8333% !important;
 		*width: 95.8023% !important;
 	}
 
 	.flex-2xl-24-24imp,
 	.flex-2xl-12-12imp {
+		display: block !important;
 		width: 100% !important;
 	}
 }
