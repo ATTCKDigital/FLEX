@@ -75,7 +75,17 @@
 .margin-bottom-12vh { margin-bottom: 12vh; }
 .margin-bottom-13vh { margin-bottom: 13vh; }
 .margin-bottom-14vh { margin-bottom: 14vh; }
+.margin-bottom-18vh { margin-bottom: 18vh; }
 .margin-bottom-20vh { margin-bottom: 20vh; }
+
+.margin-bottom-hero-large,
+.margin-bottom-hero-medium {
+	margin-bottom: 18vh;
+
+	@include mediaquery(tablet-landscape) {
+		margin-bottom: 20vh;
+	}
+}
 
 .margin-tablet-landscape-bottom-20vh {
 	@include mediaquery(tablet-landscape) {
