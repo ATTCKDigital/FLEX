@@ -76,7 +76,9 @@ function render_column_block($attributes, $content) {
 	// print_r($content);
 	// echo "\n-->\n";
 
-	$sectionDataId = mt_rand(10,1000);
+	$GLOBALS['sectionDataCounter'] = 1;
+
+	$sectionDataId = $GLOBALS['sectionDataCounter']++ . mt_rand(1000,9999);
 	$class = 'component-column';
 	$class .= ' ' . $attributes['className'] . ' ';
 	$class .= background_options_classes($attributes);
