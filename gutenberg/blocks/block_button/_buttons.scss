@@ -50,7 +50,11 @@
 		border-color: color('brand', 'accent');
 		background-color: color('brand', 'accent');
 		color: color('secondary', 'white');
+		float: left;
+		padding-right: 70px;
 		transition: background .4s ease-out, border-color .4s ease-out, color .4s ease-out;
+		white-space: nowrap;
+		width: auto;
 
 		@include mediaquery(desktop) {
 			&:hover {
