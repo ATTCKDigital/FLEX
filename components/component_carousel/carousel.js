@@ -20,19 +20,22 @@ function Carousel ($el, params={}) {
 			+'</svg><span class="sr-only">Next slide</span></button>'
 	};
 
+	var _$el = $el;
 	var _index = 0;
-	var _nextIndex = 0;
-	var _prevIndex = 0;
+	var _carouselWidth;
 	var _CSStransitionInProgress = false;
 	var _$dotsContainer;
-	var _$slidesContainer;
-	var _$slides;
-	var _slidesLength;
-	var _slideWidth;
-	var _vwGaptoPx;
-	var _maxVisibleSlides;
-	var _carouselWidth;
+	var _fullCarouselWidth;
 	var _lastScrollableSlide;
+	var _maxVisibleSlides;
+	var _nextIndex = 0;
+	var _prevIndex = 0;
+	var _slideWidth;
+	var _$slides;
+	var _$slidesContainer;
+	var _slidesLength;
+	var _visibleGap;
+	var _vwGaptoPx;
 
 	// Merge any options set on the DOM element with
 	// the component defaults set above
@@ -210,9 +213,19 @@ function Carousel ($el, params={}) {
 		// -- Take into account a 1vw gap;
 		_vwGaptoPx = $(window).width() / 100;
 
+		// - Calculate max number of visible slides
+		if ($('.breakpoint.tablet-landscape:not(:visible)').length === 1) {
+			_maxVisibleSlides = 1;
+			_visibleGap = (_vwGaptoPx)
+		} else {
+			// _maxVisibleSlides = Math.floor(_carouselWidth / _slideWidth);
+			_maxVisibleSlides = 3;
+			_visibleGap = (2 * _vwGaptoPx)
+		}
+
 		// Programatically set slide width so the site always loads showing three full slides
 		// - Determine what 1/3 width of available space is
-		_slideWidth = (_$slidesContainer.innerWidth() - (2 * _vwGaptoPx)) / 3;
+		_slideWidth = (_$slidesContainer.innerWidth() - _visibleGap) / _maxVisibleSlides;
 
 		// - Apply this to each slide width
 		_$slides.css('width', _slideWidth);
@@ -220,11 +233,17 @@ function Carousel ($el, params={}) {
 		// Strip "px" from width value
 		_slideWidth = parseFloat(_slideWidth);
 		
+		// Set full crousel width
+		_fullCarouselWidth = (_slidesLength + 2) * _slideWidth + 'px';
+
+		console.log('slides-container-inner: ', $('.slides-container-inner', $el), '_fullCarouselWidth: ', _fullCarouselWidth);
+
+		$('.slides-container-inner', $el).css({
+			'width': _fullCarouselWidth
+		});
+
 		// - Get visible carousel width
 		_carouselWidth = _$slidesContainer.outerWidth();
-		
-		// - Calculate max number of visible slides
-		_maxVisibleSlides = Math.floor(_carouselWidth / _slideWidth);
 	}
 
 	function go() {
@@ -427,6 +446,18 @@ function Carousel ($el, params={}) {
 		});
 	}
 
+	function registerInteractiveElements() {
+		console.log('saving these interactive elements: ', $('.nav.next', _$el)[0], $('.nav.prev', _$el)[0], $('li.dot', _$el).toArray());
+
+		$(FLEX).trigger(FLEX.events.wcag.registerInteractive, {
+			elements: [
+				$('.nav.next', _$el)[0],
+				$('.nav.prev', _$el)[0],
+				$('li.dot', _$el).toArray()
+			]
+		});
+	}
+
 	function render() {
 		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'render()');
 		
@@ -495,6 +526,7 @@ function Carousel ($el, params={}) {
 		
 		getSlideProperties();
 		bindEvents();
+		registerInteractiveElements();
 		render();
 
 		return this;
