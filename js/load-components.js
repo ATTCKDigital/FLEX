@@ -142,6 +142,8 @@ FLEX.Loader.loadComponents = function () {
 		// Save component instances to the DOM element.
 		$this.data('component-instances', instances);
 	});
+
+	$(document).trigger('components:loaded');
 };
 
 FLEX.Loader.loadComponent = function ($el) {
@@ -170,6 +172,8 @@ FLEX.Loader.loadComponent = function ($el) {
 		let params = $el.data('component-options') || {};
 		let instance = new FLEX.Components[componentName]($el, params);
 	});
+
+	$(document).trigger('components:loaded');
 };
 
 

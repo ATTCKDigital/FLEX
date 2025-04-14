@@ -37,6 +37,9 @@ var FLEX = {
 	isProd: false
 };
 
+console.log('client namespace loaded, FLEX: ', FLEX);
+window.FLEX = FLEX;
+
 // Cookie manager
 FLEX.cookies = (function () {
 	function set(key, value, expiry) {

@@ -19,7 +19,9 @@
 }
 
 // https://css-tricks.com/the-focus-visible-trick/
-:focus:not(:focus-visible) { outline: none }
+:focus:not(:focus-visible) { 
+	outline: none; 
+}
 
 /* Focusing the button with a keyboard will show a dashed black line. */
 button:focus-visible,
@@ -33,4 +35,13 @@ button:focus:not(:focus-visible),
 input[type="submit"]:focus:not(:focus-visible) {
 	box-shadow: 1px 1px 5px rgba(1, 1, 0, .7);
 	outline: none;
+}
+
+.user-is-tabbing :focus {
+    outline: 3px solid #5B9DD9;
+    outline-offset: 2px;
+}
+
+[data-wcag-interactive] [tabindex="0"] {
+	outline: 2px dashed #00d5ff;
 }

@@ -470,6 +470,26 @@ FLEX.events = {
 
 			return this.pdps[data.id];
 		}
+	},
+	'wcag': {
+		// Data store
+		'interactiveElements': [],
+
+		// Pubs
+		'registerInteractive': 'wcag.registerInteractive',
+		'ready': 'wcag.ready',
+
+		// Subs
+		register: function (data) {
+			console.log('wcag event receiving data: ', data);
+
+			this.interactiveElements.push(data);
+
+			console.log('[WCAG] Registered interactive element:', data);
+
+			// Optional: bind other WCAG events if needed
+			return this.interactiveElements;
+		}
 	}
 };
 
