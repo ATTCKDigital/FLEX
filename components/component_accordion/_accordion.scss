@@ -79,4 +79,88 @@
             }
         }
     }
+
+    &.accordion-style-alt {
+        .accordionItem {
+            .accordionHeader {
+                .component-paragraph-wrapper {
+                    padding: 0;
+
+                    &:after, &:before, p:after, p:before {
+                        content: '';
+                        display: none;
+                    }
+                }
+
+                .component-heading {
+                    position: relative;
+
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        left: 20px;
+                        top: 50%;
+                        width: 22px;
+                        height: 1px;
+                        background-color: #000;
+                        transform: translateY(-50%);
+                        z-index: 1;
+
+                        left: initial;
+                        right: 17px;
+                    }
+
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        left: 0px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 58px;
+                        height: 58px;
+                        border: 1px solid #000;
+                        border-radius: 50%;
+                        background: transparent;
+                        z-index: 0;
+
+                        background: color('brand', 'accent');
+                        border: 0;
+                        left: initial;
+                        right: 0;
+                    }
+
+                    h2 {
+                        position: relative;
+                        
+                        &:before {
+                            content: "";
+                            position: absolute;
+                            left: -53px;
+                            top: 50%;
+                            width: 1px;
+                            height: 21px;
+                            background-color: #000;
+                            transform: translateY(-50%) rotate(0deg);
+                            transform-origin: center;
+                            transition: transform .3s ease;
+                            z-index: 1;
+                            
+                            left: initial;
+                            right: 27px;
+                        }
+                    }
+                }
+            }
+
+            &.open {
+                .component-heading {
+                    h2 {
+                        &:before {
+                            transform: translateY(-50%) rotate(90deg); // rotates vertical bar to flat
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
