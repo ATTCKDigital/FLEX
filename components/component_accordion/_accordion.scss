@@ -23,8 +23,8 @@
                     left: 0px;
                     top: 50%;
                     transform: translateY(-50%);
-                    width: 58px;
-                    height: 58px;
+                    width: 38px;
+                    height: 38px;
                     border: 1px solid #000;
                     border-radius: 50%;
                     background: transparent;
@@ -34,9 +34,9 @@
                 &::after {
                     content: "";
                     position: absolute;
-                    left: 20px;
+                    left: 12px;
                     top: 50%;
-                    width: 22px;
+                    width: 17px;
                     height: 1px;
                     background-color: #000;
                     transform: translateY(-50%);
@@ -49,10 +49,10 @@
                     &::before {
                         content: "";
                         position: absolute;
-                        left: -53px;
+                        left: -64px;
                         top: 50%;
                         width: 1px;
-                        height: 21px;
+                        height: 17px;
                         background-color: #000;
                         transform: translateY(-50%) rotate(0deg);
                         transform-origin: center;
@@ -130,19 +130,25 @@
                     }
 
                     h2 {
+                        padding-right: 100px;
                         position: relative;
                         
+                        @include mediaquery-max-width(tablet-landscape) {
+                            padding-right: 70px;
+                            font-size: 1.2rem;
+                        }
+
                         &:before {
-                            content: "";
-                            position: absolute;
-                            left: -53px;
-                            top: 50%;
-                            width: 1px;
-                            height: 21px;
                             background-color: #000;
+                            content: "";
+                            height: 21px;
+                            left: -53px;
+                            position: absolute;
+                            top: 50%;
                             transform: translateY(-50%) rotate(0deg);
                             transform-origin: center;
                             transition: transform .3s ease;
+                            width: 1px;
                             z-index: 1;
                             
                             left: initial;
