@@ -10,7 +10,7 @@ function Accordion($el) {
     var _listContent;
 
 	function bindEvents() {
-        // Finr list items
+        // Find list items
         _listItems = $('.accordionItem', $el);
 
 		// Find list headers
@@ -33,8 +33,6 @@ function Accordion($el) {
         // Expand/contract content on click
         $(_listItems).each(function (index, el) {
             $(el).on('click', function (e) {
-                console.log('accordion clicked: ', $('.accordionContent', this).text());
-
                 $(this).toggleClass('open');
 
                 if ($(this).hasClass('open')) {
