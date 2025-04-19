@@ -2619,45 +2619,45 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 }
 
 @include mediaquery(xl2) {
-	.flex-2xl-1-12,
-	.flex-2xl-2-12,
-	.flex-2xl-3-12,
-	.flex-2xl-4-12,
-	.flex-2xl-5-12,
-	.flex-2xl-6-12,
-	.flex-2xl-7-12,
-	.flex-2xl-8-12,
-	.flex-2xl-9-12,
-	.flex-2xl-10-12,
-	.flex-2xl-11-12,
-	.flex-2xl-12-12,
-	.flex-2xl-1-24,
-	.flex-2xl-2-24,
-	.flex-2xl-3-24,
-	.flex-2xl-4-24,
-	.flex-2xl-5-24,
-	.flex-2xl-6-24,
-	.flex-2xl-7-24,
-	.flex-2xl-8-24,
-	.flex-2xl-9-24,
-	.flex-2xl-10-24,
-	.flex-2xl-11-24,
-	.flex-2xl-12-24,
-	.flex-2xl-13-24,
-	.flex-2xl-14-24,
-	.flex-2xl-15-24,
-	.flex-2xl-16-24,
-	.flex-2xl-17-24,
-	.flex-2xl-18-24,
-	.flex-2xl-19-24,
-	.flex-2xl-20-24,
-	.flex-2xl-21-24,
-	.flex-2xl-22-24,
-	.flex-2xl-23-24,
-	.flex-2xl-24-24,
-	.flex-2xl-1-2,
-	.flex-2xl-1-3,
-	.flex-2xl-1-4 {
+	.flex-xl2-1-12,
+	.flex-xl2-2-12,
+	.flex-xl2-3-12,
+	.flex-xl2-4-12,
+	.flex-xl2-5-12,
+	.flex-xl2-6-12,
+	.flex-xl2-7-12,
+	.flex-xl2-8-12,
+	.flex-xl2-9-12,
+	.flex-xl2-10-12,
+	.flex-xl2-11-12,
+	.flex-xl2-12-12,
+	.flex-xl2-1-24,
+	.flex-xl2-2-24,
+	.flex-xl2-3-24,
+	.flex-xl2-4-24,
+	.flex-xl2-5-24,
+	.flex-xl2-6-24,
+	.flex-xl2-7-24,
+	.flex-xl2-8-24,
+	.flex-xl2-9-24,
+	.flex-xl2-10-24,
+	.flex-xl2-11-24,
+	.flex-xl2-12-24,
+	.flex-xl2-13-24,
+	.flex-xl2-14-24,
+	.flex-xl2-15-24,
+	.flex-xl2-16-24,
+	.flex-xl2-17-24,
+	.flex-xl2-18-24,
+	.flex-xl2-19-24,
+	.flex-xl2-20-24,
+	.flex-xl2-21-24,
+	.flex-xl2-22-24,
+	.flex-xl2-23-24,
+	.flex-xl2-24-24,
+	.flex-xl2-1-2,
+	.flex-xl2-1-3,
+	.flex-xl2-1-4 {
 		display: inline-block;
 		*display: inline;
 		zoom: 1;
@@ -2667,8 +2667,8 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 		text-rendering: auto;
 	}
 
-	.flex-2xl-0-12, 
-	.flex-2xl-0-24 {
+	.flex-xl2-0-12, 
+	.flex-xl2-0-24 {
 		display: none;
 
 		.wp-admin & {
@@ -2678,147 +2678,147 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 		}
 	}
 
-	.flex-2xl-1-24 {
+	.flex-xl2-1-24 {
 		width: 4.1667%;
 		*width: 4.1357%;
 	}
 
-	.flex-2xl-1-12,
-	.flex-2xl-2-24 {
+	.flex-xl2-1-12,
+	.flex-xl2-2-24 {
 		width: 8.3333%;
 		*width: 8.3023%;
 	}
 
-	.flex-2xl-3-24 {
+	.flex-xl2-3-24 {
 		width: 12.5000%;
 		*width: 12.4690%;
 	}
 
-	.flex-2xl-4-24,
-	.flex-2xl-2-12 {
+	.flex-xl2-4-24,
+	.flex-xl2-2-12 {
 		width: 16.6667%;
 		*width: 16.6357%;
 	}
 
-	.flex-2xl-1-5 {
+	.flex-xl2-1-5 {
 		width: 20%;
 		// *width: 16.6357%;
 	}
 
-	.flex-2xl-5-24 {
+	.flex-xl2-5-24 {
 		width: 20.8333%;
 		*width: 20.8023%;
 	}
 
-	.flex-2xl-6-24,
-	.flex-2xl-3-12 {
+	.flex-xl2-6-24,
+	.flex-xl2-3-12 {
 		width: 25%;
 		*width: 24.9690%;
 	}
 
-	.flex-2xl-7-24 {
+	.flex-xl2-7-24 {
 		width: 29.1667%;
 		*width: 29.1357%;
 	}
 
-	.flex-2xl-8-24,
-	.flex-2xl-4-12, 
-	.flex-2xl-1-3 {
+	.flex-xl2-8-24,
+	.flex-xl2-4-12, 
+	.flex-xl2-1-3 {
 		width: 33.3333%;
 		*width: 33.3023%;
 	}
 
-	.flex-2xl-9-24 {
+	.flex-xl2-9-24 {
 		width: 37.5000%;
 		*width: 37.4690%;
 	}
 
-	.flex-2xl-10-24,
-	.flex-2xl-5-12 {
+	.flex-xl2-10-24,
+	.flex-xl2-5-12 {
 		width: 41.6667%;
 		*width: 41.6357%;
 	}
 
-	.flex-2xl-11-24 {
+	.flex-xl2-11-24 {
 		width: 45.8333%;
 		*width: 45.8023%;
 	}
 
-	.flex-2xl-12-24,
-	.flex-2xl-6-12,
-	.flex-2xl-1-2 {
+	.flex-xl2-12-24,
+	.flex-xl2-6-12,
+	.flex-xl2-1-2 {
 		width: 50%;
 		*width: 49.9690%;
 	}
 
-	.flex-2xl-13-24 {
+	.flex-xl2-13-24 {
 		width: 54.1667%;
 		*width: 54.1357%;
 	}
 
-	.flex-2xl-14-24,
-	.flex-2xl-7-12 {
+	.flex-xl2-14-24,
+	.flex-xl2-7-12 {
 		width: 58.3333%;
 		*width: 58.3023%;
 	}
 
-	.flex-2xl-15-24 {
+	.flex-xl2-15-24 {
 		width: 62.5000%;
 		*width: 62.4690%;
 	}
 
-	.flex-2xl-16-24,
-	.flex-2xl-8-12 {
+	.flex-xl2-16-24,
+	.flex-xl2-8-12 {
 		width: 66.6667%;
 		*width: 66.6357%;
 	}
 
-	.flex-2xl-17-24 {
+	.flex-xl2-17-24 {
 		width: 70.8333%;
 		*width: 70.8023%;
 	}
 
-	.flex-2xl-18-24,
-	.flex-2xl-9-12,
-	.flex-2xl-3-4 {
+	.flex-xl2-18-24,
+	.flex-xl2-9-12,
+	.flex-xl2-3-4 {
 		width: 75%;
 		*width: 74.9690%;
 	}
 
-	.flex-2xl-19-24 {
+	.flex-xl2-19-24 {
 		width: 79.1667%;
 		*width: 79.1357%;
 	}
 
-	.flex-2xl-20-24,
-	.flex-2xl-10-12 {
+	.flex-xl2-20-24,
+	.flex-xl2-10-12 {
 		width: 83.3333%;
 		*width: 83.3023%;
 	}
 
-	.flex-2xl-21-24 {
+	.flex-xl2-21-24 {
 		width: 87.5000%;
 		*width: 87.4690%;
 	}
 
-	.flex-2xl-22-24,
-	.flex-2xl-11-12 {
+	.flex-xl2-22-24,
+	.flex-xl2-11-12 {
 		width: 91.6667%;
 		*width: 91.6357%;
 	}
 
-	.flex-2xl-23-24 {
+	.flex-xl2-23-24 {
 		width: 95.8333%;
 		*width: 95.8023%;
 	}
 
-	.flex-2xl-24-24,
-	.flex-2xl-12-12 {
+	.flex-xl2-24-24,
+	.flex-xl2-12-12 {
 		width: 100%;
 	}
 
-	.flex-2xl-0-12imp, 
-	.flex-2xl-0-24imp {
+	.flex-xl2-0-12imp, 
+	.flex-xl2-0-24imp {
 		display: none !important;
 
 		.wp-admin & {
@@ -2828,160 +2828,160 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 		}
 	}
 
-	.flex-2xl-1-24imp {
+	.flex-xl2-1-24imp {
 		display: block !important;
 		width: 4.1667% !important;
 		*width: 4.1357% !important;
 	}
 
-	.flex-2xl-1-12imp,
-	.flex-2xl-2-24imp {
+	.flex-xl2-1-12imp,
+	.flex-xl2-2-24imp {
 		display: block !important;
 		width: 8.3333% !important;
 		*width: 8.3023% !important;
 	}
 
-	.flex-2xl-3-24imp {
+	.flex-xl2-3-24imp {
 		display: block !important;
 		width: 12.5000% !important;
 		*width: 12.4690% !important;
 	}
 
-	.flex-2xl-4-24imp,
-	.flex-2xl-2-12imp {
+	.flex-xl2-4-24imp,
+	.flex-xl2-2-12imp {
 		display: block !important;
 		width: 16.6667% !important;
 		*width: 16.6357% !important;
 	}
 
-	.flex-2xl-5-24imp {
+	.flex-xl2-5-24imp {
 		display: block !important;
 		width: 20.8333% !important;
 		*width: 20.8023% !important;
 	}
 
-	.flex-2xl-6-24imp,
-	.flex-2xl-3-12imp {
+	.flex-xl2-6-24imp,
+	.flex-xl2-3-12imp {
 		display: block !important;
 		width: 25% !important;
 		*width: 24.9690% !important;
 	}
 
-	.flex-2xl-7-24imp {
+	.flex-xl2-7-24imp {
 		display: block !important;
 		width: 29.1667% !important;
 		*width: 29.1357% !important;
 	}
 
-	.flex-2xl-8-24imp,
-	.flex-2xl-4-12imp, 
-	.flex-2xl-1-3imp {
+	.flex-xl2-8-24imp,
+	.flex-xl2-4-12imp, 
+	.flex-xl2-1-3imp {
 		display: block !important;
 		width: 33.3333% !important;
 		*width: 33.3023% !important;
 	}
 
-	.flex-2xl-9-24imp {
+	.flex-xl2-9-24imp {
 		display: block !important;
 		width: 37.5000% !important;
 		*width: 37.4690% !important;
 	}
 
-	.flex-2xl-10-24imp,
-	.flex-2xl-5-12imp {
+	.flex-xl2-10-24imp,
+	.flex-xl2-5-12imp {
 		display: block !important;
 		width: 41.6667% !important;
 		*width: 41.6357% !important;
 	}
 
-	.flex-2xl-11-24imp {
+	.flex-xl2-11-24imp {
 		display: block !important;
 		width: 45.8333% !important;
 		*width: 45.8023% !important;
 	}
 
-	.flex-2xl-12-24imp,
-	.flex-2xl-6-12imp,
-	.flex-2xl-1-2imp {
+	.flex-xl2-12-24imp,
+	.flex-xl2-6-12imp,
+	.flex-xl2-1-2imp {
 		display: block !important;
 		width: 50% !important;
 		*width: 49.9690% !important;
 	}
 
-	.flex-2xl-13-24imp {
+	.flex-xl2-13-24imp {
 		display: block !important;
 		width: 54.1667% !important;
 		*width: 54.1357% !important;
 	}
 
-	.flex-2xl-14-24imp,
-	.flex-2xl-7-12imp {
+	.flex-xl2-14-24imp,
+	.flex-xl2-7-12imp {
 		display: block !important;
 		width: 58.3333% !important;
 		*width: 58.3023% !important;
 	}
 
-	.flex-2xl-15-24imp {
+	.flex-xl2-15-24imp {
 		display: block !important;
 		width: 62.5000% !important;
 		*width: 62.4690% !important;
 	}
 
-	.flex-2xl-16-24imp,
-	.flex-2xl-8-12imp {
+	.flex-xl2-16-24imp,
+	.flex-xl2-8-12imp {
 		display: block !important;
 		width: 66.6667% !important;
 		*width: 66.6357% !important;
 	}
 
-	.flex-2xl-17-24imp {
+	.flex-xl2-17-24imp {
 		display: block !important;
 		width: 70.8333% !important;
 		*width: 70.8023% !important;
 	}
 
-	.flex-2xl-18-24imp,
-	.flex-2xl-9-12imp,
-	.flex-2xl-3-4imp {
+	.flex-xl2-18-24imp,
+	.flex-xl2-9-12imp,
+	.flex-xl2-3-4imp {
 		display: block !important;
 		width: 75% !important;
 		*width: 74.9690% !important;
 	}
 
-	.flex-2xl-19-24imp {
+	.flex-xl2-19-24imp {
 		display: block !important;
 		width: 79.1667% !important;
 		*width: 79.1357% !important;
 	}
 
-	.flex-2xl-20-24imp,
-	.flex-2xl-10-12imp {
+	.flex-xl2-20-24imp,
+	.flex-xl2-10-12imp {
 		display: block !important;
 		width: 83.3333% !important;
 		*width: 83.3023% !important;
 	}
 
-	.flex-2xl-21-24imp {
+	.flex-xl2-21-24imp {
 		display: block !important;
 		width: 87.5000% !important;
 		*width: 87.4690% !important;
 	}
 
-	.flex-2xl-22-24imp,
-	.flex-2xl-11-12imp {
+	.flex-xl2-22-24imp,
+	.flex-xl2-11-12imp {
 		display: block !important;
 		width: 91.6667% !important;
 		*width: 91.6357% !important;
 	}
 
-	.flex-2xl-23-24imp {
+	.flex-xl2-23-24imp {
 		display: block !important;
 		width: 95.8333% !important;
 		*width: 95.8023% !important;
 	}
 
-	.flex-2xl-24-24imp,
-	.flex-2xl-12-12imp {
+	.flex-xl2-24-24imp,
+	.flex-xl2-12-12imp {
 		display: block !important;
 		width: 100% !important;
 	}
