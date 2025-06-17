@@ -14,10 +14,12 @@ const {
 	PanelBody,
 	PanelRow,
 	SelectControl,
-	TextControl,
+	RangeControl,
+	TextControl
 } = wp.components;
 
 // import { useState } from '@wordpress/element';
+import { Fragment } from '@wordpress/element';
 
 // Internal dependencies
 import BackgroundOptionsAttributes from './attributes';
@@ -56,6 +58,7 @@ function BackgroundOptions( props ) {
 	}
 
 	const setBackgroundColor = value => props.setAttributes( { backgroundColor: value } );
+	const setBackgroundOpacity = value => props.setAttributes( { backgroundOpacity: value } );
 	const setBackgroundPositionX = value => props.setAttributes( { backgroundPositionX: value } );
 	const setBackgroundPositionY = value => props.setAttributes( { backgroundPositionY: value } );
 	const setBackgroundSize = value => props.setAttributes( { backgroundSize: value } );
@@ -449,24 +452,41 @@ function BackgroundOptions( props ) {
 	};
 
 	const colorPanelSelect = () => {
-		if ( 'color' !== props.attributes.backgroundType ) {
-			return '';
+		if ( props.attributes.backgroundType !== 'color' ) {
+			return null;
 		}
 
+		console.log('props.attributes: ', props, props.attributes);
+
 		return (
-			<PanelColorSettings
-				title={ __( 'Background Color' ) }
-				colorSettings={ [
-						{
-							value: props.attributes.backgroundColor,
-							onChange: setBackgroundColor,
-							label: __( 'Background Color' ),
-						}
-				] }
-			>
-			</PanelColorSettings>
+			<Fragment>
+				<PanelColorSettings
+					title={ __( 'Background Color' ) }
+					colorSettings={ [
+							{
+								value: props.attributes.backgroundColor,
+								onChange: setBackgroundColor,
+								label: __( 'Background Color' ),
+							}
+					] }
+				>
+				</PanelColorSettings>
+				<PanelBody title={ __( 'Background Opacity' ) } initialOpen={ false }>
+					<RangeControl
+						label={ __( 'Opacity (%)' ) }
+						value={ props.attributes.backgroundOpacity ?? 100 }
+						onChange={ (value) => props.setAttributes({ backgroundOpacity: value }) }
+						min={ 0 }
+						max={ 100 }
+					/>
+				</PanelBody>
+			</Fragment>
 		);
 	};
+
+	// console.log('backgroundType:', props.attributes.backgroundType);
+	// console.log('backgroundColor:', props.attributes.backgroundColor);
+	// console.log('backgroundOpacity:', props.attributes.backgroundOpacity);
 
 	return (
 		<PanelBody

@@ -87,11 +87,14 @@ export default registerBlockType(
 		innerBlocks: [],
 
 		styles: [
-			{ name: 'body1', label: __( 'Default', 'block style' ), isDefault: true },
+			{ name: 'body1', label: __( 'Body 1', 'block style' ), isDefault: true },
 			{ name: 'body2', label: __( 'Body 2', 'block style' ) },
 			{ name: 'body3', label: __( 'Body 3', 'block style' ) },
+			{ name: 'body4', label: __( 'Body 4', 'block style' ) },
 			{ name: 'subheadline1', label: __( 'Subheadline 1', 'block style' ) },
 			{ name: 'subheadline2', label: __( 'Subheadline 2', 'block style' ) },
+			{ name: 'eyebrow', label: __( 'Eyebrow', 'block style' ) },
+			{ name: 'eyebrow-small', label: __( 'Eyebrow Small', 'block style' ) },
 			{ name: 'text-columns', label: __( '2 Column Text', 'block style' ) },
 		],
 
@@ -167,7 +170,22 @@ export default registerBlockType(
 						)}
 						identifier="content"
 						formattingControls = { ['bold', 'italic', 'strikethrough', 'link'] }
-						multiline='p' // <-- This is a critical differentiatorfrom the heading block
+						allowedFormats={[
+							'core/bold',
+							'core/italic',
+							'core/strikethrough',
+							'core/link',
+							'core/list',
+							'core/list-item',
+							'core/code',
+							'core/underline',
+							'core/text-color',
+							// 'core/image',
+							'core/subscript',
+							'core/suberscript'
+						]}
+						// multiline='p' // <-- This is a critical differentiatorfrom the heading block
+						tagName='p'
 						onChange={ onChangeMessage }
 						onRemove={ () => onReplace( [] ) }
 						placeholder={ placeholder || __( 'Paragraph text…' ) }

@@ -65,7 +65,7 @@ function render_button_block($attributes) {
 	$buttonClass = $attributes['className'];
 
 	$class = " text-align-{$attributes['align']} ";
-	$class .= $attributes['className'];
+	$class .= $attributes['className'] . '-container';
 	$class .= margin_options_classes($attributes);
 
 	$content = array_key_exists('content', $attributes) ? $attributes['content'] : null;

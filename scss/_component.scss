@@ -64,9 +64,13 @@
 	}
 
 	&.column-align-center.column-align-center.column-align-center {
-		display: block;
+		// display: block; // This causes subordinate child columns to stack vertically 
 		margin-left: auto;
 		margin-right: auto;
+		display: flex;
+		justify-content: center;
+		// flex-direction: row;
+		flex-wrap: wrap;
 	}
 
 	&.column-align-right.column-align-right.column-align-right {
@@ -80,14 +84,18 @@
 	}
 
 	&.component-column-verticalAlignment-bottom.component-column-verticalAlignment-bottom.component-column-verticalAlignment-bottom {
+		align-items: flex-end;
+		align-self: flex-end;
 		display: flex;
-		flex-direction: column;
+		// flex-direction: column;
 		justify-content: flex-end;
 	}
 
 	&.component-column-verticalAlignment-center.component-column-verticalAlignment-center.component-column-verticalAlignment-center {
+		align-items: center;
+		align-self: center;
 		display: flex;
-		flex-direction: column;
+		// flex-direction: column;
 		justify-content: center;
 	}
 
@@ -95,6 +103,7 @@
 		// This is the default, so don't set anything or it 
 		// will override other FLEX row/column layout settings
 		// align-items: flex-start;
+		align-self: flex-start;
 		// display: flex;
 	}
 }

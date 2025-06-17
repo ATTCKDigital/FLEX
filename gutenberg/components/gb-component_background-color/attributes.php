@@ -5,4 +5,8 @@ const BACKGROUND_COLOR_OPTIONS_ATTRIBUTES = [
 	'backgroundColor' => [
 		'type' => 'string',
 	],
+	'backgroundOpacity' => [
+		'type' => 'number',
+		'default' => 100
+	]
 ];

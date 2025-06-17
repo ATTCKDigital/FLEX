@@ -1,5 +1,5 @@
 <?php
-echo "\n<!-- FLEX/config/admin-configs/disable-custom-colors.php -->\n"; 
+//echo "\n<!-- FLEX/config/admin-configs/disable-custom-colors.php -->\n"; 
 /**
  * Disable the custom color picker.
  * https://richtabor.com/disable-gutenberg-colors/

@@ -168,6 +168,25 @@
 	width: 24px;
 	z-index: 100;
 
+	.backgroundNav & {
+		border-color: color('secondary', 'white');
+		
+		&:after, 
+		&:before {
+			background-color: color('secondary', 'white');
+		}
+
+	}
+
+	.backgroundNav.logoDark & {
+		border-color: color('brand', 'primary');
+	
+		&:after, 
+		&:before {
+			background-color: color('brand', 'primary');
+		}
+	}
+	
 	&:after, 
 	&:before {
 		background-color: color('secondary', 'white');
@@ -189,14 +208,17 @@
 	}
 
 	.navOpen & {
+		border-top: 2px solid color('brand', 'primary');
 		border-top: 0;
 
 		&:after {
+			background-color: color('brand', 'primary');
 			top: 8px;
 			transform: rotate(45deg);
 		}
 
 		&:before {
+			background-color: color('brand', 'primary');
 			top: 8px;
 			transform: rotate(-45deg);
 		}

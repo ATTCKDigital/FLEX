@@ -5,7 +5,13 @@ const {
 	PanelColorSettings,
 } = wp.blockEditor;
 
+const {
+	PanelBody,
+	RangeControl
+} = wp.components;
+
 // Internal dependencies
+import { Fragment } from '@wordpress/element';
 import BackgroundColorOptionsAttributes from './attributes';
 import BackgroundColorOptionsInlineStyles from './inline-styles';
 
@@ -16,21 +22,36 @@ export {
 };
 
 function BackgroundColorOptions( props ) {
-	const setBackgroundColor = value => props.setAttributes( { backgroundColor: value } );
+	const { attributes, setAttributes } = props;
+	const { backgroundColor, backgroundOpacity = 100 } = attributes || {};
+
+	// const setBackgroundColor = value => props.setAttributes( { backgroundColor: value } );
+	const setBackgroundColor = (value) => setAttributes({ backgroundColor: value });
 	
 	return (
-		<PanelColorSettings
-			title={ __( 'Background Color' ) }
-			initialOpen={ false }
-			colorSettings={ [
-				{
-					value: props.attributes.backgroundColor,
-					onChange: setBackgroundColor,
-					label: __( 'Background Color' ),
-				}
-			] }
-		>
-		</PanelColorSettings>
+		<Fragment>
+			<PanelColorSettings
+				title={ __( 'Background Color' ) }
+				initialOpen={ false }
+				colorSettings={ [
+					{
+						value: backgroundColor,
+						onChange: setBackgroundColor,
+						label: __( 'Background Color' ),
+					}
+				] }
+			>
+			</PanelColorSettings>
+			<PanelBody title={ __( 'Background Opacity' ) } initialOpen={false}>
+				<RangeControl
+					label={ __( 'Opacity (%)' ) }
+					value={ backgroundOpacity }
+					onChange={ (value) => setAttributes({ backgroundOpacity: value }) }
+					min={ 0 }
+					max={ 100 }
+				/>
+			</PanelBody>
+		</Fragment>
 	);
 }
 

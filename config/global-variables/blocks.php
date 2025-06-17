@@ -10,7 +10,7 @@ $blocks = array(
 	'flexlayout/row', // REQUIRED
 	'flexlayout/animated-gif',
 	'flexlayout/button',
-	// 'flexlayout/carousel',
+	'flexlayout/carousel',
 	'flexlayout/feed',
 	'flexlayout/heading',
 	'flexlayout/hr',
@@ -47,7 +47,7 @@ if ( !defined('FLEXLAYOUT_BLOCKS') ) {
 // Only put the block name (i.e., carousel, not acf/carousel)
 // The components must be named as described in the read me.
 $registerBlocks = array(
-	// 'carousel'
+	'carousel'
 	// 'acf/blockname'
 );
 

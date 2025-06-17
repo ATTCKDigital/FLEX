@@ -41,8 +41,8 @@
 		$currentSecond = date('s');
 
 		// Add environment flag if not production
-		if ($_SERVER['WPENGINE_ACCOUNT'] !== WPE_PROD) {
-			$serverEnvironment = 'data-server-environment="' . $_SERVER['WPENGINE_ACCOUNT'] . '"';
+		if (isset($_SERVER['WPENGINE_ACCOUNT']) ? $_SERVER['WPENGINE_ACCOUNT'] : null !== WPE_PROD) {
+			$serverEnvironment = 'data-server-environment="' . (isset($_SERVER['WPENGINE_ACCOUNT']) ? $_SERVER['WPENGINE_ACCOUNT'] : null) . '"';
 		}
 	?>
 	<!-- <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwlXlgqIUr5XhxttqLhsF4FUn82KeeBWY&callback=initMap"></script> -->

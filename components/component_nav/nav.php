@@ -1,5 +1,7 @@
 <?php 
 	// Global Nav 
+	$custom_logo_id = get_theme_mod('custom_logo');
+	$logo_url = wp_get_attachment_image_url($custom_logo_id, 'full');
 ?>
 <div class="page-load-modal"></div>
 <header 
@@ -7,7 +9,20 @@
 	data-component-name="Nav" 
 	role="banner">
 	<div class="header-inner">
-		<a href="/" class="logo-wrapper">
+		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo-wrapper">
+			<?php 
+				$customLogoIDLight = attachment_url_to_postid( get_theme_mod('light_logo') );;
+				$customLogoURLLight = wp_get_attachment_image_url( $customLogoIDLight , 'full' );
+				$customLogoSRCLight = wp_get_attachment_image_src( $customLogoIDLight , 'full' );
+			?>
+			<img 
+				alt="<?= bloginfo('name');?>" 
+				class="nav-logo nav-logo-light" 
+				height="<?= $customLogoSRCLight[1] ?>"
+				src="<?= $customLogoURLLight;?>" 
+				title="<?= bloginfo('name');?>" 
+				width="<?= $customLogoSRCLight[2] ?>"
+				/>
 			<?php 
 				$customLogoID = get_theme_mod( 'custom_logo' );
 				$customLogoURL = wp_get_attachment_image_url( $customLogoID , 'full' );
@@ -15,7 +30,7 @@
 			?>
 			<img 
 				alt="<?= bloginfo('name');?>" 
-				class="nav-logo" 
+				class="nav-logo nav-logo-dark" 
 				height="<?= $customLogoSRC[1] ?>"
 				src="<?= $customLogoURL;?>" 
 				title="<?= bloginfo('name');?>" 

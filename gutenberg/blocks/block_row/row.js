@@ -130,6 +130,15 @@ export default registerBlockType(
 				...BorderOptionsClasses( props ),
 			);
 
+			// let safeStyle = {};
+			// try {
+			// 	safeStyle = BackgroundOptionsInlineStyles( props );
+			// 	console.log('✅ Inline styles result:', safeStyle);
+			// } catch (e) {
+			// 	console.error('🔥 Inline styles crash:', e);
+			// 	safeStyle = {};
+			// }
+
 			return [
 				<InspectorControls>
 					<BackgroundOptions

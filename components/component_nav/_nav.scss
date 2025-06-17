@@ -1,10 +1,11 @@
 .component-header {
+	background-color: color('brand', 'primary');
 	height: $navMobileHeight;
 	left: 0;
 	position: fixed;
 	right: 0;
 	top: 0;
-	transition: top .3s ease-in;
+	transition: all .3s ease-in;
 	width: 100%;
 	z-index: 1000;
 
@@ -15,8 +16,16 @@
 	}
 
 	.hamburger-wrapper {
+		height: $navMobileHeight;
+		right: 0;
+		width: $navMobileHeight;
+
 		@include mediaquery(tablet-landscape) {
 			display: none;
+		}
+		
+		.navOpen & {
+			background: color('default', 'black');
 		}
 	}
 
@@ -28,8 +37,10 @@
 		}
 	}
 
-	.navOpen &, 
-	.navOpen.hideNav & {
+	.backgroundNav &, 
+	.backgroundNav.hideNav & {
+		background: color('brand', 'primary', 0.5);
+		height: calc($navMobileHeight * .8);
 		top: 0;
 	}
 
@@ -38,11 +49,16 @@
 		display: flex;
 		height: 100%;
 		margin: 0 auto;
-		max-width: $siteWidth;
-		padding: $gap*.75;
+		max-width: 100vw;
+		padding: 0 $gap*2;
 		width: 100%;
+		
+		@include mediaquery(tablet-portrait) {
+			max-width: 96vw;
+		}
 
 		@include mediaquery(desktop) {
+			max-width: $siteWidth;
 			padding: $gap*.75 0;
 		}
 	}
@@ -50,13 +66,57 @@
 	.logo-wrapper {
 		display: block;
 		max-height: 80px;
-		max-width: 80px;
+		max-width: 40vw;
 		position: relative;
 		z-index: 10;
+
+		@include mediaquery(phone-plus) {
+			max-width: 30vw;
+		}
+
+		@include mediaquery(tablet-portrait) {
+			max-width: 20vw;
+		}
+
+		@include mediaquery(tablet-landscape) {
+			max-width: 10vw;
+		}
 
 		.nav-logo {
 			display: block;
 		}
+
+		.nav-logo-light {
+			display: none;
+		}
+
+		.logoLight & {
+			.nav-logo {
+				display: none;
+
+				&.nav-logo-light {
+					display: block;
+				}
+			}
+		}
+
+		.backgroundNav.logoDark & {
+			.nav-logo-dark {
+				opacity: 1;
+			}
+		}
+
+		// body:not(.page-home):not(.backgroundNav):not(.navOpen) & {
+		// 	.nav-logo-dark {
+		// 		display: none;
+		// 		opacity: 0;
+		// 	}
+
+		// 	.nav-logo-light {
+		// 		display: block;
+		// 		opacity: 1;
+		// 	}
+		// }
 	}
 
 	.main-nav {
@@ -95,15 +155,14 @@
 	}
 
 	.menu-item {
-		padding-bottom: 8px;
-		position: relative;
 		@include primary-bold;
+		position: relative;
 
 		@include mediaquery-max-width(tablet-landscape) {
 			// Mobile only mediaquery so less overrides are necessary
-			font-size: px-to-rem(18px);
-			margin-bottom: $gap;
 			display: block;
+			font-size: px-to-rem(33px);
+			margin-bottom: $gap*3;
 		}
 
 		@include mediaquery(tablet-landscape) {
@@ -115,7 +174,9 @@
 		}
 
 		a {
+			color: color('brand', 'primary');
 			position: relative;
+			transition: color .2s;
 
 			&:after {
 				background-color: transparent;
@@ -123,28 +184,46 @@
 				content: '';
 				display: block;
 				height: 3px;
-				left: 0;
+				left: 50%;
 				opacity: 0;
 				position: absolute;
-				transition: background-color .3s ease-in, opacity .3s ease-in;
-				width: 100%;
+				right: 50%;
+			}
+
+			&:hover {
+				&:after {
+					background-color: color('secondary', 'white');
+					left: 0%;
+					opacity: 1;
+					right: 0%;
+				}
+			}
+
+			@include mediaquery(tablet-landscape) {
+				color: color('secondary', 'white');
+
+				.logoDark & {
+					color: color('text', 'body');
+				}
+	
+				.logoLight & {
+					color: color('secondary', 'white');
+				}
 			}
 		}
 
 		&.current-menu-item {
 			a:after {
-				background-color: color('brand', 'primary');
-				opacity: 1;
+				background-color: color('secondary', 'white');
+				left: 0%;
+				right: 0%;
 			}
 		}
 
 		@include mediaquery(desktop) {
 			&:hover {
-				opacity: .7;
-
 				a:after {
-					background-color: color('brand', 'primary');
-					opacity: .7;
+					background-color: color('secondary', 'white');
 				}
 			}
 		}

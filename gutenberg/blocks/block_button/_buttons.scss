@@ -1,41 +1,51 @@
 .component-button {
-	// TODO: Add button styles here. -DP
+	display: inline-block;
+	width: auto;
 }
 
-.cta, 
-.is-style-cta {
+.cta.cta.cta, 
+.is-style-cta.is-style-cta.is-style-cta {
 	@include primary-regular;
 	@include font-size($font-size-body-text);
-	background-color: transparent;
-	border-color: color('secondary', 'black');
-	border-radius: 0;
-	border: 1px solid color('secondary', 'black');
+	background-color: color('secondary', 'white');
+	border-color: color('text', 'body');
+	border-radius: $buttonBorderRadius;
+	border: 1px solid color('secondary', 'white');
 	box-shadow: none;
 	box-sizing: border-box;
-	color:  color('secondary', 'black');
+	color: color('text', 'body');
 	cursor: pointer;
 	display: inline-block;
 	font-size: px-to-rem(16px);
 	line-height: 1;
-	min-height: 50px;
 	overflow: hidden;
-	padding: $gap $gap*1.5 calc($gap/2); //10px 25px 9px;
+	padding: $gap*2 $gap*4;
 	position: relative;
 	transition: background .4s ease-out, border-color .4s ease-out;
 	text-align: center;
 	z-index: 2;
 
+	[data-logo-color="logo-color-dark"] & {
+		border-color: color('text', 'body');	
+	}
+
 	@include mediaquery(desktop) {
 		&:hover {
 			background: color('brand', 'accent');
 			border-color: color('brand', 'accent');
+			color: color('text', 'body');
 		}
 	}
 
 	&.cta-solid, 
 	&.is-style-cta-solid {
 		background-color: color('secondary', 'white');
-		color:  color('secondary', 'black');
+		border-color: color('secondary', 'white');
+		color: color('text', 'body');
+
+		[data-logo-color="logo-color-dark"] & {
+			border-color: color('text', 'body');	
+		}
 
 		@include mediaquery(desktop) {
 			&:hover {
@@ -51,8 +61,7 @@
 		background-color: color('brand', 'accent');
 		color: color('secondary', 'white');
 		float: left;
-		padding-right: 70px;
-		transition: background .4s ease-out, border-color .4s ease-out, color .4s ease-out;
+		transition: all .4s ease-out;
 		white-space: nowrap;
 		width: auto;
 
@@ -61,6 +70,10 @@
 				background: color('secondary', 'white');
 				border-color: color('secondary', 'white');
 				color: color('brand', 'accent');
+
+				[data-logo-color="logo-color-dark"] & {
+					border-color: color('brand', 'accent');
+				}
 			}
 		}
 	}
@@ -68,26 +81,24 @@
 	&.cta-negative, 
 	&.is-style-cta-negative {
 		background: transparent;
-		border-color: color('secondary', 'white');
+		border-color: color('brand', 'accent');
 		color: color('secondary', 'white');
 		opacity: 1;
-		transition: opacity .3s ease-out;
+		transition: all .3s ease-out;
 
 		[data-logo-color="logo-color-dark"] & {
-			border-color: color('brand', 'primary');
-			color: color('brand', 'primary');
+			border-color: color('brand', 'accent');
+			color: color('text', 'body');
 		}
 		
 		@include mediaquery(desktop) {
 			&:hover {
-				background: transparent;
-				border-color: color('secondary', 'white');
-				opacity: .5;
+				background: color('brand', 'accent');
+				border-color: color('brand', 'accent');
+				color: color('secondary', 'white');
 
 				[data-logo-color="logo-color-dark"] & {
-					background: color('brand', 'accent');
-					border-color: color('brand', 'accent');
-					color: color('brand', 'primary');
+					color: color('text', 'body');
 				}
 			}
 		}
@@ -99,12 +110,14 @@
 		pointer-events: none;
 	}
 
-	&.cta-small {
+	&.cta-small,
+	&.is-style-cta-small {
 		font-size: 0.77692rem;
 		font-weight: 600;
-		letter-spacing: 0.14rem;
+		letter-spacing: 0.10rem;
+		line-height: 0.5rem;
 		min-height: auto;
-		padding: 14px 29px;
+		padding: $gap*2 $gap*4;
 	}
 
 	&.round {

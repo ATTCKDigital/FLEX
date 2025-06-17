@@ -2,8 +2,9 @@
 namespace FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions;
 
 const BACKGROUND_OPTIONS_ATTRIBUTES = [
-	'backgroundtype' => [
+	'backgroundType' => [
 		'type' => 'string',
+		'default' => ''
 	],
 	'backgroundImage' => [
 		'type' => 'object',
@@ -19,6 +20,10 @@ const BACKGROUND_OPTIONS_ATTRIBUTES = [
 	],
 	'backgroundColor' => [
 		'type' => 'string',
+	],
+	'backgroundOpacity' => [
+		'type' => 'number',
+		'default' => 100,
 	],
 	'backgroundPositionX' => [
 		'type' => 'string',

@@ -40,6 +40,10 @@ function register_image_block() {
 					'type' => 'string',
 					'default' => ''
 				],
+				'CSSHeight' => [
+					'type' => 'string',
+					'default' => ''
+				],
 				'CSSWidth' => [
 					'type' => 'string',
 					'default' => ''
@@ -81,11 +85,21 @@ function render_image_block($attributes) {
 	$class .= border_options_classes($attributes);
 	$class .= " block-align-{$attributes['align']}";
 
-	// CSS width property
-	if (array_key_exists('CSSWidth', $attributes)) {
-		$CSSWidth = 'style="width:' . $attributes['CSSWidth'] . '"';
-	} else {
-		$CSSWidth = '';
+	// Combine CSS height and width properties into one style attribute
+	$styleAttr = '';
+	$styles = [];
+
+	if (!empty($attributes['CSSWidth']) || !empty($attributes['CSSHeight'])) {
+
+		if (!empty($attributes['CSSWidth'])) {
+			$styles[] = 'width:' . $attributes['CSSWidth'];
+		}
+
+		if (!empty($attributes['CSSHeight'])) {
+			$styles[] = 'height:' . $attributes['CSSHeight'];
+		}
+
+		$styleAttr = 'style="' . implode(';', $styles) . '"';
 	}
 
 	// External image link checkbox option
@@ -98,8 +112,9 @@ function render_image_block($attributes) {
 	$url = array_key_exists('url', $attributes) ? $attributes['url'] : null;
 	$caption = array_key_exists('caption', $attributes) ? $attributes['caption'] : null;
 	$imageID = array_key_exists('imgID', $attributes) ? $attributes['imgID'] : null;
-	$imageURL = wp_get_attachment_image($imageID, 'full', $CSSWidth);
-
+	// $imageURL = wp_get_attachment_image($imageID, 'full', $CSSWidth);
+	$imageURL = wp_get_attachment_image($imageID, 'full', false, array('style' => implode(';', $styles)));
+	
 	if ($url) {
 		$image = '<a href="' . $url . '"' . $target . '>' . $imageURL . '</a>';
 	} else {
@@ -129,7 +144,7 @@ function render_image_block($attributes) {
 		$class .= ' component component-' . $dataComponentNameLowercase;
 	}
 
-	$output = "<div class=\"component-image component {$class}\" {$CSSWidth} data-component-name=\"{$dataComponentName}\" {$dataComponentOptions}>";
+	$output = "<div class=\"component-image component {$class}\" {$styleAttr} data-component-name=\"{$dataComponentName}\" {$dataComponentOptions}>";
 	$output .= 		"<div class=\"image-wrapper\">";
 	$output .= 			"{$image}";
 	$output .=			"{$caption}";

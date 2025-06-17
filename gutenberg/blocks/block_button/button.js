@@ -73,10 +73,10 @@ export default registerBlockType(
 		innerBlocks: [],
 
 		styles: [
-			{ name: 'cta', label: __( 'Default', 'block style' ), isDefault: true },
-			{ name: 'cta-solid', label: __( 'Solid', 'block style' ) },
+			{ name: 'cta-solid', label: __( 'Solid', 'block style' ), isDefault: true },
 			{ name: 'cta-accent', label: __( 'Accent', 'block style' ) },
 			{ name: 'cta-negative', label: __( 'Negative', 'block style' ) },
+			{ name: 'cta-small', label: __( 'Small', 'block style' )},
 		],
 
 		edit: props => {

@@ -143,7 +143,7 @@ body {
 	.wp-block {
 		// Otherwise without content, you can't 
 		// select the block easily.
-		min-width: 100px;
+		min-width: 20px;
 
 		// &[data-title="Paragraph"] {
 		// 	display: block;
@@ -199,7 +199,7 @@ body {
 				border-radius: 4px;
 				height: 30px;
 				outline: 0;
-				padding: 5px;
+				padding: 3px 2px;
 				width: 30px;
 			}
 		}

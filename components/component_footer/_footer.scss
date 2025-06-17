@@ -3,6 +3,7 @@
  * — Override with custom styles in child theme
  **/
 .component-footer {
+	background: color('text', 'body');
 	padding-bottom: $gap*4;
 	padding-top: $gap;
 
@@ -13,7 +14,12 @@
 
 	.logo-wrapper {
 		display: block;
-		width: 136px;
+		max-width: 40vw;
+		width: 100%;
+
+		@include mediaquery(tablet-landscape) {
+			max-width: 10vw;
+		}
 	}
 
 	.menu-item {
@@ -36,9 +42,4 @@
 	.footer-link {
 		margin-bottom: $gap*.25;
 	}
-}
-
-a[href="https://attck.com"] {
-	color: white;
-	text-decoration: none;
 }

@@ -2,7 +2,7 @@
 /*** Admin Robots Checkbox ***/
 //Automatically unchecks the "hide from robots" box in production
 function admin_robots() {
-	$env = $_SERVER['WPENGINE_ACCOUNT'];
+	$env = isset($_SERVER['WPENGINE_ACCOUNT']) ? $_SERVER['WPENGINE_ACCOUNT'] : null;
 
 	if ($env == WPE_PROD) {
 		update_option( 'blog_public', '1' );

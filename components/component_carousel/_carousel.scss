@@ -1,62 +1,68 @@
 .component-carousel {
-	.slides {
-		width: 100%;
+	.slides.slides.slides {
+		align-items: center;
+		display: flex;
+		justify-content: center;
 		position: relative;
+		width: 100%;
 	}
 
 	.slide {
-		top: 0;
-		opacity: 0;
-		z-index: 1;
-		width: 100%;
 		height: 100%;
+		opacity: 0;
 		position: absolute;
 		transition: opacity 1s ease-in-out;
+		top: 0;
+		width: 100%;
+		z-index: 1;
 
 		&.active {
 			opacity: 1;
-			z-index: 2;
 			position: relative;
+			z-index: 2;
+		}
+
+		&.next,
+		&.previous {
+			opacity: 0;
 		}
 	}
 
 	.nav {
-		top: 50%;
-		z-index: 100;
 		font-style: italic;
-		letter-spacing: 0.6px;
 		font-size: px-to-rem(20px);
 		font-family: $primaryRegular;
+		letter-spacing: 0.6px;
+		top: 50%;
+		z-index: 100;
 
 		&.prev {
-
 			&:before {
+				background: url(../assets/images/Carousel_Arrow.svg);
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: contain;
+				border-radius: 100%;
+				display: inline-block;
 				content: '';
-				width: 35px;
 				height: 35px;
 				margin-right: 10px;
-				display: inline-block;
-				background: url(../assets/images/Carousel_Arrow.svg);
-				background-repeat: no-repeat;
-				background-position: center;
-				border-radius: 100%;
-				background-size: contain;
+				width: 35px;
 			}
 		}
 
 		&.next {
-
 			&:after {
+				background: url(../assets/images/Carousel_Arrow.svg);
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: contain;
+				border-radius: 100%;
 				content: '';
-				width: 35px;
+				display: inline-block;
 				height: 35px;
 				margin-left: 10px;
-				display: inline-block;
-				background: url(../assets/images/Carousel_Arrow.svg);
-				background-repeat: no-repeat;
-				background-position: center;
-				border-radius: 100%;
-				background-size: contain;
+				width: 35px;
 			}
 		}
 	}
@@ -70,12 +76,12 @@
 
 		.dot {
 			a {
-				width: 5px;
-				height: 5px;
-				display: block;
-				cursor: pointer;
-				border-radius: 50%;
 				background-color: #221F1F;
+				border-radius: 50%;
+				cursor: pointer;
+				display: block;
+				height: 5px;
+				width: 5px;
 			}
 
 			&:not(.active) {

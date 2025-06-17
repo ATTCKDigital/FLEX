@@ -1,4 +1,7 @@
 .component-image {
+	display: inline-block;
+	width: auto;
+
 	.image-wrapper {
 		@include clearRow;
 	}
@@ -33,9 +36,15 @@
 	.align-center,
 	&.align-center,
 	&.block-align-center {
+		display: block;
+
 		img {
 			margin-left: auto;
 			margin-right: auto;
+		}
+
+		.image-wrapper {
+			display: block;
 		}
 	}
 
@@ -45,4 +54,9 @@
 			float: right;
 		}
 	}
+}
+
+// Prevents button elements from taking up 100% width
+.block-editor-block-list__block[aria-label="Block: Image"] {
+	width: auto;
 }

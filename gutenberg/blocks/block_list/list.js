@@ -3,6 +3,13 @@
  */
 import classnames from 'classnames';
 import icons from '../../../js/icons.js'
+import {
+	BlockControls,
+	useBlockProps,
+	useInnerBlocksProps,
+	store as blockEditorStore,
+} from '@wordpress/block-editor';
+import { useDispatch, useSelect, useRegistry } from '@wordpress/data';
 
 /**
  * Internal block libraries
@@ -15,6 +22,7 @@ const {
 	RichText,
 	AlignmentToolbar,
 	InspectorControls,
+	RichTextToolbarButton,
 	MediaUpload,
 	URLInput,
 } = wp.blockEditor;
@@ -23,7 +31,8 @@ const {
 	PanelBody,
 	PanelRow,
 	TextControl,
-
+	ToggleControl,
+	ToolbarButton
 } = wp.components;
 
 /**
@@ -38,9 +47,8 @@ import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from 
 // Import all of our Text Color Options requirements.
 import TextColorOptions, { TextColorAttributes, TextColorClasses, TextColorInlineStyles } from '../../components/gb-component_text-colors';
 
-
 /**
-	* Register block
+ * Register block
  */
 export default registerBlockType(
 	'flexlayout/list',
@@ -48,10 +56,8 @@ export default registerBlockType(
 		title: __( 'List' ),
 		description: __( 'A text list block' ),
 		category: 'common',
-		// icon: 'list-view',
 		icon: 'editor-ul',
 		example: {},
-		// parent: ['flexlayout/column'],
 		keywords: [
 			__( 'Text', 'flexlayout' ),
 			__( 'List', 'flexlayout' ),
@@ -62,10 +68,9 @@ export default registerBlockType(
 				default: false,
 			},
 			content: {
-				type: 'string',
-				default: ''
+				type: 'array',
+				default: [],
 			},
-
 			placeholder: {
 				type: 'string',
 			},
@@ -85,65 +90,83 @@ export default registerBlockType(
 			{ name: 'list-columns', label: __( '2 Column List', 'block style' ) },
 		],
 
-		edit: props => {
-			const { attributes: { content, placeholder, align, ordered }, setAttributes, className, onTagNameChange} = props;
-			const onChangeMessage = content => { setAttributes( { content } ) };
-			return [
-
+		edit: (props) => {
+			const {
+			  attributes: { content, align, ordered, placeholder },
+			  setAttributes,
+			  className,
+			} = props;
+		  
+			const onChangeContent = (content) => setAttributes({ content });
+			const toggleOrderedList = () => setAttributes({ ordered: !ordered });
+		  
+			return (
+			  <>
 				<InspectorControls>
-					<MarginOptions
-						{ ...props }
+				  <MarginOptions {...props} />
+				  <PaddingOptions {...props} />
+				  <BorderOptions {...props} />
+				  <PanelBody title={__('List Settings')}>
+					<AlignmentToolbar
+					  value={align}
+					  onChange={(nextAlign) => setAttributes({ align: nextAlign })}
 					/>
-					<PaddingOptions
-						{ ...props }
-					/>
-					<BorderOptions
-						{ ...props }
-					/>
-					<PanelBody title={ __( 'List Alignment' ) }>
-						<AlignmentToolbar
-							value={ align }
-							onChange={ ( nextAlign ) => {
-								setAttributes( { align: nextAlign } );
-							} }
-						/>
-					</PanelBody>
-					<TextColorOptions
-						{ ...props }
-					/>
-				</InspectorControls>,
+					<PanelRow>
+					  <label htmlFor="ordered-toggle">
+						{__('List order:')}
+					  </label>
+					  <Button
+						isPrimary={ordered}
+						isSecondary={!ordered}
+						onClick={toggleOrderedList}
+						id="ordered-toggle"
+					  >
+						{ordered ? __('Ordered (ol)') : __('Unordered (ul)')}
+					  </Button>
+					</PanelRow>
+				  </PanelBody>
+				  <TextColorOptions {...props} />
+				</InspectorControls>
 				<div
-					className={ classnames(
-						`component-list`,
-						`align-${align}`,
-						className,
-						...MarginOptionsClasses( props ),
-						...PaddingOptionsClasses( props ),
-						...BorderOptionsClasses( props ),
-						...TextColorClasses( props ),
-
-					)}
+				  className={classnames(
+					`component-list`,
+					`align-${align}`,
+					className,
+					...MarginOptionsClasses(props),
+					...PaddingOptionsClasses(props),
+					...BorderOptionsClasses(props),
+					...TextColorClasses(props),
+				  )}
 				>
-					<RichText
-						multiline="li"
-						tagName={ ordered ? 'ol' : 'ul' }
-						onChange={ ( nextValues ) => setAttributes( { content: nextValues } ) }
-						value={ content }
-						style={ {
-							textAlign: align,
-							...TextColorInlineStyles( props )
-						} }
-						placeholder={ __( 'Write list…' ) }
-						onRemove={ () => onReplace( [] ) }
-						onTagNameChange={ ( tag ) => setAttributes( { ordered: tag === 'ol' } ) }
-					/>
-
+				  <RichText
+				  	identifier="content"
+					multiline="li"
+					tagName={ordered ? 'ol' : 'ul'}
+					value={content}
+					onChange={(newContent) => setAttributes({ content: newContent })}
+					placeholder={__('Write list…')}
+					style={{
+					  textAlign: align,
+					  ...TextColorInlineStyles(props),
+					}}
+					className={classnames( // Apply text color classes directly to the list element
+						...TextColorClasses(props)
+					)}
+					allowedFormats={[
+					  'core/bold',
+					  'core/italic',
+					  'core/link',
+					]}
+					// __unstablePreserveWhiteSpace
+				  />
 				</div>
-			];
+			  </>
+			);
+		  },
 
-		},
+		save(data) {
+			console.log('list.js > save(data:) "', data.attributes.content, '" ', data);
 
-		save() {
 			return null;
 		},
 

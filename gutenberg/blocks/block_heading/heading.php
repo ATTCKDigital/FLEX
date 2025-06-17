@@ -93,7 +93,7 @@ function render_heading_block($attributes) {
 	$tagName = "h{$attributes['level']}";
 
 	if ($attributes['level'] > 6) {
-		$tagName = "h4";
+		$tagName = "h6";
 	}
 
 	$className = $attributes['className'];
@@ -152,23 +152,16 @@ function render_heading_block($attributes) {
 	}
 
 	// Build inline style values
+	$bgStyles = background_color_options_inline_styles( $attributes );
 	$style = '';
+	$style .= $bgStyles;
 
-	if ($bgColor || $textColor) {
-		$style .= 'style="';
+	if ( array_key_exists( 'textColor', $attributes ) && $attributes['textColor'] ) {
+		$style .= 'color:' . $attributes['textColor'] . ';';
+	}
 
-		// — background color
-		if ($bgColor) {
-			$style .= 'background-color:' . $bgColor . ';';
-		}
-
-		// — text color
-		if ($textColor) {
-			$style .= 'color:' . $textColor . ';';
-		}
-
-		// End inline style attribute block
-		$style .= '"';
+	if ( ! empty( $style ) ) {
+		$style = 'style="' . esc_attr( $style ) . '"';
 	}
 
 	// Parse links

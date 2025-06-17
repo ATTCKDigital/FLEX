@@ -27,27 +27,17 @@
 		}
 	}
 
-	.is-style-body1,
-	.is-style-body1 p {
-		@extend .body1 !optional;
-	}
+	&.component-paragraph {
+		p {
+			color: inherit;
 
-	.is-style-body2,
-	.is-style-body2 p {
-		@extend .body2 !optional;
-	}
+			a {
+				color: inherit;
+			}
+		}
 
-	.is-style-body3,
-	.is-style-body3 p {
-		@extend .body3 !optional;
-		color: blue;
-	}
-
-	&.is-style-text-columns .mce-content-body {
-		@extend .text-columns;
-	}
-
-	p {
-		@extend .body1;
+		a {
+			color: inherit;
+		}
 	}
 }

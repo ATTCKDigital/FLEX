@@ -4,18 +4,17 @@
 		<div class="flex-12-12 padding-top-10x padding-bottom-2x">
 			<a href="/" class="logo-wrapper">
 				<?php 
-					$customLogoID = get_theme_mod( 'custom_logo' );
-					$customLogoURL = wp_get_attachment_image_url( $customLogoID , 'full' );
-					$customLogoSRC = wp_get_attachment_image_src( $customLogoID , 'full' );
-					// $customLogoSize = wp_getimagesize( $customLogoURL );
+					$customLogoIDLight = attachment_url_to_postid( get_theme_mod('light_logo') );;
+					$customLogoURLLight = wp_get_attachment_image_url( $customLogoIDLight , 'full' );
+					$customLogoSRCLight = wp_get_attachment_image_src( $customLogoIDLight , 'full' );
 				?>
 				<img 
 					alt="<?= bloginfo('name');?>" 
-					class="nav-logo" 
-					height="<?= $customLogoSRC[1] ?>"
-					src="<?= $customLogoURL;?>" 
+					class="nav-logo nav-logo-light" 
+					height="<?= $customLogoSRCLight[1] ?>"
+					src="<?= $customLogoURLLight;?>" 
 					title="<?= bloginfo('name');?>" 
-					width="<?= $customLogoSRC[2] ?>"
+					width="<?= $customLogoSRCLight[2] ?>"
 					/>
 			</a>
 		</div>

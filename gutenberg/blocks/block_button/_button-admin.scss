@@ -73,3 +73,13 @@
 
 	color: color('secondary', 'black');
 }
+
+// Prevents button elements from taking up 100% width
+.block-editor-block-list__block[aria-label="Block: Buttons"] {
+	width: auto;
+}
+
+// Prevents checkmark submit button from breaking to new line
+form.block-library-button__inline-link {
+	display: flex;
+}

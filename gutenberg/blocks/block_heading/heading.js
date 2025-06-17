@@ -142,7 +142,9 @@ export default registerBlockType(
 					isSelected,
 					level,
 					placeholder,
-					url
+					url,
+					backgroundColor,
+					backgroundOpacity
 				},
 				className,
 				setAttributes

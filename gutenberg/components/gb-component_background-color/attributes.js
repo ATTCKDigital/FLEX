@@ -6,6 +6,10 @@ const BackgroundColorOptionsAttributes = {
 	backgroundColor: {
 		type: 'string',
 	},
+	backgroundOpacity: {
+		type: 'number',
+		default: 100
+	}
 };
 
 export default BackgroundColorOptionsAttributes;

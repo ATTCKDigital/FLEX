@@ -86,7 +86,6 @@ $colors = array(
 		'label'       => 'Primary #3 (muted)',
 		'slug'        => 'color-primary-three-muted',
 	)
-
 );
 
 if ( !defined('FLEXLAYOUT_COLORS') ) {

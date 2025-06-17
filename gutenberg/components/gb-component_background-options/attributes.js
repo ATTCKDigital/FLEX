@@ -10,6 +10,7 @@ var dataSectionId;// = mt_rand(10, 1000);
 const BackgroundOptionsAttributes = {
 	backgroundType: {
 		type: 'string',
+		default: '',
 	},
 	backgroundImage: {
 		type: 'object',
@@ -28,6 +29,10 @@ const BackgroundOptionsAttributes = {
 	},
 	backgroundColor: {
 		type: 'string',
+	},
+	backgroundOpacity: {
+		type: 'number',
+		default: 100,
 	},
 	backgroundPositionX: {
 		type: 'string',

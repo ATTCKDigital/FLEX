@@ -1,6 +1,6 @@
 	</main>
 </div>
-<footer class="component-footer" role="contentinfo">
+<footer class="component-footer" role="contentinfo" data-logo-color="logo-color-light">
 	<?php echo Utils::render_template('components/component_footer/footer.php'); ?>
 </footer>
 <?php

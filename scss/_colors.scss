@@ -37,12 +37,12 @@ $brand-colors: (
 		'body': 	var(--color-text-body),
 		'link': 	var(--color-text-link),
 		'hover': 	var(--color-text-hover),
-		'white': 	var(--color-text-white),
-		'black': 	var(--color-text-black),
+		'white': 	#FFFFFF,
+		'black': 	#000000,
 	),
 	'default': (
-		'white': 	var(--color-default-white),
-		'black': 	var(--color-default-black),
+		'white': 	#FFFFFF,
+		'black': 	#000000,
 	),
 	'social':(
 		'facebook': #3b5998,
@@ -53,15 +53,23 @@ $brand-colors: (
 	)
 );
 
-
 /** Generate colors **/
 // Usage: color('key', 'variant');
-@function color($key: 'debug', $variant: $brand-color-key) {
+@function color($key: 'debug', $variant: $brand-color-key, $opacity: null) {
 	$color: null;
 	$color-spectrum: map-get($brand-colors, $key);
 
 	@if $color-spectrum {
 		$color: map-get($color-spectrum, $variant);
+	}
+
+	@if $color == null {
+		@return null; // or throw error, depending on your setup
+	}
+
+	@if $opacity != null {
+		// Return CSS-level rgba() using var() and custom opacity
+		@return unquote("rgba(#{$color}, #{$opacity})");
 	}
 
 	@return $color;

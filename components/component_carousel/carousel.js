@@ -5,7 +5,7 @@ if (!FLEX.isProd) { console.log('loaded', '/FLEX\t/components\t/component_carous
 /**
  * Carousel component
  */
-function Carousel ($el, params={}) {
+function Carousel($el, params={}) {
 	console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'Carousel()');
 
 	const defaults = {
@@ -58,7 +58,7 @@ function Carousel ($el, params={}) {
 			// Get index of this dot compared to siblings
 			_index = $parent.find('a').index($(this));
 
-			goTo(index);
+			goTo(_index);
 		});
 
 		// Keyboard commands (left & right arrow keys)
@@ -102,7 +102,6 @@ function Carousel ($el, params={}) {
 		$(document.body).on('FLEX.resize', moveSlideContainerInner);
 
 		// Listen for CSS3 transition animation end
-		//$el.find('li, .slide, .slides, .slide-inner-container').on('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd', function () {
 		$el.find('*').on('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd', function () {
 			console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'CSStransition complete');
 			_CSStransitionInProgress = false;
@@ -114,10 +113,10 @@ function Carousel ($el, params={}) {
 			// end event anymore. So, we're going to make sure to reset the value here manually.
 			
 			// TODO: (DP) Find out if this event spec changed recently.
-			// CSStransitionInProgress = false;
+			_CSStransitionInProgress = false;
 			
 			// TODO: (DP) Add override options to prevent autoscroll. 
-			// goNext();
+			goNext();
 		}, randomInteger(4000, 6000));
 
 		// Add pseudoelement styles for each carousel slide
@@ -172,27 +171,27 @@ function Carousel ($el, params={}) {
 		let carousel = $('.component-carousel', $el);
 
 		carousel.on("touchstart", function(event) {
-			if(event.touches.length === 1){
-				//just one finger touched
+			if (event.touches.length === 1) {
+				// Just one finger touched
 				start = event.touches.item(0).clientX;
-			}else{
-				//a second finger hit the screen, abort the touch
+			} else {
+				// A second finger hit the screen, abort the touch
 				start = null;
 			}
 		});
 
-		carousel.on("touchend", function(event) {
-			var offset = 100;//at least 100px are a swipe
+		carousel.on("touchend", function (event) {
+			var offset = 100; //at least 100px are a swipe
 
-			if(start){
-				//the only finger that hit the screen left it
+			if (start) {
+				// The only finger that hit the screen left it
 				var end = event.changedTouches.item(0).clientX;
 
-				if(end > start + offset) {
+				if (end > start + offset) {
 					goPrev();
 				}
 
-				if(end < start - offset) {
+				if (end < start - offset) {
 					goNext();
 				}
 			}
@@ -206,7 +205,6 @@ function Carousel ($el, params={}) {
 		_$dotsContainer = $('.dots-component', $el);
 		_$slidesContainer = $('.slides', $el);
 		_$slides = $('.slides .slide', $el);
-
 		_slidesLength = _$slides.length - 1;
 
 		// Get slide width value
@@ -215,11 +213,11 @@ function Carousel ($el, params={}) {
 
 		// - Calculate max number of visible slides
 		if ($('.breakpoint.tablet-landscape:not(:visible)').length === 1) {
-			_maxVisibleSlides = 1;
+			_maxVisibleSlides = 2;
 			_visibleGap = (_vwGaptoPx)
 		} else {
 			// _maxVisibleSlides = Math.floor(_carouselWidth / _slideWidth);
-			_maxVisibleSlides = 3;
+			_maxVisibleSlides = 1.75;
 			_visibleGap = (2 * _vwGaptoPx)
 		}
 
@@ -247,7 +245,7 @@ function Carousel ($el, params={}) {
 	}
 
 	function go() {
-		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'go(), _index: ', _index);
+		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'go(), _index: _$slides.length: ', _index, _$slides.length);
 		
 		// Indicate CSS transition is in progress
 		_CSStransitionInProgress = true;
@@ -263,7 +261,7 @@ function Carousel ($el, params={}) {
 				}
 			}
 
-			if (x > _index){
+			if (x > _index) {
 				if (x === (_$slides.length - 1) && _index === 0) {
 					_$slides.eq(x).removeClass('previous next active').addClass('previous');
 				} else {
@@ -282,7 +280,7 @@ function Carousel ($el, params={}) {
 	}
 
 	function goNext() {
-		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'goNext(), _CSStransitionInProgress:', _CSStransitionInProgress);
+		console.log('/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js', 'goNext(), _CSStransitionInProgress: _index: _slidesLength:', _CSStransitionInProgress, _index, _slidesLength);
 		
 		// Proceed only if no CSS transition is in progress
 		if (_CSStransitionInProgress) return;
@@ -291,13 +289,14 @@ function Carousel ($el, params={}) {
 
 		// If current active slide isn't at the end
 		// bump up index
-		if (_index < _slidesLength || _index <= _lastScrollableSlide) {
+		console.log('_index: _slidesLength: _lastScrollableSlide:', _index, _slidesLength, _lastScrollableSlide);
+		if (_index <= _slidesLength-1 || _index <= _lastScrollableSlide-1) {
 			_index = _index + 1;
 			_prevIndex = _index - 1;
 
 			// If current active slide still isn't at the end
 			// bump up nextIndex
-			if (_index < _slidesLength) {
+			if (_index <= _slidesLength) {
 				_nextIndex = _index + 1;
 
 				$('.nav', $el).removeClass('disabled');
@@ -305,7 +304,7 @@ function Carousel ($el, params={}) {
 				// Stop at max visible slides index
 				if (_index >= _lastScrollableSlide) {
 					_nextIndex = _index - 1;
-	
+					
 					_CSStransitionInProgress = false;
 					$('.nav.next', $el).addClass('disabled');
 				}

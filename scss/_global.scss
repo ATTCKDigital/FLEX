@@ -10,7 +10,7 @@ article {
 }
 
 body {
-	@include primary-regular;
+	@include secondary-regular;
 	color: color('text', 'body');
 	font-size: 13px;
 	font-smoothing: antialiased;
@@ -27,6 +27,26 @@ body {
 			top: 0;
 		}
 	}
+
+	[data-logo-color="logo-color-light"] {
+		color: color('text', 'white');
+
+		p, 
+		.is-style-headline1,
+		.headline1,
+		.is-style-headline2,
+		.headline2,
+		.is-style-headline3,
+		.headline3,
+		.is-style-headline4,
+		.headline4,
+		.is-style-headline5,
+		.headline5,
+		.is-style-eyebrow,
+		.is-style-eyebrow-small {
+			color: color('text', 'white');
+		}
+	}
 }
 
 h3, h4, h5, h6, p, span, .cta, img {
@@ -35,6 +55,14 @@ h3, h4, h5, h6, p, span, .cta, img {
 
 	.no-element-in-view &, &.no-element-in-view {
 		// opacity: 1;
+	}
+}
+
+a {
+	color: color('brand', 'primary');
+
+	&:hover {
+		text-decoration: underline;
 	}
 }
 
@@ -65,6 +93,86 @@ main.content {
 	.wp-admin & {
 		height: auto;
 	}
+}
+
+.border-round {
+	border: 1px solid #797979;
+	border-radius: 1rem;
+}
+
+.border-round-1em {
+	border-radius: 1rem;
+
+	iframe,
+	video,
+	.video-wrapper {
+		border-radius: 1rem;
+	}
+
+	.image-wrapper img {
+		border-radius: 1rem;
+	}
+}
+
+.border-round-2em {
+	border-radius: 2rem;
+
+	.border-round-2em {
+		border-radius: 1rem;
+	}
+
+	iframe,
+	video, 
+	.video-wrapper {
+		border-radius: 2rem;
+	}
+
+	.image-wrapper img {
+		border-radius: 2rem;
+	}
+}
+
+.border-round-3em {
+	border-radius: 3rem;
+}
+
+.border-round-10px {
+	border-radius: 10px;
+}
+
+.border-round-20px {
+	border-radius: 20px;
+}
+
+.border-round-30px {
+	border-radius: 30px;
+}
+
+.border-round-container {
+	border-radius: 1rem;
+}
+
+.border-round-container-black {
+	border: 1px solid black;
+	border-radius: 1rem;
+}
+
+.border-round-0em {
+	border-radius: 0rem;
+
+	iframe,
+	video,
+	.video-wrapper {
+		border-radius: 0rem;
+	}
+
+	.image-wrapper img {
+		border-radius: 0rem;
+	}
+}
+
+.border-shadow {
+	box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .flex-grid {
@@ -101,7 +209,6 @@ main.content {
 	overflow: hidden;
 }
 
-
 // Accessibility trick to hide span nearby with aria values
 .sr-only {
 	border: 0;
@@ -113,4 +220,3 @@ main.content {
 	position: absolute;
 	width: 1px;
 }
-

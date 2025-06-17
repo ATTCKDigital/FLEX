@@ -4,7 +4,7 @@
 /*** Admin Color Schemes ***/
 //Set admin color schemes depending on env variable (var is set in .env)
 function update_user_option_admin_color( $color_scheme ) {
-	$env = $_SERVER['WPENGINE_ACCOUNT'];
+	$env = isset($_SERVER['WPENGINE_ACCOUNT']) ? $_SERVER['WPENGINE_ACCOUNT'] : null;
 
 	if($env == WPE_PROD) {
 		$color_scheme = 'sunrise';
@@ -64,7 +64,7 @@ add_action('admin_head', 'admin_color_scheme');
 //Change the color of the admin bar on the front end if it is displayed
 
 function change_bar_color() {
-	$env = $_SERVER['WPENGINE_ACCOUNT'];
+	$env = isset($_SERVER['WPENGINE_ACCOUNT']) ? $_SERVER['WPENGINE_ACCOUNT'] : null;
 
 	if($env == WPE_PROD) {
 		$barColor = 'red';

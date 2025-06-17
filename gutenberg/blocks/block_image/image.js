@@ -59,6 +59,10 @@ export default registerBlockType(
 			caption: {
 				type: 'string'
 			},
+			CSSHeight: {
+				type: 'string',
+				default: ''
+			},
 			CSSWidth: {
 				type: 'string',
 				default: ''
@@ -89,6 +93,7 @@ export default registerBlockType(
 				attributes: {
 					align,
 					caption,
+					CSSHeight,
 					CSSWidth,
 					dataComponentName,
 					dataComponentOptions, 
@@ -148,6 +153,13 @@ export default registerBlockType(
 							value={ align }
 							onChange={ ( nextAlign ) => {
 								setAttributes( { align: nextAlign } );
+							} }
+						/>
+						<p>{ __( ' CSS Height (100%, 50px, auto, etc.)' ) }</p>
+						<TextControl
+							value={ CSSHeight }
+							onChange={ ( nextCSSHeight ) => {
+								setAttributes( { CSSHeight: nextCSSHeight } );
 							} }
 						/>
 						<p>{ __( ' CSS Width (100%, 50px, auto, etc.)' ) }</p>

@@ -1,14 +1,56 @@
 import $ from 'jquery';
 import FLEX from 'FLEX/js/client-namespace';
 
-if (!FLEX.isProd) { console.log('loaded', '/FLEX\t/js\t/components\t/component_nav\t/nav.js'); }
+if (!FLEX.isProd) { 
+	console.log('loaded', '/FLEX\t/js\t/components\t/component_nav\t/nav.js'); 
+}
 
 // Global Nav & Header behavior
 function Nav($el) {
 	console.log('/FLEX/\tcomponents/\tcomponent-nav/\tnav.js', 'Nav()');
 
+	var _$body = $('body');
+    var _$document = $(document);
+    var _$window = $(window);
+
 	// Cache the body
 	var $body = $('body');
+
+	function bindEvents() {
+		console.log('/FLEX/\tcomponents/\tcomponent-nav/\tnav.js', 'bindEvents(), $el: ', $el);
+
+		changeLogoColorOnScroll();
+		scrolledNav();
+
+		// Mobile nav
+		$el.find('.hamburger-wrapper').on('click', navToggle);
+
+		// Use this if subnav is triggered on hover
+		if ($(window).width() > 1024) {
+			$el.find('.menu-items > .menu-item-has-children').on('mouseenter', openSubNav);
+
+			// If we're hovering outside the nav, close the nav.
+			$(document).on('mouseover',function (e) {
+				// But, only if the nav is already open
+				if (!$body.hasClass('openSubNav')) {
+					return;
+				}
+
+				let $target = $(e.target);
+
+				if (!$target.is('.main-header') && !$target.closest('.main-header').length) {
+					closeSubNav(e);
+				}
+
+				if (!$target.is('.menu-item-has-children') && !$target.closest('.menu-item-has-children').length) {
+					closeSubNav(e);
+				}
+			});
+		} else {
+			$el.find('.menu-item-has-children > a').on('click', toggleSubNav);
+
+		}
+	}
 
 	function navToggle(e) {
 		console.log('/FLEX/\tcomponents/\tcomponent-nav/\tnav.js', 'navToggle()');
@@ -133,11 +175,10 @@ function Nav($el) {
 			$(row).each(function () {
 				var rowTop = $(this).offset().top;
 				var logoColor = $(this).data('logo-color');
-
-				// console.log('logoColor: ', logoColor);
+				// var logoColor = $(this).attr('data-logo-color');
 
 				if (rowTop <= scrollTop + 20) {
-					if (logoColor == 'logo-color-white') {
+					if (logoColor == 'logo-color-light') {
 						$body.addClass('logoLight').removeClass('logoDark');
 					}
 
@@ -152,45 +193,10 @@ function Nav($el) {
 			});
 
 			if (scrollTop >= footer) {
+				console.log('scrollTop >= footer');
 					$body.addClass('logoLight').removeClass('logoDark');
 			}
 		});
-	}
-
-	function bindEvents() {
-		console.log('/FLEX/\tcomponents/\tcomponent-nav/\tnav.js', 'bindEvents()');
-
-		$el = $el;
-		$el.find('.hamburger-wrapper').on('click', navToggle);
-
-		changeLogoColorOnScroll();
-		scrolledNav();
-
-		// Use this if subnav is triggered on hover
-		if ($(window).width() > 1024) {
-			$el.find('.menu-items > .menu-item-has-children').on('mouseenter', openSubNav);
-
-			// If we're hovering outside the nav, close the nav.
-			$(document).on('mouseover',function (e) {
-				// But, only if the nav is already open
-				if (!$body.hasClass('openSubNav')) {
-					return;
-				}
-
-				let $target = $(e.target);
-
-				if (!$target.is('.main-header') && !$target.closest('.main-header').length) {
-					closeSubNav(e);
-				}
-
-				if (!$target.is('.menu-item-has-children') && !$target.closest('.menu-item-has-children').length) {
-					closeSubNav(e);
-				}
-			});
-		} else {
-			$el.find('.menu-item-has-children > a').on('click', toggleSubNav);
-
-		}
 	}
 
 	this.init = function ($el) {
