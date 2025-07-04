@@ -1,359 +1,155 @@
-// Block dependencies
-import classnames from 'classnames';
-import icons from '../../../js/icons.js'
+// JS block file for displaying posts with ACF custom fields support and InnerBlocks layout design
 
-// Internal block libraries
-const { __ } = wp.i18n;
+const {registerBlockType} = wp.blocks;
+const {__} = wp.i18n;
 const {
-	registerBlockType,
-} = wp.blocks;
-const {
-	BlockControls,
-	InspectorControls,
+    InspectorControls,
+    InnerBlocks,
+    useBlockProps
 } = wp.blockEditor;
 const {
-	PanelBody,
-	PanelRow,
-	Spinner,
-	SelectControl,
-	RangeControl,
-	ToggleControl,
-	FormTokenField,
-	TextControl
+    PanelBody,
+    SelectControl,
+    RangeControl,
+    ToggleControl,
+    FormTokenField,
+    TextControl,
+    Spinner
 } = wp.components;
-const {
-	withSelect
-} = wp.data;
+const {withSelect} = wp.data;
+const classnames = window.classnames;
+const ServerSideRender = wp.serverSideRender;
 
+registerBlockType('flexlayout/posts', {
+    title: __('Posts'),
+    description: __('Display posts with custom layout, InnerBlocks and ACF field options.'),
+    category: 'common',
+    icon: 'format-aside',
+    attributes: {
+        postType: {type: 'string', default: 'post'},
+        postPerPage: {type: 'number', default: 12},
+        order: {type: 'string', default: 'DESC'},
+        orderBy: {type: 'string', default: 'date'},
+        filterCategories: {type: 'object', default: {}},
+        selectedPosts: {type: 'array', default: []},
+        showExcerpt: {type: 'boolean', default: false},
+        excerptWordLimit: {type: 'number', default: 20},
+        columnNumber: {type: 'number', default: 3},
+        ctaText: {type: 'string', default: 'Read More'},
+        showCategory: {type: 'boolean', default: false},
+        paginationActive: {type: 'boolean', default: true},
+        filterActive: {type: 'boolean', default: true},
+        customFields: {type: 'array', default: []},
+        metaKey: {type: 'string', default: ''},
 
-// Internal dependencies
-import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
-import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
+    },
 
-// Register block
-export default registerBlockType(
-	'flexlayout/posts',
-	{
-		title: __('Posts'),
-		description: __('A posts of selected post type.'),
-		category: 'common',
-		icon: 'format-aside',
-		example: {},
-		// parent: ['flexlayout/column'],
-		keywords: [
-			__('Posts', 'flexlayout'),
-			__('Archive', 'flexlayout'),
-			__('Posts', 'flexlayout'),
-		],
-		attributes: {
-			postType: {
-				type: 'string',
-				default: 'post'
-			},
-			ctaText: {
-				type: 'string',
-				default: 'Read More'
-			},
-			postPerPage: {
-				type: Number,
-				default: 12
-			},
-			excerptWordLimit: {
-				type: Number,
-				default: 19
-			},
-			columnNumber: {
-				type: Number,
-				default: 3,
-			},
-			categories: {
-				type: 'array',
-				default: []
-			},
-			filterCategories: {
-				type: 'array',
-				default: []
-			},
-			paginationActive: {
-				type: Boolean,
-				default: true
-			},
-			filterActive: {
-				type: Boolean,
-				default: true
-			},
-			showExcerpt: {
-				type: Boolean,
-				default: false
-			},
-			showCategory: {
-				type: Boolean,
-				default: false
-			},
-			...MarginOptionsAttributes,
-			...PaddingOptionsAttributes,
-		},
-		edit: withSelect((select, ownProps) => {
-			const { getPostTypes, getEntityRecords } = select('core');
-			const { categories, postType, postPerPage, filterCategories } = ownProps.attributes;
+    edit: withSelect((select, props) => {
+        const {attributes} = props;
+        const {getPostTypes, getEntityRecords, getTaxonomies} = select('core');
+        const typesList = getPostTypes({per_page: -1});
+        const taxonomies = getTaxonomies();
+        const currentTaxonomies = taxonomies?.filter(tax => tax.types.includes(attributes.postType));
+        const termsMap = {};
+        currentTaxonomies?.forEach(tax => {
+            const terms = getEntityRecords('taxonomy', tax.slug);
+            if (terms) termsMap[tax.slug] = terms;
+        });
 
-			const query = {
-				per_page: postPerPage,
-				_embed: true,
-			}
+        const query = {
+            per_page: attributes.postPerPage,
+            order: attributes.order?.toLowerCase(),
+            orderby: attributes.orderBy,
+            _embed: true,
+            context: 'edit',
+        };
+        const posts = getEntityRecords('postType', attributes.postType, query);
+        let availableMetaKeys = [];
+        if (posts?.length && posts[0]?.meta) {
+            availableMetaKeys = Object.keys(posts[0].meta).filter(k => typeof posts[0].meta[k] === 'string');
+        }
 
-			// Add category filter to the query if filterCategories is not empty
-			if (filterCategories && filterCategories.length > 0) {
-				query['categories'] = filterCategories.join(',');
-			}
-			
-			return {
-				typesList: getPostTypes(),
-				posts: getEntityRecords('postType', postType, query),
-				categories: getEntityRecords('taxonomy', 'category'),
-				filterCategories: getEntityRecords('taxonomy', 'category')
-			};
-		})(({ posts, categories, filterCategories, className, isSelected, setAttributes, typesList, attributes }) => {
+        return {typesList, currentTaxonomies, termsMap, posts, availableMetaKeys};
+    })(function EditBlock({
+                              attributes,
+                              setAttributes,
+                              typesList,
+                              currentTaxonomies,
+                              termsMap,
+                              posts,
+                              availableMetaKeys
+                          }) {
+        const {
+            postType,
+            order,
+            orderBy,
+            postPerPage,
+            columnNumber,
+            showExcerpt,
+            excerptWordLimit,
+            showCategory,
+            paginationActive,
+            ctaText,
+            customFields
+        } = attributes;
+        return [
+            <InspectorControls>
+                <PanelBody title={__('Settings')}>
+                    <SelectControl
+                        label={__('Post Type')}
+                        value={postType}
+                        onChange={(v) => setAttributes({postType: v, filterCategories: {}, customFields: []})}
+                        options={typesList?.map(type => ({label: type.labels.name, value: type.slug}))}
+                    />
+                    <SelectControl
+                        label={__('Order By')}
+                        value={orderBy}
+                        onChange={orderBy => setAttributes({orderBy})}
+                        options={[
+                            {label: 'Date', value: 'date'},
+                            {label: 'Title', value: 'title'},
+                            {label: 'Modified', value: 'modified'},
+                            {label: 'Menu Order', value: 'menu_order'},
+                            {label: 'Random', value: 'rand'}
+                        ]}
+                    />
+                    <SelectControl
+                        label={__('Order')}
+                        value={order}
+                        onChange={order => setAttributes({order})}
+                        options={[{label: 'Descending', value: 'DESC'}, {label: 'Ascending', value: 'ASC'}]}
+                    />
+                    <RangeControl label={__('Posts Per Page')} value={postPerPage} min={1} max={100}
+                                  onChange={v => setAttributes({postPerPage: v})}/>
+                    <RangeControl label={__('Columns')} value={columnNumber} min={1} max={6}
+                                  onChange={v => setAttributes({columnNumber: v})}/>
+                    <ToggleControl label={__('Show Excerpt')} checked={showExcerpt}
+                                   onChange={v => setAttributes({showExcerpt: v})}/>
+                    <RangeControl label={__('Excerpt Word Count')} value={excerptWordLimit} min={1} max={300}
+                                  onChange={v => setAttributes({excerptWordLimit: v})}/>
+                    <ToggleControl label={__('Show Category')} checked={showCategory}
+                                   onChange={v => setAttributes({showCategory: v})}/>
+                    <ToggleControl label={__('Show Pagination')} checked={paginationActive}
+                                   onChange={v => setAttributes({paginationActive: v})}/>
+                    <FormTokenField
+                        label={__('Custom ACF Fields')}
+                        value={customFields}
+                        suggestions={availableMetaKeys}
+                        onChange={(tokens) => setAttributes({customFields: tokens})}
+                    />
+                    <TextControl label={__('CTA Button Text')} value={ctaText}
+                                 onChange={(v) => setAttributes({ctaText: v})}/>
+                </PanelBody>
+            </InspectorControls>,
 
-			if (!posts) {
-				return (
-					<p className={className} >
-						<Spinner />
-						{ __('Loading Posts', 'flexlayout')}
-					</p>
-				);
-			}
-			if (0 === posts.length) {
-				return <p>{__('No Posts', 'flexlayout')}</p>;
-			}
+            <div className="wp-block-flexlayout-posts">
+                <ServerSideRender
+                    block="flexlayout/posts"
+                    attributes={attributes}
+                />
+            </div>
+        ];
+    }),
 
-			// console.log('posts.js', 'categories: ', categories);
-
-			return [
-				<InspectorControls>
-				
-					<PanelBody title={__('Posts Settings')}>
-						<PanelRow>
-							<SelectControl
-								key="post-type"
-								label={__('Post Type')}
-								value= { attributes.postType ?? 'post' }
-								onChange={ postType => setAttributes( { postType } ) }
-								options= {
-									typesList.map(type => ({
-										label: __(type.name),
-										value: type.slug,
-									}))
-								}
-							/>
-						</PanelRow>
-						<PanelRow>
-							<FormTokenField
-								label="Select Category"
-								value={ attributes.categories.map(category => category.name) }
-								suggestions={ categories && categories.map(category => category.name) }
-								onChange={ tokens => { 
-									const selectedCategories = categories.filter(category => 
-										tokens.some(token => 
-											category.name.toLowerCase() === token.toLowerCase()
-										)
-									)
-												
-									setAttributes({
-										categories: selectedCategories
-									})
-								}}
-								placeholder="Select Categories"
-							/>
-						</PanelRow>
-						<PanelRow>
-							<FormTokenField
-								label="Filter Categories"
-								xvalue={ attributes.filterCategories.map(category => category.name) }
-
-								value={
-									attributes.filterCategories && attributes.filterCategories.length
-										? attributes.filterCategories.map(catId => {
-											const catObj = filterCategories.find(cat => cat.id === catId);
-											return catObj ? catObj.name : '';
-										})
-										: []
-								}
-
-								suggestions={filterCategories ? filterCategories.map(category => category.name) : []}
-								onChange={tokens => {
-									const selectedFilterCategories = filterCategories
-										.filter(category => tokens.includes(category.name))
-										.map(category => category.id); // store only IDs
-
-										console.log("Selected Filter Categories IDs:", selectedFilterCategories); // Debugging line
-
-									setAttributes({
-										filterCategories: selectedFilterCategories
-									});
-								}}
-								placeholder="Filter Categories"
-							/>
-						</PanelRow>
-						<PanelRow>
-							<RangeControl
-								label="Post Per Page"
-								value={ attributes.postPerPage ?? 1 }
-								onChange={ postPerPage => setAttributes( { postPerPage } ) }
-								min={ 1 }
-								max={ 20 }
-							/>
-						</PanelRow>
-						<PanelRow>
-							<RangeControl
-								label="Post Per Row"
-								value={ attributes.columnNumber ?? 3 }
-								onChange={ columnNumber => setAttributes( { columnNumber } ) }
-								min={ 1 }
-								max={ 8 }
-							/>
-						</PanelRow>
-						<PanelRow>
-							<ToggleControl
-								label="Show Pagination"
-								help={ attributes.paginationActive ? 'Pagination Activated' : 'Pagination Deactivated' }
-								checked={ attributes.paginationActive }
-								onChange={ paginationActive => setAttributes( { paginationActive } ) }
-							/>
-						</PanelRow>
-						<PanelRow>
-							<ToggleControl
-								label="Show Filter"
-								help={ attributes.filterActive ? 'Filter Activated' : 'Filter Deactivated' }
-								checked={ attributes.filterActive }
-								onChange={ filterActive => setAttributes( { filterActive } ) }
-							/>
-						</PanelRow>
-					</PanelBody>
-					<PanelBody title="Single Post Options">
-						<PanelRow>
-							<TextControl
-								label="CTA Link Text"
-								value={ attributes.ctaText }
-								onChange={  ctaText => setAttributes( { ctaText } ) }
-							/>
-						</PanelRow>
-						<PanelRow>
-							<ToggleControl
-								label="Show Excerpt"
-								help={ attributes.showExcerpt ? 'Excerpt is active' : 'Filter Deactivated' }
-								checked={ attributes.showExcerpt }
-								onChange={ showExcerpt => setAttributes( { showExcerpt } ) }
-							/>
-						</PanelRow>
-						<PanelRow>
-							<RangeControl
-								label="Post Excerpt Word Length"
-								value={ attributes.excerptWordLimit ?? 15 }
-								onChange={ excerptWordLimit => setAttributes( { excerptWordLimit } ) }
-								min={ 1 }
-								max={ 50 }
-							/>
-						</PanelRow>
-						<PanelRow>
-							<ToggleControl
-								label="Show Category"
-								help={ attributes.showCategory ? 'Category is Visible' : 'Category Hidden' }
-								checked={ attributes.showCategory }
-								onChange={ showCategory => setAttributes( { showCategory } ) }
-							/>
-						</PanelRow>
-					</PanelBody>
-				</InspectorControls>,
-				
-				<div className={classnames(
-						'component-archive-posts',
-					)}>
-					<div>
-						<ul class="cat-list" style={{marginBottom: "20px", paddingLeft: "0"}}>
-							{attributes.categories && attributes.categories.map(category => {
-								return (
-									<li class="cat-item">
-										<button class="cat-button cat-events" className={'cat-' + category.slug} style={{width: '100%'}}>{category.name}</button>
-									</li>
-								);
-							})}
-						</ul>
-						{
-							attributes.filterActive && 
-							(
-								<div class="sort-filter" style={{marginBottom: "20px"}}>
-									<label>Sort by</label>
-									<div class="dropdown">
-										<label role="button" class="dropdown-select" tabindex="0">Old</label>
-										<ul class="dropdown-list" style={{paddingLeft: "0"}}>
-											<li class="dropdown-option">
-												<button class="dropdown-button" name="order" value="ASC">New</button>
-											</li>
-											<li class="dropdown-option option-selected">
-												<button class="dropdown-button" name="order" value="DESC">Old</button>
-											</li>
-										</ul> 
-									</div> 
-								</div>
-							)
-						}
-					</div>
-					<ul className={'posts-items'} style={{paddingLeft: "0"}}>
-						{posts.map(post => {
-							let category = attributes.categories.find(item => item.id === post.categories[0]);
-							const media = post.featured_media 
-							? post._embedded['wp:featuredmedia'][0].source_url
-							: null;
-
-							return (
-								<li class="posts-item post-category-events" className={'post-category-' + (category && category.slug)} style={{width: 100 / attributes.columnNumber + '%'}}>
-									<div class="posts-item-wrapper">
-										<div class="image-wrapper">
-											<img 
-												src={media ?? ''}
-												className={"attachment-post-thumbnail size-post-thumbnail wp-post-image " + (media ? '' : 'empty-image')} 
-												alt="" 
-												loading="lazy" 
-											></img>
-										</div>
-										<div class="post-content">
-											{
-												attributes.showCategory && (
-													<span class="category-name"><a href="/categories/{category.name}">{category.name}</a></span>
-												)
-											}
-											<h2 class="post-title" style={{paddingLeft: "0", margin: "0"}}>{post.title.rendered}</h2>
-											<p class="post-excerpt">{post.excerpt.raw.split(" ").splice(0,attributes.excerptWordLimit).join(" ")}</p>
-											<span class="post-date">{post.date}</span>
-											<a class="cta-link" href="">{attributes.ctaText}</a>
-										</div>
-									</div>
-								</li>
-							);
-						})}
-					</ul>
-					{
-						attributes.paginationActive && (
-							<nav class="pagination-nav">
-								<div class="pagination-wrapper" style={{marginTop: "20px"}}>
-									<span class="prev page-numbers"></span>	
-									<span aria-current="page" class="page-numbers current">1</span>
-									<span class="page-numbers">2</span>
-									<span class="page-numbers">3</span>
-									<span class="next page-numbers"></span>	
-								</div>
-							</nav>
-						)
-					}
-				</div>
-			];
-		}) // end withAPIData
-		, // end edit
-
-		save() {
-			return null;
-		},
-
-	},
-);
+    save: () => null
+});
