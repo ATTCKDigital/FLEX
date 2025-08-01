@@ -221,6 +221,10 @@ module.exports = smp.wrap({
 				context: path.resolve(__dirname, './assets/images'),
 				from: './',
 				to: path.resolve(__dirname, './dist/assets/images'),
+			},
+			{
+				from: path.resolve(__dirname, './node_modules/@fortawesome/fontawesome-free/webfonts'),
+				to: path.resolve(__dirname, './dist/assets/fonts/fontawesome')
 			}
 		]),
 
