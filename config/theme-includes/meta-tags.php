@@ -76,7 +76,6 @@ if (!$metaDescription) {
 // Remove quotes
 $metaDescription = str_replace('"', "", $metaDescription);
 
-
 // OG Type
 $type = get_field('og_type', $this->ID);
 
