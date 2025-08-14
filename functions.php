@@ -15,6 +15,20 @@ if (!defined('WPE_STAGE')) {
 // Use when there are files that should ONLY be from the parent theme.
 define('THEME_DIR', get_template_directory());
 
+// --- ADD THIS BLOCK HERE ---
+/**
+ * Load the theme's text domain for internationalization.
+ * This ensures that strings defined with the '_flex' domain are translatable.
+ * Hooked to 'after_setup_theme' to ensure it runs at an appropriate time.
+ */
+function flex_theme_load_textdomain() {
+    // '_flex' is your text domain, and 'get_template_directory() . '/languages'' is the default path
+    // where WordPress looks for your .mo/.po translation files.
+    load_theme_textdomain( '_flex', get_template_directory() . '/languages' );
+}
+add_action( 'after_setup_theme', 'flex_theme_load_textdomain' );
+// --- END OF BLOCK TO ADD ---
+
 // Use locate_template() to include files. This function first checks the child theme for the file and if there is none, uses the parent theme.
 // Allows us to override main functions in the child theme without changing the parent.
 

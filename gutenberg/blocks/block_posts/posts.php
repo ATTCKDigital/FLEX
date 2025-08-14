@@ -96,7 +96,7 @@ function render_posts_block($attributes, $content, $block)
     $query = new \WP_Query($args);
     if (!$query->have_posts()) return '<p>No posts found.</p>';
 
-    $output = '<div class="component-archive-posts"><div class="posts-grid flex-grid">';
+    $output = '<div class="component-archive-posts"><div class="posts-grid flex-grid flex-12-12">';
     $template_inner_content = $block->rendered_inner_blocks ?? [];
     $template_path = get_flexlayout_post_template($post_type, get_post_field('post_name'));
     while ($query->have_posts()) {
