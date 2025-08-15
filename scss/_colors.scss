@@ -153,7 +153,12 @@ $brand-colors: (
 }
 
 // Helpers
-// .color-brand-primary { color: color('brand', 'primary'); }
-// .color-brand-secondary { color: color('brand', 'secondary'); }
-.color-black { color: color('default', 'black'); }
-.color-white { color: color('default', 'white'); }
+.colorDefaultBlack { color: color('default', 'black'); }
+.colorDefaultWhite { color: color('default', 'white'); }
+.colorBrandPrimary { color: color('brand', 'primary'); }
+.colorBrandSecondary { color: color('brand', 'secondary'); }
+.colorBrandAccent { color: color('brand', 'accent'); }
+.colorPrimaryOne { color: color('primary', 'one'); }
+.colorPrimaryTwo { color: color('primary', 'two'); }
+.colorPrimaryThree { color: color('primary', 'three'); }
+.colorPrimaryThreeMuted { color: color('primary', 'three-muted'); }
