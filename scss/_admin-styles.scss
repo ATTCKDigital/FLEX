@@ -189,6 +189,12 @@ body {
 	}
 }
 
+.component-column {
+	&.component-column-verticalAlignment-bottom.component-column-verticalAlignment-bottom.component-column-verticalAlignment-bottom {
+		justify-content: center;
+	}
+}
+
 .edit-post-visual-editor {
 	// Square buttons with plus icon
 	.block-editor-inserter {
