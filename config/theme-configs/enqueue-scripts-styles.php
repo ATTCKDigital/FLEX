@@ -17,6 +17,22 @@ function _scripts() {
 		true
 	);
 
+	wp_enqueue_script(
+		'three-js-global',
+		get_template_directory_uri() . '/js/three.min.js',
+		array(),
+		'0.125.0',
+		true
+	);
+
+	wp_enqueue_script(
+		'constellation',
+		get_template_directory_uri() . '/js/constellation.js',
+		array('three-js-global'),
+		'1.0',
+		true
+	);
+
 	// Load more vars
 	wp_localize_script(
 		'afp_script',
