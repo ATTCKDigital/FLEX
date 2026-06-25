@@ -5,11 +5,9 @@
 // All WYSIWYG content should be wrapped in a "body-text" div
 .body-text,
 .mce-content-body {
-	color: orange !important;
 
 	p {
 		// @extend .is-style-body1 !optional;
-		color: pink !important;
 	}
 
 	img {
