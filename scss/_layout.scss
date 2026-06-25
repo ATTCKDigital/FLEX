@@ -72,17 +72,7 @@
 }
 
 a:not(.cta) {
-	color: color('brand', 'primary');
-
-	&:hover {
-		text-decoration: underline;
-	}
-
-	.component-header & {
-		&:hover {
-			text-decoration: none;
-		}
-	}
+	text-decoration: underline;
 }
 
 .avatar--large {
