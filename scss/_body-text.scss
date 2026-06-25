@@ -367,12 +367,12 @@
 
 .is-style-subheadline1 p,
 .is-style-subheadline1 s {
-	@include tertiary-light;
+	@include secondary-light;
 	@include font-size($font-size-subheadline1);
 }
 
 .is-style-subheadline2 p,
 .is-style-subheadline2 s {
-	@include tertiary-light;
+	@include secondary-light;
 	@include font-size($font-size-subheadline2);
 }
