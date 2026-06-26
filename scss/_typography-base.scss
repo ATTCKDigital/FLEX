@@ -23,7 +23,6 @@ a {
 
 	@include mediaquery(desktop) {
 		&:hover {
-			color: color('text', 'hover');
 		}
 	}
 }
