@@ -78,12 +78,7 @@ p {
 }
 
 .content-container {
-	margin-top: $navMobileHeight;
 	min-height: calc(100vh - 150px);
-	
-	@include mediaquery(tablet-landscape) {
-		margin-top: $navHeight;
-	}
 }
 
 main.content {
