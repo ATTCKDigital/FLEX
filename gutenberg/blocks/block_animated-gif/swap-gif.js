@@ -1,11 +1,11 @@
 function AnimatedGif( $el ) {
-	var _loaded = false;
+	let _loaded = false;
 
 	function swapGif() {
 		// Ensure load only happens once
 		if ( _loaded === false ) {
-			var gif = $el.find( '.image-wrapper' ).attr( 'data-gif-src' );
-			var image = $el.find( 'img' );
+			const gif = $el.find( '.image-wrapper' ).attr( 'data-gif-src' );
+			const image = $el.find( 'img' );
 
 			// Remove the srcset, we don't need
 			$( image ).attr( 'srcset', '' );

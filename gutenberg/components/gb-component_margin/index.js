@@ -16,7 +16,7 @@ export { MarginOptionsAttributes, MarginOptionsClasses };
 
 function MarginOptions( props ) {
 	const setMargin = ( which, value ) => {
-		let marginEdited = '';
+		const marginEdited = '';
 		let marginEditedCount = 0;
 
 		// Save prop

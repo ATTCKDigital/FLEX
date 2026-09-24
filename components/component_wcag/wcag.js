@@ -41,9 +41,9 @@ function WCAG( $el ) {
 
 		// Make checkboxes enter-key-able
 		$( 'label' ).on( 'keypress', function ( e ) {
-			var keyCode = e.keyCode || e.which;
+			const keyCode = e.keyCode || e.which;
 
-			var $checkbox = $( this ).find( ':checkbox' );
+			const $checkbox = $( this ).find( ':checkbox' );
 
 			// Detect enter key press
 			if ( keyCode === 13 ) {
@@ -67,7 +67,7 @@ function WCAG( $el ) {
 
 		// 1. Find elements that have click handlers
 		$( '*' ).each( function () {
-			var $el = $( this );
+			const $el = $( this );
 
 			// Skip elements already tabbable by default
 			if (
@@ -79,14 +79,14 @@ function WCAG( $el ) {
 			}
 
 			// Check if element has a jQuery click event
-			var events = $._data( this, 'events' );
+			const events = $._data( this, 'events' );
 			if ( events && events.click ) {
 				console.log( 'el has click event attached, $el: ', $el );
 				$el.attr( 'tabindex', '0' );
 			}
 
 			// 2. Also add tabindex to elements with "role" attributes that imply interactivity
-			var role = $el.attr( 'role' );
+			const role = $el.attr( 'role' );
 			if (
 				role &&
 				[
@@ -104,10 +104,12 @@ function WCAG( $el ) {
 
 		// 2. Check for custom interactive components with data-wcag-interactive
 		$( '.component[data-wcag-interactive]' ).each( function () {
-			var $component = $( this );
-			var selector = $component.data( 'wcag-interactive' );
+			const $component = $( this );
+			const selector = $component.data( 'wcag-interactive' );
 
-			if ( ! selector ) return;
+			if ( ! selector ) {
+				return;
+			}
 
 			// Find the child elements matching the declared selector
 			$component
@@ -119,7 +121,7 @@ function WCAG( $el ) {
 		} );
 
 		// 3. Check for any interactive components registered by individual components
-		var seenElements = new Set();
+		const seenElements = new Set();
 
 		console.log(
 			'FLEX.events.wcag.interactiveElements: ',
@@ -138,7 +140,7 @@ function WCAG( $el ) {
 
 			if ( typeof entry.elements !== 'undefined' ) {
 				// Newer method: DOM elements passed directly
-				var elements = Array.isArray( entry.elements )
+				const elements = Array.isArray( entry.elements )
 					? entry.elements
 					: [ entry.elements ];
 
@@ -205,9 +207,9 @@ function WCAG( $el ) {
 	function bindEvents() {
 		$( document ).on( 'keyup', function ( e ) {
 			// Detect key press for WCAG compliance
-			var keyCode = e.keyCode || e.which;
+			const keyCode = e.keyCode || e.which;
 
-			var $focused_element = document.activeElement;
+			const $focused_element = document.activeElement;
 
 			console.log(
 				'/FLEX/\tcomponents/\tcomponent_wcag/\twcag.js',

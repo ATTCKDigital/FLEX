@@ -7,13 +7,13 @@ function Share( $el ) {
 		e.preventDefault();
 
 		// Get href
-		var targetURL = $( this ).attr( 'href' );
+		const targetURL = $( this ).attr( 'href' );
 
 		// Get target
-		var target = $( this ).attr( 'target' );
+		const target = $( this ).attr( 'target' );
 
 		// Get options
-		var options = $( this ).attr( 'data-options' );
+		const options = $( this ).attr( 'data-options' );
 
 		// Open share window
 		window.open( targetURL, target, options );

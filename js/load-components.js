@@ -45,28 +45,28 @@ const childComponents = FLEX.ChildComponents || {};
 // Make sure to import them above first.
 FLEX.Components = Object.assign(
 	{
-		Accordion: Accordion,
-		Analytics: Analytics,
-		AnimatedGif: AnimatedGif,
-		Bookmark: Bookmark,
-		Carousel: Carousel,
-		CopyLink: CopyLink,
-		CF7: CF7,
-		GDPR: GDPR,
-		HeightMatch: HeightMatch,
-		LoadMore: LoadMore,
-		Nav: Nav,
-		Reserve: Reserve,
-		ScrollIn: ScrollIn,
-		ScrollTo: ScrollTo,
-		Share: Share,
-		Timer: Timer,
-		Parallax: Parallax,
-		PopupController: PopupController,
-		Video: Video,
-		VideoPopup: VideoPopup,
-		VideoThumb: VideoThumb,
-		WCAG: WCAG,
+		Accordion,
+		Analytics,
+		AnimatedGif,
+		Bookmark,
+		Carousel,
+		CopyLink,
+		CF7,
+		GDPR,
+		HeightMatch,
+		LoadMore,
+		Nav,
+		Reserve,
+		ScrollIn,
+		ScrollTo,
+		Share,
+		Timer,
+		Parallax,
+		PopupController,
+		Video,
+		VideoPopup,
+		VideoThumb,
+		WCAG,
 	},
 	childComponents
 );
@@ -80,7 +80,7 @@ FLEX.Loader.loadComponents = function () {
 
 	FLEX.Loader.loadedComponents = [];
 
-	var self = this;
+	const self = this;
 
 	$( '.component' ).each( function () {
 		console.log(
@@ -93,8 +93,8 @@ FLEX.Loader.loadComponents = function () {
 			return;
 		}
 
-		var $this = $( this );
-		var componentNames = $this.attr( 'data-component-name' );
+		const $this = $( this );
+		let componentNames = $this.attr( 'data-component-name' );
 
 		console.log(
 			'/FLEX/\tjs	/\tload-components.js/',
@@ -130,15 +130,15 @@ FLEX.Loader.loadComponents = function () {
 				el
 			);
 
-			let componentName = el;
+			const componentName = el;
 
 			// Exit if not in component list
 			if ( typeof FLEX.Components[ componentName ] === 'undefined' ) {
 				return;
 			}
 
-			let params = $this.data( 'component-options' ) || {};
-			let instance = new FLEX.Components[ componentName ](
+			const params = $this.data( 'component-options' ) || {};
+			const instance = new FLEX.Components[ componentName ](
 				$this,
 				params
 			);
@@ -146,7 +146,7 @@ FLEX.Loader.loadComponents = function () {
 			// Save component instance references in a global manifest.
 			if ( typeof FLEX.Components[ componentName ] !== 'undefined' ) {
 				self.loadedComponents.push( {
-					instance: instance,
+					instance,
 				} );
 
 				instances.push( instance );
@@ -161,7 +161,7 @@ FLEX.Loader.loadComponents = function () {
 };
 
 FLEX.Loader.loadComponent = function ( $el ) {
-	var componentName = $el.attr( 'data-component-name' );
+	let componentName = $el.attr( 'data-component-name' );
 
 	console.log(
 		'/FLEX/\tjs	/\tload-components.js/',
@@ -169,7 +169,9 @@ FLEX.Loader.loadComponent = function ( $el ) {
 		componentName
 	);
 
-	if ( typeof componentName === 'undefined' ) return;
+	if ( typeof componentName === 'undefined' ) {
+		return;
+	}
 
 	// For Legacy support, replace any commas with spaces first
 	componentName = componentName.replace( ',', ' ' );
@@ -179,7 +181,7 @@ FLEX.Loader.loadComponent = function ( $el ) {
 	componentName = componentName.split( ' ' );
 
 	$.each( componentName, function ( i, el ) {
-		let componentName = el;
+		const componentName = el;
 
 		// Exit if not in component list
 		if ( typeof FLEX.Components[ componentName ] === 'undefined' ) {
@@ -190,8 +192,8 @@ FLEX.Loader.loadComponent = function ( $el ) {
 			return;
 		}
 
-		let params = $el.data( 'component-options' ) || {};
-		let instance = new FLEX.Components[ componentName ]( $el, params );
+		const params = $el.data( 'component-options' ) || {};
+		const instance = new FLEX.Components[ componentName ]( $el, params );
 	} );
 
 	$( document ).trigger( 'components:loaded' );

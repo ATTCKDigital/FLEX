@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 function ScrollTo( $el ) {
-	var anchor;
+	let anchor;
 
 	function bindEvents() {
 		$el.find( '.scrollTo' ).on( 'click', ScrollToAnchor );
@@ -18,7 +18,7 @@ function ScrollTo( $el ) {
 			anchor = $( this ).attr( 'data-anchor' );
 		}
 
-		var row = $( 'body' ).find( '#' + anchor );
+		const row = $( 'body' ).find( '#' + anchor );
 
 		$( 'html, body' ).animate(
 			{

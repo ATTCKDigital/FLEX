@@ -65,7 +65,7 @@ icons.button = (
 
 icons.button2 = (
 	<svg
-		enable-background="new 0 0 479.998 479.998"
+		enableBackground="new 0 0 479.998 479.998"
 		height="24"
 		viewBox="0 0 479.998 479.998"
 		width="24"
@@ -89,7 +89,7 @@ icons.buttonSimple = (
 
 icons.buttonThin = (
 	<svg
-		enable-background="new 0 0 512 512"
+		enableBackground="new 0 0 512 512"
 		height="24"
 		viewBox="0 0 512 512"
 		width="24"
@@ -169,7 +169,7 @@ icons.columns = (
 		width="24"
 		height="24"
 		viewBox="0 0 24 24"
-		enable-background="new 0 0 24 24"
+		enableBackground="new 0 0 24 24"
 	>
 		<path d="m9.5 5c-.128 0-.256-.049-.354-.146l-4-4c-.142-.144-.185-.358-.108-.545s.26-.309.462-.309h8c.202 0 .385.122.462.309s.034.402-.108.545l-4 4c-.098.097-.226.146-.354.146zm-2.793-4 2.793 2.793 2.793-2.793z" />
 		<path d="m5.5 24h-3c-.827 0-1.5-.673-1.5-1.5v-16c0-.827.673-1.5 1.5-1.5h3c.827 0 1.5.673 1.5 1.5v16c0 .827-.673 1.5-1.5 1.5zm-3-18c-.275 0-.5.224-.5.5v16c0 .276.225.5.5.5h3c.275 0 .5-.224.5-.5v-16c0-.276-.225-.5-.5-.5z" />
@@ -218,7 +218,7 @@ icons.heading = (
 		width="24"
 		height="24"
 		viewBox="0 0 31.29 31.29"
-		enable-background="new 0 0 31.29 31.29"
+		enableBackground="new 0 0 31.29 31.29"
 	>
 		<path
 			d="M18.585,31.226v-1.833h0.577c0.497,0,0.961-0.036,1.395-0.105c0.436-0.072,0.812-0.219,1.131-0.438
@@ -241,7 +241,7 @@ icons.paragraph = (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 512 512"
-		enable-background="new 0 0 512 512"
+		enableBackground="new 0 0 512 512"
 		width="24"
 		height="24"
 	>
@@ -282,7 +282,7 @@ icons.rows = (
 		width="24"
 		height="24"
 		viewBox="0 0 24 24"
-		enable-background="new 0 0 24 24"
+		enableBackground="new 0 0 24 24"
 	>
 		<path d="m.5 14c-.064 0-.13-.012-.191-.038-.187-.077-.309-.26-.309-.462v-8c0-.202.122-.385.309-.462.186-.077.402-.035.545.108l4 4c.195.195.195.512 0 .707l-4 4c-.096.096-.224.147-.354.147zm.5-7.293v5.586l2.793-2.793z" />
 		<path d="m22.5 7h-16c-.827 0-1.5-.673-1.5-1.5v-3c0-.827.673-1.5 1.5-1.5h16c.827 0 1.5.673 1.5 1.5v3c0 .827-.673 1.5-1.5 1.5zm-16-5c-.275 0-.5.224-.5.5v3c0 .276.225.5.5.5h16c.275 0 .5-.224.5-.5v-3c0-.276-.225-.5-.5-.5z" />
@@ -299,7 +299,7 @@ icons.source = (
 		width="24"
 		height="24"
 		viewBox="0 0 522.468 522.469"
-		enable-background="new 0 0 522.468 522.469"
+		enableBackground="new 0 0 522.468 522.469"
 	>
 		<path
 			d="M325.762,70.513l-17.706-4.854c-2.279-0.76-4.524-0.521-6.707,0.715c-2.19,1.237-3.669,3.094-4.429,5.568L190.426,440.53
@@ -404,7 +404,7 @@ icons.wordpress = (
 		width="24"
 		height="24"
 		viewBox="0 0 100 100"
-		enable-background="0 0 240 240"
+		enableBackground="0 0 240 240"
 	>
 		<path
 			d="M49.16,51.833L37.694,85.152c3.425,1.004,7.046,1.558,10.798,1.558c4.449,0,8.719-0.77,12.689-2.167
@@ -438,7 +438,7 @@ icons.quote = (
 		width="24"
 		height="24"
 		viewBox="0 0 24 24"
-		enable-background="new 0 0 409.294 409.294"
+		enableBackground="new 0 0 409.294 409.294"
 	>
 		<path d="m233.882 29.235v175.412h116.941c0 64.48-52.461 116.941-116.941 116.941v58.471c96.728 0 175.412-78.684 175.412-175.412v-175.412z" />
 		<path d="m0 204.647h116.941c0 64.48-52.461 116.941-116.941 116.941v58.471c96.728 0 175.412-78.684 175.412-175.412v-175.412h-175.412z" />
@@ -498,7 +498,7 @@ icons.users = (
 
 icons.video = (
 	<svg
-		enable-background="new 0 0 24 24"
+		enableBackground="new 0 0 24 24"
 		height="24"
 		viewBox="0 0 24 24"
 		width="24"
@@ -526,7 +526,7 @@ icons.wordpress = (
 		width="24"
 		height="24"
 		viewBox="0 0 96 96"
-		enable-background="0 0 24 24"
+		enableBackground="0 0 24 24"
 	>
 		<path
 			d="M49.16,51.833L37.694,85.152c3.425,1.004,7.046,1.558,10.798,1.558c4.449,0,8.719-0.77,12.689-2.167

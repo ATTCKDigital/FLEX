@@ -23,20 +23,20 @@ function Analytics( $el ) {
 		// Check for any class = track-analytics
 		// Try to find event info in data attributes
 		$( '.track-analytics' ).filter( function () {
-			var eventID = $( this ).attr( 'data-event-id' );
-			var eventSource = $( this ).attr( 'data-event-source' );
-			var eventMedium = $( this ).attr( 'data-event-medium' );
+			const eventID = $( this ).attr( 'data-event-id' );
+			const eventSource = $( this ).attr( 'data-event-source' );
+			const eventMedium = $( this ).attr( 'data-event-medium' );
 		} );
 
 		// Try to find event info in classes
 		console.log( '/— $(".track-event"): ', '', $( '.track-event' ) );
 
 		$( '.track-event' ).filter( function () {
-			var classes = this.className.split( /\s/ );
+			const classes = this.className.split( /\s/ );
 			console.log( '/— classes: ', classes );
 
 			// Set up defaults
-			var event = {
+			const event = {
 				category: '',
 				action: '',
 				label: '',
@@ -44,35 +44,35 @@ function Analytics( $el ) {
 			};
 
 			// Track whether a piece of data was found
-			var match = false;
+			let match = false;
 
-			for ( var i = 0, len = classes.length; i < len; i++ ) {
+			for ( let i = 0, len = classes.length; i < len; i++ ) {
 				console.log( '/— return: ', true );
 
 				switch ( true ) {
 					case classes[ i ].indexOf( 'event-category' ) > -1:
-						event[ 'category' ] = classes[ i ].substr(
+						event.category = classes[ i ].substr(
 							'event-category'.length + 1
 						);
 						match = true;
 						break;
 
 					case classes[ i ].indexOf( 'event-action' ) > -1:
-						event[ 'action' ] = classes[ i ].substr(
+						event.action = classes[ i ].substr(
 							'event-action'.length + 1
 						);
 						match = true;
 						break;
 
 					case classes[ i ].indexOf( 'event-label' ) > -1:
-						event[ 'label' ] = classes[ i ].substr(
+						event.label = classes[ i ].substr(
 							'event-label'.length + 1
 						);
 						match = true;
 						break;
 
 					case classes[ i ].indexOf( 'event-value' ) > -1:
-						event[ 'value' ] = classes[ i ].substr(
+						event.value = classes[ i ].substr(
 							'event-value'.length + 1
 						);
 						match = true;

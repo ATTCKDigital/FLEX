@@ -10,8 +10,8 @@ import GlobalEvents from './global-events';
 // };
 
 FLEX.debug = ( function () {
-	var _debugModeStatus = false;
-	var _breakpointsModeStatus = false;
+	let _debugModeStatus = false;
+	let _breakpointsModeStatus = false;
 
 	function bindEvents() {
 		// Only bind keyboard events if already in
@@ -96,8 +96,8 @@ FLEX.debug = ( function () {
 		);
 
 		// Default values
-		var debugMode = false;
-		var showBreakpoints = false;
+		let debugMode = false;
+		let showBreakpoints = false;
 
 		switch ( true ) {
 			// Check URL var
@@ -241,7 +241,7 @@ FLEX.debug = ( function () {
 	// I.e., not in production
 	function enhancedConsoleLoggingDetect() {
 		// Turn off by default
-		var showConsoleLogs = false;
+		let showConsoleLogs = false;
 
 		// ...unless overridden in client-namespace.js
 		if ( ! FLEX.isUndefined( FLEX.showConsoleLogs ) ) {
@@ -271,13 +271,13 @@ FLEX.debug = ( function () {
 		}
 
 		// Console event override
-		var _log = console.log;
-		var _status = status;
+		const _log = console.log;
+		const _status = status;
 
 		console.log = function ( logMessage ) {
 			// Show console logs if explicitly enabled
 			if ( _status === true ) {
-				var argArray = arguments;
+				let argArray = arguments;
 
 				if ( arguments.length === 2 ) {
 					if ( arguments[ 0 ] && arguments[ 1 ] ) {
@@ -446,7 +446,7 @@ FLEX.debug = ( function () {
 
 	return {
 		getStatus: debugModeStatusGet,
-		init: init,
+		init,
 	};
 } )();
 

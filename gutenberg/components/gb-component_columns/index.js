@@ -29,7 +29,7 @@ function ColumnOptions( props ) {
 	// const setColumnXL2 = value => props.setAttributes( { columnXL2: value } );
 
 	const setColumn = ( which, value ) => {
-		let columnEdited = '';
+		const columnEdited = '';
 		let columnEditedCount = 0;
 
 		// Save prop

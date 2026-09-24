@@ -11,6 +11,7 @@ if ( ! FLEX.isProd ) {
 /**
  * Copies link URL to clipboard and optionally
  * displays the copied URL under the copied link
+ * @param $el
  */
 function CopyLink( $el ) {
 	function bindEvents() {
@@ -23,7 +24,7 @@ function CopyLink( $el ) {
 	function copyLink( e, successCallback ) {
 		e.preventDefault();
 
-		var linkText = e.target.getAttribute( 'href' );
+		const linkText = e.target.getAttribute( 'href' );
 
 		navigator.clipboard.writeText( linkText ).then(
 			( a, b, c ) => {
@@ -38,7 +39,7 @@ function CopyLink( $el ) {
 	}
 
 	function displayCopiedLinkURL( e, linkText ) {
-		var copiedLinkURL = '';
+		const copiedLinkURL = '';
 
 		// Prompts user to access clipboard, which
 		// we don't want. -DP

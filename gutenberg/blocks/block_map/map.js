@@ -205,7 +205,7 @@ export default registerBlockType( 'flexlayout/image', {
 								className="block-library-button__inline-link"
 								onSubmit={ ( event ) => event.preventDefault() }
 							>
-								<div class="margin-left-2x float-left">
+								<div className="margin-left-2x float-left">
 									<Dashicon
 										icon="admin-links"
 										className="float-left"
@@ -218,7 +218,7 @@ export default registerBlockType( 'flexlayout/image', {
 										}
 									/>
 								</div>
-								<div class="margin-left-2x float-left position-relative">
+								<div className="margin-left-2x float-left position-relative">
 									<NewWindowCheckbox />
 								</div>
 								<Button

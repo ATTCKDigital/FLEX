@@ -16,7 +16,7 @@ export { PaddingOptionsAttributes, PaddingOptionsClasses };
 
 function PaddingOptions( props ) {
 	const setPadding = ( which, value ) => {
-		let paddingEdited = '';
+		const paddingEdited = '';
 		let paddingEditedCount = 0;
 
 		// Save prop

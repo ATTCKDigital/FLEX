@@ -274,7 +274,7 @@ export default registerBlockType( 'flexlayout/video', {
 				<div className="video-container">
 					<p>
 						<video
-							autoplay
+							autoPlay
 							loop
 							muted
 							className="video-container video-container-overlay"
@@ -398,7 +398,7 @@ export default registerBlockType( 'flexlayout/video', {
 					{ /*<mark className={'play'} data-video-type={'upload'}></mark>*/ }
 					{ props.attributes.showControls ? (
 						<video
-							autoplay
+							autoPlay
 							loop
 							muted
 							controls
@@ -415,7 +415,7 @@ export default registerBlockType( 'flexlayout/video', {
 						</video>
 					) : (
 						<video
-							autoplay
+							autoPlay
 							loop
 							muted
 							className="video-container video-container-overlay"
@@ -465,7 +465,7 @@ export default registerBlockType( 'flexlayout/video', {
 									props.attributes.youtubeVideo
 								: ''
 						}
-						frameborder="0"
+						frameBorder="0"
 						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 						allowfullscreen
 					></iframe>
@@ -534,26 +534,22 @@ export default registerBlockType( 'flexlayout/video', {
 						</p>
 					</div>
 				);
-			} else {
-				console.log( '2.) zeroStateOutput, props.attributes: ' );
-				console.table( props.attributes );
-
-				if (
-					props.attributes.videoType !== 'youtube' &&
-					props.attributes.videoType !== 'brightcove'
-				) {
-					return (
-						<div className="flex-center-center">
-							{ icons.video }
-							<p>
-								{ 'Video type: ' + props.attributes.videoType }
-							</p>
-						</div>
-					);
-				} else {
-					return '';
-				}
 			}
+			console.log( '2.) zeroStateOutput, props.attributes: ' );
+			console.table( props.attributes );
+
+			if (
+				props.attributes.videoType !== 'youtube' &&
+				props.attributes.videoType !== 'brightcove'
+			) {
+				return (
+					<div className="flex-center-center">
+						{ icons.video }
+						<p>{ 'Video type: ' + props.attributes.videoType }</p>
+					</div>
+				);
+			}
+			return '';
 		};
 
 		const svgHeight = {

@@ -7,7 +7,7 @@
 import $ from 'jquery';
 
 // Namespace & config
-var FLEX = {
+const FLEX = {
 	// Used by debug.js to parse which .breakpoint element is(':visible')
 	breakpoints: [
 		'small',
@@ -54,17 +54,17 @@ FLEX.cookies = ( function () {
 				')'
 		);
 
-		var expires = new Date();
+		const expires = new Date();
 		expires.setTime( expires.getTime() + expiry * 24 * 60 * 60 * 1000 );
 		document.cookie =
 			key + '=' + value + ';path=/;expires=' + expires.toUTCString();
 	}
 
 	function get( key ) {
-		var keyValue = document.cookie.match(
+		const keyValue = document.cookie.match(
 			'(^|;) ?' + key + '=([^;]*)(;|$)'
 		);
-		var returnValue = keyValue ? keyValue[ 2 ] : null;
+		const returnValue = keyValue ? keyValue[ 2 ] : null;
 
 		console.log(
 			'/src\t/scripts\t/FLEX.js',
@@ -80,14 +80,14 @@ FLEX.cookies = ( function () {
 			'FLEX.cookies.remove(' + key + ')'
 		);
 
-		var keyValue = this.get( key );
+		const keyValue = this.get( key );
 		this.set( key, keyValue, '-1' );
 	}
 
 	return {
-		get: get,
-		remove: remove,
-		set: set,
+		get,
+		remove,
+		set,
 	};
 } )();
 
@@ -103,11 +103,11 @@ FLEX.enforce = ( function () {
 	 * — FLEX.enforce.type(varName, type, [errorMessage]);
 	 * — FLEX.enforce.custom(boolean, callbackFunction);
 	 *
-	 * @param {string} errorMessage Message to display
-	 * @param {string|object} errorType Category of error, object format: { 'errorType': '{string} typeName' }
+	 * @param {string}        errorMessage Message to display
+	 * @param {string|object} errorType    Category of error, object format: { 'errorType': '{string} typeName' }
 	 * @return {boolean} True if defined, else undefined & an error message
 	 */
-	var _error = ( function () {
+	const _error = ( function () {
 		function _showError( errorType, errorMessage ) {
 			console.log(
 				'/src\t/scripts\t/FLEX.js',
@@ -117,7 +117,7 @@ FLEX.enforce = ( function () {
 			);
 
 			// Set default error message
-			var error = {
+			const error = {
 				errorType: 'default',
 				message: 'There has been an error.',
 			};
@@ -127,7 +127,7 @@ FLEX.enforce = ( function () {
 				switch ( true ) {
 					// Handle type checking errors
 					case errorType.hasOwnProperty( 'typeCheck' ):
-						error.typeCheck = errorType[ 'typeCheck' ];
+						error.typeCheck = errorType.typeCheck;
 						error.errorType = 'typeCheck';
 
 						return;
@@ -199,7 +199,7 @@ FLEX.enforce = ( function () {
 			return _showError(
 				{
 					errorType: 'typeCheck',
-					typeCheck: typeCheck,
+					typeCheck,
 				},
 				errorMessage
 			);
@@ -207,15 +207,16 @@ FLEX.enforce = ( function () {
 
 		// Available tests
 		return {
-			generic: generic,
-			required: required,
+			generic,
+			required,
 			typeCheck: type,
 		};
 	} )();
 
 	/**
 	 * Tests if value is defined.
-	 * @param {string} val Required value to check
+	 * @param {string} val          Required value to check
+	 * @param          errorMessage
 	 * @return {boolean} True if defined, else undefined & an error message
 	 */
 	function required( val, errorMessage ) {
@@ -240,8 +241,8 @@ FLEX.enforce = ( function () {
 
 	/**
 	 * Tests if value matches type.
-	 * @param {string} val Value to check
-	 * @param {string} type Type to compare against value
+	 * @param {string} val            Value to check
+	 * @param {string} type           Type to compare against value
 	 * @param {string} [errorMessage] Error shown if tests fail
 	 * @return {boolean} True if typecheck is passed, else undefined & an error message
 	 */
@@ -269,7 +270,7 @@ FLEX.enforce = ( function () {
 
 	/**
 	 * Returns callback if passesTest param is true.
-	 * @param {boolean} passesTest Calling method set this value.
+	 * @param {boolean}  passesTest    Calling method set this value.
 	 * @param {function} errorCallback Callback function
 	 * @return {function} Returns return value of callback function
 	 */
@@ -285,18 +286,16 @@ FLEX.enforce = ( function () {
 			// Enforce function type
 			if ( FLEX.enforce.type( errorCallback, 'function' ) ) {
 				return errorCallback();
-			} else {
-				return false;
 			}
-		} else {
-			return true;
+			return false;
 		}
+		return true;
 	}
 
 	return {
-		required: required,
-		type: type,
-		custom: custom,
+		required,
+		type,
+		custom,
 	};
 } )();
 
@@ -304,8 +303,8 @@ FLEX.formatPhoneNumber = function ( phoneNumberString ) {
 	console.log( '/FLEX/js/client-namespace', 'formatPhoneNumber()' );
 	console.log( '/— phoneNumberString: ', phoneNumberString );
 
-	var cleaned = ( '' + phoneNumberString ).replace( /\D/g, '' );
-	var match = cleaned.match( /^(\d{3})(\d{3})(\d{4})$/ );
+	const cleaned = ( '' + phoneNumberString ).replace( /\D/g, '' );
+	const match = cleaned.match( /^(\d{3})(\d{3})(\d{4})$/ );
 
 	if ( match ) {
 		return '(' + match[ 1 ] + ') ' + match[ 2 ] + '-' + match[ 3 ];
@@ -320,7 +319,7 @@ FLEX.formatPhoneNumber = function ( phoneNumberString ) {
 // — getAll(): Returns object with all cookies that have been set.
 // — remove(key): Removes String:key from _store object.
 FLEX.queryVariables = ( function () {
-	var _store = {};
+	const _store = {};
 
 	function set( key, value ) {
 		console.log(
@@ -362,11 +361,11 @@ FLEX.queryVariables = ( function () {
 			'FLEX.queryVariables.getAll()'
 		);
 
-		var query = window.location.search.substring( 1 );
-		var vars = query.split( '&' );
+		const query = window.location.search.substring( 1 );
+		const vars = query.split( '&' );
 
-		for ( var i = 0; i < vars.length; i++ ) {
-			var pair = vars[ i ].split( '=' );
+		for ( let i = 0; i < vars.length; i++ ) {
+			const pair = vars[ i ].split( '=' );
 
 			set( pair[ 0 ], pair[ 1 ] );
 		}
@@ -401,9 +400,9 @@ FLEX.queryVariables = ( function () {
 	}
 
 	return {
-		get: get,
-		getAll: getAll,
-		remove: remove,
+		get,
+		getAll,
+		remove,
 	};
 } )();
 
@@ -421,7 +420,7 @@ FLEX.isUndefined = function ( value ) {
 
 FLEX.isUndefinedOrNull = function ( value ) {
 	// Default value
-	var returnValue = false;
+	let returnValue = false;
 
 	switch ( true ) {
 		case typeof value === 'undefined':
@@ -443,8 +442,12 @@ FLEX.truncateString = function ( str, num ) {
 	// https://medium.com/@DylanAttal/truncate-a-string-in-javascript-41f33171d5a8
 	console.log( '/FLEX/js/global-events.js', 'truncateString()' );
 
-	if ( ! str ) return false;
-	if ( ! num ) return false;
+	if ( ! str ) {
+		return false;
+	}
+	if ( ! num ) {
+		return false;
+	}
 
 	// If the length of str is less than or equal to num
 	// just return str--don't truncate it.

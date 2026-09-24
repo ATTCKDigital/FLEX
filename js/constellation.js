@@ -1,13 +1,13 @@
 document.addEventListener( 'DOMContentLoaded', function () {
 	let scene, camera, renderer, particles, lines;
 	let animationId;
-	let mouse = { x: 0, y: 0 };
+	const mouse = { x: 0, y: 0 };
 	let closestParticle = new THREE.Vector3( 0, 0, 0 );
 	let closestParticleIndex = -1;
 	let transitionStartTime = Date.now();
-	let previousParticle = new THREE.Vector3( 0, 0, 0 );
+	const previousParticle = new THREE.Vector3( 0, 0, 0 );
 	let allHopDistances = [];
-	let connections = new Map();
+	const connections = new Map();
 	let particleGeometry, particleMaterial, lineGeometry, lineMaterial;
 
 	function init() {
@@ -288,7 +288,9 @@ document.addEventListener( 'DOMContentLoaded', function () {
 				const distance = pos1.distanceTo( pos2 );
 
 				if ( distance < maxDistance ) {
-					if ( Math.random() > 0.25 ) continue;
+					if ( Math.random() > 0.25 ) {
+						continue;
+					}
 
 					linePositions.push( pos1.x, pos1.y, pos1.z );
 					linePositions.push( pos2.x, pos2.y, pos2.z );

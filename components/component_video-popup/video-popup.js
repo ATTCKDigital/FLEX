@@ -11,13 +11,13 @@ function VideoPopup( $el, params = {} ) {
 
 	// Merge any options set on the DOM element with
 	// the component defaults set above
-	var options = $.extend( true, {}, defaults, params );
+	const options = $.extend( true, {}, defaults, params );
 
-	var _$srcElementParent;
-	var $closeButton;
-	var $watchButton;
-	var $popup;
-	var $iframe;
+	let _$srcElementParent;
+	let $closeButton;
+	let $watchButton;
+	let $popup;
+	let $iframe;
 
 	function bindEvents() {
 		console.log(
@@ -27,7 +27,7 @@ function VideoPopup( $el, params = {} ) {
 
 		$watchButton.on( 'click keypress', function ( e ) {
 			// Detect key press for WCAG compliance
-			var keyCode = e.keyCode || e.which;
+			const keyCode = e.keyCode || e.which;
 
 			// Detect key press
 			// 9 = tab
@@ -46,17 +46,16 @@ function VideoPopup( $el, params = {} ) {
 						keyCode
 				);
 				return;
-			} else {
-				console.log(
-					'/FLEX/\tcomponents/\tcomponent_video-popup/\tvideo-popup.js',
-					'$watchButton keypress › pressed ' +
-						e.key +
-						' key:type ' +
-						e.type +
-						', keyCode: ' +
-						keyCode
-				);
 			}
+			console.log(
+				'/FLEX/\tcomponents/\tcomponent_video-popup/\tvideo-popup.js',
+				'$watchButton keypress › pressed ' +
+					e.key +
+					' key:type ' +
+					e.type +
+					', keyCode: ' +
+					keyCode
+			);
 
 			e.preventDefault();
 
@@ -68,7 +67,7 @@ function VideoPopup( $el, params = {} ) {
 
 		$closeButton.on( 'click keypress', function ( e ) {
 			// Detect key press for WCAG compliance
-			var keyCode = e.keyCode || e.which;
+			const keyCode = e.keyCode || e.which;
 
 			// Detect key press
 			// 9 = tab
@@ -87,17 +86,16 @@ function VideoPopup( $el, params = {} ) {
 						keyCode
 				);
 				return;
-			} else {
-				console.log(
-					'/FLEX/\tcomponents/\tcomponent_video-popup/\tvideo-popup.js',
-					'$closeButton keypress › pressed ' +
-						e.key +
-						' key:type ' +
-						e.type +
-						', keyCode: ' +
-						keyCode
-				);
 			}
+			console.log(
+				'/FLEX/\tcomponents/\tcomponent_video-popup/\tvideo-popup.js',
+				'$closeButton keypress › pressed ' +
+					e.key +
+					' key:type ' +
+					e.type +
+					', keyCode: ' +
+					keyCode
+			);
 
 			e.preventDefault();
 
@@ -111,7 +109,7 @@ function VideoPopup( $el, params = {} ) {
 		// TODO: (DP) Going to have to implement the event layer here
 		$( document ).on( 'keydown', function ( e ) {
 			// Detect key press for WCAG compliance
-			var keyCode = e.keyCode || e.which;
+			const keyCode = e.keyCode || e.which;
 
 			console.log(
 				'/FLEX/\tcomponents/\tcomponent_video-popup/\tvideo-popup.js',
@@ -149,7 +147,7 @@ function VideoPopup( $el, params = {} ) {
 		// Supports direct VideoPopup FLEX components using
 		// Component Options parameters in Gutenberg blocks
 		if ( typeof e[ 0 ].dataset.popupContentId === 'undefined' ) {
-			$srcElement = $( '#' + options[ 'popupName' ] );
+			$srcElement = $( '#' + options.popupName );
 		}
 
 		_$srcElementParent = $srcElement.parent();
@@ -176,7 +174,9 @@ function VideoPopup( $el, params = {} ) {
 		$body.removeClass( 'popup-open' );
 
 		// $srcElement = $popup.find('.popup-content-container').html();
-		var $srcElements = $popup.find( '.popup-content-container' ).children();
+		const $srcElements = $popup
+			.find( '.popup-content-container' )
+			.children();
 
 		$srcElements.addClass( 'hide' );
 

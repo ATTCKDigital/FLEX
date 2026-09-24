@@ -10,40 +10,42 @@ if ( ! FLEX.isProd ) {
 }
 /**
  * Shows countdown timer
+ * @param $el
+ * @param options
  */
 function Timer( $el, options ) {
 	// Cache body
-	var $$body = $$( 'body' );
+	const $$body = $$( 'body' );
 
 	// Get target from options
-	var _options = options;
-	var _currentDay;
-	var _currentHour;
-	var _currentMinute;
-	var _currentSecond;
+	const _options = options;
+	let _currentDay;
+	let _currentHour;
+	let _currentMinute;
+	let _currentSecond;
 
-	var _dayFirstDigit;
-	var _daySecondDigit;
-	var _hourFirstDigit;
-	var _hourSecondDigit;
-	var _minuteFirstDigit;
-	var _minuteSecondDigit;
-	var _secondFirstDigit;
-	var _secondSecondDigit;
+	let _dayFirstDigit;
+	let _daySecondDigit;
+	let _hourFirstDigit;
+	let _hourSecondDigit;
+	let _minuteFirstDigit;
+	let _minuteSecondDigit;
+	let _secondFirstDigit;
+	let _secondSecondDigit;
 
-	var _remainingDays;
-	var _remainingHours;
-	var _remainingMinutes;
-	var _remainingSeconds;
+	let _remainingDays;
+	let _remainingHours;
+	let _remainingMinutes;
+	let _remainingSeconds;
 
-	var _remainingDayFirstDigit;
-	var _remainingDaySecondDigit;
-	var _remainingHourFirstDigit;
-	var _remainingHourSecondDigit;
-	var _remainingMinuteFirstDigit;
-	var _remainingMinuteSecondDigit;
-	var _remainingSecondFirstDigit;
-	var _remainingSecondSecondDigit;
+	let _remainingDayFirstDigit;
+	let _remainingDaySecondDigit;
+	let _remainingHourFirstDigit;
+	let _remainingHourSecondDigit;
+	let _remainingMinuteFirstDigit;
+	let _remainingMinuteSecondDigit;
+	let _remainingSecondFirstDigit;
+	let _remainingSecondSecondDigit;
 
 	// Handle options if any (hour, minute, and second should all be passed)
 	if (
@@ -63,7 +65,7 @@ function Timer( $el, options ) {
 		_currentSecond = $$body.attr( 'data-currentsecond' );
 	} else {
 		// Use JavaScript to get minutes and seconds due to Shopify page caching giving incorrect time
-		var myDate = new Date();
+		const myDate = new Date();
 
 		_currentDay = myDate.getDay();
 		_currentHour = myDate.getHours();
@@ -219,7 +221,7 @@ function Timer( $el, options ) {
 
 	function insertTimerMarkup() {
 		// Build HTML
-		var markup = [];
+		const markup = [];
 
 		markup.push( '<section class="timer-container-wrapper">' );
 		markup.push( '<div class="timer-container">' );
@@ -337,7 +339,7 @@ function Timer( $el, options ) {
 		markup.push( '</div>' );
 		markup.push( '</section>' );
 
-		var $markup = markup.join( '' );
+		const $markup = markup.join( '' );
 
 		// Insert before $el
 		// $('body').prepend($markup);
@@ -346,7 +348,7 @@ function Timer( $el, options ) {
 	}
 
 	function render() {
-		var showTimer = false;
+		const showTimer = false;
 
 		// Insert the timer markup
 		insertTimerMarkup();
@@ -367,7 +369,7 @@ function Timer( $el, options ) {
 			return;
 		}
 
-		var _animationCounter;
+		let _animationCounter;
 
 		// setInterval(function () {
 		function animateTimer( timestamp ) {
@@ -375,7 +377,7 @@ function Timer( $el, options ) {
 				_animationCounter = timestamp;
 			}
 
-			var elapsed = timestamp - _animationCounter;
+			const elapsed = timestamp - _animationCounter;
 
 			// Only trigger the animation every 1s (i.e., 1000ms)
 			if ( elapsed > 1000 ) {
@@ -635,7 +637,7 @@ function Timer( $el, options ) {
 		return true;
 
 		// Set default to false
-		var applies = false;
+		let applies = false;
 
 		// NOTE: Needs to be served from a non-cached backend so it's not dependent on the page load
 		// var chance = 20;

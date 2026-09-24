@@ -1,12 +1,12 @@
 /**
  * Set inline styles.
- * @param  {object} props - The block object.
- * @return {object} The inline background type CSS.
+ * @param {Object} props - The block object.
+ * @return {Object} The inline background type CSS.
  */
 function BackgroundColorOptionsInlineStyles( props ) {
 	const { backgroundColor, backgroundOpacity } = props.attributes;
 
-	let style = {};
+	const style = {};
 
 	if ( backgroundColor ) {
 		// Convert hex to rgba

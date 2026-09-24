@@ -10,10 +10,11 @@ if ( ! FLEX.isProd ) {
 
 /**
  * Display a calendar selector
+ * @param $el
  */
 function Bookmark( $el ) {
 	// Cache the body
-	var $body = $( 'body' );
+	const $body = $( 'body' );
 
 	function bindEvents() {
 		$el = $el;

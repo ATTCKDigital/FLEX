@@ -17,17 +17,19 @@ if ( ! FLEX.isProd ) {
 
 /**
  * Offets either the relative position of valid $el, else the background image position.
+ * @param $el
+ * @param params
  */
 function Parallax( $el, params = {} ) {
 	const defaults = {};
 
 	// Merge any options set on the DOM element with
 	// the component defaults set above
-	var options = $.extend( true, {}, defaults, params );
-	var viewportHeight = $( window ).outerHeight();
-	var scrollStartThreshold =
+	const options = $.extend( true, {}, defaults, params );
+	let viewportHeight = $( window ).outerHeight();
+	let scrollStartThreshold =
 		parseInt( $el.attr( 'data-scroll-start' ), 10 ) - viewportHeight * 0.2;
-	var $elOuterHeight = $el.outerHeight();
+	const $elOuterHeight = $el.outerHeight();
 
 	function bindEvents() {
 		console.log(
@@ -42,7 +44,7 @@ function Parallax( $el, params = {} ) {
 		// Prevent full height hero from affecting body height when
 		// scrolling on mobile, which due to the changing size of the
 		// address bar, causes jankyness all the way down the page
-		var viewportHeight = $( window ).outerHeight( true );
+		const viewportHeight = $( window ).outerHeight( true );
 		$( '.component-row-height-full-height' ).css(
 			'height',
 			viewportHeight * 0.7
@@ -56,8 +58,8 @@ function Parallax( $el, params = {} ) {
 		);
 
 		// Based on container height relative to viewport center
-		var containerHeight = $el.outerHeight();
-		var containerOffsetTop = $el.offset().top;
+		const containerHeight = $el.outerHeight();
+		const containerOffsetTop = $el.offset().top;
 		viewportHeight = $( window ).outerHeight();
 		scrollStartThreshold = viewportHeight / 2 + containerHeight / 2;
 
@@ -71,33 +73,33 @@ function Parallax( $el, params = {} ) {
 			'parallaxGo(e, data)'
 		);
 
-		var distanceToViewportTop = $el.offset().top - data.currentScrollTop;
-		var distanceScrolled = data.currentScrollTop;
+		const distanceToViewportTop = $el.offset().top - data.currentScrollTop;
+		const distanceScrolled = data.currentScrollTop;
 
 		if ( scrollStartThreshold > distanceToViewportTop ) {
 			// Determine how much to offset the background position
 			// based on scroll distance relative to $el height
 			// % per px, need to move 10%
-			var relativePercentOfContainerToViewport =
+			const relativePercentOfContainerToViewport =
 				$elOuterHeight / viewportHeight;
-			var percentToScrollPerPixel =
+			const percentToScrollPerPixel =
 				relativePercentOfContainerToViewport / 10;
-			var totalPixelsScrolledWithinThreshold =
+			const totalPixelsScrolledWithinThreshold =
 				scrollStartThreshold - distanceToViewportTop;
-			var offsetPerPxScrolled = $elOuterHeight * 0.01;
-			var percentOffsetFromScroll =
+			const offsetPerPxScrolled = $elOuterHeight * 0.01;
+			const percentOffsetFromScroll =
 				( data.currentScrollTop - scrollStartThreshold ) /
 				offsetPerPxScrolled;
 
 			// Set default offset
-			var defaultOffset = 0;
-			var finalOffset =
+			const defaultOffset = 0;
+			let finalOffset =
 				defaultOffset -
 				( percentToScrollPerPixel *
 					totalPixelsScrolledWithinThreshold ) /
 					2;
-			var lowerBounds = -100;
-			var upperBounds = 100;
+			const lowerBounds = -100;
+			const upperBounds = 100;
 
 			// console.log('finalOffset, lowerBounds, upperBounds: ', finalOffset, lowerBounds, upperBounds);
 
@@ -123,7 +125,7 @@ function Parallax( $el, params = {} ) {
 
 			// console.log('Parallax.js > finalOffset: ', finalOffset, $el.prop('nodeName'));
 			// TODO: (DP) Add different effects for each element
-			var elementIsValid = false;
+			let elementIsValid = false;
 
 			// TODO: (DP) Find out whether these element names need to be uppercase.
 			switch ( true ) {
@@ -146,7 +148,7 @@ function Parallax( $el, params = {} ) {
 			);
 
 			if ( elementIsValid ) {
-				var validContent = true;
+				let validContent = true;
 
 				// Don't apply this effect to...
 				switch ( true ) {

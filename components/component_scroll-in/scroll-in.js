@@ -15,14 +15,15 @@ if ( ! FLEX.isProd ) {
  * Default behavior is to fade in specific elements - this behavior/animation/transition is handled via css
  * TODO: Add more useage info.
  * TODO: Add options JSON for different effects. JSON could include timing & premade effects.
+ * @param $el
  */
 function ScrollIn( $el ) {
 	// console.log('/scroll-in.js', 'ScrollIn()');
 
-	var _detectElementsInViewOffsetIndex = [];
-	var _scrollstopTimer = 0;
-	var _currentScrollTop = $( window ).scrollTop();
-	var _viewportHeight = $( window ).outerHeight();
+	const _detectElementsInViewOffsetIndex = [];
+	let _scrollstopTimer = 0;
+	let _currentScrollTop = $( window ).scrollTop();
+	let _viewportHeight = $( window ).outerHeight();
 
 	function bindEvents() {
 		// console.log('/FLEX/\tjs/\tscroll-in.js', 'bindEvents()');
@@ -82,8 +83,8 @@ function ScrollIn( $el ) {
 		}
 
 		$.each( $$( '.transition-when-visible' ), function ( index, value ) {
-			var verticalScrollThreshold = _currentScrollTop + scrollThreshold;
-			var thisElementOffset = $( this ).offset().top;
+			const verticalScrollThreshold = _currentScrollTop + scrollThreshold;
+			const thisElementOffset = $( this ).offset().top;
 
 			// Add class to elements once they are halfway up the screen
 			if ( thisElementOffset < verticalScrollThreshold ) {
@@ -106,12 +107,12 @@ function ScrollIn( $el ) {
 		$( '.area-inner h4, .area-inner p' ).addClass( 'no-element-in-view' );
 
 		// Set default elements to hide
-		var elementsToHide =
+		let elementsToHide =
 			'h3, h4, h5, h6, p, span, .cta, img, .category-list, .area-inner';
 		// TODO: Add some way to merge this with some project setting / JSON object
 
 		// Check for elements override from child
-		var elementsToHideOverride = $( document.body ).attr(
+		const elementsToHideOverride = $( document.body ).attr(
 			'data-elements-to-hide'
 		);
 

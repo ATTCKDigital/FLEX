@@ -11,10 +11,11 @@ if ( ! FLEX.isProd ) {
 /**
  * Copies link URL to clipboard and optionally
  * displays the copied URL under the copied link
+ * @param $el
  */
 function HeightMatch( $el ) {
-	var _tallestHeight = 0;
-	var _$el = $el;
+	let _tallestHeight = 0;
+	const _$el = $el;
 
 	function bindEvents() {
 		// Recalculate on window resize
@@ -26,7 +27,7 @@ function HeightMatch( $el ) {
 
 	function render() {
 		// Save local reference
-		var $el = _$el;
+		const $el = _$el;
 
 		// Reset
 		_tallestHeight = 0;
@@ -41,7 +42,7 @@ function HeightMatch( $el ) {
 
 		// Find tallest element in group
 		$el.find( '.matchHeight' ).each( function ( index, el ) {
-			var thisElHeight = $( el ).innerHeight();
+			const thisElHeight = $( el ).innerHeight();
 
 			if ( thisElHeight > _tallestHeight ) {
 				_tallestHeight = thisElHeight;

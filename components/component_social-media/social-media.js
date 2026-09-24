@@ -3,7 +3,7 @@ import $ from 'jquery';
 //Social Media
 function SocialMedia( $el ) {
 	//cache the body
-	var $body = $( 'body' );
+	const $body = $( 'body' );
 
 	function bindEvents() {
 		$el = $el;

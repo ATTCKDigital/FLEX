@@ -2,7 +2,7 @@
 // TODO: (OT) Allow video block to support vimeo.
 function Video( $el ) {
 	// YouTube API Player
-	var player;
+	let player;
 
 	function playVideo( autoplay ) {
 		console.log(
@@ -10,8 +10,8 @@ function Video( $el ) {
 			'playVideo()'
 		);
 
-		var videoId = $( this ).attr( 'data-video-id' );
-		var video = document.getElementById( videoId );
+		const videoId = $( this ).attr( 'data-video-id' );
+		const video = document.getElementById( videoId );
 
 		video.play();
 
@@ -38,8 +38,8 @@ function Video( $el ) {
 			'pauseVideo()'
 		);
 
-		var videoId = $( this ).attr( 'data-video-id' );
-		var video = document.getElementById( videoId );
+		const videoId = $( this ).attr( 'data-video-id' );
+		const video = document.getElementById( videoId );
 
 		video.pause();
 
@@ -55,26 +55,24 @@ function Video( $el ) {
 		if ( typeof YT === 'undefined' ) {
 			// Go back and wait another second if player API hasn't loaded yet.
 			loadPlayer();
+		} else if ( typeof YT.Player !== 'function' ) {
+			// Try again, otherwise we may throw this error:
+			// "Uncaught TypeError: YT.Player is not a constructor"
+			// Solution: https://sung.codes/blog/2020/06/08/youtube-i-frame-api-yt-player-is-not-a-constructor/
+			window.YT.ready( loadPlayer );
 		} else {
-			if ( typeof YT.Player !== 'function' ) {
-				// Try again, otherwise we may throw this error:
-				// "Uncaught TypeError: YT.Player is not a constructor"
-				// Solution: https://sung.codes/blog/2020/06/08/youtube-i-frame-api-yt-player-is-not-a-constructor/
-				window.YT.ready( loadPlayer );
-			} else {
-				// Finally we can create our player object
-				var videoId = $( '.youtubePlayer', $el ).data( 'video-id' );
+			// Finally we can create our player object
+			const videoId = $( '.youtubePlayer', $el ).data( 'video-id' );
 
-				player = new YT.Player( 'player_' + videoId, {
-					height: '390',
-					width: '640',
-					videoId: videoId,
-					events: {
-						onReady: onPlayerReady,
-						onStateChange: onPlayerStateChange,
-					},
-				} );
-			}
+			player = new YT.Player( 'player_' + videoId, {
+				height: '390',
+				width: '640',
+				videoId,
+				events: {
+					onReady: onPlayerReady,
+					onStateChange: onPlayerStateChange,
+				},
+			} );
 		}
 	}
 
@@ -101,7 +99,7 @@ function Video( $el ) {
 			'.video-wrapper[data-video-type="youtube"] .playVideo',
 			function ( e ) {
 				// Detect key press for WCAG compliance
-				var keyCode = e.keyCode || e.which;
+				const keyCode = e.keyCode || e.which;
 
 				// Detect key press
 				// 9 = tab
@@ -120,17 +118,16 @@ function Video( $el ) {
 							keyCode
 					);
 					return;
-				} else {
-					console.log(
-						'/FLEX/\tgutenberg/\tblocks/\tblock_video/\tplay-video.js',
-						'onPlayerReady(), .playVideo keypress › pressed ' +
-							e.key +
-							' key:' +
-							e.type +
-							', keyCode: ' +
-							keyCode
-					);
 				}
+				console.log(
+					'/FLEX/\tgutenberg/\tblocks/\tblock_video/\tplay-video.js',
+					'onPlayerReady(), .playVideo keypress › pressed ' +
+						e.key +
+						' key:' +
+						e.type +
+						', keyCode: ' +
+						keyCode
+				);
 
 				// Play video
 				console.log(
@@ -151,7 +148,7 @@ function Video( $el ) {
 			'.video-wrapper[data-video-type="youtube"] .pauseVideo',
 			function ( e ) {
 				// Detect enter key press for WCAG compliance
-				var keyCode = e.keyCode || e.which;
+				const keyCode = e.keyCode || e.which;
 
 				// Detect key press
 				// 9 = tab
@@ -170,17 +167,16 @@ function Video( $el ) {
 							keyCode
 					);
 					return;
-				} else {
-					console.log(
-						'/FLEX/\tgutenberg/\tblocks/\tblock_video/\tplay-video.js',
-						'onPlayerReady(), .pauseVideo keypress › pressed ' +
-							e.key +
-							' key:' +
-							e.type +
-							', key: ' +
-							keyCode
-					);
 				}
+				console.log(
+					'/FLEX/\tgutenberg/\tblocks/\tblock_video/\tplay-video.js',
+					'onPlayerReady(), .pauseVideo keypress › pressed ' +
+						e.key +
+						' key:' +
+						e.type +
+						', key: ' +
+						keyCode
+				);
 
 				// Pause video
 				console.log(
@@ -196,11 +192,12 @@ function Video( $el ) {
 	function loadYoutubeApi() {
 		// Load the YouTube API onto the page if it is not already there
 		if ( typeof YT === 'undefined' || typeof YT.Player === 'undefined' ) {
-			var tag = document.createElement( 'script' );
+			const tag = document.createElement( 'script' );
 
 			tag.src = '//www.youtube.com/iframe_api';
 
-			var firstScriptTag = document.getElementsByTagName( 'script' )[ 0 ];
+			const firstScriptTag =
+				document.getElementsByTagName( 'script' )[ 0 ];
 
 			firstScriptTag.parentNode.insertBefore( tag, firstScriptTag );
 		}
@@ -219,8 +216,8 @@ function Video( $el ) {
 	}
 
 	function playBrightcoveVideo() {
-		var videoId = $( this ).attr( 'data-video-id' );
-		var video = document.querySelector(
+		const videoId = $( this ).attr( 'data-video-id' );
+		const video = document.querySelector(
 			'video[data-video-id="' + videoId + '"]'
 		);
 
@@ -243,8 +240,8 @@ function Video( $el ) {
 			'pauseBrightcoveVideo()'
 		);
 
-		var videoId = $( this ).attr( 'data-video-id' );
-		var video = document.querySelector(
+		const videoId = $( this ).attr( 'data-video-id' );
+		const video = document.querySelector(
 			'video[data-video-id="' + videoId + '"]'
 		);
 
@@ -262,7 +259,7 @@ function Video( $el ) {
 		$el = $el;
 
 		// Determine if video should autoplay,
-		var shouldAutoplay = $( 'video', $el ).prop( 'autoplay' ) === true;
+		const shouldAutoplay = $( 'video', $el ).prop( 'autoplay' ) === true;
 
 		if ( shouldAutoplay ) {
 			$( 'video', $el ).trigger( 'play' );

@@ -1,6 +1,6 @@
 /**
  * Set scroller output.
- * @param {object} props - The block object.
+ * @param {Object} props - The block object.
  * @return {string} The scroller output container.
  */
 function ScrollerOptionsOutput( props ) {

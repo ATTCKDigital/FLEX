@@ -1,9 +1,9 @@
 function VideoThumb( $el ) {
 	function isPlaying() {
-		var videoId = $el.find( 'video' ).attr( 'id' );
-		var player = document.getElementById( videoId );
+		const videoId = $el.find( 'video' ).attr( 'id' );
+		const player = document.getElementById( videoId );
 
-		var promise = player.play();
+		const promise = player.play();
 		if ( promise !== undefined ) {
 			promise
 				.then( function () {

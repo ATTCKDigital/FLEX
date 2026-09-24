@@ -121,7 +121,7 @@ export default registerBlockType( 'flexlayout/popup', {
 			>
 				{ BackgroundOptionsVideoOutput( props ) }
 				<div
-					class="popup-background-overlay"
+					className="popup-background-overlay"
 					style={ {
 						opacity: backgroundOpacity ?? 1,
 						...BackgroundOptionsInlineStyles( props ),

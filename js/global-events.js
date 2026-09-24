@@ -1,4 +1,4 @@
-var isProd = typeof $( 'body' ).attr( 'data-server-environment' );
+const isProd = typeof $( 'body' ).attr( 'data-server-environment' );
 if ( ! isProd ) {
 	console.log( 'loaded', '/FLEX\t/js\t/global-events.js' );
 }
@@ -27,7 +27,7 @@ FLEX.events = {
 		rendered: 'carousel.rendered',
 
 		// Subs
-		register: function ( data ) {
+		register( data ) {
 			// Save reference to store
 			this.carousels.push( {
 				id: data.id,
@@ -35,7 +35,7 @@ FLEX.events = {
 				$el: data.$el,
 			} );
 
-			var _this = this;
+			const _this = this;
 
 			$( FLEX ).bind( FLEX.events.carousel.go, function ( e, data ) {
 				$( _this.carousels ).each( function ( index, value ) {
@@ -107,7 +107,7 @@ FLEX.events = {
 		error: 'cart.error',
 
 		// Subs
-		register: function ( data ) {
+		register( data ) {
 			console.log( '/src/scripts/FLEX.js', 'FLEX.events.register' );
 			console.log( '/— data.id: ', data.id );
 			console.log( '/— data.listener: ', data.listener );
@@ -115,9 +115,9 @@ FLEX.events = {
 			console.log( '\n' );
 
 			// Ensure no duplicates
-			var duplicates = false;
+			let duplicates = false;
 
-			for ( var crt in this.carts ) {
+			for ( const crt in this.carts ) {
 				if (
 					data.loadOnce &&
 					this.carts[ crt ].loadOnce === data.loadOnce
@@ -135,7 +135,7 @@ FLEX.events = {
 				} );
 			}
 
-			var _this = this;
+			const _this = this;
 
 			$( FLEX )
 				.unbind( FLEX.events.cart.add )
@@ -305,7 +305,7 @@ FLEX.events = {
 		error: 'form.fielderror',
 
 		// Bindings
-		register: function ( data ) {
+		register( data ) {
 			console.log(
 				'/FLEX/\tjs/\tglobal-events.js',
 				'FLEX.events.formregister(), arguments: ',
@@ -319,7 +319,7 @@ FLEX.events = {
 				$el: data.el,
 			} );
 
-			var _this = this;
+			const _this = this;
 
 			$( FLEX ).bind( FLEX.events.form.error, function ( e, data ) {
 				console.log(
@@ -363,14 +363,14 @@ FLEX.events = {
 		closed: 'popup.closed',
 
 		// Subs
-		register: function ( data ) {
+		register( data ) {
 			this.popups.push( {
 				id: data.id,
 				listener: data.listener,
 				$el: data.$el,
 			} );
 
-			var _this = this;
+			const _this = this;
 
 			$( FLEX ).bind( FLEX.events.popup.open, function ( e, data ) {
 				$( _this.popups ).each( function ( index, value ) {
@@ -433,14 +433,14 @@ FLEX.events = {
 		setSKU: 'pdp.setSKU',
 
 		// Subs
-		register: function ( data ) {
+		register( data ) {
 			this.pdps.push( {
 				id: data.id,
 				listener: data.listener,
 				$el: data.$el,
 			} );
 
-			var _this = this;
+			const _this = this;
 
 			$( FLEX ).bind( FLEX.events.pdp.changeOption, function ( e, data ) {
 				$( _this.pdps ).each( function ( index, value ) {
@@ -528,7 +528,7 @@ FLEX.events = {
 		ready: 'wcag.ready',
 
 		// Subs
-		register: function ( data ) {
+		register( data ) {
 			console.log( 'wcag event receiving data: ', data );
 
 			this.interactiveElements.push( data );
@@ -544,18 +544,19 @@ FLEX.events = {
 FLEX.GlobalEvents.initGlobalEvents = function () {
 	console.log( '/FLEX/\tjs/\tglobal-events.js', 'initGlobalEvents()' );
 
-	var G = FLEX.Globals;
-	var $window = $( window, FLEX.GlobalEvents.initGlobalEvents );
-	var self = this;
+	const G = FLEX.Globals;
+	const $window = $( window, FLEX.GlobalEvents.initGlobalEvents );
+	const self = this;
 
 	/**
 	 * Cancel any click events when there is a relative
 	 * path of "#\"
+	 * @param e
 	 */
 	function cancelRelativePathLinkClicks( e ) {
 		// Bind to all click events
 		$( 'body' ).on( 'click', 'a', function ( e ) {
-			var hasHrefVal = $( this ).attr( 'href' ).indexOf( '/#/' );
+			const hasHrefVal = $( this ).attr( 'href' ).indexOf( '/#/' );
 
 			// Match '#\' in URL
 			if ( hasHrefVal > -1 ) {
@@ -624,7 +625,7 @@ FLEX.GlobalEvents.initGlobalEvents = function () {
 		}
 
 		$( document.body ).trigger( 'FLEX.scroll', {
-			e: e,
+			e,
 			currentScrollTop: G.currentScrollTop,
 			viewportHeight: G.viewportHeight,
 			scrollDirection:
@@ -643,7 +644,7 @@ FLEX.GlobalEvents.initGlobalEvents = function () {
 			'document.body on keydown()'
 		);
 		// Detect key press for WCAG compliance
-		var keyCode = e.keyCode || e.which;
+		const keyCode = e.keyCode || e.which;
 
 		// Save keyCode globally for future reference
 		G.keyCode = keyCode;
@@ -663,7 +664,7 @@ FLEX.GlobalEvents.initGlobalEvents = function () {
 		// 13 = enter
 		// 27 = esc
 		$( document.body ).trigger( 'FLEX.keydown', {
-			e: e,
+			e,
 			keyCode: G.keyCode,
 		} );
 	} );
@@ -673,10 +674,10 @@ FLEX.GlobalEvents.initGlobalEvents = function () {
 		console.log( '/FLEX/\tjs/\tglobal-events.js', 'detectOrientation()' );
 
 		// Default is portrait
-		var orientation = 'orientation-portrait';
-		var videoOrientation = 'video-portrait';
-		var mapOrientation = 'map-portrait';
-		var screenHeight = 'tall-screen';
+		let orientation = 'orientation-portrait';
+		let videoOrientation = 'video-portrait';
+		const mapOrientation = 'map-portrait';
+		const screenHeight = 'tall-screen';
 
 		// Landscape
 		if ( G.viewportWidth > G.viewportHeight ) {
@@ -719,7 +720,7 @@ FLEX.GlobalEvents.initGlobalEvents = function () {
 		);
 
 		// Tab body if content height is taller than viewport
-		var totalComponentHeight = 0;
+		let totalComponentHeight = 0;
 
 		$( '.component' ).each( function ( index, value ) {
 			// Exclude the hidden modal which doesn't take up any height
@@ -786,7 +787,7 @@ FLEX.GlobalEvents.initGlobalEvents = function () {
 		G.viewportHeightInner = $window.innerHeight();
 
 		$( document.body ).trigger( 'FLEX.resize', {
-			e: e,
+			e,
 			viewportHeight: G.viewportHeight,
 			viewportWidth: G.viewportWidth,
 			viewportHeightInner: G.viewportHeightInner,
@@ -802,26 +803,26 @@ FLEX.GlobalEvents.initGlobalEvents = function () {
 // — https://web.dev/uses-passive-event-listeners/?utm_source=lighthouse&utm_medium=unknown
 // — https://stackoverflow.com/questions/60357083/does-not-use-passive-listeners-to-improve-scrolling-performance-lighthouse-repo
 $.event.special.touchstart = {
-	setup: function ( _, ns, handle ) {
+	setup( _, ns, handle ) {
 		this.addEventListener( 'touchstart', handle, {
 			passive: ! ns.includes( 'noPreventDefault' ),
 		} );
 	},
 };
 $.event.special.touchmove = {
-	setup: function ( _, ns, handle ) {
+	setup( _, ns, handle ) {
 		this.addEventListener( 'touchmove', handle, {
 			passive: ! ns.includes( 'noPreventDefault' ),
 		} );
 	},
 };
 $.event.special.wheel = {
-	setup: function ( _, ns, handle ) {
+	setup( _, ns, handle ) {
 		this.addEventListener( 'wheel', handle, { passive: true } );
 	},
 };
 $.event.special.mousewheel = {
-	setup: function ( _, ns, handle ) {
+	setup( _, ns, handle ) {
 		this.addEventListener( 'mousewheel', handle, { passive: true } );
 	},
 };

@@ -10,9 +10,9 @@ if ( ! FLEX.isProd ) {
 function Accordion( $el ) {
 	console.log( '/accordion.js', 'Accordion()' );
 
-	var _listItems;
-	var _listHeaders;
-	var _listContent;
+	let _listItems;
+	let _listHeaders;
+	let _listContent;
 
 	function bindEvents() {
 		// Find list items
@@ -26,7 +26,7 @@ function Accordion( $el ) {
 
 		// Get list content item's heights
 		_listContent.each( function ( index, el ) {
-			var originalHeight = $( el ).outerHeight();
+			const originalHeight = $( el ).outerHeight();
 
 			// Save original content height
 			$( el ).attr( 'data-height', originalHeight );

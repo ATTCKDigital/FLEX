@@ -134,7 +134,7 @@ export default registerBlockType( 'flexlayout/feed', {
 							{ posts.map( ( post ) => {
 								return (
 									<div className={ 'feed-item' }>
-										<h2 class="headline6">
+										<h2 className="headline6">
 											<a
 												className={ className }
 												href={ post.link }

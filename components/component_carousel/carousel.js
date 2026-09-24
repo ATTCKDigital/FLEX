@@ -9,6 +9,8 @@ if ( ! FLEX.isProd ) {
 
 /**
  * Carousel component
+ * @param $el
+ * @param params
  */
 function Carousel( $el, params = {} ) {
 	console.log(
@@ -30,26 +32,26 @@ function Carousel( $el, params = {} ) {
 			'</svg><span class="sr-only">Next slide</span></button>',
 	};
 
-	var _$el = $el;
-	var _index = 0;
-	var _carouselWidth;
-	var _CSStransitionInProgress = false;
-	var _$dotsContainer;
-	var _fullCarouselWidth;
-	var _lastScrollableSlide;
-	var _maxVisibleSlides;
-	var _nextIndex = 0;
-	var _prevIndex = 0;
-	var _slideWidth;
-	var _$slides;
-	var _$slidesContainer;
-	var _slidesLength;
-	var _visibleGap;
-	var _vwGaptoPx;
+	const _$el = $el;
+	let _index = 0;
+	let _carouselWidth;
+	let _CSStransitionInProgress = false;
+	let _$dotsContainer;
+	let _fullCarouselWidth;
+	let _lastScrollableSlide;
+	let _maxVisibleSlides;
+	let _nextIndex = 0;
+	let _prevIndex = 0;
+	let _slideWidth;
+	let _$slides;
+	let _$slidesContainer;
+	let _slidesLength;
+	let _visibleGap;
+	let _vwGaptoPx;
 
 	// Merge any options set on the DOM element with
 	// the component defaults set above
-	var options = $.extend( true, {}, defaults, params );
+	const options = $.extend( true, {}, defaults, params );
 
 	function bindEvents() {
 		console.log(
@@ -66,7 +68,7 @@ function Carousel( $el, params = {} ) {
 			e.preventDefault();
 
 			// Find parent
-			var $parent = $( this ).closest( '.dots-component' );
+			const $parent = $( this ).closest( '.dots-component' );
 
 			// Get index of this dot compared to siblings
 			_index = $parent.find( 'a' ).index( $( this ) );
@@ -95,7 +97,7 @@ function Carousel( $el, params = {} ) {
 				return;
 			}
 
-			var direction = 'carousel.goNext';
+			let direction = 'carousel.goNext';
 
 			if ( $( this ).hasClass( 'prev' ) ) {
 				direction = 'carousel.goPrev';
@@ -145,13 +147,14 @@ function Carousel( $el, params = {} ) {
 
 		// Add pseudoelement styles for each carousel slide
 		$( '.slide', $el ).each( function ( index, el ) {
-			var thisSlideId = $( this ).attr( 'data-section-id' );
-			var thisSlideThumbnailImage = $( '.image-wrapper img', this ).attr(
-				'src'
-			);
+			const thisSlideId = $( this ).attr( 'data-section-id' );
+			const thisSlideThumbnailImage = $(
+				'.image-wrapper img',
+				this
+			).attr( 'src' );
 
 			// Add anchor link to entire element
-			var anchorLink = $( 'a', this ).attr( 'href' );
+			const anchorLink = $( 'a', this ).attr( 'href' );
 
 			$( el ).on( 'click', function () {
 				if ( typeof anchorLink !== 'undefined' ) {
@@ -202,7 +205,7 @@ function Carousel( $el, params = {} ) {
 		);
 
 		let start = null;
-		let carousel = $( '.component-carousel', $el );
+		const carousel = $( '.component-carousel', $el );
 
 		carousel.on( 'touchstart', function ( event ) {
 			if ( event.touches.length === 1 ) {
@@ -215,11 +218,11 @@ function Carousel( $el, params = {} ) {
 		} );
 
 		carousel.on( 'touchend', function ( event ) {
-			var offset = 100; //at least 100px are a swipe
+			const offset = 100; //at least 100px are a swipe
 
 			if ( start ) {
 				// The only finger that hit the screen left it
-				var end = event.changedTouches.item( 0 ).clientX;
+				const end = event.changedTouches.item( 0 ).clientX;
 
 				if ( end > start + offset ) {
 					goPrev();
@@ -304,7 +307,7 @@ function Carousel( $el, params = {} ) {
 			.removeClass( 'previous next' )
 			.addClass( 'active' );
 
-		for ( var x = 0; x < _$slides.length; x++ ) {
+		for ( let x = 0; x < _$slides.length; x++ ) {
 			if ( x < _index ) {
 				if ( x === 0 && _index === _$slides.length - 1 ) {
 					_$slides
@@ -353,7 +356,9 @@ function Carousel( $el, params = {} ) {
 		);
 
 		// Proceed only if no CSS transition is in progress
-		if ( _CSStransitionInProgress ) return;
+		if ( _CSStransitionInProgress ) {
+			return;
+		}
 
 		if ( $( this ).hasClass( 'disabled' ) ) {
 			return;
@@ -417,7 +422,9 @@ function Carousel( $el, params = {} ) {
 		);
 
 		// Proceed only if no CSS transition is in progress
-		if ( _CSStransitionInProgress ) return;
+		if ( _CSStransitionInProgress ) {
+			return;
+		}
 
 		if ( $( this ).hasClass( 'disabled' ) ) {
 			return;
@@ -481,7 +488,9 @@ function Carousel( $el, params = {} ) {
 		);
 
 		// Proceed only if no CSS transition is in progress
-		if ( _CSStransitionInProgress ) return;
+		if ( _CSStransitionInProgress ) {
+			return;
+		}
 
 		// If current active slide isn't at the beginning
 		if ( _index !== arg ) {
@@ -517,10 +526,10 @@ function Carousel( $el, params = {} ) {
 		);
 
 		// Find current active slide index
-		var activeSlideIndex = $el.find( '.slide.active' ).index();
+		const activeSlideIndex = $el.find( '.slide.active' ).index();
 
 		// Calculate left offset + gap
-		var leftOffset =
+		let leftOffset =
 			( activeSlideIndex * _slideWidth + activeSlideIndex * _vwGaptoPx ) *
 			-1;
 
@@ -594,7 +603,7 @@ function Carousel( $el, params = {} ) {
 		$( '.slides.active li', $el ).eq( 0 ).addClass( 'active' );
 
 		// Set active elements (because they aren't set via PHP):
-		for ( var x = 0; x < _$slides.length; x++ ) {
+		for ( let x = 0; x < _$slides.length; x++ ) {
 			// Set next/prev of each slide
 			switch ( true ) {
 				// - first LI
@@ -620,7 +629,7 @@ function Carousel( $el, params = {} ) {
 
 	/**
 	 * Update the active dot.
-	 * @param {Number} current - Zero-based current slide number.
+	 * @param {number} current - Zero-based current slide number.
 	 */
 	function updateDots( current ) {
 		console.log(

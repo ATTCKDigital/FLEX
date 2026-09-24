@@ -1,7 +1,7 @@
 /**
  * Set inline CSS class.
- * @param {object} props - The block object.
- * @return {array} The inline CSS class.
+ * @param {Object} props - The block object.
+ * @return {Array} The inline CSS class.
  */
 function PaddingOptionsClasses( props ) {
 	return [

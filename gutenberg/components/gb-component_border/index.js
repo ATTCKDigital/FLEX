@@ -14,7 +14,7 @@ export { BorderOptionsAttributes, BorderOptionsClasses };
 
 function BorderOptions( props ) {
 	const setBorder = ( which, value ) => {
-		let borderEdited = '';
+		const borderEdited = '';
 		let borderEditedCount = 0;
 
 		// Save prop

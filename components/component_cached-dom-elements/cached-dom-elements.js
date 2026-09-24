@@ -12,10 +12,10 @@ if ( ! FLEX.isProd ) {
 }
 
 window.cachedDomElements = ( function () {
-	var cachedElements = {};
+	let cachedElements = {};
 
 	// Using the HTML element for data storage
-	var $EL = $( 'html' );
+	const $EL = $( 'html' );
 
 	function get( name ) {
 		// Return everything if param is empty
@@ -29,9 +29,8 @@ window.cachedDomElements = ( function () {
 		if ( typeof cachedElements[ name ] === 'undefined' ) {
 			if ( name instanceof $ ) {
 				return set( name, name );
-			} else {
-				return set( name, $EL.find( name ) );
 			}
+			return set( name, $EL.find( name ) );
 		}
 
 		// Otherwise just give them what they asked for
@@ -52,13 +51,13 @@ window.cachedDomElements = ( function () {
 	}
 
 	return {
-		get: get,
-		reset: reset,
-		set: set,
+		get,
+		reset,
+		set,
 	};
 } )();
 
-var $$ = function ( el ) {
+const $$ = function ( el ) {
 	return window.cachedDomElements.get( el );
 };
 

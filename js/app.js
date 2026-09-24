@@ -12,7 +12,7 @@
 
 import $ from 'jquery';
 
-var isProd = typeof $( 'body' ).attr( 'data-server-environment' );
+const isProd = typeof $( 'body' ).attr( 'data-server-environment' );
 if ( ! isProd ) {
 	console.log( 'loaded', '/FLEX\t/js\t/app.js' );
 }

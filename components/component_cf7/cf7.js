@@ -12,6 +12,7 @@ if ( ! FLEX.isProd ) {
  * — Applies waiting state to submit button, preventing duplicate
  *   entries arising from users clicking the submit button multiple
  *   times thinking nothing is happening.
+ * @param $el
  */
 function CF7( $el ) {
 	// Listens for CF7 DOM events
@@ -25,7 +26,7 @@ function CF7( $el ) {
 
 		// Save initial display value (we'll need to change it back after
 		// temporarily replacing it with '...' while a submission is pending)
-		var originalSubmitTextValue = $( 'input[type=submit]', $form )
+		const originalSubmitTextValue = $( 'input[type=submit]', $form )
 			.eq( 0 )
 			.val();
 		$form.data( 'originalSubmitTextValue', originalSubmitTextValue );
@@ -130,11 +131,11 @@ function CF7( $el ) {
 	}
 
 	function submissionInProgress( $form, isInProgress ) {
-		var originalSubmitTextValue = $form.data( 'originalSubmitTextValue' );
+		const originalSubmitTextValue = $form.data( 'originalSubmitTextValue' );
 
 		// Replace every character with a dot, and add a few more since dots are shorter, and pad
 		// the front and back to make it more balanced
-		var replacementSubmitTextValue = '';
+		let replacementSubmitTextValue = '';
 		replacementSubmitTextValue += ' '.repeat(
 			originalSubmitTextValue.length / 3
 		);
@@ -145,10 +146,10 @@ function CF7( $el ) {
 			originalSubmitTextValue.length / 3
 		);
 
-		var submitTextValue = isInProgress
+		const submitTextValue = isInProgress
 			? replacementSubmitTextValue
 			: $form.data( 'originalSubmitTextValue' ); //&#x22EF;'; //
-		var $submitButton = $( 'input[type=submit]', $form );
+		const $submitButton = $( 'input[type=submit]', $form );
 
 		if ( typeof $form === 'undefined' ) {
 			return console.error( 'form element is required' );

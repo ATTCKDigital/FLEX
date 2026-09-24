@@ -1,6 +1,6 @@
 /**
  * Embedded style tags
- * @param {object} props - The block object.
+ * @param {Object} props - The block object.
  * @return {string} The style output container.
  */
 function BackgroundOptionsImageWide( props ) {
@@ -9,45 +9,45 @@ function BackgroundOptionsImageWide( props ) {
 		props.attributes.backgroundImageWide &&
 		props.attributes.backgroundImageWide == true
 	) {
-		var backgroundImageWide = props.attributes.backgroundImageWide
+		const backgroundImageWide = props.attributes.backgroundImageWide
 			? `${ props.attributes.backgroundImageWide }`
 			: 'inherit';
 
-		var backgroundImageMobile = props.attributes.backgroundImageMobile
+		const backgroundImageMobile = props.attributes.backgroundImageMobile
 			? `${ props.attributes.backgroundImageMobile.url }`
 			: 'inherit';
-		var backgroundSizeMobile = props.attributes.backgroundSizeMobile
+		const backgroundSizeMobile = props.attributes.backgroundSizeMobile
 			? `${ props.attributes.backgroundSizeMobile }`
 			: 'inherit';
-		var backgroundRepeatMobile = props.attributes.backgroundRepeatMobile
+		const backgroundRepeatMobile = props.attributes.backgroundRepeatMobile
 			? `${ props.attributes.backgroundRepeatMobile }`
 			: 'inherit';
-		var backgroundPositionXMobile = props.attributes
+		const backgroundPositionXMobile = props.attributes
 			.backgroundPositionXMobile
 			? `${ props.attributes.backgroundPositionXMobile }`
 			: 'inherit';
-		var backgroundPositionYMobile = props.attributes
+		const backgroundPositionYMobile = props.attributes
 			.backgroundPositionYMobile
 			? `${ props.attributes.backgroundPositionYMobile }`
 			: 'inherit';
 
-		var backgroundImage = props.attributes.backgroundImage
+		const backgroundImage = props.attributes.backgroundImage
 			? `${ props.attributes.backgroundImage.url }`
 			: 'inherit';
-		var backgroundSize = props.attributes.backgroundSize
+		const backgroundSize = props.attributes.backgroundSize
 			? `${ props.attributes.backgroundSize }`
 			: 'inherit';
-		var backgroundRepeat = props.attributes.backgroundRepeat
+		const backgroundRepeat = props.attributes.backgroundRepeat
 			? `${ props.attributes.backgroundRepeat }`
 			: 'inherit';
-		var backgroundPositionX = props.attributes.backgroundPositionX
+		const backgroundPositionX = props.attributes.backgroundPositionX
 			? `${ props.attributes.backgroundPositionX }`
 			: 'inherit';
-		var backgroundPositionY = props.attributes.backgroundPositionY
+		const backgroundPositionY = props.attributes.backgroundPositionY
 			? `${ props.attributes.backgroundPositionY }`
 			: 'inherit';
 
-		var styles = '';
+		let styles = '';
 
 		styles += `.component-image-background.component-image-background-wide[data-section-id='${ props.attributes.dataSectionId }']:before {`;
 		styles += `		background-image: ${ backgroundImageMobile };`;
@@ -68,9 +68,8 @@ function BackgroundOptionsImageWide( props ) {
 		styles += `}`;
 
 		return <style>{ styles }</style>;
-	} else {
-		return false;
 	}
+	return false;
 }
 
 export default BackgroundOptionsImageWide;

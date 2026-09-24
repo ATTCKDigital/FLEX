@@ -2,10 +2,11 @@ import $ from 'jquery';
 
 /**
  * Choose your meeting time
+ * @param $el
  */
 function Reserve( $el ) {
 	// Cache the body
-	var $body = $( 'body' );
+	const $body = $( 'body' );
 
 	function bindEvents() {
 		$el = $el;
@@ -25,7 +26,7 @@ function Reserve( $el ) {
 		e.preventDefault();
 
 		// Get hour
-		var thisHour = $( 'a', this ).attr( 'href' );
+		const thisHour = $( 'a', this ).attr( 'href' );
 
 		// Sets it's active state for visual style
 		$( 'li', $el ).removeClass( 'active' );

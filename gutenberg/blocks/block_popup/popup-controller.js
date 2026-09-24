@@ -1,10 +1,10 @@
 import Loader from '../../../js/load-components';
 
 function PopupController( $el ) {
-	var popupNames;
-	var $popup;
-	var $popupEl;
-	var $buttons;
+	let popupNames;
+	let $popup;
+	let $popupEl;
+	let $buttons;
 
 	function bindEvents() {
 		console.log(
@@ -12,11 +12,11 @@ function PopupController( $el ) {
 			'bindEvents()'
 		);
 
-		var counter = 0;
+		const counter = 0;
 
 		$buttons.each(
 			( function ( counter ) {
-				var n = counter++;
+				const n = counter++;
 
 				return function ( index ) {
 					$( this ).on( 'click', function ( e ) {
@@ -85,8 +85,8 @@ function PopupController( $el ) {
 
 		initComponents();
 
-		let $popupOverlay = $( '.popup-background-overlay', $popupEl );
-		let $closeButton = $( '.close-button', $popupEl );
+		const $popupOverlay = $( '.popup-background-overlay', $popupEl );
+		const $closeButton = $( '.close-button', $popupEl );
 
 		bindClosePopup( $popupOverlay );
 		bindClosePopup( $closeButton );
@@ -106,7 +106,7 @@ function PopupController( $el ) {
 			'initComponents()'
 		);
 
-		let $componentElements = $( '[data-component-name]', $popupEl );
+		const $componentElements = $( '[data-component-name]', $popupEl );
 
 		$componentElements.each( function () {
 			Loader.loadComponent( $( this ) );
@@ -136,7 +136,9 @@ function PopupController( $el ) {
 
 		$buttons = $( '.open-popup-button', $el );
 
-		if ( ! $buttons ) return;
+		if ( ! $buttons ) {
+			return;
+		}
 
 		bindEvents();
 

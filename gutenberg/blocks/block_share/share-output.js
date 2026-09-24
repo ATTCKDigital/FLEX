@@ -1,13 +1,13 @@
 /**
  * Set share output.
- * @param {object} props - The block object.
+ * @param {Object} props - The block object.
  * @return {string} The social media output container.
  */
 function ShareOutput( props ) {
-	var facebookLink;
-	var twitterLink;
-	var linkedinLink;
-	var emailLink;
+	let facebookLink;
+	let twitterLink;
+	let linkedinLink;
+	let emailLink;
 
 	if ( props.attributes.facebook ) {
 		facebookLink = (

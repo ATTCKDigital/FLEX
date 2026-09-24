@@ -1,6 +1,6 @@
 /**
  * Set video output.
- * @param {object} props - The block object.
+ * @param {Object} props - The block object.
  * @return {string} The video output container.
  */
 function BackgroundOptionsVideoOutput( props ) {

@@ -9,12 +9,12 @@ if ( ! FLEX.isProd ) {
 function Nav( $el ) {
 	console.log( '/FLEX/\tcomponents/\tcomponent-nav/\tnav.js', 'Nav()' );
 
-	var _$body = $( 'body' );
-	var _$document = $( document );
-	var _$window = $( window );
+	const _$body = $( 'body' );
+	const _$document = $( document );
+	const _$window = $( window );
 
 	// Cache the body
-	var $body = $( 'body' );
+	const $body = $( 'body' );
 
 	function bindEvents() {
 		console.log(
@@ -43,7 +43,7 @@ function Nav( $el ) {
 					return;
 				}
 
-				let $target = $( e.target );
+				const $target = $( e.target );
 
 				if (
 					! $target.is( '.main-header' ) &&
@@ -74,7 +74,7 @@ function Nav( $el ) {
 		);
 
 		// Open nav on hamburger click or enter press when tab focused
-		var keyCode = e.keyCode || e.which;
+		const keyCode = e.keyCode || e.which;
 
 		// Detect enter key press
 		// 9 = tab
@@ -86,17 +86,16 @@ function Nav( $el ) {
 		) {
 			console.log( 'exiting, pressed the  ' + e.key + ' key ', keyCode );
 			return;
-		} else {
-			console.log(
-				'/FLEX/\tcomponents/\tcomponent-nav/\tnav.js',
-				'navToggle(), keyCode: ',
-				keyCode,
-				'key: ',
-				e.key,
-				'event: ',
-				e
-			);
 		}
+		console.log(
+			'/FLEX/\tcomponents/\tcomponent-nav/\tnav.js',
+			'navToggle(), keyCode: ',
+			keyCode,
+			'key: ',
+			e.key,
+			'event: ',
+			e
+		);
 
 		// Open nav on hamburger click
 		$body.toggleClass( 'navOpen' );
@@ -190,7 +189,7 @@ function Nav( $el ) {
 			// console.log('/FLEX/\tcomponents/\tcomponent-nav/\tnav.js, scrolledNav', 'FLEX.scroll(e:)');
 
 			// Show/hide nav bar background color
-			var scroll = data.currentScrollTop;
+			const scroll = data.currentScrollTop;
 
 			// Add a class after short scroll to add background color etc
 			if ( scroll >= 10 ) {
@@ -226,16 +225,16 @@ function Nav( $el ) {
 
 		// Change the logo color as you scroll down the page. Can also be used to change the hamburger color.
 		// Make color changes using CSS.
-		var row = $( '.component-row' );
-		var footer = $( '.component-footer' ).eq( 0 ).offset().top;
+		const row = $( '.component-row' );
+		const footer = $( '.component-footer' ).eq( 0 ).offset().top;
 
 		$( document.body ).bind( 'FLEX.scroll', function ( e, data ) {
-			var viewportHeight = data.viewportHeight;
-			var scrollTop = data.currentScrollTop;
+			const viewportHeight = data.viewportHeight;
+			const scrollTop = data.currentScrollTop;
 
 			$( row ).each( function () {
-				var rowTop = $( this ).offset().top;
-				var logoColor = $( this ).data( 'logo-color' );
+				const rowTop = $( this ).offset().top;
+				const logoColor = $( this ).data( 'logo-color' );
 				// var logoColor = $(this).attr('data-logo-color');
 
 				if ( rowTop <= scrollTop + 20 ) {

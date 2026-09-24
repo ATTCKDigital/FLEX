@@ -32,8 +32,8 @@ function _carousel( $el ) {
 		);
 
 		// Collect all slides relating to this group
-		var carouselID = '.' + $el.attr( 'data-carousel-id' );
-		var slides = $( '.slide' ).find( carouselID );
+		const carouselID = '.' + $el.attr( 'data-carousel-id' );
+		const slides = $( '.slide' ).find( carouselID );
 
 		console.log(
 			'/FLEX\t/components\t/component_carousel\t/_carousel.js',

@@ -53,7 +53,9 @@ registerBlockType( 'flexlayout/posts', {
 		const termsMap = {};
 		currentTaxonomies?.forEach( ( tax ) => {
 			const terms = getEntityRecords( 'taxonomy', tax.slug );
-			if ( terms ) termsMap[ tax.slug ] = terms;
+			if ( terms ) {
+				termsMap[ tax.slug ] = terms;
+			}
 		} );
 
 		const query = {
