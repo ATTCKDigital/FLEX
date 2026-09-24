@@ -1,7 +1,0 @@
-*.log
-.DS_Store
-/assets/.DS_Store
-/node_modules
-/dist
-/__GET_STARTED_HERE/
-screenshot.png

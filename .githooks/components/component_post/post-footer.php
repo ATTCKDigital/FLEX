@@ -1,1 +1,0 @@
-<?php // Single Post Footer ?>
