@@ -2,7 +2,7 @@ _v 3.3.0 December 18, 2019_
 # FLEX (Flexible Layout EXperience)
 A parent theme for FLEX WordPress projects
 
-READ [__GET_STARTED_HERE](https://github.com/ATTCKDigital/FLEX/tree/master/__GET_STARTED_HERE) BEFORE cloning!
+Upgrading from v3? Read [UPGRADING.md](UPGRADING.md). A FLEX v4 child theme owns the build; UPGRADING.md contains the reference child build config.
 
 ## Theme Structure
 
