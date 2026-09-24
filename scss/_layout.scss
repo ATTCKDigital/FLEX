@@ -202,18 +202,18 @@ a:not(.cta) {
 
 
 // Top range for unit generation (higher number = higher file size)
-$valueMax: 		150;
-$valueMaxPX: 	150;
-$valueMaxPC: 	150;
-$valueMaxVH: 	150;
-$valueMaxVW: 	150;
-$valueMaxX: 	150;
+$valueMax: 		150 !default;
+$valueMaxPX: 	150 !default;
+$valueMaxPC: 	150 !default;
+$valueMaxVH: 	150 !default;
+$valueMaxVW: 	150 !default;
+$valueMaxX: 	150 !default;
 
 // Granularity of unit increments (lower number = higher file size)
-$valueIncrements: 10;
+$valueIncrements: 10 !default;
 
-$alignItems: 'flex-end';
-$justifyContent: 'flex-end';
+$alignItems: 'flex-end' !default;
+$justifyContent: 'flex-end' !default;
 
 // For each breakpoint
 @each $screensize in $screensizes {

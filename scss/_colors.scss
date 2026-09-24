@@ -1,6 +1,6 @@
 // Default
-$modalColor: #ffffff;
-$popupColor: rgba(0, 0, 0, .7);
+$modalColor: #ffffff !default;
+$popupColor: rgba(0, 0, 0, .7) !default;
 
 // Brand
 $brand-color-key: 'red' !default;
@@ -51,7 +51,7 @@ $brand-colors: (
 	),
 	'gradients': (
 	)
-);
+) !default;
 
 /** Generate colors **/
 // Usage: color('key', 'variant');

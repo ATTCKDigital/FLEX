@@ -1,6 +1,6 @@
-$base-color: #316C31;
-$highlight-color: #458534;
-$notification-color: #7BB35A;
-$action-color: #BBDB6A;
+$base-color: #316C31 !default;
+$highlight-color: #458534 !default;
+$notification-color: #7BB35A !default;
+$action-color: #BBDB6A !default;
 $icon-color: hsl( hue( $base-color ), 7%, 95% ) !default;
 

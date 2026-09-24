@@ -11,7 +11,7 @@ $mediaQueries: (
 	'xl2'				: $xl2,
 	'min-1318'			: '1318px',
 	'min-1800'			: '1800px'
-);
+) !default;
 
 $maxMediaQueries: (
 	'phone'				: $max-phone,
@@ -21,12 +21,12 @@ $maxMediaQueries: (
 	'desktop'			: $max-desktop,
 	'xl'				: $max-xl,
 	'xl2'				: $max-xl2
-);
+) !default;
 
 $minHeightMediaQueries: (
 	'mbp13'		: '1000px',
 	'min-800'	: '800px',
-);
+) !default;
 
 $minDeviceHeightMediaQueries: (
 	'iPhone4'	: '480px',
@@ -35,7 +35,7 @@ $minDeviceHeightMediaQueries: (
 	'iPhone6'	: '667px',
 	'iPad'		: '737px',
 	'desktop'	: '1025px'
-);
+) !default;
 
 // Use this mobile-first mixin, primarily.
 @mixin mediaquery($breakpoint) {
