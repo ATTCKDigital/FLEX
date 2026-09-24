@@ -127,6 +127,7 @@ export default registerBlockType( 'flexlayout/paragraph', {
 		const {
 			attributes: { align, content, placeholder },
 			className,
+			onReplace,
 			setAttributes,
 		} = props;
 

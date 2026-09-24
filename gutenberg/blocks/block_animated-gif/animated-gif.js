@@ -108,6 +108,7 @@ export default registerBlockType( 'flexlayout/animated-gif', {
 				url,
 			},
 			className,
+			onReplace,
 			setAttributes,
 			isSelected,
 		} = props;

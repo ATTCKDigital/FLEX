@@ -95,6 +95,7 @@ export default registerBlockType( 'flexlayout/image', {
 				url,
 			},
 			className,
+			onReplace,
 			setAttributes,
 			isSelected,
 		} = props;

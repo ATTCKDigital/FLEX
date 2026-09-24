@@ -105,6 +105,7 @@ export default registerBlockType( 'flexlayout/quote', {
 				placeholderSource,
 			},
 			className,
+			onReplace,
 			setAttributes,
 			isSelected,
 		} = props;

@@ -166,6 +166,7 @@ export default registerBlockType( 'flexlayout/heading', {
 				backgroundOpacity,
 			},
 			className,
+			onReplace,
 			setAttributes,
 		} = props;
 

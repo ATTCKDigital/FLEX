@@ -96,6 +96,7 @@ export default registerBlockType( 'flexlayout/button', {
 				url,
 			},
 			className,
+			onReplace,
 			setAttributes,
 			isSelected,
 		} = props;
