@@ -5,7 +5,7 @@ import mt_rand from '../../../js/mt_rand';
  * @type {Object}
  */
 // var dataSectionId = mt_rand(10, 1000);
-var dataSectionId;// = mt_rand(10, 1000);
+var dataSectionId; // = mt_rand(10, 1000);
 
 const BackgroundOptionsAttributes = {
 	backgroundType: {
@@ -68,8 +68,8 @@ const BackgroundOptionsAttributes = {
 	},
 	dataSectionId: {
 		type: 'string',
-		default: `${dataSectionId}`
-	}
+		default: `${ dataSectionId }`,
+	},
 };
 
 export default BackgroundOptionsAttributes;

@@ -4,8 +4,7 @@
  * @return {array} The inline CSS class.
  */
 function TextColorClasses( props ) {
-	return [
-	];	
+	return [];
 }
 
 export default TextColorClasses;

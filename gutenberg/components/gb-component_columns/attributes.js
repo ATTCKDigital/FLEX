@@ -26,7 +26,7 @@ const ColumnOptionsAttributes = {
 	columnTabletLandscape: {
 		type: 'string',
 		default: 'inherit',
-	},	
+	},
 	columnDesktop: {
 		type: 'string',
 		default: 'inherit',
@@ -53,7 +53,7 @@ const ColumnOptionsAttributes = {
 	},
 	column24TabletLandscape: {
 		type: 'string',
-	},	
+	},
 	column24XL: {
 		type: 'string',
 	},

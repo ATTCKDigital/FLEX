@@ -1,14 +1,9 @@
 // WordPress dependencies
 const { __ } = wp.i18n;
 
-const {
-	PanelColorSettings,
-} = wp.blockEditor;
+const { PanelColorSettings } = wp.blockEditor;
 
-const {
-	PanelBody,
-	RangeControl
-} = wp.components;
+const { PanelBody, RangeControl } = wp.components;
 
 // Internal dependencies
 import { Fragment } from '@wordpress/element';
@@ -16,18 +11,16 @@ import BackgroundColorOptionsAttributes from './attributes';
 import BackgroundColorOptionsInlineStyles from './inline-styles';
 
 // Export for ease of importing in individual blocks.
-export {
-	BackgroundColorOptionsAttributes,
-	BackgroundColorOptionsInlineStyles,
-};
+export { BackgroundColorOptionsAttributes, BackgroundColorOptionsInlineStyles };
 
 function BackgroundColorOptions( props ) {
 	const { attributes, setAttributes } = props;
 	const { backgroundColor, backgroundOpacity = 100 } = attributes || {};
 
 	// const setBackgroundColor = value => props.setAttributes( { backgroundColor: value } );
-	const setBackgroundColor = (value) => setAttributes({ backgroundColor: value });
-	
+	const setBackgroundColor = ( value ) =>
+		setAttributes( { backgroundColor: value } );
+
 	return (
 		<Fragment>
 			<PanelColorSettings
@@ -38,15 +31,19 @@ function BackgroundColorOptions( props ) {
 						value: backgroundColor,
 						onChange: setBackgroundColor,
 						label: __( 'Background Color' ),
-					}
+					},
 				] }
+			></PanelColorSettings>
+			<PanelBody
+				title={ __( 'Background Opacity' ) }
+				initialOpen={ false }
 			>
-			</PanelColorSettings>
-			<PanelBody title={ __( 'Background Opacity' ) } initialOpen={false}>
 				<RangeControl
 					label={ __( 'Opacity (%)' ) }
 					value={ backgroundOpacity }
-					onChange={ (value) => setAttributes({ backgroundOpacity: value }) }
+					onChange={ ( value ) =>
+						setAttributes( { backgroundOpacity: value } )
+					}
 					min={ 0 }
 					max={ 100 }
 				/>

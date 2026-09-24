@@ -11,10 +11,10 @@ module.exports = {
 					 * within style tags in our rendered HTML.
 					 * So, though some of these variables may appear undefined, they are not.
 					 */
-					warnings: false
-				}
-			}
+					warnings: false,
+				},
+			},
 		},
-		'cssnano': {}
-	}
-}
+		cssnano: {},
+	},
+};

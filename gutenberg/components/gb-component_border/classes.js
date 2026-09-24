@@ -5,10 +5,18 @@
  */
 function BorderOptionsClasses( props ) {
 	return [
-		props.attributes.borderTop ? `component-top-border-${ props.attributes.borderTop }` : null,
-		props.attributes.borderRight ? `component-right-border-${ props.attributes.borderRight }` : null,
-		props.attributes.borderBottom ? `component-bottom-border-${ props.attributes.borderBottom }` : null,
-		props.attributes.borderLeft ? `component-left-border-${ props.attributes.borderLeft }` : null,
+		props.attributes.borderTop
+			? `component-top-border-${ props.attributes.borderTop }`
+			: null,
+		props.attributes.borderRight
+			? `component-right-border-${ props.attributes.borderRight }`
+			: null,
+		props.attributes.borderBottom
+			? `component-bottom-border-${ props.attributes.borderBottom }`
+			: null,
+		props.attributes.borderLeft
+			? `component-left-border-${ props.attributes.borderLeft }`
+			: null,
 	];
 }
 

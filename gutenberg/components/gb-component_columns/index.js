@@ -3,20 +3,10 @@
  */
 const { __ } = wp.i18n;
 
-const {
-	ColorPalette,
-	PanelColorSettings,
-	MediaUpload,
-} = wp.blockEditor;
+const { ColorPalette, PanelColorSettings, MediaUpload } = wp.blockEditor;
 
-const {
-	Button,
-	Dashicon,
-	PanelBody,
-	PanelRow,
-	RangeControl,
-	SelectControl,
-} = wp.components;
+const { Button, Dashicon, PanelBody, PanelRow, RangeControl, SelectControl } =
+	wp.components;
 
 /**
  * Internal dependencies
@@ -25,10 +15,7 @@ import ColumnOptionsAttributes from './attributes';
 import ColumnOptionsClasses from './classes';
 
 // Export for ease of importing in individual blocks.
-export {
-	ColumnOptionsAttributes,
-	ColumnOptionsClasses,
-};
+export { ColumnOptionsAttributes, ColumnOptionsClasses };
 
 function ColumnOptions( props ) {
 	// const setColumnCount = value => props.setAttributes( { columnCount: value } );
@@ -41,37 +28,45 @@ function ColumnOptions( props ) {
 	// const setColumnXL = value => props.setAttributes( { columnXL: value } );
 	// const setColumnXL2 = value => props.setAttributes( { columnXL2: value } );
 
-	const setColumn = (which, value) => {
+	const setColumn = ( which, value ) => {
 		let columnEdited = '';
 		let columnEditedCount = 0;
 
 		// Save prop
-		props.setAttributes( { [which]: value } );
+		props.setAttributes( { [ which ]: value } );
 
-		// Check local var since no callback after attribute 
+		// Check local var since no callback after attribute
 		// has been set which the function below will find.
 		// https://github.com/WordPress/gutenberg/issues/5596
-		if (typeof value !== 'undefined' && value.toLowerCase() !== 'inherit') {
+		if (
+			typeof value !== 'undefined' &&
+			value.toLowerCase() !== 'inherit'
+		) {
 			columnEditedCount++;
 		}
 
-		// Loop over all padding options and 
+		// Loop over all padding options and
 		// check if any changed values aren't 'Inherit'
-		for (const property in ColumnOptionsAttributes) {
-			if (typeof props.attributes[property] !== 'undefined' && props.attributes[property].toLowerCase() !== 'inherit') {
+		for ( const property in ColumnOptionsAttributes ) {
+			if (
+				typeof props.attributes[ property ] !== 'undefined' &&
+				props.attributes[ property ].toLowerCase() !== 'inherit'
+			) {
 				columnEditedCount++;
 			}
 		}
 
-		if (columnEditedCount > 0) {
-			props.setAttributes( { columnEdited: `(${columnEditedCount} set)` } );
+		if ( columnEditedCount > 0 ) {
+			props.setAttributes( {
+				columnEdited: `(${ columnEditedCount } set)`,
+			} );
 		}
 
 		return '';
-	} 
+	};
 
 	const svgHeight = {
-		height: 0
+		height: 0,
 	};
 
 	const columnSelect = () => {
@@ -87,8 +82,14 @@ function ColumnOptions( props ) {
 						<SelectControl
 							key="column-default"
 							label={ __( 'Default' ) }
-							value={ props.attributes.columnDefault ? props.attributes.columnDefault : '' }
-							onChange={ (e) => setColumn('columnDefault', e) }
+							value={
+								props.attributes.columnDefault
+									? props.attributes.columnDefault
+									: ''
+							}
+							onChange={ ( e ) =>
+								setColumn( 'columnDefault', e )
+							}
 							options={ [
 								{
 									label: __( 'Hide on default' ),
@@ -149,8 +150,12 @@ function ColumnOptions( props ) {
 						<SelectControl
 							key="column-phone"
 							label={ __( 'Phone' ) }
-							value={ props.attributes.columnPhone ? props.attributes.columnPhone : '' }
-							onChange={ (e) => setColumn('columnPhone', e) }
+							value={
+								props.attributes.columnPhone
+									? props.attributes.columnPhone
+									: ''
+							}
+							onChange={ ( e ) => setColumn( 'columnPhone', e ) }
 							options={ [
 								{
 									label: __( 'Inherit' ),
@@ -208,7 +213,6 @@ function ColumnOptions( props ) {
 									label: __( '12 (Full width)' ),
 									value: '12',
 								},
-
 							] }
 						/>
 					</PanelRow>
@@ -216,8 +220,14 @@ function ColumnOptions( props ) {
 						<SelectControl
 							key="column-phone-plus"
 							label={ __( 'Phone-Plus' ) }
-							value={ props.attributes.columnPhonePlus ? props.attributes.columnPhonePlus : '' }
-							onChange={ (e) => setColumn('columnPhonePlus', e) }
+							value={
+								props.attributes.columnPhonePlus
+									? props.attributes.columnPhonePlus
+									: ''
+							}
+							onChange={ ( e ) =>
+								setColumn( 'columnPhonePlus', e )
+							}
 							options={ [
 								{
 									label: __( 'Inherit' ),
@@ -275,7 +285,6 @@ function ColumnOptions( props ) {
 									label: __( '12 (Full width)' ),
 									value: '12',
 								},
-
 							] }
 						/>
 					</PanelRow>
@@ -283,8 +292,14 @@ function ColumnOptions( props ) {
 						<SelectControl
 							key="column-tablet-portrait"
 							label={ __( 'Tablet-Portrait' ) }
-							value={ props.attributes.columnTabletPortrait ? props.attributes.columnTabletPortrait : '' }
-							onChange={ (e) => setColumn('columnTabletPortrait', e) }
+							value={
+								props.attributes.columnTabletPortrait
+									? props.attributes.columnTabletPortrait
+									: ''
+							}
+							onChange={ ( e ) =>
+								setColumn( 'columnTabletPortrait', e )
+							}
 							options={ [
 								{
 									label: __( 'Inherit' ),
@@ -342,7 +357,6 @@ function ColumnOptions( props ) {
 									label: __( '12 (Full width)' ),
 									value: '12',
 								},
-
 							] }
 						/>
 					</PanelRow>
@@ -350,8 +364,14 @@ function ColumnOptions( props ) {
 						<SelectControl
 							key="column-tablet-landscape"
 							label={ __( 'Tablet-Landscape' ) }
-							value={ props.attributes.columnTabletLandscape ? props.attributes.columnTabletLandscape : '' }
-							onChange={ (e) => setColumn('columnTabletLandscape', e) }
+							value={
+								props.attributes.columnTabletLandscape
+									? props.attributes.columnTabletLandscape
+									: ''
+							}
+							onChange={ ( e ) =>
+								setColumn( 'columnTabletLandscape', e )
+							}
 							options={ [
 								{
 									label: __( 'Inherit' ),
@@ -409,7 +429,6 @@ function ColumnOptions( props ) {
 									label: __( '12 (Full width)' ),
 									value: '12',
 								},
-
 							] }
 						/>
 					</PanelRow>
@@ -417,8 +436,14 @@ function ColumnOptions( props ) {
 						<SelectControl
 							key="column-desktop"
 							label={ __( 'Desktop' ) }
-							value={ props.attributes.columnDesktop ? props.attributes.columnDesktop : '' }
-							onChange={ (e) => setColumn('columnDesktop', e) }
+							value={
+								props.attributes.columnDesktop
+									? props.attributes.columnDesktop
+									: ''
+							}
+							onChange={ ( e ) =>
+								setColumn( 'columnDesktop', e )
+							}
 							options={ [
 								{
 									label: __( 'Inherit' ),
@@ -476,7 +501,6 @@ function ColumnOptions( props ) {
 									label: __( '12 (Full width)' ),
 									value: '12',
 								},
-
 							] }
 						/>
 					</PanelRow>
@@ -484,8 +508,12 @@ function ColumnOptions( props ) {
 						<SelectControl
 							key="column-xl"
 							label={ __( 'XL' ) }
-							value={ props.attributes.columnXL ? props.attributes.columnXL : '' }
-							onChange={ (e) => setColumn('columnXL', e) }
+							value={
+								props.attributes.columnXL
+									? props.attributes.columnXL
+									: ''
+							}
+							onChange={ ( e ) => setColumn( 'columnXL', e ) }
 							options={ [
 								{
 									label: __( 'Inherit' ),
@@ -543,7 +571,6 @@ function ColumnOptions( props ) {
 									label: __( '12 (Full width)' ),
 									value: '12',
 								},
-
 							] }
 						/>
 					</PanelRow>
@@ -551,8 +578,12 @@ function ColumnOptions( props ) {
 						<SelectControl
 							key="column-xl2"
 							label={ __( 'XL2' ) }
-							value={ props.attributes.columnXL2 ? props.attributes.columnXL2 : '' }
-							onChange={ (e) => setColumn('columnXL2', e) }
+							value={
+								props.attributes.columnXL2
+									? props.attributes.columnXL2
+									: ''
+							}
+							onChange={ ( e ) => setColumn( 'columnXL2', e ) }
 							options={ [
 								{
 									label: __( 'Inherit' ),
@@ -610,7 +641,6 @@ function ColumnOptions( props ) {
 									label: __( '12 (Full width)' ),
 									value: '12',
 								},
-
 							] }
 						/>
 					</PanelRow>
@@ -632,8 +662,14 @@ function ColumnOptions( props ) {
 						<SelectControl
 							key="column-24-default"
 							label={ __( 'Default' ) }
-							value={ props.attributes.columnDefault ? props.attributes.columnDefault : '' }
-							onChange={ (e) => setColumn('columnDefault', e) }
+							value={
+								props.attributes.columnDefault
+									? props.attributes.columnDefault
+									: ''
+							}
+							onChange={ ( e ) =>
+								setColumn( 'columnDefault', e )
+							}
 							options={ [
 								{
 									label: __( 'Hide on default' ),
@@ -742,8 +778,12 @@ function ColumnOptions( props ) {
 						<SelectControl
 							key="column-24-phone"
 							label={ __( 'Phone' ) }
-							value={ props.attributes.columnPhone ? props.attributes.columnPhone : '' }
-							onChange={ (e) => setColumn('columnPhone', e) }
+							value={
+								props.attributes.columnPhone
+									? props.attributes.columnPhone
+									: ''
+							}
+							onChange={ ( e ) => setColumn( 'columnPhone', e ) }
 							options={ [
 								{
 									label: __( 'Inherit' ),
@@ -856,8 +896,14 @@ function ColumnOptions( props ) {
 						<SelectControl
 							key="column-24-phone-plus"
 							label={ __( 'Phone Plus' ) }
-							value={ props.attributes.columnPhonePlus ? props.attributes.columnPhonePlus : '' }
-							onChange={ (e) => setColumn('columnPhonePlus', e) }
+							value={
+								props.attributes.columnPhonePlus
+									? props.attributes.columnPhonePlus
+									: ''
+							}
+							onChange={ ( e ) =>
+								setColumn( 'columnPhonePlus', e )
+							}
 							options={ [
 								{
 									label: __( 'Inherit' ),
@@ -970,8 +1016,14 @@ function ColumnOptions( props ) {
 						<SelectControl
 							key="column-24-tablet-portrait"
 							label={ __( 'Tablet Portrait' ) }
-							value={ props.attributes.columnTabletPortrait ? props.attributes.columnTabletPortrait : '' }
-							onChange={ (e) => setColumn('columnTabletPortrait', e) }
+							value={
+								props.attributes.columnTabletPortrait
+									? props.attributes.columnTabletPortrait
+									: ''
+							}
+							onChange={ ( e ) =>
+								setColumn( 'columnTabletPortrait', e )
+							}
 							options={ [
 								{
 									label: __( 'Inherit' ),
@@ -1084,8 +1136,14 @@ function ColumnOptions( props ) {
 						<SelectControl
 							key="column-24-tablet-landscape"
 							label={ __( 'Tablet Landcsape' ) }
-							value={ props.attributes.columnTabletLandscape ? props.attributes.columnTabletLandscape : '' }
-							onChange={ (e) => setColumn('columnTabletLandscape', e) }
+							value={
+								props.attributes.columnTabletLandscape
+									? props.attributes.columnTabletLandscape
+									: ''
+							}
+							onChange={ ( e ) =>
+								setColumn( 'columnTabletLandscape', e )
+							}
 							options={ [
 								{
 									label: __( 'Inherit' ),
@@ -1198,8 +1256,14 @@ function ColumnOptions( props ) {
 						<SelectControl
 							key="column-24-desktop"
 							label={ __( 'Desktop' ) }
-							value={ props.attributes.columnDesktop ? props.attributes.columnDesktop : '' }
-							onChange={ (e) => setColumn('columnDesktop', e) }
+							value={
+								props.attributes.columnDesktop
+									? props.attributes.columnDesktop
+									: ''
+							}
+							onChange={ ( e ) =>
+								setColumn( 'columnDesktop', e )
+							}
 							options={ [
 								{
 									label: __( 'Inherit' ),
@@ -1305,7 +1369,6 @@ function ColumnOptions( props ) {
 									label: __( '24 (Full width)' ),
 									value: '24',
 								},
-
 							] }
 						/>
 					</PanelRow>
@@ -1313,8 +1376,12 @@ function ColumnOptions( props ) {
 						<SelectControl
 							key="column-24-xl"
 							label={ __( 'XL' ) }
-							value={ props.attributes.columnXL ? props.attributes.columnXL : '' }
-							onChange={ (e) => setColumn('columnXL', e) }
+							value={
+								props.attributes.columnXL
+									? props.attributes.columnXL
+									: ''
+							}
+							onChange={ ( e ) => setColumn( 'columnXL', e ) }
 							options={ [
 								{
 									label: __( 'Inherit' ),
@@ -1427,8 +1494,12 @@ function ColumnOptions( props ) {
 						<SelectControl
 							key="column-24-xl2"
 							label={ __( 'XL2' ) }
-							value={ props.attributes.columnXL2 ? props.attributes.columnXL2 : '' }
-							onChange={ (e) => setColumn('columnXL2', e) }
+							value={
+								props.attributes.columnXL2
+									? props.attributes.columnXL2
+									: ''
+							}
+							onChange={ ( e ) => setColumn( 'columnXL2', e ) }
 							options={ [
 								{
 									label: __( 'Inherit' ),
@@ -1544,12 +1615,15 @@ function ColumnOptions( props ) {
 
 	return (
 		<PanelBody
-			title={ __( 'Block Column Count ' + ( props.attributes.columnEdited || setColumn() ) ) }
+			title={ __(
+				'Block Column Count ' +
+					( props.attributes.columnEdited || setColumn() )
+			) }
 			className="flexlayout-column-options"
 			initialOpen={ false }
 		>
-			<img 
-				// Use empty SVG to trigger onload event 
+			<img
+				// Use empty SVG to trigger onload event
 				// Onload hack fires when block is added
 				className="onload-hack-pp"
 				height="0"
@@ -1557,13 +1631,17 @@ function ColumnOptions( props ) {
 				onLoad={ setColumn }
 				src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' %3E%3Cpath d=''/%3E%3C/svg%3E"
 				style={ svgHeight }
-				></img>
+			></img>
 			<PanelRow>
 				<SelectControl
 					key="column-total"
 					label={ __( 'Total Columns' ) }
-					value={ props.attributes.columnCount ? props.attributes.columnCount : '' }
-					onChange={ (e) => setColumn('columnCount', e) }
+					value={
+						props.attributes.columnCount
+							? props.attributes.columnCount
+							: ''
+					}
+					onChange={ ( e ) => setColumn( 'columnCount', e ) }
 					options={ [
 						{
 							label: __( '12' ),
@@ -1573,7 +1651,7 @@ function ColumnOptions( props ) {
 							label: __( '24' ),
 							value: '24',
 						},
-					]}
+					] }
 				/>
 			</PanelRow>
 			<PanelRow>

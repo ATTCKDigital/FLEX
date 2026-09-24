@@ -8,12 +8,14 @@
  * Date: 2021-01-23
  */
 
-// Load order: First, before 
+// Load order: First, before
 
 import $ from 'jquery';
 
-var isProd = (typeof $('body').attr('data-server-environment'));
-if (!isProd) { console.log('loaded', '/FLEX\t/js\t/app.js'); }
+var isProd = typeof $( 'body' ).attr( 'data-server-environment' );
+if ( ! isProd ) {
+	console.log( 'loaded', '/FLEX\t/js\t/app.js' );
+}
 
 // https://stackoverflow.com/questions/34338411/how-to-import-jquery-using-es6-syntax
 window.$ = window.jQuery = $;
@@ -26,15 +28,15 @@ import Loader from './load-components';
 cssVars();
 
 // Initiate Global Component Loader and Global Events.
-$(function () {
+$( function () {
 	Loader.loadComponents();
 	GlobalEvents.initGlobalEvents();
-});
+} );
 
 // Resolves persisted cache issue in safari
 // SOURCE: https://stackoverflow.com/questions/8788802/prevent-safari-loading-from-cache-when-back-button-is-clicked
-window.onpageshow = function (event) {
-	if (event.persisted) {
-		window.location.reload()
+window.onpageshow = function ( event ) {
+	if ( event.persisted ) {
+		window.location.reload();
 	}
 };

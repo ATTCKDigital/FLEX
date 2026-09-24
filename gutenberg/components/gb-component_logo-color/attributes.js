@@ -5,9 +5,8 @@
 const LogoColorOptionsAttributes = {
 	logoColor: {
 		type: 'string',
-		default: 'dark'
+		default: 'dark',
 	},
-	
 };
 
 export default LogoColorOptionsAttributes;

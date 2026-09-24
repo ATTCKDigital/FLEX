@@ -1,4 +1,4 @@
-console.log('FLEX/js/admin.js');
+console.log( 'FLEX/js/admin.js' );
 
 import _ from 'lodash';
 window.lodash = _.noConflict();

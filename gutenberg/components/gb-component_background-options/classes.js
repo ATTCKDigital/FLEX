@@ -5,19 +5,67 @@
  */
 function BackgroundOptionsClasses( props ) {
 	return [
-		{ 'component-image-background component-background': 'image' === props.attributes.backgroundType },
-		{ 'component-image-background-wide': true === props.attributes.backgroundImageWide },
-		{ 'component-color-background component-background': 'color' === props.attributes.backgroundType },
-		{ 'component-video-background component-background': 'video' === props.attributes.backgroundType },
-		{ 'component-background-left-center': 'left' === props.attributes.backgroundPositionX && 'center' === props.attributes.backgroundPositionY },
-		{ 'component-background-left-top': 'left' === props.attributes.backgroundPositionX && 'top' === props.attributes.backgroundPositionY },
-		{ 'component-background-left-bottom': 'left' === props.attributes.backgroundPositionX && 'bottom' === props.attributes.backgroundPositionY },
-		{ 'component-background-right-center': 'right' === props.attributes.backgroundPositionX && 'center' === props.attributes.backgroundPositionY },
-		{ 'component-background-right-top': 'right' === props.attributes.backgroundPositionX && 'top' === props.attributes.backgroundPositionY },
-		{ 'component-background-right-bottom': 'right' === props.attributes.backgroundPositionX && 'bottom' === props.attributes.backgroundPositionY },
-		{ 'component-background-center-center': 'center' === props.attributes.backgroundPositionX && 'center' === props.attributes.backgroundPositionY },
-		{ 'component-background-center-top': 'center' === props.attributes.backgroundPositionX && 'top' === props.attributes.backgroundPositionY },
-		{ 'component-background-center-bottom': 'center' === props.attributes.backgroundPositionX && 'bottom' === props.attributes.backgroundPositionY },
+		{
+			'component-image-background component-background':
+				'image' === props.attributes.backgroundType,
+		},
+		{
+			'component-image-background-wide':
+				true === props.attributes.backgroundImageWide,
+		},
+		{
+			'component-color-background component-background':
+				'color' === props.attributes.backgroundType,
+		},
+		{
+			'component-video-background component-background':
+				'video' === props.attributes.backgroundType,
+		},
+		{
+			'component-background-left-center':
+				'left' === props.attributes.backgroundPositionX &&
+				'center' === props.attributes.backgroundPositionY,
+		},
+		{
+			'component-background-left-top':
+				'left' === props.attributes.backgroundPositionX &&
+				'top' === props.attributes.backgroundPositionY,
+		},
+		{
+			'component-background-left-bottom':
+				'left' === props.attributes.backgroundPositionX &&
+				'bottom' === props.attributes.backgroundPositionY,
+		},
+		{
+			'component-background-right-center':
+				'right' === props.attributes.backgroundPositionX &&
+				'center' === props.attributes.backgroundPositionY,
+		},
+		{
+			'component-background-right-top':
+				'right' === props.attributes.backgroundPositionX &&
+				'top' === props.attributes.backgroundPositionY,
+		},
+		{
+			'component-background-right-bottom':
+				'right' === props.attributes.backgroundPositionX &&
+				'bottom' === props.attributes.backgroundPositionY,
+		},
+		{
+			'component-background-center-center':
+				'center' === props.attributes.backgroundPositionX &&
+				'center' === props.attributes.backgroundPositionY,
+		},
+		{
+			'component-background-center-top':
+				'center' === props.attributes.backgroundPositionX &&
+				'top' === props.attributes.backgroundPositionY,
+		},
+		{
+			'component-background-center-bottom':
+				'center' === props.attributes.backgroundPositionX &&
+				'bottom' === props.attributes.backgroundPositionY,
+		},
 	];
 }
 

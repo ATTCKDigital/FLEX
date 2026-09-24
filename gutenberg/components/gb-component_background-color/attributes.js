@@ -8,8 +8,8 @@ const BackgroundColorOptionsAttributes = {
 	},
 	backgroundOpacity: {
 		type: 'number',
-		default: 100
-	}
+		default: 100,
+	},
 };
 
 export default BackgroundColorOptionsAttributes;

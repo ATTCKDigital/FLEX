@@ -5,8 +5,9 @@
  */
 function LogoColorOptionsDataAttr( props ) {
 	return [
-		props.attributes.logoColor ? `logo-color-${ props.attributes.logoColor }` : null,
-
+		props.attributes.logoColor
+			? `logo-color-${ props.attributes.logoColor }`
+			: null,
 	];
 }
 
