@@ -1,46 +1,49 @@
 /**
- * Set inline styles.
- * @param  {object} props - The block object.
- * @return {object} The inline background type CSS.
+ * Convert a hex colour to rgba().
+ * @param {string} hex     - The hex colour.
+ * @param {number} opacity - The opacity (0-100).
+ * @return {string} The rgba() colour, or the input unchanged if not a hex colour.
  */
-function hexToRgba(hex, opacity = 100) {
-	if (typeof hex !== 'string' || !hex.startsWith('#')) return hex;
+function hexToRgba( hex, opacity = 100 ) {
+	if ( typeof hex !== 'string' || ! hex.startsWith( '#' ) ) {
+		return hex;
+	}
 
-	hex = hex.replace('#', '');
-	
+	hex = hex.replace( '#', '' );
+
 	let r, g, b;
 
-	if (hex.length === 3) {
-		r = parseInt(hex[0] + hex[0], 16);
-		g = parseInt(hex[1] + hex[1], 16);
-		b = parseInt(hex[2] + hex[2], 16);
-	} else if (hex.length === 6) {
-		r = parseInt(hex.substring(0, 2), 16);
-		g = parseInt(hex.substring(2, 4), 16);
-		b = parseInt(hex.substring(4, 6), 16);
+	if ( hex.length === 3 ) {
+		r = parseInt( hex[ 0 ] + hex[ 0 ], 16 );
+		g = parseInt( hex[ 1 ] + hex[ 1 ], 16 );
+		b = parseInt( hex[ 2 ] + hex[ 2 ], 16 );
+	} else if ( hex.length === 6 ) {
+		r = parseInt( hex.substring( 0, 2 ), 16 );
+		g = parseInt( hex.substring( 2, 4 ), 16 );
+		b = parseInt( hex.substring( 4, 6 ), 16 );
 	} else {
 		return hex;
 	}
 
-	const alpha = Math.min(Math.max(opacity / 100, 0), 1);
+	const alpha = Math.min( Math.max( opacity / 100, 0 ), 1 );
 
-	return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+	return `rgba(${ r }, ${ g }, ${ b }, ${ alpha })`;
 }
 
 function BackgroundOptionsInlineStyles( props ) {
 	try {
-		const { 
-			backgroundType, 
-			backgroundColor, 
-			backgroundOpacity, 
-			backgroundImage, 
-			backgroundImageWide, 
-			backgroundSize, 
-			backgroundRepeat 
+		const {
+			backgroundType,
+			backgroundColor,
+			backgroundOpacity,
+			backgroundImage,
+			backgroundImageWide,
+			backgroundSize,
+			backgroundRepeat,
 		} = props.attributes || {};
 
 		// If image is wide, don't apply inline styles
-		if (backgroundType === 'image' && backgroundImageWide) {
+		if ( backgroundType === 'image' && backgroundImageWide ) {
 			return {};
 		}
 
@@ -50,28 +53,34 @@ function BackgroundOptionsInlineStyles( props ) {
 		if (
 			backgroundType === 'color' &&
 			typeof backgroundColor === 'string' &&
-			backgroundColor.startsWith('#')
+			backgroundColor.startsWith( '#' )
 		) {
-			const safeOpacity = typeof backgroundOpacity === 'number' ? backgroundOpacity : 100;
-			style.backgroundColor = hexToRgba(backgroundColor, safeOpacity);
+			const safeOpacity =
+				typeof backgroundOpacity === 'number' ? backgroundOpacity : 100;
+			style.backgroundColor = hexToRgba( backgroundColor, safeOpacity );
 		}
 
 		// Background image
-		if (backgroundType === 'image' && backgroundImage && backgroundImage.url) {
-			style.backgroundImage = `url(${backgroundImage.url})`;
+		if (
+			backgroundType === 'image' &&
+			backgroundImage &&
+			backgroundImage.url
+		) {
+			style.backgroundImage = `url(${ backgroundImage.url })`;
 		}
 
-		if (backgroundType === 'image' && backgroundSize) {
+		if ( backgroundType === 'image' && backgroundSize ) {
 			style.backgroundSize = backgroundSize;
 		}
 
-		if (backgroundType === 'image' && backgroundRepeat) {
+		if ( backgroundType === 'image' && backgroundRepeat ) {
 			style.backgroundRepeat = backgroundRepeat;
 		}
 
 		return style;
-	} catch (err) {
-		console.error('err: ', err);
+	} catch ( err ) {
+		// eslint-disable-next-line no-console -- reports inline-style computation errors to the developer
+		console.error( 'err: ', err );
 		return {};
 	}
 }

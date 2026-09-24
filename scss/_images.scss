@@ -6,7 +6,6 @@ img {
 	display: block;
 }
 
-
 /** Responsive Aspect Ratio Image **/
 // Available as class OR mixin
 .responsive-image {
@@ -22,7 +21,6 @@ img {
 	width: auto;
 	z-index: 1;
 }
-
 
 @mixin responsiveImage {
 	display: block;
@@ -45,17 +43,18 @@ img {
 	position: relative;
 }
 
-@mixin responsiveWrapper($paddingBottom){
+@mixin responsiveWrapper($paddingBottom) {
 	height: 0;
 	overflow: hidden;
 	padding-bottom: $paddingBottom;
 	position: relative;
 }
 
-
 /** Image alignment for images added via WYSIWYG **/
-.post-img, .alignnone, .none {
-	margin-bottom: $gap*3;
+.post-img,
+.alignnone,
+.none {
+	margin-bottom: $gap * 3;
 	max-width: 100%;
 	width: auto;
 
@@ -68,7 +67,7 @@ img {
 	&.alignleft {
 		clear: left;
 		float: left;
-		margin-right: $gap*.5;
+		margin-right: $gap * 0.5;
 		max-width: 100%;
 		width: auto;
 	}
@@ -76,7 +75,7 @@ img {
 	&.alignright {
 		clear: right;
 		float: right;
-		margin-left: $gap*.5;
+		margin-left: $gap * 0.5;
 		margin-right: -10%;
 		max-width: 100%;
 		width: auto;
@@ -99,6 +98,7 @@ img {
 	border: 0 !important;
 }
 
-img.drop-shadow, .drop-shadow img {
-	box-shadow: 0 10px 20px 0 rgba(0,0,0,0.10);
+img.drop-shadow,
+.drop-shadow img {
+	box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.1);
 }

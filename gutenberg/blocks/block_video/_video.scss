@@ -52,7 +52,7 @@
 	&.autoplayingVideo,
 	.showVideo {
 		.close {
-			display: none
+			display: none;
 		}
 	}
 
@@ -60,7 +60,7 @@
 		position: absolute;
 		z-index: -1;
 
-		// Positioning (x/y offsets, width, etc.) 
+		// Positioning (x/y offsets, width, etc.)
 		// are set via helper CSS classes in _layout.scss
 
 		.wp-admin & {
@@ -72,7 +72,7 @@
 }
 
 // Responsive Aspect Ratio Videos
-.embed-youtube, 
+.embed-youtube,
 .video-wrapper {
 	display: block;
 	height: 0;
@@ -119,8 +119,8 @@
 		}
 	}
 
-	iframe, 
-	video, 
+	iframe,
+	video,
 	.video-js {
 		background: transparent;
 		bottom: 0;
@@ -140,7 +140,9 @@
 		opacity: 1;
 		position: absolute;
 		top: 0;
-		transition: opacity .1s ease-in, z-index .1s ease-in;
+		transition:
+			opacity 0.1s ease-in,
+			z-index 0.1s ease-in;
 		width: 100%;
 		z-index: 1;
 
@@ -160,14 +162,14 @@
 }
 
 .video-wrapper-2 {
-	background: color('secondary', 'white');
-	border: 8px solid white;
+	background: color("secondary", "white");
+	border: 8px solid #fff;
 	border-radius: 8px;
-	box-shadow: 0px 4px 8px rgba(0, 0, 0, .20);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
 	@include mediaquery(tablet-portrait) {
-		border: 12px solid white;
+		border: 12px solid #fff;
 		border-radius: 16px;
-		box-shadow: 0px 8px 16px rgba(0, 0, 0, .20);
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 	}
 }

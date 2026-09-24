@@ -2,26 +2,26 @@
 // Override with custom styles in child theme
 .component-share {
 	@include tertiary-regular;
-    border: 2px solid color('secondary', 'white');
-    border-radius: 90px;
-    margin: 0 auto;
-    overflow: hidden;
-    padding: 5px 15px;
-    width: auto;
+	border: 2px solid color("secondary", "white");
+	border-radius: 90px;
+	margin: 0 auto;
+	overflow: hidden;
+	padding: 5px 15px;
+	width: auto;
 
-    @include mediaquery(tablet-portrait) {
-    	padding: 15px 30px;
-    }
+	@include mediaquery(tablet-portrait) {
+		padding: 15px 30px;
+	}
 
-    .share-list {
-    	.caption2 {
-    		@include tertiary-bold;
-    		font-size: px-to-rem(26px);
+	.share-list {
+		.caption2 {
+			@include tertiary-bold;
+			font-size: px-to-rem(26px);
 
-    		@include mediaquery(tablet-portrait) {
-    			padding-right: $gap;
-    			font-size: px-to-rem(24px);
-    		}
-    	}
-    }
+			@include mediaquery(tablet-portrait) {
+				padding-right: $gap;
+				font-size: px-to-rem(24px);
+			}
+		}
+	}
 }

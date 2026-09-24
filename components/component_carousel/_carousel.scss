@@ -37,14 +37,14 @@
 		z-index: 100;
 
 		&.prev {
-			&:before {
+			&::before {
 				background: url(../assets/images/Carousel_Arrow.svg);
 				background-position: center;
 				background-repeat: no-repeat;
 				background-size: contain;
 				border-radius: 100%;
 				display: inline-block;
-				content: '';
+				content: "";
 				height: 35px;
 				margin-right: 10px;
 				width: 35px;
@@ -52,13 +52,13 @@
 		}
 
 		&.next {
-			&:after {
+			&::after {
 				background: url(../assets/images/Carousel_Arrow.svg);
 				background-position: center;
 				background-repeat: no-repeat;
 				background-size: contain;
 				border-radius: 100%;
-				content: '';
+				content: "";
 				display: inline-block;
 				height: 35px;
 				margin-left: 10px;
@@ -76,7 +76,7 @@
 
 		.dot {
 			a {
-				background-color: #221F1F;
+				background-color: #221f1f;
 				border-radius: 50%;
 				cursor: pointer;
 				display: block;

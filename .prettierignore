@@ -1,0 +1,4 @@
+assets/
+js/three.min.js
+node_modules/
+package-lock.json

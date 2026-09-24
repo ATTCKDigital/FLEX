@@ -1,12 +1,13 @@
 /**
  * Set data attributes.
- * @param {object} props - The block object.
- * @return {array} The data attribute.
+ * @param {Object} props - The block object.
+ * @return {Array} The data attribute.
  */
 function LogoColorOptionsDataAttr( props ) {
 	return [
-		props.attributes.logoColor ? `logo-color-${ props.attributes.logoColor }` : null,
-
+		props.attributes.logoColor
+			? `logo-color-${ props.attributes.logoColor }`
+			: null,
 	];
 }
 

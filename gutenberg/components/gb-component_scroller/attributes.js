@@ -10,7 +10,6 @@ const ScrollerOptionsAttributes = {
 	scrollerId: {
 		type: 'string',
 	},
-
 };
 
 export default ScrollerOptionsAttributes;

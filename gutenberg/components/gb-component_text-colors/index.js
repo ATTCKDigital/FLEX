@@ -3,18 +3,7 @@
  */
 const { __ } = wp.i18n;
 
-const {
-	ColorPalette,
-	PanelColorSettings,
-} = wp.blockEditor;
-
-const {
-	Button,
-	Dashicon,
-	PanelBody,
-	PanelRow,
-	SelectControl,
-} = wp.components;
+const { PanelColorSettings } = wp.blockEditor;
 
 /**
  * Internal dependencies
@@ -25,28 +14,24 @@ import TextColorInlineStyles from './inline-styles';
 // import './editor.scss';
 
 // Export for ease of importing in individual blocks.
-export {
-	TextColorAttributes,
-	TextColorClasses,
-	TextColorInlineStyles,
-};
+export { TextColorAttributes, TextColorClasses, TextColorInlineStyles };
 
 function TextColorOptions( props ) {
-	const setTextColor = value => props.setAttributes( { textColor: value } );
+	const setTextColor = ( value ) =>
+		props.setAttributes( { textColor: value } );
 
 	return (
 		<PanelColorSettings
-				title={ __( 'Text Color' ) }
-				initialOpen={ false }
-				colorSettings={ [
-					{
-						value: props.attributes.textColor,
-						onChange: setTextColor,
-						label: __( 'Text Color' ),
-					}
-				] }
-			>
-		</PanelColorSettings>
+			title={ __( 'Text Color' ) }
+			initialOpen={ false }
+			colorSettings={ [
+				{
+					value: props.attributes.textColor,
+					onChange: setTextColor,
+					label: __( 'Text Color' ),
+				},
+			] }
+		></PanelColorSettings>
 	);
 }
 

@@ -1,19 +1,24 @@
+// stylelint-disable scss/at-extend-no-missing-placeholder -- extends public FLEX classes (.cta, .cta-negative) that markup also uses; placeholders would change the generated selectors.
+
 .component-newsletter {
 	// MailChimp Overrides
+	// stylelint-disable-next-line selector-id-pattern -- id set by the MailChimp embed markup.
 	#mc_embed_signup_scroll {
-		h2, .indicates-required, label {
+		h2,
+		.indicates-required,
+		label {
 			display: none;
 		}
 	}
 
-	::placeholder{
-		color: color('secondary', 'white');
-	} 
+	::placeholder {
+		color: color("secondary", "white");
+	}
 
-	input[type=email] {
+	input[type="email"] {
 		background-color: transparent;
-		border: 1px solid rgba(255, 255, 255, .5);
-		color: color('secondary', 'white');
+		border: 1px solid rgba(255, 255, 255, 0.5);
+		color: color("secondary", "white");
 		margin-bottom: $gap;
 	}
 

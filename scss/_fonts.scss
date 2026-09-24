@@ -1,296 +1,441 @@
 // Font Awesome (via npm)
-$fa-font-path: "assets/fonts/Fontawesome";
-@import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
-@import "@fortawesome/fontawesome-free/scss/solid.scss";
-@import "@fortawesome/fontawesome-free/scss/brands.scss";
-@import "@fortawesome/fontawesome-free/scss/regular.scss";
+// Webfonts are copied to the child's dist/fonts/fontawesome by its build (see UPGRADING.md).
+$fa-font-path: "fonts/fontawesome" !default;
 
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
+@import "@fortawesome/fontawesome-free/scss/solid";
+@import "@fortawesome/fontawesome-free/scss/brands";
+@import "@fortawesome/fontawesome-free/scss/regular";
+
+// stylelint-disable scss/operator-no-unspaced -- false positive: stylelint-scss reads the "/" path separators inside unquoted url()s of multi-line `src` lists as division (function-url-quotes requires unquoted url()s).
 
 // HelveticaNeueBlack - latin
 @font-face {
-	font-family: 'HelveticaNeueBlack';
+	font-family: HelveticaNeueBlack;
 	font-style: normal;
 	font-weight: 900;
-	src: url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBlack.eot'); /* IE9 Compat Modes */
-	src: local('HelveticaNeueBlack'), local('HelveticaNeueBlack'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBlack.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBlack.woff2') format('woff2'), /* Super Modern Browsers */
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBlack.woff') format('woff'), /* Modern Browsers */
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBlack.ttf') format('truetype'), /* Safari, Android, iOS */
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBlack.svg#HelveticaNeueBlack') format('svg'); /* Legacy iOS */
+	src: url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBlack.eot); /* IE9 Compat Modes */
+	src:
+		local("HelveticaNeueBlack"),
+		local("HelveticaNeueBlack"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBlack.eot?#iefix)
+			format("embedded-opentype"),
+		/* IE6-IE8 */
+			url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBlack.woff2)
+			format("woff2"),
+		/* Super Modern Browsers */
+			url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBlack.woff)
+			format("woff"),
+		/* Modern Browsers */
+			url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBlack.ttf)
+			format("truetype"),
+		/* Safari, Android, iOS */
+			url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBlack.svg#HelveticaNeueBlack)
+			format("svg"); /* Legacy iOS */
 }
 
 // HelveticaNeueBlackItalic - latin
 @font-face {
-	font-family: 'HelveticaNeueBlackItalic';
+	font-family: HelveticaNeueBlackItalic;
 	font-style: italic;
 	font-weight: 900;
-	src: url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBlackItalic.eot');
-	src: local('HelveticaNeueBlackItalic'), local('HelveticaNeueBlackItalic'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBlackItalic.eot?#iefix') format('embedded-opentype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBlackItalic.woff2') format('woff2'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBlackItalic.woff') format('woff'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBlackItalic.ttf') format('truetype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBlackItalic.svg#HelveticaNeueBlackItalic') format('svg');
+	src: url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBlackItalic.eot);
+	src:
+		local("HelveticaNeueBlackItalic"),
+		local("HelveticaNeueBlackItalic"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBlackItalic.eot?#iefix)
+			format("embedded-opentype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBlackItalic.woff2)
+			format("woff2"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBlackItalic.woff)
+			format("woff"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBlackItalic.ttf)
+			format("truetype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBlackItalic.svg#HelveticaNeueBlackItalic)
+			format("svg");
 }
 
 // HelveticaNeueBold - latin
 @font-face {
-	font-family: 'HelveticaNeueBold';
+	font-family: HelveticaNeueBold;
 	font-style: normal;
 	font-weight: 700;
-	src: url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBold.eot');
-	src: local('HelveticaNeueBold'), local('HelveticaNeueBold'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBold.eot?#iefix') format('embedded-opentype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBold.woff2') format('woff2'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBold.woff') format('woff'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBold.ttf') format('truetype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBold.svg#HelveticaNeueBold') format('svg');
+	src: url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBold.eot);
+	src:
+		local("HelveticaNeueBold"),
+		local("HelveticaNeueBold"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBold.eot?#iefix)
+			format("embedded-opentype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBold.woff2)
+			format("woff2"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBold.woff)
+			format("woff"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBold.ttf)
+			format("truetype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBold.svg#HelveticaNeueBold)
+			format("svg");
 }
 
 // HelveticaNeueBoldItalic - latin
 @font-face {
-	font-family: 'HelveticaNeueBoldItalic';
+	font-family: HelveticaNeueBoldItalic;
 	font-style: italic;
 	font-weight: 700;
-	src: url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBoldItalic.eot');
-	src: local('HelveticaNeueBoldItalic'), local('HelveticaNeueBoldItalic'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBoldItalic.eot?#iefix') format('embedded-opentype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBoldItalic.woff2') format('woff2'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBoldItalic.woff') format('woff'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBoldItalic.ttf') format('truetype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBoldItalic.svg#HelveticaNeueBoldItalic') format('svg');
+	src: url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBoldItalic.eot);
+	src:
+		local("HelveticaNeueBoldItalic"),
+		local("HelveticaNeueBoldItalic"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBoldItalic.eot?#iefix)
+			format("embedded-opentype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBoldItalic.woff2)
+			format("woff2"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBoldItalic.woff)
+			format("woff"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBoldItalic.ttf)
+			format("truetype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueBoldItalic.svg#HelveticaNeueBoldItalic)
+			format("svg");
 }
 
 // HelveticaNeueHeavy - latin
 @font-face {
-	font-family: 'HelveticaNeueHeavy';
+	font-family: HelveticaNeueHeavy;
 	font-style: normal;
 	font-weight: 800;
-	src: url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueHeavy.eot');
-	src: local('HelveticaNeueHeavy'), local('HelveticaNeueHeavy'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueHeavy.eot?#iefix') format('embedded-opentype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueHeavy.woff2') format('woff2'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueHeavy.woff') format('woff'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueHeavy.ttf') format('truetype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueHeavy.svg#HelveticaNeueHeavy') format('svg');
+	src: url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueHeavy.eot);
+	src:
+		local("HelveticaNeueHeavy"),
+		local("HelveticaNeueHeavy"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueHeavy.eot?#iefix)
+			format("embedded-opentype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueHeavy.woff2)
+			format("woff2"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueHeavy.woff)
+			format("woff"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueHeavy.ttf)
+			format("truetype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueHeavy.svg#HelveticaNeueHeavy)
+			format("svg");
 }
 
 // HelveticaNeueHeavyItalic - latin
 @font-face {
-	font-family: 'HelveticaNeueHeavyItalic';
+	font-family: HelveticaNeueHeavyItalic;
 	font-style: italic;
 	font-weight: 800;
-	src: url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueHeavyItalic.eot');
-	src: local('HelveticaNeueHeavyItalic'), local('HelveticaNeueHeavyItalic'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueHeavyItalic.eot?#iefix') format('embedded-opentype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueHeavyItalic.woff2') format('woff2'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueHeavyItalic.woff') format('woff'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueHeavyItalic.ttf') format('truetype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueHeavyItalic.svg#HelveticaNeueHeavyItalic') format('svg');
+	src: url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueHeavyItalic.eot);
+	src:
+		local("HelveticaNeueHeavyItalic"),
+		local("HelveticaNeueHeavyItalic"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueHeavyItalic.eot?#iefix)
+			format("embedded-opentype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueHeavyItalic.woff2)
+			format("woff2"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueHeavyItalic.woff)
+			format("woff"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueHeavyItalic.ttf)
+			format("truetype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueHeavyItalic.svg#HelveticaNeueHeavyItalic)
+			format("svg");
 }
 
 // HelveticaNeueItalic - latin
 @font-face {
-	font-family: 'HelveticaNeueItalic';
+	font-family: HelveticaNeueItalic;
 	font-style: italic;
 	font-weight: 400;
-	src: url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueItalic.eot'); /* IE9 Compat Modes */
-	src: local('HelveticaNeueItalic'), local('HelveticaNeueItalic'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueItalic.eot?#iefix') format('embedded-opentype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueItalic.woff2') format('woff2'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueItalic.woff') format('woff'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueItalic.ttf') format('truetype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueItalic.svg#HelveticaNeueItalic') format('svg');
+	src: url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueItalic.eot); /* IE9 Compat Modes */
+	src:
+		local("HelveticaNeueItalic"),
+		local("HelveticaNeueItalic"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueItalic.eot?#iefix)
+			format("embedded-opentype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueItalic.woff2)
+			format("woff2"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueItalic.woff)
+			format("woff"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueItalic.ttf)
+			format("truetype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueItalic.svg#HelveticaNeueItalic)
+			format("svg");
 }
 
 // HelveticaNeueLight - latin
 @font-face {
-	font-family: 'HelveticaNeueLight';
+	font-family: HelveticaNeueLight;
 	font-style: normal;
 	font-weight: 300;
-	src: url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueLight.eot'); /* IE9 Compat Modes */
-	src: local('HelveticaNeueLight'), local('HelveticaNeueLight'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueLight.eot?#iefix') format('embedded-opentype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueLight.woff2') format('woff2'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueLight.woff') format('woff'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueLight.ttf') format('truetype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueLight.svg#HelveticaNeueLight') format('svg');
+	src: url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueLight.eot); /* IE9 Compat Modes */
+	src:
+		local("HelveticaNeueLight"),
+		local("HelveticaNeueLight"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueLight.eot?#iefix)
+			format("embedded-opentype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueLight.woff2)
+			format("woff2"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueLight.woff)
+			format("woff"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueLight.ttf)
+			format("truetype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueLight.svg#HelveticaNeueLight)
+			format("svg");
 }
 
 // HelveticaNeueLightItalic - latin
 @font-face {
-	font-family: 'HelveticaNeueLightItalic';
+	font-family: HelveticaNeueLightItalic;
 	font-style: italic;
 	font-weight: 300;
-	src: url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueLightItalic.eot'); /* IE9 Compat Modes */
-	src: local('HelveticaNeueLightItalic'), local('HelveticaNeueLightItalic'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueLightItalic.eot?#iefix') format('embedded-opentype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueLightItalic.woff2') format('woff2'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueLightItalic.woff') format('woff'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueLightItalic.ttf') format('truetype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueLightItalic.svg#HelveticaNeueLightItalic') format('svg');
+	src: url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueLightItalic.eot); /* IE9 Compat Modes */
+	src:
+		local("HelveticaNeueLightItalic"),
+		local("HelveticaNeueLightItalic"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueLightItalic.eot?#iefix)
+			format("embedded-opentype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueLightItalic.woff2)
+			format("woff2"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueLightItalic.woff)
+			format("woff"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueLightItalic.ttf)
+			format("truetype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueLightItalic.svg#HelveticaNeueLightItalic)
+			format("svg");
 }
 
 // HelveticaNeueMedium - latin
 @font-face {
-	font-family: 'HelveticaNeueMedium';
+	font-family: HelveticaNeueMedium;
 	font-style: normal;
 	font-weight: 500;
-	src: url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueMedium.eot'); /* IE9 Compat Modes */
-	src: local('HelveticaNeueMedium'), local('HelveticaNeueMedium'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueMedium.eot?#iefix') format('embedded-opentype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueMedium.woff2') format('woff2'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueMedium.woff') format('woff'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueMedium.ttf') format('truetype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueMedium.svg#HelveticaNeueMedium') format('svg');
+	src: url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueMedium.eot); /* IE9 Compat Modes */
+	src:
+		local("HelveticaNeueMedium"),
+		local("HelveticaNeueMedium"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueMedium.eot?#iefix)
+			format("embedded-opentype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueMedium.woff2)
+			format("woff2"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueMedium.woff)
+			format("woff"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueMedium.ttf)
+			format("truetype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueMedium.svg#HelveticaNeueMedium)
+			format("svg");
 }
 
 // HelveticaNeueMediumItalic - latin
 @font-face {
-	font-family: 'HelveticaNeueMediumItalic';
+	font-family: HelveticaNeueMediumItalic;
 	font-style: italic;
 	font-weight: 500;
-	src: url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueMediumItalic.eot'); /* IE9 Compat Modes */
-	src: local('HelveticaNeueMediumItalic'), local('HelveticaNeueMediumItalic'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueMediumItalic.eot?#iefix') format('embedded-opentype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueMediumItalic.woff2') format('woff2'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueMediumItalic.woff') format('woff'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueMediumItalic.ttf') format('truetype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueMediumItalic.svg#HelveticaNeueMediumItalic') format('svg');
+	src: url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueMediumItalic.eot); /* IE9 Compat Modes */
+	src:
+		local("HelveticaNeueMediumItalic"),
+		local("HelveticaNeueMediumItalic"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueMediumItalic.eot?#iefix)
+			format("embedded-opentype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueMediumItalic.woff2)
+			format("woff2"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueMediumItalic.woff)
+			format("woff"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueMediumItalic.ttf)
+			format("truetype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueMediumItalic.svg#HelveticaNeueMediumItalic)
+			format("svg");
 }
 
 // HelveticaNeueRoman - latin
 @font-face {
-	font-family: 'HelveticaNeueRoman';
+	font-family: HelveticaNeueRoman;
 	font-style: normal;
 	font-weight: 400;
-	src: url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueRoman.eot'); /* IE9 Compat Modes */
-	src: local('HelveticaNeueRoman'), local('HelveticaNeueRoman'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueRoman.eot?#iefix') format('embedded-opentype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueRoman.woff2') format('woff2'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueRoman.woff') format('woff'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueRoman.ttf') format('truetype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueRoman.svg#HelveticaNeueRoman') format('svg');
+	src: url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueRoman.eot); /* IE9 Compat Modes */
+	src:
+		local("HelveticaNeueRoman"),
+		local("HelveticaNeueRoman"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueRoman.eot?#iefix)
+			format("embedded-opentype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueRoman.woff2)
+			format("woff2"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueRoman.woff)
+			format("woff"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueRoman.ttf)
+			format("truetype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueRoman.svg#HelveticaNeueRoman)
+			format("svg");
 }
 
 // HelveticaNeueThin - latin
 @font-face {
-	font-family: 'HelveticaNeueThin';
+	font-family: HelveticaNeueThin;
 	font-style: normal;
 	font-weight: 100;
-	src: url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueThin.eot'); /* IE9 Compat Modes */
-	src: local('HelveticaNeueThin'), local('HelveticaNeueThin'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueThin.eot?#iefix') format('embedded-opentype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueThin.woff2') format('woff2'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueThin.woff') format('woff'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueThin.ttf') format('truetype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueThin.svg#HelveticaNeueThin') format('svg');
+	src: url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueThin.eot); /* IE9 Compat Modes */
+	src:
+		local("HelveticaNeueThin"),
+		local("HelveticaNeueThin"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueThin.eot?#iefix)
+			format("embedded-opentype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueThin.woff2)
+			format("woff2"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueThin.woff)
+			format("woff"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueThin.ttf)
+			format("truetype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueThin.svg#HelveticaNeueThin)
+			format("svg");
 }
 
 // HelveticaNeueThinItalic - latin
 @font-face {
-	font-family: 'HelveticaNeueThinItalic';
+	font-family: HelveticaNeueThinItalic;
 	font-style: italic;
 	font-weight: 100;
-	src: url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueThinItalic.eot'); /* IE9 Compat Modes */
-	src: local('HelveticaNeueThinItalic'), local('HelveticaNeueThinItalic'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueThinItalic.eot?#iefix') format('embedded-opentype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueThinItalic.woff2') format('woff2'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueThinItalic.woff') format('woff'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueThinItalic.ttf') format('truetype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueThinItalic.svg#HelveticaNeueThinItalic') format('svg');
+	src: url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueThinItalic.eot); /* IE9 Compat Modes */
+	src:
+		local("HelveticaNeueThinItalic"),
+		local("HelveticaNeueThinItalic"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueThinItalic.eot?#iefix)
+			format("embedded-opentype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueThinItalic.woff2)
+			format("woff2"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueThinItalic.woff)
+			format("woff"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueThinItalic.ttf)
+			format("truetype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueThinItalic.svg#HelveticaNeueThinItalic)
+			format("svg");
 }
 
 // HelveticaNeueUltraLight - latin
 @font-face {
-	font-family: 'HelveticaNeueUltraLight';
+	font-family: HelveticaNeueUltraLight;
 	font-style: normal;
 	font-weight: 200;
-	src: url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueUltraLight.eot'); /* IE9 Compat Modes */
-	src: local('HelveticaNeueUltraLight'), local('HelveticaNeueUltraLight'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueUltraLight.eot?#iefix') format('embedded-opentype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueUltraLight.woff2') format('woff2'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueUltraLight.woff') format('woff'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueUltraLight.ttf') format('truetype'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueUltraLight.svg#HelveticaNeueUltraLight') format('svg');
+	src: url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueUltraLight.eot); /* IE9 Compat Modes */
+	src:
+		local("HelveticaNeueUltraLight"),
+		local("HelveticaNeueUltraLight"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueUltraLight.eot?#iefix)
+			format("embedded-opentype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueUltraLight.woff2)
+			format("woff2"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueUltraLight.woff)
+			format("woff"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueUltraLight.ttf)
+			format("truetype"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueUltraLight.svg#HelveticaNeueUltraLight)
+			format("svg");
 }
 
 // HelveticaNeueUltraLightItalic - latin
 @font-face {
-	font-family: 'HelveticaNeueUltraLightItalic';
+	font-family: HelveticaNeueUltraLightItalic;
 	font-style: italic;
 	font-weight: 200;
-	src: url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueUltraLightItalic.eot'); /* IE9 Compat Modes */
-	src: local('HelveticaNeueUltraLightItalic'), local('HelveticaNeueUltraLightItalic'),
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueUltraLightItalic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueUltraLightItalic.woff2') format('woff2'), /* Super Modern Browsers */
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueUltraLightItalic.woff') format('woff'), /* Modern Browsers */
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueUltraLightItalic.ttf') format('truetype'), /* Safari, Android, iOS */
-		 url('~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueUltraLightItalic.svg#HelveticaNeueUltraLightItalic') format('svg'); /* Legacy iOS */
+	src: url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueUltraLightItalic.eot); /* IE9 Compat Modes */
+	src:
+		local("HelveticaNeueUltraLightItalic"),
+		local("HelveticaNeueUltraLightItalic"),
+		url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueUltraLightItalic.eot?#iefix)
+			format("embedded-opentype"),
+		/* IE6-IE8 */
+			url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueUltraLightItalic.woff2)
+			format("woff2"),
+		/* Super Modern Browsers */
+			url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueUltraLightItalic.woff)
+			format("woff"),
+		/* Modern Browsers */
+			url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueUltraLightItalic.ttf)
+			format("truetype"),
+		/* Safari, Android, iOS */
+			url(~FLEX/assets/fonts/HelveticaNeue/HelveticaNeueUltraLightItalic.svg#HelveticaNeueUltraLightItalic)
+			format("svg"); /* Legacy iOS */
 }
 
 // SpecialGothic - latin
 @font-face {
-	font-family: 'SpecialGothic';
+	font-family: SpecialGothic;
 	font-style: normal;
 	font-weight: 400;
-	src: url('~FLEX/assets/fonts/SpecialGothicExpanded/SpecialGothicExpandedOne-Regular.eot'); /* IE9 Compat Modes */
-	src: local('SpecialGothic'), local('SpecialGothic-Regular'),
-		 url('~FLEX/assets/fonts/SpecialGothicExpanded/SpecialGothicExpandedOne-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-		 url('~FLEX/assets/fonts/SpecialGothicExpanded/SpecialGothicExpandedOne-Regular.woff2') format('woff2'), /* Super Modern Browsers */
-		 url('~FLEX/assets/fonts/SpecialGothicExpanded/SpecialGothicExpandedOne-Regular.woff') format('woff'), /* Modern Browsers */
-		 url('~FLEX/assets/fonts/SpecialGothicExpanded/SpecialGothicExpandedOne-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
-		 url('~FLEX/assets/fonts/SpecialGothicExpanded/SpecialGothicExpandedOne-Regular.svg#SpecialGothic') format('svg'); /* Legacy iOS */
+	src: url(~FLEX/assets/fonts/SpecialGothicExpanded/SpecialGothicExpandedOne-Regular.eot); /* IE9 Compat Modes */
+	src:
+		local("SpecialGothic"),
+		local("SpecialGothic-Regular"),
+		url(~FLEX/assets/fonts/SpecialGothicExpanded/SpecialGothicExpandedOne-Regular.eot?#iefix)
+			format("embedded-opentype"),
+		/* IE6-IE8 */
+			url(~FLEX/assets/fonts/SpecialGothicExpanded/SpecialGothicExpandedOne-Regular.woff2)
+			format("woff2"),
+		/* Super Modern Browsers */
+			url(~FLEX/assets/fonts/SpecialGothicExpanded/SpecialGothicExpandedOne-Regular.woff)
+			format("woff"),
+		/* Modern Browsers */
+			url(~FLEX/assets/fonts/SpecialGothicExpanded/SpecialGothicExpandedOne-Regular.ttf)
+			format("truetype"),
+		/* Safari, Android, iOS */
+			url(~FLEX/assets/fonts/SpecialGothicExpanded/SpecialGothicExpandedOne-Regular.svg#SpecialGothic)
+			format("svg"); /* Legacy iOS */
 }
 
+// stylelint-enable scss/operator-no-unspaced
 
 // Font Variables
 
 /* Headings */
-$primaryLight: "SpecialGothic", Helvetica, Arial, sans-serif;
-$primaryLightItalic: "SpecialGothic", Helvetica, Arial, sans-serif;
-$primaryRegular: "SpecialGothic", Helvetica, Arial, sans-serif;
-$primaryRegularItalic: "SpecialGothic", Helvetica, Arial, sans-serif;
-$primaryMedium: "SpecialGothic", Helvetica, Arial, sans-serif;
-$primaryMediumItalic: "SpecialGothic", Helvetica, Arial, sans-serif;
-$primarySemi: "SpecialGothic", Helvetica, Arial, sans-serif;
-$primarySemiItalic: "SpecialGothic", Helvetica, Arial, sans-serif;
-$primaryBold: "SpecialGothic", Helvetica, Arial, sans-serif;
-$primaryBoldItalic: "SpecialGothic", Helvetica, Arial, sans-serif;
+$primaryLight: "SpecialGothic", helvetica, arial, sans-serif !default;
+$primaryLightItalic: "SpecialGothic", helvetica, arial, sans-serif !default;
+$primaryRegular: "SpecialGothic", helvetica, arial, sans-serif !default;
+$primaryRegularItalic: "SpecialGothic", helvetica, arial, sans-serif !default;
+$primaryMedium: "SpecialGothic", helvetica, arial, sans-serif !default;
+$primaryMediumItalic: "SpecialGothic", helvetica, arial, sans-serif !default;
+$primarySemi: "SpecialGothic", helvetica, arial, sans-serif !default;
+$primarySemiItalic: "SpecialGothic", helvetica, arial, sans-serif !default;
+$primaryBold: "SpecialGothic", helvetica, arial, sans-serif !default;
+$primaryBoldItalic: "SpecialGothic", helvetica, arial, sans-serif !default;
 
 /* Body copy */
-$secondaryLight: "HelveticaNeueLight", Helvetica, Arial, sans-serif;
-$secondaryLightItalic: "HelveticaNeueLightItalic", Helvetica, Arial, sans-serif;
-$secondaryRegular: "HelveticaNeueRoman", Helvetica, Arial, sans-serif;
-$secondaryRegularItalic: "HelveticaNeueItalic", Helvetica, Arial, sans-serif;
-$secondaryMedium: "HelveticaNeueMedium", Helvetica, Arial, sans-serif;
-$secondaryMediumItalic: "HelveticaNeueMediumItalic", Helvetica, Arial, sans-serif;
-$secondarySemi: "HelveticaNeueHeavy", Helvetica, Arial, sans-serif;
-$secondarySemiItalic: "HelveticaNeueHeavyItalic", Helvetica, Arial, sans-serif;
-$secondaryBold: "HelveticaNeueBold", Helvetica, Arial, sans-serif;
-$secondaryBoldItalic: "HelveticaNeueBoldItalic", Helvetica, Arial, sans-serif;
+$secondaryLight: "HelveticaNeueLight", helvetica, arial, sans-serif !default;
+$secondaryLightItalic:
+	"HelveticaNeueLightItalic", helvetica, arial, sans-serif !default;
+$secondaryRegular: "HelveticaNeueRoman", helvetica, arial, sans-serif !default;
+$secondaryRegularItalic:
+	"HelveticaNeueItalic", helvetica, arial, sans-serif !default;
+$secondaryMedium: "HelveticaNeueMedium", helvetica, arial, sans-serif !default;
+$secondaryMediumItalic:
+	"HelveticaNeueMediumItalic", helvetica, arial, sans-serif !default;
+$secondarySemi: "HelveticaNeueHeavy", helvetica, arial, sans-serif !default;
+$secondarySemiItalic:
+	"HelveticaNeueHeavyItalic", helvetica, arial, sans-serif !default;
+$secondaryBold: "HelveticaNeueBold", helvetica, arial, sans-serif !default;
+$secondaryBoldItalic:
+	"HelveticaNeueBoldItalic", helvetica, arial, sans-serif !default;
 
 /* Subheadings */
-$tertiaryLight: "SpecialGothic", Georgia, Times, serif;
-$tertiaryLightItalic: "SpecialGothic", Georgia, Times, serif;
-$tertiaryRegular: "SpecialGothic", Georgia, Times, serif;
-$tertiaryRegularItalic: "SpecialGothic", Georgia, Times, serif;
-$tertiaryMedium: "SpecialGothic", Georgia, Times, serif;
-$tertiaryMediumItalic: "SpecialGothic", Georgia, Times, serif;
-$tertiarySemi: "SpecialGothic", Georgia, Times, serif;
-$tertiarySemiItalic: "SpecialGothic", Georgia, Times, serif;
-$tertiaryBold: "SpecialGothic", Georgia, Times, serif;
-$tertiaryBoldItalic: "SpecialGothic", Georgia, Times, serif;
+$tertiaryLight: "SpecialGothic", georgia, times, serif !default;
+$tertiaryLightItalic: "SpecialGothic", georgia, times, serif !default;
+$tertiaryRegular: "SpecialGothic", georgia, times, serif !default;
+$tertiaryRegularItalic: "SpecialGothic", georgia, times, serif !default;
+$tertiaryMedium: "SpecialGothic", georgia, times, serif !default;
+$tertiaryMediumItalic: "SpecialGothic", georgia, times, serif !default;
+$tertiarySemi: "SpecialGothic", georgia, times, serif !default;
+$tertiarySemiItalic: "SpecialGothic", georgia, times, serif !default;
+$tertiaryBold: "SpecialGothic", georgia, times, serif !default;
+$tertiaryBoldItalic: "SpecialGothic", georgia, times, serif !default;
 
 /* Eyebrows */
-$eyebrowLight: "HelveticaNeueThin", Helvetica, Arial, sans-serif;
-$eyebrowLightItalic: "HelveticaNeueThinItalic", Helvetica, Arial, sans-serif;
-$eyebrowRegular: "HelveticaNeueLight", Helvetica, Arial, sans-serif;
-$eyebrowRegularItalic: "HelveticaNeueLightItalic", Helvetica, Arial, sans-serif;
-$eyebrowMedium: "HelveticaNeueMedium", Helvetica, Arial, sans-serif;
-$eyebrowMediumItalic: "HelveticaNeueMediumItalic", Helvetica, Arial, sans-serif;
-$eyebrowSemi: "HelveticaNeueBold", Helvetica, Arial, sans-serif;
-$eyebrowSemiItalic: "HelveticaNeueBoldItalic", Helvetica, Arial, sans-serif;
-$eyebrowBold: "HelveticaNeueHeavy", Helvetica, Arial, sans-serif;
-$eyebrowBoldItalic: "HelveticaNeueHeavyItalic", Helvetica, Arial, sans-serif;
+$eyebrowLight: "HelveticaNeueThin", helvetica, arial, sans-serif !default;
+$eyebrowLightItalic:
+	"HelveticaNeueThinItalic", helvetica, arial, sans-serif !default;
+$eyebrowRegular: "HelveticaNeueLight", helvetica, arial, sans-serif !default;
+$eyebrowRegularItalic:
+	"HelveticaNeueLightItalic", helvetica, arial, sans-serif !default;
+$eyebrowMedium: "HelveticaNeueMedium", helvetica, arial, sans-serif !default;
+$eyebrowMediumItalic:
+	"HelveticaNeueMediumItalic", helvetica, arial, sans-serif !default;
+$eyebrowSemi: "HelveticaNeueBold", helvetica, arial, sans-serif !default;
+$eyebrowSemiItalic:
+	"HelveticaNeueBoldItalic", helvetica, arial, sans-serif !default;
+$eyebrowBold: "HelveticaNeueHeavy", helvetica, arial, sans-serif !default;
+$eyebrowBoldItalic:
+	"HelveticaNeueHeavyItalic", helvetica, arial, sans-serif !default;

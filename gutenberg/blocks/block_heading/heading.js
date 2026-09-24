@@ -1,5 +1,3 @@
-console.log('FLEX/gutenberg/blocks/block_heading/heading.js');
-
 // Block dependencies
 import classnames from 'classnames';
 import HeadingToolbar from './heading-toolbar';
@@ -12,349 +10,335 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 // Added 3/26/20 - https://ibenic.com/enable-inner-blocks-gutenberg/
-// wp.editor.InnerBlocks.Content is deprecated. 
+// wp.editor.InnerBlocks.Content is deprecated.
 // Please use wp.blockEditor.InnerBlocks.Content instead.
 // const { InnerBlocks } = wp.editor;
 
-const {
-	AlignmentToolbar,
-	BlockAlignmentToolbar,
-	BlockControls,
-	InnerBlocks,
-	InspectorControls,
-	MediaUpload,
-	RichText,
-	URLInput,
-} = wp.blockEditor;
+const { AlignmentToolbar, InspectorControls, MediaUpload, RichText, URLInput } =
+	wp.blockEditor;
 
-const {
-	Button,
-	ButtonGroup,
-	CheckboxControl,
-	Dashicon,
-	PanelBody,
-	PanelRow,
-	TextControl,
-	Toolbar,
-	ToolbarButton,
-	Tooltip,
-} = wp.components;
-
-const { 
-	setState, 
-	withSelect, 
-	withDispatch 
-} = wp.data;
+const { Button, CheckboxControl, PanelBody } = wp.components;
 
 // Internal dependencies
-import BackgroundColorOptions, { BackgroundColorOptionsAttributes, BackgroundColorOptionsInlineStyles } from '../../components/gb-component_background-color';
-import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
-import DataComponentNameOptions, { DataComponentNameAttributes } from '../../components/gb-component_data-component-name';
-import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
-import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
-import TextColorOptions, { TextColorAttributes, TextColorClasses, TextColorInlineStyles } from '../../components/gb-component_text-colors';
+import BackgroundColorOptions, {
+	BackgroundColorOptionsAttributes,
+	BackgroundColorOptionsInlineStyles,
+} from '../../components/gb-component_background-color';
+import BorderOptions, {
+	BorderOptionsAttributes,
+	BorderOptionsClasses,
+} from '../../components/gb-component_border';
+import DataComponentNameOptions, {
+	DataComponentNameAttributes,
+} from '../../components/gb-component_data-component-name';
+import MarginOptions, {
+	MarginOptionsAttributes,
+	MarginOptionsClasses,
+} from '../../components/gb-component_margin';
+import PaddingOptions, {
+	PaddingOptionsAttributes,
+	PaddingOptionsClasses,
+} from '../../components/gb-component_padding';
+import TextColorOptions, {
+	TextColorAttributes,
+	TextColorClasses,
+	TextColorInlineStyles,
+} from '../../components/gb-component_text-colors';
 
 // Register block
-export default registerBlockType(
-	'flexlayout/heading',
-	{
-		'title': __( 'Heading', 'flexlayout' ),
-		'description': __( 'Introduce new sections and organize content to help visitors (and search engines) understand the structure of your content.', 'flexlayout' ),
-		'category': 'common',
-		'icon': icons.heading,
-		'example': {},
-		'keywords': [
-			__( 'Text', 'flexlayout' ),
-			__( 'Heading', 'flexlayout' ),
-			__( 'Header', 'flexlayout' ),
-		],
-		'attributes': {
-			'align': {
-				'type': 'string',
-				'default': 'left'
-			},
-			'content': {
-				'type': 'string',
-				'default': ''
-			},
-			'hangingQuote': {
-				'type': 'boolean',
-				'default': false
-			},
-			'hangingQuoteClass': {
-				'type': 'string',
-				'default': 'hide-hanging-quote'
-			},
-			'imgID': {
-				'type': 'number',
-			},
-			'imgURL': {
-				'type': 'string',
-			},
-			'isSelected': {
-				'type': 'boolean',
-			},
-			'level': {
-				'type': 'number',
-				'default': 2,
-			},
-			'placeholder': {
-				'type': 'string',
-			},
-			'url': {
-				'type': 'string',
-			},
-			...BackgroundColorOptionsAttributes,
-			...BorderOptionsAttributes,
-			...DataComponentNameAttributes,
-			...MarginOptionsAttributes,
-			...PaddingOptionsAttributes,
-			...TextColorAttributes
+export default registerBlockType( 'flexlayout/heading', {
+	title: __( 'Heading', 'flexlayout' ),
+	description: __(
+		'Introduce new sections and organize content to help visitors (and search engines) understand the structure of your content.',
+		'flexlayout'
+	),
+	category: 'common',
+	icon: icons.heading,
+	example: {},
+	keywords: [
+		__( 'Text', 'flexlayout' ),
+		__( 'Heading', 'flexlayout' ),
+		__( 'Header', 'flexlayout' ),
+	],
+	attributes: {
+		align: {
+			type: 'string',
+			default: 'left',
 		},
-
-		innerBlocks: [],
-
-		styles: [
-			{ 'name': 'headline1', 'label': __('Headline 1', 'block style'), 'isDefault': true },
-			{ 'name': 'headline2', 'label': __('Headline 2', 'block style') },
-			{ 'name': 'headline3', 'label': __('Headline 3', 'block style') },
-			{ 'name': 'headline4', 'label': __('Headline 4', 'block style') },
-			{ 'name': 'headline5', 'label': __('Headline 5', 'block style') },
-			{ 'name': 'headline6', 'label': __('Headline 6', 'block style') }
-		],
-
-		supports: {
-			// Turn off ability to edit HTML of block content
-			html: false,
+		content: {
+			type: 'string',
+			default: '',
 		},
+		hangingQuote: {
+			type: 'boolean',
+			default: false,
+		},
+		hangingQuoteClass: {
+			type: 'string',
+			default: 'hide-hanging-quote',
+		},
+		imgID: {
+			type: 'number',
+		},
+		imgURL: {
+			type: 'string',
+		},
+		isSelected: {
+			type: 'boolean',
+		},
+		level: {
+			type: 'number',
+			default: 2,
+		},
+		placeholder: {
+			type: 'string',
+		},
+		url: {
+			type: 'string',
+		},
+		...BackgroundColorOptionsAttributes,
+		...BorderOptionsAttributes,
+		...DataComponentNameAttributes,
+		...MarginOptionsAttributes,
+		...PaddingOptionsAttributes,
+		...TextColorAttributes,
+	},
 
-		edit: props => {
-			const {
-				attributes: {
-					align,
-					content,
-					dataComponentName,
-					dataComponentOptions,
-					hangingQuote,
-					hangingQuoteClass,
-					imgID,
-					imgURL,
-					isSelected,
-					level,
-					placeholder,
-					url,
-					backgroundColor,
-					backgroundOpacity
-				},
-				className,
-				setAttributes
-			} = props;
+	innerBlocks: [],
 
-			const tagName = 'h' + level;
+	styles: [
+		{
+			name: 'headline1',
+			label: __( 'Headline 1', 'block style' ),
+			isDefault: true,
+		},
+		{ name: 'headline2', label: __( 'Headline 2', 'block style' ) },
+		{ name: 'headline3', label: __( 'Headline 3', 'block style' ) },
+		{ name: 'headline4', label: __( 'Headline 4', 'block style' ) },
+		{ name: 'headline5', label: __( 'Headline 5', 'block style' ) },
+		{ name: 'headline6', label: __( 'Headline 6', 'block style' ) },
+	],
 
-			const HangingQuoteCheckbox = (a, b) => {
-				// console.log('HangingQuoteCheckbox, props.attributes.hangingQuote: a: b: ', props.attributes.hangingQuote, typeof props.attributes.hangingQuote, a, b);
+	supports: {
+		// Turn off ability to edit HTML of block content
+		html: false,
+	},
 
-				return (
-					<CheckboxControl
-						label="Show hanging quote"
-						help="Adds a left-hanging quote graphic"
-						checked={ props.attributes.hangingQuote }
-						onChange={ setHangingQuote }
-					/>
-				)
-			};
+	edit: ( props ) => {
+		const {
+			attributes: {
+				align,
+				content,
+				hangingQuoteClass,
+				imgID,
+				imgURL,
+				level,
+				placeholder,
+				url,
+			},
+			className,
+			onReplace,
+			setAttributes,
+		} = props;
 
-			const onChangeMessage = content => { 
-				setAttributes({
-					content
-				});
-			};
+		const HangingQuoteCheckbox = () => {
+			// console.log('HangingQuoteCheckbox, props.attributes.hangingQuote: a: b: ', props.attributes.hangingQuote, typeof props.attributes.hangingQuote, a, b);
 
-			const onSelectImage = img => {
-				setAttributes({
-					imgID: img.id,
-					imgURL: img.url,
-				});
-			};
+			return (
+				<CheckboxControl
+					label="Show hanging quote"
+					help="Adds a left-hanging quote graphic"
+					checked={ props.attributes.hangingQuote }
+					onChange={ setHangingQuote }
+				/>
+			);
+		};
 
-			const onRemoveImage = () => {
-				setAttributes({
-					imgID: null,
-					imgURL: null,
-				});
-			};
+		const onChangeMessage = ( newContent ) => {
+			setAttributes( {
+				content: newContent,
+			} );
+		};
 
-			const setHangingQuote = (value) => {
-				// console.log('HangingQuoteCheckbox, value: ', value, typeof value, value === true);
+		const onSelectImage = ( img ) => {
+			setAttributes( {
+				imgID: img.id,
+				imgURL: img.url,
+			} );
+		};
 
-				if (value === true) {
-					// console.log('show');
-					props.setAttributes( { hangingQuoteClass: 'show-hanging-quote' } );
-				} else {
-					// console.log('hide');
-					value = false;
-					props.setAttributes( { hangingQuoteClass: 'hide-hanging-quote' } );
-				}
+		const onRemoveImage = () => {
+			setAttributes( {
+				imgID: null,
+				imgURL: null,
+			} );
+		};
 
-				// console.log('value: ', value);
+		const setHangingQuote = ( value ) => {
+			// console.log('HangingQuoteCheckbox, value: ', value, typeof value, value === true);
 
-				props.setAttributes( { hangingQuote: value } );
+			if ( value === true ) {
+				// console.log('show');
+				props.setAttributes( {
+					hangingQuoteClass: 'show-hanging-quote',
+				} );
+			} else {
+				// console.log('hide');
+				value = false;
+				props.setAttributes( {
+					hangingQuoteClass: 'hide-hanging-quote',
+				} );
 			}
 
-			const svgHeight = {
-				height: 0
-			};
+			// console.log('value: ', value);
 
-			return [
-				<InspectorControls>
-					<BackgroundColorOptions
-						{ ...props }
-					/>
-					<TextColorOptions
-						{ ...props }
-					/>
-					<BorderOptions
-						{ ...props }
-					/>
-					<MarginOptions
-						{ ...props }
-					/>
-					<PaddingOptions
-						{ ...props }
-					/>
-					<PanelBody title={ __('Heading Settings' ) } initialOpen={ false }>
-						<p>{ __( 'HTML Element' ) }</p>
-						<HeadingToolbar 
-							minLevel={ 1 } 
-							maxLevel={ 7 } 
-							selectedLevel={ level } 
-							onChange={ ( newLevel ) => setAttributes( { 'level': newLevel } ) } 
-						/>
-						<hr />
-						<p>{ __( 'Text Alignment' ) }</p>
-						<AlignmentToolbar
-							value={ align }
-							onChange={ ( nextAlign ) => {
-								setAttributes( { 'align': nextAlign } );
-							} }
-						/>
-						<hr />
-						<p>
-							<HangingQuoteCheckbox />
-						</p>
-						<hr />
-						<p>{ __( 'Optional URL' ) }</p>
-						<form
-							className="block-library-button__inline-link heading-url"
-							onSubmit={ ( event ) => event.preventDefault() }>
-							<URLInput
-								value={ url }
-								onChange={ ( value ) => setAttributes( { 'url': value } ) }
-							/>
-							<Button 
-								icon="editor-break" 
-								text={ __( 'Apply' ) } 
-								// type="submit" 
-							/>
-						</form>
-						<hr />
-						<p>{ __( 'Icon left of the Heading' ) }</p>
-						{ ! imgID ? (
-							<MediaUpload
-								onSelect={ onSelectImage }
-								type="image"
-								value={ imgID }
-								render={ ( { open } ) => (
-									<Button
-										className={ "button button-large" }
-										onClick={ open }
-									>
-										{ icons.upload }
-										{ __( ' Upload Image', 'flexlayout' ) }
-									</Button>
-								) }
-							>
-							</MediaUpload>
-						) : (
-							<div className={classnames(
-								`image-wrapper`,
-								`text-align-${align}`,
-							)}>
-								<Button
-									className="remove-image"
-									onClick={ onRemoveImage }
-								>
-									{ icons.remove }
-								</Button>
-								<img
-									src={ imgURL }
-								/>
-							</div>
-						)}
-					</PanelBody>
-					<DataComponentNameOptions
-						{ ...props }
-					/>
-				</InspectorControls>,
-				<div 
-					className={classnames(
-						`component-heading`,
-						`${hangingQuoteClass}`,
-						className
-					)}
-					data-component-name={ props.attributes.dataComponentName }
-					data-component-options={ props.attributes.dataComponentOptions }
+			props.setAttributes( { hangingQuote: value } );
+		};
+
+		const svgHeight = {
+			height: 0,
+		};
+
+		return [
+			<InspectorControls key="inspector">
+				<BackgroundColorOptions { ...props } />
+				<TextColorOptions { ...props } />
+				<BorderOptions { ...props } />
+				<MarginOptions { ...props } />
+				<PaddingOptions { ...props } />
+				<PanelBody
+					title={ __( 'Heading Settings' ) }
+					initialOpen={ false }
 				>
-					<img 
-						// Use empty SVG to trigger onload event 
-						// Onload hack fires when block is added
-						className="onload-hack-pp"
-						height="0"
-						width="0"
-						onLoad={ setHangingQuote }
-						src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' %3E%3Cpath d=''/%3E%3C/svg%3E"
-						style={ svgHeight }
+					<p>{ __( 'HTML Element' ) }</p>
+					<HeadingToolbar
+						minLevel={ 1 }
+						maxLevel={ 7 }
+						selectedLevel={ level }
+						onChange={ ( newLevel ) =>
+							setAttributes( { level: newLevel } )
+						}
 					/>
-					<img
-						src={ imgURL }
-					/>
-					<RichText
-						className={ classnames(
-							`text-align-${align}`,
-							`${hangingQuoteClass}`,
-							...BorderOptionsClasses( props ),
-							...MarginOptionsClasses( props ),
-							...PaddingOptionsClasses( props ),
-							...TextColorClasses( props ),
-						)}
-						identifier="content"
-						// onChange={ ( value ) => setAttributes( { content: value } ) }
-						onChange={ onChangeMessage }
-						onRemove={ () => onReplace( [] ) }
-						placeholder={ placeholder || __( 'Heading text…' ) }
-						style={ {
-							// textAlign: align,
-							...TextColorInlineStyles( props ),
-							...BackgroundColorOptionsInlineStyles( props )
+					<hr />
+					<p>{ __( 'Text Alignment' ) }</p>
+					<AlignmentToolbar
+						value={ align }
+						onChange={ ( nextAlign ) => {
+							setAttributes( { align: nextAlign } );
 						} }
-						value={ content }
 					/>
-				</div>
-			];
-		},
-
-		save(data) {
-			console.log('heading.js > save(data:) "', data.attributes.content, '" ', data);
-
-			return null;
-		},
-		// save(data) {
-		// 	return null;
-		// },
+					<hr />
+					<p>
+						<HangingQuoteCheckbox />
+					</p>
+					<hr />
+					<p>{ __( 'Optional URL' ) }</p>
+					<form
+						className="block-library-button__inline-link heading-url"
+						onSubmit={ ( event ) => event.preventDefault() }
+					>
+						<URLInput
+							value={ url }
+							onChange={ ( value ) =>
+								setAttributes( { url: value } )
+							}
+						/>
+						<Button
+							icon="editor-break"
+							text={ __( 'Apply' ) }
+							// type="submit"
+						/>
+					</form>
+					<hr />
+					<p>{ __( 'Icon left of the Heading' ) }</p>
+					{ ! imgID ? (
+						<MediaUpload
+							onSelect={ onSelectImage }
+							type="image"
+							value={ imgID }
+							render={ ( { open } ) => (
+								<Button
+									className={ 'button button-large' }
+									onClick={ open }
+								>
+									{ icons.upload }{ ' ' }
+									{ __( 'Upload Image', 'flexlayout' ) }
+								</Button>
+							) }
+						></MediaUpload>
+					) : (
+						<div
+							className={ classnames(
+								`image-wrapper`,
+								`text-align-${ align }`
+							) }
+						>
+							<Button
+								className="remove-image"
+								onClick={ onRemoveImage }
+							>
+								{ icons.remove }
+							</Button>
+							<img src={ imgURL } alt="" />
+						</div>
+					) }
+				</PanelBody>
+				<DataComponentNameOptions { ...props } />
+			</InspectorControls>,
+			<div
+				key="block"
+				className={ classnames(
+					`component-heading`,
+					`${ hangingQuoteClass }`,
+					className
+				) }
+				data-component-name={ props.attributes.dataComponentName }
+				data-component-options={ props.attributes.dataComponentOptions }
+			>
+				<img
+					// Use empty SVG to trigger onload event
+					// Onload hack fires when block is added
+					className="onload-hack-pp"
+					height="0"
+					width="0"
+					onLoad={ setHangingQuote }
+					src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' %3E%3Cpath d=''/%3E%3C/svg%3E"
+					style={ svgHeight }
+					alt=""
+				/>
+				<img src={ imgURL } alt="" />
+				<RichText
+					className={ classnames(
+						`text-align-${ align }`,
+						`${ hangingQuoteClass }`,
+						...BorderOptionsClasses( props ),
+						...MarginOptionsClasses( props ),
+						...PaddingOptionsClasses( props ),
+						...TextColorClasses( props )
+					) }
+					identifier="content"
+					// onChange={ ( value ) => setAttributes( { content: value } ) }
+					onChange={ onChangeMessage }
+					onRemove={ () => onReplace( [] ) }
+					placeholder={ placeholder || __( 'Heading text…' ) }
+					style={ {
+						// textAlign: align,
+						...TextColorInlineStyles( props ),
+						...BackgroundColorOptionsInlineStyles( props ),
+					} }
+					value={ content }
+				/>
+			</div>,
+		];
 	},
-);
 
+	save() {
+		return null;
+	},
+	// save(data) {
+	// 	return null;
+	// },
+} );
 
 // Add default styles
 // wp.blocks.registerBlockStyle( 'flexlayout/heading', {

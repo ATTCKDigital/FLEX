@@ -17,7 +17,7 @@ class HeadingToolbar extends Component {
 	createLevelControl( targetLevel, selectedLevel, onChange ) {
 		return {
 			icon: icons.heading,
-			// translators: %s: heading level e.g: "1", "2", "3"
+			/* translators: %d: heading level e.g: "1", "2", "3" */
 			title: sprintf( __( 'Heading %d' ), targetLevel ),
 			isActive: targetLevel === selectedLevel,
 			onClick: () => onChange( targetLevel ),
@@ -29,7 +29,11 @@ class HeadingToolbar extends Component {
 		const { minLevel, maxLevel, selectedLevel, onChange } = this.props;
 
 		return (
-			<Toolbar controls={ range( minLevel, maxLevel ).map( ( index ) => this.createLevelControl( index, selectedLevel, onChange ) ) } />
+			<Toolbar
+				controls={ range( minLevel, maxLevel ).map( ( index ) =>
+					this.createLevelControl( index, selectedLevel, onChange )
+				) }
+			/>
 		);
 
 		// Not sure why this was in here but it was breaking the heading level toolbar.

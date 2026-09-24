@@ -1,9 +1,11 @@
+// stylelint-disable scss/at-extend-no-missing-placeholder -- extends public FLEX classes (.body) that markup also uses; placeholders would change the generated selectors.
+
 ::selection {
-	background: color('brand', 'accent');
-	color: color('brand', 'primary');
+	background: color("brand", "accent");
+	color: color("brand", "primary");
 }
 
-address, 
+address,
 .footer-link {
 	@include primary-regular;
 	display: block;
@@ -20,11 +22,6 @@ a {
 	line-height: inherit;
 	letter-spacing: inherit;
 	text-decoration: none;
-
-	@include mediaquery(desktop) {
-		&:hover {
-		}
-	}
 }
 
 del {
@@ -34,8 +31,8 @@ del {
 	font-family: inherit;
 }
 
-
-em, i {
+em,
+i {
 	color: inherit;
 	font-family: inherit;
 	font-size: inherit;
@@ -43,20 +40,20 @@ em, i {
 }
 
 hr {
-	background: color('secondary', 'lighterGray');
+	background: color("secondary", "lighterGray");
 	border: 0;
 	height: 1px;
 	margin: 25px auto;
 }
 
 .link {
-	color: color('text', 'link');
+	color: color("text", "link");
 	text-decoration: none;
-	transition: color .3s ease-out;
+	transition: color 0.3s ease-out;
 
 	@include mediaquery(desktop) {
 		&:hover {
-			color: color('text', 'hover');
+			color: color("text", "hover");
 		}
 	}
 }
@@ -72,13 +69,13 @@ p,
 
 p {
 	a {
-		color: color('text', 'link');
+		color: color("text", "link");
 		text-decoration: none;
-		transition: color .3s ease-out;
+		transition: color 0.3s ease-out;
 
 		@include mediaquery(desktop) {
 			&:hover {
-				color: color('text', 'hover');
+				color: color("text", "hover");
 			}
 		}
 	}
@@ -95,7 +92,8 @@ span {
 	font-style: inherit;
 }
 
-strong, b {
+strong,
+b {
 	@include secondary-bold;
 	color: inherit;
 	font-size: inherit;
@@ -104,16 +102,18 @@ strong, b {
 }
 
 sub {
-	bottom: -.5rem;
+	bottom: -0.5rem;
 	position: relative;
 }
 
 sup {
-	bottom: .5rem;
+	bottom: 0.5rem;
 	position: relative;
 }
 
-th, tr, td {
+th,
+tr,
+td {
 	color: inherit;
 }
 
@@ -127,16 +127,36 @@ u {
 /** Error & Message Styles **/
 .error {
 	@extend .body;
-	color: red;
+	color: #f00;
 }
 
-.font-weight-100.font-weight-100.font-weight-100 { font-weight: 100; }
-.font-weight-200.font-weight-200.font-weight-200 { font-weight: 200; }
-.font-weight-300.font-weight-300.font-weight-300 { font-weight: 300; }
-.font-weight-400.font-weight-400.font-weight-400 { font-weight: 400; }
-.font-weight-500.font-weight-500.font-weight-500 { font-weight: 500; }
-.font-weight-600.font-weight-600.font-weight-600 { font-weight: 600; }
-.font-weight-700.font-weight-700.font-weight-700 { font-weight: 700; }
+.font-weight-100.font-weight-100.font-weight-100 {
+	font-weight: 100;
+}
+
+.font-weight-200.font-weight-200.font-weight-200 {
+	font-weight: 200;
+}
+
+.font-weight-300.font-weight-300.font-weight-300 {
+	font-weight: 300;
+}
+
+.font-weight-400.font-weight-400.font-weight-400 {
+	font-weight: 400;
+}
+
+.font-weight-500.font-weight-500.font-weight-500 {
+	font-weight: 500;
+}
+
+.font-weight-600.font-weight-600.font-weight-600 {
+	font-weight: 600;
+}
+
+.font-weight-700.font-weight-700.font-weight-700 {
+	font-weight: 700;
+}
 
 .lowercase {
 	text-transform: lowercase;
@@ -150,19 +170,30 @@ u {
 .strikethrough {
 	display: inline;
 	font-family: inherit;
-	font-size:inherit;
-	font-style:inherit;
-	font-weight:inherit;
+	font-size: inherit;
+	font-style: inherit;
+	font-weight: inherit;
 	line-height: inherit;
 	text-decoration: line-through;
 }
 
-// Needs to be at the top to avoid overriding the 
+// Needs to be at the top to avoid overriding the
 // specificity of the responsive rules below.
-.text-align-justify { text-align: justify; }
-.text-align-center { text-align: center; }
-.text-align-left { text-align: left; }
-.text-align-right { text-align: right; }
+.text-align-justify {
+	text-align: justify;
+}
+
+.text-align-center {
+	text-align: center;
+}
+
+.text-align-left {
+	text-align: left;
+}
+
+.text-align-right {
+	text-align: right;
+}
 
 // .text-align-center-phone { @include mediaquery(phone) { text-align: center; } }
 // .text-align-center-phone-plus { @include mediaquery(phone-plus) { text-align: center; } }
@@ -172,13 +203,47 @@ u {
 // .text-align-center-xl { @include mediaquery(xl) { text-align: center; } }
 // .text-align-center-xl2 { @include mediaquery(xl2) { text-align: center; } }
 
-.text-align-center-max-phone { @include mediaquery-max-width(phone) { text-align: center; } }
-.text-align-center-max-phone-plus { @include mediaquery-max-width(phone-plus) { text-align: center; } }
-.text-align-center-max-tablet-portrait { @include mediaquery-max-width(tablet-portrait) { text-align: center; } }
-.text-align-center-max-tablet-landscape { @include mediaquery-max-width(tablet-landscape) { text-align: center; } }
-.text-align-center-max-desktopt { @include mediaquery-max-width(desktop) { text-align: center; } }
-.text-align-center-max-xl { @include mediaquery-max-width(xl) { text-align: center; } }
-.text-align-center-max-xl2 { @include mediaquery-max-width(xl2) { text-align: center; } }
+.text-align-center-max-phone {
+	@include mediaquery-max-width(phone) {
+		text-align: center;
+	}
+}
+
+.text-align-center-max-phone-plus {
+	@include mediaquery-max-width(phone-plus) {
+		text-align: center;
+	}
+}
+
+.text-align-center-max-tablet-portrait {
+	@include mediaquery-max-width(tablet-portrait) {
+		text-align: center;
+	}
+}
+
+.text-align-center-max-tablet-landscape {
+	@include mediaquery-max-width(tablet-landscape) {
+		text-align: center;
+	}
+}
+
+.text-align-center-max-desktopt {
+	@include mediaquery-max-width(desktop) {
+		text-align: center;
+	}
+}
+
+.text-align-center-max-xl {
+	@include mediaquery-max-width(xl) {
+		text-align: center;
+	}
+}
+
+.text-align-center-max-xl2 {
+	@include mediaquery-max-width(xl2) {
+		text-align: center;
+	}
+}
 
 // .text-align-left-phone { @include mediaquery(phone) { text-align: left; } }
 // .text-align-left-phone-plus { @include mediaquery(phone-plus) { text-align: left; } }
@@ -188,13 +253,47 @@ u {
 // .text-align-left-xl { @include mediaquery(xl) { text-align: left; } }
 // .text-align-left-xl2 { @include mediaquery(xl2) { text-align: left; } }
 
-.text-align-left-max-phone { @include mediaquery-max-width(phone) { text-align: left; } }
-.text-align-left-max-phone-plus { @include mediaquery-max-width(phone-plus) { text-align: left; } }
-.text-align-left-max-tablet-portrait { @include mediaquery-max-width(tablet-portrait) { text-align: left; } }
-.text-align-left-max-tablet-landscape { @include mediaquery-max-width(tablet-landscape) { text-align: left; } }
-.text-align-left-max-desktopt { @include mediaquery-max-width(desktop) { text-align: left; } }
-.text-align-left-max-xl { @include mediaquery-max-width(xl) { text-align: left; } }
-.text-align-left-max-xl2 { @include mediaquery-max-width(xl2) { text-align: left; } }
+.text-align-left-max-phone {
+	@include mediaquery-max-width(phone) {
+		text-align: left;
+	}
+}
+
+.text-align-left-max-phone-plus {
+	@include mediaquery-max-width(phone-plus) {
+		text-align: left;
+	}
+}
+
+.text-align-left-max-tablet-portrait {
+	@include mediaquery-max-width(tablet-portrait) {
+		text-align: left;
+	}
+}
+
+.text-align-left-max-tablet-landscape {
+	@include mediaquery-max-width(tablet-landscape) {
+		text-align: left;
+	}
+}
+
+.text-align-left-max-desktopt {
+	@include mediaquery-max-width(desktop) {
+		text-align: left;
+	}
+}
+
+.text-align-left-max-xl {
+	@include mediaquery-max-width(xl) {
+		text-align: left;
+	}
+}
+
+.text-align-left-max-xl2 {
+	@include mediaquery-max-width(xl2) {
+		text-align: left;
+	}
+}
 
 // .text-align-right-phone { @include mediaquery(phone) { text-align: right; } }
 // .text-align-right-phone-plus { @include mediaquery(phone-plus) { text-align: right; } }
@@ -204,13 +303,47 @@ u {
 // .text-align-right-xl { @include mediaquery(xl) { text-align: right; } }
 // .text-align-right-xl2 { @include mediaquery(xl2) { text-align: right; } }
 
-.text-align-right-max-phone { @include mediaquery-max-width(phone) { text-align: right; } }
-.text-align-right-max-phone-plus { @include mediaquery-max-width(phone-plus) { text-align: right; } }
-.text-align-right-max-tablet-portrait { @include mediaquery-max-width(tablet-portrait) { text-align: right; } }
-.text-align-right-max-tablet-landscape { @include mediaquery-max-width(tablet-landscape) { text-align: right; } }
-.text-align-right-max-desktopt { @include mediaquery-max-width(desktop) { text-align: right; } }
-.text-align-right-max-xl { @include mediaquery-max-width(xl) { text-align: right; } }
-.text-align-right-max-xl2 { @include mediaquery-max-width(xl2) { text-align: right; } }
+.text-align-right-max-phone {
+	@include mediaquery-max-width(phone) {
+		text-align: right;
+	}
+}
+
+.text-align-right-max-phone-plus {
+	@include mediaquery-max-width(phone-plus) {
+		text-align: right;
+	}
+}
+
+.text-align-right-max-tablet-portrait {
+	@include mediaquery-max-width(tablet-portrait) {
+		text-align: right;
+	}
+}
+
+.text-align-right-max-tablet-landscape {
+	@include mediaquery-max-width(tablet-landscape) {
+		text-align: right;
+	}
+}
+
+.text-align-right-max-desktopt {
+	@include mediaquery-max-width(desktop) {
+		text-align: right;
+	}
+}
+
+.text-align-right-max-xl {
+	@include mediaquery-max-width(xl) {
+		text-align: right;
+	}
+}
+
+.text-align-right-max-xl2 {
+	@include mediaquery-max-width(xl2) {
+		text-align: right;
+	}
+}
 
 // .width-5-vh {  width: 5vh;  } @include mediaquery(phone) { .width-phone-5-vh {  width: 5vh;  } } @include mediaquery(phone-plus) { .width-phone-plus-5-vh {  width: 5vh;  } } @include mediaquery(tablet-portrait) { .width-tablet-portrait-5-vh {  width: 5vh;  } } @include mediaquery(tablet-landscape) { .width-tablet-landscape-5-vh {  width: 5vh;  } } @include mediaquery(desktop) { .width-desktop-5-vh {  width: 5vh;  } } @include mediaquery(xl) { .width-xl-5-vh {  width: 5vh;  } } @include mediaquery(xl2) { .width-5-vh {  width: 5vh;  } }
 // .width-10-vh { width: 10vh; } @include mediaquery(phone) { .width-phone-10-vh { width: 10vh; } } @include mediaquery(phone-plus) { .width-phone-plus-10-vh { width: 10vh; } } @include mediaquery(tablet-portrait) { .width-tablet-portrait-10-vh { width: 10vh; } } @include mediaquery(tablet-landscape) { .width-tablet-landscape-10-vh { width: 10vh; } } @include mediaquery(desktop) { .width-desktop-10-vh { width: 10vh; } } @include mediaquery(xl) { .width-xl-10-vh { width: 10vh; } } @include mediaquery(xl2) { .width-10-vh { width: 10vh; } }
@@ -270,11 +403,11 @@ u {
 	// for use in WYSIWYG as <u></u> was deprecated in 4.7+
 	display: inline;
 	font-family: inherit;
-	font-size:inherit;
-	font-style:inherit;
-	font-weight:inherit;
+	font-size: inherit;
+	font-style: inherit;
+	font-weight: inherit;
 	line-height: inherit;
-	text-decoration:underline;
+	text-decoration: underline;
 }
 
 .uppercase {

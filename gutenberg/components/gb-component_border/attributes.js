@@ -3,19 +3,18 @@
  * @type {Object}
  */
 const BorderOptionsAttributes = {
-	'borderTop': {
-		'type': 'string'
+	borderTop: {
+		type: 'string',
 	},
-	'borderRight': {
-		'type': 'string'
+	borderRight: {
+		type: 'string',
 	},
-	'borderBottom': {
-		'type': 'string'
+	borderBottom: {
+		type: 'string',
 	},
-	'borderLeft': {
-		'type': 'string'
+	borderLeft: {
+		type: 'string',
 	},
-	
 };
 
 export default BorderOptionsAttributes;

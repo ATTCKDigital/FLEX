@@ -1,87 +1,112 @@
-document.addEventListener('DOMContentLoaded', function() {
-    let scene, camera, renderer, particles, lines;
-    let animationId;
-    let mouse = { x: 0, y: 0 };
-    let closestParticle = new THREE.Vector3(0, 0, 0);
-    let closestParticleIndex = -1;
-    let transitionStartTime = Date.now();
-    let previousParticle = new THREE.Vector3(0, 0, 0);
-    let allHopDistances = [];
-    let connections = new Map();
-    let particleGeometry, particleMaterial, lineGeometry, lineMaterial;
+/* global THREE, requestAnimationFrame, cancelAnimationFrame */
+document.addEventListener( 'DOMContentLoaded', function () {
+	let scene, camera, renderer, particles, lines;
+	let animationId;
+	const mouse = { x: 0, y: 0 };
+	let closestParticle = new THREE.Vector3( 0, 0, 0 );
+	let closestParticleIndex = -1;
+	let transitionStartTime = Date.now();
+	const previousParticle = new THREE.Vector3( 0, 0, 0 );
+	let allHopDistances = [];
+	const connections = new Map();
+	let particleGeometry, particleMaterial, lineGeometry, lineMaterial;
 
-    function init() {
-        const container = document.getElementById('constellation-container');
-        
-        // Scene setup
-        scene = new THREE.Scene();
-        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        renderer = new THREE.WebGLRenderer({ antialias: true });
-        
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setClearColor(0x000000, 1);
-        container.appendChild(renderer.domElement);
+	function init() {
+		const container = document.getElementById( 'constellation-container' );
 
-        // Create particles
-        const particleCount = 800;
-        const positions = new Float32Array(particleCount * 3);
-        const sizes = new Float32Array(particleCount);
-        const colors = new Float32Array(particleCount * 3);
-        
-        // Initialize connections map
-        for (let i = 0; i < particleCount; i++) {
-            connections.set(i, new Set());
-        }
+		// Scene setup
+		scene = new THREE.Scene();
+		camera = new THREE.PerspectiveCamera(
+			75,
+			window.innerWidth / window.innerHeight,
+			0.1,
+			1000
+		);
+		renderer = new THREE.WebGLRenderer( { antialias: true } );
 
-        // Generate particles with distribution favoring edges
-        for (let i = 0; i < particleCount; i++) {
-            const i3 = i * 3;
+		renderer.setSize( window.innerWidth, window.innerHeight );
+		renderer.setClearColor( 0x000000, 1 );
+		container.appendChild( renderer.domElement );
 
-            // Create distribution heavily concentrated at edges
-            const edgeBias = Math.pow(Math.random(), 0.15);
-            const radius = (1 - edgeBias) * 120 + 40;
-            const theta = Math.random() * Math.PI * 2;
-            const phi = Math.acos(2 * Math.random() - 1);
+		// Create particles
+		const particleCount = 800;
+		const positions = new Float32Array( particleCount * 3 );
+		const sizes = new Float32Array( particleCount );
+		const colors = new Float32Array( particleCount * 3 );
 
-            positions[i3] = radius * Math.sin(phi) * Math.cos(theta);
-            positions[i3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
-            positions[i3 + 2] = radius * Math.cos(phi);
+		// Initialize connections map
+		for ( let i = 0; i < particleCount; i++ ) {
+			connections.set( i, new Set() );
+		}
 
-            // Varying sizes
-            const distance = Math.sqrt(positions[i3] ** 2 + positions[i3 + 1] ** 2 + positions[i3 + 2] ** 2);
-            sizes[i] = (Math.random() * 2 + (distance / 80) + 1) * 0.5;
+		// Generate particles with distribution favoring edges
+		for ( let i = 0; i < particleCount; i++ ) {
+			const i3 = i * 3;
 
-            // White color with slight variations
-            const brightness = 0.9 + Math.random() * 0.1;
-            colors[i3] = brightness;
-            colors[i3 + 1] = brightness;
-            colors[i3 + 2] = brightness;
-        }
+			// Create distribution heavily concentrated at edges
+			const edgeBias = Math.pow( Math.random(), 0.15 );
+			const radius = ( 1 - edgeBias ) * 120 + 40;
+			const theta = Math.random() * Math.PI * 2;
+			const phi = Math.acos( 2 * Math.random() - 1 );
 
-        // Create particle geometry
-        particleGeometry = new THREE.BufferGeometry();
-        particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        particleGeometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
-        particleGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-        
-        // Add attributes for connected particles and hop counts
-        const connectedAttribute = new Float32Array(particleCount);
-        const hopCountAttribute = new Float32Array(particleCount);
-        particleGeometry.setAttribute('connected', new THREE.BufferAttribute(connectedAttribute, 1));
-        particleGeometry.setAttribute('hopCount', new THREE.BufferAttribute(hopCountAttribute, 1));
+			positions[ i3 ] = radius * Math.sin( phi ) * Math.cos( theta );
+			positions[ i3 + 1 ] = radius * Math.sin( phi ) * Math.sin( theta );
+			positions[ i3 + 2 ] = radius * Math.cos( phi );
 
-        // Particle material with working sequential animation
-        particleMaterial = new THREE.ShaderMaterial({
-            uniforms: {
-                time: { value: 0 },
-                activeParticleOrigin: { value: new THREE.Vector3(0, 0, 0) },
-                activeParticleIndex: { value: -1 },
-                effectRadius: { value: 50 },
-                previousActiveParticle: { value: new THREE.Vector3(0, 0, 0) },
-                transitionTime: { value: 0 },
-                maxEffectDistance: { value: 200 }
-            },
-            vertexShader: `
+			// Varying sizes
+			const distance = Math.sqrt(
+				positions[ i3 ] ** 2 +
+					positions[ i3 + 1 ] ** 2 +
+					positions[ i3 + 2 ] ** 2
+			);
+			sizes[ i ] = ( Math.random() * 2 + distance / 80 + 1 ) * 0.5;
+
+			// White color with slight variations
+			const brightness = 0.9 + Math.random() * 0.1;
+			colors[ i3 ] = brightness;
+			colors[ i3 + 1 ] = brightness;
+			colors[ i3 + 2 ] = brightness;
+		}
+
+		// Create particle geometry
+		particleGeometry = new THREE.BufferGeometry();
+		particleGeometry.setAttribute(
+			'position',
+			new THREE.BufferAttribute( positions, 3 )
+		);
+		particleGeometry.setAttribute(
+			'size',
+			new THREE.BufferAttribute( sizes, 1 )
+		);
+		particleGeometry.setAttribute(
+			'color',
+			new THREE.BufferAttribute( colors, 3 )
+		);
+
+		// Add attributes for connected particles and hop counts
+		const connectedAttribute = new Float32Array( particleCount );
+		const hopCountAttribute = new Float32Array( particleCount );
+		particleGeometry.setAttribute(
+			'connected',
+			new THREE.BufferAttribute( connectedAttribute, 1 )
+		);
+		particleGeometry.setAttribute(
+			'hopCount',
+			new THREE.BufferAttribute( hopCountAttribute, 1 )
+		);
+
+		// Particle material with working sequential animation
+		particleMaterial = new THREE.ShaderMaterial( {
+			uniforms: {
+				time: { value: 0 },
+				activeParticleOrigin: { value: new THREE.Vector3( 0, 0, 0 ) },
+				activeParticleIndex: { value: -1 },
+				effectRadius: { value: 50 },
+				previousActiveParticle: { value: new THREE.Vector3( 0, 0, 0 ) },
+				transitionTime: { value: 0 },
+				maxEffectDistance: { value: 200 },
+			},
+			vertexShader: `
                 attribute float size;
                 attribute vec3 color;
                 attribute float connected;
@@ -210,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     gl_Position = projectionMatrix * mvPosition;
                 }
             `,
-            fragmentShader: `
+			fragmentShader: `
                 varying vec3 vColor;
                 varying float vAlpha;
                 
@@ -233,85 +258,103 @@ document.addEventListener('DOMContentLoaded', function() {
                     gl_FragColor = vec4(vColor, alpha);
                 }
             `,
-            transparent: true,
-            blending: THREE.AdditiveBlending
-        });
+			transparent: true,
+			blending: THREE.AdditiveBlending,
+		} );
 
-        particles = new THREE.Points(particleGeometry, particleMaterial);
-        particles.renderOrder = 1;
-        scene.add(particles);
+		particles = new THREE.Points( particleGeometry, particleMaterial );
+		particles.renderOrder = 1;
+		scene.add( particles );
 
-        // Create connecting lines
-        const linePositions = [];
-        const maxDistance = 18;
+		// Create connecting lines
+		const linePositions = [];
+		const maxDistance = 18;
 
-        for (let i = 0; i < particleCount; i++) {
-            const i3 = i * 3;
-            const pos1 = new THREE.Vector3(positions[i3], positions[i3 + 1], positions[i3 + 2]);
+		for ( let i = 0; i < particleCount; i++ ) {
+			const i3 = i * 3;
+			const pos1 = new THREE.Vector3(
+				positions[ i3 ],
+				positions[ i3 + 1 ],
+				positions[ i3 + 2 ]
+			);
 
-            for (let j = i + 1; j < particleCount; j++) {
-                const j3 = j * 3;
-                const pos2 = new THREE.Vector3(positions[j3], positions[j3 + 1], positions[j3 + 2]);
-                
-                const distance = pos1.distanceTo(pos2);
-                
-                if (distance < maxDistance) {
-                    if (Math.random() > 0.25) continue;
-                    
-                    linePositions.push(pos1.x, pos1.y, pos1.z);
-                    linePositions.push(pos2.x, pos2.y, pos2.z);
-                    
-                    connections.get(i).add(j);
-                    connections.get(j).add(i);
-                }
-            }
-        }
+			for ( let j = i + 1; j < particleCount; j++ ) {
+				const j3 = j * 3;
+				const pos2 = new THREE.Vector3(
+					positions[ j3 ],
+					positions[ j3 + 1 ],
+					positions[ j3 + 2 ]
+				);
 
-        // Pre-calculate hop distances using BFS
-        const calculateHopDistances = () => {
-            const allHopDistances = [];
-            
-            for (let sourceIndex = 0; sourceIndex < particleCount; sourceIndex++) {
-                const hopDistances = new Array(particleCount).fill(-1);
-                const queue = [sourceIndex];
-                hopDistances[sourceIndex] = 0;
-                
-                let queueIndex = 0;
-                while (queueIndex < queue.length) {
-                    const currentIndex = queue[queueIndex++];
-                    const currentHopCount = hopDistances[currentIndex];
-                    
-                    const neighbors = connections.get(currentIndex);
-                    if (neighbors) {
-                        for (const neighborIndex of neighbors) {
-                            if (hopDistances[neighborIndex] === -1) {
-                                hopDistances[neighborIndex] = currentHopCount + 1;
-                                queue.push(neighborIndex);
-                            }
-                        }
-                    }
-                }
-                
-                allHopDistances[sourceIndex] = hopDistances;
-            }
-            
-            return allHopDistances;
-        };
-        
-        allHopDistances = calculateHopDistances();
+				const distance = pos1.distanceTo( pos2 );
 
-        // Create lines
-        lineGeometry = new THREE.BufferGeometry();
-        lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+				if ( distance < maxDistance ) {
+					if ( Math.random() > 0.25 ) {
+						continue;
+					}
 
-        lineMaterial = new THREE.ShaderMaterial({
-            uniforms: {
-                time: { value: 0 },
-                linePositions: { value: new Float32Array(linePositions) },
-                activeParticleOrigin: { value: new THREE.Vector3(0, 0, 0) },
-                effectRadius: { value: 50 }
-            },
-            vertexShader: `
+					linePositions.push( pos1.x, pos1.y, pos1.z );
+					linePositions.push( pos2.x, pos2.y, pos2.z );
+
+					connections.get( i ).add( j );
+					connections.get( j ).add( i );
+				}
+			}
+		}
+
+		// Pre-calculate hop distances using BFS
+		const calculateHopDistances = () => {
+			const hopDistancesBySource = [];
+
+			for (
+				let sourceIndex = 0;
+				sourceIndex < particleCount;
+				sourceIndex++
+			) {
+				const hopDistances = new Array( particleCount ).fill( -1 );
+				const queue = [ sourceIndex ];
+				hopDistances[ sourceIndex ] = 0;
+
+				let queueIndex = 0;
+				while ( queueIndex < queue.length ) {
+					const currentIndex = queue[ queueIndex++ ];
+					const currentHopCount = hopDistances[ currentIndex ];
+
+					const neighbors = connections.get( currentIndex );
+					if ( neighbors ) {
+						for ( const neighborIndex of neighbors ) {
+							if ( hopDistances[ neighborIndex ] === -1 ) {
+								hopDistances[ neighborIndex ] =
+									currentHopCount + 1;
+								queue.push( neighborIndex );
+							}
+						}
+					}
+				}
+
+				hopDistancesBySource[ sourceIndex ] = hopDistances;
+			}
+
+			return hopDistancesBySource;
+		};
+
+		allHopDistances = calculateHopDistances();
+
+		// Create lines
+		lineGeometry = new THREE.BufferGeometry();
+		lineGeometry.setAttribute(
+			'position',
+			new THREE.Float32BufferAttribute( linePositions, 3 )
+		);
+
+		lineMaterial = new THREE.ShaderMaterial( {
+			uniforms: {
+				time: { value: 0 },
+				linePositions: { value: new Float32Array( linePositions ) },
+				activeParticleOrigin: { value: new THREE.Vector3( 0, 0, 0 ) },
+				effectRadius: { value: 50 },
+			},
+			vertexShader: `
                 varying float vDistance;
                 varying vec3 vWorldPosition;
                 uniform float time;
@@ -328,7 +371,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     gl_Position = projectionMatrix * mvPosition;
                 }
             `,
-            fragmentShader: `
+			fragmentShader: `
                 varying float vDistance;
                 varying vec3 vWorldPosition;
                 uniform float time;
@@ -360,160 +403,171 @@ document.addEventListener('DOMContentLoaded', function() {
                     gl_FragColor = vec4(1.0, 1.0, 1.0, finalAlpha);
                 }
             `,
-            transparent: true,
-            blending: THREE.AdditiveBlending
-        });
+			transparent: true,
+			blending: THREE.AdditiveBlending,
+		} );
 
-        lines = new THREE.LineSegments(lineGeometry, lineMaterial);
-        lines.renderOrder = -1;
-        scene.add(lines);
+		lines = new THREE.LineSegments( lineGeometry, lineMaterial );
+		lines.renderOrder = -1;
+		scene.add( lines );
 
-        // Camera position
-        camera.position.z = 8;
+		// Camera position
+		camera.position.z = 8;
 
-        // Mouse tracking
-        document.addEventListener('mousemove', function(event) {
-            mouse.x = event.clientX;
-            mouse.y = event.clientY;
-        });
+		// Mouse tracking
+		document.addEventListener( 'mousemove', function ( event ) {
+			mouse.x = event.clientX;
+			mouse.y = event.clientY;
+		} );
 
-        // Window resize
-        window.addEventListener('resize', function() {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-    }
+		// Window resize
+		window.addEventListener( 'resize', function () {
+			camera.aspect = window.innerWidth / window.innerHeight;
+			camera.updateProjectionMatrix();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+		} );
+	}
 
-    // Function to find closest particle to mouse
-    function findClosestParticle() {
-        const positions = particleGeometry.attributes.position.array;
-        
-        let closestDistance = Infinity;
-        let closestPosition = new THREE.Vector3(0, 0, 0);
-        let closestIndex = -1;
-        
-        const mouseNormalized = new THREE.Vector2(
-            (mouse.x / window.innerWidth) * 2 - 1,
-            -(mouse.y / window.innerHeight) * 2 + 1
-        );
-        
-        for (let i = 0; i < positions.length; i += 3) {
-            const particleIndex = i / 3;
-            const worldPos = new THREE.Vector3(positions[i], positions[i + 1], positions[i + 2]);
-            
-            const screenPos = worldPos.clone().project(camera);
-            
-            const distance = Math.sqrt(
-                Math.pow(screenPos.x - mouseNormalized.x, 2) + 
-                Math.pow(screenPos.y - mouseNormalized.y, 2)
-            );
-            
-            if (distance < closestDistance) {
-                closestDistance = distance;
-                closestPosition = worldPos;
-                closestIndex = particleIndex;
-            }
-        }
-        
-        closestParticle = closestPosition;
-        closestParticleIndex = closestIndex;
-        
-        // Update connected particles and hop counts
-        const connectedAttribute = particleGeometry.getAttribute('connected');
-        const hopCountAttribute = particleGeometry.getAttribute('hopCount');
-        const connectedArray = connectedAttribute.array;
-        const hopCountsArray = hopCountAttribute.array;
-        
-        // Reset all particles
-        connectedArray.fill(0);
-        hopCountsArray.fill(999);
-        
-        if (closestIndex >= 0) {
-            // Mark the closest particle as connected
-            connectedArray[closestIndex] = 1;
-            
-            const hopDistances = allHopDistances[closestIndex];
-            if (hopDistances) {
-                for (let i = 0; i < 800; i++) {
-                    hopCountsArray[i] = hopDistances[i] >= 0 ? hopDistances[i] : 999;
-                    if (hopDistances[i] >= 0 && hopDistances[i] <= 20) {
-                        connectedArray[i] = 1;
-                    }
-                }
-            }
-        }
-        
-        connectedAttribute.needsUpdate = true;
-        hopCountAttribute.needsUpdate = true;
-        
-        // Update active particle index in shader
-        if (particleMaterial.uniforms) {
-            particleMaterial.uniforms.activeParticleIndex.value = closestIndex;
-        }
-    }
+	// Function to find closest particle to mouse
+	function findClosestParticle() {
+		const positions = particleGeometry.attributes.position.array;
 
-    // Animation loop
-    function animate() {
-        animationId = requestAnimationFrame(animate);
+		let closestDistance = Infinity;
+		let closestPosition = new THREE.Vector3( 0, 0, 0 );
+		let closestIndex = -1;
 
-        const time = Date.now() * 0.001;
+		const mouseNormalized = new THREE.Vector2(
+			( mouse.x / window.innerWidth ) * 2 - 1,
+			-( mouse.y / window.innerHeight ) * 2 + 1
+		);
 
-        // Find closest particle to mouse
-        const previousClosestIndex = closestParticleIndex;
-        findClosestParticle();
-        
-        // Check if we've moved to a different particle
-        if (previousClosestIndex !== closestParticleIndex) {
-            if (previousClosestIndex >= 0) {
-                const positions = particleGeometry.attributes.position.array;
-                const i3 = previousClosestIndex * 3;
-                previousParticle.set(positions[i3], positions[i3 + 1], positions[i3 + 2]);
-            }
-            transitionStartTime = Date.now();
-        }
-        
-        const transitionTime = (Date.now() - transitionStartTime) / 1000;
-        
-        // Update shader uniforms
-        if (particleMaterial.uniforms) {
-            particleMaterial.uniforms.time.value = time;
-            particleMaterial.uniforms.activeParticleOrigin.value = closestParticle;
-            particleMaterial.uniforms.previousActiveParticle.value = previousParticle;
-            particleMaterial.uniforms.transitionTime.value = transitionTime;
-        }
+		for ( let i = 0; i < positions.length; i += 3 ) {
+			const particleIndex = i / 3;
+			const worldPos = new THREE.Vector3(
+				positions[ i ],
+				positions[ i + 1 ],
+				positions[ i + 2 ]
+			);
 
-        if (lineMaterial.uniforms) {
-            lineMaterial.uniforms.time.value = time;
-            lineMaterial.uniforms.activeParticleOrigin.value = closestParticle;
-        }
+			const screenPos = worldPos.clone().project( camera );
 
-        // Camera animation
-        const radius = 8;
-        const speed = 0.005;
-        const zoomSpeed = 0.001;
-        const minRadius = 2;
-        const currentRadius = Math.max(minRadius, radius - (time * zoomSpeed));
-        
-        camera.position.x = 0;
-        camera.position.y = Math.sin(time * speed) * currentRadius;
-        camera.position.z = Math.cos(time * speed) * currentRadius;
-        camera.lookAt(0, 0, 0);
+			const distance = Math.sqrt(
+				Math.pow( screenPos.x - mouseNormalized.x, 2 ) +
+					Math.pow( screenPos.y - mouseNormalized.y, 2 )
+			);
 
-        renderer.render(scene, camera);
-    }
+			if ( distance < closestDistance ) {
+				closestDistance = distance;
+				closestPosition = worldPos;
+				closestIndex = particleIndex;
+			}
+		}
 
-    // Initialize and start animation
-    init();
-    animate();
+		closestParticle = closestPosition;
+		closestParticleIndex = closestIndex;
 
-    // Cleanup on page unload
-    window.addEventListener('beforeunload', function() {
-        if (animationId) {
-            cancelAnimationFrame(animationId);
-        }
-        if (renderer) {
-            renderer.dispose();
-        }
-    });
-});
+		// Update connected particles and hop counts
+		const connectedAttribute = particleGeometry.getAttribute( 'connected' );
+		const hopCountAttribute = particleGeometry.getAttribute( 'hopCount' );
+		const connectedArray = connectedAttribute.array;
+		const hopCountsArray = hopCountAttribute.array;
+
+		// Reset all particles
+		connectedArray.fill( 0 );
+		hopCountsArray.fill( 999 );
+
+		if ( closestIndex >= 0 ) {
+			// Mark the closest particle as connected
+			connectedArray[ closestIndex ] = 1;
+
+			const hopDistances = allHopDistances[ closestIndex ];
+			if ( hopDistances ) {
+				for ( let i = 0; i < 800; i++ ) {
+					hopCountsArray[ i ] =
+						hopDistances[ i ] >= 0 ? hopDistances[ i ] : 999;
+					if ( hopDistances[ i ] >= 0 && hopDistances[ i ] <= 20 ) {
+						connectedArray[ i ] = 1;
+					}
+				}
+			}
+		}
+
+		connectedAttribute.needsUpdate = true;
+		hopCountAttribute.needsUpdate = true;
+
+		// Update active particle index in shader
+		if ( particleMaterial.uniforms ) {
+			particleMaterial.uniforms.activeParticleIndex.value = closestIndex;
+		}
+	}
+
+	// Animation loop
+	function animate() {
+		animationId = requestAnimationFrame( animate );
+
+		const time = Date.now() * 0.001;
+
+		// Find closest particle to mouse
+		const previousClosestIndex = closestParticleIndex;
+		findClosestParticle();
+
+		// Check if we've moved to a different particle
+		if ( previousClosestIndex !== closestParticleIndex ) {
+			if ( previousClosestIndex >= 0 ) {
+				const positions = particleGeometry.attributes.position.array;
+				const i3 = previousClosestIndex * 3;
+				previousParticle.set(
+					positions[ i3 ],
+					positions[ i3 + 1 ],
+					positions[ i3 + 2 ]
+				);
+			}
+			transitionStartTime = Date.now();
+		}
+
+		const transitionTime = ( Date.now() - transitionStartTime ) / 1000;
+
+		// Update shader uniforms
+		if ( particleMaterial.uniforms ) {
+			particleMaterial.uniforms.time.value = time;
+			particleMaterial.uniforms.activeParticleOrigin.value =
+				closestParticle;
+			particleMaterial.uniforms.previousActiveParticle.value =
+				previousParticle;
+			particleMaterial.uniforms.transitionTime.value = transitionTime;
+		}
+
+		if ( lineMaterial.uniforms ) {
+			lineMaterial.uniforms.time.value = time;
+			lineMaterial.uniforms.activeParticleOrigin.value = closestParticle;
+		}
+
+		// Camera animation
+		const radius = 8;
+		const speed = 0.005;
+		const zoomSpeed = 0.001;
+		const minRadius = 2;
+		const currentRadius = Math.max( minRadius, radius - time * zoomSpeed );
+
+		camera.position.x = 0;
+		camera.position.y = Math.sin( time * speed ) * currentRadius;
+		camera.position.z = Math.cos( time * speed ) * currentRadius;
+		camera.lookAt( 0, 0, 0 );
+
+		renderer.render( scene, camera );
+	}
+
+	// Initialize and start animation
+	init();
+	animate();
+
+	// Cleanup on page unload
+	window.addEventListener( 'beforeunload', function () {
+		if ( animationId ) {
+			cancelAnimationFrame( animationId );
+		}
+		if ( renderer ) {
+			renderer.dispose();
+		}
+	} );
+} );

@@ -1,3 +1,5 @@
+// stylelint-disable scss/at-extend-no-missing-placeholder -- extends public FLEX classes (.cta, .cta-solid, .cta-accent, .cta-negative) that markup also uses; placeholders would change the generated selectors.
+
 // Button styles for Gutenberg Editor
 .component-button-editor {
 	.block-library-button__inline-link {
@@ -28,7 +30,7 @@
 		}
 	}
 
-	.editor-rich-text__tinymce[data-is-placeholder-visible=true].wp-block-button__link {
+	.editor-rich-text__tinymce[data-is-placeholder-visible="true"].wp-block-button__link {
 		background: transparent;
 		border: 0;
 		position: absolute;
@@ -71,7 +73,7 @@
 		@extend .cta-negative;
 	}
 
-	color: color('secondary', 'black');
+	color: color("secondary", "black");
 }
 
 // Prevents button elements from taking up 100% width

@@ -1,24 +1,20 @@
 // TestimonialCarousel Component
-function TestimonialCarousel($el) {
+function TestimonialCarousel( $el ) {
 	// Cache the body
 	function bindEvents() {
-		console.log('/FLEX/\tblocks/\tblock_testimonialcarousel/\ttestimonialcarousel.js', 'bindEvents()');
-
 		// Render on window resize
-		$(document.body).on('FLEX.resize', render);
+		$( document.body ).on( 'FLEX.resize', render );
 	}
 
-	function render() {
-		console.log('/FLEX/\tblocks/\tblock_testimonialcarousel/\ttestimonialcarousel.js', 'render()');
-	}
+	function render() {}
 
-	this.init = function ($el) {
+	this.init = function () {
 		bindEvents();
 
 		return this;
-	}
+	};
 
-	return this.init($el);
+	return this.init( $el );
 }
 
 export default TestimonialCarousel;

@@ -1,45 +1,61 @@
-// Element hierarchy
-body {
-	div#wpwrap {
-		div#wpcontent {
-			div#wpbody {
-				div#wpbody-content {
-					div.block-editor {
-						div#editor {
-							div.components-drop-zone__provider {
-								div.components-navigate-regions {
-									div.interface-interface-skeleton {
-										div.interface-interface-skeleton__header {}
-										div.interface-interface-skeleton__body {
-											div.interface-interface-skeleton__content {}
-											div.interface-interface-skeleton__sidebar {
-												div.block-editor-block-list__layout.is-root-container {
-													div.block-editor-block-list__block {
-														&.has-child-selected {}
-														&.is-hovered {}
-														&.is-selected {}
-													}
-												}
-											}
-										}
-									}
-								}
-								div.popover-slot {}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
+// stylelint-disable scss/at-extend-no-missing-placeholder -- extends public FLEX classes (.headline2, .headline3) that markup also uses; placeholders would change the generated selectors.
 
-h1, h2, h3, h4, h5, h6, p {
+// Element hierarchy of the block editor (reference only; emits no CSS):
+// body {
+// 	div#wpwrap {
+// 		div#wpcontent {
+// 			div#wpbody {
+// 				div#wpbody-content {
+// 					div.block-editor {
+// 						div#editor {
+// 							div.components-drop-zone__provider {
+// 								div.components-navigate-regions {
+// 									div.interface-interface-skeleton {
+// 										div.interface-interface-skeleton__header {
+// 										}
+// 										div.interface-interface-skeleton__body {
+// 											div.interface-interface-skeleton__content {
+// 											}
+// 											div.interface-interface-skeleton__sidebar {
+// 												div.block-editor-block-list__layout.is-root-container {
+// 													div.block-editor-block-list__block {
+// 														&.has-child-selected {
+// 														}
+// 														&.is-hovered {
+// 														}
+// 														&.is-selected {
+// 														}
+// 													}
+// 												}
+// 											}
+// 										}
+// 									}
+// 								}
+// 								div.popover-slot {
+// 								}
+// 							}
+// 						}
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
 	opacity: 1; // Overrides fade in elements
 }
 
 body {
-	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; //overrides theme fonts within admin
+	font-family:
+		-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
+		Ubuntu, Cantarell, "Helvetica Neue", sans-serif; //overrides theme fonts within admin
 }
 
 .acf-media-modal.-edit .media-sidebar .attachment-details .setting {
@@ -53,7 +69,7 @@ body {
 
 	// Green theme
 	background-color: hsla(108, 55%, 51%, 0.1) !important;
-	border: 1px solid hsla(125, 100%, 40%, .2) !important;
+	border: 1px solid hsla(125, 100%, 40%, 0.2) !important;
 
 	margin-bottom: 1px;
 
@@ -61,7 +77,7 @@ body {
 	margin-top: 10px;
 
 	// Padding suppresses block padding
-	// padding: 5px; 
+	// padding: 5px;
 
 	// We can use a min height to the same effect
 	min-height: 50px;
@@ -79,11 +95,11 @@ body {
 	}
 
 	.block-editor-url-input {
-		input[type=text] {
+		input[type="text"] {
 			border-color: #b9c8d0;
 			border-color: var(--wp-admin-theme-color);
 			box-shadow: 0 0 0 0.5px #007cba;
-			box-shadow: 0 0 0 .5px var(--wp-admin-theme-color);
+			box-shadow: 0 0 0 0.5px var(--wp-admin-theme-color);
 			outline: 2px solid transparent;
 		}
 	}
@@ -102,7 +118,7 @@ body {
 
 	.component-quote {
 		cite {
-			background: white;
+			background: #fff;
 			border: 1px solid #ccc;
 			line-height: 2.30769231;
 			margin: 0 2px;
@@ -126,7 +142,7 @@ body {
 	}
 
 	.components-base-control.block-editor-url-input {
-		input[type=text] {
+		input[type="text"] {
 			margin: -5px 10px;
 			width: 100%;
 		}
@@ -141,17 +157,13 @@ body {
 	}
 
 	.wp-block {
-		// Otherwise without content, you can't 
+		// Otherwise without content, you can't
 		// select the block easily.
 		min-width: 20px;
 
 		// &[data-title="Paragraph"] {
 		// 	display: block;
 		// }
-	}
-
-	&.wp-block {
-
 	}
 }
 
@@ -161,10 +173,14 @@ body {
 	}
 }
 
-// NOTE: This class name might have been missing the 
+// NOTE: This class name might have been missing the
 // suffix as seen in the rule below. -DP
 .block-editor-block-styles {
-	background: linear-gradient(45deg, rgba(0, 0, 255, .1), rgba(255, 0, 0, .1));
+	background: linear-gradient(
+		45deg,
+		rgba(0, 0, 255, 0.1),
+		rgba(255, 0, 0, 0.1)
+	);
 }
 
 .block-editor-block-styles__item-preview {
@@ -173,7 +189,7 @@ body {
 
 .block-editor-block-switcher__preview__popover,
 .block-editor-block-switcher__popover__preview__parent {
-	// TODO: Figure out why the block styles preview popup loads 
+	// TODO: Figure out why the block styles preview popup loads
 	// errors instead of the block preview. -DP
 	display: none !important;
 }
@@ -200,7 +216,7 @@ body {
 	.block-editor-inserter {
 		.components-button {
 			&.block-list-appender__toggle {
-				background: rgba(255, 255, 255, .5);
+				background: rgba(255, 255, 255, 0.5);
 				border: 1px solid #555;
 				border-radius: 4px;
 				height: 30px;
@@ -214,40 +230,60 @@ body {
 
 .editor-inner-blocks .editor-block-list__block-edit,
 .block-editor-inner-blocks .block-editor-block-list__block-edit {
-	background-color: rgba(255, 255, 255, .6);
+	background-color: rgba(255, 255, 255, 0.6);
 }
 
 // Updating selectors to support WordPres v.5.5.3
-// .block-editor-block-list__layout .block-editor-block-list__block, 
+// .block-editor-block-list__layout .block-editor-block-list__block,
 // .block-editor-block-list__layout .block-list-appender { ... }
 
 .editor-inner-blocks .editor-block-list__block-edit,
 .block-editor-inner-blocks .editor-block-list__block-edit {
-	background-color: rgba(255, 255, 255, .6);
+	background-color: rgba(255, 255, 255, 0.6);
 }
 
-body.admin-color-sunrise .editor-block-list__layout .editor-block-list__block.is-hovered > .editor-block-list__block-edit:before,
-body.admin-color-blue .editor-block-list__layout .editor-block-list__block.is-hovered > .editor-block-list__block-edit:before,
-body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-hovered > .editor-block-list__block-edit:before {
-	outline: 2px dashed silver;
+body.admin-color-sunrise
+	.editor-block-list__layout
+	.editor-block-list__block.is-hovered
+	> .editor-block-list__block-edit::before,
+body.admin-color-blue
+	.editor-block-list__layout
+	.editor-block-list__block.is-hovered
+	> .editor-block-list__block-edit::before,
+body.admin-color-coffee
+	.editor-block-list__layout
+	.editor-block-list__block.is-hovered
+	> .editor-block-list__block-edit::before {
+	outline: 2px dashed #c0c0c0;
 }
 
-body.admin-color-sunrise .editor-block-list__layout .editor-block-list__block.is-selected[data-align="full"] > .editor-block-list__block-edit:before,
-body.admin-color-blue .editor-block-list__layout .editor-block-list__block.is-selected[data-align="full"] > .editor-block-list__block-edit:before,
-body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-selected[data-align="full"] > .editor-block-list__block-edit:before {
-	outline: 2px dashed gold;
+body.admin-color-sunrise
+	.editor-block-list__layout
+	.editor-block-list__block.is-selected[data-align="full"]
+	> .editor-block-list__block-edit::before,
+body.admin-color-blue
+	.editor-block-list__layout
+	.editor-block-list__block.is-selected[data-align="full"]
+	> .editor-block-list__block-edit::before,
+body.admin-color-coffee
+	.editor-block-list__layout
+	.editor-block-list__block.is-selected[data-align="full"]
+	> .editor-block-list__block-edit::before {
+	outline: 2px dashed #ffd700;
 }
 
-.editor-block-list__layout .editor-block-list__block[data-align=full]>.editor-block-list__block-edit {
+.editor-block-list__layout
+	.editor-block-list__block[data-align="full"]
+	> .editor-block-list__block-edit {
 	margin: 0;
 }
 
-.editor-block-list__layout .editor-block-list__block[data-align=full], 
-.editor-block-list__layout .editor-block-list__block[data-align=wide] {
+.editor-block-list__layout .editor-block-list__block[data-align="full"],
+.editor-block-list__layout .editor-block-list__block[data-align="wide"] {
 	margin: 8px auto;
 }
 
-.block-list-appender>.editor-inserter {
+.block-list-appender > .editor-inserter {
 	padding: 10px;
 	min-width: 55px;
 }
@@ -271,7 +307,7 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 			width: auto;
 
 			&:hover {
-				background: white;
+				background: #fff;
 			}
 		}
 	}
@@ -283,33 +319,41 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	}
 }
 
-.editor-block-list__layout .editor-block-list__block .editor-block-list__block-edit:before,
-.block-editor-block-list__layout .editor-block-list__block .editor-block-list__block-edit:before {
+.editor-block-list__layout
+	.editor-block-list__block
+	.editor-block-list__block-edit::before,
+.block-editor-block-list__layout
+	.editor-block-list__block
+	.editor-block-list__block-edit::before {
 	left: 0;
 	right: 0;
 	top: 0;
 	bottom: 0;
 }
 
-.editor-block-list__layout .editor-block-list__block.is-selected > .editor-block-list__block-edit:before,
-.block-editor-block-list__layout .block-editor-block-list__block.is-selected > .block-editor-block-list__block-edit:before {
+.editor-block-list__layout
+	.editor-block-list__block.is-selected
+	> .editor-block-list__block-edit::before,
+.block-editor-block-list__layout
+	.block-editor-block-list__block.is-selected
+	> .block-editor-block-list__block-edit::before {
 	box-shadow: none;
-	outline: 2px dashed cornflowerblue;
+	outline: 2px dashed #6495ed;
 }
 
-.components-button:disabled, 
-.components-button[aria-disabled=true] {
+.components-button:disabled,
+.components-button[aria-disabled="true"] {
 	opacity: 1;
 
 	svg {
-		fill: cornflowerblue;
+		fill: #6495ed;
 	}
 }
 
 .block-editor-inserter__block-list {
 	.button {
-		.dashicons, 
-		.dashicons-before:before {
+		.dashicons,
+		.dashicons-before::before {
 			font-size: 40px !important;
 			height: 40px !important;
 			width: 40px !important;
@@ -324,8 +368,8 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	}
 
 	.button {
-		.dashicons, 
-		.dashicons-before:before {
+		.dashicons,
+		.dashicons-before::before {
 			margin-right: 8px;
 			vertical-align: middle;
 		}
@@ -362,8 +406,8 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 }
 
 .block-editor .component-source .editor-plain-text {
-	padding: $gap*.5;
-	font-family: Courier;
+	padding: $gap * 0.5;
+	font-family: Courier, monospace;
 	min-height: 100px;
 }
 
@@ -383,7 +427,7 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 .block-library-button__inline-link {
 	&.heading-url {
 		width: 100%;
-		margin-bottom: $gap*4;
+		margin-bottom: $gap * 4;
 
 		input {
 			width: 100%;
@@ -391,22 +435,21 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	}
 }
 
-#poststuff .stuffbox>h3, 
-#poststuff h2, #poststuff h3.hndle,
+#poststuff .stuffbox > h3,
+#poststuff h2,
+#poststuff h3.hndle,
 .edit-post-meta-boxes-area #poststuff h2.hndle span {
-	color: black;
+	color: #000;
 	font-size: 13px;
 	font-weight: 500;
 }
 
-.text-columns, 
+.text-columns,
 .is-style-text-columns .mce-content-body {
 	@include mediaquery(tablet-landscape) {
 		break-inside: avoid;
-		column-break-inside: avoid; /* Chrome, Safari, Opera */
 		column-count: 2;
-		column-gap: $gap*15;
-		page-break-inside: avoid; /* Firefox */
+		column-gap: $gap * 15;
 	}
 }
 
@@ -417,7 +460,7 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 .components-toolbar__control {
 	&.components-button {
 		&[data-subscript] {
-			&:after {
+			&::after {
 				bottom: 15px;
 				font-size: 12px;
 				left: initial;
@@ -437,8 +480,8 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	}
 }
 
-.editor-block-list__block>.editor-block-mover,
-.block-editor-block-list__block>.block-editor-block-mover {
+.editor-block-list__block > .editor-block-mover,
+.block-editor-block-list__block > .block-editor-block-mover {
 	left: -4px;
 }
 
@@ -457,16 +500,16 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	display: block;
 	box-sizing: border-box;
 	margin: 10px auto;
-	outline: 1px dotted gainsboro;
+	outline: 1px dotted #dcdcdc;
 	padding: 16px 0;
 	width: 80%;
 
 	&:hover {
-		outline: 1px dotted cornflowerblue;
+		outline: 1px dotted #6495ed;
 	}
 
 	svg {
-		fill: cornflowerblue;
+		fill: #6495ed;
 	}
 }
 
@@ -474,13 +517,13 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	.editor-block-styles__item-preview h2,
 	.block-editor-block-styles__item-preview h2 {
 		@extend .headline2 !optional;
-		color: black;
+		color: #000;
 	}
 
 	.editor-block-styles__item-preview h3,
 	.block-editor-block-styles__item-preview h3 {
 		@extend .headline3 !optional;
-		color: black;
+		color: #000;
 	}
 
 	.editor-block-styles__item-preview .component-heading img,
@@ -489,12 +532,18 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	}
 }
 
-
-.editor-block-list__layout .editor-default-block-appender>.editor-default-block-appender__content,
-.editor-block-list__layout>.editor-block-list__block>.editor-block-list__block-edit,
-.editor-block-list__layout>.editor-block-list__layout>.editor-block-list__block>.editor-block-list__block-edit,
+.editor-block-list__layout
+	.editor-default-block-appender
+	> .editor-default-block-appender__content,
+.editor-block-list__layout
+	> .editor-block-list__block
+	> .editor-block-list__block-edit,
+.editor-block-list__layout
+	> .editor-block-list__layout
+	> .editor-block-list__block
+	> .editor-block-list__block-edit,
 .wp-block.editor-block-list__block {
-	border: 1px dotted black;
+	border: 1px dotted #000;
 }
 
 .editor-block-list__layout,
@@ -508,7 +557,9 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	box-shadow: none;
 }
 
-.components-toggle-control .components-base-control__field .components-toggle-control__label {
+.components-toggle-control
+	.components-base-control__field
+	.components-toggle-control__label {
 	color: #444;
 }
 
@@ -524,9 +575,9 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	}
 }
 
-.components-popover, 
+.components-popover,
 .components-base-control {
-	color: black;
+	color: #000;
 }
 
 .edit-post-visual-editor__post-title-wrapper {
@@ -535,8 +586,8 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	}
 }
 
-.editor-post-title__block .editor-post-title__input, 
-.block-editor-post-title__block .block-editor-post-title__input, 
+.editor-post-title__block .editor-post-title__input,
+.block-editor-post-title__block .block-editor-post-title__input,
 .editor-post-permalink,
 .block-editor-post-permalink {
 	border: 1px solid #999;
@@ -551,12 +602,16 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	padding-left: 24px;
 }
 
-.editor-post-title__block:not(.is-focus-mode).is-selected .editor-post-title__input, 
-.editor-post-title__block:not(.is-focus-mode):not(.has-fixed-toolbar):not(.is-selected) .editor-post-title__input:hover {
+.editor-post-title__block:not(.is-focus-mode).is-selected
+	.editor-post-title__input,
+.editor-post-title__block:not(.is-focus-mode):not(.has-fixed-toolbar):not(
+		.is-selected
+	)
+	.editor-post-title__input:hover {
 	background: #fef8ee;
 	box-shadow: none;
-	border-color: black;
-	color: black;
+	border-color: #000;
+	color: #000;
 }
 
 .component-animated-gif {
@@ -586,7 +641,7 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 .wp-block {
 	max-width: none;
 
-	&[data-align=full] {
+	&[data-align="full"] {
 		> .wp-block-flexlayout-row {
 			max-width: none;
 		}
@@ -597,6 +652,7 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 			// Undo the hidden page title label.
 			// TODO: Find out why it's hidden in the first place. -DP
 			.components-visually-hidden {
+				// stylelint-disable-next-line property-no-deprecated -- undoes WordPress's clip-based visually-hidden styles.
 				clip: unset;
 				clip-path: unset;
 				height: auto;
@@ -611,7 +667,7 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 }
 
 .wp-block-flexlayout-row {
-	background-color: rgba(237, 100, 149, .1);
+	background-color: rgba(237, 100, 149, 0.1);
 	border: 0;
 	max-width: $siteWidth;
 	margin-left: auto;
@@ -640,7 +696,7 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 			}
 		}
 	}
-	
+
 	.wp-block {
 		// Overrides WP Admin style (auto) which causes
 		// blocks to center when they shouldn't
@@ -649,7 +705,7 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 		max-width: none;
 
 		// Can't set these, as they will override column settings
-		// padding-left: 2px; 
+		// padding-left: 2px;
 		// padding-right: 2px;
 		// width: 100%;
 
@@ -666,7 +722,7 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 }
 
 .wp-block-flex-column {
-	background-color: rgba(100, 149, 237, .1);
+	background-color: rgba(100, 149, 237, 0.1);
 	border: 0;
 	max-width: none;
 	margin-left: auto;
@@ -678,15 +734,15 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 	}
 }
 
-.wp-core-ui .cta, 
-.wp-core-ui .cta-negative, 
-.wp-core-ui .cta-solid, 
+.wp-core-ui .cta,
+.wp-core-ui .cta-negative,
+.wp-core-ui .cta-solid,
 .wp-core-ui .cta-accent {
 	min-height: 0;
 }
 
 .wp-core-ui .cta {
-	border: 1px solid color('secondary', 'lighterGray');
+	border: 1px solid color("secondary", "lighterGray");
 }
 
 .wp-core-ui img {
@@ -694,17 +750,37 @@ body.admin-color-coffee .editor-block-list__layout .editor-block-list__block.is-
 }
 
 // TODO: (DP) Deprecate this.
-.nofloat { float: none; }
+.nofloat {
+	float: none;
+}
 
-.float-left.float-left { float: left; }
-.float-none.float-none { float: none; }
-.float-right.float-right { float: right; }
+.float-left.float-left {
+	float: left;
+}
 
-.clear-left.clear-left { clear: left; }
-.clear-both.clear-both { clear: both; }
-.clear-right.clear-right { clear: right; }
+.float-none.float-none {
+	float: none;
+}
 
-.position-relative.position-relative { position: relative; }
+.float-right.float-right {
+	float: right;
+}
+
+.clear-left.clear-left {
+	clear: left;
+}
+
+.clear-both.clear-both {
+	clear: both;
+}
+
+.clear-right.clear-right {
+	clear: right;
+}
+
+.position-relative.position-relative {
+	position: relative;
+}
 
 html :where(.editor-styles-wrapper) p {
 	font-size: inherit;

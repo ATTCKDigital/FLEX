@@ -1,7 +1,9 @@
+// stylelint-disable scss/at-extend-no-missing-placeholder -- extends public FLEX classes (.cta, .body) that markup also uses; placeholders would change the generated selectors.
+
 // WordPress Post Password Form
 .post-password-form {
 	align-items: center;
-	background-color: white;
+	background-color: #fff;
 	display: flex;
 	justify-content: center;
 	height: 100%;
@@ -10,7 +12,7 @@
 	width: 100%;
 
 	input[type="password"] {
-		border-bottom: 1px solid color('secondary', 'lighterGray');
+		border-bottom: 1px solid color("secondary", "lighterGray");
 		border-radius: 0;
 		width: 100%;
 		font-size: 11px;
@@ -18,8 +20,10 @@
 		height: 30px;
 		margin-bottom: $gap;
 		letter-spacing: -0.1px;
+
 		@include secondary-regular;
-		@include placeholder (color('secondary', 'black'));
+		@include placeholder(color("secondary", "black"));
+
 		@include mediaquery(tablet-landscape) {
 			font-size: 16px;
 			letter-spacing: -0.15px;
@@ -31,18 +35,17 @@
 		border: 0;
 		display: inline-block;
 		width: auto;
-		margin-top: $gap*.5;
+		margin-top: $gap * 0.5;
 		height: 36px;
-
 	}
 }
 
 // General Form Styles
 input[type="text"],
-input[type="tel"], 
+input[type="tel"],
 input[type="email"] {
 	.component-footer & {
-		@include placeholder(color('brand', 'white'));
+		@include placeholder(color("brand", "white"));
 	}
 }
 
@@ -51,10 +54,10 @@ input[type="tel"],
 input[type="email"],
 textarea {
 	@include primary-regular;
-	border: 1px solid color('brand', 'primary');
+	border: 1px solid color("brand", "primary");
 	font-size: px-to-rem(16px);
 	height: 48px;
-	letter-spacing: .2px;
+	letter-spacing: 0.2px;
 	padding: 0 20px;
 	width: 100%;
 }
@@ -69,35 +72,35 @@ textarea {
 	}
 }
 
-label, 
-.wpcf7-list-item-label, 
+label,
+.wpcf7-list-item-label,
 .wpcf7-checkbox .wpcf7-list-item-label {
 	display: block;
 	font-size: px-to-rem(15px);
-	letter-spacing: .2px;
+	letter-spacing: 0.2px;
 	line-height: 1.6;
-	margin-bottom: $gap*.5;
+	margin-bottom: $gap * 0.5;
+
 	@include primary-regular;
 }
-
 
 //CF7 Form Styles
 .wpcf7-radio {
 	.wpcf7-list-item {
 		display: block;
-		margin-bottom: $gap*1.5;
+		margin-bottom: $gap * 1.5;
 	}
 
 	.wpcf7-list-item-label {
 		cursor: pointer;
 		display: block;
-		padding-left: $gap*3;
+		padding-left: $gap * 3;
 		position: relative;
 
-		&:after {
-			border: 1px solid color('secondary', 'lighterGray');
+		&::after {
+			border: 1px solid color("secondary", "lighterGray");
 			border-radius: 50%;
-			content: '';
+			content: "";
 			height: 20px;
 			left: 0;
 			position: absolute;
@@ -105,14 +108,14 @@ label,
 			width: 20px;
 
 			[data-logo-color="logo-color-dark"] & {
-				border-color: color('brand', 'primary');
+				border-color: color("brand", "primary");
 			}
 		}
 
-		&:before {
+		&::before {
 			background: transparent;
 			border-radius: 50%;
-			content: '';
+			content: "";
 			height: 8px;
 			left: 7px;
 			position: absolute;
@@ -120,25 +123,24 @@ label,
 			width: 8px;
 			z-index: 1;
 		}
-
 	}
 
 	input[type="radio"] {
 		display: none;
 
-		&:checked + .wpcf7-list-item-label:after {
-			background-color: color('secondary', 'lighterGray');
+		&:checked + .wpcf7-list-item-label::after {
+			background-color: color("secondary", "lighterGray");
 
 			[data-logo-color="logo-color-dark"] & {
-				background-color: color('brand', 'primary');
+				background-color: color("brand", "primary");
 			}
 		}
 
-		&:checked + .wpcf7-list-item-label:before {
-			background-color: color('secondary', 'lighterGray');
+		&:checked + .wpcf7-list-item-label::before {
+			background-color: color("secondary", "lighterGray");
 
 			[data-logo-color="logo-color-dark"] & {
-				background-color: color('brand', 'primary');
+				background-color: color("brand", "primary");
 			}
 		}
 	}
@@ -147,19 +149,19 @@ label,
 .wpcf7-checkbox {
 	.wpcf7-list-item {
 		display: block;
-		margin-bottom: $gap*1.5;
+		margin-bottom: $gap * 1.5;
 	}
 
 	.wpcf7-list-item-label {
 		display: block;
 		cursor: pointer;
-		padding-left: $gap*3;
+		padding-left: $gap * 3;
 		position: relative;
 
-		&:after {
+		&::after {
 			border-radius: 4px;
-			border: 1px solid color('secondary', 'lighterGray');
-			content: '';
+			border: 1px solid color("secondary", "lighterGray");
+			content: "";
 			height: 24px;
 			left: 0;
 			position: absolute;
@@ -167,15 +169,15 @@ label,
 			width: 24px;
 
 			[data-logo-color="logo-color-dark"] & {
-				border-color: color('brand', 'primary');
+				border-color: color("brand", "primary");
 			}
 		}
 
-		&:before {
+		&::before {
 			border: 0;
-			color: white;
-			content: '\f00c';
-			font-family: 'Font Awesome 5 Free';
+			color: #fff;
+			content: "\f00c";
+			font-family: $fa-style-family;
 			font-weight: 900;
 			font-size: 13px;
 			left: 7px;
@@ -185,17 +187,16 @@ label,
 			z-index: 1;
 			display: none;
 		}
-
 	}
 
 	input[type="checkbox"] {
 		display: none;
 
-		&:checked + .wpcf7-list-item-label:after {
-			background-color: color('secondary', 'lighterGray');
+		&:checked + .wpcf7-list-item-label::after {
+			background-color: color("secondary", "lighterGray");
 		}
 
-		&:checked + .wpcf7-list-item-label:before {
+		&:checked + .wpcf7-list-item-label::before {
 			background-color: transparent;
 			display: block;
 		}
@@ -206,9 +207,8 @@ label,
 	display: none;
 }
 
-
 .subscribe-error {
-	margin: $gap*.5 0;
+	margin: $gap * 0.5 0;
 }
 
 .ajax-loader {
@@ -223,11 +223,11 @@ label,
 	.select-container & {
 		position: relative;
 
-		&:after {
-			content: '';
+		&::after {
+			content: "";
 			display: block;
-			border-left: 1px solid color('brand', 'primary');
-			border-bottom: 1px solid color('brand', 'primary');
+			border-left: 1px solid color("brand", "primary");
+			border-bottom: 1px solid color("brand", "primary");
 			height: 10px;
 			right: 5px;
 			pointer-events: none;
@@ -247,29 +247,27 @@ label,
 
 .wpcf7-not-valid-tip {
 	@extend .body;
-	color: red;
+	color: #f00;
 	display: block;
 	font-size: 1.2rem;
-	margin-top: $gap * .25;
+	margin-top: $gap * 0.25;
 	opacity: 1;
 	text-transform: none;
 
-	.deadline &, .budget & {
+	.deadline &,
+	.budget & {
 		position: absolute;
 		top: 10px;
 	}
 
 	.row-text-white & {
-		color: red;
+		color: #f00;
 	}
 }
 
 .wpcf7-response-output {
 	@extend .body;
-	color: red;
+	color: #f00;
 	clear: both;
-	margin-top: $gap*2;
-}
-
-.wpcf7-mail-sent-ok {
+	margin-top: $gap * 2;
 }

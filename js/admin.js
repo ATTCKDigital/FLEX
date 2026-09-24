@@ -1,9 +1,6 @@
-console.log('FLEX/js/admin.js');
-
-import _ from 'lodash';
-window.lodash = _.noConflict();
 import './i18n.js';
 
-// Import blocks and filters
+// Declare the wp.* handles the editor code relies on, then load blocks and filters
+import '../gutenberg/editor-globals';
 import '../gutenberg/blocks/blocks';
 import '../gutenberg/filters';

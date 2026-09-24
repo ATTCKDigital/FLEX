@@ -1,6 +1,6 @@
 import FLEX from './client-namespace';
 import $$ from '../components/component_cached-dom-elements/cached-dom-elements';
-import GlobalEvents from './global-events';
+import './global-events';
 
 // const Debug = {
 // 	// Set to true temporarily to enable custom debugging tools.
@@ -9,19 +9,20 @@ import GlobalEvents from './global-events';
 // 	breakpoints: ["phone", "tablet-portrait", "tablet-landscape", "desktop", "xl", "2xl", "3xl", "4xl", "5xl"]
 // };
 
-FLEX.debug = (function () {
-	var _debugModeStatus = false;
-	var _breakpointsModeStatus = false;
+FLEX.debug = ( function () {
+	let _debugModeStatus = false;
+	let _breakpointsModeStatus = false;
 
 	function bindEvents() {
-		// Only bind keyboard events if already in 
+		// Only bind keyboard events if already in
 		// debug mode (only on desktop)
 		// if ($('body').hasClass('debug')) {
-		if (FLEX.cookies.get('debug') === 'true') {// && hamburgerNavIsNotVisible) {
-			$(document).on('keydown', function (e) {
-				switch (true) {
+		if ( FLEX.cookies.get( 'debug' ) === 'true' ) {
+			// && hamburgerNavIsNotVisible) {
+			$( document ).on( 'keydown', function ( e ) {
+				switch ( true ) {
 					// Shift + D toggles debug mode
-					case e.key == 'D':
+					case e.key === 'D':
 						debuggingToggle();
 						break;
 
@@ -29,79 +30,82 @@ FLEX.debug = (function () {
 					default:
 						break;
 				}
-			});
+			} );
 		}
 	}
 
 	// Set body class attribute for CSS debugging help
-	function bodyClassSet(status, className) {
-		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.bodyClassSet(status: ' + status + ')');
+	function bodyClassSet( status, className ) {
+		console.log(
+			'/src\t/scripts\t/FLEX.js',
+			'FLEX.debug.bodyClassSet(status: ' + status + ')'
+		);
 
-		if (FLEX.isUndefined(className)) {
+		if ( FLEX.isUndefined( className ) ) {
 			className = 'debug';
 		}
 
-		if (status === true) {
-			$('body').addClass(className);
+		if ( status === true ) {
+			$( 'body' ).addClass( className );
 		} else {
-			$('body').removeClass(className);
-		}
-	}
-
-	function bodyClassToggle() {
-		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.bodyClassToggle()');
-
-		if ($('body').hasClass('debug')) {
-			bodyClassSet(false);
-		} else {
-			bodyClassSet(true);
+			$( 'body' ).removeClass( className );
 		}
 	}
 
 	// Manage debug cookies
 	// @param string cookieName
-	// @param boolean status 
-	function cookiesSet(cookieName, status) {
-		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.cookiesSet(cookieName: ' + cookieName + ', status: ' + status + ')');
+	// @param boolean status
+	function cookiesSet( cookieName, status ) {
+		console.log(
+			'/src\t/scripts\t/FLEX.js',
+			'FLEX.debug.cookiesSet(cookieName: ' +
+				cookieName +
+				', status: ' +
+				status +
+				')'
+		);
 
 		// Enforce required cookieName parameter
-		FLEX.enforce.required(cookieName);
+		FLEX.enforce.required( cookieName );
 
-		if (status === true) {
-			FLEX.cookies.set(cookieName, status);
+		if ( status === true ) {
+			FLEX.cookies.set( cookieName, status );
 		} else {
-			FLEX.cookies.remove(cookieName);
+			FLEX.cookies.remove( cookieName );
 		}
 	}
 
 	// Check config and URL vars
-	function debugModeStatusDetect(successCallback) {
-		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.debugModeStatusDetect()');
+	function debugModeStatusDetect( successCallback ) {
+		console.log(
+			'/src\t/scripts\t/FLEX.js',
+			'FLEX.debug.debugModeStatusDetect()'
+		);
 
 		// Default values
-		var debugMode = false;
-		var showBreakpoints = false;
+		let debugMode = false;
+		let showBreakpoints = false;
 
-		switch (true) {
+		switch ( true ) {
 			// Check URL var
-			case FLEX.queryVariables.get('debug') === 'true':
+			case FLEX.queryVariables.get( 'debug' ) === 'true':
 				debugMode = true;
 				break;
 
-			case FLEX.queryVariables.get('debug') === 'false':
+			case FLEX.queryVariables.get( 'debug' ) === 'false':
 				debugMode = false;
 				break;
 
-			case FLEX.queryVariables.get('showBreakpoints') === 'true':
+			case FLEX.queryVariables.get( 'showBreakpoints' ) === 'true':
 				showBreakpoints = true;
 				break;
 
-			case FLEX.queryVariables.get('showBreakpoints') === 'false':
+			case FLEX.queryVariables.get( 'showBreakpoints' ) === 'false':
 				showBreakpoints = false;
 				break;
 
 			// Check cookies from previous session
-			case !!FLEX.cookies.get('debug'):
+			case !! FLEX.cookies.get( 'debug' ):
 				debugMode = true;
 				break;
 
@@ -110,90 +114,100 @@ FLEX.debug = (function () {
 		}
 
 		// Set the debug value and run the callback if debugging is active
-		if (debugModeStatusSet(debugMode)) {
-			// NOTE: Passing the `true` param will suppress color overlays on initial load. 
+		if ( debugModeStatusSet( debugMode ) ) {
+			// NOTE: Passing the `true` param will suppress color overlays on initial load.
 			// This way we can work in debug mode without having to turn it off on every page reload. -DP
 			// successCallback(true);
 			successCallback();
 		}
 
 		// Set the debug value and run the callback if debugging is active
-		if (breakpointsModeStatusSet(showBreakpoints)) {
-			bodyClassSet(showBreakpoints, 'showBreakpoints');
+		if ( breakpointsModeStatusSet( showBreakpoints ) ) {
+			bodyClassSet( showBreakpoints, 'showBreakpoints' );
 		}
 	}
 
-	function breakpointsModeStatusGet() {
-		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.breakpointsModeStatusGet(), breakpointsModeStatus: ' + breakpointsModeStatus);
-
-		return _breakpointsModeStatus;
-	}
-
 	// Manages access to debugModeStatus variable and enforce type
-	function breakpointsModeStatusSet(status) {
-		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.breakpointsModeStatusSet(), status: ' + status);
-		
+	function breakpointsModeStatusSet( status ) {
+		console.log(
+			'/src\t/scripts\t/FLEX.js',
+			'FLEX.debug.breakpointsModeStatusSet(), status: ' + status
+		);
+
 		// Enforce type
-		if (typeof status !== "boolean") {
+		if ( typeof status !== 'boolean' ) {
 			// Revert to previous value if invalid type passed
 			status = _breakpointsModeStatus;
 		}
 
-		showCSSBreakpoints(status);
+		showCSSBreakpoints( status );
 
-		return _breakpointsModeStatus = status;
+		return ( _breakpointsModeStatus = status );
 	}
 
 	function debugModeStatusGet() {
-		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.debugModeStatusGet(), debugModeStatus: ' + debugModeStatus);
+		console.log(
+			'/src\t/scripts\t/FLEX.js',
+			'FLEX.debug.debugModeStatusGet(), debugModeStatus: ' +
+				_debugModeStatus
+		);
 
 		return _debugModeStatus;
 	}
 
 	// Manages access to debugModeStatus variable and enforce type
-	function debugModeStatusSet(status) {
+	function debugModeStatusSet( status ) {
 		// Enforce type
-		if (typeof status !== "boolean") {
+		if ( typeof status !== 'boolean' ) {
 			// Revert to previous value if invalid type passed
-			status = debugModeStatus;
+			status = _debugModeStatus;
 		}
 
-		cookiesSet('debug', status);
+		cookiesSet( 'debug', status );
 
-		return _debugModeStatus = status;
+		return ( _debugModeStatus = status );
 	}
 
 	// Runs only when in debug mode
 	function debuggingDisable() {
-		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.debuggingDisable()');
-		bodyClassSet(false);
-		cookiesSet('debug', false);
-		showCSSBreakpoints(false);
+		console.log(
+			'/src\t/scripts\t/FLEX.js',
+			'FLEX.debug.debuggingDisable()'
+		);
+		bodyClassSet( false );
+		cookiesSet( 'debug', false );
+		showCSSBreakpoints( false );
 
-		// Don't want to turn off syntax coloring if 
+		// Don't want to turn off syntax coloring if
 		// manually toggling visual debug
 		// enhancedConsoleLoggingSet(false);
 	}
 
-	function debuggingEnable(suppressColors) {
-		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.debuggingEnable()');
-		console.log('');
-		console.log('******* DEBUGGING ENABLED *******');
-		console.log('');
+	function debuggingEnable( suppressColors ) {
+		console.log(
+			'/src\t/scripts\t/FLEX.js',
+			'FLEX.debug.debuggingEnable()'
+		);
+		console.log( '' );
+		console.log( '******* DEBUGGING ENABLED *******' );
+		console.log( '' );
 
-		enhancedConsoleLoggingSet(true);
-		cookiesSet('debug', true);
-		showCSSBreakpoints(true);
+		enhancedConsoleLoggingSet( true );
+		cookiesSet( 'debug', true );
+		showCSSBreakpoints( true );
 
-		if (suppressColors !== true) {
-			bodyClassSet(true);
+		if ( suppressColors !== true ) {
+			bodyClassSet( true );
 		}
 	}
 
 	function debuggingToggle() {
-		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.debuggingToggle()');
+		console.log(
+			'/src\t/scripts\t/FLEX.js',
+			'FLEX.debug.debuggingToggle()'
+		);
 
-		if ($('body').hasClass('debug')) {
+		if ( $( 'body' ).hasClass( 'debug' ) ) {
 			debuggingDisable();
 		} else {
 			debuggingEnable();
@@ -204,66 +218,87 @@ FLEX.debug = (function () {
 	// I.e., not in production
 	function enhancedConsoleLoggingDetect() {
 		// Turn off by default
-		var showConsoleLogs = false;
+		let showConsoleLogs = false;
 
 		// ...unless overridden in client-namespace.js
-		if (!FLEX.isUndefined(FLEX.showConsoleLogs)) {
+		if ( ! FLEX.isUndefined( FLEX.showConsoleLogs ) ) {
 			showConsoleLogs = FLEX.showConsoleLogs;
 		}
 
-		// ...or if we're in production 
+		// ...or if we're in production
 		// (data attribute will only be visible in non-production environments)
-		if (FLEX.isUndefined($('body').attr('data-server-environment'))) {
+		if (
+			FLEX.isUndefined( $( 'body' ).attr( 'data-server-environment' ) )
+		) {
 			showConsoleLogs = false;
 		}
 
-		enhancedConsoleLoggingSet(showConsoleLogs);
+		enhancedConsoleLoggingSet( showConsoleLogs );
 	}
 
 	// Turn console logging on or off
-	function enhancedConsoleLoggingSet(status) {
-		if (!FLEX.isProd) { console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.enableEnhancedConsoleLoggingSet(status: ' + status + ')'); }
+	function enhancedConsoleLoggingSet( status ) {
+		if ( ! FLEX.isProd ) {
+			console.log(
+				'/src\t/scripts\t/FLEX.js',
+				'FLEX.debug.enableEnhancedConsoleLoggingSet(status: ' +
+					status +
+					')'
+			);
+		}
 
 		// Console event override
-		var _log = console.log;
-		var _status = status;
+		const _log = console.log;
+		const _status = status;
 
-		console.log = function (logMessage) {
+		console.log = function () {
 			// Show console logs if explicitly enabled
-			if (_status === true) {
-				var argArray = arguments;
+			if ( _status === true ) {
+				let argArray = arguments;
 
-				if (arguments.length === 2) {
-					if (arguments[0] && arguments[1]) {
-						if (arguments[0] === 'loaded') {
+				if ( arguments.length === 2 ) {
+					if ( arguments[ 0 ] && arguments[ 1 ] ) {
+						if ( arguments[ 0 ] === 'loaded' ) {
 							argArray = [];
 
 							// If first item is 'loaded', make it green
-							argArray.push('%c   loaded: %c ' + arguments[1]);
-							argArray.push('color: #BADA55');
-							argArray.push('color: #759417');
-						} else if (arguments[0].startsWith && arguments[0].startsWith('/')) {
+							argArray.push(
+								'%c   loaded: %c ' + arguments[ 1 ]
+							);
+							argArray.push( 'color: #BADA55' );
+							argArray.push( 'color: #759417' );
+						} else if (
+							arguments[ 0 ].startsWith &&
+							arguments[ 0 ].startsWith( '/' )
+						) {
 							argArray = [];
 
 							// Otherwise, if the first item starts with '/', grey it out
-							argArray.push('%c   ' + arguments[0] + ' › %c ' + arguments[1]);
-							argArray.push('color: #89a9c8');
-							argArray.push('color: #1d50ca; font-style: italic');
+							argArray.push(
+								'%c   ' +
+									arguments[ 0 ] +
+									' › %c ' +
+									arguments[ 1 ]
+							);
+							argArray.push( 'color: #89a9c8' );
+							argArray.push(
+								'color: #1d50ca; font-style: italic'
+							);
 						}
 					}
 				} else {
 					argArray = [];
 
-					for (const prop in arguments) {
-						if (arguments.hasOwnProperty(prop)) {
-							if (arguments[(prop * 1)]) {
-								argArray.push(arguments[(prop * 1)]);
+					for ( const prop in arguments ) {
+						if ( arguments.hasOwnProperty( prop ) ) {
+							if ( arguments[ prop * 1 ] ) {
+								argArray.push( arguments[ prop * 1 ] );
 							}
 						}
 					}
 				}
 
-				_log.apply(console, argArray);
+				_log.apply( console, argArray );
 			} else {
 				// Don't display console logs
 			}
@@ -271,37 +306,45 @@ FLEX.debug = (function () {
 	}
 
 	function showViewportDimensionsOnBreakpointLabel() {
-		console.log('showViewportDimensionsOnBreakpointLabel triggered');
-		$('.breakpoint').text(FLEX.Globals.viewportWidth + ' x ' + FLEX.Globals.viewportHeightInner + ': ');
+		console.log( 'showViewportDimensionsOnBreakpointLabel triggered' );
+		$( '.breakpoint' ).text(
+			FLEX.Globals.viewportWidth +
+				' x ' +
+				FLEX.Globals.viewportHeightInner +
+				': '
+		);
 	}
 
-	function showCSSBreakpoints(status) {
-		console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.showCSSBreakpoints(status: ' + status + ')');
+	function showCSSBreakpoints( status ) {
+		console.log(
+			'/src\t/scripts\t/FLEX.js',
+			'FLEX.debug.showCSSBreakpoints(status: ' + status + ')'
+		);
 
 		// Append viewport width and height to the breakpoint label
-		$(document.body).on('initGlobalEventsComplete', function (e) {
+		$( document.body ).on( 'initGlobalEventsComplete', function () {
 			showViewportDimensionsOnBreakpointLabel();
-		});
+		} );
 
 		// Declares FLEX.GlobalEvents.xsOnly(), smOnly(), etc for running
 		// breakpoint-specific functionality.
-		if (typeof $ !== 'undefined' && status !== false) {
-			$.each(FLEX.breakpoints, function (i, val) {
-				val = val.replace('-', '');
+		if ( typeof $ !== 'undefined' && status !== false ) {
+			$.each( FLEX.breakpoints, function ( i, val ) {
+				val = val.replace( '-', '' );
 
-				FLEX.GlobalEvents['only' + val] = function (f) {
-					if (!$$('.breakpoint.' + val).is(':visible')) {
+				FLEX.GlobalEvents[ 'only' + val ] = function ( f ) {
+					if ( ! $$( '.breakpoint.' + val ).is( ':visible' ) ) {
 						return;
 					}
 
 					f();
-				}
-			});
+				};
+			} );
 
 			// Expose viewport dimensions on resize
-			$(document.body).on("FLEX.resize", function () {
+			$( document.body ).on( 'FLEX.resize', function () {
 				showViewportDimensionsOnBreakpointLabel();
-				
+
 				/* Don't need these since we moved this to the CSS file
 				FLEX.GlobalEvents.onlysmall(function () {
 					$('.breakpoint-current').show().text('Breakpoint is small');
@@ -343,43 +386,45 @@ FLEX.debug = (function () {
 					$('.breakpoint-current').show().text('Breakpoint is 5xl');
 				});
 				*/
-			});
+			} );
 		}
 
-		if (typeof $ !== 'undefined' && status === false) {
+		if ( typeof $ !== 'undefined' && status === false ) {
 			// Hide the breakpoints if false is passed as param
-			$(".breakpoint-current").hide();
+			$( '.breakpoint-current' ).hide();
 		}
 
 		// Manage cookies
-		if (status === false) { 
+		if ( status === false ) {
 			// Remove cookie
-			cookiesSet('showBreakpoints', false);
+			cookiesSet( 'showBreakpoints', false );
 		}
 
-		if (status === true) { 
+		if ( status === true ) {
 			// Remove cookie
-			cookiesSet('showBreakpoints', true);
+			cookiesSet( 'showBreakpoints', true );
 		}
 	}
 
 	// Determine if we are in debugging mode
 	function init() {
-		if (!FLEX.isProd) { console.log('/src\t/scripts\t/FLEX.js', 'FLEX.debug.init()'); }
+		if ( ! FLEX.isProd ) {
+			console.log( '/src\t/scripts\t/FLEX.js', 'FLEX.debug.init()' );
+		}
 
 		// Enable enhanced console logging
 		enhancedConsoleLoggingDetect();
 
 		// Check for URL or cookie setting
-		debugModeStatusDetect(debuggingEnable);
+		debugModeStatusDetect( debuggingEnable );
 
 		bindEvents();
 	}
 
 	return {
 		getStatus: debugModeStatusGet,
-		init: init
+		init,
 	};
-})();
+} )();
 
 export default FLEX.debug;

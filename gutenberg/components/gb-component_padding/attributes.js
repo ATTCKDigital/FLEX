@@ -11,11 +11,10 @@ const PaddingOptionsAttributes = {
 	},
 	paddingBottom: {
 		type: 'string',
-	},	
+	},
 	paddingLeft: {
 		type: 'string',
 	},
-
 
 	paddingPhoneTop: {
 		type: 'string',
@@ -25,11 +24,10 @@ const PaddingOptionsAttributes = {
 	},
 	paddingPhoneBottom: {
 		type: 'string',
-	},	
+	},
 	paddingPhoneLeft: {
 		type: 'string',
 	},
-
 
 	paddingPhonePlusTop: {
 		type: 'string',
@@ -39,11 +37,10 @@ const PaddingOptionsAttributes = {
 	},
 	paddingPhonePlusBottom: {
 		type: 'string',
-	},	
+	},
 	paddingPhonePlusLeft: {
 		type: 'string',
 	},
-
 
 	paddingTabletPortraitTop: {
 		type: 'string',
@@ -53,11 +50,10 @@ const PaddingOptionsAttributes = {
 	},
 	paddingTabletPortraitBottom: {
 		type: 'string',
-	},	
+	},
 	paddingTabletPortraitLeft: {
 		type: 'string',
 	},
-
 
 	paddingTabletLandscapeTop: {
 		type: 'string',
@@ -67,11 +63,10 @@ const PaddingOptionsAttributes = {
 	},
 	paddingTabletLandscapeBottom: {
 		type: 'string',
-	},	
+	},
 	paddingTabletLandscapeLeft: {
 		type: 'string',
 	},
-
 
 	paddingDesktopTop: {
 		type: 'string',
@@ -81,11 +76,10 @@ const PaddingOptionsAttributes = {
 	},
 	paddingDesktopBottom: {
 		type: 'string',
-	},	
+	},
 	paddingDesktopLeft: {
 		type: 'string',
 	},
-
 
 	paddingXlTop: {
 		type: 'string',
@@ -95,11 +89,10 @@ const PaddingOptionsAttributes = {
 	},
 	paddingXlBottom: {
 		type: 'string',
-	},	
+	},
 	paddingXlLeft: {
 		type: 'string',
 	},
-
 
 	paddingXl2Top: {
 		type: 'string',
@@ -109,7 +102,7 @@ const PaddingOptionsAttributes = {
 	},
 	paddingXl2Bottom: {
 		type: 'string',
-	},	
+	},
 	paddingXl2Left: {
 		type: 'string',
 	},

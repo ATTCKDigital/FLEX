@@ -1,6 +1,6 @@
 //--------------------------------------------------------------
 // Editor Styles
-//
+
 /**** Margin ****/
 
 .margin-wrapper {
@@ -9,14 +9,14 @@
 		display: flex;
 		flex-wrap: wrap;
 		align-items: flex-end;
-		border-bottom: 1px solid darkgray;
-    	margin-bottom: 14px;
+		border-bottom: 1px solid #a9a9a9;
+		margin-bottom: 14px;
 
 		.components-panel__row {
 			width: 48%;
 			margin-right: 4%;
 
-			&:nth-child(2n+1) {
+			&:nth-child(2n + 1) {
 				margin-right: 0;
 			}
 		}

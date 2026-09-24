@@ -1,61 +1,60 @@
 // Default
-$modalColor: #ffffff;
-$popupColor: rgba(0, 0, 0, .7);
+$modalColor: #fff !default;
+$popupColor: rgba(0, 0, 0, 0.7) !default;
 
 // Brand
-$brand-color-key: 'red' !default;
+$brand-color-key: "red" !default;
 
 $brand-colors: (
-	'debug': (
-		'red': 		#f00
+	"debug": (
+		"red": #f00,
 	),
-	'brand': (
-		'primary': 	var(--color-brand-primary),
-		'secondary':var(--color-brand-secondary),
-		'accent': 	var(--color-brand-accent),
+	"brand": (
+		"primary": var(--color-brand-primary),
+		"secondary": var(--color-brand-secondary),
+		"accent": var(--color-brand-accent),
 	),
-	'primary': (
-		'one':		var(--color-primary-one),
-		'two':		var(--color-primary-two),
-		'three':	var(--color-primary-three),
-		'three-muted':var(--color-primary-three-muted),
+	"primary": (
+		"one": var(--color-primary-one),
+		"two": var(--color-primary-two),
+		"three": var(--color-primary-three),
+		"three-muted": var(--color-primary-three-muted),
 	),
-	'secondary': (
-		'black':	  #000000,
-		'green': 	  #6D8D6F,
-		'grey': 	  #5E7185,
-		'pink': 	  #D48D86,
-		'lightBlue':  #E8F2F9,
-		'lightGray':  #CCCCCC,
-		'lighterGray':#DFDFDF,
-		'purple': 	  #873B75,
-		'white':	  #FFFFFF,
-		'one': 		  #D6CECC,
-		'two': 		  #F1EAE3,
+	"secondary": (
+		"black": #000,
+		"green": #6d8d6f,
+		"grey": #5e7185,
+		"pink": #d48d86,
+		"lightBlue": #e8f2f9,
+		"lightGray": #ccc,
+		"lighterGray": #dfdfdf,
+		"purple": #873b75,
+		"white": #fff,
+		"one": #d6cecc,
+		"two": #f1eae3,
 	),
-	'text': (
-		'body': 	var(--color-text-body),
-		'link': 	var(--color-text-link),
-		'hover': 	var(--color-text-hover),
-		'white': 	#FFFFFF,
-		'black': 	#000000,
+	"text": (
+		"body": var(--color-text-body),
+		"link": var(--color-text-link),
+		"hover": var(--color-text-hover),
+		"white": #fff,
+		"black": #000,
 	),
-	'default': (
-		'white': 	#FFFFFF,
-		'black': 	#000000,
+	"default": (
+		"white": #fff,
+		"black": #000,
 	),
-	'social':(
-		'facebook': #3b5998,
-		'twitter': 	#1da1f2,
-		'linkedin': #0077b5
+	"social": (
+		"facebook": #3b5998,
+		"twitter": #1da1f2,
+		"linkedin": #0077b5,
 	),
-	'gradients': (
-	)
-);
+	"gradients": (),
+) !default;
 
 /** Generate colors **/
 // Usage: color('key', 'variant');
-@function color($key: 'debug', $variant: $brand-color-key, $opacity: null) {
+@function color($key: "debug", $variant: $brand-color-key, $opacity: null) {
 	$color: null;
 	$color-spectrum: map-get($brand-colors, $key);
 
@@ -63,11 +62,11 @@ $brand-colors: (
 		$color: map-get($color-spectrum, $variant);
 	}
 
-	@if $color == null {
+	@if not $color {
 		@return null; // or throw error, depending on your setup
 	}
 
-	@if $opacity != null {
+	@if $opacity {
 		// Return CSS-level rgba() using var() and custom opacity
 		@return unquote("rgba(#{$color}, #{$opacity})");
 	}
@@ -81,11 +80,13 @@ $brand-colors: (
 		color: $color;
 	}
 
-	&:-moz-placeholder { /* Firefox 18- */
+	&:-moz-placeholder {
+		/* Firefox 18- */
 		color: $color;
 	}
 
-	&::-moz-placeholder {  /* Firefox 19+ */
+	&::-moz-placeholder {
+		/* Firefox 19+ */
 		color: $color;
 	}
 
@@ -109,17 +110,12 @@ $brand-colors: (
 
 /**** Color classes ****/
 // Use dynamically generated color classes as follows:
-//
 // Classes:
-//
 // 		.background-key-variant
 // 		.color-color-key-variant
-//
 // For example:
-//
 // 		.background-accent-blue
 // 		.color-accent-blue
-//
 
 @each $key, $map in $brand-colors {
 	@each $variant, $color in $map {
@@ -143,22 +139,48 @@ $brand-colors: (
 
 .color-text-body {
 	[data-logo-color="logo-color-dark"] &,
-	.blog &, 
-	.category &, 
-	.tag &, 
-	.single-post &, 
+	.blog &,
+	.category &,
+	.tag &,
+	.single-post &,
 	.white-nav & {
-		color: color('brand', 'primary');
+		color: color("brand", "primary");
 	}
 }
 
 // Helpers
-.colorDefaultBlack { color: color('default', 'black'); }
-.colorDefaultWhite { color: color('default', 'white'); }
-.colorBrandPrimary { color: color('brand', 'primary'); }
-.colorBrandSecondary { color: color('brand', 'secondary'); }
-.colorBrandAccent { color: color('brand', 'accent'); }
-.colorPrimaryOne { color: color('primary', 'one'); }
-.colorPrimaryTwo { color: color('primary', 'two'); }
-.colorPrimaryThree { color: color('primary', 'three'); }
-.colorPrimaryThreeMuted { color: color('primary', 'three-muted'); }
+.colorDefaultBlack {
+	color: color("default", "black");
+}
+
+.colorDefaultWhite {
+	color: color("default", "white");
+}
+
+.colorBrandPrimary {
+	color: color("brand", "primary");
+}
+
+.colorBrandSecondary {
+	color: color("brand", "secondary");
+}
+
+.colorBrandAccent {
+	color: color("brand", "accent");
+}
+
+.colorPrimaryOne {
+	color: color("primary", "one");
+}
+
+.colorPrimaryTwo {
+	color: color("primary", "two");
+}
+
+.colorPrimaryThree {
+	color: color("primary", "three");
+}
+
+.colorPrimaryThreeMuted {
+	color: color("primary", "three-muted");
+}

@@ -1,10 +1,10 @@
 /**
  * Set scroller output.
- * @param {object} props - The block object.
- * @return {string} The scroller output container.
+ * @param {Object} props - The block object.
+ * @return {Element|undefined} The scroller output container, or undefined when the scroller is off.
  */
-function ScrollerOptionsOutput(props) {
-	if (props.attributes.showScroller) {
+function ScrollerOptionsOutput( props ) {
+	if ( props.attributes.showScroller ) {
 		return (
 			<mark
 				className="scrollerActive icon-scroller"

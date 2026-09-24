@@ -1,11 +1,11 @@
 .component-header {
-	background-color: color('brand', 'primary');
+	background-color: color("brand", "primary");
 	height: $navMobileHeight;
 	left: 0;
 	position: fixed;
 	right: 0;
 	top: 0;
-	transition: all .3s ease-in;
+	transition: all 0.3s ease-in;
 	width: 100%;
 	z-index: 1000;
 
@@ -23,9 +23,9 @@
 		@include mediaquery(tablet-landscape) {
 			display: none;
 		}
-		
+
 		.navOpen & {
-			background: color('default', 'black');
+			background: color("default", "black");
 		}
 	}
 
@@ -43,16 +43,16 @@
 		height: 100%;
 		margin: 0 auto;
 		max-width: 100vw;
-		padding: 0 $gap*2;
+		padding: 0 $gap * 2;
 		width: 100%;
-		
+
 		@include mediaquery(tablet-portrait) {
 			max-width: 96vw;
 		}
 
 		@include mediaquery(desktop) {
 			max-width: $siteWidth;
-			padding: $gap*.75 0;
+			padding: $gap * 0.75 0;
 		}
 	}
 
@@ -115,13 +115,13 @@
 	.main-nav {
 		@include mediaquery-max-width(tablet-landscape) {
 			// Mobile only mediaquery so less overrides are necessary
-			background-color: white;
+			background-color: #fff;
 			height: 100vh;
 			padding-top: calc(#{$navMobileHeight} + 20px);
 			position: absolute;
 			right: -100vw;
 			top: 0;
-			transition: right .3s ease-in;
+			transition: right 0.3s ease-in;
 			width: 100%;
 
 			.navOpen & {
@@ -130,7 +130,7 @@
 		}
 
 		@include mediaquery(tablet-landscape) {
-			//Large mobile + 
+			//Large mobile +
 			margin-left: 80px;
 			width: calc(100% - 160px);
 		}
@@ -155,7 +155,7 @@
 			// Mobile only mediaquery so less overrides are necessary
 			display: block;
 			font-size: px-to-rem(33px);
-			margin-bottom: $gap*3;
+			margin-bottom: $gap * 3;
 		}
 
 		@include mediaquery(tablet-landscape) {
@@ -163,18 +163,18 @@
 			font-size: px-to-rem(16px);
 			margin-left: 30px;
 			opacity: 1;
-			transition: opacity .3s ease-in;
+			transition: opacity 0.3s ease-in;
 		}
 
 		a {
-			color: color('brand', 'primary');
+			color: color("brand", "primary");
 			position: relative;
-			transition: color .2s;
+			transition: color 0.2s;
 
-			&:after {
+			&::after {
 				background-color: transparent;
 				bottom: -4px;
-				content: '';
+				content: "";
 				display: block;
 				height: 3px;
 				left: 50%;
@@ -184,8 +184,8 @@
 			}
 
 			&:hover {
-				&:after {
-					background-color: color('secondary', 'white');
+				&::after {
+					background-color: color("secondary", "white");
 					left: 0%;
 					opacity: 1;
 					right: 0%;
@@ -193,21 +193,21 @@
 			}
 
 			@include mediaquery(tablet-landscape) {
-				color: color('secondary', 'white');
+				color: color("secondary", "white");
 
 				.logoDark & {
-					color: color('text', 'body');
+					color: color("text", "body");
 				}
-	
+
 				.logoLight & {
-					color: color('secondary', 'white');
+					color: color("secondary", "white");
 				}
 			}
 		}
 
 		&.current-menu-item {
-			a:after {
-				background-color: color('secondary', 'white');
+			a::after {
+				background-color: color("secondary", "white");
 				left: 0%;
 				right: 0%;
 			}
@@ -215,8 +215,8 @@
 
 		@include mediaquery(desktop) {
 			&:hover {
-				a:after {
-					background-color: color('secondary', 'white');
+				a::after {
+					background-color: color("secondary", "white");
 				}
 			}
 		}

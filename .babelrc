@@ -1,9 +1,0 @@
-{
-	"presets": [
-		"@wordpress/default",
-		"@babel/env",
-		"@babel/react",
-	],
-	"plugins": [
-	]
-}

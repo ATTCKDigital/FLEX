@@ -1,130 +1,146 @@
 import Loader from '../../../js/load-components';
 
-function PopupController($el) {
-	var popupNames;
-	var $popup;
-	var $popupEl;
-	var $buttons;
+function PopupController( $el ) {
+	let popupNames;
+	let $popup;
+	let $popupEl;
+	let $buttons;
 
 	function bindEvents() {
-		console.log('/FLEX/\tgutenberg /\tblocks/\t Popup Controller', 'bindEvents()');
+		console.log(
+			'/FLEX/\tgutenberg /\tblocks/\t Popup Controller',
+			'bindEvents()'
+		);
 
-		var counter = 0;
+		const counter = 0;
 
-		$buttons.each(function (counter) {
-			var n = counter++;
+		$buttons.each(
+			( function ( startCount ) {
+				const n = startCount++;
 
-			return function (index) {
-				$(this).on('click', function(e) {
-					
-					e.preventDefault();
+				return function () {
+					$( this ).on( 'click', function ( e ) {
+						e.preventDefault();
 
-					openPopup(n);
-				});
-			};
-		}(counter));
+						openPopup( n );
+					} );
+				};
+			} )( counter )
+		);
 
-		console.log('/FLEX/\tgutenberg/\tblocks/\tblock_popup/\tpopup-controller.js › binding FLEX.keydown');
-		
-		$(document.body).on('FLEX.keydown', function (e, data) {
-			if (data.keyCode === 27) {
+		console.log(
+			'/FLEX/\tgutenberg/\tblocks/\tblock_popup/\tpopup-controller.js › binding FLEX.keydown'
+		);
+
+		$( document.body ).on( 'FLEX.keydown', function ( e, data ) {
+			if ( data.keyCode === 27 ) {
 				closePopup();
-			} 
-		});
+			}
+		} );
 	}
 
-	function openPopup(index) {
-		console.log('/FLEX/\tgutenberg /\tblocks/\t Popup Controller', 'openPopup()');
-		
-		const popupName = popupNames[index].popupName;
+	function openPopup( index ) {
+		console.log(
+			'/FLEX/\tgutenberg /\tblocks/\t Popup Controller',
+			'openPopup()'
+		);
+
+		const popupName = popupNames[ index ].popupName;
 
 		// If URL was used, open new browser window and exit this function
-		switch (true) {
-			case popupName.startsWith('https://projectdomain.org/subfolder'):
-				return window.open(popupName);
-				break;
+		switch ( true ) {
+			case popupName.startsWith( 'https://projectdomain.org/subfolder' ):
+				return window.open( popupName );
 
-			case popupName.startsWith('https://projectdomain.org/'):
-				return window.open(popupName, '_self');
-				break;
+			case popupName.startsWith( 'https://projectdomain.org/' ):
+				return window.open( popupName, '_self' );
 
-			case popupName.startsWith('http'):
-				return window.open(popupName);
-				break;
+			case popupName.startsWith( 'http' ):
+				return window.open( popupName );
 		}
 
 		// ...Otherwise, use the popup template on the page
-		$popup = $(`[data-popup-tpl="${popupName}"]`);
-		console.log('/FLEX/\tgutenberg /\tblocks/\t Popup Controller', '$popup:', $popup);
+		$popup = $( `[data-popup-tpl="${ popupName }"]` );
+		console.log(
+			'/FLEX/\tgutenberg /\tblocks/\t Popup Controller',
+			'$popup:',
+			$popup
+		);
 
 		// Exit with warning if no popup template is found
-		if (!$popup) {
-			console.warn(`Can't find popup template "${popupName}"`);
+		if ( ! $popup ) {
+			console.warn( `Can't find popup template "${ popupName }"` );
 
 			return;
-    	}
+		}
 
-    	// Add popup element to the end of the page
-		$('body').append($popup.html());
+		// Add popup element to the end of the page
+		$( 'body' ).append( $popup.html() );
 
 		// Retrieve access to popup element
-		$popupEl = $('.component-popup');
+		$popupEl = $( '.component-popup' );
 
 		initComponents();
 
-		let $popupOverlay = $('.popup-background-overlay', $popupEl);
-		let $closeButton = $('.close-button', $popupEl);
+		const $popupOverlay = $( '.popup-background-overlay', $popupEl );
+		const $closeButton = $( '.close-button', $popupEl );
 
-		bindClosePopup($popupOverlay);
-		bindClosePopup($closeButton);
+		bindClosePopup( $popupOverlay );
+		bindClosePopup( $closeButton );
 	}
 
-	function bindClosePopup($el) {
-		$el.on('click', (e) => {
+	function bindClosePopup( $target ) {
+		$target.on( 'click', ( e ) => {
 			e.preventDefault();
 
 			closePopup();
-		});
+		} );
 	}
 
 	function initComponents() {
-		console.log('/FLEX/\tgutenberg /\tblocks/\t Popup Controller', 'initComponents()');
+		console.log(
+			'/FLEX/\tgutenberg /\tblocks/\t Popup Controller',
+			'initComponents()'
+		);
 
-		let $componentElements = $('[data-component-name]', $popupEl);
+		const $componentElements = $( '[data-component-name]', $popupEl );
 
-		$componentElements.each(function () {
-			Loader.loadComponent($(this));
-		});
+		$componentElements.each( function () {
+			Loader.loadComponent( $( this ) );
+		} );
 	}
 
-	function closePopup($el = $popupEl) {
-		if (typeof $el !== 'undefined') {
+	function closePopup( $popupToClose = $popupEl ) {
+		if ( typeof $popupToClose !== 'undefined' ) {
 			$popupEl.remove();
 		}
 	}
 
-	this.init = function ($el) {
-		console.log('/FLEX/\tgutenberg /\tblocks/\t Popup Controller', 'init()');
-
-		$el = $el;
+	this.init = function ( $element ) {
+		console.log(
+			'/FLEX/\tgutenberg /\tblocks/\t Popup Controller',
+			'init()'
+		);
 
 		// Retrieve JSON options from block properties
-		popupNames = $el.data('componentOptions');
+		popupNames = $element.data( 'componentOptions' );
 
-		if (!Array.isArray(popupNames)) {
-			popupNames = [popupNames];
+		if ( ! Array.isArray( popupNames ) ) {
+			popupNames = [ popupNames ];
 		}
 
-		$buttons = $('.open-popup-button', $el);
+		$buttons = $( '.open-popup-button', $element );
 
-		if (!$buttons) return;
-    
+		if ( ! $buttons ) {
+			return;
+		}
+
 		bindEvents();
 
 		return this;
-	}
+	};
 
-	return this.init($el);
+	return this.init( $el );
 }
 
 export default PopupController;

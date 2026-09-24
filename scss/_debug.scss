@@ -2,7 +2,7 @@
 	display: none;
 	height: 0;
 	overflow: hidden;
-	pointer-events: none;;
+	pointer-events: none;
 	width: 0;
 	z-index: -1;
 
@@ -12,9 +12,9 @@
 	&:hover {
 		// display: none;
 
-		// NOTE: Changing opacity shows all other lower 
+		// NOTE: Changing opacity shows all other lower
 		// breakpoints, which looks bad. -DP
-		opacity: .25;
+		opacity: 0.25;
 	}
 }
 
@@ -27,40 +27,48 @@ body {
 	&.debug {
 		* {
 			// Blue to yellow diagonal gradient
-			background: linear-gradient(160deg, rgba(0,0,255,0.21), rgba(255,255,0,0.21));
+			background: linear-gradient(
+				160deg,
+				rgba(0, 0, 255, 0.21),
+				rgba(255, 255, 0, 0.21)
+			);
 		}
 
 		// Pink to blue diagonal gradient
 		div {
-			background: linear-gradient(160deg, rgba(255,0,255,0.21), rgba(0,0,255,0.21));
+			background: linear-gradient(
+				160deg,
+				rgba(255, 0, 255, 0.21),
+				rgba(0, 0, 255, 0.21)
+			);
 		}
 
 		section {
-			outline: dotted .25rem greenyellow;
-			outline-offset: -.5rem;
+			outline: dotted 0.25rem #adff2f;
+			outline-offset: -0.5rem;
 		}
 
 		.breakpoint {
 			border-radius: $gap;
-			color: black;
+			color: #000;
 			display: none;
 			height: 20px;
 			opacity: 1;
-			padding: calc($gap/4) $gap;
+			padding: calc($gap / 4) $gap;
 			position: fixed;
 			right: 10px;
 			text-align: left;
 			text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
 			top: 10px;
-			transition: opacity .2 ease-in-out;
+			transition: opacity 0.2 ease-in-out;
 			width: auto;
 			z-index: 999999;
 		}
 
 		.component[data-component-name] {
-			background-color: rgba(0, 0, 0, .5);
-			outline: dashed .25rem #ffd400;
-			outline-offset: -.5rem;
+			background-color: rgba(0, 0, 0, 0.5);
+			outline: dashed 0.25rem #ffd400;
+			outline-offset: -0.5rem;
 
 			&:hover {
 				background-color: transparent;
@@ -72,40 +80,56 @@ body {
 		// https://matthiasott.com/notes/debugging-html-with-advanced-css-selectors
 		svg:not(path):not(g) {
 			color: hsla(210, 100%, 100%, 0.9) !important;
-			background: hsla(210, 100%,  50%, 0.5) !important; 
+			background: hsla(210, 100%, 50%, 0.5) !important;
 			outline: solid 0.25rem hsla(210, 100%, 100%, 0.5) !important;
 		}
 
 		// Targets lists that have something other than an <li> inside
 		:is(ul, ol) > *:not(li) {
-			outline: 2px dotted red !important;
+			outline: 2px dotted #f00 !important;
 		}
 
 		// Targets img elements without alt attributes
 		img:not([alt]),
 		img[alt=""] {
-			background: red !important;
-			border: 1px solid red !important;
+			background: #f00 !important;
+			border: 1px solid #f00 !important;
 		}
 
 		// Targets div elements inside span elements
-		span > :not(abbr):not(audio):not(b):not(bdo):not(br):not(button):not(canvas):not(cite):not(code):not(command):not(data):not(datalist):not(dfn):not(em):not(embed):not(i):not(iframe):not(img):not(input):not(kbd):not(keygen):not(label):not(mark):not(math):not(meter):not(noscript):not(object):not(output):not(picture):not(progress):not(q):not(ruby):not(samp):not(script):not(select):not(small):not(span):not(strong):not(sub):not(sup):not(svg):not(textarea):not(time):not(var):not(video):not(wbr) {
-			outline: 3px dashed red !important;
+		span
+			> :not(abbr):not(audio):not(b):not(bdo):not(br):not(button):not(
+				canvas
+			):not(cite):not(code):not(data):not(datalist):not(dfn):not(em):not(
+				embed
+			):not(i):not(iframe):not(img):not(input):not(kbd):not(keygen):not(
+				label
+			):not(mark):not(math):not(meter):not(noscript):not(object):not(
+				output
+			):not(picture):not(progress):not(q):not(ruby):not(samp):not(
+				script
+			):not(select):not(small):not(span):not(strong):not(sub):not(
+				sup
+			):not(svg):not(textarea):not(time):not(var):not(video):not(wbr) {
+			outline: 3px dashed #f00 !important;
 		}
 
 		// Empty links are bad for screen readers.
 		a:not([href]):not([tabindex]) {
-			outline: 2px solid red !important;
+			outline: 2px solid #f00 !important;
 		}
-		
+
 		a[href]:empty {
-			background: rgba(255, 171, 171, .5) !important;
-			outline: 2px solid red !important;
+			background: rgba(255, 171, 171, 0.5) !important;
+			outline: 2px solid #f00 !important;
 		}
 
 		// Inputs need either a <label> or an aria-label or aria-labelledby.
-		input:not([type="hidden"]):not([aria-label]):not([aria-labelledby]):not([id]),textarea:not([aria-label]):not([aria-labelledby]):not([id]) {
-			outline: 3px dashed red !important;
+		input:not([type="hidden"]):not([aria-label]):not([aria-labelledby]):not(
+				[id]
+			),
+		textarea:not([aria-label]):not([aria-labelledby]):not([id]) {
+			outline: 3px dashed #f00 !important;
 		}
 
 		// Check for "Skip to content" link
@@ -114,8 +138,8 @@ body {
 			position: fixed;
 			top: 0;
 			left: 0;
-			background: red;
-			color: white;
+			background: #f00;
+			color: #fff;
 			padding: 5px;
 			z-index: 9999;
 		}
@@ -123,7 +147,7 @@ body {
 		// HTML buttons should explicitly declare type="button", type="submit", or type="reset".
 		// Default type for <button> is submit, which can cause unexpected form submits.
 		button:not([type]) {
-			outline: 3px solid red !important;
+			outline: 3px solid #f00 !important;
 		}
 
 		// Performance tests:
@@ -131,8 +155,8 @@ body {
 		// Prevent layout shifts (Cumulative Layout Shift, CLS).
 		// If no width/height is set, browsers can’t reserve space and it hurts performance.
 		img:not([width]):not([height]) {
-			background: rgba(255,0,0,.5) !important;
-			outline: 2px dashed red !important;
+			background: rgba(255, 0, 0, 0.5) !important;
+			outline: 2px dashed #f00 !important;
 		}
 	}
 
@@ -142,17 +166,17 @@ body {
 			align-items: center;
 			font-family: sans-serif;
 			font-size: 0.7rem;
-			font-weight: bold;
+			font-weight: 700;
 			letter-spacing: 0.3rem;
 			text-transform: uppercase;
 			white-space: nowrap;
 
-			&:after {
-				color: color('secondary', 'white');
+			&::after {
+				color: color("secondary", "white");
 				display: block;
 				font-family: sans-serif;
 				font-size: 0.7rem;
-				font-weight: bold;
+				font-weight: 700;
 				letter-spacing: 0.3rem;
 				position: relative;
 				text-transform: uppercase;
@@ -162,26 +186,30 @@ body {
 
 			&.default {
 				@include mediaquery-min-max-width(default, phone) {
-					background: linear-gradient(160deg, red, #ff9966) !important;
-					color: color('default', 'white');
+					background: linear-gradient(160deg, #f00, #f96) !important;
+					color: color("default", "white");
 					display: flex;
-					text-shadow: 1px 1px rgba(100, 0, 0, .4);
+					text-shadow: 1px 1px rgba(100, 0, 0, 0.4);
 
-					&:after {
-						content: 'default';
+					&::after {
+						content: "default";
 					}
 				}
 			}
 
 			@include mediaquery-min-max-width(phone, phone-plus) {
 				&.phone {
-					background: linear-gradient(160deg, orange, #fffc66) !important;
-					text-shadow: 1px 1px rgba(255, 255, 255, .5);
+					background: linear-gradient(
+						160deg,
+						#ffa500,
+						#fffc66
+					) !important;
+					text-shadow: 1px 1px rgba(255, 255, 255, 0.5);
 					display: flex;
 
-					&:after {
-						color: color('secondary', 'black');
-						content: 'phone';
+					&::after {
+						color: color("secondary", "black");
+						content: "phone";
 					}
 				}
 
@@ -192,14 +220,18 @@ body {
 
 			@include mediaquery-min-max-width(phone-plus, tablet-portrait) {
 				&.phone-plus {
-					background: linear-gradient(160deg, lime, #66ffc9) !important;
-					color: color('default', 'black');
+					background: linear-gradient(
+						160deg,
+						#0f0,
+						#66ffc9
+					) !important;
+					color: color("default", "black");
 					display: flex;
-					text-shadow: 1px 1px rgba(255, 255, 255, .5);
+					text-shadow: 1px 1px rgba(255, 255, 255, 0.5);
 
-					&:after {
-						color: color('secondary', 'black');
-						content: 'phone-plus';
+					&::after {
+						color: color("secondary", "black");
+						content: "phone-plus";
 					}
 				}
 
@@ -210,67 +242,82 @@ body {
 			}
 
 			&.tablet-portrait {
-				@include mediaquery-min-max-width(tablet-portrait, tablet-landscape) {
-					background: linear-gradient(160deg, yellow, #ffffcc) !important;
-					color: color('default', 'black');
+				@include mediaquery-min-max-width(
+					tablet-portrait,
+					tablet-landscape
+				) {
+					background: linear-gradient(160deg, #ff0, #ffc) !important;
+					color: color("default", "black");
 					display: flex;
-					text-shadow: 1px 1px rgba(0, 0, 0, .1);
+					text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
 
-					&:after {
-						color: color('secondary', 'black');
-						content: 'tablet-portrait';
+					&::after {
+						color: color("secondary", "black");
+						content: "tablet-portrait";
 					}
 				}
 			}
 
 			&.tablet-landscape {
 				@include mediaquery-min-max-width(tablet-landscape, desktop) {
-					background: linear-gradient(160deg, green, #81b814) !important;
-					color: color('default', 'white');
+					background: linear-gradient(
+						160deg,
+						#008000,
+						#81b814
+					) !important;
+					color: color("default", "white");
 					display: flex;
 					text-shadow: 1px 1px rgba(0, 100, 0, 0.4);
 
-					&:after {
-						content: 'tablet-landscape';
+					&::after {
+						content: "tablet-landscape";
 					}
 				}
 			}
 
 			&.desktop {
 				@include mediaquery-min-max-width(desktop, xl) {
-					background: linear-gradient(160deg, blue, #6699ff) !important;
-					color: color('default', 'white');
+					background: linear-gradient(160deg, #00f, #69f) !important;
+					color: color("default", "white");
 					display: flex;
 					text-shadow: 1px 1px rgba(0, 0, 100, 0.4);
 
-					&:after {
-						content: 'desktop';
+					&::after {
+						content: "desktop";
 					}
 				}
 			}
 
 			&.xl {
 				@include mediaquery-min-max-width(xl, xl2) {
-					background: linear-gradient(160deg, purple, #4c0099) !important;
-					color: color('default', 'white');
+					background: linear-gradient(
+						160deg,
+						#800080,
+						#4c0099
+					) !important;
+					color: color("default", "white");
 					display: flex;
 					text-shadow: 1px 1px rgba(50, 0, 100, 0.4);
 
-					&:after {
-						content: 'xl';
+					&::after {
+						content: "xl";
 					}
 				}
 			}
 
 			&.xl2 {
 				@include mediaquery(xl2) {
-					background: linear-gradient(160deg, black, #616161) !important;
-					color: color('default', 'white');
+					background: linear-gradient(
+						160deg,
+						#000,
+						#616161
+					) !important;
+					color: color("default", "white");
 					display: flex;
 					text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
 
-					&:after {
-						content: 'xl2';
+					&::after {
+						content: "xl2";
 					}
 				}
 			}
@@ -283,25 +330,25 @@ body {
 		// padding: 10px;
 	}
 
-	@include mediaquery(phone)  {
+	@include mediaquery(phone) {
 		.breakpoint.phone {
 			display: block;
 		}
 	}
 
-	@include mediaquery(tablet-portrait)  {
+	@include mediaquery(tablet-portrait) {
 		.breakpoint.tablet-portrait {
 			display: block;
 		}
 	}
 
-	@include mediaquery(tablet-landscape)  {
+	@include mediaquery(tablet-landscape) {
 		.breakpoint.tablet-landscape {
 			display: block;
 		}
 	}
 
-	@include mediaquery(desktop)  {
+	@include mediaquery(desktop) {
 		.breakpoint.desktop {
 			display: block;
 		}

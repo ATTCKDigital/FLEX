@@ -1,5 +1,5 @@
 // https://stackoverflow.com/questions/61330432/sasserror-there-is-no-module-with-the-namespace-math
-@use 'sass:math';
+@use "sass:math";
 
 // Helper Classes
 @mixin allCenter() {
@@ -9,9 +9,9 @@
 }
 
 @mixin clearRow {
-	&:after {
+	&::after {
 		clear: both;
-		content: '';
+		content: "";
 		display: block;
 		height: 0;
 		width: 100%;
@@ -22,7 +22,6 @@
 	break-inside: $break;
 	column-count: $columns;
 	column-gap: $colGap;
-	page-break-inside: $break; /* Firefox */
 }
 
 @mixin horizontalCenter() {
@@ -31,39 +30,39 @@
 }
 
 @mixin transform($transforms) {
-	   -moz-transform: $transforms;
-	     -o-transform: $transforms;
-	    -ms-transform: $transforms;
+	-moz-transform: $transforms;
+	-o-transform: $transforms;
+	-ms-transform: $transforms;
 	-webkit-transform: $transforms;
-          transform: $transforms;
+	transform: $transforms;
 }
 
-    @mixin matrix($a, $b, $c, $d, $e, $f) {
-    	   -moz-transform: matrix($a, $b, $c, $d, #{$e}px, #{$f}px);
-    	     -o-transform: matrix($a, $b, $c, $d, $e, $f);
-    	    -ms-transform: matrix($a, $b, $c, $d, $e, $f);
-    	-webkit-transform: matrix($a, $b, $c, $d, $e, $f);
-              transform: matrix($a, $b, $c, $d, $e, $f);
-    }
+@mixin matrix($a, $b, $c, $d, $e, $f) {
+	-moz-transform: matrix($a, $b, $c, $d, #{$e}px, #{$f}px);
+	-o-transform: matrix($a, $b, $c, $d, $e, $f);
+	-ms-transform: matrix($a, $b, $c, $d, $e, $f);
+	-webkit-transform: matrix($a, $b, $c, $d, $e, $f);
+	transform: matrix($a, $b, $c, $d, $e, $f);
+}
 
-    @mixin rotate($deg) {
-      @include transform(rotate(#{$deg}deg));
-    }
+@mixin rotate($deg) {
+	@include transform(rotate(#{$deg}deg));
+}
 
-    @mixin scale($size) {
-      @include transform(scale(#{$size}));
-    }
+@mixin scale($size) {
+	@include transform(scale(#{$size}));
+}
 
-    @mixin translate($x, $y) {
-    	@include transform(translate($x, $y));
-    }
+@mixin translate($x, $y) {
+	@include transform(translate($x, $y));
+}
 
 @mixin transition($value...) {
-     -moz-transition: $value;
-       -o-transition: $value;
-      -ms-transition: $value;
-  -webkit-transition: $value;
-          transition: $value;
+	-moz-transition: $value;
+	-o-transition: $value;
+	-ms-transition: $value;
+	-webkit-transition: $value;
+	transition: $value;
 }
 
 @mixin verticalCenter() {
@@ -83,30 +82,71 @@ a:not(.cta) {
 }
 
 /** Helper Classes **/
-.align-center { text-align: center; } 				.align-center-imp { text-align: center !important; }
-.align-left { text-align: left; } 					.align-left-imp { text-align: left !important; }
-.align-right { text-align: right; } 				.align-right-imp { text-align: right !important; }
-.display-block { display: block; } 					.display-block-imp { display: block !important; }
-.display-inline { display: inline; } 				.display-inline-imp { display: inline !important; }
-.display-inline-block { display: inline-block; } 	.display-inline-block-imp { display: inline-block !important; }
+.align-center {
+	text-align: center;
+}
+
+.align-center-imp {
+	text-align: center !important;
+}
+
+.align-left {
+	text-align: left;
+}
+
+.align-left-imp {
+	text-align: left !important;
+}
+
+.align-right {
+	text-align: right;
+}
+
+.align-right-imp {
+	text-align: right !important;
+}
+
+.display-block {
+	display: block;
+}
+
+.display-block-imp {
+	display: block !important;
+}
+
+.display-inline {
+	display: inline;
+}
+
+.display-inline-imp {
+	display: inline !important;
+}
+
+.display-inline-block {
+	display: inline-block;
+}
+
+.display-inline-block-imp {
+	display: inline-block !important;
+}
 
 .border {
-	border: 1px solid color('brand', 'accent');
+	border: 1px solid color("brand", "accent");
 
 	&.border-color-grey {
-		border-color: color('secondary', 'lightGray');
+		border-color: color("secondary", "lightGray");
 	}
 }
 
 // Clearfix: contain floats
 // Available as class or mixin
-.clearfix:before,
-.clearfix:after {
+.clearfix::before,
+.clearfix::after {
 	content: " "; // 1
 	display: table; // 2
 }
 
-.clearfix:after {
+.clearfix::after {
 	clear: both;
 }
 
@@ -123,7 +163,7 @@ a:not(.cta) {
 	@include mediaquery-max-width(tablet-portrait) {
 		* {
 			// Table columns are too narrow for regular font sizes.
-			font-size: .8rem !important;
+			font-size: 0.8rem !important;
 		}
 
 		.component-column {
@@ -132,7 +172,7 @@ a:not(.cta) {
 	}
 
 	.component-column {
-		border-right: 1px solid color('secondary', 'lightGray');
+		border-right: 1px solid color("secondary", "lightGray");
 		padding: math.div($gap, 2) $gap;
 
 		&:last-child {
@@ -141,7 +181,7 @@ a:not(.cta) {
 	}
 
 	.component-row {
-		border-bottom: 1px solid color('secondary', 'lightGray');
+		border-bottom: 1px solid color("secondary", "lightGray");
 
 		&:last-child {
 			border-bottom: 0;
@@ -200,24 +240,22 @@ a:not(.cta) {
  * — $gridColumns: 12, 24;
  */
 
-
 // Top range for unit generation (higher number = higher file size)
-$valueMax: 		150;
-$valueMaxPX: 	150;
-$valueMaxPC: 	150;
-$valueMaxVH: 	150;
-$valueMaxVW: 	150;
-$valueMaxX: 	150;
+$valueMax: 150 !default;
+$valueMaxPX: 150 !default;
+$valueMaxPC: 150 !default;
+$valueMaxVH: 150 !default;
+$valueMaxVW: 150 !default;
+$valueMaxX: 150 !default;
 
 // Granularity of unit increments (lower number = higher file size)
-$valueIncrements: 10;
+$valueIncrements: 10 !default;
 
-$alignItems: 'flex-end';
-$justifyContent: 'flex-end';
+$alignItems: "flex-end" !default;
+$justifyContent: "flex-end" !default;
 
 // For each breakpoint
 @each $screensize in $screensizes {
-
 	// // 'default' screensize doesn't need a mediaquery wrapper
 	// @if $screensize == default {
 
@@ -283,7 +321,7 @@ $justifyContent: 'flex-end';
 	// 	// For each 12, or 24 column grid base
 	// 	@each $gridColumn in $gridColumns {
 
-	// 		// For each fractional column increment 
+	// 		// For each fractional column increment
 	// 		@for $i from 0 through $gridColumn {
 	// 			.flex-column-offset-#{$i}-#{$gridColumn} { margin-left: (#{($i / $gridColumn) * 100 + '%'}); }
 
@@ -294,42 +332,44 @@ $justifyContent: 'flex-end';
 	// }
 
 	// Default is just a seperator
-	$breakpoint: '';
+	$breakpoint: "";
 
 	@if $screensize != default {
-		$breakpoint: $screensize + '-';
+		$breakpoint: $screensize + "-";
 	}
 
 	// Use mediaquery wrapper
 	@include mediaquery(#{$screensize}) {
-
 		// Create $valueMax number of variations
 		@for $i from 0 through $valueMax {
-
-			.valuemax-#{$valueMax}-i-#{$i} { 
-				//color: #BADA55; 
+			.valuemax-#{$valueMax}-i-#{$i} {
+				//color: #BADA55;
 			}
 
 			// At each of $valueIncrements increments (e.g., 5, 10, 20)
 			@if $i % $valueIncrements == 0 {
-				.valuemax-match-screensize-#{$screensize}-breakpoint-#{$breakpoint}-valueIncrements-#{$valueIncrements}-i-#{$i} { color: red; }
+				.valuemax-match-screensize-#{$screensize}-breakpoint-#{$breakpoint}-valueIncrements-#{$valueIncrements}-i-#{$i} {
+					color: #f00;
+				}
 
 				// For each unit
 				@each $unit in $units {
-					.unit-is-#{$unit} { 
-						color: rebeccapurple;
+					.unit-is-#{$unit} {
+						color: #639;
 					}
 
 					// For each position (top, left, bottom, right)
 					@each $position in $positions {
-						.position-is-#{$position} { 
-							color: #CCC;
+						.position-is-#{$position} {
+							color: #ccc;
 						}
 
 						// Handle '$gap' specially
 						// TODO: (DP) These increments should be 1, 2, 3, 4, 5, 6, 7, 8... not 10, 20, 30, 40
-						@if $unit == 'x' {
-							.unit-is-equal-to-x-i-is-#{$i}-#{$i <= 16} { color: black; }
+						@if $unit == "x" {
+							.unit-is-equal-to-x-i-is-#{$i}-#{$i <= 16} {
+								color: #000;
+							}
 
 							// Only need to create up to 16x gap to match the FLEX admin
 							// Need to bump the counter up one since the $valueMax range is 150
@@ -337,75 +377,128 @@ $justifyContent: 'flex-end';
 							// @if (($i + 1) / 10) <= 16 {
 							@if math.div($i + 0, 10) <= 16 {
 								// -----------------------------------------------------v previously set to '1' and was causing build error around 0.1x being invalid CSS
-								.offset-margin-#{$breakpoint}#{$position}-#{(calc(($i + 0) / 10))}#{$unit} { margin-#{$position}: #{(calc(($i + 0) / 10)) * $gap}; }
-								.offset-#{$breakpoint}#{$position}-#{(calc(($i + 0) / 10))}#{$unit} { #{$position}: #{($i + 0) * $gap}; }
+								.offset-margin-#{$breakpoint}#{$position}-#{(calc(($i + 0) / 10))}#{$unit} {
+									$offset: calc(($i + 0) / 10) * $gap;
+
+									margin-#{$position}: #{$offset};
+								}
+								.offset-#{$breakpoint}#{$position}-#{(calc(($i + 0) / 10))}#{$unit} {
+									#{$position}: #{($i + 0) * $gap};
+								}
 
 								// Prevent --0's from being generated
 								// NOTE: Figure out why I thought 0's shouldn't be generated. -DP
 								// @if $i != 0 {
-									.offset-margin-#{$breakpoint}#{$position}--#{math.div($i + 0, 10)}#{$unit} { margin-#{$position}: -#{(calc(($i + 0) / 10)) * $gap}; }
-									.offset-#{$breakpoint}#{$position}--#{(calc(($i + 0) / 10)) }#{$unit} { #{$position}: -#{($i + 0) * $gap}; }
+								.offset-margin-#{$breakpoint}#{$position}--#{math.div($i + 0, 10)}#{$unit} {
+									$offset: calc(($i + 0) / 10) * $gap;
+
+									margin-#{$position}: -#{$offset};
+								}
+								.offset-#{$breakpoint}#{$position}--#{(calc(($i + 0) / 10))
+									}#{$unit} {
+									#{$position}: -#{($i + 0) * $gap};
+								}
 								// }
 							}
 						}
 
 						// Handle '%' specially
-						@else if $unit == 'pc' {
-							.offset-margin-#{$breakpoint}#{$position}-#{$i}#{$unit} { margin-#{$position}: #{$i + '%'}; }
-							.offset-#{$breakpoint}#{$position}-#{$i}#{$unit} { #{$position}: #{$i + '%'}; }
+						@else if $unit == "pc" {
+							.offset-margin-#{$breakpoint}#{$position}-#{$i}#{$unit} {
+								margin-#{$position}: #{$i + "%"};
+							}
+							.offset-#{$breakpoint}#{$position}-#{$i}#{$unit} {
+								#{$position}: #{$i + "%"};
+							}
 
 							// Prevent --0's from being generated
 							@if $i != 0 {
-								.offset-margin-#{$breakpoint}#{$position}--#{$i}#{$unit} { margin-#{$position}: -#{$i + '%'}; }
-								.offset-#{$breakpoint}#{$position}--#{$i}#{$unit} { #{$position}: -#{$i + '%'}; }
+								.offset-margin-#{$breakpoint}#{$position}--#{$i}#{$unit} {
+									margin-#{$position}: -#{$i + "%"};
+								}
+								.offset-#{$breakpoint}#{$position}--#{$i}#{$unit} {
+									#{$position}: -#{$i + "%"};
+								}
 							}
-						}
-
-						@else {
-							.offset-margin-#{$breakpoint}#{$position}-#{$i}#{$unit} { margin-#{$position}: #{$i + $unit}; }
-							.offset-#{$breakpoint}#{$position}-#{$i}#{$unit} { #{$position}: #{$i + $unit}; }
+						} @else {
+							.offset-margin-#{$breakpoint}#{$position}-#{$i}#{$unit} {
+								margin-#{$position}: #{$i + $unit};
+							}
+							.offset-#{$breakpoint}#{$position}-#{$i}#{$unit} {
+								#{$position}: #{$i + $unit};
+							}
 
 							// Prevent --0's from being generated
 							@if $i != 0 {
-								.offset-margin-#{$breakpoint}#{$position}--#{$i}#{$unit} { margin-#{$position}: -#{$i + $unit}; }
-								.offset-#{$breakpoint}#{$position}--#{$i}#{$unit} { #{$position}: -#{$i + $unit}; }
+								.offset-margin-#{$breakpoint}#{$position}--#{$i}#{$unit} {
+									margin-#{$position}: -#{$i + $unit};
+								}
+								.offset-#{$breakpoint}#{$position}--#{$i}#{$unit} {
+									#{$position}: -#{$i + $unit};
+								}
 							}
 						}
 
-						.offset-position-#{$position}-unit-#{$unit} { cursor: pointer; }
+						.offset-position-#{$position}-unit-#{$unit} {
+							cursor: pointer;
+						}
 					}
 
-					@if $unit == 'x' {
-						.height-#{$breakpoint}#{$i}#{$unit} { height: #{$i * $gap}; }
-						.width-#{$breakpoint}#{$i}#{$unit} { width: #{$i * $gap}; }
-						.max-height-#{$breakpoint}#{$i}#{$unit} { max-height: #{$i * $gap}; }
-						.max-width-#{$breakpoint}#{$i}#{$unit} { max-width: #{$i * $gap}; }
-					}
-
-					@else if $unit == 'pc' {
-						.height-#{$breakpoint}#{$i}#{$unit} { height: #{$i + '%'}; }
-						.width-#{$breakpoint}#{$i}#{$unit} { width: #{$i + '%'}; }
-						.max-height-#{$breakpoint}#{$i}#{$unit} { max-height: #{$i + '%'}; }
-						.max-width-#{$breakpoint}#{$i}#{$unit} { max-width: #{$i + '%'}; }
-					}
-
-					@else {
-						.height-#{$breakpoint}#{$i}#{$unit} { height: #{$i}#{$unit}; }
-						.width-#{$breakpoint}#{$i}#{$unit} { width: #{$i}#{$unit}; }
-						.max-height-#{$breakpoint}#{$i}#{$unit} { max-height: #{$i}#{$unit}; }
-						.max-width-#{$breakpoint}#{$i}#{$unit} { max-width: #{$i}#{$unit}; }
+					@if $unit == "x" {
+						.height-#{$breakpoint}#{$i}#{$unit} {
+							height: #{$i * $gap};
+						}
+						.width-#{$breakpoint}#{$i}#{$unit} {
+							width: #{$i * $gap};
+						}
+						.max-height-#{$breakpoint}#{$i}#{$unit} {
+							max-height: #{$i * $gap};
+						}
+						.max-width-#{$breakpoint}#{$i}#{$unit} {
+							max-width: #{$i * $gap};
+						}
+					} @else if $unit == "pc" {
+						.height-#{$breakpoint}#{$i}#{$unit} {
+							height: #{$i + "%"};
+						}
+						.width-#{$breakpoint}#{$i}#{$unit} {
+							width: #{$i + "%"};
+						}
+						.max-height-#{$breakpoint}#{$i}#{$unit} {
+							max-height: #{$i + "%"};
+						}
+						.max-width-#{$breakpoint}#{$i}#{$unit} {
+							max-width: #{$i + "%"};
+						}
+					} @else {
+						.height-#{$breakpoint}#{$i}#{$unit} {
+							height: #{$i}#{$unit};
+						}
+						.width-#{$breakpoint}#{$i}#{$unit} {
+							width: #{$i}#{$unit};
+						}
+						.max-height-#{$breakpoint}#{$i}#{$unit} {
+							max-height: #{$i}#{$unit};
+						}
+						.max-width-#{$breakpoint}#{$i}#{$unit} {
+							max-width: #{$i}#{$unit};
+						}
 					}
 				}
 			}
 		}
 
 		@each $xPosition in $xPositions {
-			.text-align-#{$breakpoint}#{$xPosition} { text-align: #{$xPosition}; }
-
-			@if $xPosition == 'center' {
-				.block-align-#{$breakpoint}#{$xPosition} { margin-left: auto !important; margin-right: auto !important; }
+			.text-align-#{$breakpoint}#{$xPosition} {
+				text-align: #{$xPosition};
 			}
 
+			@if $xPosition == "center" {
+				.block-align-#{$breakpoint}#{$xPosition} {
+					margin-left: auto !important;
+					margin-right: auto !important;
+				}
+			}
 
 			@each $yPosition in $yPositions {
 				.background-position-#{$breakpoint}#{$xPosition}-#{$yPosition} {
@@ -413,44 +506,42 @@ $justifyContent: 'flex-end';
 				}
 
 				// Set horizontal alignment properties
-				@if $xPosition == 'center' {
+				@if $xPosition == "center" {
 					$justifyContent: center;
-
-				} @else if $xPosition == 'left' {
-					$justifyContent: 'flex-start';
-
-				}// @else { 
-					// Default (right)
-					// $justifyContent: flex-end;
+				} @else if $xPosition == "left" {
+					$justifyContent: "flex-start";
+				}
+				// @else {
+				// Default (right)
+				// $justifyContent: flex-end;
 				//}
 
 				// Set vertical alignment properties
-				@if $yPosition == 'center' {
+				@if $yPosition == "center" {
 					$alignItems: center;
-
-				} @else if $yPosition == 'top' {
-					$alignItems: 'flex-start';
-
-				}// @else {
-					// Default (bottom)
-					// $alignItems: flex-end;
+				} @else if $yPosition == "top" {
+					$alignItems: "flex-start";
+				}
+				// @else {
+				// Default (bottom)
+				// $alignItems: flex-end;
 				// }
 
-				.flex-#{$breakpoint}#{$xPosition}-#{$yPosition} { 
-					align-items: $alignItems; 
-					display: flex; 
-					justify-content: $justifyContent; 
+				.flex-#{$breakpoint}#{$xPosition}-#{$yPosition} {
+					align-items: $alignItems;
+					display: flex;
+					justify-content: $justifyContent;
 				}
 
 				// E.g., Previous hardcoded implementation:
 				// .flex-bottom-center { 	display: flex; align-items: flex-end; justify-content: center; }
 				// .flex-bottom-left { 		display: flex; align-items: flex-end; justify-content: flex-start; }
 				// .flex-bottom-right { 	display: flex; align-items: flex-end; justify-content: flex-end; }
-				
+
 				// .flex-center-center { 	display: flex; align-items: center; justify-content: center; }
 				// .flex-center-left { 		display: flex; align-items: center; justify-content: flex-start; }
 				// .flex-center-right { 	display: flex; align-items: center; justify-content: flex-end; }
-				
+
 				// .flex-top-center { 		display: flex; align-items: flex-start; justify-content: center; }
 				// .flex-top-left { 		display: flex; align-items: flex-start; justify-content: flex-start; }
 				// .flex-top-right { 		display: flex; align-items: flex-start; justify-content: flex-end; }
@@ -459,30 +550,31 @@ $justifyContent: 'flex-end';
 
 		// For each 12, or 24 column grid base
 		@each $gridColumn in $gridColumns {
-
-			// For each fractional column increment 
+			// For each fractional column increment
 			@for $i from 0 through $gridColumn {
-				.flex-column-offset-#{$breakpoint}#{$i}-#{$gridColumn} { margin-left: (#{math.div($i, $gridColumn) * 100 + '%'}); }
+				.flex-column-offset-#{$breakpoint}#{$i}-#{$gridColumn} {
+					margin-left: (#{math.div($i, $gridColumn) * 100 + "%"});
+				}
 
 				// Negative offsets
-				.flex-column-offset-#{$breakpoint}-#{$i}-#{$gridColumn} { margin-left: #{math.div($i, $gridColumn) * -100 + '%'}; }
+				.flex-column-offset-#{$breakpoint}-#{$i}-#{$gridColumn} {
+					margin-left: #{math.div($i, $gridColumn) * -100 + "%"};
+				}
 			}
 		}
 	}
 }
 
-
 // @each $yPosition in $yPositions {
 // 	@each $xPosition in $xPositions {
-// 		// .text-align-#{$xPosition}-#{$yPosition} { 
-// 		.background-position-#{$xPosition}-#{$yPosition} { 
+// 		// .text-align-#{$xPosition}-#{$yPosition} {
+// 		.background-position-#{$xPosition}-#{$yPosition} {
 // 			@include mediaquery(tablet-portrait) {
 // 				background-position: #{$xPosition} #{$yPosition};
 // 			}
 // 		}
 // 	}
 // }
-
 
 // Need this to elevate the specificity
 // @include mediaquery(tablet-portrait) {
@@ -493,16 +585,59 @@ $justifyContent: 'flex-end';
 
 .content {
 	// TODO: (DP) Make these responsive;
-	.flex-center-center.flex-center-center { 	display: flex; align-items: center; justify-content: center; }
-	.flex-top-center.flex-top-center { 			display: flex; align-items: flex-start; justify-content: center; }
-	.flex-bottom-center.flex-bottom-center { 	display: flex; align-items: flex-end; justify-content: center; }
-	.flex-center-left.flex-center-left { 		display: flex; align-items: center; justify-content: flex-start; }
-	.flex-top-left.flex-top-left { 				display: flex; align-items: flex-start; justify-content: flex-start; }
-	.flex-bottom-left.flex-bottom-left { 		display: flex; align-items: flex-end; justify-content: flex-start; }
-	.flex-center-right.flex-center-right { 		display: flex; align-items: center; justify-content: flex-end; }
-	.flex-top-right.flex-top-right { 			display: flex; align-items: flex-start; justify-content: flex-end; }
-	.flex-bottom-right.flex-bottom-right { 		display: flex; align-items: flex-end; justify-content: flex-end; }
+	.flex-center-center.flex-center-center {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 
+	.flex-top-center.flex-top-center {
+		display: flex;
+		align-items: flex-start;
+		justify-content: center;
+	}
+
+	.flex-bottom-center.flex-bottom-center {
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+	}
+
+	.flex-center-left.flex-center-left {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+	}
+
+	.flex-top-left.flex-top-left {
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+	}
+
+	.flex-bottom-left.flex-bottom-left {
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-start;
+	}
+
+	.flex-center-right.flex-center-right {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+	}
+
+	.flex-top-right.flex-top-right {
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-end;
+	}
+
+	.flex-bottom-right.flex-bottom-right {
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-end;
+	}
 
 	// .center,
 	// .block-align-center { margin: 0 auto !important; }
@@ -516,14 +651,47 @@ $justifyContent: 'flex-end';
 	// .block-align-center-xl2 { @include mediaquery(xl2) { margin: 0 auto !important; } }
 
 	// .block-align-center { margin: 0 auto; }
-	.block-align-center-max-phone { @include mediaquery-max-width(phone) { margin: 0 auto !important; } }
-	.block-align-center-max-phone-plus { @include mediaquery-max-width(phone-plus) { margin: 0 auto !important; } }
-	.block-align-center-max-tablet-portrait { @include mediaquery-max-width(tablet-portrait) { margin: 0 auto !important; } }
-	.block-align-center-max-tablet-landscape { @include mediaquery-max-width(tablet-landscape) { margin: 0 auto !important; } }
-	.block-align-center-max-desktopt { @include mediaquery-max-width(desktop) { margin: 0 auto !important; } }
-	.block-align-center-max-xl { @include mediaquery-max-width(xl) { margin: 0 auto !important; } }
-	.block-align-center-max-xl2 { @include mediaquery-max-width(xl2) { margin: 0 auto !important; } }
+	.block-align-center-max-phone {
+		@include mediaquery-max-width(phone) {
+			margin: 0 auto !important;
+		}
+	}
 
+	.block-align-center-max-phone-plus {
+		@include mediaquery-max-width(phone-plus) {
+			margin: 0 auto !important;
+		}
+	}
+
+	.block-align-center-max-tablet-portrait {
+		@include mediaquery-max-width(tablet-portrait) {
+			margin: 0 auto !important;
+		}
+	}
+
+	.block-align-center-max-tablet-landscape {
+		@include mediaquery-max-width(tablet-landscape) {
+			margin: 0 auto !important;
+		}
+	}
+
+	.block-align-center-max-desktopt {
+		@include mediaquery-max-width(desktop) {
+			margin: 0 auto !important;
+		}
+	}
+
+	.block-align-center-max-xl {
+		@include mediaquery-max-width(xl) {
+			margin: 0 auto !important;
+		}
+	}
+
+	.block-align-center-max-xl2 {
+		@include mediaquery-max-width(xl2) {
+			margin: 0 auto !important;
+		}
+	}
 
 	.display-flex.display-flex {
 		display: flex;
@@ -546,15 +714,33 @@ $justifyContent: 'flex-end';
 	}
 
 	// TODO: (DP) Deprecate this.
-	.nofloat { float: none; }
+	.nofloat {
+		float: none;
+	}
 
-	.float-left.float-left { float: left; }
-	.float-none.float-none { float: none; }
-	.float-right.float-right { float: right; }
+	.float-left.float-left {
+		float: left;
+	}
 
-	.clear-left.clear-left { clear: left; }
-	.clear-both.clear-both { clear: both; }
-	.clear-right.clear-right { clear: right; }
+	.float-none.float-none {
+		float: none;
+	}
+
+	.float-right.float-right {
+		float: right;
+	}
+
+	.clear-left.clear-left {
+		clear: left;
+	}
+
+	.clear-both.clear-both {
+		clear: both;
+	}
+
+	.clear-right.clear-right {
+		clear: right;
+	}
 
 	// .offset-bottom-10 { margin-bottom: -10%;  }
 	// .offset-bottom-20 { margin-bottom: -20%;  }
@@ -600,8 +786,6 @@ $justifyContent: 'flex-end';
 	// .offset-left-90 { margin-left: -90%;  }
 	// .offset-left-100 { margin-left: -100%;  }
 
-
-
 	// .offset-bottom {
 	// 	position: relative;
 
@@ -638,7 +822,6 @@ $justifyContent: 'flex-end';
 	// 	&--100 { top: -100%; }
 	// }
 
-	
 	// Offsets
 	// REQUEST: Write a CSS function that can produce these variations. -DP
 	// — Percent offsets
@@ -734,9 +917,13 @@ $justifyContent: 'flex-end';
 	// .offset-top--95-vh { top: -95vh;  } @include mediaquery(phone) { .offset-phone-top--95-vh { top: -95vh;  } } @include mediaquery(phone-plus) { .offset-phone-plus-top--95-vh { top: -95vh;  } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-top--95-vh { top: -95vh;  } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-top--95-vh { top: -95vh;  } } @include mediaquery(desktop) { .offset-desktop-top--95-vh { top: -95vh;  } } @include mediaquery(xl) { .offset-xl-top--95-vh { top: -95vh;  } } @include mediaquery(xl2) { .offset-xl2-top--95-vh { top: -95vh;  } }
 	// .offset-top--100-vh{ top: -100vh; } @include mediaquery(phone) { .offset-phone-top--100-vh{ top: -100vh; } } @include mediaquery(phone-plus) { .offset-phone-plus-top--100-vh{ top: -100vh; } } @include mediaquery(tablet-portrait) { .offset-tablet-portrait-top--100-vh{ top: -100vh; } } @include mediaquery(tablet-landscape) { .offset-tablet-landscape-top--100-vh{ top: -100vh; } } @include mediaquery(desktop) { .offset-desktop-top--100-vh{ top: -100vh; } } @include mediaquery(xl) { .offset-xl-top--100-vh{ top: -100vh; } } @include mediaquery(xl2) { .offset-xl2-top--100-vh{ top: -100vh; } }
 
+	.overflow-visible.overflow-visible {
+		overflow: visible;
+	}
 
-	.overflow-visible.overflow-visible { overflow: visible; }
-	.overflow-hidden.overflow-hidden { overflow: hidden; }
+	.overflow-hidden.overflow-hidden {
+		overflow: hidden;
+	}
 
 	.relative,
 	.positionrelative,
@@ -744,7 +931,7 @@ $justifyContent: 'flex-end';
 		position: relative !important;
 	}
 }
-	
+
 .flex--center {
 	display: flex;
 	margin: 0 auto;
@@ -754,7 +941,6 @@ $justifyContent: 'flex-end';
 .flex--no-wrap > .flex-grid {
 	flex-wrap: nowrap;
 }
-
 
 .flex--space-between > .flex-grid {
 	display: flex;
@@ -777,42 +963,153 @@ $justifyContent: 'flex-end';
 	align-items: center;
 }
 
-.display-on-global.display-on-default { display: block; }
-@include mediaquery(phone) { .display-on-phone.display-on-phone { display: block; } }
-@include mediaquery(phone) { .display-on-phone-plus.display-on-phone-plus { display: block; } }
-@include mediaquery(tablet-portrait) { .display-on-tablet-portrait.display-on-tablet-portrait { display: block; } }
-@include mediaquery(tablet-landscape) { .display-on-tablet-landscape.display-on-tablet-landscape { display: block; } }
-@include mediaquery(desktop) { .display-on-desktop.display-on-desktop { display: block; } }
-@include mediaquery(xl) { .display-on-xl.display-on-xl { display: block; } }
-@include mediaquery(xl2) { .display-on-xl2.display-on-xl2 { display: block; } }
+.display-on-global.display-on-default {
+	display: block;
+}
 
-.display-flex-on-default.display-flex-on-default { display: flex; }
-@include mediaquery(phone) { .display-flex-on-phone.display-flex-on-phone { display: flex; } }
-@include mediaquery(phone) { .display-flex-on-phone-plus.display-flex-on-phone-plus { display: flex; } }
-@include mediaquery(tablet-portrait) { .display-flex-on-tablet-portrait.display-flex-on-tablet-portrait { display: flex; } }
-@include mediaquery(tablet-landscape) { .display-flex-on-tablet-landscape.display-flex-on-tablet-landscape { display: flex; } }
-@include mediaquery(desktop) { .display-flex-on-desktop.display-flex-on-desktop { display: flex; } }
-@include mediaquery(xl) { .display-flex-on-xl.display-flex-on-xl { display: flex; } }
-@include mediaquery(xl2) { .display-flex-on-xl2.display-flex-on-xl2 { display: flex; } }
+@include mediaquery(phone) {
+	.display-on-phone.display-on-phone {
+		display: block;
+	}
+}
 
-.hide-on-default { display: none; }
-@include mediaquery(phone) { .hide-on-phone.hide-on-phone { display: none !important; } }
-@include mediaquery(phone-plus) { .hide-on-phone-plus.hide-on-phone-plus { display: none !important; } }
-@include mediaquery(tablet-portrait) { .hide-on-tablet-portrait.hide-on-tablet-portrait { display: none !important; } }
-@include mediaquery(tablet-landscape) { .hide-on-tablet-landscape.hide-on-tablet-landscape { display: none !important; } }
-@include mediaquery(desktop) { .hide-on-desktop.hide-on-desktop { display: none !important; } }
-@include mediaquery(xl) { .hide-on-xl.hide-on-xl { display: none !important; } }
-@include mediaquery(xl2) { .hide-on-xl2.hide-on-xl2 { display: none !important; } }
+@include mediaquery(phone) {
+	.display-on-phone-plus.display-on-phone-plus {
+		display: block;
+	}
+}
+
+@include mediaquery(tablet-portrait) {
+	.display-on-tablet-portrait.display-on-tablet-portrait {
+		display: block;
+	}
+}
+
+@include mediaquery(tablet-landscape) {
+	.display-on-tablet-landscape.display-on-tablet-landscape {
+		display: block;
+	}
+}
+
+@include mediaquery(desktop) {
+	.display-on-desktop.display-on-desktop {
+		display: block;
+	}
+}
+
+@include mediaquery(xl) {
+	.display-on-xl.display-on-xl {
+		display: block;
+	}
+}
+
+@include mediaquery(xl2) {
+	.display-on-xl2.display-on-xl2 {
+		display: block;
+	}
+}
+
+.display-flex-on-default.display-flex-on-default {
+	display: flex;
+}
+
+@include mediaquery(phone) {
+	.display-flex-on-phone.display-flex-on-phone {
+		display: flex;
+	}
+}
+
+@include mediaquery(phone) {
+	.display-flex-on-phone-plus.display-flex-on-phone-plus {
+		display: flex;
+	}
+}
+
+@include mediaquery(tablet-portrait) {
+	.display-flex-on-tablet-portrait.display-flex-on-tablet-portrait {
+		display: flex;
+	}
+}
+
+@include mediaquery(tablet-landscape) {
+	.display-flex-on-tablet-landscape.display-flex-on-tablet-landscape {
+		display: flex;
+	}
+}
+
+@include mediaquery(desktop) {
+	.display-flex-on-desktop.display-flex-on-desktop {
+		display: flex;
+	}
+}
+
+@include mediaquery(xl) {
+	.display-flex-on-xl.display-flex-on-xl {
+		display: flex;
+	}
+}
+
+@include mediaquery(xl2) {
+	.display-flex-on-xl2.display-flex-on-xl2 {
+		display: flex;
+	}
+}
+
+.hide-on-default {
+	display: none;
+}
+
+@include mediaquery(phone) {
+	.hide-on-phone.hide-on-phone {
+		display: none !important;
+	}
+}
+
+@include mediaquery(phone-plus) {
+	.hide-on-phone-plus.hide-on-phone-plus {
+		display: none !important;
+	}
+}
+
+@include mediaquery(tablet-portrait) {
+	.hide-on-tablet-portrait.hide-on-tablet-portrait {
+		display: none !important;
+	}
+}
+
+@include mediaquery(tablet-landscape) {
+	.hide-on-tablet-landscape.hide-on-tablet-landscape {
+		display: none !important;
+	}
+}
+
+@include mediaquery(desktop) {
+	.hide-on-desktop.hide-on-desktop {
+		display: none !important;
+	}
+}
+
+@include mediaquery(xl) {
+	.hide-on-xl.hide-on-xl {
+		display: none !important;
+	}
+}
+
+@include mediaquery(xl2) {
+	.hide-on-xl2.hide-on-xl2 {
+		display: none !important;
+	}
+}
 
 // TODO: (DP) Organize these better.
 .component-table {
-	border: 1px solid color('secondary', 'lightGray');
+	border: 1px solid color("secondary", "lightGray");
 	display: flex;
 
 	@include mediaquery-max-width(tablet-portrait) {
 		* {
 			// Table columns are too narrow for regular font sizes.
-			font-size: .8rem !important;
+			font-size: 0.8rem !important;
 		}
 
 		.component-column {
@@ -821,7 +1118,7 @@ $justifyContent: 'flex-end';
 	}
 
 	.component-column {
-		border-right: 1px solid color('secondary', 'lightGray');
+		border-right: 1px solid color("secondary", "lightGray");
 		padding: math.div($gap, 2) $gap;
 
 		// p {
@@ -834,7 +1131,7 @@ $justifyContent: 'flex-end';
 	}
 
 	.component-row {
-		border-bottom: 1px solid color('secondary', 'lightGray');
+		border-bottom: 1px solid color("secondary", "lightGray");
 
 		&:last-child {
 			border-bottom: 0;
@@ -909,22 +1206,78 @@ $justifyContent: 'flex-end';
 	width: auto;
 }
 
-.z-index-1.z-index-1 { z-index: 1; }
-.z-index-2.z-index-2 { z-index: 2; }
-.z-index-3.z-index-3 { z-index: 3; }
-.z-index-4.z-index-4 { z-index: 4; }
-.z-index-5.z-index-5 { z-index: 5; }
-.z-index-6.z-index-6 { z-index: 6; }
-.z-index-7.z-index-7 { z-index: 7; }
-.z-index-8.z-index-8 { z-index: 8; }
-.z-index-9.z-index-9 { z-index: 9; }
-.z-index-10.z-index-10 { z-index: 10; }
-.z-index-20.z-index-20 { z-index: 20; }
-.z-index-30.z-index-30 { z-index: 30; }
-.z-index-40.z-index-40 { z-index: 40; }
-.z-index-50.z-index-50 { z-index: 50; }
-.z-index-60.z-index-60 { z-index: 60; }
-.z-index-70.z-index-70 { z-index: 70; }
-.z-index-80.z-index-80 { z-index: 80; }
-.z-index-90.z-index-90 { z-index: 90; }
-.z-index-100.z-index-100 { z-index: 100; }
+.z-index-1.z-index-1 {
+	z-index: 1;
+}
+
+.z-index-2.z-index-2 {
+	z-index: 2;
+}
+
+.z-index-3.z-index-3 {
+	z-index: 3;
+}
+
+.z-index-4.z-index-4 {
+	z-index: 4;
+}
+
+.z-index-5.z-index-5 {
+	z-index: 5;
+}
+
+.z-index-6.z-index-6 {
+	z-index: 6;
+}
+
+.z-index-7.z-index-7 {
+	z-index: 7;
+}
+
+.z-index-8.z-index-8 {
+	z-index: 8;
+}
+
+.z-index-9.z-index-9 {
+	z-index: 9;
+}
+
+.z-index-10.z-index-10 {
+	z-index: 10;
+}
+
+.z-index-20.z-index-20 {
+	z-index: 20;
+}
+
+.z-index-30.z-index-30 {
+	z-index: 30;
+}
+
+.z-index-40.z-index-40 {
+	z-index: 40;
+}
+
+.z-index-50.z-index-50 {
+	z-index: 50;
+}
+
+.z-index-60.z-index-60 {
+	z-index: 60;
+}
+
+.z-index-70.z-index-70 {
+	z-index: 70;
+}
+
+.z-index-80.z-index-80 {
+	z-index: 80;
+}
+
+.z-index-90.z-index-90 {
+	z-index: 90;
+}
+
+.z-index-100.z-index-100 {
+	z-index: 100;
+}

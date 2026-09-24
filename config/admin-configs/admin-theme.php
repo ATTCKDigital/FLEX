@@ -35,6 +35,11 @@ function additional_admin_color_schemes() {
 		if($colorName == 'Coffee') {
 			$color->name = 'Dev';
 			$color->url = $theme_dir . '/dist/admin-colors.css';
+			// Cache-bust with the build manifest version (defined in enqueue-scripts-styles.php;
+			// guarded in case a child theme replaces that file).
+			if ( function_exists( 'flex_versioned_asset_url' ) ) {
+				$color->url = flex_versioned_asset_url( $color->url, 'admin-colors' );
+			}
 			$color->colors = array( '#316C31', '#458534', '#7BB35A', '#BBDB6A' );
 		}
 

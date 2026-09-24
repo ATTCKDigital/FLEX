@@ -10,264 +10,265 @@ const { registerBlockType } = wp.blocks;
 
 const {
 	AlignmentToolbar,
-	BlockAlignmentToolbar,
 	BlockControls,
-	Editable,
 	InspectorControls,
 	MediaUpload,
 	RichText,
-	URLInput
+	URLInput,
 } = wp.blockEditor;
 
-const {
-	Button,
-	CheckboxControl,
-	Dashicon,
-	IconButton,
-	PanelBody,
-	TextControl,
-	Toolbar
-} = wp.components;
+const { Button, CheckboxControl, Dashicon, PanelBody, TextControl } =
+	wp.components;
 
 // Internal dependencies
-import BorderOptions, { BorderOptionsAttributes, BorderOptionsClasses } from '../../components/gb-component_border';
-import DataComponentNameOptions, { DataComponentNameAttributes } from '../../components/gb-component_data-component-name';
-import MarginOptions, { MarginOptionsAttributes, MarginOptionsClasses } from '../../components/gb-component_margin';
-import PaddingOptions, { PaddingOptionsAttributes, PaddingOptionsClasses } from '../../components/gb-component_padding';
+import BorderOptions, {
+	BorderOptionsAttributes,
+	BorderOptionsClasses,
+} from '../../components/gb-component_border';
+import DataComponentNameOptions, {
+	DataComponentNameAttributes,
+} from '../../components/gb-component_data-component-name';
+import MarginOptions, {
+	MarginOptionsAttributes,
+	MarginOptionsClasses,
+} from '../../components/gb-component_margin';
+import PaddingOptions, {
+	PaddingOptionsAttributes,
+	PaddingOptionsClasses,
+} from '../../components/gb-component_padding';
 
 // Register image block
-export default registerBlockType(
-	'flexlayout/image',
-	{
-		title: __( 'Image', 'flexlayout' ),
-		description: __( 'Upload an image.', 'flexlayout'),
-		category: 'common',
-		// icon: icons.upload,
-		icon: 'format-image',
-		example: {},
-		// parent: ['flexlayout/column'],
-		keywords: [
-			__( 'Image', 'flexlayout' ),
-			__( 'Img', 'flexlayout' ),
-			__( 'MediaUpload', 'flexlayout' )
-		],
-		attributes: {
-			align: {
-				type: 'string',
-				default: 'center'
-			},
-			caption: {
-				type: 'string'
-			},
-			CSSHeight: {
-				type: 'string',
-				default: ''
-			},
-			CSSWidth: {
-				type: 'string',
-				default: ''
-			},
-			imgID: {
-				type: 'number'
-			},
-			imgURL: {
-				type: 'string'
-			},
-			opensNewWindow: {
-				type: 'boolean',
-				default: false
-			},
-			placeholder: {
-				type: 'string'
-			},
-			url: {
-				type: 'string'
-			},
-			...BorderOptionsAttributes,
-			...DataComponentNameAttributes,
-			...MarginOptionsAttributes,
-			...PaddingOptionsAttributes
+export default registerBlockType( 'flexlayout/image', {
+	title: __( 'Image', 'flexlayout' ),
+	description: __( 'Upload an image.', 'flexlayout' ),
+	category: 'common',
+	// icon: icons.upload,
+	icon: 'format-image',
+	example: {},
+	// parent: ['flexlayout/column'],
+	keywords: [
+		__( 'Image', 'flexlayout' ),
+		__( 'Img', 'flexlayout' ),
+		__( 'MediaUpload', 'flexlayout' ),
+	],
+	attributes: {
+		align: {
+			type: 'string',
+			default: 'center',
 		},
-		edit: props => {
-			const {
-				attributes: {
-					align,
-					caption,
-					CSSHeight,
-					CSSWidth,
-					dataComponentName,
-					dataComponentOptions, 
-					imgID,
-					imgURL,
-					placeholder,
-					url
-				},
-				className,
-				setAttributes,
-				isSelected
-			} = props;
+		caption: {
+			type: 'string',
+		},
+		CSSHeight: {
+			type: 'string',
+			default: '',
+		},
+		CSSWidth: {
+			type: 'string',
+			default: '',
+		},
+		imgID: {
+			type: 'number',
+		},
+		imgURL: {
+			type: 'string',
+		},
+		opensNewWindow: {
+			type: 'boolean',
+			default: false,
+		},
+		placeholder: {
+			type: 'string',
+		},
+		url: {
+			type: 'string',
+		},
+		...BorderOptionsAttributes,
+		...DataComponentNameAttributes,
+		...MarginOptionsAttributes,
+		...PaddingOptionsAttributes,
+	},
+	edit: ( props ) => {
+		const {
+			attributes: {
+				align,
+				caption,
+				CSSHeight,
+				CSSWidth,
+				dataComponentName,
+				dataComponentOptions,
+				imgID,
+				imgURL,
+				placeholder,
+				url,
+			},
+			onReplace,
+			setAttributes,
+			isSelected,
+		} = props;
 
-			const onSelectImage = img => {
-				setAttributes( {
-					imgID: img.id,
-					imgURL: img.url
-				} );
-			};
+		const onSelectImage = ( img ) => {
+			setAttributes( {
+				imgID: img.id,
+				imgURL: img.url,
+			} );
+		};
 
-			const onRemoveImage = () => {
-				setAttributes({
-					imgID: null,
-					imgURL: null
-				});
-			}
+		const onRemoveImage = () => {
+			setAttributes( {
+				imgID: null,
+				imgURL: null,
+			} );
+		};
 
-			const setOpenInNewWindow = value => {
-				props.setAttributes( { opensNewWindow: value } );
-			}
+		const setOpenInNewWindow = ( value ) => {
+			props.setAttributes( { opensNewWindow: value } );
+		};
 
-			const NewWindowCheckbox = (a, b) => {
-				return (
-					<CheckboxControl
-						label='Open in new window.'
-						help=''
-						checked={ props.attributes.opensNewWindow }
-						onChange={ setOpenInNewWindow }
-					/>
-				)
-			};
+		const NewWindowCheckbox = () => {
+			return (
+				<CheckboxControl
+					label="Open in new window."
+					help=""
+					checked={ props.attributes.opensNewWindow }
+					onChange={ setOpenInNewWindow }
+				/>
+			);
+		};
 
-			return [
-				<InspectorControls>
-					<BorderOptions
-						{ ...props }
-					/>
-					<MarginOptions
-						{ ...props }
-					/>
-					<PaddingOptions
-						{ ...props }
-					/>
-					<PanelBody title={ __( 'Image Settings', 'flexlayout' ) }>
-						<p>{ __( ' Alignment', 'flexlayout' ) }</p>
-						<AlignmentToolbar
-							value={ align }
-							onChange={ ( nextAlign ) => {
-								setAttributes( { align: nextAlign } );
-							} }
-						/>
-						<p>{ __( ' CSS Height (100%, 50px, auto, etc.)' ) }</p>
-						<TextControl
-							value={ CSSHeight }
-							onChange={ ( nextCSSHeight ) => {
-								setAttributes( { CSSHeight: nextCSSHeight } );
-							} }
-						/>
-						<p>{ __( ' CSS Width (100%, 50px, auto, etc.)' ) }</p>
-						<TextControl
-							value={ CSSWidth }
-							onChange={ ( nextCSSWidth ) => {
-								setAttributes( { CSSWidth: nextCSSWidth } );
-							} }
-						/>
-					</PanelBody>
-					<DataComponentNameOptions
-						{ ...props }
-					/>
-				</InspectorControls>,
-				<BlockControls>
+		return [
+			<InspectorControls key="inspector">
+				<BorderOptions { ...props } />
+				<MarginOptions { ...props } />
+				<PaddingOptions { ...props } />
+				<PanelBody title={ __( 'Image Settings', 'flexlayout' ) }>
+					<p>{ __( 'Alignment', 'flexlayout' ) }</p>
 					<AlignmentToolbar
 						value={ align }
 						onChange={ ( nextAlign ) => {
 							setAttributes( { align: nextAlign } );
 						} }
 					/>
-				</BlockControls>,
-				<div 
-					className={classnames(
-						`component-image`,
-						`block-align-${align}`,
-						...MarginOptionsClasses( props ),
-						...PaddingOptionsClasses( props ),
-						...BorderOptionsClasses( props )
-					)}
-					data-component-name={ dataComponentName } 
-					data-component-options={ dataComponentOptions }
-				>
-					{ ! imgID ? (
-						<MediaUpload
-							onSelect={ onSelectImage }
-							type="image"
-							value={ imgID }
-							render={ ( { open } ) => (
-								<Button
-									className={ "button button-large" }
-									onClick={ open }
-								>
-									{ icons.upload }
-									{ __( ' Upload Image', 'flexlayout' ) }
-								</Button>
-							) }
-						>
-						</MediaUpload>
-					) : (
-						<div className={classnames(
+					<p>{ __( 'CSS Height (100%, 50px, auto, etc.)' ) }</p>
+					<TextControl
+						value={ CSSHeight }
+						onChange={ ( nextCSSHeight ) => {
+							setAttributes( { CSSHeight: nextCSSHeight } );
+						} }
+					/>
+					<p>{ __( 'CSS Width (100%, 50px, auto, etc.)' ) }</p>
+					<TextControl
+						value={ CSSWidth }
+						onChange={ ( nextCSSWidth ) => {
+							setAttributes( { CSSWidth: nextCSSWidth } );
+						} }
+					/>
+				</PanelBody>
+				<DataComponentNameOptions { ...props } />
+			</InspectorControls>,
+			<BlockControls key="controls">
+				<AlignmentToolbar
+					value={ align }
+					onChange={ ( nextAlign ) => {
+						setAttributes( { align: nextAlign } );
+					} }
+				/>
+			</BlockControls>,
+			<div
+				key="block"
+				className={ classnames(
+					`component-image`,
+					`block-align-${ align }`,
+					...MarginOptionsClasses( props ),
+					...PaddingOptionsClasses( props ),
+					...BorderOptionsClasses( props )
+				) }
+				data-component-name={ dataComponentName }
+				data-component-options={ dataComponentOptions }
+			>
+				{ ! imgID ? (
+					<MediaUpload
+						onSelect={ onSelectImage }
+						type="image"
+						value={ imgID }
+						render={ ( { open } ) => (
+							<Button
+								className={ 'button button-large' }
+								onClick={ open }
+							>
+								{ icons.upload }{ ' ' }
+								{ __( 'Upload Image', 'flexlayout' ) }
+							</Button>
+						) }
+					></MediaUpload>
+				) : (
+					<div
+						className={ classnames(
 							`image-wrapper`,
-							`block-align-${align}`,
-						)}>
-							{ isSelected ? (
+							`block-align-${ align }`
+						) }
+					>
+						{ isSelected ? (
+							<Button
+								className="remove-image"
+								onClick={ onRemoveImage }
+							>
+								{ icons.remove } Remove image
+							</Button>
+						) : null }
+						{ isSelected ? (
+							<form
+								className="block-library-button__inline-link"
+								onSubmit={ ( event ) => event.preventDefault() }
+							>
+								<div className="margin-left-2x float-left">
+									<Dashicon
+										icon="admin-links"
+										className="float-left"
+									/>
+									<URLInput
+										value={ url }
+										className="float-left"
+										onChange={ ( value ) =>
+											setAttributes( { url: value } )
+										}
+									/>
+								</div>
+								<div className="margin-left-2x float-left position-relative">
+									<NewWindowCheckbox />
+								</div>
 								<Button
-									className="remove-image"
-									onClick={ onRemoveImage }
-									>
-									{ icons.remove } Remove image
+									className="block-align-right float-left clear-left"
+									// icon="editor-break"
+									type="submit"
+								>
+									Apply changes
 								</Button>
-							) : null }
-							{ isSelected ? (
-								<form
-									className="block-library-button__inline-link"
-									onSubmit={ ( event ) => event.preventDefault() }>
-									<div class="margin-left-2x float-left">
-										<Dashicon icon="admin-links" className="float-left" />
-										<URLInput
-											value={ url }
-											className="float-left"
-											onChange={ ( value ) => setAttributes( { url: value } ) }
-											/>
-									</div>
-									<div class="margin-left-2x float-left position-relative">
-										<NewWindowCheckbox />
-									</div>
-									<Button 
-										className="block-align-right float-left clear-left"
-										// icon="editor-break" 
-										type="submit" 
-										>
-										Apply changes
-									</Button>
-								</form>
-							) : null }
-							<img
-								src={ imgURL }
+							</form>
+						) : null }
+						<img src={ imgURL } alt="" />
+						{ isSelected ? (
+							<RichText
+								identifier="caption"
+								wrapperClassName="image-caption"
+								tagName={ 'figcaption' }
+								value={ caption }
+								onChange={ ( value ) =>
+									setAttributes( { caption: value } )
+								}
+								onRemove={ () => onReplace( [] ) }
+								className={ classnames( 'caption' ) }
+								placeholder={
+									placeholder || __( 'Write caption' )
+								}
 							/>
-							{ isSelected ? (
-								<RichText
-									identifier="caption"
-									wrapperClassName="image-caption"
-									tagName={ 'figcaption' }
-									value={ caption }
-									onChange={ ( value ) => setAttributes( { caption: value } ) }
-									onRemove={ () => onReplace( [] ) }
-									className={ classnames('caption')}
-									placeholder={ placeholder || __( 'Write caption' ) }
-								/>
-							) : null }
-						</div>
-					)}
-				</div>
-			];
-		},
-		save() {
-			return null;
-		},
+						) : null }
+					</div>
+				) }
+			</div>,
+		];
 	},
-);
+	save() {
+		return null;
+	},
+} );

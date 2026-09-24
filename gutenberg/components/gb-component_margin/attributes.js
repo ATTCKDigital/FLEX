@@ -11,11 +11,10 @@ const MarginsOptionsAttributes = {
 	},
 	marginBottom: {
 		type: 'string',
-	},	
+	},
 	marginLeft: {
 		type: 'string',
 	},
-
 
 	marginPhoneTop: {
 		type: 'string',
@@ -25,11 +24,10 @@ const MarginsOptionsAttributes = {
 	},
 	marginPhoneBottom: {
 		type: 'string',
-	},	
+	},
 	marginPhoneLeft: {
 		type: 'string',
 	},
-	
 
 	marginPhonePlusTop: {
 		type: 'string',
@@ -39,11 +37,10 @@ const MarginsOptionsAttributes = {
 	},
 	marginPhonePlusBottom: {
 		type: 'string',
-	},	
+	},
 	marginPhonePlusLeft: {
 		type: 'string',
 	},
-
 
 	marginTabletPortraitTop: {
 		type: 'string',
@@ -53,11 +50,10 @@ const MarginsOptionsAttributes = {
 	},
 	marginTabletPortraitBottom: {
 		type: 'string',
-	},	
+	},
 	marginTabletPortraitLeft: {
 		type: 'string',
 	},
-
 
 	marginTabletLandscapeTop: {
 		type: 'string',
@@ -67,12 +63,11 @@ const MarginsOptionsAttributes = {
 	},
 	marginTabletLandscapeBottom: {
 		type: 'string',
-	},	
+	},
 	marginTabletLandscapeLeft: {
 		type: 'string',
 	},
 
-	
 	marginDesktopTop: {
 		type: 'string',
 	},
@@ -81,11 +76,10 @@ const MarginsOptionsAttributes = {
 	},
 	marginDesktopBottom: {
 		type: 'string',
-	},	
+	},
 	marginDesktopLeft: {
 		type: 'string',
 	},
-
 
 	marginXlTop: {
 		type: 'string',
@@ -95,11 +89,10 @@ const MarginsOptionsAttributes = {
 	},
 	marginXlBottom: {
 		type: 'string',
-	},	
+	},
 	marginXlLeft: {
 		type: 'string',
 	},
-
 
 	marginXl2Top: {
 		type: 'string',
@@ -109,7 +102,7 @@ const MarginsOptionsAttributes = {
 	},
 	marginXl2Bottom: {
 		type: 'string',
-	},	
+	},
 	marginXl2Left: {
 		type: 'string',
 	},

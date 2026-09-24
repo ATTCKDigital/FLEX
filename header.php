@@ -28,8 +28,6 @@
 	<?php echo Utils::render_template('config/theme-includes/pinterest-verify.php'); ?>
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() . "/dist/style.css"; ?>" type="text/css" media="screen" />
-	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() . "/dist/print.css"; ?>" type="text/css" media="print" />
 	<?php echo Utils::render_template('config/theme-includes/typekit.php'); ?>
 	<?php echo Utils::render_template('config/theme-includes/google-tag-manager-header.php'); ?>
 	<?php echo Utils::render_template('config/theme-includes/facebook-pixel.php'); ?>

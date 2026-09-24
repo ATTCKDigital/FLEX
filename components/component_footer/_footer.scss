@@ -3,8 +3,8 @@
  * — Override with custom styles in child theme
  **/
 .component-footer {
-	background: color('text', 'body');
-	padding-bottom: $gap*4;
+	background: color("text", "body");
+	padding-bottom: $gap * 4;
 	padding-top: $gap;
 
 	// Remove underline on footer links.
@@ -26,6 +26,7 @@
 		display: block;
 		font-size: px-to-rem(16px);
 		margin-bottom: $gap;
+
 		@include primary-bold;
 
 		&:last-child {
@@ -34,12 +35,12 @@
 	}
 
 	.menu-items {
-		a[href='#…'] {
+		a[href="#…"] {
 			visibility: hidden;
 		}
 	}
 
 	.footer-link {
-		margin-bottom: $gap*.25;
+		margin-bottom: $gap * 0.25;
 	}
 }

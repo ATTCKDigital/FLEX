@@ -11,15 +11,14 @@ article {
 
 body {
 	@include secondary-regular;
-	color: color('text', 'body');
+	color: color("text", "body");
 	font-size: 13px;
-	font-smoothing: antialiased;
 	height: 100%;
 	min-height: 100vh;
 	overflow-x: hidden;
 
 	&.popupOpen {
-		// Prevents background from scrolling when PopUp is activated, optional 
+		// Prevents background from scrolling when PopUp is activated, optional
 		@include mediaquery-max-width(tablet-portrait) {
 			left: 0;
 			position: fixed;
@@ -29,9 +28,9 @@ body {
 	}
 
 	[data-logo-color="logo-color-light"] {
-		color: color('text', 'white');
+		color: color("text", "white");
 
-		p, 
+		p,
 		.is-style-headline1,
 		.headline1,
 		.is-style-headline2,
@@ -44,22 +43,30 @@ body {
 		.headline5,
 		.is-style-eyebrow,
 		.is-style-eyebrow-small {
-			color: color('text', 'white');
+			color: color("text", "white");
 		}
 	}
 }
 
-h3, h4, h5, h6, p, span, .cta, img {
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+.cta,
+img {
 	// opacity: .5;
 	// transition: opacity .1s ease-in;
 
-	.no-element-in-view &, &.no-element-in-view {
+	.no-element-in-view &,
+	&.no-element-in-view {
 		// opacity: 1;
 	}
 }
 
 a {
-	color: color('brand', 'primary');
+	color: color("brand", "primary");
 
 	&:hover {
 		text-decoration: underline;
@@ -117,7 +124,7 @@ main.content {
 	}
 
 	iframe,
-	video, 
+	video,
 	.video-wrapper {
 		border-radius: 2rem;
 	}
@@ -148,26 +155,26 @@ main.content {
 }
 
 .border-round-container-black {
-	border: 1px solid black;
+	border: 1px solid #000;
 	border-radius: 1rem;
 }
 
 .border-round-0em {
-	border-radius: 0rem;
+	border-radius: 0;
 
 	iframe,
 	video,
 	.video-wrapper {
-		border-radius: 0rem;
+		border-radius: 0;
 	}
 
 	.image-wrapper img {
-		border-radius: 0rem;
+		border-radius: 0;
 	}
 }
 
 .border-shadow {
-	box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .flex-grid {
@@ -177,20 +184,29 @@ main.content {
 
 .greyscale-on-hover {
 	filter: grayscale(100%);
-	transition: filter .3s ease;
+	transition: filter 0.3s ease;
 
 	&:hover {
 		filter: grayscale(0%);
 	}
 }
 
-.mce-content-body, .wp-admin {
+.mce-content-body,
+.wp-admin {
 	// Inside the WYSIWYG editor and admin, prevent hidden text
-	h3, h4, h5, h6, p, .cta, span, img {
+	h3,
+	h4,
+	h5,
+	h6,
+	p,
+	.cta,
+	span,
+	img {
 		opacity: 1;
-		transition: opacity .1s ease-in;
+		transition: opacity 0.1s ease-in;
 
-		.no-element-in-view &, &.no-element-in-view {
+		.no-element-in-view &,
+		&.no-element-in-view {
 			opacity: 1;
 		}
 	}
@@ -207,6 +223,7 @@ main.content {
 // Accessibility trick to hide span nearby with aria values
 .sr-only {
 	border: 0;
+	// stylelint-disable-next-line property-no-deprecated -- clip is part of the established visually-hidden pattern; replacing it is a separate, visual change.
 	clip: rect(0, 0, 0, 0);
 	height: 1px;
 	margin: -1px;
