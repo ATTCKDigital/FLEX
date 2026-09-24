@@ -1,0 +1,11 @@
+{
+	"extends": "@wordpress/stylelint-config/scss",
+	"rules": {
+		"selector-class-pattern": [
+			"^-?[a-z][a-zA-Z0-9]*((-{1,2}|_{1,2})[a-zA-Z0-9]+)*$",
+			{
+				"message": "Use FLEX class naming: lowercase or camelCase words joined by '-', '_', '__' (element) or '--' (modifier) (selector-class-pattern)"
+			}
+		]
+	}
+}

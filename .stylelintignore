@@ -1,0 +1,8 @@
+scss/_css-vars.scss
+node_modules/
+assets/
+gutenberg/blocks/block_carousel/
+gutenberg/blocks/block_slides/
+gutenberg/blocks/block_text/
+gutenberg/blocks/block_social_media/
+gutenberg/blocks/block_users/
