@@ -13,8 +13,6 @@ module.exports = [
 			'assets/',
 			// Vendored minified three.js UMD bundle.
 			'js/three.min.js',
-			// Rewritten by WordPress at runtime; never hand-edited.
-			'scss/_css-vars.scss',
 			// Disabled, deprecated blocks kept for other FLEX sites (Q9); removal planned for v5.
 			'gutenberg/blocks/block_carousel/',
 			'gutenberg/blocks/block_slides/',

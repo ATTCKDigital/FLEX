@@ -89,37 +89,85 @@ add_action( 'after_setup_theme', 'tabor_gutenberg_color_palette' );
 
 
 /**
- * Create custom colors CSS.
+ * Builds the customizer colors as CSS custom properties, e.g.
+ * `:root { --color-brand-primary: #1d1d1d; }`. Side-effect free.
+ *
+ * The declarations are printed at runtime (see the hooks below) instead of
+ * being compiled into the theme CSS, so a build from a clean checkout is
+ * site-neutral and WordPress never writes into the theme directory.
+ *
+ * @return string CSS declaration block for :root.
  */
-function tabor_gutenberg_colors() {
-	$colors = FLEXLAYOUT_COLORS;
+function flex_customizer_colors_css() {
+	$declarations = '';
 
-	// Build styles.
-	$css  = "";
-	$css .= ':root {';
-	
-	foreach ($colors as $color) {
-		$settingId = colorSettingId($color);
-		$colorSlug = $color['slug'];
-		$colorValue = esc_attr( get_theme_mod($settingId, $color['default']) );
-		$css .= " --{$colorSlug}: {$colorValue}; ";
+	foreach ( FLEXLAYOUT_COLORS as $color ) {
+		$value         = esc_attr( get_theme_mod( colorSettingId( $color ), $color['default'] ) );
+		$declarations .= " --{$color['slug']}: {$value}; ";
 	}
 
-	$css .= '}';
-	
-	// Strip tags
-	$cssVars = wp_strip_all_tags( $css );
-
-	// Create new PHP file with vars
-	$cssVarsFile = fopen(get_template_directory().'/scss/_css-vars.scss', 'w');
-
-	// NOTE: If you are getting this error:
-	// Warning: fwrite() expects parameter 1 to be resource, bool given in ...
-	// TODO: Include solution here. -DP
-	fwrite($cssVarsFile, $cssVars);
+	return wp_strip_all_tags( ':root {' . $declarations . '}' );
 }
 
-add_action( 'after_setup_theme', 'tabor_gutenberg_colors' );
+/**
+ * Front end: prints the color custom properties right after the theme
+ * stylesheet (<style id="flex-style-inline-css">). Runs after
+ * flex_enqueue_theme_styles() (priority 1).
+ */
+function flex_add_customizer_colors_to_front_end() {
+	if ( wp_style_is( 'flex-style', 'enqueued' ) ) {
+		wp_add_inline_style( 'flex-style', flex_customizer_colors_css() );
+	}
+}
+
+add_action( 'wp_enqueue_scripts', 'flex_add_customizer_colors_to_front_end', 20 );
+
+/**
+ * Block editor canvas (iframed or not): editor settings styles are injected
+ * into the canvas document.
+ *
+ * @param array $settings Block editor settings.
+ * @return array Settings with the color custom properties appended to styles.
+ */
+function flex_add_customizer_colors_to_editor_settings( $settings ) {
+	if ( ! isset( $settings['styles'] ) || ! is_array( $settings['styles'] ) ) {
+		$settings['styles'] = array();
+	}
+
+	$settings['styles'][] = array( 'css' => flex_customizer_colors_css() );
+
+	return $settings;
+}
+
+add_filter( 'block_editor_settings_all', 'flex_add_customizer_colors_to_editor_settings' );
+
+/**
+ * Block editor outer frame: dist/admin.css (block_editor_styles) uses the
+ * color custom properties too. Runs after block_editor_scripts() (priority 10).
+ */
+function flex_add_customizer_colors_to_editor_styles() {
+	if ( wp_style_is( 'block_editor_styles', 'enqueued' ) ) {
+		wp_add_inline_style( 'block_editor_styles', flex_customizer_colors_css() );
+	}
+}
+
+add_action( 'enqueue_block_editor_assets', 'flex_add_customizer_colors_to_editor_styles', 20 );
+
+/**
+ * TinyMCE (classic editor, ACF WYSIWYG fields): dist/wysiwyg.css uses the
+ * color custom properties, so they are added to the editor iframe.
+ *
+ * @param array $init TinyMCE init settings.
+ * @return array Settings with the color custom properties in content_style.
+ */
+function flex_add_customizer_colors_to_tinymce( $init ) {
+	$existing              = isset( $init['content_style'] ) ? $init['content_style'] . ' ' : '';
+	$init['content_style'] = $existing . flex_customizer_colors_css();
+
+	return $init;
+}
+
+add_filter( 'tiny_mce_before_init', 'flex_add_customizer_colors_to_tinymce' );
 
 
 /**
@@ -128,7 +176,6 @@ add_action( 'after_setup_theme', 'tabor_gutenberg_colors' );
 function tabor_styles() {
 	// Load theme styles.
 	wp_enqueue_style( 'tabor-style', get_theme_file_uri( '/style.css' ), false, '@@pkg.version', 'all' );
-	// Add custom colors to the front end.
 }
 
 add_action( 'wp_enqueue_scripts', 'tabor_styles' );

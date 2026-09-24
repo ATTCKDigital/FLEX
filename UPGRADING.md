@@ -4,10 +4,10 @@ Every breaking change in FLEX v4.0.0 and what a FLEX child theme must do about i
 
 1. Pin FLEX `v3.4.0` first (the last v3 `develop`, `6366dac`), so nothing changes under you.
 2. Switch the child to Node 24 and give it its own `@wordpress/scripts` build (the [reference child build](#reference-child-build) below).
-3. Drop the `style.css` / `print.css` `<link>`s from any child `header.php`.
+3. Drop the `style.css` / `print.css` `<link>`s from any child `header.php`, and any `_css-vars` import or forward from child SCSS.
 4. Build, compare the site visually against v3, then move the submodule to `v4.0.0`.
 
-Contents: [Pin v3.4.0 first](#pin-v340-first) · [Node 24](#node-24) · [FLEX no longer builds anything](#flex-no-longer-builds-anything) · [Reference child build](#reference-child-build) · [Build contract](#build-contract) · [Enqueue changes](#enqueue-changes) · [jQuery, lodash and editor globals](#jquery-lodash-and-editor-globals) · [Removed packages and IE polyfills](#removed-packages-and-ie-polyfills) · [Sass](#sass) · [Font Awesome 6.7.2](#font-awesome-672) · [Removed and deprecated files](#removed-and-deprecated-files) · [Lint presets](#lint-presets) · [Git housekeeping](#git-housekeeping) · [Known issues](#known-issues)
+Contents: [Pin v3.4.0 first](#pin-v340-first) · [Node 24](#node-24) · [FLEX no longer builds anything](#flex-no-longer-builds-anything) · [Reference child build](#reference-child-build) · [Build contract](#build-contract) · [Enqueue changes](#enqueue-changes) · [Customizer colors are printed at runtime](#customizer-colors-are-printed-at-runtime) · [jQuery, lodash and editor globals](#jquery-lodash-and-editor-globals) · [Removed packages and IE polyfills](#removed-packages-and-ie-polyfills) · [Sass](#sass) · [Font Awesome 6.7.2](#font-awesome-672) · [Removed and deprecated files](#removed-and-deprecated-files) · [Lint presets](#lint-presets) · [Git housekeeping](#git-housekeeping) · [Known issues](#known-issues)
 
 ## Pin v3.4.0 first
 
@@ -202,6 +202,20 @@ Tolerated: the empty stub chunks `style.js`, `print.js`, `admin-colors.js`, `wys
 
 **Action:** a child theme that overrides `header.php` must **remove its own `dist/style.css` / `dist/print.css` `<link>`s** (keep `wp_head()`), or the stylesheets load twice. The child build must produce the `*.asset.php` files above. If you dequeue or re-register theme styles, use the `flex-style` / `flex-print` handles.
 
+## Customizer colors are printed at runtime
+
+In v3, `customizer-colors.php` rewrote `scss/_css-vars.scss` with the site's customizer colors on every request (`after_setup_theme`), and the build compiled that file into the theme CSS. A build from a clean checkout therefore compiled whatever colors happened to be committed, not the site's, and WordPress wrote into the theme directory at runtime.
+
+In v4 there are no runtime writes to the theme directory, and the compiled CSS contains no `--color-*` definitions (it still uses `var(--color-…)`). The colors are printed at runtime instead:
+
+- **`flex_customizer_colors_css()`** returns `:root { --<slug>: <theme mod or default>; … }` for every entry of `FLEXLAYOUT_COLORS` (same property names and escaping as v3).
+- **Front end:** `wp_add_inline_style( 'flex-style', … )` on `wp_enqueue_scripts` priority 20, printed as `<style id="flex-style-inline-css">` right after the theme stylesheet.
+- **Block editor:** appended to the editor settings `styles` (`block_editor_settings_all`, reaches the iframed canvas) and added inline to `block_editor_styles` (`dist/admin.css` in the outer editor frame).
+- **TinyMCE:** appended to `content_style` (`tiny_mce_before_init`), because `dist/wysiwyg.css` uses the variables. (v3 never defined them there.)
+- `scss/_css-vars.scss` is deleted, and so are its imports in `scss/style.scss` and `scss/admin.scss` and its lint/format exclusions.
+
+**Action:** remove any `@import '_css-vars'` / `@import '../../FLEX/scss/_css-vars.scss'` (or `@forward`) from child SCSS, and delete a child `_css-vars.scss` that forwards FLEX's; the build fails on the missing file otherwise. If the child dequeues `flex-style`, print `flex_customizer_colors_css()` itself (for example with `wp_add_inline_style()` on its own stylesheet). Colors defined in `FLEXLAYOUT_COLORS` and edited in the Customizer need no rebuild.
+
 ## jQuery, lodash and editor globals
 
 - jQuery is WordPress's `jquery` external. FLEX no longer bundles a copy and no longer overwrites `window.jQuery`; `$`/`jQuery` in FLEX code come from the child build's `ProvidePlugin`, which maps them to the external.
@@ -221,7 +235,7 @@ Removed with the FLEX build: `babel-polyfill`, `es6-object-assign`, `string.prot
 - **Configurable tokens (`!default`).** Every top-level configuration variable in `scss/_sizing.scss`, `_media-queries.scss`, `_colors.scss`, `_fonts.scss`, `_layout.scss`, `_admin-color-scheme-dev.scss` and `_admin-color-scheme.scss` is now `!default` (FLEX v3 set them unconditionally). A child that keeps the v3 **import-then-override** pattern (import the FLEX partial, then assign its own values) compiles to the same CSS. A child can now also **configure before importing**: set e.g. `$gap: 9px;` _before_ `@import '../../FLEX/scss/_sizing';`, and FLEX's generated rules use it (for example `$buttonBorderRadius: $gap * 4`). That is a visible change for rules FLEX generates from those variables, so verify it visually.
 - **Load paths.** FLEX imports packages by bare name (`@import "@fortawesome/fontawesome-free/scss/fontawesome";`), never `node_modules/…`. The child build must set `sassOptions.loadPaths: [ <child>/node_modules ]`. Partial imports no longer carry the `.scss` extension.
 - **Silenced deprecations.** The Sass `import`, `global-builtin` and `color-functions` deprecations are silenced in the reference build until FLEX migrates to `@use`/`@forward` (planned). Every other Sass warning fails the build (plus the one Font Awesome exception above).
-- `scss/_css-vars.scss` is generated by WordPress (`customizer-colors.php`) and is excluded from linting and formatting.
+- The customizer color custom properties (`--color-*`) are no longer compiled; see [Customizer colors are printed at runtime](#customizer-colors-are-printed-at-runtime).
 
 ## Font Awesome 6.7.2
 
@@ -247,8 +261,8 @@ FLEX lints with the WordPress presets from `@wordpress/scripts` 36: `npm run lin
 
 FLEX's documented overrides:
 
-- **ESLint** (`eslint.config.cjs`): globals `wp`, `jQuery`, `$`, `FLEX`; `import/no-unresolved` ignores the child build's `FLEX/…` alias; ignored: `node_modules/`, `assets/`, `js/three.min.js`, `scss/_css-vars.scss` and the five disabled blocks. `no-console` is off for the front-end runtime (`js/**`, `components/**` and the four front-end files under `gutenberg/`, but not `js/admin.js`, `js/icons.js`, `js/i18n.js`): `console.log` is FLEX's trace channel, which `js/debug.js` filters (it prints only on non-production servers with enhanced console logging enabled). Editor code keeps the preset's `no-console`.
-- **Stylelint** (`stylelint.config.cjs`, formerly `.stylelintrc.json`): extends `@wordpress/stylelint-config/scss`; `selector-class-pattern` accepts FLEX's lowercase/camelCase words joined by `-`, `_`, `__` (element) or `--` (modifier); `rule-empty-line-before`, `at-rule-empty-line-before` and `comment-empty-line-before` add the `first-nested` exception, because Prettier removes blank lines at the start of a block (without it the two tools can never agree). Ignored: `node_modules/`, `assets/`, `scss/_css-vars.scss`, the five disabled blocks.
+- **ESLint** (`eslint.config.cjs`): globals `wp`, `jQuery`, `$`, `FLEX`; `import/no-unresolved` ignores the child build's `FLEX/…` alias; ignored: `node_modules/`, `assets/`, `js/three.min.js` and the five disabled blocks. `no-console` is off for the front-end runtime (`js/**`, `components/**` and the four front-end files under `gutenberg/`, but not `js/admin.js`, `js/icons.js`, `js/i18n.js`): `console.log` is FLEX's trace channel, which `js/debug.js` filters (it prints only on non-production servers with enhanced console logging enabled). Editor code keeps the preset's `no-console`.
+- **Stylelint** (`stylelint.config.cjs`, formerly `.stylelintrc.json`): extends `@wordpress/stylelint-config/scss`; `selector-class-pattern` accepts FLEX's lowercase/camelCase words joined by `-`, `_`, `__` (element) or `--` (modifier); `rule-empty-line-before`, `at-rule-empty-line-before` and `comment-empty-line-before` add the `first-nested` exception, because Prettier removes blank lines at the start of a block (without it the two tools can never agree). Ignored: `node_modules/`, `assets/`, the five disabled blocks.
 - **Deferred to the `@use` migration** (disabled in `stylelint.config.cjs`, each commented "deferred to WS4 (@use migration)"): `scss/no-global-function-names` (module functions such as `color.hue()`) and `scss/load-no-partial-leading-underscore` (loading partials by their public, underscore-free name). Their fix _is_ the migration.
 - **Inline disables** carry a `--` justification, e.g. `@extend` of public classes (`.cta`, `.body`, `.is-style-*`) that markup also uses, the `clip` visually-hidden pattern, the nested `@import` in `admin-color-scheme.scss`, `rem` line heights, third-party ids.
 
@@ -259,7 +273,7 @@ The lint pass is behaviour-neutral, with these rendered-CSS differences a child 
 ## Git housekeeping
 
 - **Blame:** mechanical reformatting commits are listed in `.git-blame-ignore-revs`. Enable once per clone: `git config blame.ignoreRevsFile .git-blame-ignore-revs`.
-- **`scss/_css-vars.scss` is rewritten by WordPress** and always shows as modified. Exclude it from clean-tree checks: `git status --short -- . ':(exclude)scss/_css-vars.scss'` inside FLEX, or `':(exclude)wp-content/themes/FLEX/scss/_css-vars.scss'` from the site repo.
+- **No more always-modified `scss/_css-vars.scss`.** WordPress no longer writes into FLEX, so a plain `git status` is clean on a running site; drop any `':(exclude)…/_css-vars.scss'` pathspecs from your checks.
 
 ## Known issues
 
