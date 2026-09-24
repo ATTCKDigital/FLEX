@@ -8,7 +8,7 @@
  */
 
 import $ from 'jquery';
-import $$ from '../component_cached-dom-elements/cached-dom-elements';
+import '../component_cached-dom-elements/cached-dom-elements';
 import FLEX from 'FLEX/js/client-namespace';
 
 if ( ! FLEX.isProd ) {
@@ -17,15 +17,9 @@ if ( ! FLEX.isProd ) {
 
 /**
  * Offets either the relative position of valid $el, else the background image position.
- * @param $el
- * @param params
+ * @param {jQuery} $el
  */
-function Parallax( $el, params = {} ) {
-	const defaults = {};
-
-	// Merge any options set on the DOM element with
-	// the component defaults set above
-	const options = $.extend( true, {}, defaults, params );
+function Parallax( $el ) {
 	let viewportHeight = $( window ).outerHeight();
 	let scrollStartThreshold =
 		parseInt( $el.attr( 'data-scroll-start' ), 10 ) - viewportHeight * 0.2;
@@ -44,10 +38,10 @@ function Parallax( $el, params = {} ) {
 		// Prevent full height hero from affecting body height when
 		// scrolling on mobile, which due to the changing size of the
 		// address bar, causes jankyness all the way down the page
-		const viewportHeight = $( window ).outerHeight( true );
+		const fullViewportHeight = $( window ).outerHeight( true );
 		$( '.component-row-height-full-height' ).css(
 			'height',
-			viewportHeight * 0.7
+			fullViewportHeight * 0.7
 		);
 	}
 
@@ -59,7 +53,6 @@ function Parallax( $el, params = {} ) {
 
 		// Based on container height relative to viewport center
 		const containerHeight = $el.outerHeight();
-		const containerOffsetTop = $el.offset().top;
 		viewportHeight = $( window ).outerHeight();
 		scrollStartThreshold = viewportHeight / 2 + containerHeight / 2;
 
@@ -74,7 +67,6 @@ function Parallax( $el, params = {} ) {
 		);
 
 		const distanceToViewportTop = $el.offset().top - data.currentScrollTop;
-		const distanceScrolled = data.currentScrollTop;
 
 		if ( scrollStartThreshold > distanceToViewportTop ) {
 			// Determine how much to offset the background position
@@ -86,10 +78,6 @@ function Parallax( $el, params = {} ) {
 				relativePercentOfContainerToViewport / 10;
 			const totalPixelsScrolledWithinThreshold =
 				scrollStartThreshold - distanceToViewportTop;
-			const offsetPerPxScrolled = $elOuterHeight * 0.01;
-			const percentOffsetFromScroll =
-				( data.currentScrollTop - scrollStartThreshold ) /
-				offsetPerPxScrolled;
 
 			// Set default offset
 			const defaultOffset = 0;
@@ -212,21 +200,7 @@ function Parallax( $el, params = {} ) {
 		}
 	}
 
-	// Animations won't apply to elemnents that aren't
-	// positioned with a default top value
-	function setDefaultStyles() {
-		console.log(
-			'/FLEX/\tcomponents/\tcomponent-parallax/\tparallax.js',
-			'setDefaultStyles()'
-		);
-
-		$el.css( {
-			position: 'relative',
-			top: 0,
-		} );
-	}
-
-	this.init = function ( $el ) {
+	this.init = function () {
 		console.log(
 			'/FLEX/\tcomponents/\tcomponent-parallax/\tparallax.js',
 			'init()'

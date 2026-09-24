@@ -13,7 +13,6 @@ body {
 	@include secondary-regular;
 	color: color("text", "body");
 	font-size: 13px;
-	font-smoothing: antialiased;
 	height: 100%;
 	min-height: 100vh;
 	overflow-x: hidden;
@@ -156,7 +155,7 @@ main.content {
 }
 
 .border-round-container-black {
-	border: 1px solid black;
+	border: 1px solid #000;
 	border-radius: 1rem;
 }
 
@@ -224,6 +223,7 @@ main.content {
 // Accessibility trick to hide span nearby with aria values
 .sr-only {
 	border: 0;
+	// stylelint-disable-next-line property-no-deprecated -- clip is part of the established visually-hidden pattern; replacing it is a separate, visual change.
 	clip: rect(0, 0, 0, 0);
 	height: 1px;
 	margin: -1px;

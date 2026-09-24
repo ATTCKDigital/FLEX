@@ -2,12 +2,9 @@ import $ from 'jquery';
 
 /**
  * Choose your meeting time
- * @param $el
+ * @param {jQuery} $el
  */
 function Reserve( $el ) {
-	// Cache the body
-	const $body = $( 'body' );
-
 	function bindEvents() {
 		$el = $el;
 
@@ -43,7 +40,7 @@ function Reserve( $el ) {
 		$( '.cta[href="/#"]' ).addClass( 'disabled reserve-target' );
 	}
 
-	this.init = function ( $el ) {
+	this.init = function () {
 		render();
 		bindEvents();
 

@@ -11,15 +11,11 @@ function Accordion( $el ) {
 	console.log( '/accordion.js', 'Accordion()' );
 
 	let _listItems;
-	let _listHeaders;
 	let _listContent;
 
 	function bindEvents() {
 		// Find list items
 		_listItems = $( '.accordionItem', $el );
-
-		// Find list headers
-		_listHeaders = $( '.accordionHeader', $el );
 
 		// Find list content
 		_listContent = $( '.accordionContent', $el );
@@ -37,7 +33,7 @@ function Accordion( $el ) {
 
 		// Expand/contract content on click
 		$( _listItems ).each( function ( index, el ) {
-			$( el ).on( 'click', function ( e ) {
+			$( el ).on( 'click', function () {
 				$( this ).toggleClass( 'open' );
 
 				if ( $( this ).hasClass( 'open' ) ) {
@@ -64,7 +60,7 @@ function Accordion( $el ) {
 		$( document ).trigger( 'FLEX.matchHeight' );
 	}
 
-	this.init = function INIT( $el ) {
+	this.init = function INIT() {
 		console.log(
 			'/FLEX/\tcomponents/\tcomponent-accordion/\taccordion.js',
 			'init()'

@@ -4,8 +4,8 @@ if ( ! isProd ) {
 }
 
 import FLEX from './client-namespace';
-import $$ from '../components/component_cached-dom-elements/cached-dom-elements';
-import Debug from './debug';
+import '../components/component_cached-dom-elements/cached-dom-elements';
+import './debug';
 
 // global-events
 FLEX.GlobalEvents = {};
@@ -37,41 +37,50 @@ FLEX.events = {
 
 			const _this = this;
 
-			$( FLEX ).bind( FLEX.events.carousel.go, function ( e, data ) {
+			$( FLEX ).bind( FLEX.events.carousel.go, function ( e, eventData ) {
 				$( _this.carousels ).each( function ( index, value ) {
-					if ( value.id === data.id ) {
-						this.listener( 'go', data );
+					if ( value.id === eventData.id ) {
+						this.listener( 'go', eventData );
 					}
 				} );
 			} );
 
-			$( FLEX ).bind( FLEX.events.carousel.next, function ( e, data ) {
-				$( _this.carousels ).each( function ( index, value ) {
-					if ( value.id === data.id ) {
-						this.listener( 'next', data );
-					}
-				} );
-			} );
-
-			$( FLEX ).bind( FLEX.events.carousel.prev, function ( e, data ) {
-				$( _this.carousels ).each( function ( index, value ) {
-					if ( value.id === data.id ) {
-						this.listener( 'prev', data );
-					}
-				} );
-			} );
-
-			$( FLEX ).bind( FLEX.events.carousel.render, function ( e, data ) {
-				$( _this.carousels ).each( function ( index, value ) {
-					if ( value.id === data.id ) {
-						if ( typeof this.listener !== 'undefined' ) {
-							this.listener( 'render', data );
+			$( FLEX ).bind(
+				FLEX.events.carousel.next,
+				function ( e, eventData ) {
+					$( _this.carousels ).each( function ( index, value ) {
+						if ( value.id === eventData.id ) {
+							this.listener( 'next', eventData );
 						}
-					}
-				} );
-			} );
+					} );
+				}
+			);
 
-			$( FLEX ).bind( FLEX.events.carousel.rendered, function ( e, id ) {
+			$( FLEX ).bind(
+				FLEX.events.carousel.prev,
+				function ( e, eventData ) {
+					$( _this.carousels ).each( function ( index, value ) {
+						if ( value.id === eventData.id ) {
+							this.listener( 'prev', eventData );
+						}
+					} );
+				}
+			);
+
+			$( FLEX ).bind(
+				FLEX.events.carousel.render,
+				function ( e, eventData ) {
+					$( _this.carousels ).each( function ( index, value ) {
+						if ( value.id === eventData.id ) {
+							if ( typeof this.listener !== 'undefined' ) {
+								this.listener( 'render', eventData );
+							}
+						}
+					} );
+				}
+			);
+
+			$( FLEX ).bind( FLEX.events.carousel.rendered, function () {
 				$( _this.carousels ).each( function ( index, value ) {
 					if ( value.id === data.id ) {
 						this.listener( 'rendered' );
@@ -139,121 +148,121 @@ FLEX.events = {
 
 			$( FLEX )
 				.unbind( FLEX.events.cart.add )
-				.bind( FLEX.events.cart.add, function ( e, data ) {
+				.bind( FLEX.events.cart.add, function ( e, eventData ) {
 					$( _this.carts ).each( function ( index, value ) {
-						if ( value.id === data.id ) {
-							data.value = value;
-							this.listener( 'add', data );
+						if ( value.id === eventData.id ) {
+							eventData.value = value;
+							this.listener( 'add', eventData );
 						}
 					} );
 				} );
 
 			$( FLEX )
 				.unbind( FLEX.events.cart.added )
-				.bind( FLEX.events.cart.added, function ( e, data ) {
+				.bind( FLEX.events.cart.added, function ( e, eventData ) {
 					$( _this.carts ).each( function ( index, value ) {
-						if ( value.id === data.id ) {
-							data.value = value;
-							this.listener( 'added', data );
+						if ( value.id === eventData.id ) {
+							eventData.value = value;
+							this.listener( 'added', eventData );
 						}
 					} );
 				} );
 
 			$( FLEX )
 				.unbind( FLEX.events.cart.clear )
-				.bind( FLEX.events.cart.clear, function ( e, data ) {
+				.bind( FLEX.events.cart.clear, function ( e, eventData ) {
 					$( _this.carts ).each( function ( index, value ) {
-						if ( value.id === data.id ) {
-							data.value = value;
-							this.listener( 'clear', data );
+						if ( value.id === eventData.id ) {
+							eventData.value = value;
+							this.listener( 'clear', eventData );
 						}
 					} );
 				} );
 
 			$( FLEX )
 				.unbind( FLEX.events.cart.cleared )
-				.bind( FLEX.events.cart.cleared, function ( e, data ) {
+				.bind( FLEX.events.cart.cleared, function ( e, eventData ) {
 					$( _this.carts ).each( function ( index, value ) {
-						if ( value.id === data.id ) {
-							data.value = value;
-							this.listener( 'cleared', data );
+						if ( value.id === eventData.id ) {
+							eventData.value = value;
+							this.listener( 'cleared', eventData );
 						}
 					} );
 				} );
 
 			$( FLEX )
 				.unbind( FLEX.events.cart.open )
-				.bind( FLEX.events.cart.open, function ( e, data ) {
+				.bind( FLEX.events.cart.open, function ( e, eventData ) {
 					$( _this.carts ).each( function ( index, value ) {
-						if ( value.id === data.id ) {
-							data.value = value;
-							this.listener( 'open', data );
+						if ( value.id === eventData.id ) {
+							eventData.value = value;
+							this.listener( 'open', eventData );
 						}
 					} );
 				} );
 
 			$( FLEX )
 				.unbind( FLEX.events.cart.close )
-				.bind( FLEX.events.cart.close, function ( e, data ) {
+				.bind( FLEX.events.cart.close, function ( e, eventData ) {
 					$( _this.carts ).each( function ( index, value ) {
-						if ( value.id === data.id ) {
-							data.value = value;
-							this.listener( 'close', data );
+						if ( value.id === eventData.id ) {
+							eventData.value = value;
+							this.listener( 'close', eventData );
 						}
 					} );
 				} );
 
 			$( FLEX )
 				.unbind( FLEX.events.cart.toggle )
-				.bind( FLEX.events.cart.toggle, function ( e, data ) {
+				.bind( FLEX.events.cart.toggle, function ( e, eventData ) {
 					$( _this.carts ).each( function ( index, value ) {
-						if ( value.id === data.id ) {
-							data.value = value;
-							this.listener( 'toggle', data );
+						if ( value.id === eventData.id ) {
+							eventData.value = value;
+							this.listener( 'toggle', eventData );
 						}
 					} );
 				} );
 
 			$( FLEX )
 				.unbind( FLEX.events.cart.toggled )
-				.bind( FLEX.events.cart.toggled, function ( e, data ) {
+				.bind( FLEX.events.cart.toggled, function ( e, eventData ) {
 					$( _this.carts ).each( function ( index, value ) {
-						if ( value.id === data.id ) {
-							data.value = value;
-							this.listener( 'toggled', data );
+						if ( value.id === eventData.id ) {
+							eventData.value = value;
+							this.listener( 'toggled', eventData );
 						}
 					} );
 				} );
 
 			$( FLEX )
 				.unbind( FLEX.events.cart.update )
-				.bind( FLEX.events.cart.remove, function ( e, data ) {
+				.bind( FLEX.events.cart.remove, function ( e, eventData ) {
 					$( _this.carts ).each( function ( index, value ) {
-						if ( value.id === data.id ) {
-							data.value = value;
-							this.listener( 'update', data );
+						if ( value.id === eventData.id ) {
+							eventData.value = value;
+							this.listener( 'update', eventData );
 						}
 					} );
 				} );
 
 			$( FLEX )
 				.unbind( FLEX.events.cart.updated )
-				.bind( FLEX.events.cart.updated, function ( e, data ) {
+				.bind( FLEX.events.cart.updated, function ( e, eventData ) {
 					$( _this.carts ).each( function ( index, value ) {
-						if ( value.id === data.id ) {
-							data.value = value;
-							this.listener( 'updated', data );
+						if ( value.id === eventData.id ) {
+							eventData.value = value;
+							this.listener( 'updated', eventData );
 						}
 					} );
 				} );
 
 			$( FLEX )
 				.unbind( FLEX.events.cart.changeqty )
-				.bind( FLEX.events.cart.changeqty, function ( e, data ) {
+				.bind( FLEX.events.cart.changeqty, function ( e, eventData ) {
 					$( _this.carts ).each( function ( index, value ) {
-						if ( value.id === data.id ) {
-							data.value = value;
-							this.listener( 'changeqty', data );
+						if ( value.id === eventData.id ) {
+							eventData.value = value;
+							this.listener( 'changeqty', eventData );
 							console.log( window.counter );
 						}
 					} );
@@ -261,33 +270,33 @@ FLEX.events = {
 
 			$( FLEX )
 				.unbind( FLEX.events.cart.qtychanged )
-				.bind( FLEX.events.cart.qtychanged, function ( e, data ) {
+				.bind( FLEX.events.cart.qtychanged, function ( e, eventData ) {
 					$( _this.carts ).each( function ( index, value ) {
-						if ( value.id === data.id ) {
-							data.value = value;
-							this.listener( 'qtychanged', data );
+						if ( value.id === eventData.id ) {
+							eventData.value = value;
+							this.listener( 'qtychanged', eventData );
 						}
 					} );
 				} );
 
 			$( FLEX )
 				.unbind( FLEX.events.cart.rendered )
-				.bind( FLEX.events.cart.rendered, function ( e, data ) {
+				.bind( FLEX.events.cart.rendered, function ( e, eventData ) {
 					$( _this.carts ).each( function ( index, value ) {
-						if ( value.id === data.id ) {
-							data.value = value;
-							this.listener( 'rendered', data );
+						if ( value.id === eventData.id ) {
+							eventData.value = value;
+							this.listener( 'rendered', eventData );
 						}
 					} );
 				} );
 
 			$( FLEX )
 				.unbind( FLEX.events.cart.error )
-				.bind( FLEX.events.cart.error, function ( e, data ) {
+				.bind( FLEX.events.cart.error, function ( e, eventData ) {
 					$( _this.carts ).each( function ( index, value ) {
-						if ( value.id === data.id ) {
-							data.value = value;
-							this.listener( 'error', data );
+						if ( value.id === eventData.id ) {
+							eventData.value = value;
+							this.listener( 'error', eventData );
 						}
 					} );
 				} );
@@ -321,7 +330,7 @@ FLEX.events = {
 
 			const _this = this;
 
-			$( FLEX ).bind( FLEX.events.form.error, function ( e, data ) {
+			$( FLEX ).bind( FLEX.events.form.error, function ( e, eventData ) {
 				console.log(
 					'/FLEX/\tjs/\tglobal-events.js',
 					'FLEX.events.formregister(), [FLEX.events.form.error TRIGGERED] arguments: ',
@@ -329,13 +338,13 @@ FLEX.events = {
 				);
 
 				$( _this.forms ).each( function ( index, value ) {
-					if ( value.id === data.id ) {
-						this.listener( 'error', data );
+					if ( value.id === eventData.id ) {
+						this.listener( 'error', eventData );
 					}
 				} );
 			} );
 
-			$( FLEX ).bind( FLEX.events.form.submit, function ( e, data ) {
+			$( FLEX ).bind( FLEX.events.form.submit, function ( e, eventData ) {
 				console.log(
 					'/FLEX/\tjs/\tglobal-events.js',
 					'FLEX.events.formregister(), [FLEX.events.form.error TRIGGERED] arguments: ',
@@ -343,8 +352,8 @@ FLEX.events = {
 				);
 
 				$( _this.forms ).each( function ( index, value ) {
-					if ( value.id === data.id ) {
-						this.listener( 'submit', data );
+					if ( value.id === eventData.id ) {
+						this.listener( 'submit', eventData );
 					}
 				} );
 			} );
@@ -372,15 +381,15 @@ FLEX.events = {
 
 			const _this = this;
 
-			$( FLEX ).bind( FLEX.events.popup.open, function ( e, data ) {
+			$( FLEX ).bind( FLEX.events.popup.open, function ( e, eventData ) {
 				$( _this.popups ).each( function ( index, value ) {
-					if ( value.id === data.id ) {
-						this.listener( 'open', data );
+					if ( value.id === eventData.id ) {
+						this.listener( 'open', eventData );
 					}
 				} );
 			} );
 
-			$( FLEX ).bind( FLEX.events.popup.opened, function ( e, id ) {
+			$( FLEX ).bind( FLEX.events.popup.opened, function () {
 				$( _this.popups ).each( function ( index, value ) {
 					if ( value.id === data.id ) {
 						this.listener( 'opened' );
@@ -388,7 +397,7 @@ FLEX.events = {
 				} );
 			} );
 
-			$( FLEX ).bind( FLEX.events.popup.close, function ( e, id ) {
+			$( FLEX ).bind( FLEX.events.popup.close, function () {
 				$( _this.popups ).each( function ( index, value ) {
 					if ( value.id === data.id ) {
 						this.listener( 'close' );
@@ -396,7 +405,7 @@ FLEX.events = {
 				} );
 			} );
 
-			$( FLEX ).bind( FLEX.events.popup.closed, function ( e, id ) {
+			$( FLEX ).bind( FLEX.events.popup.closed, function () {
 				$( _this.popups ).each( function ( index, value ) {
 					if ( value.id === data.id ) {
 						this.listener( 'closed' );
@@ -442,76 +451,85 @@ FLEX.events = {
 
 			const _this = this;
 
-			$( FLEX ).bind( FLEX.events.pdp.changeOption, function ( e, data ) {
-				$( _this.pdps ).each( function ( index, value ) {
-					if ( value.id === data.id ) {
-						this.listener( 'changeOption', data );
-					}
-				} );
-			} );
-
 			$( FLEX ).bind(
-				FLEX.events.pdp.optionChanged,
-				function ( e, data ) {
+				FLEX.events.pdp.changeOption,
+				function ( e, eventData ) {
 					$( _this.pdps ).each( function ( index, value ) {
-						if ( value.id === data.id ) {
-							data.value = value;
-							this.listener( 'optionChanged', data );
+						if ( value.id === eventData.id ) {
+							this.listener( 'changeOption', eventData );
 						}
 					} );
 				}
 			);
 
-			$( FLEX ).bind( FLEX.events.pdp.getColor, function ( e, data ) {
+			$( FLEX ).bind(
+				FLEX.events.pdp.optionChanged,
+				function ( e, eventData ) {
+					$( _this.pdps ).each( function ( index, value ) {
+						if ( value.id === eventData.id ) {
+							eventData.value = value;
+							this.listener( 'optionChanged', eventData );
+						}
+					} );
+				}
+			);
+
+			$( FLEX ).bind(
+				FLEX.events.pdp.getColor,
+				function ( e, eventData ) {
+					$( _this.pdps ).each( function ( index, value ) {
+						if ( value.id === eventData.id ) {
+							eventData.value = value;
+							this.listener( 'getColor', eventData );
+						}
+					} );
+				}
+			);
+
+			$( FLEX ).bind(
+				FLEX.events.pdp.setColor,
+				function ( e, eventData ) {
+					$( _this.pdps ).each( function ( index, value ) {
+						if ( value.id === eventData.id ) {
+							eventData.value = value;
+							this.listener( 'setColor', eventData );
+						}
+					} );
+				}
+			);
+
+			$( FLEX ).bind( FLEX.events.pdp.getSize, function ( e, eventData ) {
 				$( _this.pdps ).each( function ( index, value ) {
-					if ( value.id === data.id ) {
-						data.value = value;
-						this.listener( 'getColor', data );
+					if ( value.id === eventData.id ) {
+						eventData.value = value;
+						this.listener( 'getSize', eventData );
 					}
 				} );
 			} );
 
-			$( FLEX ).bind( FLEX.events.pdp.setColor, function ( e, data ) {
+			$( FLEX ).bind( FLEX.events.pdp.setSize, function ( e, eventData ) {
 				$( _this.pdps ).each( function ( index, value ) {
-					if ( value.id === data.id ) {
-						data.value = value;
-						this.listener( 'setColor', data );
+					if ( value.id === eventData.id ) {
+						eventData.value = value;
+						this.listener( 'setSize', eventData );
 					}
 				} );
 			} );
 
-			$( FLEX ).bind( FLEX.events.pdp.getSize, function ( e, data ) {
+			$( FLEX ).bind( FLEX.events.pdp.getSKU, function ( e, eventData ) {
 				$( _this.pdps ).each( function ( index, value ) {
-					if ( value.id === data.id ) {
-						data.value = value;
-						this.listener( 'getSize', data );
+					if ( value.id === eventData.id ) {
+						eventData.value = value;
+						this.listener( 'getSKU', eventData );
 					}
 				} );
 			} );
 
-			$( FLEX ).bind( FLEX.events.pdp.setSize, function ( e, data ) {
+			$( FLEX ).bind( FLEX.events.pdp.setSKU, function ( e, eventData ) {
 				$( _this.pdps ).each( function ( index, value ) {
-					if ( value.id === data.id ) {
-						data.value = value;
-						this.listener( 'setSize', data );
-					}
-				} );
-			} );
-
-			$( FLEX ).bind( FLEX.events.pdp.getSKU, function ( e, data ) {
-				$( _this.pdps ).each( function ( index, value ) {
-					if ( value.id === data.id ) {
-						data.value = value;
-						this.listener( 'getSKU', data );
-					}
-				} );
-			} );
-
-			$( FLEX ).bind( FLEX.events.pdp.setSKU, function ( e, data ) {
-				$( _this.pdps ).each( function ( index, value ) {
-					if ( value.id === data.id ) {
-						data.value = value;
-						this.listener( 'setSKU', data );
+					if ( value.id === eventData.id ) {
+						eventData.value = value;
+						this.listener( 'setSKU', eventData );
 					}
 				} );
 			} );
@@ -546,14 +564,12 @@ FLEX.GlobalEvents.initGlobalEvents = function () {
 
 	const G = FLEX.Globals;
 	const $window = $( window, FLEX.GlobalEvents.initGlobalEvents );
-	const self = this;
 
 	/**
 	 * Cancel any click events when there is a relative
 	 * path of "#\"
-	 * @param e
 	 */
-	function cancelRelativePathLinkClicks( e ) {
+	function cancelRelativePathLinkClicks() {
 		// Bind to all click events
 		$( 'body' ).on( 'click', 'a', function ( e ) {
 			const hasHrefVal = $( this ).attr( 'href' ).indexOf( '/#/' );
@@ -722,7 +738,7 @@ FLEX.GlobalEvents.initGlobalEvents = function () {
 		// Tab body if content height is taller than viewport
 		let totalComponentHeight = 0;
 
-		$( '.component' ).each( function ( index, value ) {
+		$( '.component' ).each( function () {
 			// Exclude the hidden modal which doesn't take up any height
 			if ( ! $( this ).hasClass( 'component-contact-modal' ) ) {
 				totalComponentHeight += $( this ).outerHeight( true );

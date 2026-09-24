@@ -1,15 +1,12 @@
 // Block dependencies
 import classnames from 'classnames';
-import icons from '../../../js/icons.js';
 
 // Internal block libraries
 const { __ } = wp.i18n;
 
 const { registerBlockType } = wp.blocks;
 
-const { PlainText, InspectorControls, InnerBlocks } = wp.blockEditor;
-
-const { Toolbar, Tooltip } = wp.components;
+const { PlainText, InspectorControls } = wp.blockEditor;
 
 // Internal dependencies
 import MarginOptions, {
@@ -60,17 +57,17 @@ export default registerBlockType( 'flexlayout/source', {
 	edit: ( props ) => {
 		const {
 			attributes: { content },
-			className,
 			setAttributes,
 		} = props;
 
 		return [
-			<InspectorControls>
+			<InspectorControls key="inspector">
 				<MarginOptions { ...props } />
 				<PaddingOptions { ...props } />
 				<BorderOptions { ...props } />
 			</InspectorControls>,
 			<div
+				key="block"
 				className={ classnames(
 					`component-source`,
 					...MarginOptionsClasses( props ),
@@ -80,7 +77,9 @@ export default registerBlockType( 'flexlayout/source', {
 			>
 				<PlainText
 					value={ content }
-					onChange={ ( content ) => setAttributes( { content } ) }
+					onChange={ ( nextContent ) =>
+						setAttributes( { content: nextContent } )
+					}
 					placeholder={ __( 'Write code…' ) }
 					aria-label={ __( 'Code' ) }
 				/>

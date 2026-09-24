@@ -1,5 +1,3 @@
-console.log( 'FLEX/gutenberg/blocks/block_button/button.js' );
-
 // Block dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js';
@@ -10,18 +8,10 @@ const { __ } = wp.i18n;
 // WordPress dependencies
 const { registerBlockType } = wp.blocks;
 
-const { AlignmentToolbar, InnerBlocks, InspectorControls, RichText, URLInput } =
+const { AlignmentToolbar, InspectorControls, RichText, URLInput } =
 	wp.blockEditor;
 
-const {
-	Button,
-	ButtonGroup,
-	PanelBody,
-	PanelRow,
-	Dashicon,
-	IconButton,
-	CheckboxControl,
-} = wp.components;
+const { PanelBody, Dashicon, IconButton, CheckboxControl } = wp.components;
 
 // Internal dependencies
 import DataComponentNameOptions, {
@@ -104,7 +94,7 @@ export default registerBlockType( 'flexlayout/button', {
 		const tagName = 'span';
 
 		return [
-			<InspectorControls>
+			<InspectorControls key="inspector">
 				<PanelBody title={ __( 'Button Settings', 'flexlayout' ) }>
 					<AlignmentToolbar
 						value={ align }
@@ -117,13 +107,16 @@ export default registerBlockType( 'flexlayout/button', {
 					<CheckboxControl
 						label={ __( 'Open in new window?', 'flexlayout' ) }
 						checked={ target }
-						onChange={ ( target ) => setAttributes( { target } ) }
+						onChange={ ( isChecked ) =>
+							setAttributes( { target: isChecked } )
+						}
 					/>
 				</PanelBody>
 				<MarginOptions { ...props } />
 				<DataComponentNameOptions { ...props } />
 			</InspectorControls>,
 			<div
+				key="block"
 				className={ classnames(
 					`component-button-editor`,
 					`component-button`,

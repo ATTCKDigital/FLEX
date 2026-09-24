@@ -9,14 +9,13 @@ function VideoThumb( $el ) {
 				.then( function () {
 					$el.addClass( 'playingVideo' );
 				} )
-				.catch( function ( error ) {
+				.catch( function () {
 					console.log( 'cannot play' );
 				} );
 		}
 	}
 
-	this.init = function ( $el ) {
-		$el = $el;
+	this.init = function () {
 		isPlaying();
 
 		return this;

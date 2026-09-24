@@ -3,9 +3,7 @@
  */
 const { __ } = wp.i18n;
 
-const { ColorPalette, PanelColorSettings } = wp.blockEditor;
-
-const { Button, Dashicon, PanelBody, PanelRow, SelectControl } = wp.components;
+const { PanelColorSettings } = wp.blockEditor;
 
 /**
  * Internal dependencies

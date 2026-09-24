@@ -1,6 +1,5 @@
 // Block dependencies
 import classnames from 'classnames';
-import icons from '../../../js/icons.js';
 
 // Internal block libraries
 const { __ } = wp.i18n;
@@ -73,7 +72,6 @@ export default registerBlockType( 'flexlayout/popup', {
 		const {
 			attributes: {
 				backgroundOpacity,
-				advancedId,
 				dataComponentName,
 				dataComponentOptions,
 				popupName,
@@ -82,13 +80,13 @@ export default registerBlockType( 'flexlayout/popup', {
 		} = props;
 
 		return [
-			<InspectorControls>
+			<InspectorControls key="inspector">
 				<PanelRow>
 					<TextControl
 						label="Popup Name"
 						value={ popupName }
-						onChange={ ( popupName ) =>
-							setAttributes( { popupName } )
+						onChange={ ( nextPopupName ) =>
+							setAttributes( { popupName: nextPopupName } )
 						}
 					/>
 				</PanelRow>
@@ -98,9 +96,9 @@ export default registerBlockType( 'flexlayout/popup', {
 						<RangeControl
 							label="Background Opacity"
 							value={ ( backgroundOpacity ?? 1 ) * 100 }
-							onChange={ ( backgroundOpacity ) =>
+							onChange={ ( nextOpacity ) =>
 								setAttributes( {
-									backgroundOpacity: backgroundOpacity / 100,
+									backgroundOpacity: nextOpacity / 100,
 								} )
 							}
 							min={ 0 }
@@ -115,6 +113,7 @@ export default registerBlockType( 'flexlayout/popup', {
 				<DataComponentNameOptions { ...props } />
 			</InspectorControls>,
 			<div
+				key="block"
 				className={ `component-${ dataComponentName }` }
 				data-component-name={ dataComponentName }
 				data-component-options={ dataComponentOptions }

@@ -1,3 +1,5 @@
+// stylelint-disable scss/at-extend-no-missing-placeholder -- extends public FLEX classes (.body) that markup also uses; placeholders would change the generated selectors.
+
 ::selection {
 	background: color("brand", "accent");
 	color: color("brand", "primary");
@@ -20,11 +22,6 @@ a {
 	line-height: inherit;
 	letter-spacing: inherit;
 	text-decoration: none;
-
-	@include mediaquery(desktop) {
-		&:hover {
-		}
-	}
 }
 
 del {
@@ -130,7 +127,7 @@ u {
 /** Error & Message Styles **/
 .error {
 	@extend .body;
-	color: red;
+	color: #f00;
 }
 
 .font-weight-100.font-weight-100.font-weight-100 {

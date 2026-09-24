@@ -99,9 +99,9 @@ FLEX.enforce = ( function () {
 	 * Logs error messages to console
 	 *
 	 * Usages:
-	 * — FLEX.enforce.required(varName, [errorMessage]);
-	 * — FLEX.enforce.type(varName, type, [errorMessage]);
-	 * — FLEX.enforce.custom(boolean, callbackFunction);
+	 * — FLEX.enforce.required(varName, [errorMessage]);
+	 * — FLEX.enforce.type(varName, type, [errorMessage]);
+	 * — FLEX.enforce.custom(boolean, callbackFunction);
 	 *
 	 * @param {string}        errorMessage Message to display
 	 * @param {string|object} errorType    Category of error, object format: { 'errorType': '{string} typeName' }
@@ -178,7 +178,7 @@ FLEX.enforce = ( function () {
 			return _showError( 'generic', errorMessage );
 		}
 
-		function required( errorMessage ) {
+		function requiredError( errorMessage ) {
 			console.log(
 				'/src\t/scripts\t/FLEX.js',
 				'FLEX.enforce._error.required(errorMessage:)',
@@ -188,27 +188,10 @@ FLEX.enforce = ( function () {
 			return _showError( 'required', errorMessage );
 		}
 
-		function typeCheck( typeCheck, errorMessage ) {
-			console.log(
-				'/src\t/scripts\t/FLEX.js',
-				'FLEX.enforce._error.generic(typeCheck:, errorMessage:)',
-				typeCheck,
-				errorMessage
-			);
-
-			return _showError(
-				{
-					errorType: 'typeCheck',
-					typeCheck,
-				},
-				errorMessage
-			);
-		}
-
 		// Available tests
 		return {
 			generic,
-			required,
+			required: requiredError,
 			typeCheck: type,
 		};
 	} )();
@@ -216,7 +199,7 @@ FLEX.enforce = ( function () {
 	/**
 	 * Tests if value is defined.
 	 * @param {string} val          Required value to check
-	 * @param          errorMessage
+	 * @param {string} errorMessage
 	 * @return {boolean} True if defined, else undefined & an error message
 	 */
 	function required( val, errorMessage ) {
@@ -242,25 +225,25 @@ FLEX.enforce = ( function () {
 	/**
 	 * Tests if value matches type.
 	 * @param {string} val            Value to check
-	 * @param {string} type           Type to compare against value
+	 * @param {string} expectedType   Type to compare against value
 	 * @param {string} [errorMessage] Error shown if tests fail
 	 * @return {boolean} True if typecheck is passed, else undefined & an error message
 	 */
-	function type( val, type, errorMessage ) {
+	function type( val, expectedType, errorMessage ) {
 		console.log(
 			'/src\t/scripts\t/FLEX.js',
 			'FLEX.enforce.type(val:, type:, errorMessage:)',
 			val,
-			type,
+			expectedType,
 			errorMessage
 		);
 
 		// Enforce required parameters
 		FLEX.enforce.required( val );
-		FLEX.enforce.required( type );
+		FLEX.enforce.required( expectedType );
 
 		// Enforce type
-		if ( typeof val !== type ) {
+		if ( typeof val !== expectedType ) {
 			return _error.typeCheck( 'string' );
 		}
 
@@ -270,9 +253,9 @@ FLEX.enforce = ( function () {
 
 	/**
 	 * Returns callback if passesTest param is true.
-	 * @param {boolean}  passesTest    Calling method set this value.
-	 * @param {function} errorCallback Callback function
-	 * @return {function} Returns return value of callback function
+	 * @param {boolean}       passesTest    Calling method set this value.
+	 * @param {() => unknown} errorCallback Callback function
+	 * @return {unknown} Returns return value of callback function
 	 */
 	function custom( passesTest, errorCallback ) {
 		console.log(
@@ -382,7 +365,7 @@ FLEX.queryVariables = ( function () {
 		);
 
 		// Enforce required parameter
-		if ( typeof key === 'undefiened' ) {
+		if ( typeof key === 'undefined' ) {
 			console.error( 'Required parameter is missing.' );
 
 			return undefined;
@@ -425,11 +408,11 @@ FLEX.isUndefinedOrNull = function ( value ) {
 	switch ( true ) {
 		case typeof value === 'undefined':
 			returnValue = true;
-		// break; // Let these pass through
+		// falls through (intentional: let these pass through)
 
-		case value == null:
+		case value === null || value === undefined:
 			returnValue = true;
-		// break;
+		// falls through
 
 		default:
 			break;

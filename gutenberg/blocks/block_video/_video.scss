@@ -163,12 +163,12 @@
 
 .video-wrapper-2 {
 	background: color("secondary", "white");
-	border: 8px solid white;
+	border: 8px solid #fff;
 	border-radius: 8px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
 	@include mediaquery(tablet-portrait) {
-		border: 12px solid white;
+		border: 12px solid #fff;
 		border-radius: 16px;
 		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 	}

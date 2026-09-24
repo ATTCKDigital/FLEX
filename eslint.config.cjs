@@ -1,4 +1,4 @@
-/**
+/*
  * FLEX ESLint flat config: the @wordpress/scripts default plus the small,
  * documented set of FLEX overrides (see UPGRADING.md, "Lint presets").
  */
@@ -22,6 +22,25 @@ module.exports = [
 			'gutenberg/blocks/block_social_media/',
 			'gutenberg/blocks/block_users/',
 		],
+	},
+	{
+		// Front-end runtime (the `main` bundle and the raw-enqueued scripts):
+		// console.log is FLEX's trace channel. js/debug.js replaces it with a
+		// filter that prints only on non-production servers with enhanced
+		// console logging enabled, so these calls are deliberate. Editor code
+		// (js/admin.js, gutenberg/**) keeps the preset's no-console.
+		files: [
+			'js/**/*.js',
+			'components/**/*.js',
+			'gutenberg/blocks/block_animated-gif/swap-gif.js',
+			'gutenberg/blocks/block_popup/popup-controller.js',
+			'gutenberg/blocks/block_video/play-video.js',
+			'gutenberg/components/gb-component_background-options/video-thumb.js',
+		],
+		ignores: [ 'js/admin.js', 'js/icons.js', 'js/i18n.js' ],
+		rules: {
+			'no-console': 'off',
+		},
 	},
 	{
 		languageOptions: {

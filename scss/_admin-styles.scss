@@ -1,49 +1,46 @@
-// Element hierarchy
-body {
-	div#wpwrap {
-		div#wpcontent {
-			div#wpbody {
-				div#wpbody-content {
-					div.block-editor {
-						div#editor {
-							div.components-drop-zone__provider {
-								div.components-navigate-regions {
-									div.interface-interface-skeleton {
-										div.interface-interface-skeleton__header {
-										}
+// stylelint-disable scss/at-extend-no-missing-placeholder -- extends public FLEX classes (.headline2, .headline3) that markup also uses; placeholders would change the generated selectors.
 
-										div.interface-interface-skeleton__body {
-											div.interface-interface-skeleton__content {
-											}
-
-											div.interface-interface-skeleton__sidebar {
-												div.block-editor-block-list__layout.is-root-container {
-													div.block-editor-block-list__block {
-														&.has-child-selected {
-														}
-
-														&.is-hovered {
-														}
-
-														&.is-selected {
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-
-								div.popover-slot {
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
+// Element hierarchy of the block editor (reference only; emits no CSS):
+// body {
+// 	div#wpwrap {
+// 		div#wpcontent {
+// 			div#wpbody {
+// 				div#wpbody-content {
+// 					div.block-editor {
+// 						div#editor {
+// 							div.components-drop-zone__provider {
+// 								div.components-navigate-regions {
+// 									div.interface-interface-skeleton {
+// 										div.interface-interface-skeleton__header {
+// 										}
+// 										div.interface-interface-skeleton__body {
+// 											div.interface-interface-skeleton__content {
+// 											}
+// 											div.interface-interface-skeleton__sidebar {
+// 												div.block-editor-block-list__layout.is-root-container {
+// 													div.block-editor-block-list__block {
+// 														&.has-child-selected {
+// 														}
+// 														&.is-hovered {
+// 														}
+// 														&.is-selected {
+// 														}
+// 													}
+// 												}
+// 											}
+// 										}
+// 									}
+// 								}
+// 								div.popover-slot {
+// 								}
+// 							}
+// 						}
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// }
 
 h1,
 h2,
@@ -121,7 +118,7 @@ body {
 
 	.component-quote {
 		cite {
-			background: white;
+			background: #fff;
 			border: 1px solid #ccc;
 			line-height: 2.30769231;
 			margin: 0 2px;
@@ -167,9 +164,6 @@ body {
 		// &[data-title="Paragraph"] {
 		// 	display: block;
 		// }
-	}
-
-	&.wp-block {
 	}
 }
 
@@ -260,7 +254,7 @@ body.admin-color-coffee
 	.editor-block-list__layout
 	.editor-block-list__block.is-hovered
 	> .editor-block-list__block-edit::before {
-	outline: 2px dashed silver;
+	outline: 2px dashed #c0c0c0;
 }
 
 body.admin-color-sunrise
@@ -275,7 +269,7 @@ body.admin-color-coffee
 	.editor-block-list__layout
 	.editor-block-list__block.is-selected[data-align="full"]
 	> .editor-block-list__block-edit::before {
-	outline: 2px dashed gold;
+	outline: 2px dashed #ffd700;
 }
 
 .editor-block-list__layout
@@ -313,7 +307,7 @@ body.admin-color-coffee
 			width: auto;
 
 			&:hover {
-				background: white;
+				background: #fff;
 			}
 		}
 	}
@@ -344,7 +338,7 @@ body.admin-color-coffee
 	.block-editor-block-list__block.is-selected
 	> .block-editor-block-list__block-edit::before {
 	box-shadow: none;
-	outline: 2px dashed cornflowerblue;
+	outline: 2px dashed #6495ed;
 }
 
 .components-button:disabled,
@@ -352,7 +346,7 @@ body.admin-color-coffee
 	opacity: 1;
 
 	svg {
-		fill: cornflowerblue;
+		fill: #6495ed;
 	}
 }
 
@@ -413,7 +407,7 @@ body.admin-color-coffee
 
 .block-editor .component-source .editor-plain-text {
 	padding: $gap * 0.5;
-	font-family: Courier;
+	font-family: Courier, monospace;
 	min-height: 100px;
 }
 
@@ -445,7 +439,7 @@ body.admin-color-coffee
 #poststuff h2,
 #poststuff h3.hndle,
 .edit-post-meta-boxes-area #poststuff h2.hndle span {
-	color: black;
+	color: #000;
 	font-size: 13px;
 	font-weight: 500;
 }
@@ -454,10 +448,8 @@ body.admin-color-coffee
 .is-style-text-columns .mce-content-body {
 	@include mediaquery(tablet-landscape) {
 		break-inside: avoid;
-		column-break-inside: avoid; /* Chrome, Safari, Opera */
 		column-count: 2;
 		column-gap: $gap * 15;
-		break-inside: avoid; /* Firefox */
 	}
 }
 
@@ -508,16 +500,16 @@ body.admin-color-coffee
 	display: block;
 	box-sizing: border-box;
 	margin: 10px auto;
-	outline: 1px dotted gainsboro;
+	outline: 1px dotted #dcdcdc;
 	padding: 16px 0;
 	width: 80%;
 
 	&:hover {
-		outline: 1px dotted cornflowerblue;
+		outline: 1px dotted #6495ed;
 	}
 
 	svg {
-		fill: cornflowerblue;
+		fill: #6495ed;
 	}
 }
 
@@ -525,13 +517,13 @@ body.admin-color-coffee
 	.editor-block-styles__item-preview h2,
 	.block-editor-block-styles__item-preview h2 {
 		@extend .headline2 !optional;
-		color: black;
+		color: #000;
 	}
 
 	.editor-block-styles__item-preview h3,
 	.block-editor-block-styles__item-preview h3 {
 		@extend .headline3 !optional;
-		color: black;
+		color: #000;
 	}
 
 	.editor-block-styles__item-preview .component-heading img,
@@ -551,7 +543,7 @@ body.admin-color-coffee
 	> .editor-block-list__block
 	> .editor-block-list__block-edit,
 .wp-block.editor-block-list__block {
-	border: 1px dotted black;
+	border: 1px dotted #000;
 }
 
 .editor-block-list__layout,
@@ -585,7 +577,7 @@ body.admin-color-coffee
 
 .components-popover,
 .components-base-control {
-	color: black;
+	color: #000;
 }
 
 .edit-post-visual-editor__post-title-wrapper {
@@ -618,8 +610,8 @@ body.admin-color-coffee
 	.editor-post-title__input:hover {
 	background: #fef8ee;
 	box-shadow: none;
-	border-color: black;
-	color: black;
+	border-color: #000;
+	color: #000;
 }
 
 .component-animated-gif {
@@ -660,6 +652,7 @@ body.admin-color-coffee
 			// Undo the hidden page title label.
 			// TODO: Find out why it's hidden in the first place. -DP
 			.components-visually-hidden {
+				// stylelint-disable-next-line property-no-deprecated -- undoes WordPress's clip-based visually-hidden styles.
 				clip: unset;
 				clip-path: unset;
 				height: auto;

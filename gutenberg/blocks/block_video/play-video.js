@@ -1,9 +1,7 @@
+/* global YT */
 // import Player from '@vimeo/player';
 // TODO: (OT) Allow video block to support vimeo.
 function Video( $el ) {
-	// YouTube API Player
-	let player;
-
 	function playVideo( autoplay ) {
 		console.log(
 			'/FLEX/\tgutenberg/\tblocks/\tblock_video/\tplay-video.js',
@@ -64,7 +62,8 @@ function Video( $el ) {
 			// Finally we can create our player object
 			const videoId = $( '.youtubePlayer', $el ).data( 'video-id' );
 
-			player = new YT.Player( 'player_' + videoId, {
+			// YouTube API Player (instance is not kept; the constructor wires up the iframe)
+			new YT.Player( 'player_' + videoId, {
 				height: '390',
 				width: '640',
 				videoId,
@@ -210,7 +209,7 @@ function Video( $el ) {
 		// };
 
 		// To support multiple players on the page, assume the API has loaded after a bit
-		setTimeout( function ( callback ) {
+		setTimeout( function () {
 			onYouTubePlayer();
 		}, 1000 );
 	}
@@ -250,28 +249,27 @@ function Video( $el ) {
 		$el.removeClass( 'playingVideo' );
 	}
 
-	this.init = function ( $el ) {
+	this.init = function ( $initEl ) {
 		console.log(
 			'/FLEX/\tgutenberg/\tblocks/\tblock_video/\tplay-video.js',
 			'init()'
 		);
 
-		$el = $el;
-
 		// Determine if video should autoplay,
-		const shouldAutoplay = $( 'video', $el ).prop( 'autoplay' ) === true;
+		const shouldAutoplay =
+			$( 'video', $initEl ).prop( 'autoplay' ) === true;
 
 		if ( shouldAutoplay ) {
-			$( 'video', $el ).trigger( 'play' );
+			$( 'video', $initEl ).trigger( 'play' );
 
 			// ...otherwise, bind player control events
 		} else {
-			$el.on(
+			$initEl.on(
 				'click',
 				'.video-wrapper[data-video-type="upload"] .playVideo',
 				playVideo
 			);
-			$el.on(
+			$initEl.on(
 				'click',
 				'.video-wrapper[data-video-type="upload"] .pauseVideo',
 				pauseVideo
@@ -280,7 +278,8 @@ function Video( $el ) {
 
 		// If there is a youtube video on the page, load the API
 		if (
-			$el.find( '.video-wrapper' ).attr( 'data-video-type' ) == 'youtube'
+			$initEl.find( '.video-wrapper' ).attr( 'data-video-type' ) ===
+			'youtube'
 		) {
 			loadYoutubeApi();
 			loadPlayer();
@@ -288,15 +287,15 @@ function Video( $el ) {
 
 		// If there is a Brightcove video on the page, bind play/pause events
 		if (
-			$el.find( '.video-wrapper' ).attr( 'data-video-type' ) ===
+			$initEl.find( '.video-wrapper' ).attr( 'data-video-type' ) ===
 			'brightcove'
 		) {
-			$el.on(
+			$initEl.on(
 				'click',
 				'.video-wrapper[data-video-type="brightcove"] .playVideo',
 				playBrightcoveVideo
 			);
-			$el.on(
+			$initEl.on(
 				'click',
 				'.video-wrapper[data-video-type="brightcove"] .pauseVideo',
 				pauseBrightcoveVideo

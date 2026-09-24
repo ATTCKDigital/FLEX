@@ -1,5 +1,3 @@
-console.log( 'FLEX/gutenberg/blocks/block_animated-gif/animated-gif.js' );
-
 // Block dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js';
@@ -12,17 +10,14 @@ const { registerBlockType } = wp.blocks;
 
 const {
 	AlignmentToolbar,
-	BlockAlignmentToolbar,
 	BlockControls,
-	Editable,
 	InspectorControls,
 	MediaUpload,
 	RichText,
 	URLInput,
 } = wp.blockEditor;
 
-const { Button, Dashicon, IconButton, PanelBody, TextControl, Toolbar } =
-	wp.components;
+const { Button, Dashicon, IconButton, PanelBody, TextControl } = wp.components;
 
 // Internal dependencies
 import DataComponentNameOptions, {
@@ -107,7 +102,6 @@ export default registerBlockType( 'flexlayout/animated-gif', {
 				placeholder,
 				url,
 			},
-			className,
 			onReplace,
 			setAttributes,
 			isSelected,
@@ -142,7 +136,7 @@ export default registerBlockType( 'flexlayout/animated-gif', {
 		};
 
 		return [
-			<InspectorControls>
+			<InspectorControls key="inspector">
 				<BorderOptions { ...props } />
 				<MarginOptions { ...props } />
 				<PaddingOptions { ...props } />
@@ -154,7 +148,7 @@ export default registerBlockType( 'flexlayout/animated-gif', {
 							setAttributes( { align: nextAlign } );
 						} }
 					/>
-					<p>{ __( ' CSS Width (100%, 50px, auto, etc.)' ) }</p>
+					<p>{ __( 'CSS Width (100%, 50px, auto, etc.)' ) }</p>
 					<TextControl
 						value={ CSSWidth }
 						onChange={ ( nextCSSWidth ) => {
@@ -164,7 +158,7 @@ export default registerBlockType( 'flexlayout/animated-gif', {
 				</PanelBody>
 				<DataComponentNameOptions { ...props } />
 			</InspectorControls>,
-			<BlockControls>
+			<BlockControls key="controls">
 				<AlignmentToolbar
 					value={ align }
 					onChange={ ( nextAlign ) => {
@@ -173,6 +167,7 @@ export default registerBlockType( 'flexlayout/animated-gif', {
 				/>
 			</BlockControls>,
 			<div
+				key="block"
 				className={ classnames(
 					`component-image component-animated-gif`,
 					`block-align-${ align }`,
@@ -193,9 +188,9 @@ export default registerBlockType( 'flexlayout/animated-gif', {
 								className={ 'button button-large' }
 								onClick={ open }
 							>
-								{ icons.upload }
+								{ icons.upload }{ ' ' }
 								{ __(
-									' Upload Placeholder Image',
+									'Upload Placeholder Image',
 									'flexlayout'
 								) }
 							</Button>
@@ -235,7 +230,7 @@ export default registerBlockType( 'flexlayout/animated-gif', {
 								/>
 							</form>
 						) : null }
-						<img src={ imgURL } />
+						<img src={ imgURL } alt="" />
 						{ isSelected ? (
 							<RichText
 								identifier="caption"
@@ -264,8 +259,8 @@ export default registerBlockType( 'flexlayout/animated-gif', {
 								className={ 'button button-large' }
 								onClick={ open }
 							>
-								{ icons.upload }
-								{ __( ' Upload Animated GIF', 'flexlayout' ) }
+								{ icons.upload }{ ' ' }
+								{ __( 'Upload Animated GIF', 'flexlayout' ) }
 							</Button>
 						) }
 					></MediaUpload>
@@ -284,7 +279,7 @@ export default registerBlockType( 'flexlayout/animated-gif', {
 								{ icons.remove }
 							</Button>
 						) : null }
-						<img src={ gifURL } />
+						<img src={ gifURL } alt="" />
 					</div>
 				) }
 			</div>,

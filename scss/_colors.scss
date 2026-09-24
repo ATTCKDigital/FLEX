@@ -62,11 +62,11 @@ $brand-colors: (
 		$color: map-get($color-spectrum, $variant);
 	}
 
-	@if $color == null {
+	@if not $color {
 		@return null; // or throw error, depending on your setup
 	}
 
-	@if $opacity != null {
+	@if $opacity {
 		// Return CSS-level rgba() using var() and custom opacity
 		@return unquote("rgba(#{$color}, #{$opacity})");
 	}
@@ -110,17 +110,12 @@ $brand-colors: (
 
 /**** Color classes ****/
 // Use dynamically generated color classes as follows:
-//
 // Classes:
-//
 // 		.background-key-variant
 // 		.color-color-key-variant
-//
 // For example:
-//
 // 		.background-accent-blue
 // 		.color-accent-blue
-//
 
 @each $key, $map in $brand-colors {
 	@each $variant, $color in $map {

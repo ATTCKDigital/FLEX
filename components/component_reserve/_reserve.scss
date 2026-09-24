@@ -7,6 +7,7 @@
 		border-left: 1px solid #979797;
 		color: color("brand", "primary");
 		display: inline-block;
+		// stylelint-disable-next-line declaration-property-unit-allowed-list -- rem line-height kept: converting it to px or unitless changes the rendered line box.
 		line-height: 1rem;
 		margin: 0 -1px 1px 0;
 		padding: 10px 15px;

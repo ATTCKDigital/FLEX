@@ -1,3 +1,5 @@
+/* global afp_vars */
+/* eslint-disable camelcase -- afp_vars, afp_nonce and afp_ajax_url are the object and keys localized by PHP (wp_localize_script) and the admin-ajax action contract. */
 import $ from 'jquery';
 
 function LoadMore( $el ) {
@@ -32,9 +34,9 @@ function LoadMore( $el ) {
 			dataType: 'json',
 			url: afp_vars.afp_ajax_url,
 			data,
-			success( data, textStatus, XMLHttpRequest ) {
+			success( response ) {
 				// Add new posts
-				$section.append( data.response );
+				$section.append( response.response );
 
 				// Define new elements
 				const $newElems = $( '.new-elements' );
@@ -83,7 +85,7 @@ function LoadMore( $el ) {
 		$el.find( '.selected-tab' ).text( tabText );
 
 		// Set the data attributes for load more
-		if ( tabTerm == 'all' ) {
+		if ( tabTerm === 'all' ) {
 			$section.attr( 'data-taxonomy', '' );
 			$section.attr( 'data-term', '' );
 		} else {
@@ -114,13 +116,13 @@ function LoadMore( $el ) {
 			dataType: 'json',
 			url: afp_vars.afp_ajax_url,
 			data,
-			success( data, textStatus, XMLHttpRequest ) {
+			success( response ) {
 				const $topItem = $el.find( '.feed-items-top' );
 				const $twitter = $el.find( '.component-twitter' );
 
-				const responseData = data.response;
+				const responseData = response.response;
 
-				if ( tabTerm == 'all' ) {
+				if ( tabTerm === 'all' ) {
 					//slice the array
 					const topPost = responseData.slice( 0, 1 );
 					const otherPosts = responseData.slice( 1, tabCount );
@@ -174,10 +176,9 @@ function LoadMore( $el ) {
 		} );
 	}
 
-	this.init = function ( $el ) {
-		$el = $el;
-		$el.find( '.loadMore' ).on( 'click', initLoadMorePosts );
-		$el.find( '.tab-title' ).on( 'click', tabSwitcher );
+	this.init = function ( $initEl ) {
+		$initEl.find( '.loadMore' ).on( 'click', initLoadMorePosts );
+		$initEl.find( '.tab-title' ).on( 'click', tabSwitcher );
 
 		return this;
 	};

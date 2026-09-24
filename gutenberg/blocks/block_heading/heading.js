@@ -1,5 +1,3 @@
-console.log( 'FLEX/gutenberg/blocks/block_heading/heading.js' );
-
 // Block dependencies
 import classnames from 'classnames';
 import HeadingToolbar from './heading-toolbar';
@@ -16,31 +14,10 @@ const { registerBlockType } = wp.blocks;
 // Please use wp.blockEditor.InnerBlocks.Content instead.
 // const { InnerBlocks } = wp.editor;
 
-const {
-	AlignmentToolbar,
-	BlockAlignmentToolbar,
-	BlockControls,
-	InnerBlocks,
-	InspectorControls,
-	MediaUpload,
-	RichText,
-	URLInput,
-} = wp.blockEditor;
+const { AlignmentToolbar, InspectorControls, MediaUpload, RichText, URLInput } =
+	wp.blockEditor;
 
-const {
-	Button,
-	ButtonGroup,
-	CheckboxControl,
-	Dashicon,
-	PanelBody,
-	PanelRow,
-	TextControl,
-	Toolbar,
-	ToolbarButton,
-	Tooltip,
-} = wp.components;
-
-const { setState, withSelect, withDispatch } = wp.data;
+const { Button, CheckboxControl, PanelBody } = wp.components;
 
 // Internal dependencies
 import BackgroundColorOptions, {
@@ -152,27 +129,19 @@ export default registerBlockType( 'flexlayout/heading', {
 			attributes: {
 				align,
 				content,
-				dataComponentName,
-				dataComponentOptions,
-				hangingQuote,
 				hangingQuoteClass,
 				imgID,
 				imgURL,
-				isSelected,
 				level,
 				placeholder,
 				url,
-				backgroundColor,
-				backgroundOpacity,
 			},
 			className,
 			onReplace,
 			setAttributes,
 		} = props;
 
-		const tagName = 'h' + level;
-
-		const HangingQuoteCheckbox = ( a, b ) => {
+		const HangingQuoteCheckbox = () => {
 			// console.log('HangingQuoteCheckbox, props.attributes.hangingQuote: a: b: ', props.attributes.hangingQuote, typeof props.attributes.hangingQuote, a, b);
 
 			return (
@@ -185,9 +154,9 @@ export default registerBlockType( 'flexlayout/heading', {
 			);
 		};
 
-		const onChangeMessage = ( content ) => {
+		const onChangeMessage = ( newContent ) => {
 			setAttributes( {
-				content,
+				content: newContent,
 			} );
 		};
 
@@ -231,7 +200,7 @@ export default registerBlockType( 'flexlayout/heading', {
 		};
 
 		return [
-			<InspectorControls>
+			<InspectorControls key="inspector">
 				<BackgroundColorOptions { ...props } />
 				<TextColorOptions { ...props } />
 				<BorderOptions { ...props } />
@@ -292,8 +261,8 @@ export default registerBlockType( 'flexlayout/heading', {
 									className={ 'button button-large' }
 									onClick={ open }
 								>
-									{ icons.upload }
-									{ __( ' Upload Image', 'flexlayout' ) }
+									{ icons.upload }{ ' ' }
+									{ __( 'Upload Image', 'flexlayout' ) }
 								</Button>
 							) }
 						></MediaUpload>
@@ -310,13 +279,14 @@ export default registerBlockType( 'flexlayout/heading', {
 							>
 								{ icons.remove }
 							</Button>
-							<img src={ imgURL } />
+							<img src={ imgURL } alt="" />
 						</div>
 					) }
 				</PanelBody>
 				<DataComponentNameOptions { ...props } />
 			</InspectorControls>,
 			<div
+				key="block"
 				className={ classnames(
 					`component-heading`,
 					`${ hangingQuoteClass }`,
@@ -334,8 +304,9 @@ export default registerBlockType( 'flexlayout/heading', {
 					onLoad={ setHangingQuote }
 					src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' %3E%3Cpath d=''/%3E%3C/svg%3E"
 					style={ svgHeight }
+					alt=""
 				/>
-				<img src={ imgURL } />
+				<img src={ imgURL } alt="" />
 				<RichText
 					className={ classnames(
 						`text-align-${ align }`,
@@ -361,14 +332,7 @@ export default registerBlockType( 'flexlayout/heading', {
 		];
 	},
 
-	save( data ) {
-		console.log(
-			'heading.js > save(data:) "',
-			data.attributes.content,
-			'" ',
-			data
-		);
-
+	save() {
 		return null;
 	},
 	// save(data) {

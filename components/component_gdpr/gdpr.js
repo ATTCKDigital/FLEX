@@ -1,8 +1,6 @@
-import $ from 'jquery';
-
 //GDPR
 function GDPR( $el ) {
-	function setCookie( cname, cvalue, exdays ) {
+	function setCookie() {
 		const d = new Date();
 		d.setTime( d.getTime() + 30 * 24 * 60 * 60 * 1000 );
 		const expires = 'expires=' + d.toUTCString();
@@ -15,10 +13,10 @@ function GDPR( $el ) {
 		const ca = document.cookie.split( ';' );
 		for ( let i = 0; i < ca.length; i++ ) {
 			let c = ca[ i ];
-			while ( c.charAt( 0 ) == ' ' ) {
+			while ( c.charAt( 0 ) === ' ' ) {
 				c = c.substring( 1 );
 			}
-			if ( c.indexOf( name ) == 0 ) {
+			if ( c.indexOf( name ) === 0 ) {
 				return c.substring( name.length, c.length );
 			}
 		}
@@ -27,7 +25,7 @@ function GDPR( $el ) {
 
 	function checkCookie() {
 		const allowCookies = getCookie( 'allowCookies' );
-		if ( allowCookies == 'yes' ) {
+		if ( allowCookies === 'yes' ) {
 			setCookie( 'allowCookies', 'yes', 90 );
 			$el.addClass( 'hideGDPR' );
 		} else {
@@ -41,7 +39,7 @@ function GDPR( $el ) {
 		checkCookie();
 	}
 
-	this.init = function ( $el ) {
+	this.init = function () {
 		bindEvents();
 
 		return this;

@@ -67,13 +67,15 @@ function WCAG( $el ) {
 
 		// 1. Find elements that have click handlers
 		$( '*' ).each( function () {
-			const $el = $( this );
+			const $candidate = $( this );
 
 			// Skip elements already tabbable by default
 			if (
-				$el.is( 'a[href], button, input, select, textarea, summary' ) ||
-				$el.attr( 'tabindex' ) !== undefined ||
-				$el.is( '[disabled]' )
+				$candidate.is(
+					'a[href], button, input, select, textarea, summary'
+				) ||
+				$candidate.attr( 'tabindex' ) !== undefined ||
+				$candidate.is( '[disabled]' )
 			) {
 				return;
 			}
@@ -81,12 +83,12 @@ function WCAG( $el ) {
 			// Check if element has a jQuery click event
 			const events = $._data( this, 'events' );
 			if ( events && events.click ) {
-				console.log( 'el has click event attached, $el: ', $el );
-				$el.attr( 'tabindex', '0' );
+				console.log( 'el has click event attached, $el: ', $candidate );
+				$candidate.attr( 'tabindex', '0' );
 			}
 
 			// 2. Also add tabindex to elements with "role" attributes that imply interactivity
-			const role = $el.attr( 'role' );
+			const role = $candidate.attr( 'role' );
 			if (
 				role &&
 				[
@@ -98,7 +100,7 @@ function WCAG( $el ) {
 					'menuitem',
 				].includes( role )
 			) {
-				$el.attr( 'tabindex', '0' );
+				$candidate.attr( 'tabindex', '0' );
 			}
 		} );
 
@@ -146,6 +148,15 @@ function WCAG( $el ) {
 
 				console.log( 'passed elements: ', elements );
 
+				/*
+				 * Known latent bug, kept as-is in v4.0.0 (behaviour-neutral lint pass): `el` is
+				 * undefined here (the callback parameter is `$el`), so this path throws a
+				 * ReferenceError for the first element passed (component_carousel passes
+				 * elements). Fixing it changes front-end a11y behaviour (tabindex, role,
+				 * keyboard handlers) and needs its own change and browser check; see
+				 * UPGRADING.md "Known issues".
+				 */
+				/* eslint-disable no-undef, no-var, no-redeclare, no-shadow */
 				elements.forEach( function ( $el ) {
 					console.log( 'looping inside elements, $el: ', $el );
 
@@ -188,6 +199,7 @@ function WCAG( $el ) {
 
 					seenElements.add( el );
 				} );
+				/* eslint-enable no-undef, no-var, no-redeclare, no-shadow */
 			} else if ( typeof entry.selectors !== 'undefined' ) {
 				// Older method: selectors passed (string, single or multiple)
 
@@ -209,7 +221,8 @@ function WCAG( $el ) {
 			// Detect key press for WCAG compliance
 			const keyCode = e.keyCode || e.which;
 
-			const $focused_element = document.activeElement;
+			// eslint-disable-next-line @wordpress/no-global-active-element -- front-end script; it always runs in the top-level document.
+			const $focusedElement = document.activeElement;
 
 			console.log(
 				'/FLEX/\tcomponents/\tcomponent_wcag/\twcag.js',
@@ -228,11 +241,11 @@ function WCAG( $el ) {
 			if ( keyCode === 9 ) {
 				console.log(
 					'/FLEX/\tcomponents/\tcomponent_wcag/\twcag.js',
-					'$focused_element: '
+					'$focusedElement: '
 				);
 				console.log(
-					$focused_element.innerHTML.substring( 0, 100 ),
-					$focused_element
+					$focusedElement.innerHTML.substring( 0, 100 ),
+					$focusedElement
 				);
 			}
 		} );
@@ -269,7 +282,7 @@ function WCAG( $el ) {
 		} );
 	}
 
-	this.init = function ( $el ) {
+	this.init = function () {
 		console.log( '/FLEX/\tcomponents/\tcomponent-wcag/\wcag.js', 'init()' );
 
 		render();

@@ -1,3 +1,5 @@
+// stylelint-disable scss/at-extend-no-missing-placeholder -- extends public FLEX classes (.component-top-border) that markup also uses; placeholders would change the generated selectors.
+
 /**** Global Twitter Styles ****/
 
 .component-twitter {

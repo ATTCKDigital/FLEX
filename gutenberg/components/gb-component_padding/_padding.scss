@@ -28,8 +28,9 @@
 								// This is the correct function for the 8, 16, 32, 64 sequence
 								// I.e., Geometric growth
 								// https://www.mathway.com/popular-problems/Algebra/965626
-								padding-#{$position}: #{$counterIncrement *
-									_pow(2, $i)}px;
+								$geo: $counterIncrement * _pow(2, $i);
+
+								padding-#{$position}: #{$geo}px;
 							}
 						}
 					}
@@ -51,8 +52,9 @@
 							// This is the correct function for the 8, 16, 32, 64 sequence
 							// I.e., Geometric growth
 							// https://www.mathway.com/popular-problems/Algebra/965626
-							padding-#{$position}: #{$counterIncrement *
-								_pow(2, $i)}px;
+							$geo: $counterIncrement * _pow(2, $i);
+
+							padding-#{$position}: #{$geo}px;
 						}
 					}
 

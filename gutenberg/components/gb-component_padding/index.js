@@ -1,10 +1,7 @@
 // WordPress dependencies
 const { __ } = wp.i18n;
 
-const { ColorPalette, PanelColorSettings, MediaUpload } = wp.blockEditor;
-
-const { Button, Dashicon, PanelBody, PanelRow, RangeControl, SelectControl } =
-	wp.components;
+const { PanelBody, PanelRow, SelectControl } = wp.components;
 
 // Internal dependencies
 import PaddingOptionsAttributes from './attributes';
@@ -16,7 +13,6 @@ export { PaddingOptionsAttributes, PaddingOptionsClasses };
 
 function PaddingOptions( props ) {
 	const setPadding = ( which, value ) => {
-		const paddingEdited = '';
 		let paddingEditedCount = 0;
 
 		// Save prop
@@ -1515,6 +1511,7 @@ function PaddingOptions( props ) {
 
 	return (
 		<PanelBody
+			// eslint-disable-next-line @wordpress/i18n-no-variables -- label is built at runtime; kept as-is (behaviour-neutral lint pass)
 			title={ __(
 				'Padding ' + ( props.attributes.paddingEdited || setPadding() )
 			) }
@@ -1522,6 +1519,7 @@ function PaddingOptions( props ) {
 			initialOpen={ false }
 		>
 			<img
+				alt=""
 				// Use empty SVG to trigger onload event
 				// Onload hack fires when block is added
 				className="onload-hack-pp"

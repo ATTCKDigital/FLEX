@@ -1,5 +1,3 @@
-console.log( 'FLEX/gutenberg/blocks/block_column/column.js' );
-
 // Block dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js';
@@ -9,24 +7,10 @@ const { __ } = wp.i18n;
 
 const { registerBlockType } = wp.blocks;
 
-const {
-	AlignmentToolbar,
-	BlockAlignmentToolbar,
-	BlockControls,
-	InspectorControls,
-	InnerBlocks,
-} = wp.blockEditor;
+const { AlignmentToolbar, BlockControls, InspectorControls, InnerBlocks } =
+	wp.blockEditor;
 
-const {
-	Button,
-	ButtonGroup,
-	Dashicon,
-	IconButton,
-	PanelBody,
-	PanelRow,
-	Toolbar,
-	Tooltip,
-} = wp.components;
+const { Button, ButtonGroup, Toolbar, Tooltip } = wp.components;
 
 const { createHigherOrderComponent } = wp.compose;
 
@@ -106,16 +90,14 @@ export default registerBlockType( 'flexlayout/column', {
 			attributes: {
 				align,
 				anchor,
-				advancedId,
 				dataComponentName,
 				dataComponentOptions,
-				verticalAlignment,
 			},
 			setAttributes,
 		} = props;
 
 		return [
-			<InspectorControls>
+			<InspectorControls key="inspector">
 				<BackgroundOptions { ...props } />
 				<ColumnOptions { ...props } />
 				<BorderOptions { ...props } />
@@ -124,7 +106,7 @@ export default registerBlockType( 'flexlayout/column', {
 				<AnchorOptions { ...props } />
 				<DataComponentNameOptions { ...props } />
 			</InspectorControls>,
-			<BlockControls>
+			<BlockControls key="controls">
 				<AlignmentToolbar
 					value={ align }
 					onChange={ ( nextAlign ) => {
@@ -212,6 +194,7 @@ export default registerBlockType( 'flexlayout/column', {
 				</Toolbar>
 			</BlockControls>,
 			<div
+				key="block"
 				id={ anchor }
 				className={ `component-${ dataComponentName }` }
 				style={ {

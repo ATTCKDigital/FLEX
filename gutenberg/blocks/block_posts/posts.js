@@ -2,7 +2,7 @@
 
 const { registerBlockType } = wp.blocks;
 const { __ } = wp.i18n;
-const { InspectorControls, InnerBlocks, useBlockProps } = wp.blockEditor;
+const { InspectorControls } = wp.blockEditor;
 const {
 	PanelBody,
 	SelectControl,
@@ -10,10 +10,8 @@ const {
 	ToggleControl,
 	FormTokenField,
 	TextControl,
-	Spinner,
 } = wp.components;
 const { withSelect } = wp.data;
-const classnames = window.classnames;
 const ServerSideRender = wp.serverSideRender;
 
 registerBlockType( 'flexlayout/posts', {
@@ -88,9 +86,6 @@ registerBlockType( 'flexlayout/posts', {
 		attributes,
 		setAttributes,
 		typesList,
-		currentTaxonomies,
-		termsMap,
-		posts,
 		availableMetaKeys,
 	} ) {
 		const {
@@ -107,7 +102,7 @@ registerBlockType( 'flexlayout/posts', {
 			customFields,
 		} = attributes;
 		return [
-			<InspectorControls>
+			<InspectorControls key="inspector">
 				<PanelBody title={ __( 'Settings' ) }>
 					<SelectControl
 						label={ __( 'Post Type' ) }
@@ -127,7 +122,9 @@ registerBlockType( 'flexlayout/posts', {
 					<SelectControl
 						label={ __( 'Order By' ) }
 						value={ orderBy }
-						onChange={ ( orderBy ) => setAttributes( { orderBy } ) }
+						onChange={ ( nextOrderBy ) =>
+							setAttributes( { orderBy: nextOrderBy } )
+						}
 						options={ [
 							{ label: 'Date', value: 'date' },
 							{ label: 'Title', value: 'title' },
@@ -139,7 +136,9 @@ registerBlockType( 'flexlayout/posts', {
 					<SelectControl
 						label={ __( 'Order' ) }
 						value={ order }
-						onChange={ ( order ) => setAttributes( { order } ) }
+						onChange={ ( nextOrder ) =>
+							setAttributes( { order: nextOrder } )
+						}
 						options={ [
 							{ label: 'Descending', value: 'DESC' },
 							{ label: 'Ascending', value: 'ASC' },
@@ -209,7 +208,7 @@ registerBlockType( 'flexlayout/posts', {
 				</PanelBody>
 			</InspectorControls>,
 
-			<div className="wp-block-flexlayout-posts">
+			<div key="block" className="wp-block-flexlayout-posts">
 				<ServerSideRender
 					block="flexlayout/posts"
 					attributes={ attributes }

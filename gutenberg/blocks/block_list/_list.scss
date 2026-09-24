@@ -1,3 +1,5 @@
+// stylelint-disable scss/at-extend-no-missing-placeholder -- extends public FLEX classes (.is-style-body1, .list-columns) that markup also uses; placeholders would change the generated selectors.
+
 .component-list {
 	a {
 		color: color("text", "link");

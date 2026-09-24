@@ -8,7 +8,6 @@
 	@include primary-regular;
 	@include font-size($font-size-body-text);
 	background-color: color("secondary", "white");
-	border-color: color("text", "body");
 	border-radius: $buttonBorderRadius;
 	border: 1px solid color("secondary", "white");
 	box-shadow: none;
@@ -117,6 +116,7 @@
 		font-size: 0.77692rem;
 		font-weight: 600;
 		letter-spacing: 0.1rem;
+		// stylelint-disable-next-line declaration-property-unit-allowed-list -- rem line-height kept: converting it to px or unitless changes the rendered line box.
 		line-height: 0.5rem;
 		min-height: auto;
 		padding: $gap * 2 $gap * 4;

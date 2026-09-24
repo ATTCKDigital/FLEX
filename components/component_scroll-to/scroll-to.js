@@ -28,17 +28,15 @@ function ScrollTo( $el ) {
 		);
 	}
 
-	this.init = function ( $el ) {
+	this.init = function ( $initEl ) {
 		console.log(
 			'/FLEX/\tcomponents /\component_scroll-to/\t ScrollTo',
 			'init()'
 		);
 
-		$el = $el;
-
 		// Retrieve JSON options from block properties
-		if ( typeof $el.data( 'componentOptions' ) !== 'undefined' ) {
-			anchor = $el.data( 'componentOptions' );
+		if ( typeof $initEl.data( 'componentOptions' ) !== 'undefined' ) {
+			anchor = $initEl.data( 'componentOptions' );
 
 			if ( ! Array.isArray( anchor ) ) {
 				anchor = [ anchor ];

@@ -1,9 +1,8 @@
 /**
- * Set inline styles.
- * @param {Object} props   - The block object.
- * @param          hex
- * @param          opacity
- * @return {Object} The inline background type CSS.
+ * Convert a hex colour to rgba().
+ * @param {string} hex     - The hex colour.
+ * @param {number} opacity - The opacity (0-100).
+ * @return {string} The rgba() colour, or the input unchanged if not a hex colour.
  */
 function hexToRgba( hex, opacity = 100 ) {
 	if ( typeof hex !== 'string' || ! hex.startsWith( '#' ) ) {
@@ -80,6 +79,7 @@ function BackgroundOptionsInlineStyles( props ) {
 
 		return style;
 	} catch ( err ) {
+		// eslint-disable-next-line no-console -- reports inline-style computation errors to the developer
 		console.error( 'err: ', err );
 		return {};
 	}

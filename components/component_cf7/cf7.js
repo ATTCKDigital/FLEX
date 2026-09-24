@@ -12,7 +12,7 @@ if ( ! FLEX.isProd ) {
  * — Applies waiting state to submit button, preventing duplicate
  *   entries arising from users clicking the submit button multiple
  *   times thinking nothing is happening.
- * @param $el
+ * @param {jQuery} $el
  */
 function CF7( $el ) {
 	// Listens for CF7 DOM events
@@ -146,14 +146,16 @@ function CF7( $el ) {
 			originalSubmitTextValue.length / 3
 		);
 
+		// eslint-disable-next-line no-unused-vars -- the computed label is not applied yet; removing this chain would also drop the .length reads above, which currently throw without originalSubmitTextValue data (behaviour-neutral pass).
 		const submitTextValue = isInProgress
 			? replacementSubmitTextValue
 			: $form.data( 'originalSubmitTextValue' ); //&#x22EF;'; //
-		const $submitButton = $( 'input[type=submit]', $form );
 
 		if ( typeof $form === 'undefined' ) {
 			return console.error( 'form element is required' );
 		}
+
+		const $submitButton = $( 'input[type=submit]', $form );
 
 		// Tag the submit button with a CSS class attribute
 		$submitButton.toggleClass( 'cta-disabled', isInProgress );
@@ -169,7 +171,7 @@ function CF7( $el ) {
 		return isInProgress;
 	}
 
-	this.init = function ( $el ) {
+	this.init = function () {
 		console.log( '/FLEX/\tcomponents/\tcomponent-cf7/\tcf7.js', 'init()' );
 
 		loadCF7Forms();

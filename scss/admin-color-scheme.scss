@@ -1,5 +1,8 @@
 /**** Admin Color Schemes ****/
 .admin-color-coffee {
+	// Nested @import scopes the scheme under .admin-color-coffee; the WS4 @use migration replaces it with a mixin.
+	// stylelint-disable no-invalid-position-at-import-rule
 	@import "_admin-color-scheme-dev";
 	@import "_admin-color-scheme";
+	// stylelint-enable no-invalid-position-at-import-rule
 }

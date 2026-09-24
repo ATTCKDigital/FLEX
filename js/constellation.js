@@ -1,3 +1,4 @@
+/* global THREE, requestAnimationFrame, cancelAnimationFrame */
 document.addEventListener( 'DOMContentLoaded', function () {
 	let scene, camera, renderer, particles, lines;
 	let animationId;
@@ -303,7 +304,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
 
 		// Pre-calculate hop distances using BFS
 		const calculateHopDistances = () => {
-			const allHopDistances = [];
+			const hopDistancesBySource = [];
 
 			for (
 				let sourceIndex = 0;
@@ -331,10 +332,10 @@ document.addEventListener( 'DOMContentLoaded', function () {
 					}
 				}
 
-				allHopDistances[ sourceIndex ] = hopDistances;
+				hopDistancesBySource[ sourceIndex ] = hopDistances;
 			}
 
-			return allHopDistances;
+			return hopDistancesBySource;
 		};
 
 		allHopDistances = calculateHopDistances();

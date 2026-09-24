@@ -2,7 +2,7 @@
 function Test( $el ) {
 	//Add your functions here.
 
-	this.init = function ( $el ) {
+	this.init = function () {
 		return this;
 	};
 

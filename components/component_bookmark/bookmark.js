@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import FLEX from 'FLEX/js/client-namespace';
 
 if ( ! FLEX.isProd ) {
@@ -10,33 +9,10 @@ if ( ! FLEX.isProd ) {
 
 /**
  * Display a calendar selector
- * @param $el
+ * @param {jQuery} $el
  */
 function Bookmark( $el ) {
-	// Cache the body
-	const $body = $( 'body' );
-
-	function bindEvents() {
-		$el = $el;
-
-		$( 'a[href="/#bookmark"]' ).on( 'click', openBookmark );
-	}
-
-	function openBookmark() {
-		if ( window.sidebar ) {
-			// Mozilla Firefox Bookmark
-			window.sidebar.addPanel( location.href, document.title, '' );
-		} else if ( window.external ) {
-			// IE Favorite
-			window.external.AddFavorite( location.href, document.title );
-		} else if ( window.opera && window.print ) {
-			// Opera Hotlist
-			this.title = document.title;
-			return true;
-		}
-	}
-
-	this.init = function ( $el ) {
+	this.init = function () {
 		console.log(
 			'/FLEX\t/components\t/component_analytics\t/bookmark.js',
 			'Bookmark.init()'

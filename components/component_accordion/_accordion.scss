@@ -1,5 +1,5 @@
 .component-accordion {
-	border-top: 1px solid black;
+	border-top: 1px solid #000;
 
 	.accordionContent {
 		display: block;
@@ -9,7 +9,7 @@
 	}
 
 	.accordionItem {
-		border-bottom: 1px solid black;
+		border-bottom: 1px solid #000;
 		cursor: pointer;
 
 		.accordionHeader {

@@ -15,10 +15,10 @@ function PopupController( $el ) {
 		const counter = 0;
 
 		$buttons.each(
-			( function ( counter ) {
-				const n = counter++;
+			( function ( startCount ) {
+				const n = startCount++;
 
-				return function ( index ) {
+				return function () {
 					$( this ).on( 'click', function ( e ) {
 						e.preventDefault();
 
@@ -51,15 +51,12 @@ function PopupController( $el ) {
 		switch ( true ) {
 			case popupName.startsWith( 'https://projectdomain.org/subfolder' ):
 				return window.open( popupName );
-				break;
 
 			case popupName.startsWith( 'https://projectdomain.org/' ):
 				return window.open( popupName, '_self' );
-				break;
 
 			case popupName.startsWith( 'http' ):
 				return window.open( popupName );
-				break;
 		}
 
 		// ...Otherwise, use the popup template on the page
@@ -92,8 +89,8 @@ function PopupController( $el ) {
 		bindClosePopup( $closeButton );
 	}
 
-	function bindClosePopup( $el ) {
-		$el.on( 'click', ( e ) => {
+	function bindClosePopup( $target ) {
+		$target.on( 'click', ( e ) => {
 			e.preventDefault();
 
 			closePopup();
@@ -113,28 +110,26 @@ function PopupController( $el ) {
 		} );
 	}
 
-	function closePopup( $el = $popupEl ) {
-		if ( typeof $el !== 'undefined' ) {
+	function closePopup( $popupToClose = $popupEl ) {
+		if ( typeof $popupToClose !== 'undefined' ) {
 			$popupEl.remove();
 		}
 	}
 
-	this.init = function ( $el ) {
+	this.init = function ( $element ) {
 		console.log(
 			'/FLEX/\tgutenberg /\tblocks/\t Popup Controller',
 			'init()'
 		);
 
-		$el = $el;
-
 		// Retrieve JSON options from block properties
-		popupNames = $el.data( 'componentOptions' );
+		popupNames = $element.data( 'componentOptions' );
 
 		if ( ! Array.isArray( popupNames ) ) {
 			popupNames = [ popupNames ];
 		}
 
-		$buttons = $( '.open-popup-button', $el );
+		$buttons = $( '.open-popup-button', $element );
 
 		if ( ! $buttons ) {
 			return;

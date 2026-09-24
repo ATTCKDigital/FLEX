@@ -9,49 +9,27 @@ if ( ! FLEX.isProd ) {
 
 /**
  * Carousel component
- * @param $el
- * @param params
+ * @param {jQuery} $el
  */
-function Carousel( $el, params = {} ) {
+function Carousel( $el ) {
 	console.log(
 		'/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js',
 		'Carousel()'
 	);
 
-	const defaults = {
-		accessibility: true,
-		arrows: false,
-		dots: false,
-		prevArrow:
-			'<button class="slick-prev"><svg class="icon icon-page-left">' +
-			'<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-page-left"></use>' +
-			'</svg><span class="sr-only">Previous slide</span></button>',
-		nextArrow:
-			'<button class="slick-next"><svg class="icon icon-page-right">' +
-			'<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-page-left"></use>' +
-			'</svg><span class="sr-only">Next slide</span></button>',
-	};
-
 	const _$el = $el;
 	let _index = 0;
-	let _carouselWidth;
 	let _CSStransitionInProgress = false;
 	let _$dotsContainer;
 	let _fullCarouselWidth;
 	let _lastScrollableSlide;
 	let _maxVisibleSlides;
-	let _nextIndex = 0;
-	let _prevIndex = 0;
 	let _slideWidth;
 	let _$slides;
 	let _$slidesContainer;
 	let _slidesLength;
 	let _visibleGap;
 	let _vwGaptoPx;
-
-	// Merge any options set on the DOM element with
-	// the component defaults set above
-	const options = $.extend( true, {}, defaults, params );
 
 	function bindEvents() {
 		console.log(
@@ -286,9 +264,6 @@ function Carousel( $el, params = {} ) {
 		$( '.slides-container-inner', $el ).css( {
 			width: _fullCarouselWidth,
 		} );
-
-		// - Get visible carousel width
-		_carouselWidth = _$slidesContainer.outerWidth();
 	}
 
 	function go() {
@@ -377,19 +352,14 @@ function Carousel( $el, params = {} ) {
 			_index <= _lastScrollableSlide - 1
 		) {
 			_index = _index + 1;
-			_prevIndex = _index - 1;
 
 			// If current active slide still isn't at the end
 			// bump up nextIndex
 			if ( _index <= _slidesLength ) {
-				_nextIndex = _index + 1;
-
 				$( '.nav', $el ).removeClass( 'disabled' );
 
 				// Stop at max visible slides index
 				if ( _index >= _lastScrollableSlide ) {
-					_nextIndex = _index - 1;
-
 					_CSStransitionInProgress = false;
 					$( '.nav.next', $el ).addClass( 'disabled' );
 				}
@@ -398,15 +368,12 @@ function Carousel( $el, params = {} ) {
 				//nextIndex = 0;
 
 				// Otherwise, stop at current index
-				_nextIndex = _index - 1;
 
 				_CSStransitionInProgress = false;
 				$( '.nav.next', $el ).addClass( 'disabled' );
 			}
 		} else {
 			_index = 0;
-			_nextIndex = _index + 1;
-			_prevIndex = _slidesLength;
 
 			_CSStransitionInProgress = false;
 			$( '.nav.next', $el ).addClass( 'disabled' );
@@ -436,13 +403,11 @@ function Carousel( $el, params = {} ) {
 			_index = _index - 1;
 
 			// [ ] [p] [i] [n] [ ]
-			_nextIndex = _index + 1;
 
 			// If current active slide still isn't at the end,
 			if ( _index > 0 ) {
 				// drop down prevIndex.
 				// [p] [i] [n] [ ] [ ]
-				_prevIndex = _index - 1;
 
 				$( '.nav', $el ).removeClass( 'disabled' );
 			} else {
@@ -452,7 +417,6 @@ function Carousel( $el, params = {} ) {
 				// prevIndex = $slides.length;
 
 				// Otherwise, stop at the beginning
-				_prevIndex = _index - 1;
 
 				_CSStransitionInProgress = false;
 				$( '.nav.prev', $el ).addClass( 'disabled' );
@@ -465,8 +429,6 @@ function Carousel( $el, params = {} ) {
 
 			// Otherwise, stop at the beginning
 			_index = 0;
-			_nextIndex = 1;
-			_prevIndex = -1;
 
 			_CSStransitionInProgress = false;
 			$( '.nav.prev', $el ).addClass( 'disabled' );
@@ -496,24 +458,6 @@ function Carousel( $el, params = {} ) {
 		if ( _index !== arg ) {
 			// go to index
 			_index = arg;
-
-			// If current active slide isn't at the end
-			if ( _index < _slidesLength ) {
-				_nextIndex = _index + 1;
-
-				// If current active slide isnt at the beginning,
-				if ( _index > 0 ) {
-					// drop down prevIndex.
-					// [p] [i] [n] [ ] [ ]
-					_prevIndex = _index - 1;
-				} else {
-					_prevIndex = _slidesLength;
-				}
-			} else {
-				// TODO: (DP) Move this to passable options.
-				_nextIndex = 0;
-				_prevIndex = _index - 1;
-			}
 		}
 
 		go();
@@ -644,7 +588,7 @@ function Carousel( $el, params = {} ) {
 		} );
 	}
 
-	this.init = function ( $el ) {
+	this.init = function () {
 		console.log(
 			'/child/\tcomponents	/\tcomponent_carousel/\t	carousel.js',
 			'init',

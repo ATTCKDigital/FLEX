@@ -1,7 +1,7 @@
 /**
  * Set scroller output.
  * @param {Object} props - The block object.
- * @return {string} The scroller output container.
+ * @return {Element|undefined} The scroller output container, or undefined when the scroller is off.
  */
 function ScrollerOptionsOutput( props ) {
 	if ( props.attributes.showScroller ) {

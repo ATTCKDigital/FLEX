@@ -15,7 +15,7 @@ if ( ! FLEX.isProd ) {
  * Default behavior is to fade in specific elements - this behavior/animation/transition is handled via css
  * TODO: Add more useage info.
  * TODO: Add options JSON for different effects. JSON could include timing & premade effects.
- * @param $el
+ * @param {jQuery} $el
  */
 function ScrollIn( $el ) {
 	// console.log('/scroll-in.js', 'ScrollIn()');
@@ -82,7 +82,7 @@ function ScrollIn( $el ) {
 			scrollThreshold = _viewportHeight * 0.8;
 		}
 
-		$.each( $$( '.transition-when-visible' ), function ( index, value ) {
+		$.each( $$( '.transition-when-visible' ), function () {
 			const verticalScrollThreshold = _currentScrollTop + scrollThreshold;
 			const thisElementOffset = $( this ).offset().top;
 
@@ -128,7 +128,7 @@ function ScrollIn( $el ) {
 		// Add elements that need to be manipulated here
 		$( 'body' )
 			.find( elementsToHide )
-			.each( function ( index, value ) {
+			.each( function () {
 				if (
 					! $( this ).hasClass( 'no-element-in-view' ) &&
 					! $( this ).parents( '.no-element-in-view' ).length
@@ -152,7 +152,7 @@ function ScrollIn( $el ) {
 		} );
 	}
 
-	this.init = function ( $el ) {
+	this.init = function () {
 		// console.log('/FLEX/\tjs/\tscroll-in.js', 'init()');
 
 		bindEvents();

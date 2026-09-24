@@ -1,3 +1,4 @@
+/* global ga */
 import FLEX from 'FLEX/js/client-namespace';
 
 if ( ! FLEX.isProd ) {
@@ -22,16 +23,11 @@ function Analytics( $el ) {
 
 		// Check for any class = track-analytics
 		// Try to find event info in data attributes
-		$( '.track-analytics' ).filter( function () {
-			const eventID = $( this ).attr( 'data-event-id' );
-			const eventSource = $( this ).attr( 'data-event-source' );
-			const eventMedium = $( this ).attr( 'data-event-medium' );
-		} );
 
 		// Try to find event info in classes
 		console.log( '/— $(".track-event"): ', '', $( '.track-event' ) );
 
-		$( '.track-event' ).filter( function () {
+		$( '.track-event' ).each( function () {
 			const classes = this.className.split( /\s/ );
 			console.log( '/— classes: ', classes );
 
@@ -97,45 +93,7 @@ function Analytics( $el ) {
 		} );
 	}
 
-	function recordEvent( event ) {
-		console.log(
-			'/FLEX/\tcomponents/\tcomponent-analytics/\tanalytics.js',
-			'recordEvent()'
-		);
-
-		// Sent event to Gogle Analytics (GA)
-	}
-
-	function trackEvent( e ) {
-		// console.log('/FLEX/\tcomponents/\tcomponent-analytics/\tanalytics.js', 'trackEvent()');
-		// console.log('/— e: ', 'object:', e);
-
-		// Set up defaults so switch below doesn't fail
-		e.data = e.data || {};
-
-		// NOTE: Don't prevent default behavior
-		// e.preventDefalt();
-
-		// Process different event types
-		switch ( true ) {
-			case e.data.type === 'click':
-				console.log( '/— type: ', 'click', e.target );
-				break;
-
-			case e.data.type === 'hover':
-				console.log( '/— type: ', 'hover', e.target );
-				break;
-
-			case e.data.type === 'mouseenter':
-				console.log( '/— type: ', 'mouseenter', e.target );
-				break;
-
-			default:
-				console.log( '/— type: ', 'no event type passed' );
-		}
-	}
-
-	this.init = function INIT( $el ) {
+	this.init = function INIT() {
 		console.log(
 			'/FLEX/\tcomponents/\tcomponent-analytics/\tanalytics.js',
 			'init()'

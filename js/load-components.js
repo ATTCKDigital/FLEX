@@ -1,5 +1,5 @@
 import FLEX from './client-namespace';
-import Debug from './debug';
+import './debug';
 
 if ( ! FLEX.isProd ) {
 	console.log( 'loaded', '/FLEX\t/js\t/load-components.js' );
@@ -9,7 +9,7 @@ if ( ! FLEX.isProd ) {
 // Required
 // Launch TODO: Comment out any unused components for production. -DP
 // Global utility components (REQUIRED)
-import $$ from '../components/component_cached-dom-elements/cached-dom-elements';
+import '../components/component_cached-dom-elements/cached-dom-elements';
 import Analytics from '../components/component_analytics/analytics';
 import CF7 from '../components/component_cf7/cf7';
 import LoadMore from '../components/component_load-more/load-more';
@@ -23,7 +23,7 @@ import HeightMatch from '../components/component_height-match/height-match';
 // Interactive components
 import Accordion from '../components/component_accordion/accordion';
 import Bookmark from '../components/component_bookmark/bookmark';
-import CalendarLink from '../components/component_calendar-link/calendarlink';
+import '../components/component_calendar-link/calendarlink';
 import Carousel from '../components/component_carousel/carousel';
 import CopyLink from '../components/component_copy-link/copylink';
 import Nav from '../components/component_nav/nav';
@@ -181,19 +181,19 @@ FLEX.Loader.loadComponent = function ( $el ) {
 	componentName = componentName.split( ' ' );
 
 	$.each( componentName, function ( i, el ) {
-		const componentName = el;
+		const singleComponentName = el;
 
 		// Exit if not in component list
-		if ( typeof FLEX.Components[ componentName ] === 'undefined' ) {
+		if ( typeof FLEX.Components[ singleComponentName ] === 'undefined' ) {
 			console.log(
 				'FLEX.js ‹ loadComponents(), unknown component: ',
-				componentName
+				singleComponentName
 			);
 			return;
 		}
 
 		const params = $el.data( 'component-options' ) || {};
-		const instance = new FLEX.Components[ componentName ]( $el, params );
+		new FLEX.Components[ singleComponentName ]( $el, params );
 	} );
 
 	$( document ).trigger( 'components:loaded' );

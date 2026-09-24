@@ -1,7 +1,9 @@
+// stylelint-disable scss/at-extend-no-missing-placeholder -- extends public FLEX classes (.cta, .body) that markup also uses; placeholders would change the generated selectors.
+
 // WordPress Post Password Form
 .post-password-form {
 	align-items: center;
-	background-color: white;
+	background-color: #fff;
 	display: flex;
 	justify-content: center;
 	height: 100%;
@@ -173,7 +175,7 @@ label,
 
 		&::before {
 			border: 0;
-			color: white;
+			color: #fff;
 			content: "\f00c";
 			font-family: $fa-style-family;
 			font-weight: 900;
@@ -245,7 +247,7 @@ label,
 
 .wpcf7-not-valid-tip {
 	@extend .body;
-	color: red;
+	color: #f00;
 	display: block;
 	font-size: 1.2rem;
 	margin-top: $gap * 0.25;
@@ -259,16 +261,13 @@ label,
 	}
 
 	.row-text-white & {
-		color: red;
+		color: #f00;
 	}
 }
 
 .wpcf7-response-output {
 	@extend .body;
-	color: red;
+	color: #f00;
 	clear: both;
 	margin-top: $gap * 2;
-}
-
-.wpcf7-mail-sent-ok {
 }

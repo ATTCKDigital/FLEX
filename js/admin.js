@@ -1,5 +1,3 @@
-console.log( 'FLEX/js/admin.js' );
-
 import './i18n.js';
 
 // Declare the wp.* handles the editor code relies on, then load blocks and filters

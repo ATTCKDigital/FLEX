@@ -11,7 +11,7 @@ if ( ! FLEX.isProd ) {
 /**
  * Copies link URL to clipboard and optionally
  * displays the copied URL under the copied link
- * @param $el
+ * @param {jQuery} $el
  */
 function HeightMatch( $el ) {
 	let _tallestHeight = 0;
@@ -27,7 +27,7 @@ function HeightMatch( $el ) {
 
 	function render() {
 		// Save local reference
-		const $el = _$el;
+		const $group = _$el;
 
 		// Reset
 		_tallestHeight = 0;
@@ -38,10 +38,10 @@ function HeightMatch( $el ) {
 		);
 
 		// Reset heights to find natural height
-		$el.find( '.matchHeight' ).css( 'height', 'auto' );
+		$group.find( '.matchHeight' ).css( 'height', 'auto' );
 
 		// Find tallest element in group
-		$el.find( '.matchHeight' ).each( function ( index, el ) {
+		$group.find( '.matchHeight' ).each( function ( index, el ) {
 			const thisElHeight = $( el ).innerHeight();
 
 			if ( thisElHeight > _tallestHeight ) {
@@ -50,7 +50,7 @@ function HeightMatch( $el ) {
 		} );
 
 		// Set heights of all elements to tallest height
-		$el.find( '.matchHeight' ).each( function ( index, el ) {
+		$group.find( '.matchHeight' ).each( function ( index, el ) {
 			// Don't apply the height change if we're on mobile and the class is set on the element
 			if (
 				jQuery( el ).hasClass( 'height20vhMaxMobile' ) &&
@@ -67,7 +67,7 @@ function HeightMatch( $el ) {
 		} );
 	}
 
-	this.init = function ( $el ) {
+	this.init = function () {
 		console.log(
 			'/FLEX/\tcomponents/\tcomponent_height-match/\theight-match.js',
 			'HeightMatch.init()'

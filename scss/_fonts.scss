@@ -7,6 +7,8 @@ $fa-font-path: "fonts/fontawesome" !default;
 @import "@fortawesome/fontawesome-free/scss/brands";
 @import "@fortawesome/fontawesome-free/scss/regular";
 
+// stylelint-disable scss/operator-no-unspaced -- false positive: stylelint-scss reads the "/" path separators inside unquoted url()s of multi-line `src` lists as division (function-url-quotes requires unquoted url()s).
+
 // HelveticaNeueBlack - latin
 @font-face {
 	font-family: HelveticaNeueBlack;
@@ -375,6 +377,8 @@ $fa-font-path: "fonts/fontawesome" !default;
 			url(~FLEX/assets/fonts/SpecialGothicExpanded/SpecialGothicExpandedOne-Regular.svg#SpecialGothic)
 			format("svg"); /* Legacy iOS */
 }
+
+// stylelint-enable scss/operator-no-unspaced
 
 // Font Variables
 

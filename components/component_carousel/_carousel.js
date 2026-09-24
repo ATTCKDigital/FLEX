@@ -46,7 +46,7 @@ function _carousel( $el ) {
 		// Default to mobile only (add a desktop flag later if necessary)
 	}
 
-	this.init = function ( $el ) {
+	this.init = function () {
 		bindEvents();
 
 		return this;

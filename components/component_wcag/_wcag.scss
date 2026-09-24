@@ -1,7 +1,8 @@
+// stylelint-disable-next-line selector-id-pattern -- id referenced by the skip link markup (#skipToMainContent).
 #skipToMainContent {
-	background: white;
-	border: 2px solid grey;
-	color: black;
+	background: #fff;
+	border: 2px solid #808080;
+	color: #000;
 	display: block;
 	font-size: 1rem;
 	left: $gap;

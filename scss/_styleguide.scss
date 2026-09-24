@@ -1,3 +1,5 @@
+// stylelint-disable scss/at-extend-no-missing-placeholder -- extends public FLEX classes (.body) that markup also uses; placeholders would change the generated selectors.
+
 // styles for styleguide
 .styleguide {
 	padding: $gap * 2;

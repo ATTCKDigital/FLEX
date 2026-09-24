@@ -10,12 +10,9 @@ if ( ! FLEX.isProd ) {
 
 /**
  * Display a calendar selector
- * @param $el
+ * @param {jQuery} $el
  */
 function CalendarLink( $el ) {
-	// Cache the body
-	const $body = $( 'body' );
-
 	function bindEvents() {
 		$el = $el;
 
@@ -28,7 +25,7 @@ function CalendarLink( $el ) {
 		$( '.addeventatc' ).addClass( 'visible' );
 	}
 
-	this.init = function ( $el ) {
+	this.init = function () {
 		console.log(
 			'/FLEX\t/components\t/component-calendar-link\t/calendarlink.js',
 			'CalendarLink.init()'

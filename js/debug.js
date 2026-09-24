@@ -1,6 +1,6 @@
 import FLEX from './client-namespace';
 import $$ from '../components/component_cached-dom-elements/cached-dom-elements';
-import GlobalEvents from './global-events';
+import './global-events';
 
 // const Debug = {
 // 	// Set to true temporarily to enable custom debugging tools.
@@ -22,7 +22,7 @@ FLEX.debug = ( function () {
 			$( document ).on( 'keydown', function ( e ) {
 				switch ( true ) {
 					// Shift + D toggles debug mode
-					case e.key == 'D':
+					case e.key === 'D':
 						debuggingToggle();
 						break;
 
@@ -49,19 +49,6 @@ FLEX.debug = ( function () {
 			$( 'body' ).addClass( className );
 		} else {
 			$( 'body' ).removeClass( className );
-		}
-	}
-
-	function bodyClassToggle() {
-		console.log(
-			'/src\t/scripts\t/FLEX.js',
-			'FLEX.debug.bodyClassToggle()'
-		);
-
-		if ( $( 'body' ).hasClass( 'debug' ) ) {
-			bodyClassSet( false );
-		} else {
-			bodyClassSet( true );
 		}
 	}
 
@@ -140,16 +127,6 @@ FLEX.debug = ( function () {
 		}
 	}
 
-	function breakpointsModeStatusGet() {
-		console.log(
-			'/src\t/scripts\t/FLEX.js',
-			'FLEX.debug.breakpointsModeStatusGet(), breakpointsModeStatus: ' +
-				breakpointsModeStatus
-		);
-
-		return _breakpointsModeStatus;
-	}
-
 	// Manages access to debugModeStatus variable and enforce type
 	function breakpointsModeStatusSet( status ) {
 		console.log(
@@ -172,7 +149,7 @@ FLEX.debug = ( function () {
 		console.log(
 			'/src\t/scripts\t/FLEX.js',
 			'FLEX.debug.debugModeStatusGet(), debugModeStatus: ' +
-				debugModeStatus
+				_debugModeStatus
 		);
 
 		return _debugModeStatus;
@@ -183,7 +160,7 @@ FLEX.debug = ( function () {
 		// Enforce type
 		if ( typeof status !== 'boolean' ) {
 			// Revert to previous value if invalid type passed
-			status = debugModeStatus;
+			status = _debugModeStatus;
 		}
 
 		cookiesSet( 'debug', status );
@@ -274,7 +251,7 @@ FLEX.debug = ( function () {
 		const _log = console.log;
 		const _status = status;
 
-		console.log = function ( logMessage ) {
+		console.log = function () {
 			// Show console logs if explicitly enabled
 			if ( _status === true ) {
 				let argArray = arguments;
@@ -345,7 +322,7 @@ FLEX.debug = ( function () {
 		);
 
 		// Append viewport width and height to the breakpoint label
-		$( document.body ).on( 'initGlobalEventsComplete', function ( e ) {
+		$( document.body ).on( 'initGlobalEventsComplete', function () {
 			showViewportDimensionsOnBreakpointLabel();
 		} );
 

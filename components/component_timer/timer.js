@@ -10,8 +10,8 @@ if ( ! FLEX.isProd ) {
 }
 /**
  * Shows countdown timer
- * @param $el
- * @param options
+ * @param {jQuery} $el
+ * @param {Object} options
  */
 function Timer( $el, options ) {
 	// Cache body
@@ -24,16 +24,6 @@ function Timer( $el, options ) {
 	let _currentMinute;
 	let _currentSecond;
 
-	let _dayFirstDigit;
-	let _daySecondDigit;
-	let _hourFirstDigit;
-	let _hourSecondDigit;
-	let _minuteFirstDigit;
-	let _minuteSecondDigit;
-	let _secondFirstDigit;
-	let _secondSecondDigit;
-
-	let _remainingDays;
 	let _remainingHours;
 	let _remainingMinutes;
 	let _remainingSeconds;
@@ -348,8 +338,6 @@ function Timer( $el, options ) {
 	}
 
 	function render() {
-		const showTimer = false;
-
 		// Insert the timer markup
 		insertTimerMarkup();
 
@@ -637,6 +625,7 @@ function Timer( $el, options ) {
 		return true;
 
 		// Set default to false
+		// eslint-disable-next-line no-unreachable -- intentional: the intermittent-timer logic below is kept, switched off by the early return above.
 		let applies = false;
 
 		// NOTE: Needs to be served from a non-cached backend so it's not dependent on the page load
@@ -677,7 +666,7 @@ function Timer( $el, options ) {
 		}
 	}
 
-	this.init = function ( $el ) {
+	this.init = function () {
 		console.log(
 			'/FLEX\t/js\t/components\t/component_timer\t/timer.js',
 			'init()'

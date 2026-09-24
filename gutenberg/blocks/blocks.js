@@ -1,8 +1,4 @@
-import FLEX from 'FLEX/js/client-namespace';
-
-if ( ! FLEX.isProd ) {
-	console.log( 'loaded', '/FLEX\t/gutenberg\t/blocks\t/blocks.js' );
-}
+import 'FLEX/js/client-namespace';
 
 /**
  * Import example blocks

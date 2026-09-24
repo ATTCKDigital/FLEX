@@ -1,7 +1,7 @@
 // WordPress dependencies
 const { __ } = wp.i18n;
 
-const { ColorPalette, PanelColorSettings, MediaUpload } = wp.blockEditor;
+const { PanelColorSettings, MediaUpload } = wp.blockEditor;
 
 const {
 	Button,
@@ -64,8 +64,6 @@ function BackgroundOptions( props ) {
 
 	const setBackgroundColor = ( value ) =>
 		props.setAttributes( { backgroundColor: value } );
-	const setBackgroundOpacity = ( value ) =>
-		props.setAttributes( { backgroundOpacity: value } );
 	const setBackgroundPositionX = ( value ) =>
 		props.setAttributes( { backgroundPositionX: value } );
 	const setBackgroundPositionY = ( value ) =>
@@ -213,6 +211,7 @@ function BackgroundOptions( props ) {
 						<PanelRow>
 							<TextControl
 								label={ __( 'Size', 'flexlayout' ) }
+								// eslint-disable-next-line @wordpress/i18n-translator-comments -- "width% height%" are literal percent signs, not placeholders; escaping them would change the translatable string.
 								help={ __(
 									'Set background size. Use pixel value (widthpx heightpx), percentage (width% height%), cover or contain',
 									'flexlayout'
@@ -377,6 +376,7 @@ function BackgroundOptions( props ) {
 						<PanelRow>
 							<TextControl
 								label={ __( 'Size (Mobile)', 'flexlayout' ) }
+								// eslint-disable-next-line @wordpress/i18n-translator-comments -- "width% height%" are literal percent signs, not placeholders; escaping them would change the translatable string.
 								help={ __(
 									'Set background size. Use pixel value (widthpx heightpx), percentage (width% height%), cover or contain',
 									'flexlayout'
@@ -545,8 +545,6 @@ function BackgroundOptions( props ) {
 		if ( props.attributes.backgroundType !== 'color' ) {
 			return null;
 		}
-
-		console.log( 'props.attributes: ', props, props.attributes );
 
 		return (
 			<Fragment>

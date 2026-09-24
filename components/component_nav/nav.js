@@ -9,10 +9,6 @@ if ( ! FLEX.isProd ) {
 function Nav( $el ) {
 	console.log( '/FLEX/\tcomponents/\tcomponent-nav/\tnav.js', 'Nav()' );
 
-	const _$body = $( 'body' );
-	const _$document = $( document );
-	const _$window = $( window );
-
 	// Cache the body
 	const $body = $( 'body' );
 
@@ -116,17 +112,6 @@ function Nav( $el ) {
 		}
 	}
 
-	function searchToggle() {
-		console.log(
-			'/FLEX/\tcomponents/\tcomponent-nav/\tnav.js',
-			'searchToggle()'
-		);
-
-		// Open search on click
-		$body.toggleClass( 'searchOpen' );
-		$body.removeClass( 'navOpen' );
-	}
-
 	function toggleSubNav( e ) {
 		console.log(
 			'/FLEX/\tcomponents/\tcomponent-nav/\tnav.js',
@@ -166,19 +151,7 @@ function Nav( $el ) {
 		$body.removeClass( 'openSubNav' );
 	}
 
-	function userScrolled() {
-		console.log(
-			'/FLEX/\tcomponents/\tcomponent-nav/\tnav.js',
-			'userScrolled()'
-		);
-
-		// Check if user is scrolled on page load so that the nav is hidden when they refresh the page
-		if ( $( window ).scrollTop() >= 10 ) {
-			$( 'body' ).addClass( 'hideNav' );
-		}
-	}
-
-	function scrolledNav( $el ) {
+	function scrolledNav() {
 		console.log(
 			'/FLEX/\tcomponents/\tcomponent-nav/\tnav.js',
 			'scrolledNav()'
@@ -217,7 +190,7 @@ function Nav( $el ) {
 		} );
 	}
 
-	function changeLogoColorOnScroll( $el ) {
+	function changeLogoColorOnScroll() {
 		console.log(
 			'/FLEX/\tcomponents/\tcomponent-nav/\tnav.js',
 			'logoColor()'
@@ -229,7 +202,6 @@ function Nav( $el ) {
 		const footer = $( '.component-footer' ).eq( 0 ).offset().top;
 
 		$( document.body ).bind( 'FLEX.scroll', function ( e, data ) {
-			const viewportHeight = data.viewportHeight;
 			const scrollTop = data.currentScrollTop;
 
 			$( row ).each( function () {
@@ -238,16 +210,16 @@ function Nav( $el ) {
 				// var logoColor = $(this).attr('data-logo-color');
 
 				if ( rowTop <= scrollTop + 20 ) {
-					if ( logoColor == 'logo-color-light' ) {
+					if ( logoColor === 'logo-color-light' ) {
 						$body.addClass( 'logoLight' ).removeClass( 'logoDark' );
 					}
 
-					if ( logoColor == 'logo-color-dark' ) {
+					if ( logoColor === 'logo-color-dark' ) {
 						$body.addClass( 'logoDark' ).removeClass( 'logoLight' );
 					}
 				}
 
-				if ( scrollTop == 0 ) {
+				if ( scrollTop === 0 ) {
 					$body.removeClass( 'logoDark logoLight' );
 				}
 			} );
@@ -259,7 +231,7 @@ function Nav( $el ) {
 		} );
 	}
 
-	this.init = function ( $el ) {
+	this.init = function () {
 		console.log( '/FLEX/\tcomponents/\tcomponent-nav/\tnav.js', 'init()' );
 
 		bindEvents();

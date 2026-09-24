@@ -53,6 +53,7 @@ $menu-customizer-text: mix($base-color, $text-color, 40%) !default;
  */
 @mixin dashicons($icon) {
 	content: $icon;
+	// stylelint-disable-next-line font-family-no-missing-generic-family-keyword -- icon font: a generic fallback would draw letters instead of the glyph (as in WordPress core).
 	font: 400 20px/1 dashicons;
 	speak: none;
 	display: block;

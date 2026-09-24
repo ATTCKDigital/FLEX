@@ -10,15 +10,7 @@ import icons from '../../../js/icons.js';
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const { InspectorControls, AlignmentToolbar } = wp.blockEditor;
-const {
-	Toolbar,
-	Button,
-	Dashicon,
-	IconButton,
-	PanelBody,
-	PanelRow,
-	CheckboxControl,
-} = wp.components;
+const { PanelBody, CheckboxControl } = wp.components;
 
 /**
  * Internal dependencies
@@ -46,7 +38,6 @@ import BackgroundColorOptions, {
 // Import all of our Text Color Options requirements.
 import TextColorOptions, {
 	TextColorAttributes,
-	TextColorClasses,
 } from '../../components/gb-component_text-colors';
 import ShareOutput from '../../blocks/block_share/share-output.js';
 
@@ -56,7 +47,7 @@ import ShareOutput from '../../blocks/block_share/share-output.js';
 export default registerBlockType( 'flexlayout/share', {
 	title: __( 'Share', 'flexlayout' ),
 	description: __(
-		'Displays share tools. Accounts are set in Global Settings ',
+		'Displays share tools. Accounts are set in Global Settings',
 		'flexlayout'
 	),
 	category: 'common',
@@ -97,13 +88,11 @@ export default registerBlockType( 'flexlayout/share', {
 	edit: ( props ) => {
 		const {
 			attributes: { facebook, twitter, linkedin, email, align },
-			className,
 			setAttributes,
-			isSelected,
 		} = props;
 
 		return [
-			<InspectorControls>
+			<InspectorControls key="inspector">
 				<PanelBody
 					title={ __( 'Icon Alignment', 'flexlayout' ) }
 					className="FLEX-icon-alignment"
@@ -128,26 +117,30 @@ export default registerBlockType( 'flexlayout/share', {
 					<CheckboxControl
 						label={ __( 'Show Facebook?', 'flexlayout' ) }
 						checked={ facebook }
-						onChange={ ( facebook ) =>
-							setAttributes( { facebook } )
+						onChange={ ( newFacebook ) =>
+							setAttributes( { facebook: newFacebook } )
 						}
 					/>
 					<CheckboxControl
 						label={ __( 'Show Twitter?', 'flexlayout' ) }
 						checked={ twitter }
-						onChange={ ( twitter ) => setAttributes( { twitter } ) }
+						onChange={ ( newTwitter ) =>
+							setAttributes( { twitter: newTwitter } )
+						}
 					/>
 					<CheckboxControl
 						label={ __( 'Show LinkedIn?', 'flexlayout' ) }
 						checked={ linkedin }
-						onChange={ ( linkedin ) =>
-							setAttributes( { linkedin } )
+						onChange={ ( newLinkedin ) =>
+							setAttributes( { linkedin: newLinkedin } )
 						}
 					/>
 					<CheckboxControl
 						label={ __( 'Show email?', 'flexlayout' ) }
 						checked={ email }
-						onChange={ ( email ) => setAttributes( { email } ) }
+						onChange={ ( newEmail ) =>
+							setAttributes( { email: newEmail } )
+						}
 					/>
 				</PanelBody>
 				<MarginOptions { ...props } />
@@ -157,6 +150,7 @@ export default registerBlockType( 'flexlayout/share', {
 				<TextColorOptions { ...props } />
 			</InspectorControls>,
 			<div
+				key="block"
 				className={ classnames(
 					'component-share',
 					...MarginOptionsClasses( props ),

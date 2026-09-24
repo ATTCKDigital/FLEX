@@ -10,24 +10,15 @@ const { registerBlockType } = wp.blocks;
 
 const {
 	AlignmentToolbar,
-	BlockAlignmentToolbar,
 	BlockControls,
-	Editable,
 	InspectorControls,
 	MediaUpload,
 	RichText,
 	URLInput,
 } = wp.blockEditor;
 
-const {
-	Button,
-	CheckboxControl,
-	Dashicon,
-	IconButton,
-	PanelBody,
-	TextControl,
-	Toolbar,
-} = wp.components;
+const { Button, CheckboxControl, Dashicon, PanelBody, TextControl } =
+	wp.components;
 
 // Internal dependencies
 import BorderOptions, {
@@ -94,7 +85,6 @@ export default registerBlockType( 'flexlayout/image', {
 				placeholder,
 				url,
 			},
-			className,
 			onReplace,
 			setAttributes,
 			isSelected,
@@ -118,7 +108,7 @@ export default registerBlockType( 'flexlayout/image', {
 			props.setAttributes( { opensNewWindow: value } );
 		};
 
-		const NewWindowCheckbox = ( a, b ) => {
+		const NewWindowCheckbox = () => {
 			return (
 				<CheckboxControl
 					label="Open in new window."
@@ -130,19 +120,19 @@ export default registerBlockType( 'flexlayout/image', {
 		};
 
 		return [
-			<InspectorControls>
+			<InspectorControls key="inspector">
 				<BorderOptions { ...props } />
 				<MarginOptions { ...props } />
 				<PaddingOptions { ...props } />
 				<PanelBody title={ __( 'Image Settings', 'flexlayout' ) }>
-					<p>{ __( ' Alignment', 'flexlayout' ) }</p>
+					<p>{ __( 'Alignment', 'flexlayout' ) }</p>
 					<AlignmentToolbar
 						value={ align }
 						onChange={ ( nextAlign ) => {
 							setAttributes( { align: nextAlign } );
 						} }
 					/>
-					<p>{ __( ' CSS Width (100%, 50px, auto, etc.)' ) }</p>
+					<p>{ __( 'CSS Width (100%, 50px, auto, etc.)' ) }</p>
 					<TextControl
 						value={ CSSWidth }
 						onChange={ ( nextCSSWidth ) => {
@@ -152,7 +142,7 @@ export default registerBlockType( 'flexlayout/image', {
 				</PanelBody>
 				<DataComponentNameOptions { ...props } />
 			</InspectorControls>,
-			<BlockControls>
+			<BlockControls key="controls">
 				<AlignmentToolbar
 					value={ align }
 					onChange={ ( nextAlign ) => {
@@ -161,6 +151,7 @@ export default registerBlockType( 'flexlayout/image', {
 				/>
 			</BlockControls>,
 			<div
+				key="block"
 				className={ classnames(
 					`component-image`,
 					`block-align-${ align }`,
@@ -181,8 +172,8 @@ export default registerBlockType( 'flexlayout/image', {
 								className={ 'button button-large' }
 								onClick={ open }
 							>
-								{ icons.upload }
-								{ __( ' Upload Image', 'flexlayout' ) }
+								{ icons.upload }{ ' ' }
+								{ __( 'Upload Image', 'flexlayout' ) }
 							</Button>
 						) }
 					></MediaUpload>
@@ -231,7 +222,7 @@ export default registerBlockType( 'flexlayout/image', {
 								</Button>
 							</form>
 						) : null }
-						<img src={ imgURL } />
+						<img src={ imgURL } alt="" />
 						{ isSelected ? (
 							<RichText
 								identifier="caption"

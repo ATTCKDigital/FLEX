@@ -2,36 +2,14 @@
  * Block dependencies
  */
 import classnames from 'classnames';
-import icons from '../../../js/icons.js';
-import {
-	BlockControls,
-	useBlockProps,
-	useInnerBlocksProps,
-	store as blockEditorStore,
-} from '@wordpress/block-editor';
-import { useDispatch, useSelect, useRegistry } from '@wordpress/data';
 
 /**
  * Internal block libraries
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const {
-	RichText,
-	AlignmentToolbar,
-	InspectorControls,
-	RichTextToolbarButton,
-	MediaUpload,
-	URLInput,
-} = wp.blockEditor;
-const {
-	Button,
-	PanelBody,
-	PanelRow,
-	TextControl,
-	ToggleControl,
-	ToolbarButton,
-} = wp.components;
+const { RichText, AlignmentToolbar, InspectorControls } = wp.blockEditor;
+const { Button, PanelBody, PanelRow } = wp.components;
 
 /**
  * Internal dependencies
@@ -101,12 +79,11 @@ export default registerBlockType( 'flexlayout/list', {
 
 	edit: ( props ) => {
 		const {
-			attributes: { content, align, ordered, placeholder },
+			attributes: { content, align, ordered },
 			setAttributes,
 			className,
 		} = props;
 
-		const onChangeContent = ( content ) => setAttributes( { content } );
 		const toggleOrderedList = () => setAttributes( { ordered: ! ordered } );
 
 		return (
@@ -180,14 +157,7 @@ export default registerBlockType( 'flexlayout/list', {
 		);
 	},
 
-	save( data ) {
-		console.log(
-			'list.js > save(data:) "',
-			data.attributes.content,
-			'" ',
-			data
-		);
-
+	save() {
 		return null;
 	},
 } );

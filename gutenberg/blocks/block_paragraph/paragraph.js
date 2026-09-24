@@ -1,5 +1,3 @@
-console.log( 'FLEX/gutenberg/blocks/block_paragraph/paragraph.js' );
-
 // Block dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js';
@@ -16,29 +14,9 @@ const { registerBlockType } = wp.blocks;
 // Please use wp.blockEditor.InnerBlocks.Content instead.
 // const { InnerBlocks } = wp.editor;
 
-const {
-	AlignmentToolbar,
-	BlockAlignmentToolbar,
-	BlockControls,
-	InnerBlocks,
-	InspectorControls,
-	MediaUpload,
-	RichText,
-	URLInput,
-} = wp.blockEditor;
+const { AlignmentToolbar, InspectorControls, RichText } = wp.blockEditor;
 
-const {
-	Button,
-	ButtonGroup,
-	Dashicon,
-	IconButton,
-	PanelBody,
-	PanelRow,
-	TextControl,
-	Toolbar,
-	ToolbarButton,
-	Tooltip,
-} = wp.components;
+const { PanelBody } = wp.components;
 
 // Internal dependencies
 import MarginOptions, {
@@ -117,13 +95,6 @@ export default registerBlockType( 'flexlayout/paragraph', {
 	],
 
 	edit: ( props ) => {
-		console.log(
-			'paragraph.js > edit, props.attributes: ',
-			props.attributes
-		);
-		console.log( 'paragraph.js > edit, props: ' );
-		console.table( props );
-
 		const {
 			attributes: { align, content, placeholder },
 			className,
@@ -131,19 +102,14 @@ export default registerBlockType( 'flexlayout/paragraph', {
 			setAttributes,
 		} = props;
 
-		const onChangeMessage = ( content ) => {
-			console.log(
-				'paragraph.js > edit, onChangeMessage: ',
-				onChangeMessage
-			);
-
+		const onChangeMessage = ( newContent ) => {
 			setAttributes( {
-				content,
+				content: newContent,
 			} );
 		};
 
 		return [
-			<InspectorControls>
+			<InspectorControls key="inspector">
 				<BackgroundColorOptions { ...props } />
 				<TextColorOptions { ...props } />
 				<BorderOptions { ...props } />
@@ -153,7 +119,7 @@ export default registerBlockType( 'flexlayout/paragraph', {
 					title={ __( 'Paragraph Alignment', 'flexlayout' ) }
 					initialOpen={ false }
 				>
-					<p>{ __( ' Alignment', 'flexlayout' ) }</p>
+					<p>{ __( 'Alignment', 'flexlayout' ) }</p>
 					<AlignmentToolbar
 						value={ align }
 						initialOpen={ false }
@@ -164,6 +130,7 @@ export default registerBlockType( 'flexlayout/paragraph', {
 				</PanelBody>
 			</InspectorControls>,
 			<div
+				key="block"
 				className={ classnames(
 					`component-paragraph`,
 					`align-${ align }`,
@@ -219,14 +186,7 @@ export default registerBlockType( 'flexlayout/paragraph', {
 		];
 	},
 
-	save( data ) {
-		console.log(
-			'paragraph.js > save(data:) "',
-			data.attributes.content,
-			'" ',
-			data
-		);
-
+	save() {
 		return null;
 	},
 } );

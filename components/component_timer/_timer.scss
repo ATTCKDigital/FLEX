@@ -1,5 +1,5 @@
 .component-timer {
-	color: white;
+	color: #fff;
 	display: none;
 	margin-top: 0;
 	position: relative;
@@ -227,7 +227,7 @@
 	.timer-minutes {
 		&::after {
 			// background: rgba(0, 0, 0, .2);
-			color: white;
+			color: #fff;
 			content: ":";
 			font-size: 2rem;
 			height: 2rem;

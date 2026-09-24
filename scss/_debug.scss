@@ -44,17 +44,17 @@ body {
 		}
 
 		section {
-			outline: dotted 0.25rem greenyellow;
+			outline: dotted 0.25rem #adff2f;
 			outline-offset: -0.5rem;
 		}
 
 		.breakpoint {
 			border-radius: $gap;
-			color: black;
+			color: #000;
 			display: none;
 			height: 20px;
 			opacity: 1;
-			padding: calc($gap/4) $gap;
+			padding: calc($gap / 4) $gap;
 			position: fixed;
 			right: 10px;
 			text-align: left;
@@ -86,44 +86,42 @@ body {
 
 		// Targets lists that have something other than an <li> inside
 		:is(ul, ol) > *:not(li) {
-			outline: 2px dotted red !important;
+			outline: 2px dotted #f00 !important;
 		}
 
 		// Targets img elements without alt attributes
 		img:not([alt]),
 		img[alt=""] {
-			background: red !important;
-			border: 1px solid red !important;
+			background: #f00 !important;
+			border: 1px solid #f00 !important;
 		}
 
 		// Targets div elements inside span elements
 		span
 			> :not(abbr):not(audio):not(b):not(bdo):not(br):not(button):not(
 				canvas
-			):not(cite):not(code):not(command):not(data):not(datalist):not(
-				dfn
-			):not(em):not(embed):not(i):not(iframe):not(img):not(input):not(
-				kbd
-			):not(keygen):not(label):not(mark):not(math):not(meter):not(
-				noscript
-			):not(object):not(output):not(picture):not(progress):not(q):not(
-				ruby
-			):not(samp):not(script):not(select):not(small):not(span):not(
-				strong
-			):not(sub):not(sup):not(svg):not(textarea):not(time):not(var):not(
-				video
-			):not(wbr) {
-			outline: 3px dashed red !important;
+			):not(cite):not(code):not(data):not(datalist):not(dfn):not(em):not(
+				embed
+			):not(i):not(iframe):not(img):not(input):not(kbd):not(keygen):not(
+				label
+			):not(mark):not(math):not(meter):not(noscript):not(object):not(
+				output
+			):not(picture):not(progress):not(q):not(ruby):not(samp):not(
+				script
+			):not(select):not(small):not(span):not(strong):not(sub):not(
+				sup
+			):not(svg):not(textarea):not(time):not(var):not(video):not(wbr) {
+			outline: 3px dashed #f00 !important;
 		}
 
 		// Empty links are bad for screen readers.
 		a:not([href]):not([tabindex]) {
-			outline: 2px solid red !important;
+			outline: 2px solid #f00 !important;
 		}
 
 		a[href]:empty {
 			background: rgba(255, 171, 171, 0.5) !important;
-			outline: 2px solid red !important;
+			outline: 2px solid #f00 !important;
 		}
 
 		// Inputs need either a <label> or an aria-label or aria-labelledby.
@@ -131,7 +129,7 @@ body {
 				[id]
 			),
 		textarea:not([aria-label]):not([aria-labelledby]):not([id]) {
-			outline: 3px dashed red !important;
+			outline: 3px dashed #f00 !important;
 		}
 
 		// Check for "Skip to content" link
@@ -140,8 +138,8 @@ body {
 			position: fixed;
 			top: 0;
 			left: 0;
-			background: red;
-			color: white;
+			background: #f00;
+			color: #fff;
 			padding: 5px;
 			z-index: 9999;
 		}
@@ -149,7 +147,7 @@ body {
 		// HTML buttons should explicitly declare type="button", type="submit", or type="reset".
 		// Default type for <button> is submit, which can cause unexpected form submits.
 		button:not([type]) {
-			outline: 3px solid red !important;
+			outline: 3px solid #f00 !important;
 		}
 
 		// Performance tests:
@@ -158,7 +156,7 @@ body {
 		// If no width/height is set, browsers can’t reserve space and it hurts performance.
 		img:not([width]):not([height]) {
 			background: rgba(255, 0, 0, 0.5) !important;
-			outline: 2px dashed red !important;
+			outline: 2px dashed #f00 !important;
 		}
 	}
 
@@ -188,7 +186,7 @@ body {
 
 			&.default {
 				@include mediaquery-min-max-width(default, phone) {
-					background: linear-gradient(160deg, red, #f96) !important;
+					background: linear-gradient(160deg, #f00, #f96) !important;
 					color: color("default", "white");
 					display: flex;
 					text-shadow: 1px 1px rgba(100, 0, 0, 0.4);
@@ -203,7 +201,7 @@ body {
 				&.phone {
 					background: linear-gradient(
 						160deg,
-						orange,
+						#ffa500,
 						#fffc66
 					) !important;
 					text-shadow: 1px 1px rgba(255, 255, 255, 0.5);
@@ -224,7 +222,7 @@ body {
 				&.phone-plus {
 					background: linear-gradient(
 						160deg,
-						lime,
+						#0f0,
 						#66ffc9
 					) !important;
 					color: color("default", "black");
@@ -248,11 +246,7 @@ body {
 					tablet-portrait,
 					tablet-landscape
 				) {
-					background: linear-gradient(
-						160deg,
-						yellow,
-						#ffc
-					) !important;
+					background: linear-gradient(160deg, #ff0, #ffc) !important;
 					color: color("default", "black");
 					display: flex;
 					text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
@@ -268,7 +262,7 @@ body {
 				@include mediaquery-min-max-width(tablet-landscape, desktop) {
 					background: linear-gradient(
 						160deg,
-						green,
+						#008000,
 						#81b814
 					) !important;
 					color: color("default", "white");
@@ -283,7 +277,7 @@ body {
 
 			&.desktop {
 				@include mediaquery-min-max-width(desktop, xl) {
-					background: linear-gradient(160deg, blue, #69f) !important;
+					background: linear-gradient(160deg, #00f, #69f) !important;
 					color: color("default", "white");
 					display: flex;
 					text-shadow: 1px 1px rgba(0, 0, 100, 0.4);
@@ -298,7 +292,7 @@ body {
 				@include mediaquery-min-max-width(xl, xl2) {
 					background: linear-gradient(
 						160deg,
-						purple,
+						#800080,
 						#4c0099
 					) !important;
 					color: color("default", "white");
@@ -315,7 +309,7 @@ body {
 				@include mediaquery(xl2) {
 					background: linear-gradient(
 						160deg,
-						black,
+						#000,
 						#616161
 					) !important;
 					color: color("default", "white");

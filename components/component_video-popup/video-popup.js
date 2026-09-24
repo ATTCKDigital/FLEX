@@ -1,4 +1,4 @@
-import FLEX from '../../../FLEX/js/client-namespace';
+import '../../../FLEX/js/client-namespace';
 
 function VideoPopup( $el, params = {} ) {
 	console.log(
@@ -17,7 +17,6 @@ function VideoPopup( $el, params = {} ) {
 	let $closeButton;
 	let $watchButton;
 	let $popup;
-	let $iframe;
 
 	function bindEvents() {
 		console.log(
@@ -225,14 +224,13 @@ function VideoPopup( $el, params = {} ) {
 
 		$closeButton = $( '.close-button, .close', $el );
 		$watchButton = $( '.video-button', $el );
-		$iframe = $( 'iframe', $el );
 		$popup = $( '.component-video-popup' );
 
 		// Move popup outside the FLEX row
 		$( 'body' ).append( $popup );
 	}
 
-	this.init = function ( $el ) {
+	this.init = function () {
 		console.log(
 			'/FLEX/\tcomponents/\tcomponent_video-popup/\tvideo-popup.js',
 			'e()'

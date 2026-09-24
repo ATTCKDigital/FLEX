@@ -9,8 +9,8 @@ import icons from '../../../js/icons.js';
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { RichText, InspectorControls, MediaUpload, URLInput } = wp.blockEditor;
-const { Button, PanelBody, PanelRow, TextControl } = wp.components;
+const { RichText, InspectorControls, MediaUpload } = wp.blockEditor;
+const { Button } = wp.components;
 
 /**
  * Internal dependencies
@@ -21,12 +21,12 @@ import MarginOptions, {
 	MarginOptionsClasses,
 } from '../../components/gb-component_margin';
 // Import all of our Border Options requirements.
-import BorderOptions, {
+import {
 	BorderOptionsAttributes,
 	BorderOptionsClasses,
 } from '../../components/gb-component_border';
 // Import all of our Padding Options requirements.
-import PaddingOptions, {
+import {
 	PaddingOptionsAttributes,
 	PaddingOptionsClasses,
 } from '../../components/gb-component_padding';
@@ -104,7 +104,6 @@ export default registerBlockType( 'flexlayout/quote', {
 				contentCompany,
 				placeholderSource,
 			},
-			className,
 			onReplace,
 			setAttributes,
 			isSelected,
@@ -123,12 +122,13 @@ export default registerBlockType( 'flexlayout/quote', {
 		};
 
 		return [
-			<InspectorControls>
+			<InspectorControls key="inspector">
 				<BackgroundOptions { ...props } />
 				<MarginOptions { ...props } />
 				<TextColorOptions { ...props } />
 			</InspectorControls>,
 			<div
+				key="block"
 				className={ classnames(
 					`component-quote`,
 					...MarginOptionsClasses( props ),
@@ -179,7 +179,7 @@ export default registerBlockType( 'flexlayout/quote', {
 							</Button>
 						) : null }
 
-						<img src={ imgURL } />
+						<img src={ imgURL } alt="" />
 					</div>
 				) }
 				<RichText

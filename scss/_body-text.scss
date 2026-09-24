@@ -1,3 +1,5 @@
+// stylelint-disable scss/at-extend-no-missing-placeholder -- extends public FLEX classes (.is-style-body1, .is-style-headline*, p) that markup also uses; placeholders would change the generated selectors.
+
 // https://stackoverflow.com/questions/61330432/sasserror-there-is-no-module-with-the-namespace-math
 @use "sass:math";
 
@@ -80,7 +82,7 @@
 	}
 
 	//ctas and links
-	& + a {
+	+ a {
 		margin-top: $gap * 1.5;
 	}
 
@@ -341,8 +343,6 @@
 	@include secondary-regular;
 	column-count: 2;
 	column-gap: $gap;
-	column-break-inside: avoid; /* Chrome, Safari, Opera */
-	break-inside: avoid; /* Firefox */
 	break-inside: avoid;
 
 	@include mediaquery(tablet-landscape) {
@@ -356,10 +356,8 @@
 
 	@include mediaquery(tablet-portrait) {
 		break-inside: avoid;
-		column-break-inside: avoid; /* Chrome, Safari, Opera */
 		column-count: 2;
 		column-gap: $gap * 6;
-		break-inside: avoid; /* Firefox */
 	}
 }
 

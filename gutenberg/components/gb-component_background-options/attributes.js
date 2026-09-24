@@ -1,5 +1,3 @@
-import mt_rand from '../../../js/mt_rand';
-
 /**
  * Set the attributes to be displayed in the Background Options panel.
  * @type {Object}

@@ -1,15 +1,10 @@
-import $ from 'jquery';
-
 //Social Media
 function SocialMedia( $el ) {
-	//cache the body
-	const $body = $( 'body' );
-
 	function bindEvents() {
 		$el = $el;
 	}
 
-	this.init = function ( $el ) {
+	this.init = function () {
 		bindEvents();
 
 		return this;

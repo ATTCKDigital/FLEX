@@ -17,15 +17,13 @@ function AnimatedGif( $el ) {
 		}
 	}
 
-	this.init = function ( $el ) {
-		$el = $el;
-
+	this.init = function ( $element ) {
 		// After window is loading, swap out the gifs
 		// TODO: Enable this with options JSON var. -DP
 		// $(window).on('load', swapGif);
 
 		// After element has scrolled into view, swap in the gif
-		$el.on( 'FLEX.scrollIn', swapGif );
+		$element.on( 'FLEX.scrollIn', swapGif );
 
 		return this;
 	};

@@ -7,25 +7,10 @@ const { __ } = wp.i18n;
 
 const { registerBlockType } = wp.blocks;
 
-const {
-	AlignmentToolbar,
-	BlockAlignmentToolbar,
-	BlockControls,
-	InspectorControls,
-	InnerBlocks,
-	RichText,
-} = wp.blockEditor;
+const { BlockAlignmentToolbar, BlockControls, InspectorControls, InnerBlocks } =
+	wp.blockEditor;
 
-const {
-	Button,
-	ButtonGroup,
-	Dashicon,
-	IconButton,
-	PanelBody,
-	PanelRow,
-	Toolbar,
-	Tooltip,
-} = wp.components;
+const { Button, ButtonGroup, Toolbar, Tooltip } = wp.components;
 
 // Internal dependencies
 import AnchorOptions, {
@@ -65,7 +50,7 @@ import ScrollerOptions, {
 	ScrollerOptionsAttributes,
 	ScrollerOptionsOutput,
 } from '../../components/gb-component_scroller';
-import mt_rand from '../../../js/mt_rand';
+import mtRand from '../../../js/mt_rand';
 
 // Register block
 export default registerBlockType( 'flexlayout/row', {
@@ -131,7 +116,6 @@ export default registerBlockType( 'flexlayout/row', {
 				blockAlignment,
 				dataComponentName,
 				dataComponentOptions,
-				dataSectionId,
 				reverseMobile,
 				verticalAlignment,
 			},
@@ -161,7 +145,7 @@ export default registerBlockType( 'flexlayout/row', {
 		// }
 
 		return [
-			<InspectorControls>
+			<InspectorControls key="inspector">
 				<BackgroundOptions { ...props } />
 				<RowHeightOptions { ...props } />
 				<BorderOptions { ...props } />
@@ -172,11 +156,11 @@ export default registerBlockType( 'flexlayout/row', {
 				<AnchorOptions { ...props } />
 				<DataComponentNameOptions { ...props } />
 			</InspectorControls>,
-			<BlockControls>
+			<BlockControls key="controls">
 				<BlockAlignmentToolbar
 					value={ blockAlignment }
-					onChange={ ( blockAlignment ) =>
-						setAttributes( { blockAlignment } )
+					onChange={ ( nextBlockAlignment ) =>
+						setAttributes( { blockAlignment: nextBlockAlignment } )
 					}
 					controls={ [ 'full' ] }
 				/>
@@ -312,13 +296,14 @@ export default registerBlockType( 'flexlayout/row', {
 				</Toolbar>
 			</BlockControls>,
 			<section
+				key="block"
 				id={ anchor }
 				className={ classes }
 				style={ {
 					...BackgroundOptionsInlineStyles( props ),
 				} }
 				data-section-id={
-					( props.attributes.dataSectionId = mt_rand( 10, 1000 ) )
+					( props.attributes.dataSectionId = mtRand( 10, 1000 ) )
 				}
 				data-component-name={ dataComponentName }
 				data-component-options={ dataComponentOptions }

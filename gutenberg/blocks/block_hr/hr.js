@@ -1,8 +1,4 @@
-import FLEX from 'FLEX/js/client-namespace';
-
-if ( ! FLEX.isProd ) {
-	console.log( 'loaded', '/FLEX\t/gutenberg\t/blocks\t/block_hr\t/hr.js' );
-}
+import 'FLEX/js/client-namespace';
 
 // Block dependencies
 import classnames from 'classnames';
@@ -14,24 +10,9 @@ const { __ } = wp.i18n;
 // WordPress dependencies
 const { registerBlockType } = wp.blocks;
 
-const {
-	AlignmentToolbar,
-	BlockControls,
-	BlockAlignmentToolbar,
-	Editable,
-	InnerBlocks,
-	InspectorControls,
-} = wp.blockEditor;
+const { AlignmentToolbar, BlockControls, InspectorControls } = wp.blockEditor;
 
-const {
-	Dashicon,
-	IconButton,
-	PanelBody,
-	PanelRow,
-	TextControl,
-	Toolbar,
-	Tooltip,
-} = wp.components;
+const { PanelBody, TextControl } = wp.components;
 
 // Internal dependencies
 import MarginOptions, {
@@ -73,24 +54,23 @@ export default registerBlockType( 'flexlayout/hr', {
 	},
 	edit: ( props ) => {
 		const {
-			attributes: { align, color, HRWidth },
-			className,
+			attributes: { align, HRWidth },
 			setAttributes,
 		} = props;
 		return [
-			<InspectorControls>
+			<InspectorControls key="inspector">
 				<MarginOptions { ...props } />
 				<PaddingOptions { ...props } />
 				<BackgroundColorOptions { ...props } />
 				<PanelBody title={ __( 'HR Line Settings', 'flexlayout' ) }>
-					<p>{ __( ' Alignment', 'flexlayout' ) }</p>
+					<p>{ __( 'Alignment', 'flexlayout' ) }</p>
 					<AlignmentToolbar
 						value={ align }
 						onChange={ ( nextAlign ) => {
 							setAttributes( { align: nextAlign } );
 						} }
 					/>
-					<p>{ __( ' CSS Width (100%, 50px, auto, etc.)' ) }</p>
+					<p>{ __( 'CSS Width (100%, 50px, auto, etc.)' ) }</p>
 					<TextControl
 						value={ HRWidth }
 						onChange={ ( nextHRWidth ) => {
@@ -99,7 +79,7 @@ export default registerBlockType( 'flexlayout/hr', {
 					/>
 				</PanelBody>
 			</InspectorControls>,
-			<BlockControls>
+			<BlockControls key="controls">
 				<AlignmentToolbar
 					value={ align }
 					onChange={ ( nextAlign ) => {
@@ -108,6 +88,7 @@ export default registerBlockType( 'flexlayout/hr', {
 				/>
 			</BlockControls>,
 			<hr
+				key="block"
 				className={ classnames(
 					`component-hr`,
 					`align-${ align }`,

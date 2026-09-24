@@ -19,13 +19,13 @@ function Share( $el ) {
 		window.open( targetURL, target, options );
 	}
 
-	function expandShareTools( e ) {
+	function expandShareTools() {
 		$el.toggleClass( 'expandShare' );
 	}
 
-	this.init = function ( $el ) {
-		$el.find( '.shareLink' ).on( 'click', openShareWindow );
-		$el.find( '.shareExpand' ).on( 'click', expandShareTools );
+	this.init = function ( $initEl ) {
+		$initEl.find( '.shareLink' ).on( 'click', openShareWindow );
+		$initEl.find( '.shareExpand' ).on( 'click', expandShareTools );
 
 		return this;
 	};

@@ -7,12 +7,8 @@ function BackgroundOptionsImageWide( props ) {
 	if (
 		'image' === props.attributes.backgroundType &&
 		props.attributes.backgroundImageWide &&
-		props.attributes.backgroundImageWide == true
+		props.attributes.backgroundImageWide === true
 	) {
-		const backgroundImageWide = props.attributes.backgroundImageWide
-			? `${ props.attributes.backgroundImageWide }`
-			: 'inherit';
-
 		const backgroundImageMobile = props.attributes.backgroundImageMobile
 			? `${ props.attributes.backgroundImageMobile.url }`
 			: 'inherit';

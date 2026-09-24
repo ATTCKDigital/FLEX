@@ -7,23 +7,12 @@ const { __ } = wp.i18n;
 
 const { registerBlockType } = wp.blocks;
 
-const {
-	RichText,
-	AlignmentToolbar,
-	BlockControls,
-	BlockAlignmentToolbar,
-	InspectorControls,
-	InnerBlocks,
-	MediaUpload,
-} = wp.blockEditor;
+const { InspectorControls, MediaUpload } = wp.blockEditor;
 
 const {
-	Toolbar,
 	CheckboxControl,
 	Button,
 	Dashicon,
-	ButtonGroup,
-	Tooltip,
 	PanelBody,
 	PanelRow,
 	TextControl,
@@ -84,7 +73,7 @@ export default registerBlockType( 'flexlayout/video', {
 	},
 
 	edit: ( props ) => {
-		const { className, setAttributes } = props;
+		const { className } = props;
 
 		const setVideoType = ( value ) =>
 			props.setAttributes( { videoType: value } );
@@ -146,12 +135,7 @@ export default registerBlockType( 'flexlayout/video', {
 		};
 
 		// Only show thumbnail upload field only:
-		const thumbnailSelect = ( e ) => {
-			console.log(
-				'thumbnailSelect: props.attributes.videoType: ',
-				props.attributes.videoType
-			);
-
+		const thumbnailSelect = () => {
 			// After a video type has been chosen, and...
 			// if (typeof props.attributes.videoType !== 'undefined' && props.attributes.videoType !== '') {
 			// if no thumbnail has been uploaded.
@@ -197,6 +181,7 @@ export default registerBlockType( 'flexlayout/video', {
 													.url
 											: ''
 									}
+									alt=""
 								/>
 							</div>
 						</p>
@@ -226,17 +211,9 @@ export default registerBlockType( 'flexlayout/video', {
 		};
 
 		const videoSelect = () => {
-			console.log(
-				'videoSelect: props.attributes: props.attributes.videoType: ',
-				props.attributes,
-				props.attributes.videoType
-			);
-
 			// Only show this section if manual upload option was chosen
 			if ( 'upload' !== props.attributes.videoType ) {
 				//&& typeof props.attributes.videoType !== 'undefined' ) {
-				console.log( 'videoSelect returning' );
-
 				return '';
 			}
 
@@ -369,15 +346,7 @@ export default registerBlockType( 'flexlayout/video', {
 		};
 
 		const uploadVideoOutput = () => {
-			console.log( 'uploadVideoOutput: props:' );
-			console.table( props );
-
-			console.log( 'uploadVideoOutput: props.attributes:' );
-			console.table( props.attributes );
-
 			if ( 'upload' !== props.attributes.videoType ) {
-				console.log( 'uploadVideoOutput returning' );
-
 				return '';
 			}
 
@@ -391,6 +360,7 @@ export default registerBlockType( 'flexlayout/video', {
 										? props.attributes.videoThumbnail.url
 										: ''
 								}
+								alt=""
 							/>
 						</div>
 					) : null }
@@ -449,6 +419,7 @@ export default registerBlockType( 'flexlayout/video', {
 										? props.attributes.videoThumbnail.url
 										: 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='
 								}
+								alt=""
 							/>
 						</div>
 					) : null }
@@ -457,6 +428,7 @@ export default registerBlockType( 'flexlayout/video', {
 						data-video-type={ 'youtube' }
 					></mark>
 					<iframe
+						title="YouTube video"
 						width="560"
 						height="315"
 						src={
@@ -488,6 +460,7 @@ export default registerBlockType( 'flexlayout/video', {
 										? props.attributes.videoThumbnail.url
 										: ''
 								}
+								alt=""
 							/>
 						</div>
 					) : null }
@@ -496,6 +469,7 @@ export default registerBlockType( 'flexlayout/video', {
 						data-video-type={ 'brightcove' }
 					></mark>
 					<iframe
+						title="Brightcove video"
 						src={
 							props.attributes.brightcoveVideo &&
 							props.attributes.brightcoveAccount
@@ -514,16 +488,10 @@ export default registerBlockType( 'flexlayout/video', {
 		};
 
 		const zeroStateOutput = () => {
-			console.log( 'zeroStateOutput, props.attributes: ' );
-			console.table( props.attributes );
-
 			if (
 				typeof props.attributes.videoType ||
 				props.attributes.videoType !== ''
 			) {
-				console.log( '1.) zeroStateOutput, props.attributes: ' );
-				console.table( props.attributes );
-
 				return (
 					<div className="flex-center-center">
 						{ icons.video }
@@ -535,9 +503,6 @@ export default registerBlockType( 'flexlayout/video', {
 					</div>
 				);
 			}
-			console.log( '2.) zeroStateOutput, props.attributes: ' );
-			console.table( props.attributes );
-
 			if (
 				props.attributes.videoType !== 'youtube' &&
 				props.attributes.videoType !== 'brightcove'
@@ -557,7 +522,7 @@ export default registerBlockType( 'flexlayout/video', {
 		};
 
 		return [
-			<InspectorControls>
+			<InspectorControls key="inspector">
 				<MarginOptions { ...props } />
 				<BorderOptions { ...props } />
 				<PanelBody
@@ -600,6 +565,7 @@ export default registerBlockType( 'flexlayout/video', {
 							onLoad={ videoSelect }
 							src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' %3E%3Cpath d=''/%3E%3C/svg%3E"
 							style={ svgHeight }
+							alt=""
 						/>
 					</PanelRow>
 					<PanelRow>
@@ -610,7 +576,7 @@ export default registerBlockType( 'flexlayout/video', {
 					</PanelRow>
 				</PanelBody>
 			</InspectorControls>,
-			<div className={ classes }>
+			<div key="block" className={ classes }>
 				{ zeroStateOutput() }
 				{ uploadVideoOutput() }
 				{ youtubeVideoOutput() }

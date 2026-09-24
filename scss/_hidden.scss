@@ -90,6 +90,7 @@
 // Hide only visually, but have it available for screenreaders: h5bp.com/v
 .visuallyhidden {
 	border: 0;
+	// stylelint-disable-next-line property-no-deprecated -- clip is part of the established visually-hidden pattern; replacing it is a separate, visual change.
 	clip: rect(0 0 0 0);
 	height: 1px;
 	margin: -1px;
@@ -103,6 +104,7 @@
 // when navigated to via the keyboard: h5bp.com/p
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
+	// stylelint-disable-next-line property-no-deprecated -- clip is part of the established visually-hidden pattern; replacing it is a separate, visual change.
 	clip: auto;
 	height: auto;
 	margin: 0;
