@@ -3,9 +3,9 @@
 	text-align: center;
 
 	li {
-		background: color('brand', 'accent');
+		background: color("brand", "accent");
 		border-left: 1px solid #979797;
-		color: color('brand', 'primary');
+		color: color("brand", "primary");
 		display: inline-block;
 		line-height: 1rem;
 		margin: 0 -1px 1px 0;
@@ -13,7 +13,7 @@
 		width: 25%;
 
 		@include mediaquery(tablet-portrait) {
-			color: color('secondary', 'white');
+			color: color("secondary", "white");
 			width: auto;
 
 			&:first-child {
@@ -28,8 +28,8 @@
 
 		&.active,
 		&:hover {
-			background: #21008C;
-			color: color('secondary', 'white');
+			background: #21008c;
+			color: color("secondary", "white");
 		}
 
 		&:hover {

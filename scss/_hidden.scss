@@ -63,7 +63,7 @@
 	.wp-block & {
 		.wp-admin & {
 			display: inherit !important;
-			opacity: .5;
+			opacity: 0.5;
 			visibility: visible;
 		}
 	}
@@ -82,7 +82,7 @@
 	visibility: hidden;
 
 	.wp-admin & {
-		opacity: .25;
+		opacity: 0.25;
 		visibility: visible;
 	}
 }

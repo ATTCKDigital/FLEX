@@ -1,52 +1,54 @@
 // Global settings (i.e., don't change or override)
 // Override in themes/projectName/scss/_sizing.scss
 
-$gap						: 8px !default;
-$siteWidth					: 78vw !default;
-$navMobileHeight			: 70px !default;
-$navHeight					: 120px !default;
-$navWidth					: 100vw !default;
+$gap: 8px !default;
+$siteWidth: 78vw !default;
+$navMobileHeight: 70px !default;
+$navHeight: 120px !default;
+$navWidth: 100vw !default;
 
-$positions					: top, left, bottom, right !default;
-$xPositions					: center, left, right !default;
-$yPositions					: bottom, center, top !default;
-$screensizes				: default, phone, phone-plus, tablet-portrait, tablet-landscape, desktop, xl, xl2 !default;
-$counterIncrement 			: 4 !default; // e.g., .padding-top-2x { padding-top: 8px; }
-$x 							: 30 !default; // e.g., .padding-desktop-top-30x { padding-top: 120px; }
-$units						: px, pc, vh, vw, x !default;
-$gridColumns				: 12, 24 !default;
-$buttonBorderRadius			: $gap * 4 !default;
+$positions: top, left, bottom, right !default;
+$xPositions: center, left, right !default;
+$yPositions: bottom, center, top !default;
+$screensizes:
+	default, phone, phone-plus, tablet-portrait, tablet-landscape, desktop, xl,
+	xl2 !default;
+$counterIncrement: 4 !default; // e.g., .padding-top-2x { padding-top: 8px; }
+$x: 30 !default; // e.g., .padding-desktop-top-30x { padding-top: 120px; }
+$units: px, pc, vh, vw, x !default;
+$gridColumns: 12, 24 !default;
+$buttonBorderRadius: $gap * 4 !default;
 
 // x is the max number of loops the padding and margins mixin should run
 //gap and increment should be the same value. 2 variables are required, one without px
 
 // Breakpoints
-$none						: 0px !default; // iPhone 4 & 5
-$default					: 0px !default; // iPhone 4 & 5
-$phone						: 375px !default; // iPhone 6, 7, 8, X
-$phone-plus					: 414px !default; // iPhone Plus/Max
-$tablet-portrait			: 768px !default;
-$tablet-landscape			: 1024px !default;
-$desktop					: 1100px !default;
-$xl							: 1280px !default;
-$xl2						: 1440px !default;
+$none: 0px !default; // iPhone 4 & 5
+$default: 0px !default; // iPhone 4 & 5
+$phone: 375px !default; // iPhone 6, 7, 8, X
+$phone-plus: 414px !default; // iPhone Plus/Max
+$tablet-portrait: 768px !default;
+$tablet-landscape: 1024px !default;
+$desktop: 1100px !default;
+$xl: 1280px !default;
+$xl2: 1440px !default;
 
 // Max width breakpoints
-$max-phone					: 568px !default;
-$max-phone-plus				: 413px !default;
-$max-tablet-portrait		: 767px !default;
-$max-tablet-landscape		: 1023px !default;
-$max-desktop				: 1099px !default;
-$max-xl						: 1279px !default;
-$max-xl2					: 1439px !default;
+$max-phone: 568px !default;
+$max-phone-plus: 413px !default;
+$max-tablet-portrait: 767px !default;
+$max-tablet-landscape: 1023px !default;
+$max-desktop: 1099px !default;
+$max-xl: 1279px !default;
+$max-xl2: 1439px !default;
 
 // Fixed row heights
-$small-row-mobile			: 30vh !default;
-$small-row					: 30vh !default;
-$medium-row-mobile			: 50vh !default;
-$medium-row					: 50vh !default;
-$large-row-mobile			: 70vh !default;
-$large-row					: 70vh !default;
+$small-row-mobile: 30vh !default;
+$small-row: 30vh !default;
+$medium-row-mobile: 50vh !default;
+$medium-row: 50vh !default;
+$large-row-mobile: 70vh !default;
+$large-row: 70vh !default;
 
 //------- FROM OLD SITE -------/
 // $gap						: 4px;
@@ -54,7 +56,7 @@ $large-row					: 70vh !default;
 // $navHeight					: 128px;
 // $counterIncrement 			: 4;
 // $siteWidthLarge 			: 1280px;
-// $x 							: 30; 
+// $x 							: 30;
 
 //Fixed row heights
 // $small-row-mobile			: 35vh;
@@ -67,193 +69,193 @@ $large-row					: 70vh !default;
 
 // Responsive Font Size Map
 // — Add as many as needed.
-// — Add fonts sizes for each break point. 
+// — Add fonts sizes for each break point.
 // — Font sizes will be converted to rems.
 // — USAGE:  @include font-size($font-size)
 $font-size-body-text: (
-	'default'			: 18px,
-	'phone'				: 18px,
-	'phone-plus'		: 18px,
-	'tablet-portrait'	: 18px,
-	'tablet-landscape'	: 18px,
-	'desktop'			: 18px,
-	'xl'				: 18px,
-	'xl2'				: 18px,
+	"default": 18px,
+	"phone": 18px,
+	"phone-plus": 18px,
+	"tablet-portrait": 18px,
+	"tablet-landscape": 18px,
+	"desktop": 18px,
+	"xl": 18px,
+	"xl2": 18px,
 ) !default;
 
 $font-size-body-text2: (
-	'default'			: 14px,
-	'phone'				: 14px,
-	'phone-plus'		: 14px,
-	'tablet-portrait'	: 14px,
-	'tablet-landscape'	: 14px,
-	'desktop'			: 14px,
-	'xl'				: 14px,
-	'xl2'				: 14px,
+	"default": 14px,
+	"phone": 14px,
+	"phone-plus": 14px,
+	"tablet-portrait": 14px,
+	"tablet-landscape": 14px,
+	"desktop": 14px,
+	"xl": 14px,
+	"xl2": 14px,
 ) !default;
 
 $font-size-body-text3: (
-	'default'			: 12px,
-	'phone'				: 12px,
-	'phone-plus'		: 12px,
-	'tablet-portrait'	: 12px,
-	'tablet-landscape'	: 12px,
-	'desktop'			: 12px,
-	'xl'				: 12px,
-	'xl2'				: 12px,
+	"default": 12px,
+	"phone": 12px,
+	"phone-plus": 12px,
+	"tablet-portrait": 12px,
+	"tablet-landscape": 12px,
+	"desktop": 12px,
+	"xl": 12px,
+	"xl2": 12px,
 ) !default;
 
 $font-size-body-text4: (
-	'default'			: 10px,
-	'phone'				: 10px,
-	'phone-plus'		: 10px,
-	'tablet-portrait'	: 10px,
-	'tablet-landscape'	: 10px,
-	'desktop'			: 10px,
-	'xl'				: 10px,
-	'xl2'				: 10px,
+	"default": 10px,
+	"phone": 10px,
+	"phone-plus": 10px,
+	"tablet-portrait": 10px,
+	"tablet-landscape": 10px,
+	"desktop": 10px,
+	"xl": 10px,
+	"xl2": 10px,
 ) !default;
 
 $font-size-default: (
-	'default'			: 16px,
-	'phone'				: 16px,
-	'phone-plus'		: 16px,
-	'tablet-portrait'	: 18px,
-	'tablet-landscape'	: 21px,
-	'desktop'			: 21px,
-	'xl'				: 21px,
-	'xl2'				: 21px,
+	"default": 16px,
+	"phone": 16px,
+	"phone-plus": 16px,
+	"tablet-portrait": 18px,
+	"tablet-landscape": 21px,
+	"desktop": 21px,
+	"xl": 21px,
+	"xl2": 21px,
 ) !default;
 
 $font-size-headline1: (
-	'default'			: 47px,
-	'phone'				: 47px,
-	'phone-plus'		: 47px,
-	'tablet-portrait'	: 60px,
-	'tablet-landscape'	: 60px,
-	'desktop'			: 80px,
-	'xl'				: 80px,
-	'xl2'				: 80px,
+	"default": 47px,
+	"phone": 47px,
+	"phone-plus": 47px,
+	"tablet-portrait": 60px,
+	"tablet-landscape": 60px,
+	"desktop": 80px,
+	"xl": 80px,
+	"xl2": 80px,
 ) !default;
 
 $font-size-headline2: (
-	'default'			: 29px,
-	'phone'				: 29px,
-	'phone-plus'		: 29px,
-	'tablet-portrait'	: 36px,
-	'tablet-landscape'	: 36px,
-	'desktop'			: 44px,
-	'xl'				: 44px,
-	'xl2'				: 44px,
+	"default": 29px,
+	"phone": 29px,
+	"phone-plus": 29px,
+	"tablet-portrait": 36px,
+	"tablet-landscape": 36px,
+	"desktop": 44px,
+	"xl": 44px,
+	"xl2": 44px,
 ) !default;
 
 $font-size-headline3: (
-	'default'			: 40px,
-	'phone'				: 40px,
-	'tablet-portrait'	: 40px,
-	'tablet-landscape'	: 40px,
-	'desktop'			: 40px,
-	'xl'				: 40px,
-	'xl2'				: 40px,
+	"default": 40px,
+	"phone": 40px,
+	"tablet-portrait": 40px,
+	"tablet-landscape": 40px,
+	"desktop": 40px,
+	"xl": 40px,
+	"xl2": 40px,
 ) !default;
 
 $font-size-headline3-alt: (
-	'default'			: 27px,
-	'phone'				: 27px,
-	'phone-plus'		: 27px,
-	'tablet-portrait'	: 33px,
-	'tablet-landscape'	: 33px,
-	'desktop'			: 40px,
-	'xl'				: 40px,
-	'xl2'				: 40px,
+	"default": 27px,
+	"phone": 27px,
+	"phone-plus": 27px,
+	"tablet-portrait": 33px,
+	"tablet-landscape": 33px,
+	"desktop": 40px,
+	"xl": 40px,
+	"xl2": 40px,
 ) !default;
 
 $font-size-headline4: (
-	'default'			: 32px,
-	'phone'				: 32px,
-	'phone-plus'		: 32px,
-	'tablet-portrait'	: 32px,
-	'tablet-landscape'	: 32px,
-	'desktop'			: 32px,
-	'xl'				: 32px,
-	'xl2'				: 32px,
+	"default": 32px,
+	"phone": 32px,
+	"phone-plus": 32px,
+	"tablet-portrait": 32px,
+	"tablet-landscape": 32px,
+	"desktop": 32px,
+	"xl": 32px,
+	"xl2": 32px,
 ) !default;
 
 $font-size-headline4-alt: (
-	'default'			: 32px,
-	'phone'				: 32px,
-	'phone-plus'		: 32px,
-	'tablet-portrait'	: 32px,
-	'tablet-landscape'	: 32px,
-	'desktop'			: 32px,
-	'xl'				: 32px,
-	'xl2'				: 32px,
+	"default": 32px,
+	"phone": 32px,
+	"phone-plus": 32px,
+	"tablet-portrait": 32px,
+	"tablet-landscape": 32px,
+	"desktop": 32px,
+	"xl": 32px,
+	"xl2": 32px,
 ) !default;
 
 $font-size-headline5: (
-	'default'			: 24px,
-	'phone'				: 24px,
-	'phone-plus'		: 24px,
-	'tablet-portrait'	: 24px,
-	'tablet-landscape'	: 24px,
-	'desktop'			: 24px,
-	'xl'				: 24px,
-	'xl2'				: 24px,
+	"default": 24px,
+	"phone": 24px,
+	"phone-plus": 24px,
+	"tablet-portrait": 24px,
+	"tablet-landscape": 24px,
+	"desktop": 24px,
+	"xl": 24px,
+	"xl2": 24px,
 ) !default;
 
 $font-size-headline6: (
-	'default'			: 20px,
-	'phone'				: 20px,
-	'phone-plus'		: 20px,
-	'tablet-portrait'	: 20px,
-	'tablet-landscape'	: 20px,
-	'desktop'			: 20px,
-	'xl'				: 20px,
-	'xl2'				: 20px,
+	"default": 20px,
+	"phone": 20px,
+	"phone-plus": 20px,
+	"tablet-portrait": 20px,
+	"tablet-landscape": 20px,
+	"desktop": 20px,
+	"xl": 20px,
+	"xl2": 20px,
 ) !default;
 
 $font-size-subheadline1: (
-	'default'			: 10px,
-	'phone'				: 10px,
-	'phone-plus'		: 10px,
-	'tablet-portrait'	: 10px,
-	'tablet-landscape'	: 10px,
-	'desktop'			: 10px,
-	'xl'				: 10px,
-	'xl2'				: 10px,
+	"default": 10px,
+	"phone": 10px,
+	"phone-plus": 10px,
+	"tablet-portrait": 10px,
+	"tablet-landscape": 10px,
+	"desktop": 10px,
+	"xl": 10px,
+	"xl2": 10px,
 ) !default;
 
 $font-size-subheadline2: (
-	'default'			: 10px,
-	'phone'				: 10px,
-	'phone-plus'		: 10px,
-	'tablet-portrait'	: 10px,
-	'tablet-landscape'	: 10px,
-	'desktop'			: 10px,
-	'xl'				: 10px,
-	'xl2'				: 10px,
+	"default": 10px,
+	"phone": 10px,
+	"phone-plus": 10px,
+	"tablet-portrait": 10px,
+	"tablet-landscape": 10px,
+	"desktop": 10px,
+	"xl": 10px,
+	"xl2": 10px,
 ) !default;
 
 $font-size-eyebrow: (
-	'default'			: 12px,
-	'phone'				: 12px,
-	'phone-plus'		: 12px,
-	'tablet-portrait'	: 12px,
-	'tablet-landscape'	: 12px,
-	'desktop'			: 12px,
-	'xl'				: 12px,
-	'xl2'				: 12px,
+	"default": 12px,
+	"phone": 12px,
+	"phone-plus": 12px,
+	"tablet-portrait": 12px,
+	"tablet-landscape": 12px,
+	"desktop": 12px,
+	"xl": 12px,
+	"xl2": 12px,
 ) !default;
 
 $font-size-eyebrow-small: (
-	'default'			: 8px,
-	'phone'				: 8px,
-	'phone-plus'		: 8px,
-	'tablet-portrait'	: 8px,
-	'tablet-landscape'	: 8px,
-	'desktop'			: 8px,
-	'xl'				: 8px,
-	'xl2'				: 8px,
+	"default": 8px,
+	"phone": 8px,
+	"phone-plus": 8px,
+	"tablet-portrait": 8px,
+	"tablet-landscape": 8px,
+	"desktop": 8px,
+	"xl": 8px,
+	"xl2": 8px,
 ) !default;
 
 /**
@@ -266,11 +268,11 @@ $font-size-eyebrow-small: (
 			font-size: px-to-rem($fs-font-size);
 
 			sub {
-				bottom: px-to-rem($fs-font-size * -.5);
+				bottom: px-to-rem($fs-font-size * -0.5);
 			}
 
 			sup {
-				bottom: px-to-rem($fs-font-size * .8);
+				bottom: px-to-rem($fs-font-size * 0.8);
 			}
 		}
 	}

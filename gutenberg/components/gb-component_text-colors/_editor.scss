@@ -54,20 +54,20 @@
 
 // @each $yPosition in $yPositions{
 //   	@each $xPosition in $xPositions{
-// 		.component-background-#{$xPosition}-#{$yPosition} { 
+// 		.component-background-#{$xPosition}-#{$yPosition} {
 // 			background-position: #{$xPosition} #{$yPosition};
 // 		}
 // 	}
 // }
 
 // @each $xPosition in $xPositions{
-// 	.component-background-position-x-#{$xPosition} { 
+// 	.component-background-position-x-#{$xPosition} {
 // 		background-position-x: #{$xPosition};
 // 	}
 // }
 
 // @each $yPosition in $yPositions{
-// 	.component-background-position-y-#{$yPosition} { 
+// 	.component-background-position-y-#{$yPosition} {
 // 		background-position-y: #{$yPosition};
 // 	}
 // }

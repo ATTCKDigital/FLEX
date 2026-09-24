@@ -1,14 +1,12 @@
-
 // global
 $text-color: #fff !default;
 $body-background: #f1f1f1 !default;
 
 $link: #0073aa !default;
-$link-focus: lighten( $link, 10% ) !default;
+$link-focus: lighten($link, 10%) !default;
 
 $button-color: $highlight-color !default;
 $form-checked: $highlight-color !default;
-
 
 // admin menu & admin-bar
 
@@ -24,9 +22,12 @@ $menu-current-text: $menu-highlight-text !default;
 $menu-current-icon: $menu-highlight-icon !default;
 $menu-current-background: $menu-highlight-background !default;
 
-$menu-submenu-text: mix( $base-color, $text-color, 30% ) !default;
-$menu-submenu-background: darken( $base-color, 7% ) !default;
-$menu-submenu-background-alt: desaturate( lighten( $menu-background, 7% ), 7% ) !default;
+$menu-submenu-text: mix($base-color, $text-color, 30%) !default;
+$menu-submenu-background: darken($base-color, 7%) !default;
+$menu-submenu-background-alt: desaturate(
+	lighten($menu-background, 7%),
+	7%
+) !default;
 
 $menu-submenu-focus-text: $menu-submenu-text !default;
 $menu-submenu-current-text: $text-color !default;
@@ -41,18 +42,18 @@ $menu-collapse-icon: $menu-icon !default;
 $menu-collapse-focus-text: $text-color !default;
 $menu-collapse-focus-icon: $menu-highlight-icon !default;
 
-$adminbar-avatar-frame: lighten( $menu-background, 7% ) !default;
-$adminbar-input-background: lighten( $menu-background, 7% ) !default;
+$adminbar-avatar-frame: lighten($menu-background, 7%) !default;
+$adminbar-input-background: lighten($menu-background, 7%) !default;
 
-$menu-customizer-text: mix( $base-color, $text-color, 40% ) !default;
+$menu-customizer-text: mix($base-color, $text-color, 40%) !default;
 
 /*
  * Dashicons mixin
  * use: @include dashicons( '\f140' );
  */
-@mixin dashicons( $icon ) {
+@mixin dashicons($icon) {
 	content: $icon;
-	font: normal 20px/1 'dashicons';
+	font: normal 20px/1 "dashicons";
 	speak: none;
 	display: block;
 	padding: 0;
@@ -68,59 +69,59 @@ $menu-customizer-text: mix( $base-color, $text-color, 40% ) !default;
  * Button mixin- creates 3d-ish button effect with correct
  * highlights/shadows, based on a base color.
  */
-@mixin button( $button-color, $text-color: white ) {
+@mixin button($button-color, $text-color: white) {
 	background: $button-color;
-	border-color: darken( $button-color, 10% ) darken( $button-color, 15% ) darken( $button-color, 15% );
+	border-color: darken($button-color, 10%) darken($button-color, 15%)
+		darken($button-color, 15%);
 	color: $text-color;
-	box-shadow: 0 1px 0 darken( $button-color, 15% );
-	text-shadow: 0 -1px 1px darken( $button-color, 15% ),
-		1px 0 1px darken( $button-color, 15% ),
-		0 1px 1px darken( $button-color, 15% ),
-		-1px 0 1px darken( $button-color, 15% );
+	box-shadow: 0 1px 0 darken($button-color, 15%);
+	text-shadow:
+		0 -1px 1px darken($button-color, 15%),
+		1px 0 1px darken($button-color, 15%),
+		0 1px 1px darken($button-color, 15%),
+		-1px 0 1px darken($button-color, 15%);
 
 	&:hover,
 	&:focus {
-		background: lighten( $button-color, 3% );
-		border-color: darken( $button-color, 15% );
+		background: lighten($button-color, 3%);
+		border-color: darken($button-color, 15%);
 		color: $text-color;
-		box-shadow: 0 1px 0 darken( $button-color, 15% );
+		box-shadow: 0 1px 0 darken($button-color, 15%);
 	}
 
 	&:focus {
-		box-shadow: inset 0 1px 0 darken( $button-color, 10% ),
-					0 0 2px 1px #33b3db;
+		box-shadow:
+			inset 0 1px 0 darken($button-color, 10%),
+			0 0 2px 1px #33b3db;
 	}
 
 	&:active {
-		background: darken( $button-color, 10% );
-		border-color: darken( $button-color, 15% );
-	 	box-shadow: inset 0 2px 0 darken( $button-color, 15% );
+		background: darken($button-color, 10%);
+		border-color: darken($button-color, 15%);
+		box-shadow: inset 0 2px 0 darken($button-color, 15%);
 	}
 
 	&[disabled],
 	&:disabled,
 	&.button-primary-disabled,
 	&.disabled {
-		color: hsl( hue( $button-color ), 10%, 80% ) !important;
-		background: darken( $button-color, 8% ) !important;
-		border-color: darken( $button-color, 15% ) !important;
+		color: hsl(hue($button-color), 10%, 80%) !important;
+		background: darken($button-color, 8%) !important;
+		border-color: darken($button-color, 15%) !important;
 		text-shadow: none !important;
 	}
 
 	&.button-hero {
-		box-shadow: 0 2px 0 darken( $button-color, 15% ) !important;
+		box-shadow: 0 2px 0 darken($button-color, 15%) !important;
 		&:active {
-		 	box-shadow: inset 0 3px 0 darken( $button-color, 15% ) !important;
+			box-shadow: inset 0 3px 0 darken($button-color, 15%) !important;
 		}
 	}
-
 }
-
 
 html {
 	background: $body-background;
 }
-
 
 /* Links */
 
@@ -141,14 +142,13 @@ div.dashboard-widget-submit input:hover,
 	color: $link-focus;
 }
 
-
 /* Forms */
 
-input[type=checkbox]:checked:before {
+input[type="checkbox"]:checked:before {
 	color: $form-checked;
 }
 
-input[type=radio]:checked:before {
+input[type="radio"]:checked:before {
 	background: $form-checked;
 }
 
@@ -157,12 +157,11 @@ input[type=radio]:checked:before {
 	color: $link-focus;
 }
 
-
 /* Core UI */
 
 .wp-core-ui {
 	.button-primary {
-		@include button( $button-color );
+		@include button($button-color);
 	}
 
 	.wp-ui-primary {
@@ -194,7 +193,6 @@ input[type=radio]:checked:before {
 	}
 }
 
-
 /* List tables */
 
 .wrap .add-new-h2:hover, /* deprecated */
@@ -212,7 +210,6 @@ input[type=radio]:checked:before {
 .view-switch a:hover:before {
 	color: $menu-bubble-background;
 }
-
 
 /* Admin Menu */
 
@@ -243,7 +240,6 @@ input[type=radio]:checked:before {
 	color: $menu-highlight-icon;
 }
 
-
 /* Active tabs use a bottom border color that matches the page background color. */
 
 .about-wrap h2 .nav-tab-active,
@@ -252,7 +248,6 @@ input[type=radio]:checked:before {
 	background-color: $body-background;
 	border-bottom-color: $body-background;
 }
-
 
 /* Admin Menu: submenu */
 
@@ -279,11 +274,11 @@ input[type=radio]:checked:before {
 #adminmenu .wp-has-current-submenu.opensub .wp-submenu a {
 	color: $menu-submenu-text;
 
-	&:focus, &:hover {
+	&:focus,
+	&:hover {
 		color: $menu-submenu-focus-text;
 	}
 }
-
 
 /* Admin Menu: current */
 
@@ -292,14 +287,15 @@ input[type=radio]:checked:before {
 #adminmenu .wp-has-current-submenu.opensub .wp-submenu li.current a {
 	color: $menu-submenu-current-text;
 
-	&:hover, &:focus {
+	&:hover,
+	&:focus {
 		color: $menu-submenu-focus-text;
 	}
 }
 
 ul#adminmenu a.wp-has-current-submenu:after,
 ul#adminmenu > li.current > a.current:after {
-    border-right-color: $body-background;
+	border-right-color: $body-background;
 }
 
 #adminmenu li.current a.menu-top,
@@ -321,7 +317,6 @@ ul#adminmenu > li.current > a.current:after {
 	color: $menu-current-icon;
 }
 
-
 /* Admin Menu: bubble */
 
 #adminmenu .awaiting-mod,
@@ -338,25 +333,23 @@ ul#adminmenu > li.current > a.current:after {
 	background: $menu-bubble-current-background;
 }
 
-
 /* Admin Menu: collapse button */
 
 #collapse-menu {
-    color: $menu-collapse-text;
+	color: $menu-collapse-text;
 }
 
 #collapse-menu:hover {
-    color: $menu-collapse-focus-text;
+	color: $menu-collapse-focus-text;
 }
 
 #collapse-button div:after {
-    color: $menu-collapse-icon;
+	color: $menu-collapse-icon;
 }
 
 #collapse-menu:hover #collapse-button div:after {
-    color: $menu-collapse-focus-icon;
+	color: $menu-collapse-focus-icon;
 }
-
 
 /* Admin Bar */
 
@@ -400,7 +393,6 @@ ul#adminmenu > li.current > a.current:after {
 #wpadminbar:not(.mobile) li:hover #adminbarsearch:before {
 	color: $menu-highlight-icon;
 }
-
 
 /* Admin Bar: submenu */
 
@@ -459,23 +451,38 @@ ul#adminmenu > li.current > a.current:after {
 	color: $menu-icon;
 }
 
-
 /* Admin Bar: search */
 
 #wpadminbar #adminbarsearch:before {
 	color: $menu-icon;
 }
 
-#wpadminbar > #wp-toolbar > #wp-admin-bar-top-secondary > #wp-admin-bar-search #adminbarsearch input.adminbar-input:focus {
+#wpadminbar
+	> #wp-toolbar
+	> #wp-admin-bar-top-secondary
+	> #wp-admin-bar-search
+	#adminbarsearch
+	input.adminbar-input:focus {
 	color: $menu-text;
 	background: $adminbar-input-background;
 }
 
-#wpadminbar #adminbarsearch .adminbar-input::-webkit-input-placeholder { color: $menu-text; opacity: 0.7; }
-#wpadminbar #adminbarsearch .adminbar-input:-moz-placeholder { color: $menu-text; opacity: 0.7; }
-#wpadminbar #adminbarsearch .adminbar-input::-moz-placeholder { color: $menu-text; opacity: 0.7; }
-#wpadminbar #adminbarsearch .adminbar-input:-ms-input-placeholder { color: $menu-text; opacity: 0.7; }
-
+#wpadminbar #adminbarsearch .adminbar-input::-webkit-input-placeholder {
+	color: $menu-text;
+	opacity: 0.7;
+}
+#wpadminbar #adminbarsearch .adminbar-input:-moz-placeholder {
+	color: $menu-text;
+	opacity: 0.7;
+}
+#wpadminbar #adminbarsearch .adminbar-input::-moz-placeholder {
+	color: $menu-text;
+	opacity: 0.7;
+}
+#wpadminbar #adminbarsearch .adminbar-input:-ms-input-placeholder {
+	color: $menu-text;
+	opacity: 0.7;
+}
 
 /* Admin Bar: my account */
 
@@ -496,12 +503,11 @@ ul#adminmenu > li.current > a.current:after {
 	color: $menu-submenu-text;
 }
 
-
 /* Pointers */
 
 .wp-pointer .wp-pointer-content h3 {
 	background-color: $highlight-color;
-	border-color: darken( $highlight-color, 5% );
+	border-color: darken($highlight-color, 5%);
 }
 
 .wp-pointer .wp-pointer-content h3:before {
@@ -514,7 +520,6 @@ ul#adminmenu > li.current > a.current:after {
 .wp-pointer.wp-pointer-undefined .wp-pointer-arrow-inner {
 	border-bottom-color: $highlight-color;
 }
-
 
 /* Media */
 
@@ -531,7 +536,9 @@ ul#adminmenu > li.current > a.current:after {
 
 .attachment.details .check {
 	background-color: $highlight-color;
-	box-shadow: 0 0 0 1px #fff, 0 0 0 2px $highlight-color;
+	box-shadow:
+		0 0 0 1px #fff,
+		0 0 0 2px $highlight-color;
 }
 
 .media-selection .attachment.selection.details .thumbnail {
@@ -542,7 +549,6 @@ ul#adminmenu > li.current > a.current:after {
 		0px 0px 0px 1px #fff,
 		0px 0px 0px 3px $highlight-color;
 }
-
 
 /* Themes */
 

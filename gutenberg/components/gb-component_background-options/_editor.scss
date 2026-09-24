@@ -40,8 +40,6 @@
 	}
 }
 
-
-
 //-----------------------------------------
 // Image Background
 //-----------------------------------------
@@ -52,7 +50,7 @@
 
 	&.component-image-background-wide {
 		&:before {
-			content: '';
+			content: "";
 			display: block;
 			// background-color: rgba(255, 0, 0, 0.3);
 			background-repeat: no-repeat;
@@ -67,26 +65,25 @@
 	}
 }
 
-
 $yPositions: top, center, bottom;
 $xPositions: left, right, center;
 
-@each $yPosition in $yPositions{
-  	@each $xPosition in $xPositions{
-		.component-background-#{$xPosition}-#{$yPosition} { 
+@each $yPosition in $yPositions {
+	@each $xPosition in $xPositions {
+		.component-background-#{$xPosition}-#{$yPosition} {
 			background-position: #{$xPosition} #{$yPosition};
 		}
 	}
 }
 
-@each $xPosition in $xPositions{
-	.component-background-position-x-#{$xPosition} { 
+@each $xPosition in $xPositions {
+	.component-background-position-x-#{$xPosition} {
 		background-position-x: #{$xPosition};
 	}
 }
 
-@each $yPosition in $yPositions{
-	.component-background-position-y-#{$yPosition} { 
+@each $yPosition in $yPositions {
+	.component-background-position-y-#{$yPosition} {
 		background-position-y: #{$yPosition};
 	}
 }

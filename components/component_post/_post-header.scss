@@ -5,7 +5,7 @@
 		position: absolute;
 		left: 20px;
 	}
-	
+
 	.featured-image {
 		height: 300px;
 		overflow: hidden;
@@ -16,13 +16,12 @@
 
 		img {
 			object-fit: cover;
-    		object-position: center center;
-	  		height: 300px;
+			object-position: center center;
+			height: 300px;
 
 			@include mediaquery(tablet-landscape) {
 				height: 400px;
 			}
 		}
-
 	}
 }

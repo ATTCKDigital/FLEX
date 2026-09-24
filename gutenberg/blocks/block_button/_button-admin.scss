@@ -28,7 +28,7 @@
 		}
 	}
 
-	.editor-rich-text__tinymce[data-is-placeholder-visible=true].wp-block-button__link {
+	.editor-rich-text__tinymce[data-is-placeholder-visible="true"].wp-block-button__link {
 		background: transparent;
 		border: 0;
 		position: absolute;
@@ -71,7 +71,7 @@
 		@extend .cta-negative;
 	}
 
-	color: color('secondary', 'black');
+	color: color("secondary", "black");
 }
 
 // Prevents button elements from taking up 100% width

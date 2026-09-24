@@ -2,7 +2,7 @@
  * _get()
  * A more terse way of retrieving data from sass maps
  */
-@function _get($map, $key, $subKey: false){
+@function _get($map, $key, $subKey: false) {
 	// Check to see if the passed map exists
 	// @if (not global-variable-exists($map)) {
 	// 	@warn "#{$map} doesn't exist.";
@@ -14,14 +14,10 @@
 		@if ($subKey) {
 			//$subMap: map-get($map, key);
 			@return map-get(map-get($map, $key), $subKey);
-		}
-
-		@else {
+		} @else {
 			@return map-get($map, $key);
 		}
-	}
-
-	@else {
+	} @else {
 		@warn "#{$key} doesn't exist in #{$map}. Current font property options for #{$map} are: #{map-keys($map)}.";
 		@return false;
 	}

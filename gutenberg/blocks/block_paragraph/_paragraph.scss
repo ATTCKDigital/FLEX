@@ -1,30 +1,29 @@
 .component-paragraph {
 	a {
-		color: color('text', 'link');
+		color: color("text", "link");
 		text-decoration: none;
-		transition: color .05s ease-out;
+		transition: color 0.05s ease-out;
 
 		@include mediaquery(desktop) {
 			&:hover {
 				opacity: 1;
-				color: color('text', 'hover');
+				color: color("text", "hover");
 			}
 		}
 
 		[data-logo-color="logo-color-light"] & {
-			color: color('text', 'hover');
+			color: color("text", "hover");
 
 			@include mediaquery(desktop) {
 				&:hover {
 					opacity: 1;
-					color: color('secondary', 'white');
+					color: color("secondary", "white");
 				}
 			}
 		}
 
 		.links-white & {
-			color: color('secondary', 'white');
+			color: color("secondary", "white");
 		}
 	}
-
 }

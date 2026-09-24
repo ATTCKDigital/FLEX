@@ -1,41 +1,41 @@
 .component-list {
 	a {
-		color: color('text', 'link');
+		color: color("text", "link");
 		text-decoration: none;
-		transition: color .05s ease-out;
+		transition: color 0.05s ease-out;
 
 		@include mediaquery(desktop) {
 			&:hover {
-				color: color('text', 'hover');
+				color: color("text", "hover");
 			}
 		}
 	}
 
 	li {
 		@extend .is-style-body1 !optional;
-		margin-bottom: $gap*.5;
+		margin-bottom: $gap * 0.5;
 	}
 
 	ol {
 		list-style-type: decimal;
 		list-style-position: outside;
-		margin-left: $gap*4;
+		margin-left: $gap * 4;
 	}
 
 	ul {
 		list-style-type: disc;
 		list-style-position: outside;
-		margin-left: $gap*4;
+		margin-left: $gap * 4;
 	}
 
-	.is-style-list-columns ul, 
+	.is-style-list-columns ul,
 	.is-style-list-columns ol {
 		@extend .list-columns !optional;
 	}
 
-	&.align-center, 
+	&.align-center,
 	&.align-right {
-		ol, 
+		ol,
 		ul {
 			list-style-position: inside;
 			margin-left: 0;

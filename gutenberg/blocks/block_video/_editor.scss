@@ -4,14 +4,13 @@
 // Additional styles necessary to assist the editor.
 // Enqueued after style.scss.
 //--------------------------------------------------------------
-.media-upload-wrapper, .media-button-wrapper {
-
+.media-upload-wrapper,
+.media-button-wrapper {
 	.blocks-base-control {
 		width: 100%;
 	} // .blocks-base-control
 
 	.components-button {
-
 		svg {
 			position: relative;
 			top: 5px;
@@ -29,7 +28,7 @@
 	}
 }
 //-----------------------------------------
-// Video 
+// Video
 //-----------------------------------------
 .component-video {
 	overflow: hidden;
@@ -49,4 +48,3 @@
 		z-index: -1;
 	} // .video-container
 } // .has-video-background
-

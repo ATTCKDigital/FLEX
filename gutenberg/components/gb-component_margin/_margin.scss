@@ -22,17 +22,20 @@
 				@if $screensize != default {
 					// Limit Geometric growth multiplier to 3x
 					@if $i < 4 {
-						.margin-#{$screensize}-#{$position}-#{$i+1}x-geo.margin-#{$screensize}-#{$position}-#{$i+1}x-geo { 
+						.margin-#{$screensize}-#{$position}-#{$i
+							+ 1}x-geo.margin-#{$screensize}-#{$position}-#{$i
+							+ 1}x-geo {
 							@include mediaquery(#{$screensize}) {
 								// This is the correct function for the 8, 16, 32, 64 sequence
 								// I.e., Geometric growth
 								// https://www.mathway.com/popular-problems/Algebra/965626
-								margin-#{$position}: #{$counterIncrement * _pow(2, $i)}px;
+								margin-#{$position}: #{$counterIncrement *
+									_pow(2, $i)}px;
 							}
 						}
 					}
 
-					.margin-#{$screensize}-#{$position}-#{$i}x.margin-#{$screensize}-#{$position}-#{$i}x { 
+					.margin-#{$screensize}-#{$position}-#{$i}x.margin-#{$screensize}-#{$position}-#{$i}x {
 						@include mediaquery(#{$screensize}) {
 							margin-#{$position}: #{$i * $counterIncrement}px;
 						}
@@ -43,40 +46,75 @@
 				@if $screensize == default {
 					// Limit Geometric growth multiplier to 3x
 					@if $i < 4 {
-						.margin-#{$position}-#{$i+1}x-geo.margin-#{$position}-#{$i+1}x-geo { 
+						.margin-#{$position}-#{$i
+							+ 1}x-geo.margin-#{$position}-#{$i
+							+ 1}x-geo {
 							// This is the correct function for the 8, 16, 32, 64 sequence
 							// I.e., Geometric growth
 							// https://www.mathway.com/popular-problems/Algebra/965626
-							margin-#{$position}: #{$counterIncrement * _pow(2, $i)}px;
+							margin-#{$position}: #{$counterIncrement *
+								_pow(2, $i)}px;
 						}
 					}
 
-					.margin-#{$position}-#{$i}x.margin-#{$position}-#{$i}x { 
+					.margin-#{$position}-#{$i}x.margin-#{$position}-#{$i}x {
 						margin-#{$position}: #{$i * $counterIncrement}px;
 					}
-				} 
+				}
 			}
 		}
 	}
 }
 
 // Helpers
-.margin-bottom-2vh  { margin-bottom: 2vh; }
-.margin-bottom-3vh  { margin-bottom: 3vh; }
-.margin-bottom-4vh  { margin-bottom: 4vh; }
-.margin-bottom-5vh  { margin-bottom: 5vh; }
-.margin-bottom-6vh  { margin-bottom: 6vh; }
-.margin-bottom-6-5vh{ margin-bottom: 6.5vh; }
-.margin-bottom-7vh  { margin-bottom: 7vh; }
-.margin-bottom-8vh  { margin-bottom: 8vh; }
-.margin-bottom-9vh  { margin-bottom: 9vh; }
-.margin-bottom-10vh { margin-bottom: 10vh; }
-.margin-bottom-11vh { margin-bottom: 11vh; }
-.margin-bottom-12vh { margin-bottom: 12vh; }
-.margin-bottom-13vh { margin-bottom: 13vh; }
-.margin-bottom-14vh { margin-bottom: 14vh; }
-.margin-bottom-18vh { margin-bottom: 18vh; }
-.margin-bottom-20vh { margin-bottom: 20vh; }
+.margin-bottom-2vh {
+	margin-bottom: 2vh;
+}
+.margin-bottom-3vh {
+	margin-bottom: 3vh;
+}
+.margin-bottom-4vh {
+	margin-bottom: 4vh;
+}
+.margin-bottom-5vh {
+	margin-bottom: 5vh;
+}
+.margin-bottom-6vh {
+	margin-bottom: 6vh;
+}
+.margin-bottom-6-5vh {
+	margin-bottom: 6.5vh;
+}
+.margin-bottom-7vh {
+	margin-bottom: 7vh;
+}
+.margin-bottom-8vh {
+	margin-bottom: 8vh;
+}
+.margin-bottom-9vh {
+	margin-bottom: 9vh;
+}
+.margin-bottom-10vh {
+	margin-bottom: 10vh;
+}
+.margin-bottom-11vh {
+	margin-bottom: 11vh;
+}
+.margin-bottom-12vh {
+	margin-bottom: 12vh;
+}
+.margin-bottom-13vh {
+	margin-bottom: 13vh;
+}
+.margin-bottom-14vh {
+	margin-bottom: 14vh;
+}
+.margin-bottom-18vh {
+	margin-bottom: 18vh;
+}
+.margin-bottom-20vh {
+	margin-bottom: 20vh;
+}
 
 .margin-bottom-hero-large,
 .margin-bottom-hero-medium {

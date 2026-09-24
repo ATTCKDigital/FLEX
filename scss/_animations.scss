@@ -6,16 +6,16 @@
 // Set initial styles before "faded-in" class added
 // TODO: Replace "prepare-in-view" with "transition-when-visible"
 .transition-when-visible {
-	opacity: .5;
+	opacity: 0.5;
 
-	// Restricting transition to 'opacity' prevents other effects 
+	// Restricting transition to 'opacity' prevents other effects
 	// (e.g., background color) from transitioning smoothly
 	// transition: opacity .3s;
-	transition: all .3s;
+	transition: all 0.3s;
 
 	&.transitioned-into-view {
 		opacity: 1;
-		transition: all .3s;
+		transition: all 0.3s;
 	}
 }
 
@@ -42,7 +42,8 @@
 }
 
 @keyframes moveUp {
-	0% {}
+	0% {
+	}
 
 	100% {
 		opacity: 1;
@@ -53,7 +54,7 @@
 
 // Helper class to Fade In an element
 .fadeIn {
-	animation: fadeIn .7s ease forwards;
+	animation: fadeIn 0.7s ease forwards;
 }
 
 @keyframes fadeIn {
@@ -62,14 +63,13 @@
 	}
 
 	100% {
-		
 		opacity: 1;
 	}
 }
 
 // Helper class to Fade In an element
 .fadeOut {
-	animation: fadeOut .7s ease forwards;
+	animation: fadeOut 0.7s ease forwards;
 }
 
 @keyframes fadeOut {
@@ -78,7 +78,6 @@
 	}
 
 	100% {
-		
 		opacity: 0;
 	}
 }

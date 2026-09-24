@@ -1,5 +1,5 @@
 .component-testimonialcarousel {
-	background: color('secondary', 'white');
+	background: color("secondary", "white");
 	padding-bottom: 75px;
 	padding-top: 60px;
 
@@ -40,7 +40,7 @@
 			&:before {
 				background: url(../assets/images/arrow-slider.svg);
 				background-repeat: no-repeat;
-				content: '';
+				content: "";
 				display: inline-block;
 				height: 56px;
 				margin-right: 10px;
@@ -59,7 +59,7 @@
 			&:after {
 				background: url(../assets/images/arrow-slider.svg);
 				background-repeat: no-repeat;
-				content: '';
+				content: "";
 				display: inline-block;
 				height: 56px;
 				margin-left: 10px;
@@ -138,7 +138,7 @@
 
 		.dots-component {
 			margin-top: 45px;
-			
+
 			@include mediaquery(tablet-landscape) {
 				margin-top: 40px;
 			}
@@ -147,7 +147,7 @@
 				position: relative;
 
 				a {
-					background-color: #A5D4F0;
+					background-color: #a5d4f0;
 					height: 4px;
 					width: 4px;
 				}
@@ -158,11 +158,11 @@
 
 				&.active {
 					a {
-						background-color: #59869F;
+						background-color: #59869f;
 					}
 
 					&:before {
-						border: 2px solid #A5D4F0;
+						border: 2px solid #a5d4f0;
 						border-radius: 50%;
 						content: "";
 						height: 12px;

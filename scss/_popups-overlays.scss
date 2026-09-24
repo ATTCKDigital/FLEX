@@ -12,7 +12,10 @@
 	right: 0;
 	top: 0vh;
 	transition-delay: 1s;
-	transition: z-index 1s ease-out, opacity 1s ease-out, background-color 1s ease-out;
+	transition:
+		z-index 1s ease-out,
+		opacity 1s ease-out,
+		background-color 1s ease-out;
 	width: 100%;
 	z-index: 10010;
 
@@ -23,9 +26,8 @@
 	}
 }
 
-
 /** Pop ups **/
-.video-popup, 
+.video-popup,
 .image-popup {
 	height: 100vh;
 	overflow: hidden;
@@ -73,7 +75,7 @@
 	left: 0;
 
 	.form-popup-inner {
-		background-color: color('secondary', 'white');
+		background-color: color("secondary", "white");
 		position: relative;
 		max-width: 596px;
 		width: 90%;
@@ -94,7 +96,7 @@
 	overflow: hidden;
 	position: fixed;
 	width: 100%;
-	background-color: color('secondary', 'black');
+	background-color: color("secondary", "black");
 	z-index: 999;
 	display: none;
 	top: 0;
@@ -122,11 +124,11 @@
 	right: 0;
 	top: 0;
 	z-index: 2;
-	transition: opacity .5s linear;
+	transition: opacity 0.5s linear;
 
 	&.visible {
 		opacity: 1;
-		transition: opacity .5s linear;
+		transition: opacity 0.5s linear;
 	}
 
 	.show-blackout-modal & {

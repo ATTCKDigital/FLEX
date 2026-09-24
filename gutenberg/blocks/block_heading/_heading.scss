@@ -8,13 +8,13 @@
 
 		img {
 			height: auto;
-			margin-right: $gap*5;
+			margin-right: $gap * 5;
 			max-height: 30px;
 			max-width: 45px;
 			width: auto;
 
 			@include mediaquery(tablet-portrait) {
-				margin-right: $gap*2;
+				margin-right: $gap * 2;
 				max-height: 50px;
 				max-width: 80px;
 			}
@@ -30,7 +30,7 @@
 		&:before {
 			// background: url(../assets/images/Quotation.svg) 0 0 no-repeat;
 			background-size: contain;
-			content: '';
+			content: "";
 			height: 50px;
 			left: 0;
 			position: absolute;
@@ -53,13 +53,13 @@
 
 	img {
 		height: auto;
-		margin-right: $gap*5;
+		margin-right: $gap * 5;
 		max-height: 30px;
 		max-width: 45px;
 		width: auto;
 
 		@include mediaquery(tablet-portrait) {
-			margin-right: $gap*2;
+			margin-right: $gap * 2;
 			max-width: 80px;
 			max-height: 50px;
 		}

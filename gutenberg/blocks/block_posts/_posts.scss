@@ -5,7 +5,7 @@
 	button {
 		display: inline-block;
 		border: none;
-		color: color('text', 'body');
+		color: color("text", "body");
 		cursor: pointer;
 		font-size: 1rem;
 		margin: 0;
@@ -68,7 +68,7 @@
 			display: flex;
 			gap: 1rem;
 			&.current {
-				border-bottom: 1px solid color('text', 'body');
+				border-bottom: 1px solid color("text", "body");
 				cursor: pointer;
 			}
 		}
@@ -92,8 +92,6 @@
 			right: 0;
 		}
 	}
-
-
 
 	.sort-filter {
 		display: flex;
@@ -126,16 +124,16 @@
 		@include mediaquery(tablet-landscape) {
 			padding: 0 10px;
 		}
-		
+
 		&::after {
-			content: '';
+			content: "";
 			height: 0;
 			border-left: 5px solid transparent;
 			border-right: 5px solid transparent;
-			border-top: 5px solid color('text', 'body');
+			border-top: 5px solid color("text", "body");
 			margin-left: 10px;
 			margin-bottom: 2px;
-			transition: transform .3s;
+			transition: transform 0.3s;
 			width: 0;
 		}
 	}
@@ -145,7 +143,7 @@
 	}
 
 	.dropdown-list {
-		border: 1px color('secondary', 'lighterGray') solid;
+		border: 1px color("secondary", "lighterGray") solid;
 		display: none;
 		flex-direction: column;
 		left: 0;
@@ -157,7 +155,7 @@
 	}
 
 	.dropdown-button {
-		background: color('secondary', 'white');
+		background: color("secondary", "white");
 		font-weight: 600;
 		padding: 10px;
 		text-align: left;
@@ -166,7 +164,7 @@
 
 	.cat-list {
 		display: none;
-	
+
 		@include mediaquery(tablet-landscape) {
 			display: block;
 		}
@@ -183,10 +181,10 @@
 		&::after {
 			border-left: 5px solid transparent;
 			border-right: 5px solid transparent;
-			border-top: 5px solid color('text', 'body');
-			content: '';
+			border-top: 5px solid color("text", "body");
+			content: "";
 			height: 0;
-			transition: transform .3s;
+			transition: transform 0.3s;
 			margin-bottom: 2px;
 			margin-left: 10px;
 			width: 0;

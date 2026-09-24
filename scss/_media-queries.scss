@@ -1,40 +1,40 @@
 // Variable values in _sizing.scss
 $mediaQueries: (
-	'none'				: $default,
-	'default'			: $default,
-	'phone'				: $phone,
-	'phone-plus'		: $phone-plus,
-	'tablet-portrait'	: $tablet-portrait,
-	'tablet-landscape'	: $tablet-landscape,
-	'desktop'			: $desktop,
-	'xl'				: $xl,
-	'xl2'				: $xl2,
-	'min-1318'			: '1318px',
-	'min-1800'			: '1800px'
+	"none": $default,
+	"default": $default,
+	"phone": $phone,
+	"phone-plus": $phone-plus,
+	"tablet-portrait": $tablet-portrait,
+	"tablet-landscape": $tablet-landscape,
+	"desktop": $desktop,
+	"xl": $xl,
+	"xl2": $xl2,
+	"min-1318": "1318px",
+	"min-1800": "1800px",
 ) !default;
 
 $maxMediaQueries: (
-	'phone'				: $max-phone,
-	'phone-plus'		: $max-phone-plus,
-	'tablet-portrait'	: $max-tablet-portrait,
-	'tablet-landscape'	: $max-tablet-landscape,
-	'desktop'			: $max-desktop,
-	'xl'				: $max-xl,
-	'xl2'				: $max-xl2
+	"phone": $max-phone,
+	"phone-plus": $max-phone-plus,
+	"tablet-portrait": $max-tablet-portrait,
+	"tablet-landscape": $max-tablet-landscape,
+	"desktop": $max-desktop,
+	"xl": $max-xl,
+	"xl2": $max-xl2,
 ) !default;
 
 $minHeightMediaQueries: (
-	'mbp13'		: '1000px',
-	'min-800'	: '800px',
+	"mbp13": "1000px",
+	"min-800": "800px",
 ) !default;
 
 $minDeviceHeightMediaQueries: (
-	'iPhone4'	: '480px',
-	'iPhone5'	: '568px',
-	'Android'	: '569px',
-	'iPhone6'	: '667px',
-	'iPad'		: '737px',
-	'desktop'	: '1025px'
+	"iPhone4": "480px",
+	"iPhone5": "568px",
+	"Android": "569px",
+	"iPhone6": "667px",
+	"iPad": "737px",
+	"desktop": "1025px",
 ) !default;
 
 // Use this mobile-first mixin, primarily.
@@ -47,13 +47,13 @@ $minDeviceHeightMediaQueries: (
 @mixin mediaquery-min-max-width($breakpointMin, $breakpointMax) {
 	@media only screen and (min-width: _get($mediaQueries, #{$breakpointMin})) and (max-width: _get($mediaQueries, #{$breakpointMax})) {
 		@content;
-	}	
+	}
 }
 
 @mixin mediaquery-min-max-device-width($breakpointMin, $breakpointMax) {
 	@media only screen and (min-device-width: _get($mediaQueries, #{$breakpointMin})) and (max-device-width: _get($mediaQueries, #{$breakpointMax})) {
 		@content;
-	}	
+	}
 }
 
 @mixin mediaquery-min-device-width($breakpoint) {

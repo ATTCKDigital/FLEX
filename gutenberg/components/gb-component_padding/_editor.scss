@@ -4,14 +4,14 @@
 		border-bottom: 1px solid darkgray;
 		display: flex;
 		flex-wrap: wrap;
-    	padding-bottom: 14px;
+		padding-bottom: 14px;
 		width: 100%;
 
 		.components-panel__row {
 			padding-right: 4%;
 			width: 50%;
 
-			&:nth-child(2n+1) {
+			&:nth-child(2n + 1) {
 				padding-right: 0;
 			}
 		}
