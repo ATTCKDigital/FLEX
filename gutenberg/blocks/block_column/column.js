@@ -93,7 +93,6 @@ export default registerBlockType(
 					dataComponentOptions,
 					verticalAlignment,
 				},
-				className,
 				setAttributes,
 			} = props;
 
@@ -171,11 +170,7 @@ export default registerBlockType(
 				</BlockControls>,
 				<div
 					id={ anchor }
-					className={
-						className,
-						`column-align-${align}`,
-						`component-${dataComponentName}`
-					}
+					className={ `component-${dataComponentName}` }
 					style={ {
 						...BackgroundOptionsInlineStyles( props ),
 					} }

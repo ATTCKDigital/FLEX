@@ -72,7 +72,6 @@ export default registerBlockType(
 					dataComponentOptions,
 					popupName,
 				},
-				className,
 				setAttributes,
 			} = props;
 
@@ -116,10 +115,7 @@ export default registerBlockType(
 					/>
 				</InspectorControls>,
 				<div
-					className={
-						className,
-						`component-${dataComponentName}`
-					}
+					className={ `component-${dataComponentName}` }
 					data-component-name={ dataComponentName } 
 					data-component-options={ dataComponentOptions }
 				>
