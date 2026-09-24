@@ -146,10 +146,29 @@ function flexlayout_theme_add_editor_styles() {
 
 add_action( 'admin_init', 'flexlayout_theme_add_editor_styles' );
 
-// Admin specific styles
+/**
+ * Block editor assets. Only hooked to enqueue_block_editor_assets, never to
+ * wp_enqueue_scripts: admin.js depends on the WordPress editor handles its
+ * manifest lists (wp-blocks, wp-block-editor, …).
+ */
 function block_editor_scripts() {
-	wp_enqueue_script("block_editor_scripts", get_stylesheet_directory_uri(). "/dist/admin.js", array(), null, true);
-	wp_enqueue_style('block_editor_styles', get_stylesheet_directory_uri().'/dist/admin.css');
+	$admin_asset = flex_get_asset_manifest( 'admin' );
+	$dist_uri    = get_stylesheet_directory_uri() . '/dist';
+
+	wp_enqueue_script(
+		'block_editor_scripts',
+		$dist_uri . '/admin.js',
+		$admin_asset['dependencies'],
+		$admin_asset['version'],
+		true
+	);
+
+	wp_enqueue_style(
+		'block_editor_styles',
+		$dist_uri . '/admin.css',
+		array(),
+		$admin_asset['version']
+	);
 }
 
 add_action('enqueue_block_editor_assets', 'block_editor_scripts');
