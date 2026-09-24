@@ -1,5 +1,6 @@
 // Font Awesome (via npm)
-$fa-font-path: "assets/fonts/Fontawesome";
+// Webfonts are copied to the child's dist/fonts/fontawesome by its build (see UPGRADING.md).
+$fa-font-path: "fonts/fontawesome" !default;
 @import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
 @import "@fortawesome/fontawesome-free/scss/solid.scss";
 @import "@fortawesome/fontawesome-free/scss/brands.scss";
