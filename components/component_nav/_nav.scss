@@ -171,7 +171,7 @@
 			position: relative;
 			transition: color 0.2s;
 
-			&:after {
+			&::after {
 				background-color: transparent;
 				bottom: -4px;
 				content: "";
@@ -184,7 +184,7 @@
 			}
 
 			&:hover {
-				&:after {
+				&::after {
 					background-color: color("secondary", "white");
 					left: 0%;
 					opacity: 1;
@@ -206,7 +206,7 @@
 		}
 
 		&.current-menu-item {
-			a:after {
+			a::after {
 				background-color: color("secondary", "white");
 				left: 0%;
 				right: 0%;
@@ -215,7 +215,7 @@
 
 		@include mediaquery(desktop) {
 			&:hover {
-				a:after {
+				a::after {
 					background-color: color("secondary", "white");
 				}
 			}

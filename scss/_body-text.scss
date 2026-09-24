@@ -342,7 +342,7 @@
 	column-count: 2;
 	column-gap: $gap;
 	column-break-inside: avoid; /* Chrome, Safari, Opera */
-	page-break-inside: avoid; /* Firefox */
+	break-inside: avoid; /* Firefox */
 	break-inside: avoid;
 
 	@include mediaquery(tablet-landscape) {
@@ -353,12 +353,13 @@
 .is-style-text-columns,
 .is-style-text-columns s {
 	@include secondary-regular;
+
 	@include mediaquery(tablet-portrait) {
 		break-inside: avoid;
 		column-break-inside: avoid; /* Chrome, Safari, Opera */
 		column-count: 2;
 		column-gap: $gap * 6;
-		page-break-inside: avoid; /* Firefox */
+		break-inside: avoid; /* Firefox */
 	}
 }
 

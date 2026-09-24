@@ -168,17 +168,17 @@ body {
 			align-items: center;
 			font-family: sans-serif;
 			font-size: 0.7rem;
-			font-weight: bold;
+			font-weight: 700;
 			letter-spacing: 0.3rem;
 			text-transform: uppercase;
 			white-space: nowrap;
 
-			&:after {
+			&::after {
 				color: color("secondary", "white");
 				display: block;
 				font-family: sans-serif;
 				font-size: 0.7rem;
-				font-weight: bold;
+				font-weight: 700;
 				letter-spacing: 0.3rem;
 				position: relative;
 				text-transform: uppercase;
@@ -188,16 +188,12 @@ body {
 
 			&.default {
 				@include mediaquery-min-max-width(default, phone) {
-					background: linear-gradient(
-						160deg,
-						red,
-						#ff9966
-					) !important;
+					background: linear-gradient(160deg, red, #f96) !important;
 					color: color("default", "white");
 					display: flex;
 					text-shadow: 1px 1px rgba(100, 0, 0, 0.4);
 
-					&:after {
+					&::after {
 						content: "default";
 					}
 				}
@@ -213,7 +209,7 @@ body {
 					text-shadow: 1px 1px rgba(255, 255, 255, 0.5);
 					display: flex;
 
-					&:after {
+					&::after {
 						color: color("secondary", "black");
 						content: "phone";
 					}
@@ -235,7 +231,7 @@ body {
 					display: flex;
 					text-shadow: 1px 1px rgba(255, 255, 255, 0.5);
 
-					&:after {
+					&::after {
 						color: color("secondary", "black");
 						content: "phone-plus";
 					}
@@ -255,13 +251,13 @@ body {
 					background: linear-gradient(
 						160deg,
 						yellow,
-						#ffffcc
+						#ffc
 					) !important;
 					color: color("default", "black");
 					display: flex;
 					text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
 
-					&:after {
+					&::after {
 						color: color("secondary", "black");
 						content: "tablet-portrait";
 					}
@@ -279,7 +275,7 @@ body {
 					display: flex;
 					text-shadow: 1px 1px rgba(0, 100, 0, 0.4);
 
-					&:after {
+					&::after {
 						content: "tablet-landscape";
 					}
 				}
@@ -287,16 +283,12 @@ body {
 
 			&.desktop {
 				@include mediaquery-min-max-width(desktop, xl) {
-					background: linear-gradient(
-						160deg,
-						blue,
-						#6699ff
-					) !important;
+					background: linear-gradient(160deg, blue, #69f) !important;
 					color: color("default", "white");
 					display: flex;
 					text-shadow: 1px 1px rgba(0, 0, 100, 0.4);
 
-					&:after {
+					&::after {
 						content: "desktop";
 					}
 				}
@@ -313,7 +305,7 @@ body {
 					display: flex;
 					text-shadow: 1px 1px rgba(50, 0, 100, 0.4);
 
-					&:after {
+					&::after {
 						content: "xl";
 					}
 				}
@@ -330,7 +322,7 @@ body {
 					display: flex;
 					text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
 
-					&:after {
+					&::after {
 						content: "xl2";
 					}
 				}

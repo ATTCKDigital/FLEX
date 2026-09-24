@@ -37,7 +37,7 @@
 		z-index: 100;
 
 		&.prev {
-			&:before {
+			&::before {
 				background: url(../assets/images/Carousel_Arrow.svg);
 				background-position: center;
 				background-repeat: no-repeat;
@@ -52,7 +52,7 @@
 		}
 
 		&.next {
-			&:after {
+			&::after {
 				background: url(../assets/images/Carousel_Arrow.svg);
 				background-position: center;
 				background-repeat: no-repeat;

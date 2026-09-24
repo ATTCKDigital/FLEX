@@ -136,21 +136,27 @@ u {
 .font-weight-100.font-weight-100.font-weight-100 {
 	font-weight: 100;
 }
+
 .font-weight-200.font-weight-200.font-weight-200 {
 	font-weight: 200;
 }
+
 .font-weight-300.font-weight-300.font-weight-300 {
 	font-weight: 300;
 }
+
 .font-weight-400.font-weight-400.font-weight-400 {
 	font-weight: 400;
 }
+
 .font-weight-500.font-weight-500.font-weight-500 {
 	font-weight: 500;
 }
+
 .font-weight-600.font-weight-600.font-weight-600 {
 	font-weight: 600;
 }
+
 .font-weight-700.font-weight-700.font-weight-700 {
 	font-weight: 700;
 }
@@ -179,12 +185,15 @@ u {
 .text-align-justify {
 	text-align: justify;
 }
+
 .text-align-center {
 	text-align: center;
 }
+
 .text-align-left {
 	text-align: left;
 }
+
 .text-align-right {
 	text-align: right;
 }
@@ -202,31 +211,37 @@ u {
 		text-align: center;
 	}
 }
+
 .text-align-center-max-phone-plus {
 	@include mediaquery-max-width(phone-plus) {
 		text-align: center;
 	}
 }
+
 .text-align-center-max-tablet-portrait {
 	@include mediaquery-max-width(tablet-portrait) {
 		text-align: center;
 	}
 }
+
 .text-align-center-max-tablet-landscape {
 	@include mediaquery-max-width(tablet-landscape) {
 		text-align: center;
 	}
 }
+
 .text-align-center-max-desktopt {
 	@include mediaquery-max-width(desktop) {
 		text-align: center;
 	}
 }
+
 .text-align-center-max-xl {
 	@include mediaquery-max-width(xl) {
 		text-align: center;
 	}
 }
+
 .text-align-center-max-xl2 {
 	@include mediaquery-max-width(xl2) {
 		text-align: center;
@@ -246,31 +261,37 @@ u {
 		text-align: left;
 	}
 }
+
 .text-align-left-max-phone-plus {
 	@include mediaquery-max-width(phone-plus) {
 		text-align: left;
 	}
 }
+
 .text-align-left-max-tablet-portrait {
 	@include mediaquery-max-width(tablet-portrait) {
 		text-align: left;
 	}
 }
+
 .text-align-left-max-tablet-landscape {
 	@include mediaquery-max-width(tablet-landscape) {
 		text-align: left;
 	}
 }
+
 .text-align-left-max-desktopt {
 	@include mediaquery-max-width(desktop) {
 		text-align: left;
 	}
 }
+
 .text-align-left-max-xl {
 	@include mediaquery-max-width(xl) {
 		text-align: left;
 	}
 }
+
 .text-align-left-max-xl2 {
 	@include mediaquery-max-width(xl2) {
 		text-align: left;
@@ -290,31 +311,37 @@ u {
 		text-align: right;
 	}
 }
+
 .text-align-right-max-phone-plus {
 	@include mediaquery-max-width(phone-plus) {
 		text-align: right;
 	}
 }
+
 .text-align-right-max-tablet-portrait {
 	@include mediaquery-max-width(tablet-portrait) {
 		text-align: right;
 	}
 }
+
 .text-align-right-max-tablet-landscape {
 	@include mediaquery-max-width(tablet-landscape) {
 		text-align: right;
 	}
 }
+
 .text-align-right-max-desktopt {
 	@include mediaquery-max-width(desktop) {
 		text-align: right;
 	}
 }
+
 .text-align-right-max-xl {
 	@include mediaquery-max-width(xl) {
 		text-align: right;
 	}
 }
+
 .text-align-right-max-xl2 {
 	@include mediaquery-max-width(xl2) {
 		text-align: right;

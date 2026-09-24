@@ -284,5 +284,6 @@ $font-size-eyebrow-small: (
  */
 @function px-to-rem($size) {
 	$remSize: calc($size / 13px);
+
 	@return #{$remSize}rem;
 }

@@ -26,6 +26,7 @@
 		display: block;
 		font-size: px-to-rem(16px);
 		margin-bottom: $gap;
+
 		@include primary-bold;
 
 		&:last-child {

@@ -161,21 +161,21 @@ main.content {
 }
 
 .border-round-0em {
-	border-radius: 0rem;
+	border-radius: 0;
 
 	iframe,
 	video,
 	.video-wrapper {
-		border-radius: 0rem;
+		border-radius: 0;
 	}
 
 	.image-wrapper img {
-		border-radius: 0rem;
+		border-radius: 0;
 	}
 }
 
 .border-shadow {
-	box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .flex-grid {

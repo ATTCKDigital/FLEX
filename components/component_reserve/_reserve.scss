@@ -40,7 +40,7 @@
 			@include tertiary-light;
 			position: relative;
 			text-transform: uppercase;
-			top: 0px;
+			top: 0;
 
 			@include mediaquery(tablet-portrait) {
 				top: -30px;

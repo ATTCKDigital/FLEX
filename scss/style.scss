@@ -29,22 +29,22 @@
 @import "_blog";
 
 // Gutenberg Blocks
-@import "../gutenberg/blocks/block_button/_buttons.scss";
-@import "../gutenberg/blocks/block_carousel/_carousel.scss";
-@import "../gutenberg/blocks/block_heading/_heading.scss";
-@import "../gutenberg/blocks/block_hr/_hr.scss";
-@import "../gutenberg/blocks/block_image/_image.scss";
-@import "../gutenberg/blocks/block_popup/_popup.scss";
-@import "../gutenberg/blocks/block_posts/_posts.scss";
-@import "../gutenberg/blocks/block_quote/_quote.scss";
-@import "../gutenberg/blocks/block_share/_share.scss";
-@import "../gutenberg/blocks/block_slides/_slides.scss";
-@import "../gutenberg/blocks/block_social_media/_social-media.scss";
-@import "../gutenberg/blocks/block_video/_video.scss";
+@import "../gutenberg/blocks/block_button/_buttons";
+@import "../gutenberg/blocks/block_carousel/_carousel";
+@import "../gutenberg/blocks/block_heading/_heading";
+@import "../gutenberg/blocks/block_hr/_hr";
+@import "../gutenberg/blocks/block_image/_image";
+@import "../gutenberg/blocks/block_popup/_popup";
+@import "../gutenberg/blocks/block_posts/_posts";
+@import "../gutenberg/blocks/block_quote/_quote";
+@import "../gutenberg/blocks/block_share/_share";
+@import "../gutenberg/blocks/block_slides/_slides";
+@import "../gutenberg/blocks/block_social_media/_social-media";
+@import "../gutenberg/blocks/block_video/_video";
 
 // Gutenberg Components
-@import "../gutenberg/components/gb-component_padding/_padding.scss";
-@import "../gutenberg/components/gb-component_margin/_margin.scss";
+@import "../gutenberg/components/gb-component_padding/_padding";
+@import "../gutenberg/components/gb-component_margin/_margin";
 
 // FLEX Components
 // @import '../components/component_archive-feed/archive-feed';

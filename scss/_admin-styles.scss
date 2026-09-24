@@ -11,16 +11,20 @@ body {
 									div.interface-interface-skeleton {
 										div.interface-interface-skeleton__header {
 										}
+
 										div.interface-interface-skeleton__body {
 											div.interface-interface-skeleton__content {
 											}
+
 											div.interface-interface-skeleton__sidebar {
 												div.block-editor-block-list__layout.is-root-container {
 													div.block-editor-block-list__block {
 														&.has-child-selected {
 														}
+
 														&.is-hovered {
 														}
+
 														&.is-selected {
 														}
 													}
@@ -29,6 +33,7 @@ body {
 										}
 									}
 								}
+
 								div.popover-slot {
 								}
 							}
@@ -246,30 +251,30 @@ body {
 body.admin-color-sunrise
 	.editor-block-list__layout
 	.editor-block-list__block.is-hovered
-	> .editor-block-list__block-edit:before,
+	> .editor-block-list__block-edit::before,
 body.admin-color-blue
 	.editor-block-list__layout
 	.editor-block-list__block.is-hovered
-	> .editor-block-list__block-edit:before,
+	> .editor-block-list__block-edit::before,
 body.admin-color-coffee
 	.editor-block-list__layout
 	.editor-block-list__block.is-hovered
-	> .editor-block-list__block-edit:before {
+	> .editor-block-list__block-edit::before {
 	outline: 2px dashed silver;
 }
 
 body.admin-color-sunrise
 	.editor-block-list__layout
 	.editor-block-list__block.is-selected[data-align="full"]
-	> .editor-block-list__block-edit:before,
+	> .editor-block-list__block-edit::before,
 body.admin-color-blue
 	.editor-block-list__layout
 	.editor-block-list__block.is-selected[data-align="full"]
-	> .editor-block-list__block-edit:before,
+	> .editor-block-list__block-edit::before,
 body.admin-color-coffee
 	.editor-block-list__layout
 	.editor-block-list__block.is-selected[data-align="full"]
-	> .editor-block-list__block-edit:before {
+	> .editor-block-list__block-edit::before {
 	outline: 2px dashed gold;
 }
 
@@ -322,10 +327,10 @@ body.admin-color-coffee
 
 .editor-block-list__layout
 	.editor-block-list__block
-	.editor-block-list__block-edit:before,
+	.editor-block-list__block-edit::before,
 .block-editor-block-list__layout
 	.editor-block-list__block
-	.editor-block-list__block-edit:before {
+	.editor-block-list__block-edit::before {
 	left: 0;
 	right: 0;
 	top: 0;
@@ -334,10 +339,10 @@ body.admin-color-coffee
 
 .editor-block-list__layout
 	.editor-block-list__block.is-selected
-	> .editor-block-list__block-edit:before,
+	> .editor-block-list__block-edit::before,
 .block-editor-block-list__layout
 	.block-editor-block-list__block.is-selected
-	> .block-editor-block-list__block-edit:before {
+	> .block-editor-block-list__block-edit::before {
 	box-shadow: none;
 	outline: 2px dashed cornflowerblue;
 }
@@ -354,7 +359,7 @@ body.admin-color-coffee
 .block-editor-inserter__block-list {
 	.button {
 		.dashicons,
-		.dashicons-before:before {
+		.dashicons-before::before {
 			font-size: 40px !important;
 			height: 40px !important;
 			width: 40px !important;
@@ -370,7 +375,7 @@ body.admin-color-coffee
 
 	.button {
 		.dashicons,
-		.dashicons-before:before {
+		.dashicons-before::before {
 			margin-right: 8px;
 			vertical-align: middle;
 		}
@@ -452,7 +457,7 @@ body.admin-color-coffee
 		column-break-inside: avoid; /* Chrome, Safari, Opera */
 		column-count: 2;
 		column-gap: $gap * 15;
-		page-break-inside: avoid; /* Firefox */
+		break-inside: avoid; /* Firefox */
 	}
 }
 
@@ -463,7 +468,7 @@ body.admin-color-coffee
 .components-toolbar__control {
 	&.components-button {
 		&[data-subscript] {
-			&:after {
+			&::after {
 				bottom: 15px;
 				font-size: 12px;
 				left: initial;
@@ -759,9 +764,11 @@ body.admin-color-coffee
 .float-left.float-left {
 	float: left;
 }
+
 .float-none.float-none {
 	float: none;
 }
+
 .float-right.float-right {
 	float: right;
 }
@@ -769,9 +776,11 @@ body.admin-color-coffee
 .clear-left.clear-left {
 	clear: left;
 }
+
 .clear-both.clear-both {
 	clear: both;
 }
+
 .clear-right.clear-right {
 	clear: right;
 }

@@ -9,7 +9,7 @@
 }
 
 @mixin clearRow {
-	&:after {
+	&::after {
 		clear: both;
 		content: "";
 		display: block;
@@ -22,7 +22,7 @@
 	break-inside: $break;
 	column-count: $columns;
 	column-gap: $colGap;
-	page-break-inside: $break; /* Firefox */
+	break-inside: $break; /* Firefox */
 }
 
 @mixin horizontalCenter() {
@@ -86,36 +86,47 @@ a:not(.cta) {
 .align-center {
 	text-align: center;
 }
+
 .align-center-imp {
 	text-align: center !important;
 }
+
 .align-left {
 	text-align: left;
 }
+
 .align-left-imp {
 	text-align: left !important;
 }
+
 .align-right {
 	text-align: right;
 }
+
 .align-right-imp {
 	text-align: right !important;
 }
+
 .display-block {
 	display: block;
 }
+
 .display-block-imp {
 	display: block !important;
 }
+
 .display-inline {
 	display: inline;
 }
+
 .display-inline-imp {
 	display: inline !important;
 }
+
 .display-inline-block {
 	display: inline-block;
 }
+
 .display-inline-block-imp {
 	display: inline-block !important;
 }
@@ -130,13 +141,13 @@ a:not(.cta) {
 
 // Clearfix: contain floats
 // Available as class or mixin
-.clearfix:before,
-.clearfix:after {
+.clearfix::before,
+.clearfix::after {
 	content: " "; // 1
 	display: table; // 2
 }
 
-.clearfix:after {
+.clearfix::after {
 	clear: both;
 }
 
@@ -502,7 +513,8 @@ $justifyContent: "flex-end" !default;
 					$justifyContent: center;
 				} @else if $xPosition == "left" {
 					$justifyContent: "flex-start";
-				} // @else {
+				}
+				// @else {
 				// Default (right)
 				// $justifyContent: flex-end;
 				//}
@@ -512,7 +524,8 @@ $justifyContent: "flex-end" !default;
 					$alignItems: center;
 				} @else if $yPosition == "top" {
 					$alignItems: "flex-start";
-				} // @else {
+				}
+				// @else {
 				// Default (bottom)
 				// $alignItems: flex-end;
 				// }
@@ -580,41 +593,49 @@ $justifyContent: "flex-end" !default;
 		align-items: center;
 		justify-content: center;
 	}
+
 	.flex-top-center.flex-top-center {
 		display: flex;
 		align-items: flex-start;
 		justify-content: center;
 	}
+
 	.flex-bottom-center.flex-bottom-center {
 		display: flex;
 		align-items: flex-end;
 		justify-content: center;
 	}
+
 	.flex-center-left.flex-center-left {
 		display: flex;
 		align-items: center;
 		justify-content: flex-start;
 	}
+
 	.flex-top-left.flex-top-left {
 		display: flex;
 		align-items: flex-start;
 		justify-content: flex-start;
 	}
+
 	.flex-bottom-left.flex-bottom-left {
 		display: flex;
 		align-items: flex-end;
 		justify-content: flex-start;
 	}
+
 	.flex-center-right.flex-center-right {
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;
 	}
+
 	.flex-top-right.flex-top-right {
 		display: flex;
 		align-items: flex-start;
 		justify-content: flex-end;
 	}
+
 	.flex-bottom-right.flex-bottom-right {
 		display: flex;
 		align-items: flex-end;
@@ -638,31 +659,37 @@ $justifyContent: "flex-end" !default;
 			margin: 0 auto !important;
 		}
 	}
+
 	.block-align-center-max-phone-plus {
 		@include mediaquery-max-width(phone-plus) {
 			margin: 0 auto !important;
 		}
 	}
+
 	.block-align-center-max-tablet-portrait {
 		@include mediaquery-max-width(tablet-portrait) {
 			margin: 0 auto !important;
 		}
 	}
+
 	.block-align-center-max-tablet-landscape {
 		@include mediaquery-max-width(tablet-landscape) {
 			margin: 0 auto !important;
 		}
 	}
+
 	.block-align-center-max-desktopt {
 		@include mediaquery-max-width(desktop) {
 			margin: 0 auto !important;
 		}
 	}
+
 	.block-align-center-max-xl {
 		@include mediaquery-max-width(xl) {
 			margin: 0 auto !important;
 		}
 	}
+
 	.block-align-center-max-xl2 {
 		@include mediaquery-max-width(xl2) {
 			margin: 0 auto !important;
@@ -697,9 +724,11 @@ $justifyContent: "flex-end" !default;
 	.float-left.float-left {
 		float: left;
 	}
+
 	.float-none.float-none {
 		float: none;
 	}
+
 	.float-right.float-right {
 		float: right;
 	}
@@ -707,9 +736,11 @@ $justifyContent: "flex-end" !default;
 	.clear-left.clear-left {
 		clear: left;
 	}
+
 	.clear-both.clear-both {
 		clear: both;
 	}
+
 	.clear-right.clear-right {
 		clear: right;
 	}
@@ -892,6 +923,7 @@ $justifyContent: "flex-end" !default;
 	.overflow-visible.overflow-visible {
 		overflow: visible;
 	}
+
 	.overflow-hidden.overflow-hidden {
 		overflow: hidden;
 	}
@@ -937,36 +969,43 @@ $justifyContent: "flex-end" !default;
 .display-on-global.display-on-default {
 	display: block;
 }
+
 @include mediaquery(phone) {
 	.display-on-phone.display-on-phone {
 		display: block;
 	}
 }
+
 @include mediaquery(phone) {
 	.display-on-phone-plus.display-on-phone-plus {
 		display: block;
 	}
 }
+
 @include mediaquery(tablet-portrait) {
 	.display-on-tablet-portrait.display-on-tablet-portrait {
 		display: block;
 	}
 }
+
 @include mediaquery(tablet-landscape) {
 	.display-on-tablet-landscape.display-on-tablet-landscape {
 		display: block;
 	}
 }
+
 @include mediaquery(desktop) {
 	.display-on-desktop.display-on-desktop {
 		display: block;
 	}
 }
+
 @include mediaquery(xl) {
 	.display-on-xl.display-on-xl {
 		display: block;
 	}
 }
+
 @include mediaquery(xl2) {
 	.display-on-xl2.display-on-xl2 {
 		display: block;
@@ -976,36 +1015,43 @@ $justifyContent: "flex-end" !default;
 .display-flex-on-default.display-flex-on-default {
 	display: flex;
 }
+
 @include mediaquery(phone) {
 	.display-flex-on-phone.display-flex-on-phone {
 		display: flex;
 	}
 }
+
 @include mediaquery(phone) {
 	.display-flex-on-phone-plus.display-flex-on-phone-plus {
 		display: flex;
 	}
 }
+
 @include mediaquery(tablet-portrait) {
 	.display-flex-on-tablet-portrait.display-flex-on-tablet-portrait {
 		display: flex;
 	}
 }
+
 @include mediaquery(tablet-landscape) {
 	.display-flex-on-tablet-landscape.display-flex-on-tablet-landscape {
 		display: flex;
 	}
 }
+
 @include mediaquery(desktop) {
 	.display-flex-on-desktop.display-flex-on-desktop {
 		display: flex;
 	}
 }
+
 @include mediaquery(xl) {
 	.display-flex-on-xl.display-flex-on-xl {
 		display: flex;
 	}
 }
+
 @include mediaquery(xl2) {
 	.display-flex-on-xl2.display-flex-on-xl2 {
 		display: flex;
@@ -1015,36 +1061,43 @@ $justifyContent: "flex-end" !default;
 .hide-on-default {
 	display: none;
 }
+
 @include mediaquery(phone) {
 	.hide-on-phone.hide-on-phone {
 		display: none !important;
 	}
 }
+
 @include mediaquery(phone-plus) {
 	.hide-on-phone-plus.hide-on-phone-plus {
 		display: none !important;
 	}
 }
+
 @include mediaquery(tablet-portrait) {
 	.hide-on-tablet-portrait.hide-on-tablet-portrait {
 		display: none !important;
 	}
 }
+
 @include mediaquery(tablet-landscape) {
 	.hide-on-tablet-landscape.hide-on-tablet-landscape {
 		display: none !important;
 	}
 }
+
 @include mediaquery(desktop) {
 	.hide-on-desktop.hide-on-desktop {
 		display: none !important;
 	}
 }
+
 @include mediaquery(xl) {
 	.hide-on-xl.hide-on-xl {
 		display: none !important;
 	}
 }
+
 @include mediaquery(xl2) {
 	.hide-on-xl2.hide-on-xl2 {
 		display: none !important;
@@ -1159,57 +1212,75 @@ $justifyContent: "flex-end" !default;
 .z-index-1.z-index-1 {
 	z-index: 1;
 }
+
 .z-index-2.z-index-2 {
 	z-index: 2;
 }
+
 .z-index-3.z-index-3 {
 	z-index: 3;
 }
+
 .z-index-4.z-index-4 {
 	z-index: 4;
 }
+
 .z-index-5.z-index-5 {
 	z-index: 5;
 }
+
 .z-index-6.z-index-6 {
 	z-index: 6;
 }
+
 .z-index-7.z-index-7 {
 	z-index: 7;
 }
+
 .z-index-8.z-index-8 {
 	z-index: 8;
 }
+
 .z-index-9.z-index-9 {
 	z-index: 9;
 }
+
 .z-index-10.z-index-10 {
 	z-index: 10;
 }
+
 .z-index-20.z-index-20 {
 	z-index: 20;
 }
+
 .z-index-30.z-index-30 {
 	z-index: 30;
 }
+
 .z-index-40.z-index-40 {
 	z-index: 40;
 }
+
 .z-index-50.z-index-50 {
 	z-index: 50;
 }
+
 .z-index-60.z-index-60 {
 	z-index: 60;
 }
+
 .z-index-70.z-index-70 {
 	z-index: 70;
 }
+
 .z-index-80.z-index-80 {
 	z-index: 80;
 }
+
 .z-index-90.z-index-90 {
 	z-index: 90;
 }
+
 .z-index-100.z-index-100 {
 	z-index: 100;
 }

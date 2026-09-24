@@ -15,7 +15,7 @@
 			color: color("default", "black");
 		}
 
-		&:before {
+		&::before {
 			color: color("brand", "accent");
 			content: "\201C";
 			font-size: px-to-rem(60px);
@@ -25,7 +25,7 @@
 			top: 12px;
 		}
 
-		&:after {
+		&::after {
 			bottom: -14px;
 			color: color("brand", "accent");
 			content: "\201D";

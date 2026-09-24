@@ -140,7 +140,7 @@
 	background-size: cover;
 
 	&.component-image-background-wide {
-		&:before {
+		&::before {
 			content: "";
 			display: block;
 			background-repeat: no-repeat;
@@ -175,7 +175,7 @@
 					flex-direction: row;
 				}
 
-				&:after {
+				&::after {
 					display: none;
 				}
 			}
@@ -371,26 +371,31 @@
 			width: 50%;
 		}
 	}
+
 	&.video-width-60 {
 		.video-container {
 			width: 60%;
 		}
 	}
+
 	&.video-width-70 {
 		.video-container {
 			width: 70%;
 		}
 	}
+
 	&.video-width-80 {
 		.video-container {
 			width: 80%;
 		}
 	}
+
 	&.video-width-90 {
 		.video-container {
 			width: 90%;
 		}
 	}
+
 	&.video-width-100 {
 		.video-container {
 			width: 100%;

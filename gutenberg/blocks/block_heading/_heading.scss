@@ -27,7 +27,7 @@
 	&.show-hanging-quote {
 		position: relative;
 
-		&:before {
+		&::before {
 			// background: url(../assets/images/Quotation.svg) 0 0 no-repeat;
 			background-size: contain;
 			content: "";

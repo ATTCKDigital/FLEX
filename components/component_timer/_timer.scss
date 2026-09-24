@@ -1,7 +1,7 @@
 .component-timer {
 	color: white;
 	display: none;
-	margin-top: 0px;
+	margin-top: 0;
 	position: relative;
 	text-align: center;
 
@@ -42,7 +42,7 @@
 
 		strong {
 			font-size: inherit;
-			font-weight: bold;
+			font-weight: 700;
 			text-transform: uppercase;
 		}
 	}
@@ -60,7 +60,7 @@
 			.code {
 				font-family: monospace;
 				font-size: px-to-rem(21px);
-				font-weight: bold;
+				font-weight: 700;
 
 				@include mediaquery(phone) {
 					font-size: px-to-rem(23px);
@@ -128,7 +128,7 @@
 	.digit-container {
 		background: color("brand", "secondary");
 		border-radius: 5px;
-		box-shadow: 0px 0px 10px color("brand", "accent");
+		box-shadow: 0 0 10px color("brand", "accent");
 		display: inline-block;
 		margin: 20px auto 0 auto;
 		padding: 10px;
@@ -225,7 +225,7 @@
 	.timer-days,
 	.timer-hours,
 	.timer-minutes {
-		&:after {
+		&::after {
 			// background: rgba(0, 0, 0, .2);
 			color: white;
 			content: ":";

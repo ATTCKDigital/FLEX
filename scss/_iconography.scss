@@ -99,7 +99,7 @@
 		width: 100px;
 	}
 
-	&:after {
+	&::after {
 		border-color: transparent transparent transparent
 			color("secondary", "white");
 		border-style: solid;
@@ -174,8 +174,8 @@
 	.backgroundNav & {
 		border-color: color("secondary", "white");
 
-		&:after,
-		&:before {
+		&::after,
+		&::before {
 			background-color: color("secondary", "white");
 		}
 	}
@@ -183,14 +183,14 @@
 	.backgroundNav.logoDark & {
 		border-color: color("brand", "primary");
 
-		&:after,
-		&:before {
+		&::after,
+		&::before {
 			background-color: color("brand", "primary");
 		}
 	}
 
-	&:after,
-	&:before {
+	&::after,
+	&::before {
 		background-color: color("secondary", "white");
 		content: "";
 		height: 2px;
@@ -205,7 +205,7 @@
 		}
 	}
 
-	&:after {
+	&::after {
 		top: 14px;
 	}
 
@@ -213,13 +213,13 @@
 		border-top: 2px solid color("brand", "primary");
 		border-top: 0;
 
-		&:after {
+		&::after {
 			background-color: color("brand", "primary");
 			top: 8px;
 			transform: rotate(45deg);
 		}
 
-		&:before {
+		&::before {
 			background-color: color("brand", "primary");
 			top: 8px;
 			transform: rotate(-45deg);
@@ -238,8 +238,8 @@
 	top: 0;
 	z-index: 100;
 
-	&:after,
-	&:before {
+	&::after,
+	&::before {
 		content: "";
 		position: absolute;
 		background-color: color("secondary", "black");
@@ -247,21 +247,21 @@
 		width: 18px;
 	}
 
-	&:after {
+	&::after {
 		top: 19px;
 		left: 11px;
 		transform: rotate(45deg);
 	}
 
-	&:before {
+	&::before {
 		top: 19px;
 		left: 11px;
 		transform: rotate(-45deg);
 	}
 
 	&.close-white {
-		&:after,
-		&:before {
+		&::after,
+		&::before {
 			background-color: color("secondary", "white");
 		}
 	}
@@ -281,20 +281,21 @@
 	display: inline-block;
 	text-align: center;
 
-	&:before {
+	&::before {
 		content: "\2192";
 		position: absolute;
 		top: 0;
 		left: 0;
 		right: 0;
 		font-size: 30px;
+
 		@include primary-bold;
 		transform: rotate(90deg);
 		transition: top 0.4s ease-out;
 	}
 
 	@include mediaquery(desktop) {
-		&:hover:before {
+		&:hover::before {
 			top: 3px;
 		}
 	}

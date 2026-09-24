@@ -42,7 +42,7 @@
 		&:hover,
 		&:focus,
 		&:focus-within {
-			.cat-dropdown:after {
+			.cat-dropdown::after {
 				transform: rotate(180deg);
 			}
 
@@ -67,6 +67,7 @@
 		.page-numbers {
 			display: flex;
 			gap: 1rem;
+
 			&.current {
 				border-bottom: 1px solid color("text", "body");
 				cursor: pointer;
@@ -103,7 +104,7 @@
 		&.active,
 		&:hover {
 			.dropdown-select {
-				&:after {
+				&::after {
 					transform: rotate(180deg);
 				}
 			}

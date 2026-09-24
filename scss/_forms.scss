@@ -18,8 +18,10 @@
 		height: 30px;
 		margin-bottom: $gap;
 		letter-spacing: -0.1px;
+
 		@include secondary-regular;
 		@include placeholder(color("secondary", "black"));
+
 		@include mediaquery(tablet-landscape) {
 			font-size: 16px;
 			letter-spacing: -0.15px;
@@ -76,6 +78,7 @@ label,
 	letter-spacing: 0.2px;
 	line-height: 1.6;
 	margin-bottom: $gap * 0.5;
+
 	@include primary-regular;
 }
 
@@ -92,7 +95,7 @@ label,
 		padding-left: $gap * 3;
 		position: relative;
 
-		&:after {
+		&::after {
 			border: 1px solid color("secondary", "lighterGray");
 			border-radius: 50%;
 			content: "";
@@ -107,7 +110,7 @@ label,
 			}
 		}
 
-		&:before {
+		&::before {
 			background: transparent;
 			border-radius: 50%;
 			content: "";
@@ -123,7 +126,7 @@ label,
 	input[type="radio"] {
 		display: none;
 
-		&:checked + .wpcf7-list-item-label:after {
+		&:checked + .wpcf7-list-item-label::after {
 			background-color: color("secondary", "lighterGray");
 
 			[data-logo-color="logo-color-dark"] & {
@@ -131,7 +134,7 @@ label,
 			}
 		}
 
-		&:checked + .wpcf7-list-item-label:before {
+		&:checked + .wpcf7-list-item-label::before {
 			background-color: color("secondary", "lighterGray");
 
 			[data-logo-color="logo-color-dark"] & {
@@ -153,7 +156,7 @@ label,
 		padding-left: $gap * 3;
 		position: relative;
 
-		&:after {
+		&::after {
 			border-radius: 4px;
 			border: 1px solid color("secondary", "lighterGray");
 			content: "";
@@ -168,7 +171,7 @@ label,
 			}
 		}
 
-		&:before {
+		&::before {
 			border: 0;
 			color: white;
 			content: "\f00c";
@@ -187,11 +190,11 @@ label,
 	input[type="checkbox"] {
 		display: none;
 
-		&:checked + .wpcf7-list-item-label:after {
+		&:checked + .wpcf7-list-item-label::after {
 			background-color: color("secondary", "lighterGray");
 		}
 
-		&:checked + .wpcf7-list-item-label:before {
+		&:checked + .wpcf7-list-item-label::before {
 			background-color: transparent;
 			display: block;
 		}
@@ -218,7 +221,7 @@ label,
 	.select-container & {
 		position: relative;
 
-		&:after {
+		&::after {
 			content: "";
 			display: block;
 			border-left: 1px solid color("brand", "primary");
