@@ -1,18 +1,9 @@
 import FLEX from './client-namespace';
 import Debug from './debug';
-import ObjectAssign from 'es6-object-assign';
 
 if ( ! FLEX.isProd ) {
 	console.log( 'loaded', '/FLEX\t/js\t/load-components.js' );
 }
-
-// ie11 object assign polyfill
-// TODO: figure out why this has to explicitly be in this file. - Author?
-ObjectAssign.polyfill();
-
-// Used to create dot character replacements for submit buttons
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/repeat
-import StringRepeat from 'string.prototype.repeat';
 
 // Import all JS components explicitly.
 // Required

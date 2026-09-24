@@ -20,12 +20,8 @@ if ( ! isProd ) {
 // https://stackoverflow.com/questions/34338411/how-to-import-jquery-using-es6-syntax
 window.$ = window.jQuery = $;
 
-import cssVars from 'css-vars-ponyfill';
 import GlobalEvents from './global-events';
 import Loader from './load-components';
-
-// Support for native CSS variables in legacy browsers
-cssVars();
 
 // Initiate Global Component Loader and Global Events.
 $( function () {

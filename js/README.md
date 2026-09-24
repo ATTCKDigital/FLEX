@@ -1,6 +1,6 @@
 # Available Global JS Components
 - `admin.js`: Import gutenberg blocks and filters. Only runs in wp-admin.
-- `app.js`: Import jQuery and jQuery plugins and globalize it, run css-vars-ponyfill, load component loader.
+- `app.js`: Import jQuery and jQuery plugins and globalize it, load component loader.
 - `debug.js`: set to true temporarily to enable custom debugging tools. 
 - Cached DOM Elements: returned cached element if previously used or caches upon first use.
 - Client Namespace: Creates `FLEX.Globals` namespace.
