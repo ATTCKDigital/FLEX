@@ -1,5 +1,86 @@
 <?php
 /**
+ * Reads dist/<name>.asset.php, written by the child theme's build next to each
+ * entry, from the active (child) theme.
+ *
+ * A missing or invalid manifest falls back to no dependencies and a null version,
+ * so the site keeps rendering; with WP_DEBUG on, the problem is logged.
+ *
+ * @param string $name Entry name, e.g. 'main'.
+ * @return array{dependencies: string[], version: string|null}
+ */
+function flex_get_asset_manifest( $name ) {
+	static $manifests = array();
+
+	if ( isset( $manifests[ $name ] ) ) {
+		return $manifests[ $name ];
+	}
+
+	$file  = get_stylesheet_directory() . "/dist/{$name}.asset.php";
+	$asset = is_readable( $file ) ? include $file : null;
+	$valid = is_array( $asset )
+		&& isset( $asset['dependencies'], $asset['version'] )
+		&& is_array( $asset['dependencies'] )
+		&& is_string( $asset['version'] );
+
+	if ( ! $valid && defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+		error_log( "FLEX: missing or invalid asset manifest {$file}; run the child theme build." );
+	}
+
+	$manifests[ $name ] = $valid
+		? array(
+			'dependencies' => array_values( array_filter( $asset['dependencies'], 'is_string' ) ),
+			'version'      => $asset['version'],
+		)
+		: array(
+			'dependencies' => array(),
+			'version'      => null,
+		);
+
+	return $manifests[ $name ];
+}
+
+/**
+ * Appends ?ver=<manifest version> to a URL that is not loaded through
+ * wp_enqueue_* (TinyMCE editor style, admin color scheme).
+ *
+ * @param string $url  Asset URL.
+ * @param string $name Entry name of its manifest.
+ * @return string The URL, versioned when the manifest has a version.
+ */
+function flex_versioned_asset_url( $url, $name ) {
+	$version = flex_get_asset_manifest( $name )['version'];
+
+	return null === $version ? $url : add_query_arg( 'ver', $version, $url );
+}
+
+/**
+ * Enqueues the theme stylesheets ahead of core and plugin styles (priority 1),
+ * matching the cascade of the former hard-coded <link>s in header.php.
+ */
+function flex_enqueue_theme_styles() {
+	$dist_uri = get_stylesheet_directory_uri() . '/dist';
+
+	wp_enqueue_style(
+		'flex-style',
+		$dist_uri . '/style.css',
+		array(),
+		flex_get_asset_manifest( 'style' )['version'],
+		'screen'
+	);
+
+	wp_enqueue_style(
+		'flex-print',
+		$dist_uri . '/print.css',
+		array(),
+		flex_get_asset_manifest( 'print' )['version'],
+		'print'
+	);
+}
+
+add_action( 'wp_enqueue_scripts', 'flex_enqueue_theme_styles', 1 );
+
+/**
  * Enqueues our scripts
  */
 function _scripts() {
@@ -8,12 +89,14 @@ function _scripts() {
 		wp_enqueue_script('jquery');
 	}
 
-	// Compiled theme js file, ensuring it depends on jQuery
+	// Compiled theme js file; dependencies and version come from its build manifest
+	$main_asset = flex_get_asset_manifest( 'main' );
+
 	wp_enqueue_script(
 		'afp_script',
 		get_stylesheet_directory_uri() . "/dist/main.js",
-		array('jquery'), // Declare jQuery as a dependency
-		null,
+		$main_asset['dependencies'],
+		$main_asset['version'],
 		true
 	);
 
@@ -58,7 +141,7 @@ add_action('wp_print_styles', 'flexlayout_deregister_styles', 100);
 
 // Allows WYSIWYG to display custom css
 function flexlayout_theme_add_editor_styles() {
-    add_editor_style( get_stylesheet_directory_uri().'/dist/wysiwyg.css' );
+	add_editor_style( flex_versioned_asset_url( get_stylesheet_directory_uri() . '/dist/wysiwyg.css', 'wysiwyg' ) );
 }
 
 add_action( 'admin_init', 'flexlayout_theme_add_editor_styles' );
