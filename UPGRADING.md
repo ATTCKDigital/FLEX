@@ -277,7 +277,5 @@ The lint pass is behaviour-neutral, with these rendered-CSS differences a child 
 
 ## Known issues
 
-- `components/component_wcag/wcag.js`: when a component registers interactive **elements** (component_carousel does), the handler refers to an undefined `el` and throws a `ReferenceError`, so those elements don't get `tabindex`, `role`, `aria-label` or keyboard handlers. This is unchanged from v3 and left as is in v4.0.0, because fixing it changes front-end behaviour; it's marked in the code and needs its own change and browser check.
-- `components/component_cf7/cf7.js`: the "in progress" submit label is computed but never applied, and reads `originalSubmitTextValue.length` without a guard. Unchanged from v3.
 - `gutenberg/blocks/block_feed/feed.js`: `edit()` returns a comma expression, so only the preview renders and the Inspector panel never shows. Unchanged from v3.
 - `gutenberg/blocks/block_map/map.js` registers `flexlayout/image` (the image block's name); it is not imported by `blocks.js`, so it's dead code today.

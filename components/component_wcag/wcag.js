@@ -142,64 +142,55 @@ function WCAG( $el ) {
 
 			if ( typeof entry.elements !== 'undefined' ) {
 				// Newer method: DOM elements passed directly
-				const elements = Array.isArray( entry.elements )
-					? entry.elements
-					: [ entry.elements ];
+				// Callers may pass a single node, an array, or nested arrays of nodes (the
+				// carousel passes its arrows plus an array of dots); missing nodes are skipped.
+				const elements = []
+					.concat( entry.elements )
+					.flat()
+					.filter( Boolean );
 
 				console.log( 'passed elements: ', elements );
 
-				/*
-				 * Known latent bug, kept as-is in v4.0.0 (behaviour-neutral lint pass): `el` is
-				 * undefined here (the callback parameter is `$el`), so this path throws a
-				 * ReferenceError for the first element passed (component_carousel passes
-				 * elements). Fixing it changes front-end a11y behaviour (tabindex, role,
-				 * keyboard handlers) and needs its own change and browser check; see
-				 * UPGRADING.md "Known issues".
-				 */
-				/* eslint-disable no-undef, no-var, no-redeclare, no-shadow */
-				elements.forEach( function ( $el ) {
-					console.log( 'looping inside elements, $el: ', $el );
-
-					var $el = $( el );
-
-					if ( seenElements.has( el ) ) {
+				elements.forEach( function ( element ) {
+					if ( seenElements.has( element ) ) {
 						return; // Already processed
 					}
 
+					const $element = $( element );
+
 					// 1. Add tabindex if missing
-					if ( ! $el.is( '[tabindex]' ) ) {
-						$el.attr( 'tabindex', '0' );
+					if ( ! $element.is( '[tabindex]' ) ) {
+						$element.attr( 'tabindex', '0' );
 					}
 
 					// 2. Add role and aria-label if it's a <div> or <span>
-					if ( $el.is( 'div, span' ) ) {
-						if ( ! $el.attr( 'role' ) ) {
-							$el.attr( 'role', entry.role || 'button' );
+					if ( $element.is( 'div, span' ) ) {
+						if ( ! $element.attr( 'role' ) ) {
+							$element.attr( 'role', entry.role || 'button' );
 						}
-						if ( ! $el.attr( 'aria-label' ) ) {
+						if ( ! $element.attr( 'aria-label' ) ) {
 							const label =
 								entry.label ||
-								$el.text().trim() ||
+								$element.text().trim() ||
 								'Interactive element';
-							$el.attr( 'aria-label', label );
+							$element.attr( 'aria-label', label );
 						}
 					}
 
 					// 3. Add keyboard support (enter / space triggers click)
-					$el.on( 'keydown', function ( e ) {
+					$element.on( 'keydown', function ( e ) {
 						if ( e.key === 'Enter' || e.key === ' ' ) {
 							console.log(
-								'pressed enter or space on $el: ',
-								$el
+								'pressed enter or space on $element: ',
+								$element
 							);
 							e.preventDefault();
-							$el.trigger( 'click' );
+							$element.trigger( 'click' );
 						}
 					} );
 
-					seenElements.add( el );
+					seenElements.add( element );
 				} );
-				/* eslint-enable no-undef, no-var, no-redeclare, no-shadow */
 			} else if ( typeof entry.selectors !== 'undefined' ) {
 				// Older method: selectors passed (string, single or multiple)
 

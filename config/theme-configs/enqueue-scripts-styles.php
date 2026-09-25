@@ -81,6 +81,18 @@ function flex_enqueue_theme_styles() {
 add_action( 'wp_enqueue_scripts', 'flex_enqueue_theme_styles', 1 );
 
 /**
+ * Keeps WordPress's jQuery available to the theme bundle.
+ *
+ * Third-party embeds printed in the page (e.g. Mailchimp's signup code, which calls
+ * `jQuery.noConflict(true)`) can remove the global `jQuery` before main.js runs.
+ * Capture the instance right after jQuery loads and restore it before the bundle.
+ */
+function flex_protect_jquery_global() {
+	wp_add_inline_script( 'jquery-core', 'window.flexJQuery = window.jQuery;', 'after' );
+	wp_add_inline_script( 'afp_script', 'window.jQuery = window.jQuery || window.flexJQuery;', 'before' );
+}
+
+/**
  * Enqueues our scripts
  */
 function _scripts() {
@@ -115,6 +127,8 @@ function _scripts() {
 		'1.0',
 		true
 	);
+
+	flex_protect_jquery_global();
 
 	// Load more vars
 	wp_localize_script(
