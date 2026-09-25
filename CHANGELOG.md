@@ -2,6 +2,12 @@
 
 All notable changes to FLEX. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and FLEX uses [Semantic Versioning](https://semver.org/). Upgrade steps for every breaking change: [UPGRADING.md](UPGRADING.md).
 
+## [4.0.2] - 2026-09-25
+
+### Fixed
+
+- `js/constellation.js`: pages without `#constellation-container` no longer throw a `TypeError`. The script loads on every page but only the hero has the container; it now returns before creating the scene, so non-hero pages also skip the WebGL renderer and the animation loop.
+
 ## [4.0.1] - 2026-09-24
 
 ### Fixed

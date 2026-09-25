@@ -1,5 +1,12 @@
 /* global THREE, requestAnimationFrame, cancelAnimationFrame */
 document.addEventListener( 'DOMContentLoaded', function () {
+	const container = document.getElementById( 'constellation-container' );
+
+	// The script loads site-wide; only pages with the hero container animate.
+	if ( ! container ) {
+		return;
+	}
+
 	let scene, camera, renderer, particles, lines;
 	let animationId;
 	const mouse = { x: 0, y: 0 };
@@ -12,8 +19,6 @@ document.addEventListener( 'DOMContentLoaded', function () {
 	let particleGeometry, particleMaterial, lineGeometry, lineMaterial;
 
 	function init() {
-		const container = document.getElementById( 'constellation-container' );
-
 		// Scene setup
 		scene = new THREE.Scene();
 		camera = new THREE.PerspectiveCamera(
