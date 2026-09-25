@@ -7,6 +7,7 @@ All notable changes to FLEX. The format follows [Keep a Changelog](https://keepa
 ### Fixed
 
 - `component_wcag`: interactive **elements** registered by components (component_carousel's arrows and dots) now get `tabindex`, `role`, `aria-label` and Enter/Space handling. The handler referenced an undefined variable and threw a `ReferenceError` for every such registration; it also accepts nested arrays and skips missing nodes (a carousel without arrows).
+- Front-end scripts no longer break when a third-party embed removes the global `jQuery`: Mailchimp's signup code calls `jQuery.noConflict(true)`, which strips WordPress's jQuery whenever its own `mc-validate.js` fails to load (ad blockers, network errors). Since v4.0.0 uses WordPress's jQuery, that stopped every theme component and the typing animation. `flex_protect_jquery_global()` captures the instance after `jquery-core` and restores it before `afp_script`.
 - `component_cf7`: the double-submit guard (disabled submit button + `cta-disabled` class) could fail to apply because an unused waiting-label calculation read `.length` of an unset value and threw first. The unused calculation is removed; the button label stays unchanged by design.
 
 ## [4.0.0] - 2026-09-24
