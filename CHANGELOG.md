@@ -2,6 +2,13 @@
 
 All notable changes to FLEX. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and FLEX uses [Semantic Versioning](https://semver.org/). Upgrade steps for every breaking change: [UPGRADING.md](UPGRADING.md).
 
+## [4.0.1] - 2026-09-24
+
+### Fixed
+
+- `component_wcag`: interactive **elements** registered by components (component_carousel's arrows and dots) now get `tabindex`, `role`, `aria-label` and Enter/Space handling. The handler referenced an undefined variable and threw a `ReferenceError` for every such registration; it also accepts nested arrays and skips missing nodes (a carousel without arrows).
+- `component_cf7`: the double-submit guard (disabled submit button + `cta-disabled` class) could fail to apply because an unused waiting-label calculation read `.length` of an unset value and threw first. The unused calculation is removed; the button label stays unchanged by design.
+
 ## [4.0.0] - 2026-09-24
 
 The date is the release date; the `v4.0.0` tag is applied to the merge commit on `develop`.

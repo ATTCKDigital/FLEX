@@ -131,26 +131,6 @@ function CF7( $el ) {
 	}
 
 	function submissionInProgress( $form, isInProgress ) {
-		const originalSubmitTextValue = $form.data( 'originalSubmitTextValue' );
-
-		// Replace every character with a dot, and add a few more since dots are shorter, and pad
-		// the front and back to make it more balanced
-		let replacementSubmitTextValue = '';
-		replacementSubmitTextValue += ' '.repeat(
-			originalSubmitTextValue.length / 3
-		);
-		replacementSubmitTextValue += '.'.repeat(
-			originalSubmitTextValue.length
-		);
-		replacementSubmitTextValue += ' '.repeat(
-			originalSubmitTextValue.length / 3
-		);
-
-		// eslint-disable-next-line no-unused-vars -- the computed label is not applied yet; removing this chain would also drop the .length reads above, which currently throw without originalSubmitTextValue data (behaviour-neutral pass).
-		const submitTextValue = isInProgress
-			? replacementSubmitTextValue
-			: $form.data( 'originalSubmitTextValue' ); //&#x22EF;'; //
-
 		if ( typeof $form === 'undefined' ) {
 			return console.error( 'form element is required' );
 		}
@@ -160,13 +140,9 @@ function CF7( $el ) {
 		// Tag the submit button with a CSS class attribute
 		$submitButton.toggleClass( 'cta-disabled', isInProgress );
 
-		// Disable / Enable submit button
+		// Disable / Enable submit button. The label is intentionally left unchanged:
+		// swapping it for a placeholder changes the button width and shifts the layout.
 		$submitButton.prop( 'disabled', isInProgress );
-
-		// Replace submit button text
-		// TODO: (DP) Figure out a better way to do this. Replacing the string is jarring
-		//       as it changes the button width and disrupts the document flow.
-		// .val(submitTextValue)
 
 		return isInProgress;
 	}
