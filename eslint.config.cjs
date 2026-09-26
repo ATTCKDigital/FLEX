@@ -11,8 +11,6 @@ module.exports = [
 			// Installed packages and vendored binaries/fonts are not FLEX source.
 			'node_modules/',
 			'assets/',
-			// Vendored minified three.js UMD bundle.
-			'js/three.min.js',
 			// Disabled, deprecated blocks kept for other FLEX sites (Q9); removal planned for v5.
 			'gutenberg/blocks/block_carousel/',
 			'gutenberg/blocks/block_slides/',

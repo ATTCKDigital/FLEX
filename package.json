@@ -1,6 +1,6 @@
 {
 	"name": "FLEX-WP-Template",
-	"version": "4.0.0",
+	"version": "5.0.0",
 	"description": "All WordPress sites start here.",
 	"private": true,
 	"engines": {
@@ -37,7 +37,8 @@
 		"@wordpress/server-side-render": "^5.19.4",
 		"classnames": "^2.5.1",
 		"jquery": "^3.7.1",
-		"lodash": "^4.17.21"
+		"lodash": "^4.17.21",
+		"three": "0.186.1"
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "36.0.0"
