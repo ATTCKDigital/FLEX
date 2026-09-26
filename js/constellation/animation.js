@@ -84,11 +84,13 @@ function moveCamera( camera, time ) {
  * @param {import('three').ShaderMaterial} frame.particleMaterial Particle material.
  * @param {import('three').ShaderMaterial} frame.lineMaterial     Line material.
  * @param {Object}                         frame.hover            State from createHoverState().
+ * @param {number}                         frame.startStamp       performance.now() at mount.
  */
 export function renderFrame( frame ) {
-	const { stage, hover, particleMaterial, lineMaterial } = frame;
-	// Epoch seconds, the FLEX v4.0.2 time base.
-	const time = Date.now() * 0.001;
+	const { stage, hover, particleMaterial, lineMaterial, startStamp } = frame;
+	// Seconds since mount: small enough for the shaders' 32-bit floats, and the
+	// camera zooms in from CAMERA_RADIUS as written.
+	const time = ( performance.now() - startStamp ) / 1000;
 
 	updateHover( frame );
 

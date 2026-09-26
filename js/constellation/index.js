@@ -64,6 +64,7 @@ function mountConstellation( container ) {
 		pointer: pointerTracking.pointer,
 		hopDistances,
 		hover: createHoverState(),
+		startStamp: performance.now(),
 	};
 	const loop = createLoop( () => renderFrame( frame ) );
 
