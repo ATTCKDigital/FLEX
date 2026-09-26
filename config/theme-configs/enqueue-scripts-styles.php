@@ -179,7 +179,6 @@ function flex_constellation_skip_concat( $do_concat, $handle ) {
 
 add_filter( 'js_do_concat', 'flex_constellation_skip_concat', 10, 2 );
 
-
 // Deregister any unneeded plugin scripts here.
 function flexlayout_deregister_styles() {
 	// Remove CF7 styles
