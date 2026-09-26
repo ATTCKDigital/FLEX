@@ -112,22 +112,6 @@ function _scripts() {
 		true
 	);
 
-	wp_enqueue_script(
-		'three-js-global',
-		get_template_directory_uri() . '/js/three.min.js',
-		array(),
-		'0.125.0',
-		true
-	);
-
-	wp_enqueue_script(
-		'constellation',
-		get_template_directory_uri() . '/js/constellation.js',
-		array('three-js-global'),
-		'1.0',
-		true
-	);
-
 	flex_protect_jquery_global();
 
 	// Load more vars
@@ -143,6 +127,57 @@ function _scripts() {
 }
 
 add_action('wp_enqueue_scripts', '_scripts', PHP_INT_MAX);
+
+/**
+ * Loads the constellation hero script for the current request.
+ *
+ * Call it from any template that renders #constellation-container, anywhere
+ * before get_footer(). The script prints in the footer. Nothing is enqueued when
+ * the child build has not emitted the bundle, so the page renders without the
+ * animation and requests no missing file. FLEX never calls it itself, so pages
+ * without the hero, the block editor and wp-admin never load it.
+ *
+ * @return bool True when the script was enqueued (or already was).
+ */
+function flex_enqueue_constellation() {
+	$asset = flex_get_asset_manifest( 'constellation' );
+
+	// The manifest helper has already logged a missing or invalid manifest.
+	if ( null === $asset['version'] ) {
+		return false;
+	}
+
+	if ( ! is_readable( get_stylesheet_directory() . '/dist/constellation.js' ) ) {
+		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+			error_log( 'FLEX: dist/constellation.js missing; run the child theme build.' );
+		}
+		return false;
+	}
+
+	wp_enqueue_script(
+		'constellation',
+		get_stylesheet_directory_uri() . '/dist/constellation.js',
+		$asset['dependencies'],
+		$asset['version'],
+		true
+	);
+
+	return true;
+}
+
+/**
+ * Keeps the constellation bundle out of Jetpack Boost's JS concatenation: it is
+ * large and changes rarely, so it caches best as its own file.
+ *
+ * @param bool   $do_concat Whether Boost may concatenate the script.
+ * @param string $handle    Script handle.
+ * @return bool
+ */
+function flex_constellation_skip_concat( $do_concat, $handle ) {
+	return 'constellation' === $handle ? false : $do_concat;
+}
+
+add_filter( 'js_do_concat', 'flex_constellation_skip_concat', 10, 2 );
 
 
 // Deregister any unneeded plugin scripts here.
