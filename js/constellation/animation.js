@@ -97,14 +97,16 @@ export function renderFrame( frame ) {
 	const transitionTime = ( Date.now() - hover.transitionStartTime ) / 1000;
 	const particleUniforms = particleMaterial.uniforms;
 
-	particleUniforms.activeParticleIndex.value = hover.closestIndex;
 	particleUniforms.time.value = time;
 	particleUniforms.activeParticleOrigin.value = hover.closestPosition;
 	particleUniforms.previousActiveParticle.value = hover.previousPosition;
 	particleUniforms.transitionTime.value = transitionTime;
 
-	lineMaterial.uniforms.time.value = time;
-	lineMaterial.uniforms.activeParticleOrigin.value = hover.closestPosition;
+	const lineUniforms = lineMaterial.uniforms;
+	lineUniforms.time.value = time;
+	lineUniforms.activeParticleOrigin.value = hover.closestPosition;
+	lineUniforms.activeParticleIndex.value = hover.closestIndex;
+	lineUniforms.transitionTime.value = transitionTime;
 
 	moveCamera( stage.camera, time );
 	stage.renderer.render( stage.scene, stage.camera );

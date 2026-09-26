@@ -2,8 +2,8 @@
  * Constellation hero constants.
  *
  * Values are those of the FLEX v4.0.2 constellation script; changing any of them
- * changes the rendered scene. The hover timings (300 ms ease, 50 ms per hop)
- * live in the particle vertex shader, which is kept verbatim.
+ * changes the rendered scene. The hover, ripple and breathing timings live in
+ * the particle and line shaders.
  */
 
 // Particle field.
