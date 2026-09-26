@@ -1,13 +1,53 @@
-# Upgrading FLEX v3 → v4
+# Upgrading FLEX
 
-Every breaking change in FLEX v4.0.0 and what a FLEX child theme must do about it. The short version:
+Every breaking change in a FLEX major release and what a FLEX child theme must do about it. Newest release first; move one major version at a time.
+
+Contents: [v5.0.0](#v500) · [v3 → v4.0.0](#v3--v400): [Pin v3.4.0 first](#pin-v340-first) · [Node 24](#node-24) · [FLEX no longer builds anything](#flex-no-longer-builds-anything) · [Reference child build](#reference-child-build) · [Build contract](#build-contract) · [Enqueue changes](#enqueue-changes) · [Customizer colors are printed at runtime](#customizer-colors-are-printed-at-runtime) · [jQuery, lodash and editor globals](#jquery-lodash-and-editor-globals) · [Removed packages and IE polyfills](#removed-packages-and-ie-polyfills) · [Sass](#sass) · [Font Awesome 6.7.2](#font-awesome-672) · [Removed and deprecated files](#removed-and-deprecated-files) · [Lint presets](#lint-presets) · [Git housekeeping](#git-housekeeping) · [Known issues](#known-issues)
+
+## v5.0.0
+
+FLEX v5.0.0 moves the constellation hero from the vendored three.js r125 global to three.js **0.186.1** from npm, compiled by the child build, and loads it only on templates that ask for it. The steps:
+
+1. **Pin three.js in the child.** Add `"three": "0.186.1"` (exact, no `^`) to the child's `package.json` `dependencies` (`npm install three@0.186.1 --save-exact` under Node 24) and commit the lockfile. FLEX's own `three` dependency is for linting only; the build must resolve `three` from the child's `node_modules` (the `FlexNodeModulesGuard` fails the build otherwise).
+2. **Add the `constellation` entry** to `webpack/entries.js`:
+
+    ```js
+    const { flexDir } = require( './paths' );
+    // Constellation hero (three.js), loaded only by templates that opt in.
+    constellation: path.join( flexDir, 'js/constellation/index.js' ),
+    ```
+
+    The build then emits `dist/constellation.js` and `dist/constellation.asset.php` ([Build contract](#build-contract)). The asset manifest's dependencies are `[]`: three.js is bundled, not a WordPress handle.
+
+3. **Add a budget** for the bundle in `webpack/performance.js`, e.g. `'constellation.js': 640000` (attck: measured 556,487 B, × 1.15, rounded up to 5 KB). The bundle is about 550 KB minified; `main.js` must not grow (it contains no three.js).
+4. **Opt in from every template that renders `#constellation-container`**, anywhere before `get_footer()`:
+
+    ```php
+    <?php if ( function_exists( 'flex_enqueue_constellation' ) ) { flex_enqueue_constellation(); } ?>
+    <div id="constellation-container"><div class="constellation-overlay"></div></div>
+    ```
+
+    FLEX no longer enqueues the constellation on `wp_enqueue_scripts`, so a page that doesn't call it loads no three.js. The `function_exists()` guard keeps the template working on an older FLEX. When the bundle or its manifest is missing, the function enqueues nothing and returns `false` (logged under `WP_DEBUG`): the page renders without the animation, with no failed request and no console errors.
+
+5. **Remove every use of `three-js-global` and `THREE`.** The handle, `js/three.min.js` (r125), `js/constellation.js` and the global `window.THREE` are gone. Drop `three-js-global` from dependency arrays and dequeue calls; child code that used `THREE` must `import { … } from 'three'` and be bundled by the child build. Remove any `js/three.min.js` / `js/constellation.js` entries from lint ignores.
+6. **Build, then check the hero:** `npm run build` (0 errors, 0 warnings), then load a page with the hero (one `dist/constellation.js?ver=…` request, clean console) and a page without it (no constellation request).
+
+What else changes:
+
+- **Motion.** The constellation now animates on time since page load: the camera zooms in from radius 8, dots and links breathe slowly and faintly at rest, and hovering a dot sends one outward ripple through its links (hover growth peaks at 3×). In v4 the twinkle and zoom were frozen by a float32 precision bug, so the hero looks livelier than before; compare it visually.
+- **WebGL2 is required** for the animation. Without it the hero stays static and the console stays clean.
+- **Lifecycle.** The loop pauses into the back/forward cache (`pagehide`) and resumes from it (`pageshow`); a real leave releases the renderer and listeners. Nothing to do unless the child has its own `beforeunload` handling for the hero.
+- **Jetpack Boost.** `flex_constellation_skip_concat()` on `js_do_concat` keeps the `constellation` handle out of Boost's JS concatenation, so the bundle caches as its own file. No Boost setting changes.
+- **Unchanged:** the handle is still named `constellation`, so existing `wp_dequeue_script( 'constellation' )` calls and Boost exclusions keep working.
+
+## v3 → v4.0.0
+
+The short version:
 
 1. Pin FLEX `v3.4.0` first (the last v3 `develop`, `6366dac`), so nothing changes under you.
 2. Switch the child to Node 24 and give it its own `@wordpress/scripts` build (the [reference child build](#reference-child-build) below).
 3. Drop the `style.css` / `print.css` `<link>`s from any child `header.php`, and any `_css-vars` import or forward from child SCSS.
 4. Build, compare the site visually against v3, then move the submodule to `v4.0.0`.
-
-Contents: [Pin v3.4.0 first](#pin-v340-first) · [Node 24](#node-24) · [FLEX no longer builds anything](#flex-no-longer-builds-anything) · [Reference child build](#reference-child-build) · [Build contract](#build-contract) · [Enqueue changes](#enqueue-changes) · [Customizer colors are printed at runtime](#customizer-colors-are-printed-at-runtime) · [jQuery, lodash and editor globals](#jquery-lodash-and-editor-globals) · [Removed packages and IE polyfills](#removed-packages-and-ie-polyfills) · [Sass](#sass) · [Font Awesome 6.7.2](#font-awesome-672) · [Removed and deprecated files](#removed-and-deprecated-files) · [Lint presets](#lint-presets) · [Git housekeeping](#git-housekeeping) · [Known issues](#known-issues)
 
 ## Pin v3.4.0 first
 
@@ -25,7 +65,7 @@ FLEX now requires Node 24 LTS: `.nvmrc` is `24`, `package.json` has `"engines": 
 
 FLEX v4.0.0 ships **source only**. Removed from FLEX: `webpack.config.babel.js` (and the `BundleAnalyzerPlugin` on port 8888), the Babel, PostCSS and legacy ESLint configs, Husky, and every build-tool package. FLEX's `dist/` is no longer produced. `package.json` keeps only:
 
-- `dependencies`: exactly the packages FLEX source imports: `@wordpress/*` at the WordPress 6.8 line (`block-editor`, `blocks`, `components`, `compose`, `data`, `element`, `hooks`, `i18n`, `keycodes`, `server-side-render`), `classnames`, `jquery`, `lodash`, `@fortawesome/fontawesome-free@^6.7.2`.
+- `dependencies`: exactly the packages FLEX source imports: `@wordpress/*` at the WordPress 6.8 line (`block-editor`, `blocks`, `components`, `compose`, `data`, `element`, `hooks`, `i18n`, `keycodes`, `server-side-render`), `classnames`, `jquery`, `lodash`, `@fortawesome/fontawesome-free@^6.7.2` (v5.0.0 adds `three` `0.186.1`, see [v5.0.0](#v500)).
 - `devDependencies`: `@wordpress/scripts` **36.0.0** (pinned), used for lint and format only.
 - `scripts`: `check-engines`, `lint:js`, `lint:style`, `format`.
 
@@ -51,7 +91,8 @@ Child `package.json` essentials:
 	},
 	"dependencies": {
 		"@fortawesome/fontawesome-free": "^6.7.2",
-		"classnames": "^2.5.1"
+		"classnames": "^2.5.1",
+		"three": "0.186.1"
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "36.0.0",
@@ -118,6 +159,8 @@ module.exports = {
 	print: fromTheme( 'scss/print.scss' ),
 	'admin-colors': fromTheme( 'scss/admin-color-scheme.scss' ),
 	wysiwyg: fromTheme( 'scss/wysiwyg.scss' ),
+	// Constellation hero (three.js), loaded only by templates that opt in (v5.0.0).
+	constellation: path.join( flexDir, 'js/constellation/index.js' ),
 };
 ```
 
@@ -165,7 +208,7 @@ module.exports = ( defaultPlugins ) => [
 ```
 
 - `webpack/flex-node-modules-guard.js`: fails the build when a module or a Sass/file dependency resolves from `FLEX/node_modules` (resolver bookkeeping — `package.json` reads and directories — excepted).
-- `webpack/performance.js`: `performance.hints: 'error'` with per-asset budgets (attck: CSS ≤ 1.6 MB, `main.js` ≤ 700 KB, `admin.js` ≤ 1.46 MB). Set budgets for your site.
+- `webpack/performance.js`: `performance.hints: 'error'` with per-asset budgets (attck: CSS ≤ 1.6 MB, `main.js` ≤ 700 KB, `admin.js` ≤ 1.46 MB, `constellation.js` ≤ 640,000 B). Set budgets for your site.
 - `webpack/warnings.js`: the one vendor warning the build excuses (next section).
 
 ### The `webpack/warnings.js` vendor exception
@@ -180,12 +223,14 @@ What the child build must emit into `dist/` (FLEX's PHP reads it):
 
 | File                                                                                    | Notes                                                                                                                                                                                                                              |
 | --------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `main.js`, `main.asset.php`                                                             | Front-end bundle; `main.asset.php` dependencies expected to be exactly `['jquery']` (never editor handles or React).                                                                                                               |
+| `main.js`, `main.asset.php`                                                             | Front-end bundle; `main.asset.php` dependencies expected to be exactly `['jquery']` (never editor handles or React). Contains no three.js.                                                                                         |
 | `admin.js`, `admin.css`, `admin.asset.php`                                              | Editor bundle + editor styles (one entry); dependencies are WordPress 6.8 handles (`wp-block-editor`, `wp-blocks`, `wp-components`, `wp-data`, `wp-element`, `wp-hooks`, `wp-i18n`, …); no bundled React or `@wordpress/*` source. |
 | `style.css`, `style.asset.php`                                                          | Screen stylesheet.                                                                                                                                                                                                                 |
 | `print.css`, `print.asset.php`                                                          | Print stylesheet.                                                                                                                                                                                                                  |
 | `admin-colors.css`, `admin-colors.asset.php`                                            | The "Dev" (`coffee`) admin color scheme.                                                                                                                                                                                           |
 | `wysiwyg.css`, `wysiwyg.asset.php`                                                      | TinyMCE editor styles.                                                                                                                                                                                                             |
+| `constellation.js`                                                                      | Since v5.0.0. The constellation hero: FLEX `js/constellation/` plus the parts of three.js 0.186.1 it imports, one minified file (no chunks, no `.LICENSE.txt`). Loaded only through `flex_enqueue_constellation()`.                |
+| `constellation.asset.php`                                                               | Since v5.0.0. Dependencies exactly `[]` (three.js is bundled); version = content hash of `constellation.js`.                                                                                                                       |
 | `fonts/fontawesome/fa-{brands,regular}-400.*`, `fa-solid-900.*`, `fa-v4compatibility.*` | Copied Font Awesome 6 webfonts.                                                                                                                                                                                                    |
 
 Tolerated: the empty stub chunks `style.js`, `print.js`, `admin-colors.js`, `wysiwyg.js` (never enqueued). Must not appear: `*-rtl.css`, `style-*.css`, `*.map` (production), PHP other than `*.asset.php`, `assets/`, `_/`, extensionless files. Keep `dist/` out of git and build it on deploy.
@@ -261,7 +306,7 @@ FLEX lints with the WordPress presets from `@wordpress/scripts` 36: `npm run lin
 
 FLEX's documented overrides:
 
-- **ESLint** (`eslint.config.cjs`): globals `wp`, `jQuery`, `$`, `FLEX`; `import/no-unresolved` ignores the child build's `FLEX/…` alias; ignored: `node_modules/`, `assets/`, `js/three.min.js` and the five disabled blocks. `no-console` is off for the front-end runtime (`js/**`, `components/**` and the four front-end files under `gutenberg/`, but not `js/admin.js`, `js/icons.js`, `js/i18n.js`): `console.log` is FLEX's trace channel, which `js/debug.js` filters (it prints only on non-production servers with enhanced console logging enabled). Editor code keeps the preset's `no-console`.
+- **ESLint** (`eslint.config.cjs`): globals `wp`, `jQuery`, `$`, `FLEX`; `import/no-unresolved` ignores the child build's `FLEX/…` alias; ignored: `node_modules/`, `assets/` and the five disabled blocks (v4.0.x also ignored `js/three.min.js`, removed in v5.0.0). `no-console` is off for the front-end runtime (`js/**`, `components/**` and the four front-end files under `gutenberg/`, but not `js/admin.js`, `js/icons.js`, `js/i18n.js`): `console.log` is FLEX's trace channel, which `js/debug.js` filters (it prints only on non-production servers with enhanced console logging enabled). Editor code keeps the preset's `no-console`.
 - **Stylelint** (`stylelint.config.cjs`, formerly `.stylelintrc.json`): extends `@wordpress/stylelint-config/scss`; `selector-class-pattern` accepts FLEX's lowercase/camelCase words joined by `-`, `_`, `__` (element) or `--` (modifier); `rule-empty-line-before`, `at-rule-empty-line-before` and `comment-empty-line-before` add the `first-nested` exception, because Prettier removes blank lines at the start of a block (without it the two tools can never agree). Ignored: `node_modules/`, `assets/`, the five disabled blocks.
 - **Deferred to the `@use` migration** (disabled in `stylelint.config.cjs`, each commented "deferred to WS4 (@use migration)"): `scss/no-global-function-names` (module functions such as `color.hue()`) and `scss/load-no-partial-leading-underscore` (loading partials by their public, underscore-free name). Their fix _is_ the migration.
 - **Inline disables** carry a `--` justification, e.g. `@extend` of public classes (`.cta`, `.body`, `.is-style-*`) that markup also uses, the `clip` visually-hidden pattern, the nested `@import` in `admin-color-scheme.scss`, `rem` line heights, third-party ids.
