@@ -11,6 +11,10 @@
 		position: relative;
 		text-align: center;
 
+		@include mediaquery-max-width(tablet-portrait) {
+			padding: 0 12px;
+		}
+
 		[data-logo-color="logo-color-dark"] & {
 			color: color("default", "black");
 		}
