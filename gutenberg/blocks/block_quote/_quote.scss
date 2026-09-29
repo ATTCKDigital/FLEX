@@ -8,8 +8,14 @@
 		letter-spacing: 0.5px;
 		line-height: 1.43;
 		margin-bottom: $gap * 5;
+		// Only splits a word too wide for the column (e.g. in a wider fallback font).
+		overflow-wrap: break-word;
 		position: relative;
 		text-align: center;
+
+		@include mediaquery-max-width(tablet-portrait) {
+			padding: 0 12px;
+		}
 
 		[data-logo-color="logo-color-dark"] & {
 			color: color("default", "black");
@@ -52,6 +58,8 @@
 		color: color("text", "primary");
 		display: block;
 		font-size: px-to-rem(12px);
+		// Sources are often raw URLs.
+		overflow-wrap: break-word;
 		text-transform: uppercase;
 		letter-spacing: 2px;
 	}

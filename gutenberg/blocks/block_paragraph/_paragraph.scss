@@ -1,6 +1,8 @@
 .component-paragraph {
 	a {
 		color: color("text", "link");
+		// Raw URLs and link chains wrap instead of widening the page.
+		overflow-wrap: break-word;
 		text-decoration: none;
 		transition: color 0.05s ease-out;
 
