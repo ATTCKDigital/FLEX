@@ -2,6 +2,16 @@
 
 All notable changes to FLEX. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and FLEX uses [Semantic Versioning](https://semver.org/). Upgrade steps for every breaking change: [UPGRADING.md](UPGRADING.md).
 
+## [5.1.0] - 2026-09-29
+
+The date is the release date; the `v5.1.0` tag is applied to the merge commit on `develop`. A minor release: additive and backwards-compatible for consumers, except the intentional column-stacking change below, which is a visible layout fix (the reason for the minor bump rather than a patch). No breaking changes, so no [UPGRADING.md](UPGRADING.md) steps.
+
+### Fixed
+
+- **Centre- and bottom-aligned columns stack their blocks vertically again.** `.component-column-verticalAlignment-center` and `.component-column-verticalAlignment-bottom` set `flex-direction: column` (it had been commented out), so a column holding more than one block stacks them vertically instead of laying them out as a non-wrapping row that spilled out of the column and widened narrow viewports. The block editor now matches the front end: the editor-only `justify-content: center` override for bottom columns — which only made sense for the old row direction — is removed. No opt-out class. This is the one visible layout change for consumers: every layout that relied on the side-by-side row behaviour will now stack (on attck2026 it corrected 14 pages, all of which were already broken); compare centre/bottom columns after upgrading.
+- **Long unbreakable strings wrap instead of widening the page on narrow viewports.** Raw URLs and non-breaking link chains in paragraph links (`.component-paragraph a`), raw-URL quote sources (`.component-quote .quote-company`), and a quote word too wide for its column in a wider fallback font (`.component-quote .quote-text`) now wrap with `overflow-wrap: break-word` rather than pushing the page past the viewport. `break-word` splits a word only when it cannot fit on a line by itself, so ordinary words, headings and labels lay out exactly as before (min-content sizing is unchanged). The rule is deliberately scoped to these elements rather than applied site-wide on `body`, so it never splits ordinary labels or headings that only just miss their column.
+- **The quote closing mark stays inside the viewport on phones.** `.component-quote .quote-text` gets 12 px horizontal padding below the tablet-portrait breakpoint, so the opening and closing quote marks (offset 12 px) no longer sit past the edge in full-bleed columns. Tablet and desktop quotes are unchanged.
+
 ## [5.0.0] - 2026-09-26
 
 The date is the release date; the `v5.0.0` tag is applied to the merge commit on `develop`. Upgrade steps: [UPGRADING.md § v5.0.0](UPGRADING.md#v500).
@@ -107,6 +117,7 @@ The date is the release date; the `v4.0.0` tag is applied to the merge commit on
 
 = `6366dac`, the last pre-v4 `develop`. Pin this tag until you migrate to v4 (see [UPGRADING.md](UPGRADING.md#pin-v340-first)).
 
+[5.1.0]: https://github.com/ATTCKDigital/FLEX/compare/v5.0.0...v5.1.0
 [5.0.0]: https://github.com/ATTCKDigital/FLEX/compare/v4.0.2...v5.0.0
 [4.0.0]: https://github.com/ATTCKDigital/FLEX/compare/v3.4.0...v4.0.0
 [3.4.0]: https://github.com/ATTCKDigital/FLEX/releases/tag/v3.4.0
