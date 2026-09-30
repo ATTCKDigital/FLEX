@@ -38,10 +38,12 @@ module.exports = {
 			},
 		],
 
-		// Deferred to WS4 (@use migration): the fix for each of these *is* the
-		// @use/@forward migration (module functions such as color.hue() and
-		// loading partials by their public, underscore-free name).
-		'scss/no-global-function-names': null,
+		// scss/no-global-function-names is enabled again (v5.2.0): FLEX's SCSS
+		// now calls only namespaced module functions (map.get, color.adjust …).
+		// Only scss/load-no-partial-leading-underscore stays deferred to the
+		// @use/@forward migration (loading partials by their public,
+		// underscore-free name); its fix *is* that migration.
+		'scss/no-global-function-names': true,
 		'scss/load-no-partial-leading-underscore': null,
 	},
 };

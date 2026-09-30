@@ -2,6 +2,15 @@
 
 All notable changes to FLEX. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and FLEX uses [Semantic Versioning](https://semver.org/). Upgrade steps for every breaking change: [UPGRADING.md](UPGRADING.md).
 
+## [5.2.0] - 2026-09-30
+
+The date is the release date; the `v5.2.0` tag is applied to the merge commit on `develop`. A minor release: additive and backwards-compatible, with **byte-identical compiled CSS** — no visible change for any consumer. No breaking changes; the one optional consumer step is [UPGRADING.md § v5.2.0](UPGRADING.md#v520) (dropping your own Sass deprecation silences).
+
+### Changed
+
+- **FLEX's internal Sass now uses the `sass:map`, `sass:string` and `sass:color` module functions instead of the deprecated global built-ins and legacy colour functions.** The eight global built-in calls in `scss/_colors.scss` and `scss/_sass-utils.scss` (`map-get` → `map.get`, `map-has-key` → `map.has-key`, `map-keys` → `map.keys`, `unquote` → `string.unquote`) and the thirty deprecated colour-function calls in the admin colour partials `scss/_admin-color-scheme.scss` and `scss/_admin-color-scheme-dev.scss` (`lighten` / `darken` → `color.adjust($lightness:)`, `mix` → `color.mix`, `desaturate` → `color.adjust($saturation:)`, `hue` → `color.hue`) now call the namespaced module functions. **The compiled CSS is unchanged (byte-identical for all five stylesheets).** Consumers can now drop the `global-builtin` and `color-functions` Dart Sass deprecation silences from their build; dropping `global-builtin` also requires `quietDeps: true` (or equivalent), because the bundled Font Awesome vendor SCSS still uses global built-ins we don't control ([UPGRADING.md § v5.2.0](UPGRADING.md#v520)). The `@import` → `@use`/`@forward` module migration — and the `import` deprecation silence it needs — remain for a future FLEX release.
+- **Re-enabled the `scss/no-global-function-names` stylelint rule** (`stylelint.config.cjs`), now that FLEX's own SCSS calls only namespaced module functions. `scss/load-no-partial-leading-underscore` stays deferred to the `@use`/`@forward` migration.
+
 ## [5.1.0] - 2026-09-29
 
 The date is the release date; the `v5.1.0` tag is applied to the merge commit on `develop`. A minor release: additive and backwards-compatible for consumers, except the intentional column-stacking change below, which is a visible layout fix (the reason for the minor bump rather than a patch). No breaking changes, so no [UPGRADING.md](UPGRADING.md) steps.
@@ -117,6 +126,7 @@ The date is the release date; the `v4.0.0` tag is applied to the merge commit on
 
 = `6366dac`, the last pre-v4 `develop`. Pin this tag until you migrate to v4 (see [UPGRADING.md](UPGRADING.md#pin-v340-first)).
 
+[5.2.0]: https://github.com/ATTCKDigital/FLEX/compare/v5.1.0...v5.2.0
 [5.1.0]: https://github.com/ATTCKDigital/FLEX/compare/v5.0.0...v5.1.0
 [5.0.0]: https://github.com/ATTCKDigital/FLEX/compare/v4.0.2...v5.0.0
 [4.0.0]: https://github.com/ATTCKDigital/FLEX/compare/v3.4.0...v4.0.0

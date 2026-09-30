@@ -1,5 +1,7 @@
+@use "sass:color";
+
 $base-color: #316c31 !default;
 $highlight-color: #458534 !default;
 $notification-color: #7bb35a !default;
 $action-color: #bbdb6a !default;
-$icon-color: hsl(hue($base-color), 7%, 95%) !default;
+$icon-color: hsl(color.hue($base-color), 7%, 95%) !default;
