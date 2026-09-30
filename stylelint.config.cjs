@@ -41,7 +41,7 @@ module.exports = {
 		// Deferred to WS4 (@use migration): the fix for each of these *is* the
 		// @use/@forward migration (module functions such as color.hue() and
 		// loading partials by their public, underscore-free name).
-		'scss/no-global-function-names': null,
+		'scss/no-global-function-names': true,
 		'scss/load-no-partial-leading-underscore': null,
 	},
 };
