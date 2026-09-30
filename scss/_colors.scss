@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "sass:string";
+
 // Default
 $modalColor: #fff !default;
 $popupColor: rgba(0, 0, 0, 0.7) !default;
@@ -56,10 +59,10 @@ $brand-colors: (
 // Usage: color('key', 'variant');
 @function color($key: "debug", $variant: $brand-color-key, $opacity: null) {
 	$color: null;
-	$color-spectrum: map-get($brand-colors, $key);
+	$color-spectrum: map.get($brand-colors, $key);
 
 	@if $color-spectrum {
-		$color: map-get($color-spectrum, $variant);
+		$color: map.get($color-spectrum, $variant);
 	}
 
 	@if not $color {
@@ -68,7 +71,7 @@ $brand-colors: (
 
 	@if $opacity {
 		// Return CSS-level rgba() using var() and custom opacity
-		@return unquote("rgba(#{$color}, #{$opacity})");
+		@return string.unquote("rgba(#{$color}, #{$opacity})");
 	}
 
 	@return $color;
