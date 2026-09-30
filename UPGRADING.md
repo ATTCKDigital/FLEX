@@ -2,7 +2,17 @@
 
 Every breaking change in a FLEX major release and what a FLEX child theme must do about it. Newest release first; move one major version at a time.
 
-Contents: [v5.0.0](#v500) · [v3 → v4.0.0](#v3--v400): [Pin v3.4.0 first](#pin-v340-first) · [Node 24](#node-24) · [FLEX no longer builds anything](#flex-no-longer-builds-anything) · [Reference child build](#reference-child-build) · [Build contract](#build-contract) · [Enqueue changes](#enqueue-changes) · [Customizer colors are printed at runtime](#customizer-colors-are-printed-at-runtime) · [jQuery, lodash and editor globals](#jquery-lodash-and-editor-globals) · [Removed packages and IE polyfills](#removed-packages-and-ie-polyfills) · [Sass](#sass) · [Font Awesome 6.7.2](#font-awesome-672) · [Removed and deprecated files](#removed-and-deprecated-files) · [Lint presets](#lint-presets) · [Git housekeeping](#git-housekeeping) · [Known issues](#known-issues)
+Contents: [v5.2.0](#v520) · [v5.0.0](#v500) · [v3 → v4.0.0](#v3--v400): [Pin v3.4.0 first](#pin-v340-first) · [Node 24](#node-24) · [FLEX no longer builds anything](#flex-no-longer-builds-anything) · [Reference child build](#reference-child-build) · [Build contract](#build-contract) · [Enqueue changes](#enqueue-changes) · [Customizer colors are printed at runtime](#customizer-colors-are-printed-at-runtime) · [jQuery, lodash and editor globals](#jquery-lodash-and-editor-globals) · [Removed packages and IE polyfills](#removed-packages-and-ie-polyfills) · [Sass](#sass) · [Font Awesome 6.7.2](#font-awesome-672) · [Removed and deprecated files](#removed-and-deprecated-files) · [Lint presets](#lint-presets) · [Git housekeeping](#git-housekeeping) · [Known issues](#known-issues)
+
+## v5.2.0
+
+FLEX v5.2.0 moves FLEX's own SCSS off the deprecated global Sass built-ins and legacy colour functions to the `sass:map`, `sass:string` and `sass:color` module functions. The compiled CSS is byte-identical, so there is **nothing you must do**: the site builds and renders exactly as before.
+
+**Optional — drop your own Sass deprecation silences.** A child that silences the `global-builtin` and `color-functions` Dart Sass deprecations for FLEX's SCSS can now drop both from its Sass `silenceDeprecations` list:
+
+- Dropping `color-functions` needs no other change.
+- Dropping `global-builtin` also requires `quietDeps: true` (or equivalent) in the child's Sass options, because the bundled Font Awesome vendor SCSS (reached through `scss/_fonts.scss`, in `node_modules` and not editable) still calls global built-ins. `quietDeps` quiets deprecation warnings originating in dependency stylesheets, so those don't fail the build while your own SCSS is held to zero warnings.
+- Keep the `import` silence: the `@import` → `@use`/`@forward` migration is a separate future release, and it is what removes the last silence.
 
 ## v5.0.0
 
