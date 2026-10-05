@@ -1,7 +1,6 @@
 <?php
 namespace FLEX_LAYOUT_SYSTEM\Blocks\Button;
 
-use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
 
 add_action( 'init', __NAMESPACE__ . '\register_button_block' );
@@ -20,42 +19,8 @@ function register_button_block() {
 		return;
 	}
 
-	// Hook server side rendering into render callback
-	register_block_type(
-		'flexlayout/button', 
-		[
-		'attributes' => array_merge(
-			[
-				'align' => [
-					'type' => 'string',
-					'default' => 'left'
-				],
-				'className' => [
-					'type' => 'string',
-					'default' => ''
-				],
-				'content' => [
-					'type' => 'string',
-				],
-				'dataComponentName' => [
-					'type' => 'string',
-				],
-				'dataComponentOptions' => [
-					'type' => 'string',
-				],
-				'placeholder' => [
-					'type' => 'string',
-				],
-				'target' => [
-					'type' => 'boolean',
-					'default' => false,
-				],
-				'url' => [
-					'type' => 'string',
-				],
-			],
-			MARGIN_OPTIONS_ATTRIBUTES
-		),
+	// Register from block.json (name + attributes); keep the server render callback.
+	register_block_type( __DIR__ . '/block.json', [
 		'render_callback' => __NAMESPACE__ . '\render_button_block',
 	] );
 }
