@@ -1,0 +1,252 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "flexlayout/list",
+	"title": "List",
+	"category": "common",
+	"description": "A text list block",
+	"keywords": [
+		"Text",
+		"List"
+	],
+	"textdomain": "flexlayout",
+	"attributes": {
+		"ordered": {
+			"type": "boolean",
+			"default": false
+		},
+		"content": {
+			"type": "array",
+			"default": []
+		},
+		"placeholder": {
+			"type": "string"
+		},
+		"align": {
+			"type": "string",
+			"default": "left"
+		},
+		"className": {
+			"type": "string",
+			"default": ""
+		},
+		"marginTop": {
+			"type": "string"
+		},
+		"marginRight": {
+			"type": "string"
+		},
+		"marginBottom": {
+			"type": "string"
+		},
+		"marginLeft": {
+			"type": "string"
+		},
+		"marginPhoneTop": {
+			"type": "string"
+		},
+		"marginPhoneRight": {
+			"type": "string"
+		},
+		"marginPhoneBottom": {
+			"type": "string"
+		},
+		"marginPhoneLeft": {
+			"type": "string"
+		},
+		"marginPhonePlusTop": {
+			"type": "string"
+		},
+		"marginPhonePlusRight": {
+			"type": "string"
+		},
+		"marginPhonePlusBottom": {
+			"type": "string"
+		},
+		"marginPhonePlusLeft": {
+			"type": "string"
+		},
+		"marginTabletPortraitTop": {
+			"type": "string"
+		},
+		"marginTabletPortraitRight": {
+			"type": "string"
+		},
+		"marginTabletPortraitBottom": {
+			"type": "string"
+		},
+		"marginTabletPortraitLeft": {
+			"type": "string"
+		},
+		"marginTabletLandscapeTop": {
+			"type": "string"
+		},
+		"marginTabletLandscapeRight": {
+			"type": "string"
+		},
+		"marginTabletLandscapeBottom": {
+			"type": "string"
+		},
+		"marginTabletLandscapeLeft": {
+			"type": "string"
+		},
+		"marginDesktopTop": {
+			"type": "string"
+		},
+		"marginDesktopRight": {
+			"type": "string"
+		},
+		"marginDesktopBottom": {
+			"type": "string"
+		},
+		"marginDesktopLeft": {
+			"type": "string"
+		},
+		"marginXlTop": {
+			"type": "string"
+		},
+		"marginXlRight": {
+			"type": "string"
+		},
+		"marginXlBottom": {
+			"type": "string"
+		},
+		"marginXlLeft": {
+			"type": "string"
+		},
+		"marginXl2Top": {
+			"type": "string"
+		},
+		"marginXl2Right": {
+			"type": "string"
+		},
+		"marginXl2Bottom": {
+			"type": "string"
+		},
+		"marginXl2Left": {
+			"type": "string"
+		},
+		"paddingTop": {
+			"type": "string"
+		},
+		"paddingRight": {
+			"type": "string"
+		},
+		"paddingBottom": {
+			"type": "string"
+		},
+		"paddingLeft": {
+			"type": "string"
+		},
+		"paddingPhoneTop": {
+			"type": "string"
+		},
+		"paddingPhoneRight": {
+			"type": "string"
+		},
+		"paddingPhoneBottom": {
+			"type": "string"
+		},
+		"paddingPhoneLeft": {
+			"type": "string"
+		},
+		"paddingPhonePlusTop": {
+			"type": "string"
+		},
+		"paddingPhonePlusRight": {
+			"type": "string"
+		},
+		"paddingPhonePlusBottom": {
+			"type": "string"
+		},
+		"paddingPhonePlusLeft": {
+			"type": "string"
+		},
+		"paddingTabletPortraitTop": {
+			"type": "string"
+		},
+		"paddingTabletPortraitRight": {
+			"type": "string"
+		},
+		"paddingTabletPortraitBottom": {
+			"type": "string"
+		},
+		"paddingTabletPortraitLeft": {
+			"type": "string"
+		},
+		"paddingTabletLandscapeTop": {
+			"type": "string"
+		},
+		"paddingTabletLandscapeRight": {
+			"type": "string"
+		},
+		"paddingTabletLandscapeBottom": {
+			"type": "string"
+		},
+		"paddingTabletLandscapeLeft": {
+			"type": "string"
+		},
+		"paddingDesktopTop": {
+			"type": "string"
+		},
+		"paddingDesktopRight": {
+			"type": "string"
+		},
+		"paddingDesktopBottom": {
+			"type": "string"
+		},
+		"paddingDesktopLeft": {
+			"type": "string"
+		},
+		"paddingXlTop": {
+			"type": "string"
+		},
+		"paddingXlRight": {
+			"type": "string"
+		},
+		"paddingXlBottom": {
+			"type": "string"
+		},
+		"paddingXlLeft": {
+			"type": "string"
+		},
+		"paddingXl2Top": {
+			"type": "string"
+		},
+		"paddingXl2Right": {
+			"type": "string"
+		},
+		"paddingXl2Bottom": {
+			"type": "string"
+		},
+		"paddingXl2Left": {
+			"type": "string"
+		},
+		"borderTop": {
+			"type": "string"
+		},
+		"borderRight": {
+			"type": "string"
+		},
+		"borderBottom": {
+			"type": "string"
+		},
+		"borderLeft": {
+			"type": "string"
+		},
+		"textColor": {
+			"type": "string"
+		}
+	},
+	"styles": [
+		{
+			"name": "default",
+			"label": "Default",
+			"isDefault": true
+		},
+		{
+			"name": "list-columns",
+			"label": "2 Column List"
+		}
+	]
+}
