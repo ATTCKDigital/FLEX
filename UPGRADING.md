@@ -2,7 +2,13 @@
 
 Every breaking change in a FLEX major release and what a FLEX child theme must do about it. Newest release first; move one major version at a time.
 
-Contents: [v5.2.0](#v520) · [v5.0.0](#v500) · [v3 → v4.0.0](#v3--v400): [Pin v3.4.0 first](#pin-v340-first) · [Node 24](#node-24) · [FLEX no longer builds anything](#flex-no-longer-builds-anything) · [Reference child build](#reference-child-build) · [Build contract](#build-contract) · [Enqueue changes](#enqueue-changes) · [Customizer colors are printed at runtime](#customizer-colors-are-printed-at-runtime) · [jQuery, lodash and editor globals](#jquery-lodash-and-editor-globals) · [Removed packages and IE polyfills](#removed-packages-and-ie-polyfills) · [Sass](#sass) · [Font Awesome 6.7.2](#font-awesome-672) · [Removed and deprecated files](#removed-and-deprecated-files) · [Lint presets](#lint-presets) · [Git housekeeping](#git-housekeeping) · [Known issues](#known-issues)
+Contents: [v5.3.0](#v530) · [v5.2.0](#v520) · [v5.0.0](#v500) · [v3 → v4.0.0](#v3--v400): [Pin v3.4.0 first](#pin-v340-first) · [Node 24](#node-24) · [FLEX no longer builds anything](#flex-no-longer-builds-anything) · [Reference child build](#reference-child-build) · [Build contract](#build-contract) · [Enqueue changes](#enqueue-changes) · [Customizer colors are printed at runtime](#customizer-colors-are-printed-at-runtime) · [jQuery, lodash and editor globals](#jquery-lodash-and-editor-globals) · [Removed packages and IE polyfills](#removed-packages-and-ie-polyfills) · [Sass](#sass) · [Font Awesome 6.7.2](#font-awesome-672) · [Removed and deprecated files](#removed-and-deprecated-files) · [Lint presets](#lint-presets) · [Git housekeeping](#git-housekeeping) · [Known issues](#known-issues)
+
+## v5.3.0
+
+FLEX v5.3.0 migrates five blocks (`hr`, `source`, `shortcode`, `list`, `button`) to register from a per-block `block.json` at apiVersion 3. Block names, attributes and PHP include paths are unchanged, existing content stays valid, and the front-end output is byte-identical, so there is **nothing you must do**: the site builds and renders exactly as before.
+
+**Optional — only if you override one of these five block PHP files in your child theme.** Registration now reads `register_block_type( __DIR__ . '/block.json', … )`, so a child override of `block_hr`/`block_source`/`block_shortcode`/`block_list`/`block_button`'s PHP (via `locate_template`) must ship its own `block.json` in the overriding folder; otherwise `register_block_type` has no metadata file to read at the child path. None of these blocks is overridden in attck2026. Blocks you do not override need no action. See [gutenberg/blocks/README.md § Block registration](gutenberg/blocks/README.md#block-registration-blockjson--apiversion-3) for the pattern.
 
 ## v5.2.0
 
