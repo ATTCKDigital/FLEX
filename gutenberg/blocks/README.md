@@ -35,7 +35,7 @@ Do NOT edit or add native Gutenberg blocks!! If a change is required, please sub
 
 #### Block registration: `block.json` + apiVersion 3
 
-Newer FLEX blocks register their metadata from a per-block `block.json` (the WordPress-standard block metadata file) at **apiVersion 3**, instead of declaring `attributes`/`title`/`category` inline in both the PHP and JS. The batch-1 blocks migrated this way are `block_hr`, `block_source`, `block_shortcode`, `block_list` and `block_button` (FLEX v5.3.0); more follow in later batches.
+Newer FLEX blocks register their metadata from a per-block `block.json` (the WordPress-standard block metadata file) at **apiVersion 3**, instead of declaring `attributes`/`title`/`category` inline in both the PHP and JS. Migrated so far: batch 1 — `block_hr`, `block_source`, `block_shortcode`, `block_list`, `block_button` (FLEX v5.3.0); batch 2 — `block_paragraph`, `block_heading`, `block_image`, `block_share`, `block_animated-gif` (FLEX v5.4.0). `block_feed` and `block_quote` are next (batch 2b); InnerBlocks/media blocks (row, column, popup, video, posts) follow later.
 
 The pattern, per block folder:
 
