@@ -3,6 +3,7 @@ import 'FLEX/js/client-namespace';
 // Block dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js';
+import metadata from './block.json';
 
 // Internal block libraries
 const { __ } = wp.i18n;
@@ -10,55 +11,42 @@ const { __ } = wp.i18n;
 // WordPress dependencies
 const { registerBlockType } = wp.blocks;
 
-const { AlignmentToolbar, BlockControls, InspectorControls } = wp.blockEditor;
+const { AlignmentToolbar, BlockControls, InspectorControls, useBlockProps } =
+	wp.blockEditor;
 
 const { PanelBody, TextControl } = wp.components;
 
 // Internal dependencies
 import MarginOptions, {
-	MarginOptionsAttributes,
 	MarginOptionsClasses,
 } from '../../components/gb-component_margin';
 import PaddingOptions, {
-	PaddingOptionsAttributes,
 	PaddingOptionsClasses,
 } from '../../components/gb-component_padding';
 import BackgroundColorOptions, {
-	BackgroundColorOptionsAttributes,
 	BackgroundColorOptionsInlineStyles,
 } from '../../components/gb-component_background-color';
 
-// Register block
-export default registerBlockType( 'flexlayout/hr', {
-	title: __( 'Horizontal line', 'flexlayout' ),
-	description: __( 'A horizontal line.', 'flexlayout' ),
-	category: 'common',
-	icon: icons.minus,
-	example: {},
-	// icon: 'heading',
-	// parent: ['flexlayout/column'],
-	keywords: [ __( 'line', 'flexlayout' ), __( 'hr', 'flexlayout' ) ],
-	attributes: {
-		align: {
-			type: 'string',
+// Editor component (named so the react-hooks lint rule recognises useBlockProps).
+const Edit = ( props ) => {
+	const {
+		attributes: { align, HRWidth },
+		setAttributes,
+	} = props;
+	const blockProps = useBlockProps( {
+		className: classnames(
+			`component-hr`,
+			`align-${ align }`,
+			...MarginOptionsClasses( props ),
+			...PaddingOptionsClasses( props )
+		),
+		style: {
+			...BackgroundColorOptionsInlineStyles( props ),
 		},
-		color: {
-			type: 'number',
-		},
-		HRWidth: {
-			type: 'string',
-		},
-		...MarginOptionsAttributes,
-		...PaddingOptionsAttributes,
-		...BackgroundColorOptionsAttributes,
-	},
-	edit: ( props ) => {
-		const {
-			attributes: { align, HRWidth },
-			setAttributes,
-		} = props;
-		return [
-			<InspectorControls key="inspector">
+	} );
+	return (
+		<>
+			<InspectorControls>
 				<MarginOptions { ...props } />
 				<PaddingOptions { ...props } />
 				<BackgroundColorOptions { ...props } />
@@ -78,29 +66,25 @@ export default registerBlockType( 'flexlayout/hr', {
 						} }
 					/>
 				</PanelBody>
-			</InspectorControls>,
-			<BlockControls key="controls">
+			</InspectorControls>
+			<BlockControls>
 				<AlignmentToolbar
 					value={ align }
 					onChange={ ( nextAlign ) => {
 						setAttributes( { align: nextAlign } );
 					} }
 				/>
-			</BlockControls>,
-			<hr
-				key="block"
-				className={ classnames(
-					`component-hr`,
-					`align-${ align }`,
-					...MarginOptionsClasses( props ),
-					...PaddingOptionsClasses( props )
-				) }
-				style={ {
-					...BackgroundColorOptionsInlineStyles( props ),
-				} }
-			/>,
-		];
-	},
+			</BlockControls>
+			<hr { ...blockProps } />
+		</>
+	);
+};
+
+// Register block
+export default registerBlockType( metadata, {
+	icon: icons.minus,
+	example: {},
+	edit: Edit,
 	save() {
 		return null;
 	},

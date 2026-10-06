@@ -2,6 +2,16 @@
 
 All notable changes to FLEX. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and FLEX uses [Semantic Versioning](https://semver.org/). Upgrade steps for every breaking change: [UPGRADING.md](UPGRADING.md).
 
+## [5.3.0] - 2026-10-06
+
+The date is the release date; the `v5.3.0` tag is applied to the merge commit on `develop`. A minor release: additive and backwards-compatible. Names, attributes and PHP include paths are preserved, so existing posts stay valid and the **front-end output is unchanged**. The one optional consumer note is [UPGRADING.md § v5.3.0](UPGRADING.md#v530) (a child that overrides one of these block PHP files must ship its own `block.json`).
+
+### Changed
+
+- **The `hr`, `source`, `shortcode`, `list` and `button` blocks now register from a per-block `block.json` at `apiVersion` 3** (batch 1 of the `block.json` migration). Each block's metadata (unchanged `name`, `title`, `category`, `keywords`, `textdomain`, and the full flattened `attributes` set — own attributes plus the spread-in margin/padding/border/background-color/text-colors/data-component-name component sets) moves into `gutenberg/blocks/block_<x>/block.json`. PHP registers with `register_block_type( __DIR__ . '/block.json', [ 'render_callback' => … ] )`; JS passes the imported `metadata` to `registerBlockType( metadata, { icon, edit, save } )` and uses `useBlockProps()` on a single block-canvas root. `save` stays `null`; the single editor bundle (`dist/admin.js`) is unchanged (no `editorScript`, no new webpack entry). Every block **name** and **attribute** is preserved, so existing content stays valid (`isValid === true`) and the server render callbacks — and therefore the front-end output — are byte-identical. See [gutenberg/blocks/README.md](gutenberg/blocks/README.md#block-registration-blockjson--apiversion-3) for the pattern.
+- **One editor-only reconciliation (`hr`):** `hr`'s `block.json` declares `align: center` and `HRWidth: 100%` — the PHP/server defaults the front end has always used. The editor preview of an `hr` block with no stored alignment now reflects these (centered, full width) instead of the previous blank preview. The front-end render is unchanged. The other four blocks have no editor-visible change. `className` is declared with default `''` on `source`/`shortcode`/`list`/`button` to match their render reading `$attributes['className']`.
+- Subsequent block batches (quote/share/feed/animated-gif/paragraph/image/heading; then row/column/popup/video/posts), the ACF blocks, and the cleanup of the deprecated/orphan blocks are follow-up releases.
+
 ## [5.2.0] - 2026-09-30
 
 The date is the release date; the `v5.2.0` tag is applied to the merge commit on `develop`. A minor release: additive and backwards-compatible, with **byte-identical compiled CSS** — no visible change for any consumer. No breaking changes; the one optional consumer step is [UPGRADING.md § v5.2.0](UPGRADING.md#v520) (dropping your own Sass deprecation silences).

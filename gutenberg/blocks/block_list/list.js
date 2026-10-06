@@ -2,13 +2,15 @@
  * Block dependencies
  */
 import classnames from 'classnames';
+import metadata from './block.json';
 
 /**
  * Internal block libraries
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { RichText, AlignmentToolbar, InspectorControls } = wp.blockEditor;
+const { RichText, AlignmentToolbar, InspectorControls, useBlockProps } =
+	wp.blockEditor;
 const { Button, PanelBody, PanelRow } = wp.components;
 
 /**
@@ -16,147 +18,110 @@ const { Button, PanelBody, PanelRow } = wp.components;
  */
 // Import all of our Margin Options requirements.
 import MarginOptions, {
-	MarginOptionsAttributes,
 	MarginOptionsClasses,
 } from '../../components/gb-component_margin';
 // Import all of our Border Options requirements.
 import BorderOptions, {
-	BorderOptionsAttributes,
 	BorderOptionsClasses,
 } from '../../components/gb-component_border';
 // Import all of our Padding Options requirements.
 import PaddingOptions, {
-	PaddingOptionsAttributes,
 	PaddingOptionsClasses,
 } from '../../components/gb-component_padding';
 // Import all of our Text Color Options requirements.
 import TextColorOptions, {
-	TextColorAttributes,
 	TextColorClasses,
 	TextColorInlineStyles,
 } from '../../components/gb-component_text-colors';
 
+// Editor component (named so the react-hooks lint rule recognises useBlockProps).
+const Edit = ( props ) => {
+	const {
+		attributes: { content, align, ordered },
+		setAttributes,
+	} = props;
+
+	const toggleOrderedList = () => setAttributes( { ordered: ! ordered } );
+
+	const blockProps = useBlockProps( {
+		className: classnames(
+			`component-list`,
+			`align-${ align }`,
+			...MarginOptionsClasses( props ),
+			...PaddingOptionsClasses( props ),
+			...BorderOptionsClasses( props ),
+			...TextColorClasses( props )
+		),
+	} );
+
+	return (
+		<>
+			<InspectorControls>
+				<MarginOptions { ...props } />
+				<PaddingOptions { ...props } />
+				<BorderOptions { ...props } />
+				<PanelBody title={ __( 'List Settings' ) }>
+					<AlignmentToolbar
+						value={ align }
+						onChange={ ( nextAlign ) =>
+							setAttributes( { align: nextAlign } )
+						}
+					/>
+					<PanelRow>
+						<label htmlFor="ordered-toggle">
+							{ __( 'List order:' ) }
+						</label>
+						<Button
+							isPrimary={ ordered }
+							isSecondary={ ! ordered }
+							onClick={ toggleOrderedList }
+							id="ordered-toggle"
+						>
+							{ ordered
+								? __( 'Ordered (ol)' )
+								: __( 'Unordered (ul)' ) }
+						</Button>
+					</PanelRow>
+				</PanelBody>
+				<TextColorOptions { ...props } />
+			</InspectorControls>
+			<div { ...blockProps }>
+				<RichText
+					identifier="content"
+					multiline="li"
+					tagName={ ordered ? 'ol' : 'ul' }
+					value={ content }
+					onChange={ ( newContent ) =>
+						setAttributes( { content: newContent } )
+					}
+					placeholder={ __( 'Write list…' ) }
+					style={ {
+						textAlign: align,
+						...TextColorInlineStyles( props ),
+					} }
+					className={ classnames(
+						// Apply text color classes directly to the list element
+						...TextColorClasses( props )
+					) }
+					allowedFormats={ [
+						'core/bold',
+						'core/italic',
+						'core/link',
+					] }
+					// __unstablePreserveWhiteSpace
+				/>
+			</div>
+		</>
+	);
+};
+
 /**
  * Register block
  */
-export default registerBlockType( 'flexlayout/list', {
-	title: __( 'List' ),
-	description: __( 'A text list block' ),
-	category: 'common',
+export default registerBlockType( metadata, {
 	icon: 'editor-ul',
 	example: {},
-	keywords: [ __( 'Text', 'flexlayout' ), __( 'List', 'flexlayout' ) ],
-	attributes: {
-		ordered: {
-			type: 'boolean',
-			default: false,
-		},
-		content: {
-			type: 'array',
-			default: [],
-		},
-		placeholder: {
-			type: 'string',
-		},
-		align: {
-			type: 'string',
-			default: 'left',
-		},
-
-		...MarginOptionsAttributes,
-		...PaddingOptionsAttributes,
-		...BorderOptionsAttributes,
-		...TextColorAttributes,
-	},
-	styles: [
-		{
-			name: 'default',
-			label: __( 'Default', 'block style' ),
-			isDefault: true,
-		},
-		{ name: 'list-columns', label: __( '2 Column List', 'block style' ) },
-	],
-
-	edit: ( props ) => {
-		const {
-			attributes: { content, align, ordered },
-			setAttributes,
-			className,
-		} = props;
-
-		const toggleOrderedList = () => setAttributes( { ordered: ! ordered } );
-
-		return (
-			<>
-				<InspectorControls>
-					<MarginOptions { ...props } />
-					<PaddingOptions { ...props } />
-					<BorderOptions { ...props } />
-					<PanelBody title={ __( 'List Settings' ) }>
-						<AlignmentToolbar
-							value={ align }
-							onChange={ ( nextAlign ) =>
-								setAttributes( { align: nextAlign } )
-							}
-						/>
-						<PanelRow>
-							<label htmlFor="ordered-toggle">
-								{ __( 'List order:' ) }
-							</label>
-							<Button
-								isPrimary={ ordered }
-								isSecondary={ ! ordered }
-								onClick={ toggleOrderedList }
-								id="ordered-toggle"
-							>
-								{ ordered
-									? __( 'Ordered (ol)' )
-									: __( 'Unordered (ul)' ) }
-							</Button>
-						</PanelRow>
-					</PanelBody>
-					<TextColorOptions { ...props } />
-				</InspectorControls>
-				<div
-					className={ classnames(
-						`component-list`,
-						`align-${ align }`,
-						className,
-						...MarginOptionsClasses( props ),
-						...PaddingOptionsClasses( props ),
-						...BorderOptionsClasses( props ),
-						...TextColorClasses( props )
-					) }
-				>
-					<RichText
-						identifier="content"
-						multiline="li"
-						tagName={ ordered ? 'ol' : 'ul' }
-						value={ content }
-						onChange={ ( newContent ) =>
-							setAttributes( { content: newContent } )
-						}
-						placeholder={ __( 'Write list…' ) }
-						style={ {
-							textAlign: align,
-							...TextColorInlineStyles( props ),
-						} }
-						className={ classnames(
-							// Apply text color classes directly to the list element
-							...TextColorClasses( props )
-						) }
-						allowedFormats={ [
-							'core/bold',
-							'core/italic',
-							'core/link',
-						] }
-						// __unstablePreserveWhiteSpace
-					/>
-				</div>
-			</>
-		);
-	},
-
+	edit: Edit,
 	save() {
 		return null;
 	},

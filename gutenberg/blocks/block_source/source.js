@@ -1,80 +1,49 @@
 // Block dependencies
 import classnames from 'classnames';
+import metadata from './block.json';
 
 // Internal block libraries
 const { __ } = wp.i18n;
 
 const { registerBlockType } = wp.blocks;
 
-const { PlainText, InspectorControls } = wp.blockEditor;
+const { PlainText, InspectorControls, useBlockProps } = wp.blockEditor;
 
 // Internal dependencies
 import MarginOptions, {
-	MarginOptionsAttributes,
 	MarginOptionsClasses,
 } from '../../components/gb-component_margin';
 import BorderOptions, {
-	BorderOptionsAttributes,
 	BorderOptionsClasses,
 } from '../../components/gb-component_border';
 import PaddingOptions, {
-	PaddingOptionsAttributes,
 	PaddingOptionsClasses,
 } from '../../components/gb-component_padding';
 
-// Register block
-export default registerBlockType( 'flexlayout/source', {
-	title: __( 'Source/Code' ),
-	description: __(
-		'Display code snippets that respect your spacing and tabs.'
-	),
-	category: 'common',
-	icon: 'editor-code',
-	example: {},
-	// icon: icons.source,
-	// parent: ['flexlayout/column'],
-	keywords: [
-		__( 'Text', 'flexlayout' ),
-		__( 'Source', 'flexlayout' ),
-		__( 'Code', 'flexlayout' ),
-		__( 'src', 'flexlayout' ),
-		__( 'html', 'flexlayout' ),
-	],
-	attributes: {
-		content: {
-			type: 'string',
-			default: '',
-		},
-		...MarginOptionsAttributes,
-		...PaddingOptionsAttributes,
-		...BorderOptionsAttributes,
-	},
+// Editor component (named so the react-hooks lint rule recognises useBlockProps).
+const Edit = ( props ) => {
+	const {
+		attributes: { content },
+		setAttributes,
+	} = props;
 
-	supports: {
-		html: true,
-	},
+	const blockProps = useBlockProps( {
+		className: classnames(
+			`component-source`,
+			...MarginOptionsClasses( props ),
+			...PaddingOptionsClasses( props ),
+			...BorderOptionsClasses( props )
+		),
+	} );
 
-	edit: ( props ) => {
-		const {
-			attributes: { content },
-			setAttributes,
-		} = props;
-
-		return [
-			<InspectorControls key="inspector">
+	return (
+		<>
+			<InspectorControls>
 				<MarginOptions { ...props } />
 				<PaddingOptions { ...props } />
 				<BorderOptions { ...props } />
-			</InspectorControls>,
-			<div
-				key="block"
-				className={ classnames(
-					`component-source`,
-					...MarginOptionsClasses( props ),
-					...PaddingOptionsClasses( props ),
-					...BorderOptionsClasses( props )
-				) }
-			>
+			</InspectorControls>
+			<div { ...blockProps }>
 				<PlainText
 					value={ content }
 					onChange={ ( nextContent ) =>
@@ -83,10 +52,16 @@ export default registerBlockType( 'flexlayout/source', {
 					placeholder={ __( 'Write code…' ) }
 					aria-label={ __( 'Code' ) }
 				/>
-			</div>,
-		];
-	},
+			</div>
+		</>
+	);
+};
 
+// Register block
+export default registerBlockType( metadata, {
+	icon: 'editor-code',
+	example: {},
+	edit: Edit,
 	save() {
 		return null;
 	},

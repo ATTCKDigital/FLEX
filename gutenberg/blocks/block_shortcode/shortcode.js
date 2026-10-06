@@ -1,71 +1,47 @@
 // Block dependencies
 import classnames from 'classnames';
+import metadata from './block.json';
 
 // Internal block libraries
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { PlainText, InspectorControls } = wp.blockEditor;
+const { PlainText, InspectorControls, useBlockProps } = wp.blockEditor;
 
 // Internal dependencies
 import MarginOptions, {
-	MarginOptionsAttributes,
 	MarginOptionsClasses,
 } from '../../components/gb-component_margin';
 import BorderOptions, {
-	BorderOptionsAttributes,
 	BorderOptionsClasses,
 } from '../../components/gb-component_border';
 import PaddingOptions, {
-	PaddingOptionsAttributes,
 	PaddingOptionsClasses,
 } from '../../components/gb-component_padding';
 
-// Register block
-export default registerBlockType( 'flexlayout/shortcode', {
-	title: __( 'Shortcode' ),
-	description: __( 'Display Wordpress shortcodes.' ),
-	category: 'common',
-	// icon: 'plus',
-	// icon: icons.wordpress,
-	icon: 'shortcode',
-	example: {},
-	// parent: ['flexlayout/column'],
-	keywords: [ __( 'Shortcode', 'flexlayout' ), __( 'Code', 'flexlayout' ) ],
-	attributes: {
-		content: {
-			type: 'string',
-			default: '',
-		},
-		...MarginOptionsAttributes,
-		...PaddingOptionsAttributes,
-		...BorderOptionsAttributes,
-	},
+// Editor component (named so the react-hooks lint rule recognises useBlockProps).
+const Edit = ( props ) => {
+	const {
+		attributes: { content },
+		setAttributes,
+	} = props;
 
-	supports: {
-		html: true,
-	},
+	const blockProps = useBlockProps( {
+		className: classnames(
+			`component-shortcode`,
+			...MarginOptionsClasses( props ),
+			...PaddingOptionsClasses( props ),
+			...BorderOptionsClasses( props )
+		),
+	} );
 
-	edit: ( props ) => {
-		const {
-			attributes: { content },
-			setAttributes,
-		} = props;
-
-		return [
-			<InspectorControls key="inspector">
+	return (
+		<>
+			<InspectorControls>
 				<MarginOptions { ...props } />
 				<PaddingOptions { ...props } />
 				<BorderOptions { ...props } />
-			</InspectorControls>,
-			<div
-				key="block"
-				className={ classnames(
-					`component-shortcode`,
-					...MarginOptionsClasses( props ),
-					...PaddingOptionsClasses( props ),
-					...BorderOptionsClasses( props )
-				) }
-			>
+			</InspectorControls>
+			<div { ...blockProps }>
 				<PlainText
 					value={ content }
 					onChange={ ( nextContent ) =>
@@ -74,10 +50,16 @@ export default registerBlockType( 'flexlayout/shortcode', {
 					placeholder={ __( 'Paste shortcode…' ) }
 					aria-label={ __( 'shortcode' ) }
 				/>
-			</div>,
-		];
-	},
+			</div>
+		</>
+	);
+};
 
+// Register block
+export default registerBlockType( metadata, {
+	icon: 'shortcode',
+	example: {},
+	edit: Edit,
 	save() {
 		return null;
 	},

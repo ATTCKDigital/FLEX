@@ -1,0 +1,158 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "flexlayout/button",
+	"title": "Buttons",
+	"category": "common",
+	"description": "Prompt visitors to take action with a custom button.",
+	"keywords": [
+		"Text",
+		"Button",
+		"CTA"
+	],
+	"textdomain": "flexlayout",
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "left"
+		},
+		"className": {
+			"type": "string",
+			"default": ""
+		},
+		"content": {
+			"type": "string"
+		},
+		"dataComponentName": {
+			"type": "string"
+		},
+		"dataComponentOptions": {
+			"type": "string"
+		},
+		"placeholder": {
+			"type": "string"
+		},
+		"target": {
+			"type": "boolean",
+			"default": false
+		},
+		"url": {
+			"type": "string"
+		},
+		"marginTop": {
+			"type": "string"
+		},
+		"marginRight": {
+			"type": "string"
+		},
+		"marginBottom": {
+			"type": "string"
+		},
+		"marginLeft": {
+			"type": "string"
+		},
+		"marginPhoneTop": {
+			"type": "string"
+		},
+		"marginPhoneRight": {
+			"type": "string"
+		},
+		"marginPhoneBottom": {
+			"type": "string"
+		},
+		"marginPhoneLeft": {
+			"type": "string"
+		},
+		"marginPhonePlusTop": {
+			"type": "string"
+		},
+		"marginPhonePlusRight": {
+			"type": "string"
+		},
+		"marginPhonePlusBottom": {
+			"type": "string"
+		},
+		"marginPhonePlusLeft": {
+			"type": "string"
+		},
+		"marginTabletPortraitTop": {
+			"type": "string"
+		},
+		"marginTabletPortraitRight": {
+			"type": "string"
+		},
+		"marginTabletPortraitBottom": {
+			"type": "string"
+		},
+		"marginTabletPortraitLeft": {
+			"type": "string"
+		},
+		"marginTabletLandscapeTop": {
+			"type": "string"
+		},
+		"marginTabletLandscapeRight": {
+			"type": "string"
+		},
+		"marginTabletLandscapeBottom": {
+			"type": "string"
+		},
+		"marginTabletLandscapeLeft": {
+			"type": "string"
+		},
+		"marginDesktopTop": {
+			"type": "string"
+		},
+		"marginDesktopRight": {
+			"type": "string"
+		},
+		"marginDesktopBottom": {
+			"type": "string"
+		},
+		"marginDesktopLeft": {
+			"type": "string"
+		},
+		"marginXlTop": {
+			"type": "string"
+		},
+		"marginXlRight": {
+			"type": "string"
+		},
+		"marginXlBottom": {
+			"type": "string"
+		},
+		"marginXlLeft": {
+			"type": "string"
+		},
+		"marginXl2Top": {
+			"type": "string"
+		},
+		"marginXl2Right": {
+			"type": "string"
+		},
+		"marginXl2Bottom": {
+			"type": "string"
+		},
+		"marginXl2Left": {
+			"type": "string"
+		}
+	},
+	"styles": [
+		{
+			"name": "cta-solid",
+			"label": "Solid",
+			"isDefault": true
+		},
+		{
+			"name": "cta-accent",
+			"label": "Accent"
+		},
+		{
+			"name": "cta-negative",
+			"label": "Negative"
+		},
+		{
+			"name": "cta-small",
+			"label": "Small"
+		}
+	]
+}

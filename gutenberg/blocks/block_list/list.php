@@ -1,13 +1,9 @@
 <?php
 namespace FLEX_LAYOUT_SYSTEM\Blocks\ListBlock;
 
-use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
-use const FLEX_LAYOUT_SYSTEM\Components\Border\BORDER_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Border\border_options_classes;
-use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
-use const FLEX_LAYOUT_SYSTEM\Components\TextColors\TEXT_COLOR_ATTRIBUTES;
 
 /**
  * Converts a VDOM children array to an HTML string.
@@ -80,55 +76,8 @@ function register_list_block() {
 		return;
 	}
 
-	// Hook server side rendering into render callback
-	register_block_type( 'flexlayout/list', [
-		'attributes'	  => array_merge(
-			[
-				'content' => [
-					'type' => 'array',
-					'default' => [],
-					// 'items' => [       // Define the structure of objects within the array
-					// 	'type' => 'object',
-					// 	'properties' => [
-					// 		'type' => [ 'type' => 'string' ], // e.g., "li"
-					// 		'props' => [
-					// 			'type' => 'object',
-					// 			'properties' => [
-					// 				'children' => [
-					// 					'type' => 'array',    // children is an array
-					// 					'items' => [          // that can contain strings or other VDOM nodes
-					// 						// This part is tricky because children can be mixed.
-					// 						// For simplicity, we might assume strings here, or handle complex structures in render.
-					// 						// Let's start by assuming strings for now for easier PHP handling.
-					// 						// A more robust 'items' here would describe the VDOM node structure.
-					// 						// For now, let's keep it simpler and parse in the render function.
-					// 						'type' => 'string' // This is a simplification.
-					// 					],
-					// 				],
-					// 				// Potentially other props like 'className' on the li itself
-					// 			],
-					// 		],
-					// 	],
-					// ],
-				],
-				'ordered' => [
-					'type' => 'boolean',
-					'default' => false,
-				],
-				'className' => [
-					'type' => 'string',
-					'default' => '',
-				],
-				'align' => [
-					'type' => 'string',
-					'default' => 'left'
-				],
-			],
-			MARGIN_OPTIONS_ATTRIBUTES,
-			PADDING_OPTIONS_ATTRIBUTES,
-			BORDER_OPTIONS_ATTRIBUTES,		
-			TEXT_COLOR_ATTRIBUTES
-		),
+	// Register from block.json (name + attributes); keep the server render callback.
+	register_block_type( __DIR__ . '/block.json', [
 		'render_callback' => __NAMESPACE__ . '\render_list_block',
 	] );
 }
