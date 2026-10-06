@@ -68,7 +68,7 @@ function render_feed_block($attributes) {
 		$excerpt = wp_trim_words( get_the_excerpt($postID), $attributes['excerptWordLimit'], '' );
 
 		if (empty($excerpt)) {
-			$excerpt = wp_trim_words( get_the_content($postID), $attributes['excerptWordLimit'], '' );
+			$excerpt = wp_trim_words( get_the_content(null, false, $postID), $attributes['excerptWordLimit'], '' );
 		}
 
 		$categories = get_the_category($postID);
