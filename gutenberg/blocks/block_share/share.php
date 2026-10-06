@@ -1,15 +1,10 @@
 <?php
 namespace FLEX_LAYOUT_SYSTEM\Blocks\Share;
 
-use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
-use const FLEX_LAYOUT_SYSTEM\Components\Border\BORDER_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Border\border_options_classes;
-use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
-use const FLEX_LAYOUT_SYSTEM\Components\BackgroundColorOptions\BACKGROUND_COLOR_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundColorOptions\background_color_options_inline_styles;
-use const FLEX_LAYOUT_SYSTEM\Components\TextColors\TEXT_COLOR_ATTRIBUTES;
 
 add_action( 'init', __NAMESPACE__ . '\register_share_block' );
 
@@ -26,43 +21,8 @@ function register_share_block() {
 		return;
 	}
 
-	// Hook server side rendering into render callback
-	register_block_type( 'flexlayout/share', [
-		'attributes'      => array_merge(
-			[
-				'facebook' => [
-					'type' => 'boolean',
-					'default' => 'false',
-				],
-				'twitter' => [
-					'type' => 'boolean',
-					'default' => 'false',
-				],
-				'email' => [
-					'type' => 'boolean',
-					'default' => 'false',
-				],
-				'linkedin' => [
-					'type' => 'boolean',
-					'default' => 'false',
-				],
-				'className' => [
-                    'type' => 'string',
-                    'default' => ''
-                ],
-                'align' => [
-					'type' => 'string',
-					'default' => 'center'
-				]
-
-			],
-			MARGIN_OPTIONS_ATTRIBUTES,
-			PADDING_OPTIONS_ATTRIBUTES,
-			BORDER_OPTIONS_ATTRIBUTES,
-			TEXT_COLOR_ATTRIBUTES,
-			BACKGROUND_COLOR_OPTIONS_ATTRIBUTES
-
-		),
+	// Register from block.json (name + attributes); keep the server render callback.
+	register_block_type( __DIR__ . '/block.json', [
 		'render_callback' => __NAMESPACE__ . '\render_share_block',
 	] );
 }

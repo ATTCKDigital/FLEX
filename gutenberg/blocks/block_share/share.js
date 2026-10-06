@@ -3,13 +3,14 @@
  */
 import classnames from 'classnames';
 import icons from '../../../js/icons.js';
+import metadata from './block.json';
 
 /**
  * Internal block libraries
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { InspectorControls, AlignmentToolbar } = wp.blockEditor;
+const { InspectorControls, AlignmentToolbar, useBlockProps } = wp.blockEditor;
 const { PanelBody, CheckboxControl } = wp.components;
 
 /**
@@ -17,82 +18,46 @@ const { PanelBody, CheckboxControl } = wp.components;
  */
 // Import all of our Margin Options requirements.
 import MarginOptions, {
-	MarginOptionsAttributes,
 	MarginOptionsClasses,
 } from '../../components/gb-component_margin';
 // Import all of our Border Options requirements.
 import BorderOptions, {
-	BorderOptionsAttributes,
 	BorderOptionsClasses,
 } from '../../components/gb-component_border';
 // Import all of our Padding Options requirements.
 import PaddingOptions, {
-	PaddingOptionsAttributes,
 	PaddingOptionsClasses,
 } from '../../components/gb-component_padding';
 // Import all of our Background Options requirements.
 import BackgroundColorOptions, {
-	BackgroundColorOptionsAttributes,
 	BackgroundColorOptionsInlineStyles,
 } from '../../components/gb-component_background-color';
 // Import all of our Text Color Options requirements.
-import TextColorOptions, {
-	TextColorAttributes,
-} from '../../components/gb-component_text-colors';
+import TextColorOptions from '../../components/gb-component_text-colors';
 import ShareOutput from '../../blocks/block_share/share-output.js';
 
-/**
- * Register social media block
- */
-export default registerBlockType( 'flexlayout/share', {
-	title: __( 'Share', 'flexlayout' ),
-	description: __(
-		'Displays share tools. Accounts are set in Global Settings',
-		'flexlayout'
-	),
-	category: 'common',
-	icon: icons.share,
-	example: {},
-	// parent: ['flexlayout/column'],
-	keywords: [
-		__( 'Social media', 'flexlayout' ),
-		__( 'Share', 'flexlayout' ),
-	],
-	attributes: {
-		facebook: {
-			type: 'boolean',
-			default: false,
-		},
-		twitter: {
-			type: 'boolean',
-			default: false,
-		},
-		linkedin: {
-			type: 'boolean',
-			default: false,
-		},
-		email: {
-			type: 'boolean',
-			default: false,
-		},
-		align: {
-			type: 'string',
-			default: 'center',
-		},
-		...MarginOptionsAttributes,
-		...PaddingOptionsAttributes,
-		...BorderOptionsAttributes,
-		...BackgroundColorOptionsAttributes,
-		...TextColorAttributes,
-	},
-	edit: ( props ) => {
-		const {
-			attributes: { facebook, twitter, linkedin, email, align },
-			setAttributes,
-		} = props;
+// Editor component (named so the react-hooks lint rule recognises useBlockProps).
+const Edit = ( props ) => {
+	const {
+		attributes: { facebook, twitter, linkedin, email, align },
+		setAttributes,
+	} = props;
 
-		return [
-			<InspectorControls key="inspector">
+	const blockProps = useBlockProps( {
+		className: classnames(
+			'component-share',
+			...MarginOptionsClasses( props ),
+			...PaddingOptionsClasses( props ),
+			...BorderOptionsClasses( props )
+		),
+		style: {
+			...BackgroundColorOptionsInlineStyles( props ),
+		},
+	} );
+
+	return (
+		<>
+			<InspectorControls>
 				<PanelBody
 					title={ __( 'Icon Alignment', 'flexlayout' ) }
 					className="FLEX-icon-alignment"
@@ -148,27 +113,25 @@ export default registerBlockType( 'flexlayout/share', {
 				<BorderOptions { ...props } />
 				<BackgroundColorOptions { ...props } />
 				<TextColorOptions { ...props } />
-			</InspectorControls>,
-			<div
-				key="block"
-				className={ classnames(
-					'component-share',
-					...MarginOptionsClasses( props ),
-					...PaddingOptionsClasses( props ),
-					...BorderOptionsClasses( props )
-				) }
-				style={ {
-					...BackgroundColorOptionsInlineStyles( props ),
-				} }
-			>
+			</InspectorControls>
+			<div { ...blockProps }>
 				<div
 					className={ classnames( 'share-list', `align-${ align }` ) }
 				>
 					{ ShareOutput( props ) }
 				</div>
-			</div>,
-		];
-	},
+			</div>
+		</>
+	);
+};
+
+/**
+ * Register social media block
+ */
+export default registerBlockType( metadata, {
+	icon: icons.share,
+	example: {},
+	edit: Edit,
 	save() {
 		return null;
 	},

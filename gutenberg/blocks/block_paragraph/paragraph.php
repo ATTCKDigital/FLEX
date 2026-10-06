@@ -1,19 +1,9 @@
 <?php
 namespace FLEX_LAYOUT_SYSTEM\Blocks\Paragraph;
 
-use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
-
-use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
-
-use const FLEX_LAYOUT_SYSTEM\Components\Border\BORDER_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Border\border_options_classes;
-
-use const FLEX_LAYOUT_SYSTEM\Components\TextColors\TEXT_COLOR_ATTRIBUTES;
-
-use const FLEX_LAYOUT_SYSTEM\Components\BackgroundColorOptions\BACKGROUND_COLOR_OPTIONS_ATTRIBUTES;
-use function FLEX_LAYOUT_SYSTEM\Components\BackgroundColorOptions\background_color_options_inline_styles;
 
 add_action( 'init', __NAMESPACE__ . '\register_paragraph_block' );
 
@@ -30,29 +20,8 @@ function register_paragraph_block() {
 		return;
 	}
 
-	// Hook server side rendering into render callback
-	register_block_type( 'flexlayout/paragraph', [
-		'attributes' => array_merge(
-			[
-				'content' => [
-					'type' => 'string',
-					'default' => '',
-				],
-				'className' => [
-					'type' => 'string',
-					'default' => '',
-				],
-				'align' => [
-					'type' => 'string',
-					'default' => 'left'
-				],
-			],
-			MARGIN_OPTIONS_ATTRIBUTES,
-			PADDING_OPTIONS_ATTRIBUTES,
-			BORDER_OPTIONS_ATTRIBUTES,
-			TEXT_COLOR_ATTRIBUTES,
-			BACKGROUND_COLOR_OPTIONS_ATTRIBUTES
-		),
+	// Register from block.json (name + attributes); keep the server render callback.
+	register_block_type( __DIR__ . '/block.json', [
 		'render_callback' => __NAMESPACE__ . '\render_paragraph_block',
 	] );
 }

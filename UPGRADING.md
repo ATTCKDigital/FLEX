@@ -2,7 +2,15 @@
 
 Every breaking change in a FLEX major release and what a FLEX child theme must do about it. Newest release first; move one major version at a time.
 
-Contents: [v5.3.0](#v530) · [v5.2.0](#v520) · [v5.0.0](#v500) · [v3 → v4.0.0](#v3--v400): [Pin v3.4.0 first](#pin-v340-first) · [Node 24](#node-24) · [FLEX no longer builds anything](#flex-no-longer-builds-anything) · [Reference child build](#reference-child-build) · [Build contract](#build-contract) · [Enqueue changes](#enqueue-changes) · [Customizer colors are printed at runtime](#customizer-colors-are-printed-at-runtime) · [jQuery, lodash and editor globals](#jquery-lodash-and-editor-globals) · [Removed packages and IE polyfills](#removed-packages-and-ie-polyfills) · [Sass](#sass) · [Font Awesome 6.7.2](#font-awesome-672) · [Removed and deprecated files](#removed-and-deprecated-files) · [Lint presets](#lint-presets) · [Git housekeeping](#git-housekeeping) · [Known issues](#known-issues)
+Contents: [v5.4.0](#v540) · [v5.3.0](#v530) · [v5.2.0](#v520) · [v5.0.0](#v500) · [v3 → v4.0.0](#v3--v400): [Pin v3.4.0 first](#pin-v340-first) · [Node 24](#node-24) · [FLEX no longer builds anything](#flex-no-longer-builds-anything) · [Reference child build](#reference-child-build) · [Build contract](#build-contract) · [Enqueue changes](#enqueue-changes) · [Customizer colors are printed at runtime](#customizer-colors-are-printed-at-runtime) · [jQuery, lodash and editor globals](#jquery-lodash-and-editor-globals) · [Removed packages and IE polyfills](#removed-packages-and-ie-polyfills) · [Sass](#sass) · [Font Awesome 6.7.2](#font-awesome-672) · [Removed and deprecated files](#removed-and-deprecated-files) · [Lint presets](#lint-presets) · [Git housekeeping](#git-housekeeping) · [Known issues](#known-issues)
+
+## v5.4.0
+
+FLEX v5.4.0 migrates five more blocks (`paragraph`, `heading`, `image`, `share`, `animated-gif`) to register from a per-block `block.json` at apiVersion 3 — the same pattern as v5.3.0. Block names, attributes and PHP include paths are unchanged and existing content stays valid, so there is **nothing you must do**.
+
+**Optional — only if you override one of these five block PHP files in your child theme.** As with v5.3.0, registration reads `register_block_type( __DIR__ . '/block.json', … )`, so a child override of `block_paragraph`/`block_heading`/`block_image`/`block_share`/`block_animated-gif`'s PHP must ship its own `block.json` in the overriding folder. None of these blocks is overridden in attck2026.
+
+**Heads-up — one HTML-only difference.** Headings that never stored a hanging-quote setting now render with a `hide-hanging-quote` class on their wrapper. FLEX has no CSS for that class; if your child theme styles `.hide-hanging-quote`, check headings after upgrading.
 
 ## v5.3.0
 

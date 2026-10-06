@@ -2,6 +2,7 @@
 import classnames from 'classnames';
 import HeadingToolbar from './heading-toolbar';
 import icons from '../../../js/icons.js';
+import metadata from './block.json';
 
 // Internal block libraries
 const { __ } = wp.i18n;
@@ -9,198 +10,112 @@ const { __ } = wp.i18n;
 // WordPress dependencies
 const { registerBlockType } = wp.blocks;
 
-// Added 3/26/20 - https://ibenic.com/enable-inner-blocks-gutenberg/
-// wp.editor.InnerBlocks.Content is deprecated.
-// Please use wp.blockEditor.InnerBlocks.Content instead.
-// const { InnerBlocks } = wp.editor;
-
-const { AlignmentToolbar, InspectorControls, MediaUpload, RichText, URLInput } =
-	wp.blockEditor;
+const {
+	AlignmentToolbar,
+	InspectorControls,
+	MediaUpload,
+	RichText,
+	URLInput,
+	useBlockProps,
+} = wp.blockEditor;
 
 const { Button, CheckboxControl, PanelBody } = wp.components;
 
 // Internal dependencies
 import BackgroundColorOptions, {
-	BackgroundColorOptionsAttributes,
 	BackgroundColorOptionsInlineStyles,
 } from '../../components/gb-component_background-color';
 import BorderOptions, {
-	BorderOptionsAttributes,
 	BorderOptionsClasses,
 } from '../../components/gb-component_border';
-import DataComponentNameOptions, {
-	DataComponentNameAttributes,
-} from '../../components/gb-component_data-component-name';
+import DataComponentNameOptions from '../../components/gb-component_data-component-name';
 import MarginOptions, {
-	MarginOptionsAttributes,
 	MarginOptionsClasses,
 } from '../../components/gb-component_margin';
 import PaddingOptions, {
-	PaddingOptionsAttributes,
 	PaddingOptionsClasses,
 } from '../../components/gb-component_padding';
 import TextColorOptions, {
-	TextColorAttributes,
 	TextColorClasses,
 	TextColorInlineStyles,
 } from '../../components/gb-component_text-colors';
 
-// Register block
-export default registerBlockType( 'flexlayout/heading', {
-	title: __( 'Heading', 'flexlayout' ),
-	description: __(
-		'Introduce new sections and organize content to help visitors (and search engines) understand the structure of your content.',
-		'flexlayout'
-	),
-	category: 'common',
-	icon: icons.heading,
-	example: {},
-	keywords: [
-		__( 'Text', 'flexlayout' ),
-		__( 'Heading', 'flexlayout' ),
-		__( 'Header', 'flexlayout' ),
-	],
-	attributes: {
-		align: {
-			type: 'string',
-			default: 'left',
+// Editor component (named so the react-hooks lint rule recognises useBlockProps).
+const Edit = ( props ) => {
+	const {
+		attributes: {
+			align,
+			content,
+			hangingQuoteClass,
+			imgID,
+			imgURL,
+			level,
+			placeholder,
+			url,
 		},
-		content: {
-			type: 'string',
-			default: '',
-		},
-		hangingQuote: {
-			type: 'boolean',
-			default: false,
-		},
-		hangingQuoteClass: {
-			type: 'string',
-			default: 'hide-hanging-quote',
-		},
-		imgID: {
-			type: 'number',
-		},
-		imgURL: {
-			type: 'string',
-		},
-		isSelected: {
-			type: 'boolean',
-		},
-		level: {
-			type: 'number',
-			default: 2,
-		},
-		placeholder: {
-			type: 'string',
-		},
-		url: {
-			type: 'string',
-		},
-		...BackgroundColorOptionsAttributes,
-		...BorderOptionsAttributes,
-		...DataComponentNameAttributes,
-		...MarginOptionsAttributes,
-		...PaddingOptionsAttributes,
-		...TextColorAttributes,
-	},
+		onReplace,
+		setAttributes,
+	} = props;
 
-	innerBlocks: [],
-
-	styles: [
-		{
-			name: 'headline1',
-			label: __( 'Headline 1', 'block style' ),
-			isDefault: true,
-		},
-		{ name: 'headline2', label: __( 'Headline 2', 'block style' ) },
-		{ name: 'headline3', label: __( 'Headline 3', 'block style' ) },
-		{ name: 'headline4', label: __( 'Headline 4', 'block style' ) },
-		{ name: 'headline5', label: __( 'Headline 5', 'block style' ) },
-		{ name: 'headline6', label: __( 'Headline 6', 'block style' ) },
-	],
-
-	supports: {
-		// Turn off ability to edit HTML of block content
-		html: false,
-	},
-
-	edit: ( props ) => {
-		const {
-			attributes: {
-				align,
-				content,
-				hangingQuoteClass,
-				imgID,
-				imgURL,
-				level,
-				placeholder,
-				url,
-			},
-			className,
-			onReplace,
-			setAttributes,
-		} = props;
-
-		const HangingQuoteCheckbox = () => {
-			// console.log('HangingQuoteCheckbox, props.attributes.hangingQuote: a: b: ', props.attributes.hangingQuote, typeof props.attributes.hangingQuote, a, b);
-
-			return (
-				<CheckboxControl
-					label="Show hanging quote"
-					help="Adds a left-hanging quote graphic"
-					checked={ props.attributes.hangingQuote }
-					onChange={ setHangingQuote }
-				/>
-			);
-		};
-
-		const onChangeMessage = ( newContent ) => {
-			setAttributes( {
-				content: newContent,
+	const setHangingQuote = ( value ) => {
+		if ( value === true ) {
+			props.setAttributes( {
+				hangingQuoteClass: 'show-hanging-quote',
 			} );
-		};
-
-		const onSelectImage = ( img ) => {
-			setAttributes( {
-				imgID: img.id,
-				imgURL: img.url,
+		} else {
+			value = false;
+			props.setAttributes( {
+				hangingQuoteClass: 'hide-hanging-quote',
 			} );
-		};
+		}
 
-		const onRemoveImage = () => {
-			setAttributes( {
-				imgID: null,
-				imgURL: null,
-			} );
-		};
+		props.setAttributes( { hangingQuote: value } );
+	};
 
-		const setHangingQuote = ( value ) => {
-			// console.log('HangingQuoteCheckbox, value: ', value, typeof value, value === true);
+	const HangingQuoteCheckbox = () => {
+		return (
+			<CheckboxControl
+				label="Show hanging quote"
+				help="Adds a left-hanging quote graphic"
+				checked={ props.attributes.hangingQuote }
+				onChange={ setHangingQuote }
+			/>
+		);
+	};
 
-			if ( value === true ) {
-				// console.log('show');
-				props.setAttributes( {
-					hangingQuoteClass: 'show-hanging-quote',
-				} );
-			} else {
-				// console.log('hide');
-				value = false;
-				props.setAttributes( {
-					hangingQuoteClass: 'hide-hanging-quote',
-				} );
-			}
+	const onChangeMessage = ( newContent ) => {
+		setAttributes( {
+			content: newContent,
+		} );
+	};
 
-			// console.log('value: ', value);
+	const onSelectImage = ( img ) => {
+		setAttributes( {
+			imgID: img.id,
+			imgURL: img.url,
+		} );
+	};
 
-			props.setAttributes( { hangingQuote: value } );
-		};
+	const onRemoveImage = () => {
+		setAttributes( {
+			imgID: null,
+			imgURL: null,
+		} );
+	};
 
-		const svgHeight = {
-			height: 0,
-		};
+	const svgHeight = {
+		height: 0,
+	};
 
-		return [
-			<InspectorControls key="inspector">
+	const blockProps = useBlockProps( {
+		className: classnames( `component-heading`, `${ hangingQuoteClass }` ),
+		'data-component-name': props.attributes.dataComponentName,
+		'data-component-options': props.attributes.dataComponentOptions,
+	} );
+
+	return (
+		<>
+			<InspectorControls>
 				<BackgroundColorOptions { ...props } />
 				<TextColorOptions { ...props } />
 				<BorderOptions { ...props } />
@@ -243,11 +158,7 @@ export default registerBlockType( 'flexlayout/heading', {
 								setAttributes( { url: value } )
 							}
 						/>
-						<Button
-							icon="editor-break"
-							text={ __( 'Apply' ) }
-							// type="submit"
-						/>
+						<Button icon="editor-break" text={ __( 'Apply' ) } />
 					</form>
 					<hr />
 					<p>{ __( 'Icon left of the Heading' ) }</p>
@@ -284,17 +195,8 @@ export default registerBlockType( 'flexlayout/heading', {
 					) }
 				</PanelBody>
 				<DataComponentNameOptions { ...props } />
-			</InspectorControls>,
-			<div
-				key="block"
-				className={ classnames(
-					`component-heading`,
-					`${ hangingQuoteClass }`,
-					className
-				) }
-				data-component-name={ props.attributes.dataComponentName }
-				data-component-options={ props.attributes.dataComponentOptions }
-			>
+			</InspectorControls>
+			<div { ...blockProps }>
 				<img
 					// Use empty SVG to trigger onload event
 					// Onload hack fires when block is added
@@ -317,56 +219,26 @@ export default registerBlockType( 'flexlayout/heading', {
 						...TextColorClasses( props )
 					) }
 					identifier="content"
-					// onChange={ ( value ) => setAttributes( { content: value } ) }
 					onChange={ onChangeMessage }
 					onRemove={ () => onReplace( [] ) }
 					placeholder={ placeholder || __( 'Heading text…' ) }
 					style={ {
-						// textAlign: align,
 						...TextColorInlineStyles( props ),
 						...BackgroundColorOptionsInlineStyles( props ),
 					} }
 					value={ content }
 				/>
-			</div>,
-		];
-	},
+			</div>
+		</>
+	);
+};
 
+// Register block
+export default registerBlockType( metadata, {
+	icon: icons.heading,
+	example: {},
+	edit: Edit,
 	save() {
 		return null;
 	},
-	// save(data) {
-	// 	return null;
-	// },
 } );
-
-// Add default styles
-// wp.blocks.registerBlockStyle( 'flexlayout/heading', {
-//     name: 'headline1',
-//     label: 'Headline 1'
-// } );
-
-// wp.blocks.registerBlockStyle( 'flexlayout/heading', {
-//     name: 'headline2',
-//     label: 'Headline 2'
-// } );
-
-// wp.blocks.registerBlockStyle( 'flexlayout/heading', {
-//     name: 'headline3',
-//     label: 'Headline 3'
-// } );
-
-// wp.blocks.registerBlockStyle( 'flexlayout/heading', {
-//     name: 'headline4',
-//     label: 'Headline 4'
-// } );
-
-// wp.blocks.registerBlockStyle( 'flexlayout/heading', {
-//     name: 'headline5',
-//     label: 'Headline 5'
-// } );
-
-// wp.blocks.registerBlockStyle( 'flexlayout/heading', {
-//     name: 'headline6',
-//     label: 'Headline 6'
-// } );

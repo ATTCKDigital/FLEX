@@ -1,13 +1,8 @@
 <?php
 namespace FLEX_LAYOUT_SYSTEM\Blocks\AnimatedGif;
 
-use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
-
-use const FLEX_LAYOUT_SYSTEM\Components\Border\BORDER_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Border\border_options_classes;
-
-use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
 
 add_action( 'init', __NAMESPACE__ . '\register_animated_gif_block' );
@@ -25,45 +20,8 @@ function register_animated_gif_block() {
 		return;
 	}
 
-	// Hook server side rendering into render callback
-	register_block_type( 'flexlayout/animated-gif', [
-		'attributes'	  => array_merge(
-			[
-				'align' => [
-					'type' => 'string',
-					'default' => 'center'
-				],
-				'caption' => [
-					'type' => 'string',
-				],
-				'CSSWidth' => [
-					'type' => 'string',
-					'default' => ''
-				],
-				'className' => [
-					'type' => 'string',
-					'default' => ''
-				],
-				'gifID' => [
-					'type' => 'number',
-				],
-				'gifURL' => [
-					'type' => 'string',
-				],
-				'imgID' => [
-					'type' => 'number',
-				],
-				'imgURL' => [
-					'type' => 'string',
-				],
-				'url' => [
-					'type' => 'string',
-				],
-			],
-			BORDER_OPTIONS_ATTRIBUTES,
-			MARGIN_OPTIONS_ATTRIBUTES,
-			PADDING_OPTIONS_ATTRIBUTES
-		),
+	// Register from block.json (name + attributes); keep the server render callback.
+	register_block_type( __DIR__ . '/block.json', [
 		'render_callback' => __NAMESPACE__ . '\render_animated_gif_block',
 	] );
 }

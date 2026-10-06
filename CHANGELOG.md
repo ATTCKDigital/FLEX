@@ -2,6 +2,19 @@
 
 All notable changes to FLEX. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and FLEX uses [Semantic Versioning](https://semver.org/). Upgrade steps for every breaking change: [UPGRADING.md](UPGRADING.md).
 
+## [5.4.0] - 2026-10-06
+
+The date is the release date; the `v5.4.0` tag is applied to the merge commit on `develop`. A minor release: additive and backwards-compatible. Names, attributes and PHP include paths are preserved, so existing posts stay valid and the front end is visually unchanged. The one optional consumer note is [UPGRADING.md § v5.4.0](UPGRADING.md#v540) (a child that overrides one of these block PHP files must ship its own `block.json`).
+
+### Changed
+
+- **The `paragraph`, `heading`, `image`, `share` and `animated-gif` blocks now register from a per-block `block.json` at `apiVersion` 3** (batch 2 of the `block.json` migration; same pattern as v5.3.0 — see [gutenberg/blocks/README.md](gutenberg/blocks/README.md#block-registration-blockjson--apiversion-3)). Each `block.json` carries the full flattened attribute union of the block's JS + PHP own attributes and its spread-in component sets (paragraph 75, heading 84, image 80, share 77, animated-gif 80), plus `supports`/`styles` where the block defined them (`paragraph` 9 styles, `heading` 6 styles + `supports.html: false`). PHP registers with `register_block_type( __DIR__ . '/block.json', [ 'render_callback' => … ] )`; JS passes the imported `metadata` to `registerBlockType` with `useBlockProps()` on a single Fragment root (multi-root `image`/`animated-gif` edits collapsed). `save` stays `null`; render callbacks are untouched; the single `dist/admin.js` bundle is unchanged.
+- **Two reconciled defaults** (where the JS and PHP declarations disagreed):
+  - `heading.hangingQuoteClass` defaults to `'hide-hanging-quote'` (the editor's value). The heading editor's on-load hook sets this value on every mount, so any other default would mark every post containing a heading as having unsaved changes. Server-side, headings that never stored the attribute now render with a `hide-hanging-quote` wrapper class — which has no CSS rule (only `.show-hanging-quote` is styled), so pages are visually unchanged.
+  - `share`'s `facebook`/`twitter`/`linkedin`/`email` default to boolean `false` (PHP had the string `'false'` on a `boolean` attribute). Output-neutral: the render's `== 'true'` comparison treats both the same.
+- `className` is declared with default `''` on all five (each render reads it unguarded); `animated-gif`'s `dataComponentName`/`dataComponentOptions` are now also registered server-side (its render already read them defensively).
+- `feed` and `quote` are deferred to a later batch: `feed` has a pre-existing editor↔render attribute mismatch (`excerptLength` vs `excerptWordLimit`) that deserves a deliberate fix, and `quote` depends on the `background-options` component.
+
 ## [5.3.0] - 2026-10-06
 
 The date is the release date; the `v5.3.0` tag is applied to the merge commit on `develop`. A minor release: additive and backwards-compatible. Names, attributes and PHP include paths are preserved, so existing posts stay valid and the **front-end output is unchanged**. The one optional consumer note is [UPGRADING.md § v5.3.0](UPGRADING.md#v530) (a child that overrides one of these block PHP files must ship its own `block.json`).
