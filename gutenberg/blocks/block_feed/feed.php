@@ -31,7 +31,7 @@ function register_feed_block() {
 					'default' => '',
 				],
 				'excerptWordLimit' => [
-					'type' => 'Number',
+					'type' => 'number',
 					'default' => 19,
 				],
 			],
@@ -68,7 +68,7 @@ function render_feed_block($attributes) {
 		$excerpt = wp_trim_words( get_the_excerpt($postID), $attributes['excerptWordLimit'], '' );
 
 		if (empty($excerpt)) {
-			$excerpt = wp_trim_words( get_the_content($postID), $attributes['excerptWordLimit'], '' );
+			$excerpt = wp_trim_words( get_the_content(null, false, $postID), $attributes['excerptWordLimit'], '' );
 		}
 
 		$categories = get_the_category($postID);
@@ -102,13 +102,13 @@ function render_feed_block($attributes) {
 				<div class="feed-info">
 					<span class="feed-category">'.$displayCategories.'</span>
 					<h2 class="headline6 feed-title">'.get_the_title($postID).'</h2>
-					<span class="feed-date">'.get_the_time('F j, Y').'</span>
+					<span class="feed-date">'.get_the_time('F j, Y', $postID).'</span>
 					<p class="feed-excerpt">'.$excerpt.'</p>
 				</div>
 			</a>';
 	}
 
-	$output = "<div class=\"component-archive-feed {$class}\"><div class=\"feed-items load-items padding-bottom-3x\">{$feedItems}</div>";
+	$output = "<div class=\"component-archive-feed {$class}\"><div class=\"feed-items load-items padding-bottom-3x\">{$feedItems}</div></div>";
 
 	return $output;
 }

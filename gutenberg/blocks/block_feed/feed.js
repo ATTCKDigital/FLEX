@@ -2,8 +2,7 @@
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const { InspectorControls } = wp.blockEditor;
-const { PanelBody, PanelRow, Spinner, RangeControl, SelectControl } =
-	wp.components;
+const { PanelBody, PanelRow, Spinner, RangeControl } = wp.components;
 const { withSelect } = wp.data;
 
 // Internal dependencies
@@ -17,17 +16,15 @@ export default registerBlockType( 'flexlayout/feed', {
 	category: 'common',
 	icon: 'welcome-widgets-menus',
 	example: {},
-	// icon: icons.feed,
-	// parent: ['flexlayout/column'],
 	keywords: [
 		__( 'Feed', 'flexlayout' ),
 		__( 'Archive', 'flexlayout' ),
 		__( 'Posts', 'flexlayout' ),
 	],
 	attributes: {
-		excerptLength: {
-			type: Number,
-			default: 15,
+		excerptWordLimit: {
+			type: 'number',
+			default: 19,
 		},
 		...MarginOptionsAttributes,
 		...PaddingOptionsAttributes,
@@ -54,51 +51,15 @@ export default registerBlockType( 'flexlayout/feed', {
 			return <p>{ __( 'No Posts', 'flexlayout' ) }</p>;
 		}
 		return (
-			(
+			<>
 				<InspectorControls>
-					<PanelBody title={ __( 'Feed Post Type' ) }>
-						<PanelRow>
-							<SelectControl
-								key="post-type"
-								label={ __( 'Post Type' ) }
-								options={ [
-									{
-										label: __( 'Post' ),
-										value: 'post',
-									},
-								] }
-							/>
-						</PanelRow>
-						<PanelRow>
-							<SelectControl
-								key="feed-categroy"
-								label={ __( 'Feed Category' ) }
-								options={ [
-									{
-										label: __( 'Post' ),
-										value: 'post',
-									},
-								] }
-							/>
-						</PanelRow>
-						<PanelRow>
-							<SelectControl
-								key="feed-number"
-								label={ __( 'Number of posts to display' ) }
-								options={ [
-									{
-										label: __( 'Post' ),
-										value: 'post',
-									},
-								] }
-							/>
-						</PanelRow>
+					<PanelBody title={ __( 'Feed Settings' ) }>
 						<PanelRow>
 							<RangeControl
 								label="Post Excerpt Word Length"
-								value={ attributes.excerptLength ?? 15 }
-								onChange={ ( excerptLength ) =>
-									setAttributes( { excerptLength } )
+								value={ attributes.excerptWordLimit }
+								onChange={ ( excerptWordLimit ) =>
+									setAttributes( { excerptWordLimit } )
 								}
 								min={ 1 }
 								max={ 50 }
@@ -106,9 +67,6 @@ export default registerBlockType( 'flexlayout/feed', {
 						</PanelRow>
 					</PanelBody>
 				</InspectorControls>
-			 ),
-			(
-				//okatodo: Make an Inspector control panel with post type and category selection and push that info back into the posts above
 				<div className={ 'component-archive-feed' }>
 					<div className={ 'feed-items' }>
 						{ posts.map( ( post ) => {
@@ -127,10 +85,9 @@ export default registerBlockType( 'flexlayout/feed', {
 						} ) }
 					</div>
 				</div>
-			 )
-		 );
-	} ), // end withAPIData
-	// end edit
+			</>
+		);
+	} ),
 	save() {
 		return null;
 	},
