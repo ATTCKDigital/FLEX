@@ -1,18 +1,9 @@
 <?php
 namespace FLEX_LAYOUT_SYSTEM\Blocks\Heading;
 
-use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
-
-use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
-
-use const FLEX_LAYOUT_SYSTEM\Components\Border\BORDER_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Border\border_options_classes;
-
-use const FLEX_LAYOUT_SYSTEM\Components\TextColors\TEXT_COLOR_ATTRIBUTES;
-
-use const FLEX_LAYOUT_SYSTEM\Components\BackgroundColorOptions\BACKGROUND_COLOR_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundColorOptions\background_color_options_inline_styles;
 
 add_action( 'init', __NAMESPACE__ . '\register_heading_block' );
@@ -30,58 +21,8 @@ function register_heading_block() {
 		return;
 	}
 
-	// Hook server side rendering into render callback
-	register_block_type( 'flexlayout/heading', [
-		'attributes' => array_merge(
-			[
-				'align' => [
-					'type' => 'string',
-					'default' => 'left'
-				],
-				'className' => [
-					'type' => 'string',
-					'default' => '',
-				],
-				'content' => [
-					'type' => 'string',
-					'default' => '',
-				],
-				'dataComponentName' => [
-					'type' => 'string',
-				],
-				'dataComponentOptions' => [
-					'type' => 'string',
-				],
-				'hangingQuoteClass' => [
-					'type' => 'string',
-					'default' => ''
-				],
-				'imgID' => [
-					'type' => 'number',
-				],
-				'imgURL' => [
-					'type' => 'string',
-				],
-				'isSelected' => [
-					'type' => 'boolean',
-				],
-				'level' => [
-					'type' => 'number',
-					'default' => 2,
-				],
-				'placeholder' => [
-					'type' => 'string',
-				],
-				'url' => [
-					'type' => 'string',
-				],
-			],
-			MARGIN_OPTIONS_ATTRIBUTES,
-			PADDING_OPTIONS_ATTRIBUTES,
-			BORDER_OPTIONS_ATTRIBUTES,
-			TEXT_COLOR_ATTRIBUTES,
-			BACKGROUND_COLOR_OPTIONS_ATTRIBUTES
-		),
+	// Register from block.json (name + attributes); keep the server render callback.
+	register_block_type( __DIR__ . '/block.json', [
 		'render_callback' => __NAMESPACE__ . '\render_heading_block',
 	] );
 }
