@@ -2,6 +2,18 @@
 
 All notable changes to FLEX. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and FLEX uses [Semantic Versioning](https://semver.org/). Upgrade steps for every breaking change: [UPGRADING.md](UPGRADING.md).
 
+## [5.4.1] - 2026-10-06
+
+The date is the release date; the `v5.4.1` tag is applied to the merge commit on `develop`. A patch release: bug fixes to the `feed` block only. No breaking changes, so no [UPGRADING.md](UPGRADING.md) steps.
+
+### Fixed
+
+- **`feed`: the excerpt-length setting now reaches the front end.** The editor wrote `excerptLength` (default 15) but the render read `excerptWordLimit` (default 19), so the setting never applied. Both sides now use `excerptWordLimit` (type `number`, default 19 — the value the front end has always used); `excerptLength` is removed.
+- **`feed`: its settings panel appears in the editor again.** `edit` returned `( (<InspectorControls/>), (<div/>) )` — a comma operator that discarded the panel. It now returns both in a Fragment. Three inert dropdowns (post type, category, number of posts — hardcoded options, never wired to anything) are removed; only the excerpt-length control remains.
+- **`feed`: balanced markup.** The render opened two wrapper `<div>`s but closed one.
+- **`feed`: each item shows its own date** (`get_the_time()` was called without the post ID, so every item showed the current page's date) **and its own content when it has no manual excerpt** (`get_the_content()` was passed the post ID as its first argument — the "more" link text — instead of its third).
+- Known limitation (unchanged): a post built only from dynamic blocks has no text in its raw content, so without a manual excerpt its feed excerpt is empty.
+
 ## [5.4.0] - 2026-10-06
 
 The date is the release date; the `v5.4.0` tag is applied to the merge commit on `develop`. A minor release: additive and backwards-compatible. Names, attributes and PHP include paths are preserved, so existing posts stay valid and the front end is visually unchanged. The one optional consumer note is [UPGRADING.md § v5.4.0](UPGRADING.md#v540) (a child that overrides one of these block PHP files must ship its own `block.json`).
