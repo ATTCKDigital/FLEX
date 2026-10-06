@@ -1,6 +1,7 @@
 // Block dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js';
+import metadata from './block.json';
 
 // Internal block libraries
 const { __ } = wp.i18n;
@@ -15,128 +16,87 @@ const {
 	MediaUpload,
 	RichText,
 	URLInput,
+	useBlockProps,
 } = wp.blockEditor;
 
 const { Button, Dashicon, IconButton, PanelBody, TextControl } = wp.components;
 
 // Internal dependencies
-import DataComponentNameOptions, {
-	DataComponentNameAttributes,
-} from '../../components/gb-component_data-component-name';
+import DataComponentNameOptions from '../../components/gb-component_data-component-name';
 import MarginOptions, {
-	MarginOptionsAttributes,
 	MarginOptionsClasses,
 } from '../../components/gb-component_margin';
 import BorderOptions, {
-	BorderOptionsAttributes,
 	BorderOptionsClasses,
 } from '../../components/gb-component_border';
 import PaddingOptions, {
-	PaddingOptionsAttributes,
 	PaddingOptionsClasses,
 } from '../../components/gb-component_padding';
 
-// Register image block
-export default registerBlockType( 'flexlayout/animated-gif', {
-	title: __( 'Animated GIF', 'flexlayout' ),
-	description: __(
-		'Swaps in large animated gif files on Scroll-In.',
-		'flexlayout'
-	),
-	category: 'common',
-	// icon: icons.gif,
-	icon: 'format-video',
-	example: {},
-	// parent: ['flexlayout/column'],
-	keywords: [
-		__( 'Image', 'flexlayout' ),
-		__( 'MediaUpload', 'flexlayout' ),
-	],
-	attributes: {
-		align: {
-			type: 'string',
-			default: 'center',
+// Editor component (named so the react-hooks lint rule recognises useBlockProps).
+const Edit = ( props ) => {
+	const {
+		attributes: {
+			align,
+			caption,
+			CSSWidth,
+			dataComponentName,
+			dataComponentOptions,
+			gifID,
+			gifURL,
+			imgID,
+			imgURL,
+			placeholder,
+			url,
 		},
-		caption: {
-			type: 'string',
-		},
-		CSSWidth: {
-			type: 'string',
-			default: '',
-		},
-		gifURL: {
-			type: 'string',
-		},
-		gifID: {
-			type: 'number',
-		},
-		imgURL: {
-			type: 'string',
-		},
-		imgID: {
-			type: 'number',
-		},
-		placeholder: {
-			type: 'string',
-		},
-		url: {
-			type: 'string',
-		},
-		...BorderOptionsAttributes,
-		...DataComponentNameAttributes,
-		...MarginOptionsAttributes,
-		...PaddingOptionsAttributes,
-	},
-	edit: ( props ) => {
-		const {
-			attributes: {
-				align,
-				caption,
-				CSSWidth,
-				dataComponentName,
-				dataComponentOptions,
-				gifID,
-				gifURL,
-				imgID,
-				imgURL,
-				placeholder,
-				url,
-			},
-			onReplace,
-			setAttributes,
-			isSelected,
-		} = props;
+		onReplace,
+		setAttributes,
+		isSelected,
+	} = props;
 
-		const onSelectImage = ( img ) => {
-			setAttributes( {
-				imgID: img.id,
-				imgURL: img.url,
-			} );
-		};
+	const onSelectImage = ( img ) => {
+		setAttributes( {
+			imgID: img.id,
+			imgURL: img.url,
+		} );
+	};
 
-		const onRemoveImage = () => {
-			setAttributes( {
-				imgID: null,
-				imgURL: null,
-			} );
-		};
+	const onRemoveImage = () => {
+		setAttributes( {
+			imgID: null,
+			imgURL: null,
+		} );
+	};
 
-		const onSelectGif = ( gif ) => {
-			setAttributes( {
-				gifID: gif.id,
-				gifURL: gif.url,
-			} );
-		};
+	const onSelectGif = ( gif ) => {
+		setAttributes( {
+			gifID: gif.id,
+			gifURL: gif.url,
+		} );
+	};
 
-		const onRemoveGif = () => {
-			setAttributes( {
-				gifID: null,
-				gifURL: null,
-			} );
-		};
+	const onRemoveGif = () => {
+		setAttributes( {
+			gifID: null,
+			gifURL: null,
+		} );
+	};
 
-		return [
-			<InspectorControls key="inspector">
+	const blockProps = useBlockProps( {
+		className: classnames(
+			`component-image component-animated-gif`,
+			`block-align-${ align }`,
+			...MarginOptionsClasses( props ),
+			...PaddingOptionsClasses( props ),
+			...BorderOptionsClasses( props )
+		),
+		'data-component-name': dataComponentName,
+		'data-component-options': dataComponentOptions,
+	} );
+
+	return (
+		<>
+			<InspectorControls>
 				<BorderOptions { ...props } />
 				<MarginOptions { ...props } />
 				<PaddingOptions { ...props } />
@@ -157,27 +117,16 @@ export default registerBlockType( 'flexlayout/animated-gif', {
 					/>
 				</PanelBody>
 				<DataComponentNameOptions { ...props } />
-			</InspectorControls>,
-			<BlockControls key="controls">
+			</InspectorControls>
+			<BlockControls>
 				<AlignmentToolbar
 					value={ align }
 					onChange={ ( nextAlign ) => {
 						setAttributes( { align: nextAlign } );
 					} }
 				/>
-			</BlockControls>,
-			<div
-				key="block"
-				className={ classnames(
-					`component-image component-animated-gif`,
-					`block-align-${ align }`,
-					...MarginOptionsClasses( props ),
-					...PaddingOptionsClasses( props ),
-					...BorderOptionsClasses( props )
-				) }
-				data-component-name={ dataComponentName }
-				data-component-options={ dataComponentOptions }
-			>
+			</BlockControls>
+			<div { ...blockProps }>
 				{ ! imgID ? (
 					<MediaUpload
 						onSelect={ onSelectImage }
@@ -282,9 +231,16 @@ export default registerBlockType( 'flexlayout/animated-gif', {
 						<img src={ gifURL } alt="" />
 					</div>
 				) }
-			</div>,
-		];
-	},
+			</div>
+		</>
+	);
+};
+
+// Register image block
+export default registerBlockType( metadata, {
+	icon: 'format-video',
+	example: {},
+	edit: Edit,
 	save() {
 		return null;
 	},
