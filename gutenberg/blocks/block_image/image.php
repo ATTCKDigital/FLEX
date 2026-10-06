@@ -1,13 +1,8 @@
 <?php
 namespace FLEX_LAYOUT_SYSTEM\Blocks\Image;
 
-use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
-
-use const FLEX_LAYOUT_SYSTEM\Components\Border\BORDER_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Border\border_options_classes;
-
-use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
 
 add_action( 'init', __NAMESPACE__ . '\register_image_block' );
@@ -25,53 +20,8 @@ function register_image_block() {
 		return;
 	}
 
-	// Hook server side rendering into render callback
-	register_block_type( 'flexlayout/image', [
-		'attributes' => array_merge(
-			[
-				'align' => [
-					'type' => 'string',
-					'default' => 'center'
-				],
-				'caption' => [
-					'type' => 'string',
-				],
-				'className' => [
-					'type' => 'string',
-					'default' => ''
-				],
-				'CSSHeight' => [
-					'type' => 'string',
-					'default' => ''
-				],
-				'CSSWidth' => [
-					'type' => 'string',
-					'default' => ''
-				],
-				'dataComponentName' => [
-					'type' => 'string',
-				],
-				'dataComponentOptions' => [
-					'type' => 'string',
-				],
-				'imgURL' => [
-					'type' => 'string',
-				],
-				'imgID' => [
-					'type' => 'number',
-				],
-				'opensNewWindow' => [
-					'type' => 'boolean',
-					'default' => false
-				],
-				'url' => [
-					'type' => 'string',
-				]
-			],
-			BORDER_OPTIONS_ATTRIBUTES,
-			MARGIN_OPTIONS_ATTRIBUTES,
-			PADDING_OPTIONS_ATTRIBUTES
-		),
+	// Register from block.json (name + attributes); keep the server render callback.
+	register_block_type( __DIR__ . '/block.json', [
 		'render_callback' => __NAMESPACE__ . '\render_image_block',
 	] );
 }

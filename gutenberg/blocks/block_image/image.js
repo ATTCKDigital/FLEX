@@ -1,6 +1,7 @@
 // Block dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js';
+import metadata from './block.json';
 
 // Internal block libraries
 const { __ } = wp.i18n;
@@ -15,6 +16,7 @@ const {
 	MediaUpload,
 	RichText,
 	URLInput,
+	useBlockProps,
 } = wp.blockEditor;
 
 const { Button, CheckboxControl, Dashicon, PanelBody, TextControl } =
@@ -22,122 +24,80 @@ const { Button, CheckboxControl, Dashicon, PanelBody, TextControl } =
 
 // Internal dependencies
 import BorderOptions, {
-	BorderOptionsAttributes,
 	BorderOptionsClasses,
 } from '../../components/gb-component_border';
-import DataComponentNameOptions, {
-	DataComponentNameAttributes,
-} from '../../components/gb-component_data-component-name';
+import DataComponentNameOptions from '../../components/gb-component_data-component-name';
 import MarginOptions, {
-	MarginOptionsAttributes,
 	MarginOptionsClasses,
 } from '../../components/gb-component_margin';
 import PaddingOptions, {
-	PaddingOptionsAttributes,
 	PaddingOptionsClasses,
 } from '../../components/gb-component_padding';
 
-// Register image block
-export default registerBlockType( 'flexlayout/image', {
-	title: __( 'Image', 'flexlayout' ),
-	description: __( 'Upload an image.', 'flexlayout' ),
-	category: 'common',
-	// icon: icons.upload,
-	icon: 'format-image',
-	example: {},
-	// parent: ['flexlayout/column'],
-	keywords: [
-		__( 'Image', 'flexlayout' ),
-		__( 'Img', 'flexlayout' ),
-		__( 'MediaUpload', 'flexlayout' ),
-	],
-	attributes: {
-		align: {
-			type: 'string',
-			default: 'center',
+// Editor component (named so the react-hooks lint rule recognises useBlockProps).
+const Edit = ( props ) => {
+	const {
+		attributes: {
+			align,
+			caption,
+			CSSHeight,
+			CSSWidth,
+			dataComponentName,
+			dataComponentOptions,
+			imgID,
+			imgURL,
+			placeholder,
+			url,
 		},
-		caption: {
-			type: 'string',
-		},
-		CSSHeight: {
-			type: 'string',
-			default: '',
-		},
-		CSSWidth: {
-			type: 'string',
-			default: '',
-		},
-		imgID: {
-			type: 'number',
-		},
-		imgURL: {
-			type: 'string',
-		},
-		opensNewWindow: {
-			type: 'boolean',
-			default: false,
-		},
-		placeholder: {
-			type: 'string',
-		},
-		url: {
-			type: 'string',
-		},
-		...BorderOptionsAttributes,
-		...DataComponentNameAttributes,
-		...MarginOptionsAttributes,
-		...PaddingOptionsAttributes,
-	},
-	edit: ( props ) => {
-		const {
-			attributes: {
-				align,
-				caption,
-				CSSHeight,
-				CSSWidth,
-				dataComponentName,
-				dataComponentOptions,
-				imgID,
-				imgURL,
-				placeholder,
-				url,
-			},
-			onReplace,
-			setAttributes,
-			isSelected,
-		} = props;
+		onReplace,
+		setAttributes,
+		isSelected,
+	} = props;
 
-		const onSelectImage = ( img ) => {
-			setAttributes( {
-				imgID: img.id,
-				imgURL: img.url,
-			} );
-		};
+	const onSelectImage = ( img ) => {
+		setAttributes( {
+			imgID: img.id,
+			imgURL: img.url,
+		} );
+	};
 
-		const onRemoveImage = () => {
-			setAttributes( {
-				imgID: null,
-				imgURL: null,
-			} );
-		};
+	const onRemoveImage = () => {
+		setAttributes( {
+			imgID: null,
+			imgURL: null,
+		} );
+	};
 
-		const setOpenInNewWindow = ( value ) => {
-			props.setAttributes( { opensNewWindow: value } );
-		};
+	const setOpenInNewWindow = ( value ) => {
+		props.setAttributes( { opensNewWindow: value } );
+	};
 
-		const NewWindowCheckbox = () => {
-			return (
-				<CheckboxControl
-					label="Open in new window."
-					help=""
-					checked={ props.attributes.opensNewWindow }
-					onChange={ setOpenInNewWindow }
-				/>
-			);
-		};
+	const NewWindowCheckbox = () => {
+		return (
+			<CheckboxControl
+				label="Open in new window."
+				help=""
+				checked={ props.attributes.opensNewWindow }
+				onChange={ setOpenInNewWindow }
+			/>
+		);
+	};
 
-		return [
-			<InspectorControls key="inspector">
+	const blockProps = useBlockProps( {
+		className: classnames(
+			`component-image`,
+			`block-align-${ align }`,
+			...MarginOptionsClasses( props ),
+			...PaddingOptionsClasses( props ),
+			...BorderOptionsClasses( props )
+		),
+		'data-component-name': dataComponentName,
+		'data-component-options': dataComponentOptions,
+	} );
+
+	return (
+		<>
+			<InspectorControls>
 				<BorderOptions { ...props } />
 				<MarginOptions { ...props } />
 				<PaddingOptions { ...props } />
@@ -165,27 +125,16 @@ export default registerBlockType( 'flexlayout/image', {
 					/>
 				</PanelBody>
 				<DataComponentNameOptions { ...props } />
-			</InspectorControls>,
-			<BlockControls key="controls">
+			</InspectorControls>
+			<BlockControls>
 				<AlignmentToolbar
 					value={ align }
 					onChange={ ( nextAlign ) => {
 						setAttributes( { align: nextAlign } );
 					} }
 				/>
-			</BlockControls>,
-			<div
-				key="block"
-				className={ classnames(
-					`component-image`,
-					`block-align-${ align }`,
-					...MarginOptionsClasses( props ),
-					...PaddingOptionsClasses( props ),
-					...BorderOptionsClasses( props )
-				) }
-				data-component-name={ dataComponentName }
-				data-component-options={ dataComponentOptions }
-			>
+			</BlockControls>
+			<div { ...blockProps }>
 				{ ! imgID ? (
 					<MediaUpload
 						onSelect={ onSelectImage }
@@ -239,7 +188,6 @@ export default registerBlockType( 'flexlayout/image', {
 								</div>
 								<Button
 									className="block-align-right float-left clear-left"
-									// icon="editor-break"
 									type="submit"
 								>
 									Apply changes
@@ -265,9 +213,16 @@ export default registerBlockType( 'flexlayout/image', {
 						) : null }
 					</div>
 				) }
-			</div>,
-		];
-	},
+			</div>
+		</>
+	);
+};
+
+// Register image block
+export default registerBlockType( metadata, {
+	icon: 'format-image',
+	example: {},
+	edit: Edit,
 	save() {
 		return null;
 	},
