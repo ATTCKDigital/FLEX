@@ -1,17 +1,11 @@
 <?php
 namespace FLEX_LAYOUT_SYSTEM\Blocks\Quote;
 
-use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
-use const FLEX_LAYOUT_SYSTEM\Components\Border\BORDER_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Border\border_options_classes;
-use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
-use const FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\BACKGROUND_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_classes;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_inline_styles;
-use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_video_output;
-use const FLEX_LAYOUT_SYSTEM\Components\TextColors\TEXT_COLOR_ATTRIBUTES;
 
 add_action( 'init', __NAMESPACE__ . '\register_quote_block' );
 
@@ -28,45 +22,8 @@ function register_quote_block() {
 		return;
 	}
 
-	// Hook server side rendering into render callback
-	register_block_type('flexlayout/quote', [
-		'attributes' => array_merge(
-			[
-				'content' => [
-					'type' => 'string',
-					'default' => '',
-				],
-				'placeholder' => [
-					'type' => 'string',
-				],
-				'contentSource' => [
-					'type' => 'string',
-					'default' => '',
-				],
-				'contentCompany' => [
-					'type' => 'string',
-					'default' => '',
-				],
-				'placeholderSource' => [
-					'type' => 'string',
-				],
-				'className' => [
-					'type' => 'string',
-					'default' => '',
-				],
-				'imgURL' => [
-					'type' => 'string',
-				],
-				'imgID' => [
-					'type' => 'number',
-				],
-			],
-			MARGIN_OPTIONS_ATTRIBUTES,
-			PADDING_OPTIONS_ATTRIBUTES,
-			BORDER_OPTIONS_ATTRIBUTES,		
-			BACKGROUND_OPTIONS_ATTRIBUTES,
-			TEXT_COLOR_ATTRIBUTES
-		),
+	// Register from block.json (name + attributes); keep the server render callback.
+	register_block_type( __DIR__ . '/block.json', [
 		'render_callback' => __NAMESPACE__ . '\render_quote_block',
 	] );
 }
