@@ -73,8 +73,7 @@ body {
 
 // apiVersion 3: an aligned row's outermost element is core's alignment wrapper
 // (div.wp-block[data-align]). Paint it like the v1 block wrapper so each row keeps its
-// framed, spaced-out look in the editor; the 28px padding stands in for the v1 inner
-// .wp-block margins.
+// framed, spaced-out look in the editor.
 // (Specificity 0,5,0 outranks core's root-container full-alignment rule, so full-width
 // rows stay inside the frame as they did in v1, where data-align sat on an inner div.)
 .block-editor-block-list__layout > .wp-block.wp-block[data-align]:has(> .wp-block-flexlayout-row) {
@@ -82,8 +81,25 @@ body {
 	border: 1px solid hsla(125, 100%, 40%, 0.2);
 	margin: 10px 0 1px;
 	max-width: none;
-	padding: 28px 0;
 	width: 100%;
+
+	// v1 spaced the row with 28px margins on an inner .wp-block div, which collapsed with
+	// the <section>'s own margin classes (max(28px, class), not the sum). Zero-height
+	// pseudo-elements with 28px margins collapse with the section's margins the same way.
+	&::before,
+	&::after {
+		content: "";
+		display: block;
+		height: 0;
+	}
+
+	&::before {
+		margin-bottom: 28px;
+	}
+
+	&::after {
+		margin-top: 28px;
+	}
 
 	&:has(> .is-hovered) {
 		background-color: hsla(219, 79%, 66%, 0.2);
@@ -92,6 +108,14 @@ body {
 
 	&:has(> .is-selected) {
 		border: 1px dotted hsla(219, 79%, 60%, 0.5);
+	}
+
+	// A row nested inside another row's column: v1 gave nested block wrappers a dotted
+	// top/bottom border and no side borders (see .wp-block-flexlayout-row below).
+	.wp-block-flexlayout-row & {
+		border: 1px dotted hsla(219, 79%, 66%, 0.2);
+		border-left: 0;
+		border-right: 0;
 	}
 
 	// The frame carries the border the v1 block wrapper had.
