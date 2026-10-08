@@ -94,12 +94,18 @@ body {
 		border: 1px dotted hsla(219, 79%, 60%, 0.5);
 	}
 
-	// The frame carries the border and spacing the v1 block wrapper had.
+	// The frame carries the border the v1 block wrapper had.
 	> .wp-block-flexlayout-row.block-editor-block-list__block {
 		border-width: 0 !important;
-		margin-bottom: 0;
-		margin-top: 0;
 	}
+}
+
+// ...and its spacing: drop the generic block margins (.block-editor-block-list__block,
+// 0,1,0) from the row <section> while letting its own margin classes (.margin-*-Nx, doubled
+// to 0,2,0) still apply, as they did on the v1 inner <section>.
+section.wp-block-flexlayout-row {
+	margin-bottom: 0;
+	margin-top: 0;
 }
 
 // v1 rendered row/column/popup children inside a .block-editor-inner-blocks wrapper padded
