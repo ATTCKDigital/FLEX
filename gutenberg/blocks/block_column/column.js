@@ -49,7 +49,11 @@ const Edit = ( props ) => {
 		setAttributes,
 	} = props;
 
-	const blockProps = useBlockProps( {
+	// The block wrapper takes the column classes (editor.BlockListBlock filter below); the
+	// inner div holds the background and the inner blocks, as the v1 edit markup did, so the
+	// column alignment rules (which centre the wrapper's single child) keep working.
+	const blockProps = useBlockProps();
+	const { children, ...innerBlocksProps } = useInnerBlocksProps( {
 		className: `component-${ dataComponentName }`,
 		style: {
 			...BackgroundOptionsInlineStyles( props ),
@@ -57,7 +61,6 @@ const Edit = ( props ) => {
 		'data-component-name': dataComponentName,
 		'data-component-options': dataComponentOptions,
 	} );
-	const { children, ...innerBlocksProps } = useInnerBlocksProps( blockProps );
 
 	return (
 		<>
@@ -157,9 +160,11 @@ const Edit = ( props ) => {
 					</ButtonGroup>
 				</Toolbar>
 			</BlockControls>
-			<div { ...innerBlocksProps }>
-				{ BackgroundOptionsVideoOutput( props ) }
-				{ children }
+			<div { ...blockProps }>
+				<div { ...innerBlocksProps }>
+					{ BackgroundOptionsVideoOutput( props ) }
+					{ children }
+				</div>
 			</div>
 		</>
 	);

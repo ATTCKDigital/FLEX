@@ -58,11 +58,12 @@ body {
 		Ubuntu, Cantarell, "Helvetica Neue", sans-serif; //overrides theme fonts within admin
 }
 
-// Editor tint on block wrappers. The FLEX containers (row, column, popup) are their own
-// block wrapper since apiVersion 3, so they are excluded from the !important tint: their
-// own background (inline colour, background classes) must show, as it did when the tint
-// sat on a separate v1 wrapper behind them.
-.block-editor-block-list__block:not(.wp-block-flexlayout-row):not(.wp-block-flexlayout-column):not(.wp-block-flexlayout-popup) {
+// Editor tint on block wrappers. Since apiVersion 3 the row's <section> is its own block
+// wrapper, so it is excluded from the !important tint: its background (inline colour,
+// background classes) must show, as it did when the tint sat on a separate v1 wrapper.
+// (Columns and popups keep a wrapper + inner div, so their tint stays behind the inner
+// div's background exactly as before.)
+.block-editor-block-list__block:not(.wp-block-flexlayout-row) {
 	background-color: hsla(108, 55%, 51%, 0.1) !important;
 
 	&.is-hovered {
@@ -70,21 +71,19 @@ body {
 	}
 }
 
-.block-editor-block-list__block.wp-block-flexlayout-column,
-.block-editor-block-list__block.wp-block-flexlayout-popup {
-	background-color: hsla(108, 55%, 51%, 0.1);
-}
-
 // apiVersion 3: an aligned row's outermost element is core's alignment wrapper
 // (div.wp-block[data-align]). Paint it like the v1 block wrapper so each row keeps its
 // framed, spaced-out look in the editor; the 28px padding stands in for the v1 inner
 // .wp-block margins.
-.wp-block[data-align]:has(> .wp-block-flexlayout-row) {
+// (Specificity 0,5,0 outranks core's root-container full-alignment rule, so full-width
+// rows stay inside the frame as they did in v1, where data-align sat on an inner div.)
+.block-editor-block-list__layout > .wp-block.wp-block[data-align]:has(> .wp-block-flexlayout-row) {
 	background-color: hsla(108, 55%, 51%, 0.1);
 	border: 1px solid hsla(125, 100%, 40%, 0.2);
 	margin: 10px 0 1px;
 	max-width: none;
 	padding: 28px 0;
+	width: 100%;
 
 	&:has(> .is-hovered) {
 		background-color: hsla(219, 79%, 66%, 0.2);
@@ -103,28 +102,14 @@ body {
 	}
 }
 
-// v1 rendered row/column children inside a .block-editor-inner-blocks wrapper padded
+// v1 rendered row/column/popup children inside a .block-editor-inner-blocks wrapper padded
 // 4px top and bottom (attck admin.scss); useInnerBlocksProps drops that wrapper, so the
-// row grid takes the padding and a column's first/last child takes it as extra margin
-// (padding there would fight the column's own padding classes).
-.wp-block-flexlayout-row > .block-editor-block-list__layout {
+// element holding the inner blocks takes the padding instead.
+.wp-block-flexlayout-row > .block-editor-block-list__layout,
+.wp-block-flexlayout-column > .block-editor-block-list__layout,
+.wp-block-flexlayout-popup > .block-editor-block-list__layout {
 	padding-bottom: 4px;
 	padding-top: 4px;
-}
-
-.wp-block-flexlayout-column.block-editor-block-list__layout {
-	> .block-editor-block-list__block:first-child {
-		margin-top: 14px;
-	}
-
-	> .block-editor-block-list__block:last-child {
-		margin-bottom: 5px;
-	}
-}
-
-.block-editor-block-list__block.wp-block-flexlayout-column.is-hovered,
-.block-editor-block-list__block.wp-block-flexlayout-popup.is-hovered {
-	background-color: hsla(219, 79%, 66%, 0.2);
 }
 
 .acf-media-modal.-edit .media-sidebar .attachment-details .setting {

@@ -46,12 +46,14 @@ const Edit = ( props ) => {
 		setAttributes,
 	} = props;
 
-	const blockProps = useBlockProps( {
+	// As in v1: the block wrapper takes the popup classes (editor.BlockListBlock filter below)
+	// and an inner div holds the background video, overlay and inner blocks.
+	const blockProps = useBlockProps();
+	const { children, ...innerBlocksProps } = useInnerBlocksProps( {
 		className: `component-${ dataComponentName }`,
 		'data-component-name': dataComponentName,
 		'data-component-options': dataComponentOptions,
 	} );
-	const { children, ...innerBlocksProps } = useInnerBlocksProps( blockProps );
 
 	return (
 		<>
@@ -87,16 +89,18 @@ const Edit = ( props ) => {
 				<PaddingOptions { ...props } />
 				<DataComponentNameOptions { ...props } />
 			</InspectorControls>
-			<div { ...innerBlocksProps }>
-				{ BackgroundOptionsVideoOutput( props ) }
-				<div
-					className="popup-background-overlay"
-					style={ {
-						opacity: backgroundOpacity ?? 1,
-						...BackgroundOptionsInlineStyles( props ),
-					} }
-				/>
-				{ children }
+			<div { ...blockProps }>
+				<div { ...innerBlocksProps }>
+					{ BackgroundOptionsVideoOutput( props ) }
+					<div
+						className="popup-background-overlay"
+						style={ {
+							opacity: backgroundOpacity ?? 1,
+							...BackgroundOptionsInlineStyles( props ),
+						} }
+					/>
+					{ children }
+				</div>
 			</div>
 		</>
 	);
