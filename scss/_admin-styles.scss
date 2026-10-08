@@ -58,6 +58,75 @@ body {
 		Ubuntu, Cantarell, "Helvetica Neue", sans-serif; //overrides theme fonts within admin
 }
 
+// Editor tint on block wrappers. The FLEX containers (row, column, popup) are their own
+// block wrapper since apiVersion 3, so they are excluded from the !important tint: their
+// own background (inline colour, background classes) must show, as it did when the tint
+// sat on a separate v1 wrapper behind them.
+.block-editor-block-list__block:not(.wp-block-flexlayout-row):not(.wp-block-flexlayout-column):not(.wp-block-flexlayout-popup) {
+	background-color: hsla(108, 55%, 51%, 0.1) !important;
+
+	&.is-hovered {
+		background: hsla(219, 79%, 66%, 0.2) !important;
+	}
+}
+
+.block-editor-block-list__block.wp-block-flexlayout-column,
+.block-editor-block-list__block.wp-block-flexlayout-popup {
+	background-color: hsla(108, 55%, 51%, 0.1);
+}
+
+// apiVersion 3: an aligned row's outermost element is core's alignment wrapper
+// (div.wp-block[data-align]). Paint it like the v1 block wrapper so each row keeps its
+// framed, spaced-out look in the editor; the 28px padding stands in for the v1 inner
+// .wp-block margins.
+.wp-block[data-align]:has(> .wp-block-flexlayout-row) {
+	background-color: hsla(108, 55%, 51%, 0.1);
+	border: 1px solid hsla(125, 100%, 40%, 0.2);
+	margin: 10px 0 1px;
+	max-width: none;
+	padding: 28px 0;
+
+	&:has(> .is-hovered) {
+		background-color: hsla(219, 79%, 66%, 0.2);
+		border-color: hsla(219, 79%, 66%, 0.3);
+	}
+
+	&:has(> .is-selected) {
+		border: 1px dotted hsla(219, 79%, 60%, 0.5);
+	}
+
+	// The frame carries the border and spacing the v1 block wrapper had.
+	> .wp-block-flexlayout-row.block-editor-block-list__block {
+		border-width: 0 !important;
+		margin-bottom: 0;
+		margin-top: 0;
+	}
+}
+
+// v1 rendered row/column children inside a .block-editor-inner-blocks wrapper padded
+// 4px top and bottom (attck admin.scss); useInnerBlocksProps drops that wrapper, so the
+// row grid takes the padding and a column's first/last child takes it as extra margin
+// (padding there would fight the column's own padding classes).
+.wp-block-flexlayout-row > .block-editor-block-list__layout {
+	padding-bottom: 4px;
+	padding-top: 4px;
+}
+
+.wp-block-flexlayout-column.block-editor-block-list__layout {
+	> .block-editor-block-list__block:first-child {
+		margin-top: 14px;
+	}
+
+	> .block-editor-block-list__block:last-child {
+		margin-bottom: 5px;
+	}
+}
+
+.block-editor-block-list__block.wp-block-flexlayout-column.is-hovered,
+.block-editor-block-list__block.wp-block-flexlayout-popup.is-hovered {
+	background-color: hsla(219, 79%, 66%, 0.2);
+}
+
 .acf-media-modal.-edit .media-sidebar .attachment-details .setting {
 	clear: both;
 }
@@ -68,7 +137,6 @@ body {
 	// border: 1px solid hsla(0, 0%, 75%, 0.2) !important;
 
 	// Green theme
-	background-color: hsla(108, 55%, 51%, 0.1) !important;
 	border: 1px solid hsla(125, 100%, 40%, 0.2) !important;
 
 	margin-bottom: 1px;
@@ -86,7 +154,6 @@ body {
 	width: 100%;
 
 	&.is-hovered {
-		background: hsla(219, 79%, 66%, 0.2) !important;
 		border: 1px solid hsla(219, 79%, 66%, 0.3) !important;
 	}
 
