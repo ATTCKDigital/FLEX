@@ -1,8 +1,9 @@
 // JS block file for displaying posts with ACF custom fields support and InnerBlocks layout design
+import metadata from './block.json';
 
 const { registerBlockType } = wp.blocks;
 const { __ } = wp.i18n;
-const { InspectorControls } = wp.blockEditor;
+const { InspectorControls, useBlockProps } = wp.blockEditor;
 const {
 	PanelBody,
 	SelectControl,
@@ -14,31 +15,8 @@ const {
 const { withSelect } = wp.data;
 const ServerSideRender = wp.serverSideRender;
 
-registerBlockType( 'flexlayout/posts', {
-	title: __( 'Posts' ),
-	description: __(
-		'Display posts with custom layout, InnerBlocks and ACF field options.'
-	),
-	category: 'common',
+registerBlockType( metadata, {
 	icon: 'format-aside',
-	attributes: {
-		postType: { type: 'string', default: 'post' },
-		postPerPage: { type: 'number', default: 12 },
-		order: { type: 'string', default: 'DESC' },
-		orderBy: { type: 'string', default: 'date' },
-		filterCategories: { type: 'object', default: {} },
-		selectedPosts: { type: 'array', default: [] },
-		showExcerpt: { type: 'boolean', default: false },
-		excerptWordLimit: { type: 'number', default: 20 },
-		columnNumber: { type: 'number', default: 3 },
-		ctaText: { type: 'string', default: 'Read More' },
-		showCategory: { type: 'boolean', default: false },
-		paginationActive: { type: 'boolean', default: true },
-		filterActive: { type: 'boolean', default: true },
-		customFields: { type: 'array', default: [] },
-		metaKey: { type: 'string', default: '' },
-	},
-
 	edit: withSelect( ( select, props ) => {
 		const { attributes } = props;
 		const { getPostTypes, getEntityRecords, getTaxonomies } =
@@ -101,120 +79,125 @@ registerBlockType( 'flexlayout/posts', {
 			ctaText,
 			customFields,
 		} = attributes;
-		return [
-			<InspectorControls key="inspector">
-				<PanelBody title={ __( 'Settings' ) }>
-					<SelectControl
-						label={ __( 'Post Type' ) }
-						value={ postType }
-						onChange={ ( v ) =>
-							setAttributes( {
-								postType: v,
-								filterCategories: {},
-								customFields: [],
-							} )
-						}
-						options={ typesList?.map( ( type ) => ( {
-							label: type.labels.name,
-							value: type.slug,
-						} ) ) }
-					/>
-					<SelectControl
-						label={ __( 'Order By' ) }
-						value={ orderBy }
-						onChange={ ( nextOrderBy ) =>
-							setAttributes( { orderBy: nextOrderBy } )
-						}
-						options={ [
-							{ label: 'Date', value: 'date' },
-							{ label: 'Title', value: 'title' },
-							{ label: 'Modified', value: 'modified' },
-							{ label: 'Menu Order', value: 'menu_order' },
-							{ label: 'Random', value: 'rand' },
-						] }
-					/>
-					<SelectControl
-						label={ __( 'Order' ) }
-						value={ order }
-						onChange={ ( nextOrder ) =>
-							setAttributes( { order: nextOrder } )
-						}
-						options={ [
-							{ label: 'Descending', value: 'DESC' },
-							{ label: 'Ascending', value: 'ASC' },
-						] }
-					/>
-					<RangeControl
-						label={ __( 'Posts Per Page' ) }
-						value={ postPerPage }
-						min={ 1 }
-						max={ 100 }
-						onChange={ ( v ) =>
-							setAttributes( { postPerPage: v } )
-						}
-					/>
-					<RangeControl
-						label={ __( 'Columns' ) }
-						value={ columnNumber }
-						min={ 1 }
-						max={ 6 }
-						onChange={ ( v ) =>
-							setAttributes( { columnNumber: v } )
-						}
-					/>
-					<ToggleControl
-						label={ __( 'Show Excerpt' ) }
-						checked={ showExcerpt }
-						onChange={ ( v ) =>
-							setAttributes( { showExcerpt: v } )
-						}
-					/>
-					<RangeControl
-						label={ __( 'Excerpt Word Count' ) }
-						value={ excerptWordLimit }
-						min={ 1 }
-						max={ 300 }
-						onChange={ ( v ) =>
-							setAttributes( { excerptWordLimit: v } )
-						}
-					/>
-					<ToggleControl
-						label={ __( 'Show Category' ) }
-						checked={ showCategory }
-						onChange={ ( v ) =>
-							setAttributes( { showCategory: v } )
-						}
-					/>
-					<ToggleControl
-						label={ __( 'Show Pagination' ) }
-						checked={ paginationActive }
-						onChange={ ( v ) =>
-							setAttributes( { paginationActive: v } )
-						}
-					/>
-					<FormTokenField
-						label={ __( 'Custom ACF Fields' ) }
-						value={ customFields }
-						suggestions={ availableMetaKeys }
-						onChange={ ( tokens ) =>
-							setAttributes( { customFields: tokens } )
-						}
-					/>
-					<TextControl
-						label={ __( 'CTA Button Text' ) }
-						value={ ctaText }
-						onChange={ ( v ) => setAttributes( { ctaText: v } ) }
-					/>
-				</PanelBody>
-			</InspectorControls>,
+		const blockProps = useBlockProps();
+		return (
+			<>
+				<InspectorControls>
+					<PanelBody title={ __( 'Settings' ) }>
+						<SelectControl
+							label={ __( 'Post Type' ) }
+							value={ postType }
+							onChange={ ( v ) =>
+								setAttributes( {
+									postType: v,
+									filterCategories: {},
+									customFields: [],
+								} )
+							}
+							options={ typesList?.map( ( type ) => ( {
+								label: type.labels.name,
+								value: type.slug,
+							} ) ) }
+						/>
+						<SelectControl
+							label={ __( 'Order By' ) }
+							value={ orderBy }
+							onChange={ ( nextOrderBy ) =>
+								setAttributes( { orderBy: nextOrderBy } )
+							}
+							options={ [
+								{ label: 'Date', value: 'date' },
+								{ label: 'Title', value: 'title' },
+								{ label: 'Modified', value: 'modified' },
+								{ label: 'Menu Order', value: 'menu_order' },
+								{ label: 'Random', value: 'rand' },
+							] }
+						/>
+						<SelectControl
+							label={ __( 'Order' ) }
+							value={ order }
+							onChange={ ( nextOrder ) =>
+								setAttributes( { order: nextOrder } )
+							}
+							options={ [
+								{ label: 'Descending', value: 'DESC' },
+								{ label: 'Ascending', value: 'ASC' },
+							] }
+						/>
+						<RangeControl
+							label={ __( 'Posts Per Page' ) }
+							value={ postPerPage }
+							min={ 1 }
+							max={ 100 }
+							onChange={ ( v ) =>
+								setAttributes( { postPerPage: v } )
+							}
+						/>
+						<RangeControl
+							label={ __( 'Columns' ) }
+							value={ columnNumber }
+							min={ 1 }
+							max={ 6 }
+							onChange={ ( v ) =>
+								setAttributes( { columnNumber: v } )
+							}
+						/>
+						<ToggleControl
+							label={ __( 'Show Excerpt' ) }
+							checked={ showExcerpt }
+							onChange={ ( v ) =>
+								setAttributes( { showExcerpt: v } )
+							}
+						/>
+						<RangeControl
+							label={ __( 'Excerpt Word Count' ) }
+							value={ excerptWordLimit }
+							min={ 1 }
+							max={ 300 }
+							onChange={ ( v ) =>
+								setAttributes( { excerptWordLimit: v } )
+							}
+						/>
+						<ToggleControl
+							label={ __( 'Show Category' ) }
+							checked={ showCategory }
+							onChange={ ( v ) =>
+								setAttributes( { showCategory: v } )
+							}
+						/>
+						<ToggleControl
+							label={ __( 'Show Pagination' ) }
+							checked={ paginationActive }
+							onChange={ ( v ) =>
+								setAttributes( { paginationActive: v } )
+							}
+						/>
+						<FormTokenField
+							label={ __( 'Custom ACF Fields' ) }
+							value={ customFields }
+							suggestions={ availableMetaKeys }
+							onChange={ ( tokens ) =>
+								setAttributes( { customFields: tokens } )
+							}
+						/>
+						<TextControl
+							label={ __( 'CTA Button Text' ) }
+							value={ ctaText }
+							onChange={ ( v ) =>
+								setAttributes( { ctaText: v } )
+							}
+						/>
+					</PanelBody>
+				</InspectorControls>
 
-			<div key="block" className="wp-block-flexlayout-posts">
-				<ServerSideRender
-					block="flexlayout/posts"
-					attributes={ attributes }
-				/>
-			</div>,
-		];
+				<div { ...blockProps }>
+					<ServerSideRender
+						block="flexlayout/posts"
+						attributes={ attributes }
+					/>
+				</div>
+			</>
+		);
 	} ),
 
 	save: () => null,

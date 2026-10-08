@@ -1,0 +1,156 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "flexlayout/video",
+	"title": "Video",
+	"category": "common",
+	"keywords": [
+		"Video",
+		"YouTube",
+		"Vimeo"
+	],
+	"textdomain": "flexlayout",
+	"attributes": {
+		"className": {
+			"type": "string",
+			"default": ""
+		},
+		"uploadVideo": {
+			"type": "object"
+		},
+		"videoThumbnail": {
+			"type": "object"
+		},
+		"youtubeVideo": {
+			"type": "string",
+			"default": ""
+		},
+		"brightcoveVideo": {
+			"type": "string",
+			"default": ""
+		},
+		"brightcoveAccount": {
+			"type": "string"
+		},
+		"controls": {
+			"type": "string",
+			"default": ""
+		},
+		"showControls": {
+			"type": "boolean",
+			"default": false
+		},
+		"videoType": {
+			"type": "string",
+			"default": ""
+		},
+		"marginTop": {
+			"type": "string"
+		},
+		"marginRight": {
+			"type": "string"
+		},
+		"marginBottom": {
+			"type": "string"
+		},
+		"marginLeft": {
+			"type": "string"
+		},
+		"marginPhoneTop": {
+			"type": "string"
+		},
+		"marginPhoneRight": {
+			"type": "string"
+		},
+		"marginPhoneBottom": {
+			"type": "string"
+		},
+		"marginPhoneLeft": {
+			"type": "string"
+		},
+		"marginPhonePlusTop": {
+			"type": "string"
+		},
+		"marginPhonePlusRight": {
+			"type": "string"
+		},
+		"marginPhonePlusBottom": {
+			"type": "string"
+		},
+		"marginPhonePlusLeft": {
+			"type": "string"
+		},
+		"marginTabletPortraitTop": {
+			"type": "string"
+		},
+		"marginTabletPortraitRight": {
+			"type": "string"
+		},
+		"marginTabletPortraitBottom": {
+			"type": "string"
+		},
+		"marginTabletPortraitLeft": {
+			"type": "string"
+		},
+		"marginTabletLandscapeTop": {
+			"type": "string"
+		},
+		"marginTabletLandscapeRight": {
+			"type": "string"
+		},
+		"marginTabletLandscapeBottom": {
+			"type": "string"
+		},
+		"marginTabletLandscapeLeft": {
+			"type": "string"
+		},
+		"marginDesktopTop": {
+			"type": "string"
+		},
+		"marginDesktopRight": {
+			"type": "string"
+		},
+		"marginDesktopBottom": {
+			"type": "string"
+		},
+		"marginDesktopLeft": {
+			"type": "string"
+		},
+		"marginXlTop": {
+			"type": "string"
+		},
+		"marginXlRight": {
+			"type": "string"
+		},
+		"marginXlBottom": {
+			"type": "string"
+		},
+		"marginXlLeft": {
+			"type": "string"
+		},
+		"marginXl2Top": {
+			"type": "string"
+		},
+		"marginXl2Right": {
+			"type": "string"
+		},
+		"marginXl2Bottom": {
+			"type": "string"
+		},
+		"marginXl2Left": {
+			"type": "string"
+		},
+		"borderTop": {
+			"type": "string"
+		},
+		"borderRight": {
+			"type": "string"
+		},
+		"borderBottom": {
+			"type": "string"
+		},
+		"borderLeft": {
+			"type": "string"
+		}
+	}
+}

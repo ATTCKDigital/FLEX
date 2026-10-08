@@ -5,10 +5,8 @@
 
 namespace FLEX_LAYOUT_SYSTEM\Blocks\Video;
 
-use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
 
-use const FLEX_LAYOUT_SYSTEM\Components\Border\BORDER_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Border\border_options_classes;
 
 add_action( 'init', __NAMESPACE__ . '\register_video_block' );
@@ -26,45 +24,8 @@ function register_video_block() {
 		return;
 	}
 
-	// Hook server side rendering into render callback
-	register_block_type( 'flexlayout/video', [
-		'attributes' => array_merge(
-			[
-				'className' => [
-                    'type' => 'string',
-                    'default' => '',
-                ],
-               	'uploadVideo' => [
-					'type' => 'object',
-				],
-				'controls' => [
-					'type' => 'string',
-					'default' => ''
-				],
-				'showControls' => [
-					'type' => 'boolean',
-					'default' => false
-				],
-				'videoThumbnail' => [
-					'type' => 'object',
-				],
-				'videoType' => [
-					'type' => 'string',
-					'default' => '',
-				],
-				'youtubeVideo' => [
-					'type' => 'string',
-					'default' => '',
-				],
-                'brightcoveVideo' => [
-                    'type' => 'string',
-                    'default' => '',
-                ],
-
-			],
-			MARGIN_OPTIONS_ATTRIBUTES,
-			BORDER_OPTIONS_ATTRIBUTES
-		),
+	// Register from block.json (name + attributes); keep the server render callback.
+	register_block_type( __DIR__ . '/block.json', [
 		'render_callback' => __NAMESPACE__ . '\render_video_block',
 	] );
 }
