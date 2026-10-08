@@ -3,7 +3,6 @@ namespace FLEX_LAYOUT_SYSTEM\Blocks\Row;
 
 use const FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\BACKGROUND_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_classes;
-use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_inline_styles;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_mobile_styles;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_desktop_styles;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_background_image_wide_styles;
@@ -123,8 +122,6 @@ function render_row_block($attributes, $content) {
 	}
 
 	// Apply background images
-	$style = esc_attr( background_options_inline_styles( $attributes ) );
-
 	$mobileImage = background_options_mobile_styles($attributes);
 	$desktopImage = background_options_desktop_styles($attributes);
 	$wideImage = background_options_background_image_wide_styles($attributes);
@@ -162,7 +159,9 @@ function render_row_block($attributes, $content) {
 
 	$innerContent .= "<div class=\"flex-grid component-row-{$attributes['blockAlignment']} component-row-verticalAlignment-{$attributes['verticalAlignment']}\">{$content}</div>";
 
-	$output = "<section{$id} class=\"{$class}\" data-section-id=\"{$sectionDataId}\" data-logo-color=\"{$dataLogoColor}\" style=\"{$style}\" {$dataComponentName} {$dataComponentOptions}>{$styleBlock}{$innerContent}</section>";
+	// No inline background: $styleBlock paints colour rows. The inline value was always emitted as a
+	// broken doubled attribute that browsers ignored, and existing pages are designed around that (v5.6.1).
+	$output = "<section{$id} class=\"{$class}\" data-section-id=\"{$sectionDataId}\" data-logo-color=\"{$dataLogoColor}\" style=\"\" {$dataComponentName} {$dataComponentOptions}>{$styleBlock}{$innerContent}</section>";
 
 	return $output;
 }
