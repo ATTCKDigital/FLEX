@@ -1,151 +1,103 @@
 // Block dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js';
+import metadata from './block.json';
 
 // Internal block libraries
 const { __ } = wp.i18n;
 
 const { registerBlockType } = wp.blocks;
 
-const { BlockAlignmentToolbar, BlockControls, InspectorControls, InnerBlocks } =
-	wp.blockEditor;
+const {
+	BlockAlignmentToolbar,
+	BlockControls,
+	InspectorControls,
+	InnerBlocks,
+	useBlockProps,
+	useInnerBlocksProps,
+} = wp.blockEditor;
+
+const { useInstanceId } = wp.compose;
 
 const { Button, ButtonGroup, Toolbar, Tooltip } = wp.components;
 
 // Internal dependencies
-import AnchorOptions, {
-	AnchorOptionsAttributes,
-} from '../../components/gb-component_anchor';
+import AnchorOptions from '../../components/gb-component_anchor';
 import BackgroundOptions, {
-	BackgroundOptionsAttributes,
 	BackgroundOptionsClasses,
 	BackgroundOptionsInlineStyles,
 	BackgroundOptionsVideoOutput,
 	BackgroundOptionsImageWide,
 } from '../../components/gb-component_background-options';
 import BorderOptions, {
-	BorderOptionsAttributes,
 	BorderOptionsClasses,
 } from '../../components/gb-component_border';
-import DataComponentNameOptions, {
-	DataComponentNameAttributes,
-} from '../../components/gb-component_data-component-name';
+import DataComponentNameOptions from '../../components/gb-component_data-component-name';
 import MarginOptions, {
-	MarginOptionsAttributes,
 	MarginOptionsClasses,
 } from '../../components/gb-component_margin';
 import PaddingOptions, {
-	PaddingOptionsAttributes,
 	PaddingOptionsClasses,
 } from '../../components/gb-component_padding';
 import RowHeightOptions, {
-	RowHeightOptionsAttributes,
 	RowHeightOptionsClasses,
 } from '../../components/gb-component_row-height';
 import LogoColorOptions, {
-	LogoColorOptionsAttributes,
 	LogoColorOptionsDataAttr,
 } from '../../components/gb-component_logo-color';
 import ScrollerOptions, {
-	ScrollerOptionsAttributes,
 	ScrollerOptionsOutput,
 } from '../../components/gb-component_scroller';
-import mtRand from '../../../js/mt_rand';
 
-// Register block
-export default registerBlockType( 'flexlayout/row', {
-	title: __( 'Row' ),
-	description: __(
-		'Creates a row wrapper to support inner blocks with set column widths.',
-		'flexlayout'
-	),
-	category: 'layout',
-	// icon: 'editor-table',
-	icon: icons.rows,
-	keywords: [ __( 'Flex', 'flexlayout' ), __( 'Layout', 'flexlayout' ) ],
-	// Forced to roll our own anchor support
-	// Due to Gutenberg core issue
-	// BUG: https://github.com/WordPress/gutenberg/issues/15240
-	// TODO: reenable this when bug is fixed
-	// supports: {
-	// 	anchor: true,
-	// },
-	attributes: {
-		blockAlignment: {
-			type: 'string',
-			default: 'wide',
+// Editor component (named so the react-hooks lint rule recognises the hooks).
+const Edit = ( props ) => {
+	const {
+		attributes: {
+			blockAlignment,
+			dataComponentName,
+			dataComponentOptions,
+			reverseMobile,
+			verticalAlignment,
 		},
-		reverseMobile: {
-			type: 'boolean',
-			default: false,
+		setAttributes,
+	} = props;
+
+	// Stable per-instance id scoping the editor-only wide-image <style>; replaces the
+	// random dataSectionId that used to be written into the attributes on every render.
+	const sectionId = useInstanceId( Edit );
+
+	const classes = classnames(
+		{
+			'component-row-reverse-mobile': reverseMobile,
 		},
-		verticalAlignment: {
-			type: 'string',
-			default: 'top',
+		...BackgroundOptionsClasses( props ),
+		...RowHeightOptionsClasses( props ),
+		...PaddingOptionsClasses( props ),
+		...MarginOptionsClasses( props ),
+		...BorderOptionsClasses( props )
+	);
+
+	const blockProps = useBlockProps( {
+		className: classes,
+		style: {
+			...BackgroundOptionsInlineStyles( props ),
 		},
-		...AnchorOptionsAttributes,
-		...BackgroundOptionsAttributes,
-		...BorderOptionsAttributes,
-		...DataComponentNameAttributes,
-		...MarginOptionsAttributes,
-		...PaddingOptionsAttributes,
-		...RowHeightOptionsAttributes,
-		...LogoColorOptionsAttributes,
-		...ScrollerOptionsAttributes,
-	},
+		'data-section-id': sectionId,
+		'data-component-name': dataComponentName,
+		'data-component-options': dataComponentOptions,
+		'data-logo-color': LogoColorOptionsDataAttr( props ),
+	} );
+	const innerBlocksProps = useInnerBlocksProps( {
+		className: classnames(
+			'flex-grid',
+			`component-row-verticalAlignment-${ verticalAlignment }`,
+			dataComponentName && `component-${ dataComponentName }`
+		),
+	} );
 
-	getEditWrapperProps( attributes ) {
-		const { blockAlignment } = attributes;
-
-		if (
-			'left' === blockAlignment ||
-			'right' === blockAlignment ||
-			'full' === blockAlignment ||
-			'wide' === blockAlignment
-		) {
-			return {
-				'data-align': blockAlignment,
-			};
-		}
-	},
-
-	edit: ( props ) => {
-		const {
-			attributes: {
-				anchor,
-				blockAlignment,
-				dataComponentName,
-				dataComponentOptions,
-				reverseMobile,
-				verticalAlignment,
-			},
-			className,
-			setAttributes,
-		} = props;
-
-		const classes = classnames(
-			className,
-			{
-				'component-row-reverse-mobile': reverseMobile,
-			},
-			...BackgroundOptionsClasses( props ),
-			...RowHeightOptionsClasses( props ),
-			...PaddingOptionsClasses( props ),
-			...MarginOptionsClasses( props ),
-			...BorderOptionsClasses( props )
-		);
-
-		// let safeStyle = {};
-		// try {
-		// 	safeStyle = BackgroundOptionsInlineStyles( props );
-		// 	console.log('✅ Inline styles result:', safeStyle);
-		// } catch (e) {
-		// 	console.error('🔥 Inline styles crash:', e);
-		// 	safeStyle = {};
-		// }
-
-		return [
-			<InspectorControls key="inspector">
+	return (
+		<>
+			<InspectorControls>
 				<BackgroundOptions { ...props } />
 				<RowHeightOptions { ...props } />
 				<BorderOptions { ...props } />
@@ -155,8 +107,8 @@ export default registerBlockType( 'flexlayout/row', {
 				<ScrollerOptions { ...props } />
 				<AnchorOptions { ...props } />
 				<DataComponentNameOptions { ...props } />
-			</InspectorControls>,
-			<BlockControls key="controls">
+			</InspectorControls>
+			<BlockControls>
 				<BlockAlignmentToolbar
 					value={ blockAlignment }
 					onChange={ ( nextBlockAlignment ) =>
@@ -294,36 +246,37 @@ export default registerBlockType( 'flexlayout/row', {
 						</Tooltip>
 					</ButtonGroup>
 				</Toolbar>
-			</BlockControls>,
-			<section
-				key="block"
-				id={ anchor }
-				className={ classes }
-				style={ {
-					...BackgroundOptionsInlineStyles( props ),
-				} }
-				data-section-id={
-					( props.attributes.dataSectionId = mtRand( 10, 1000 ) )
-				}
-				data-component-name={ dataComponentName }
-				data-component-options={ dataComponentOptions }
-				data-logo-color={ LogoColorOptionsDataAttr( props ) }
-			>
-				{ BackgroundOptionsImageWide( props ) }
+			</BlockControls>
+			<section { ...blockProps }>
+				{ BackgroundOptionsImageWide( props, sectionId ) }
 				{ BackgroundOptionsVideoOutput( props ) }
 				{ ScrollerOptionsOutput( props ) }
-				<div
-					className={ classnames(
-						'flex-grid',
-						`component-row-verticalAlignment-${ verticalAlignment }`,
-						dataComponentName && `component-${ dataComponentName }`
-					) }
-				>
-					<InnerBlocks />
-				</div>
-			</section>,
-		];
+				<div { ...innerBlocksProps } />
+			</section>
+		</>
+	);
+};
+
+// Register block
+export default registerBlockType( metadata, {
+	icon: icons.rows,
+	// Anchor support is rolled by hand (Gutenberg issue #15240), so core's anchor
+	// attribute filter is removed below.
+	getEditWrapperProps( attributes ) {
+		const { blockAlignment } = attributes;
+
+		if (
+			'left' === blockAlignment ||
+			'right' === blockAlignment ||
+			'full' === blockAlignment ||
+			'wide' === blockAlignment
+		) {
+			return {
+				'data-align': blockAlignment,
+			};
+		}
 	},
+	edit: Edit,
 
 	save() {
 		return <InnerBlocks.Content />;

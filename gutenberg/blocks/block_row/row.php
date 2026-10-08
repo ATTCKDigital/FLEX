@@ -1,30 +1,23 @@
 <?php
 namespace FLEX_LAYOUT_SYSTEM\Blocks\Row;
 
-use const FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\BACKGROUND_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_classes;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_mobile_styles;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_desktop_styles;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_background_image_wide_styles;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_video_output;
 
-use const FLEX_LAYOUT_SYSTEM\Components\Border\BORDER_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Border\border_options_classes;
 
-use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
 
-use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
 
-use const FLEX_LAYOUT_SYSTEM\Components\RowHeight\ROW_HEIGHT_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\RowHeight\row_height_options_classes;
 use function FLEX_LAYOUT_SYSTEM\Components\RowHeight\row_height_mobile_options_classes;
 
-use const FLEX_LAYOUT_SYSTEM\Components\Scroller\SCROLLER_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Scroller\scroller_options_output;
 
-use const FLEX_LAYOUT_SYSTEM\Components\LogoColor\LOGO_COLOR_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\LogoColor\logo_color_options_data_attributes;
 
 add_action( 'init', __NAMESPACE__ . '\register_row_block' );
@@ -42,44 +35,8 @@ function register_row_block() {
 		return;
 	}
 
-	// Hook server side rendering into render callback
-	register_block_type( 'flexlayout/row', [
-		'attributes' => array_merge(
-			[
-				'anchor' => [
-					'type' => 'string',
-				],
-				'blockAlignment' => [
-					'type' => 'string',
-					'default' => 'wide',
-				],
-				'className' => [
-					'type' => 'string',
-					'default' => '',
-				],
-				'dataComponentName' => [
-					'type' => 'string',
-				],
-				'dataComponentOptions' => [
-					'type' => 'string',
-				],
-				'reverseMobile' => [
-					'type' => 'boolean',
-					'default' => false,
-				],
-				'verticalAlignment' => [
-					'type' => 'string',
-					'default' => 'top',
-				],
-			],
-			BACKGROUND_OPTIONS_ATTRIBUTES,
-			PADDING_OPTIONS_ATTRIBUTES,
-			MARGIN_OPTIONS_ATTRIBUTES,
-			BORDER_OPTIONS_ATTRIBUTES,
-			ROW_HEIGHT_OPTIONS_ATTRIBUTES,
-			LOGO_COLOR_OPTIONS_ATTRIBUTES,
-			SCROLLER_OPTIONS_ATTRIBUTES
-		),
+	// Register from block.json (name + attributes); keep the server render callback.
+	register_block_type( __DIR__ . '/block.json', [
 		'render_callback' => __NAMESPACE__ . '\render_row_block',
 	] );
 }
