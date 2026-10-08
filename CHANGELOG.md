@@ -2,6 +2,20 @@
 
 All notable changes to FLEX. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and FLEX uses [Semantic Versioning](https://semver.org/). Upgrade steps for every breaking change: [UPGRADING.md](UPGRADING.md).
 
+## [5.6.0] - 2026-10-08
+
+The date is the release date; the `v5.6.0` tag is applied to the merge commit on `develop`. This is a minor release: additive and backwards-compatible. Names, stored attributes and PHP include paths are preserved, existing content stays valid, and the front-end output is unchanged. There is one optional consumer note: [UPGRADING.md § v5.6.0](UPGRADING.md#v560).
+
+### Changed
+
+- **`video` and `posts` now register from a per-block `block.json` at `apiVersion` 3.** This is batch 3 of the `block.json` migration and uses the same pattern as v5.3.0–v5.5.0. `save` stays `null`, render callbacks are untouched, and the single `dist/admin.js` bundle is unchanged.
+  - `video` (45 attributes: its own, margin and border). Where the JS and PHP declarations differed, the PHP defaults win: `''` for `className`, `controls`, `videoType`, `youtubeVideo` and `brightcoveVideo`, and `false` for `showControls`. The JS-only `brightcoveAccount` is now declared too, with no default. The editor is a named `Edit` with `useBlockProps()` on a single root.
+  - `posts` (81 attributes: its own, margin and padding). The editor calls `useBlockProps()` inside the `withSelect`-wrapped `EditBlock`.
+
+### Fixed
+
+- **`posts`: the server-side attribute registration is complete.** `posts.php` passed the margin and padding attribute sets to `register_block_type()` outside `attributes`, so they were never registered. It also lacked the editor's `selectedPosts`, which should have made the editor's ServerSideRender preview fail REST attribute validation (inferred from the registration, not re-run on v5.5.0). `block.json` now registers the full JS ∪ PHP union. Neither margin nor padding declares a default, so the front-end output is unchanged.
+
 ## [5.5.0] - 2026-10-07
 
 The date is the release date; the `v5.5.0` tag is applied to the merge commit on `develop`. A minor release: additive and backwards-compatible. Names, attributes and PHP include paths are preserved, existing content stays valid, and the front-end output is unchanged. Optional consumer note: [UPGRADING.md § v5.5.0](UPGRADING.md#v550).

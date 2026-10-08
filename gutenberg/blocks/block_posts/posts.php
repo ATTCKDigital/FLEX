@@ -2,10 +2,8 @@
 
 namespace FLEX_LAYOUT_SYSTEM\Blocks\Posts;
 
-use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
 
-use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
 
 add_action('init', __NAMESPACE__ . '\\register_posts_block');
@@ -19,27 +17,8 @@ add_action('init', __NAMESPACE__ . '\\register_posts_block');
 
 function register_posts_block()
 {
-    register_block_type('flexlayout/posts', [
-        'attributes' => [
-            'postType' => ['type' => 'string', 'default' => 'post'],
-            'postPerPage' => ['type' => 'number', 'default' => 12],
-            'order' => ['type' => 'string', 'default' => 'DESC'],
-            'orderBy' => ['type' => 'string', 'default' => 'date'],
-            'filterCategories' => ['type' => 'object', 'default' => []],
-            'showExcerpt' => ['type' => 'boolean', 'default' => false],
-            'excerptWordLimit' => ['type' => 'number', 'default' => 20],
-            'columnNumber' => ['type' => 'number', 'default' => 3],
-            'className' => ['type' => 'string', 'default' => ''],
-            'ctaText' => ['type' => 'string', 'default' => 'Read More'],
-            'showCategory' => ['type' => 'boolean', 'default' => false],
-            'paginationActive' => ['type' => 'boolean', 'default' => true],
-            'filterActive' => ['type' => 'boolean', 'default' => true],
-            'customFields' => ['type' => 'array', 'default' => []],
-            'addSeparator' => ['type' => 'boolean', 'default' => true],
-            'metaKey' => ['type' => 'string', 'default' => ''],
-        ],
-        MARGIN_OPTIONS_ATTRIBUTES,
-        PADDING_OPTIONS_ATTRIBUTES,
+    // Register from block.json (name + attributes, incl. margin + padding); keep the server render callback.
+    register_block_type(__DIR__ . '/block.json', [
         'render_callback' => __NAMESPACE__ . '\\render_posts_block',
     ]);
 }

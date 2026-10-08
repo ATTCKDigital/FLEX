@@ -2,7 +2,13 @@
 
 Every breaking change in a FLEX major release and what a FLEX child theme must do about it. Newest release first; move one major version at a time.
 
-Contents: [v5.5.0](#v550) · [v5.4.0](#v540) · [v5.3.0](#v530) · [v5.2.0](#v520) · [v5.0.0](#v500) · [v3 → v4.0.0](#v3--v400): [Pin v3.4.0 first](#pin-v340-first) · [Node 24](#node-24) · [FLEX no longer builds anything](#flex-no-longer-builds-anything) · [Reference child build](#reference-child-build) · [Build contract](#build-contract) · [Enqueue changes](#enqueue-changes) · [Customizer colors are printed at runtime](#customizer-colors-are-printed-at-runtime) · [jQuery, lodash and editor globals](#jquery-lodash-and-editor-globals) · [Removed packages and IE polyfills](#removed-packages-and-ie-polyfills) · [Sass](#sass) · [Font Awesome 6.7.2](#font-awesome-672) · [Removed and deprecated files](#removed-and-deprecated-files) · [Lint presets](#lint-presets) · [Git housekeeping](#git-housekeeping) · [Known issues](#known-issues)
+Contents: [v5.6.0](#v560) · [v5.5.0](#v550) · [v5.4.0](#v540) · [v5.3.0](#v530) · [v5.2.0](#v520) · [v5.0.0](#v500) · [v3 → v4.0.0](#v3--v400): [Pin v3.4.0 first](#pin-v340-first) · [Node 24](#node-24) · [FLEX no longer builds anything](#flex-no-longer-builds-anything) · [Reference child build](#reference-child-build) · [Build contract](#build-contract) · [Enqueue changes](#enqueue-changes) · [Customizer colors are printed at runtime](#customizer-colors-are-printed-at-runtime) · [jQuery, lodash and editor globals](#jquery-lodash-and-editor-globals) · [Removed packages and IE polyfills](#removed-packages-and-ie-polyfills) · [Sass](#sass) · [Font Awesome 6.7.2](#font-awesome-672) · [Removed and deprecated files](#removed-and-deprecated-files) · [Lint presets](#lint-presets) · [Git housekeeping](#git-housekeeping) · [Known issues](#known-issues)
+
+## v5.6.0
+
+FLEX v5.6.0 migrates `video` and `posts` to register from a per-block `block.json` at apiVersion 3, the same pattern as v5.3.0–v5.5.0. Block names, stored attributes and PHP include paths are unchanged, existing content stays valid, and the front-end output is identical, so there is **nothing you must do**.
+
+**Optional — only if you override `block_video` or `block_posts`'s PHP in your child theme:** ship your own `block.json` in the overriding folder, because registration reads `__DIR__ . '/block.json'`. Neither block is overridden in attck2026.
 
 ## v5.5.0
 
