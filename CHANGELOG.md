@@ -2,6 +2,17 @@
 
 All notable changes to FLEX. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and FLEX uses [Semantic Versioning](https://semver.org/). Upgrade steps for every breaking change: [UPGRADING.md](UPGRADING.md).
 
+## [5.5.0] - 2026-10-07
+
+The date is the release date; the `v5.5.0` tag is applied to the merge commit on `develop`. A minor release: additive and backwards-compatible. Names, attributes and PHP include paths are preserved, existing content stays valid, and the front-end output is unchanged. Optional consumer note: [UPGRADING.md § v5.5.0](UPGRADING.md#v550).
+
+### Changed
+
+- **`feed` and `quote` now register from a per-block `block.json` at `apiVersion` 3** (batch 2b of the `block.json` migration; same pattern as v5.3.0/v5.4.0). PHP registers with `register_block_type( __DIR__ . '/block.json', [ 'render_callback' => … ] )`; JS passes the imported `metadata` to `registerBlockType` with `useBlockProps()` on a single root. `save` stays `null`; render callbacks are untouched; the single `dist/admin.js` bundle is unchanged.
+  - `feed` (66 attributes): the `withSelect`-wrapped editor is now a named `FeedEdit` that calls `useBlockProps()` before any early return, so its loading, empty and populated states all render inside the block root.
+  - `quote` (94 attributes) is the first block to flatten the shared **`background-options`** component into `block.json`: the 15 keys its JS and PHP declarations share, plus the JS-only `backgroundImageWide` (boolean, no default) and `dataSectionId` (string; its default is kept as the literal `"undefined"` that the JS declaration has always evaluated to). No JS↔PHP default differed, so there is no editor-visible change.
+- `quote.php` no longer imports `background_options_video_output`, which it never called. (The quote front end has never output background video; only the editor preview does. Unchanged.)
+
 ## [5.4.1] - 2026-10-06
 
 The date is the release date; the `v5.4.1` tag is applied to the merge commit on `develop`. A patch release: bug fixes to the `feed` block only. No breaking changes, so no [UPGRADING.md](UPGRADING.md) steps.
