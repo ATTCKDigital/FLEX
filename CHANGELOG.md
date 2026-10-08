@@ -2,6 +2,21 @@
 
 All notable changes to FLEX. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and FLEX uses [Semantic Versioning](https://semver.org/). Upgrade steps for every breaking change: [UPGRADING.md](UPGRADING.md).
 
+## [5.6.1] - 2026-10-08
+
+The date is the release date; the `v5.6.1` tag is applied to the merge commit on `develop`. This is a patch release for the `row` block's markup only. Nothing changes on screen, and there are no [UPGRADING.md](UPGRADING.md) steps.
+
+### Fixed
+
+- **`row`: no more doubled `style` attribute.** `render_row_block()` wrapped the inline background in `style="…"` and then wrapped it again, so 1,429 of 1,942 rows on attck2026 output invalid HTML like `style="style="background-color: …; ""`. Browsers ignored that value and parsed the rest as junk attributes.
+  - Rows now output one empty `style=""`, the same as rows without a colour always did.
+  - Colour rows (`backgroundType: color`) are still painted by the `<style>` block the render emits for them.
+  - The inline value was deliberately **not** turned into a working style. 71 rows on attck2026 store a colour with no `backgroundType`, and those colours have never displayed. Making them visible broke text contrast and background images on published pages: black text on #1d1d1d, a white band hiding a photo background, and dark text on navy. Pages were designed around them staying hidden.
+  - Verified on attck2026 (local):
+    - Every row render differs only by that attribute.
+    - Computed row colours and full-page screenshots of 24 pages at 1440 and 390 px are unchanged, apart from differences measured in two identical runs (accordion and scroll-in animations).
+- `row.php` no longer imports `background_options_inline_styles`, which it no longer calls.
+
 ## [5.6.0] - 2026-10-08
 
 The date is the release date; the `v5.6.0` tag is applied to the merge commit on `develop`. This is a minor release: additive and backwards-compatible. Names, stored attributes and PHP include paths are preserved, existing content stays valid, and the front-end output is unchanged. There is one optional consumer note: [UPGRADING.md § v5.6.0](UPGRADING.md#v560).
