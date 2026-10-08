@@ -123,11 +123,7 @@ function render_row_block($attributes, $content) {
 	}
 
 	// Apply background images
-	$style = background_options_inline_styles( $attributes );
-
-	if ( $style ) {
-		$style = 'style="' . esc_attr( $style ) . '"';
-	}
+	$style = esc_attr( background_options_inline_styles( $attributes ) );
 
 	$mobileImage = background_options_mobile_styles($attributes);
 	$desktopImage = background_options_desktop_styles($attributes);
