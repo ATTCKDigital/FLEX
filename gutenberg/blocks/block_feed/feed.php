@@ -1,9 +1,7 @@
 <?php
 namespace FLEX_LAYOUT_SYSTEM\Blocks\Feed;
 
-use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
-use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
 
 add_action( 'init', __NAMESPACE__ . '\register_feed_block' );
@@ -21,23 +19,8 @@ function register_feed_block() {
 		return;
 	}
 
-	// Hook server side rendering into render callback
-	register_block_type(
-		'flexlayout/feed', [
-		'attributes' => array_merge(
-			[
-				'className' => [
-					'type' => 'string',
-					'default' => '',
-				],
-				'excerptWordLimit' => [
-					'type' => 'number',
-					'default' => 19,
-				],
-			],
-			MARGIN_OPTIONS_ATTRIBUTES,
-			PADDING_OPTIONS_ATTRIBUTES
-		),
+	// Register from block.json (name + attributes); keep the server render callback.
+	register_block_type( __DIR__ . '/block.json', [
 		'render_callback' => __NAMESPACE__ . '\render_feed_block',
 	] );
 }

@@ -3,13 +3,15 @@
  */
 import classnames from 'classnames';
 import icons from '../../../js/icons.js';
+import metadata from './block.json';
 
 /**
  * Internal block libraries
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { RichText, InspectorControls, MediaUpload } = wp.blockEditor;
+const { RichText, InspectorControls, MediaUpload, useBlockProps } =
+	wp.blockEditor;
 const { Button } = wp.components;
 
 /**
@@ -17,130 +19,74 @@ const { Button } = wp.components;
  */
 // Import all of our Margin Options requirements.
 import MarginOptions, {
-	MarginOptionsAttributes,
 	MarginOptionsClasses,
 } from '../../components/gb-component_margin';
 // Import all of our Border Options requirements.
-import {
-	BorderOptionsAttributes,
-	BorderOptionsClasses,
-} from '../../components/gb-component_border';
+import { BorderOptionsClasses } from '../../components/gb-component_border';
 // Import all of our Padding Options requirements.
-import {
-	PaddingOptionsAttributes,
-	PaddingOptionsClasses,
-} from '../../components/gb-component_padding';
+import { PaddingOptionsClasses } from '../../components/gb-component_padding';
 // Import all of our Background Options requirements.
 import BackgroundOptions, {
-	BackgroundOptionsAttributes,
 	BackgroundOptionsClasses,
 	BackgroundOptionsInlineStyles,
 	BackgroundOptionsVideoOutput,
 } from '../../components/gb-component_background-options';
 // Import all of our Text Color Options requirements.
 import TextColorOptions, {
-	TextColorAttributes,
 	TextColorClasses,
 } from '../../components/gb-component_text-colors';
 
-/**
- * Register block
- */
-export default registerBlockType( 'flexlayout/quote', {
-	title: __( 'Quote' ),
-	description: __( 'A stylized pull quote with a source' ),
-	category: 'common',
-	// icon: 'editor-quote',
-	icon: 'format-quote',
-	example: {},
-	// parent: ['flexlayout/column'],
-	keywords: [ __( 'Text', 'flexlayout' ), __( 'Quote', 'flexlayout' ) ],
-	attributes: {
-		imgURL: {
-			type: 'string',
+// Editor component (named so the react-hooks lint rule recognises useBlockProps).
+const Edit = ( props ) => {
+	const {
+		attributes: {
+			imgID,
+			imgURL,
+			content,
+			placeholder,
+			contentSource,
+			contentCompany,
+			placeholderSource,
 		},
+		onReplace,
+		setAttributes,
+		isSelected,
+	} = props;
+	const onSelectImage = ( img ) => {
+		setAttributes( {
+			imgID: img.id,
+			imgURL: img.url,
+		} );
+	};
+	const onRemoveImage = () => {
+		setAttributes( {
+			imgID: null,
+			imgURL: null,
+		} );
+	};
 
-		imgID: {
-			type: 'number',
+	const blockProps = useBlockProps( {
+		className: classnames(
+			`component-quote`,
+			...MarginOptionsClasses( props ),
+			...PaddingOptionsClasses( props ),
+			...BorderOptionsClasses( props ),
+			...BackgroundOptionsClasses( props ),
+			...TextColorClasses( props )
+		),
+		style: {
+			...BackgroundOptionsInlineStyles( props ),
 		},
+	} );
 
-		content: {
-			type: 'string',
-			default: '',
-		},
-
-		placeholder: {
-			type: 'string',
-		},
-
-		contentSource: {
-			type: 'string',
-			default: '',
-		},
-
-		contentCompany: {
-			type: 'string',
-			default: '',
-		},
-
-		placeholderSource: {
-			type: 'string',
-		},
-		...MarginOptionsAttributes,
-		...PaddingOptionsAttributes,
-		...BorderOptionsAttributes,
-		...BackgroundOptionsAttributes,
-		...TextColorAttributes,
-	},
-
-	edit: ( props ) => {
-		const {
-			attributes: {
-				imgID,
-				imgURL,
-				content,
-				placeholder,
-				contentSource,
-				contentCompany,
-				placeholderSource,
-			},
-			onReplace,
-			setAttributes,
-			isSelected,
-		} = props;
-		const onSelectImage = ( img ) => {
-			setAttributes( {
-				imgID: img.id,
-				imgURL: img.url,
-			} );
-		};
-		const onRemoveImage = () => {
-			setAttributes( {
-				imgID: null,
-				imgURL: null,
-			} );
-		};
-
-		return [
-			<InspectorControls key="inspector">
+	return (
+		<>
+			<InspectorControls>
 				<BackgroundOptions { ...props } />
 				<MarginOptions { ...props } />
 				<TextColorOptions { ...props } />
-			</InspectorControls>,
-			<div
-				key="block"
-				className={ classnames(
-					`component-quote`,
-					...MarginOptionsClasses( props ),
-					...PaddingOptionsClasses( props ),
-					...BorderOptionsClasses( props ),
-					...BackgroundOptionsClasses( props ),
-					...TextColorClasses( props )
-				) }
-				style={ {
-					...BackgroundOptionsInlineStyles( props ),
-				} }
-			>
+			</InspectorControls>
+			<div { ...blockProps }>
 				{ BackgroundOptionsVideoOutput( props ) }
 				<RichText
 					identifier="content"
@@ -206,10 +152,18 @@ export default registerBlockType( 'flexlayout/quote', {
 						placeholderSource || __( 'Quote author company' )
 					}
 				/>
-			</div>,
-		];
-	},
+			</div>
+		</>
+	);
+};
 
+/**
+ * Register block
+ */
+export default registerBlockType( metadata, {
+	icon: 'format-quote',
+	example: {},
+	edit: Edit,
 	save() {
 		return null;
 	},

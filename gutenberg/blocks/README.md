@@ -35,7 +35,7 @@ Do NOT edit or add native Gutenberg blocks!! If a change is required, please sub
 
 #### Block registration: `block.json` + apiVersion 3
 
-Newer FLEX blocks register their metadata from a per-block `block.json` (the WordPress-standard block metadata file) at **apiVersion 3**, instead of declaring `attributes`/`title`/`category` inline in both the PHP and JS. Migrated so far: batch 1 — `block_hr`, `block_source`, `block_shortcode`, `block_list`, `block_button` (FLEX v5.3.0); batch 2 — `block_paragraph`, `block_heading`, `block_image`, `block_share`, `block_animated-gif` (FLEX v5.4.0). `block_feed` and `block_quote` are next (batch 2b); InnerBlocks/media blocks (row, column, popup, video, posts) follow later.
+Newer FLEX blocks register their metadata from a per-block `block.json` (the WordPress-standard block metadata file) at **apiVersion 3**, instead of declaring `attributes`/`title`/`category` inline in both the PHP and JS. Migrated so far: batch 1 — `block_hr`, `block_source`, `block_shortcode`, `block_list`, `block_button` (FLEX v5.3.0); batch 2 — `block_paragraph`, `block_heading`, `block_image`, `block_share`, `block_animated-gif` (FLEX v5.4.0). batch 2b — `block_feed`, `block_quote` (FLEX v5.5.0). InnerBlocks/media blocks (row, column, popup, video, posts) follow later. `block_quote` is the first to flatten the shared `background-options` component (17 keys: the 15 JS/PHP-shared keys plus JS-only `backgroundImageWide` and `dataSectionId`).
 
 The pattern, per block folder:
 
