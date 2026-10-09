@@ -8,6 +8,10 @@ This plugin _should not be touched or edited_. All project specific blocks shoul
 
 _However_, there may be a case in which a core block needs to be edited or created. See "Adding/Editing FLEX Blocks below". This requires approval and submission of a pull request.
 
+**FLEX only holds generic blocks.** A block belongs in FLEX only if any ATTCK Digital project could use it. Client-specific blocks, such as attck2026's ACF team grid, live in that project's child theme.
+
+**Deprecated blocks kept for a later fix:** `users`, `testimonial`, `testimonialcarousel`, `map`, `slides` and `socialmedia`. Most are not loaded in the editor (their `blocks.js` imports are commented out), but they stay in FLEX so they can be repaired and re-enabled. Blocks that have a replacement are removed: `text`, replaced by `paragraph`, and the `carousel` block, replaced by the `component_carousel` component (v5.8.0).
+
 ## ACF Gutenberg Blocks
 
 ### Adding ACF Blocks

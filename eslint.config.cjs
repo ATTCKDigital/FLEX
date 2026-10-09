@@ -11,10 +11,8 @@ module.exports = [
 			// Installed packages and vendored binaries/fonts are not FLEX source.
 			'node_modules/',
 			'assets/',
-			// Disabled, deprecated blocks kept for other FLEX sites (Q9); removal planned for v5.
-			'gutenberg/blocks/block_carousel/',
+			// Disabled, deprecated blocks kept until they are fixed (feature 015 Q1).
 			'gutenberg/blocks/block_slides/',
-			'gutenberg/blocks/block_text/',
 			'gutenberg/blocks/block_social_media/',
 			'gutenberg/blocks/block_users/',
 		],
