@@ -2,6 +2,25 @@
 
 All notable changes to FLEX. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and FLEX uses [Semantic Versioning](https://semver.org/). Upgrade steps for every breaking change: [UPGRADING.md](UPGRADING.md).
 
+## [5.8.0] - 2026-10-09
+
+The date is the release date; the `v5.8.0` tag is applied to the merge commit on `develop`. This is a minor release. The two removed blocks were never loaded on any FLEX site, so nothing that currently works is removed. See [UPGRADING.md § v5.8.0](UPGRADING.md#v580).
+
+### Removed
+
+- **`block_text`** (`flexlayout/text`). Use **`flexlayout/paragraph`**. Its PHP was not included (and failed to parse: it echoed before its `namespace`), and its editor import was commented out. Stored `text` blocks keep their markup but render nothing, as before.
+- **`block_carousel`** (`flexlayout/carousel`). Use the **`component_carousel`** component. Its editor import and PHP include were commented out, and its `register_carousel.php` still pointed at a `block.json` deleted in v4.0.0.
+- **The "Block: Carousel" ACF field group** (`config/acf-configs/acf-json/group_60014c4dbea69.json`). Its location rule was "block == all", so it added an unused `carousel` repeater to every ACF block's sidebar. Values already saved in that field stay stored and unused.
+- `flexlayout/carousel` and `flexlayout/text` are removed from the default allow-list in `config/global-variables/blocks.php`, and the default ACF register list is now empty (it was `['carousel']`).
+
+### Fixed
+
+- **`map`** registered itself as `flexlayout/image`, which would have replaced the real image block if `map.js` were ever imported. It now registers `flexlayout/map`. It is still not imported.
+
+### Changed
+
+- `gutenberg/blocks/README.md`: FLEX holds only generic blocks; client-specific blocks belong in the child theme. The deprecated blocks without a replacement (`users`, `testimonial`, `testimonialcarousel`, `map`, `slides`, `socialmedia`) are kept so they can be fixed later.
+
 ## [5.7.0] - 2026-10-08
 
 The date is the release date; the `v5.7.0` tag is applied to the merge commit on `develop`. This is a minor release. Block names, stored attributes, `save` output and PHP include paths are preserved, existing content stays valid, and the front-end output is unchanged. The editor markup of the three container blocks changes, so read [UPGRADING.md § v5.7.0](UPGRADING.md#v570) if your child theme styles the editor.

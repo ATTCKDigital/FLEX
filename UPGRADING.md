@@ -2,7 +2,18 @@
 
 Every breaking change in a FLEX major release and what a FLEX child theme must do about it. Newest release first; move one major version at a time.
 
-Contents: [v5.7.0](#v570) · [v5.6.0](#v560) · [v5.5.0](#v550) · [v5.4.0](#v540) · [v5.3.0](#v530) · [v5.2.0](#v520) · [v5.0.0](#v500) · [v3 → v4.0.0](#v3--v400): [Pin v3.4.0 first](#pin-v340-first) · [Node 24](#node-24) · [FLEX no longer builds anything](#flex-no-longer-builds-anything) · [Reference child build](#reference-child-build) · [Build contract](#build-contract) · [Enqueue changes](#enqueue-changes) · [Customizer colors are printed at runtime](#customizer-colors-are-printed-at-runtime) · [jQuery, lodash and editor globals](#jquery-lodash-and-editor-globals) · [Removed packages and IE polyfills](#removed-packages-and-ie-polyfills) · [Sass](#sass) · [Font Awesome 6.7.2](#font-awesome-672) · [Removed and deprecated files](#removed-and-deprecated-files) · [Lint presets](#lint-presets) · [Git housekeeping](#git-housekeeping) · [Known issues](#known-issues)
+Contents: [v5.8.0](#v580) · [v5.7.0](#v570) · [v5.6.0](#v560) · [v5.5.0](#v550) · [v5.4.0](#v540) · [v5.3.0](#v530) · [v5.2.0](#v520) · [v5.0.0](#v500) · [v3 → v4.0.0](#v3--v400): [Pin v3.4.0 first](#pin-v340-first) · [Node 24](#node-24) · [FLEX no longer builds anything](#flex-no-longer-builds-anything) · [Reference child build](#reference-child-build) · [Build contract](#build-contract) · [Enqueue changes](#enqueue-changes) · [Customizer colors are printed at runtime](#customizer-colors-are-printed-at-runtime) · [jQuery, lodash and editor globals](#jquery-lodash-and-editor-globals) · [Removed packages and IE polyfills](#removed-packages-and-ie-polyfills) · [Sass](#sass) · [Font Awesome 6.7.2](#font-awesome-672) · [Removed and deprecated files](#removed-and-deprecated-files) · [Lint presets](#lint-presets) · [Git housekeeping](#git-housekeeping) · [Known issues](#known-issues)
+
+## v5.8.0
+
+FLEX v5.8.0 deletes two deprecated blocks that have replacements. Neither was loaded on any FLEX site (their editor imports and PHP includes were commented out), so for most sites there is **nothing you must do**.
+
+- **`flexlayout/text` → use `flexlayout/paragraph`.** Stored `text` blocks were already rendering nothing and showing as unsupported in the editor. That is unchanged. To bring their content back, convert each one to a paragraph block in the editor.
+- **`flexlayout/carousel` → use `component_carousel`.**
+- **Only if your child theme has no `config/global-variables/blocks.php` of its own:** FLEX's defaults no longer list `flexlayout/carousel` or `flexlayout/text`, and the default ACF register list is empty. Define your own lists in the child theme, which is the normal setup.
+- **The "Block: Carousel" ACF field group is deleted.** It was attached to every ACF block. If one of your templates reads a `carousel` field from an ACF block (attck2026's don't), copy the field group into your child theme's `acf-json`.
+
+`users`, `testimonial`, `testimonialcarousel`, `map`, `slides` and `socialmedia` stay deprecated and are kept for a later fix. `map` now registers `flexlayout/map` instead of `flexlayout/image`.
 
 ## v5.7.0
 
@@ -344,7 +355,7 @@ Removed with the FLEX build: `babel-polyfill`, `es6-object-assign`, `string.prot
 
 - **`__GET_STARTED_HERE/` starter kit removed.** It was an obsolete `flexlayout-child` starter (webpack 4 config, PostCSS/Babel/ESLint configs, `.githooks`, a sample `.env`). Start a new child theme from the [reference child build](#reference-child-build) instead.
 - **Removed:** the stale `.githooks/` snapshot, `gutenberg/blocks/example-blocks/`, and the orphaned `block.json` files of the carousel and slides blocks.
-- **Deprecated (kept, removal planned for v5):** the disabled blocks `block_carousel`, `block_slides`, `block_text`, `block_social_media`, `block_users`. They are not imported by `gutenberg/blocks/blocks.js`, are excluded from linting, and are not maintained. Their `register_carousel.php` / `register_slides.php` loaders still reference the deleted `block.json` files and are not included anywhere.
+- **Deprecated (kept, removal planned for v5):** the disabled blocks `block_carousel`, `block_slides`, `block_text`, `block_social_media`, `block_users`. *(v5.8.0: `block_text` and `block_carousel` were removed because they have replacements; the others are kept for a later fix — see [v5.8.0](#v580).)* They are not imported by `gutenberg/blocks/blocks.js`, are excluded from linting, and are not maintained. Their `register_carousel.php` / `register_slides.php` loaders still reference the deleted `block.json` files and are not included anywhere.
 
 **Action:** a child that re-enables one of these blocks must own its maintenance and plan to move off it before v5.
 
