@@ -1,23 +1,18 @@
 <?php
 namespace FLEX_LAYOUT_SYSTEM\Blocks\Column;
 
-use const FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\BACKGROUND_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_classes;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_inline_styles;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_mobile_styles;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_desktop_styles;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_video_output;
 
-use const FLEX_LAYOUT_SYSTEM\Components\Border\BORDER_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Border\border_options_classes;
 
-use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
 
-use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
 
-use const FLEX_LAYOUT_SYSTEM\Components\Columns\COLUMN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Columns\column_options_classes;
 
 
@@ -36,34 +31,8 @@ function register_column_block() {
 		return;
 	}
 
-	// Hook server side rendering into render callback
-	register_block_type( 'flexlayout/column', [
-		'attributes' => array_merge(
-			[
-				'anchor' => [
-					'type' => 'string',
-				],
-				'className' => [
-					'type' => 'string',
-					'default' => '',
-				],
-				'dataComponentName' => [
-					'type' => 'string',
-				],
-				'dataComponentOptions' => [
-					'type' => 'string',
-				],
-				'verticalAlignment' => [
-					'type' => 'string',
-					'default' => 'top',
-				],
-			],
-			BACKGROUND_OPTIONS_ATTRIBUTES,
-			PADDING_OPTIONS_ATTRIBUTES,
-			MARGIN_OPTIONS_ATTRIBUTES,
-			BORDER_OPTIONS_ATTRIBUTES,
-			COLUMN_OPTIONS_ATTRIBUTES
-		),
+	// Register from block.json (name + attributes); keep the server render callback.
+	register_block_type( __DIR__ . '/block.json', [
 		'render_callback' => __NAMESPACE__ . '\render_column_block',
 	] );
 }

@@ -2,7 +2,21 @@
 
 Every breaking change in a FLEX major release and what a FLEX child theme must do about it. Newest release first; move one major version at a time.
 
-Contents: [v5.6.0](#v560) · [v5.5.0](#v550) · [v5.4.0](#v540) · [v5.3.0](#v530) · [v5.2.0](#v520) · [v5.0.0](#v500) · [v3 → v4.0.0](#v3--v400): [Pin v3.4.0 first](#pin-v340-first) · [Node 24](#node-24) · [FLEX no longer builds anything](#flex-no-longer-builds-anything) · [Reference child build](#reference-child-build) · [Build contract](#build-contract) · [Enqueue changes](#enqueue-changes) · [Customizer colors are printed at runtime](#customizer-colors-are-printed-at-runtime) · [jQuery, lodash and editor globals](#jquery-lodash-and-editor-globals) · [Removed packages and IE polyfills](#removed-packages-and-ie-polyfills) · [Sass](#sass) · [Font Awesome 6.7.2](#font-awesome-672) · [Removed and deprecated files](#removed-and-deprecated-files) · [Lint presets](#lint-presets) · [Git housekeeping](#git-housekeeping) · [Known issues](#known-issues)
+Contents: [v5.7.0](#v570) · [v5.6.0](#v560) · [v5.5.0](#v550) · [v5.4.0](#v540) · [v5.3.0](#v530) · [v5.2.0](#v520) · [v5.0.0](#v500) · [v3 → v4.0.0](#v3--v400): [Pin v3.4.0 first](#pin-v340-first) · [Node 24](#node-24) · [FLEX no longer builds anything](#flex-no-longer-builds-anything) · [Reference child build](#reference-child-build) · [Build contract](#build-contract) · [Enqueue changes](#enqueue-changes) · [Customizer colors are printed at runtime](#customizer-colors-are-printed-at-runtime) · [jQuery, lodash and editor globals](#jquery-lodash-and-editor-globals) · [Removed packages and IE polyfills](#removed-packages-and-ie-polyfills) · [Sass](#sass) · [Font Awesome 6.7.2](#font-awesome-672) · [Removed and deprecated files](#removed-and-deprecated-files) · [Lint presets](#lint-presets) · [Git housekeeping](#git-housekeeping) · [Known issues](#known-issues)
+
+## v5.7.0
+
+FLEX v5.7.0 migrates the container blocks `row`, `column` and `popup` to register from a per-block `block.json` at apiVersion 3. Block names, stored attributes, `save` output and PHP include paths are unchanged, existing content stays valid, and the front-end output is identical.
+
+**Check this if your child theme styles the block editor.** The editor DOM of these three blocks changed:
+
+- The row's block element is now the `<section class="wp-block-flexlayout-row …">` itself, and its inner blocks sit directly in `div.flex-grid`. Core still wraps an aligned row in `div.wp-block[data-align]`.
+- `column` and `popup` are a wrapper `div` (the block element, carrying the component classes) around an inner `div.component-<name>` that holds the background and the inner blocks.
+- The old `.block-editor-inner-blocks` / `.block-editor-block-list__layout` wrappers inside these blocks are gone. Editor selectors that relied on them, or on `.wp-block[data-align] > .wp-block-flexlayout-row`, need updating. attck2026 needed no change: its one such rule (inner-blocks padding) is now inert because FLEX provides the equivalent.
+
+**Optional — only if you override `block_row`, `block_column` or `block_popup`'s PHP in your child theme:** ship your own `block.json` in the overriding folder, because registration reads `__DIR__ . '/block.json'`. None is overridden in attck2026.
+
+**Editor iframe:** WordPress iframes the editor canvas only when every block on the page is apiVersion 3 or higher. ACF blocks (apiVersion 2) and any v1 plugin blocks keep the editor un-iframed, so this release does not switch attck2026 to the iframed editor.
 
 ## v5.6.0
 

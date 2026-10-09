@@ -58,6 +58,90 @@ body {
 		Ubuntu, Cantarell, "Helvetica Neue", sans-serif; //overrides theme fonts within admin
 }
 
+// Editor tint on block wrappers. Since apiVersion 3 the row's <section> is its own block
+// wrapper, so it is excluded from the !important tint: its background (inline colour,
+// background classes) must show, as it did when the tint sat on a separate v1 wrapper.
+// (Columns and popups keep a wrapper + inner div, so their tint stays behind the inner
+// div's background exactly as before.)
+.block-editor-block-list__block:not(.wp-block-flexlayout-row) {
+	background-color: hsla(108, 55%, 51%, 0.1) !important;
+
+	&.is-hovered {
+		background: hsla(219, 79%, 66%, 0.2) !important;
+	}
+}
+
+// apiVersion 3: an aligned row's outermost element is core's alignment wrapper
+// (div.wp-block[data-align]). Paint it like the v1 block wrapper so each row keeps its
+// framed, spaced-out look in the editor.
+// (Specificity 0,5,0 outranks core's root-container full-alignment rule, so full-width
+// rows stay inside the frame as they did in v1, where data-align sat on an inner div.)
+.block-editor-block-list__layout > .wp-block.wp-block[data-align]:has(> .wp-block-flexlayout-row) {
+	background-color: hsla(108, 55%, 51%, 0.1);
+	border: 1px solid hsla(125, 100%, 40%, 0.2);
+	margin: 10px 0 1px;
+	max-width: none;
+	width: 100%;
+
+	// v1 spaced the row with 28px margins on an inner .wp-block div, which collapsed with
+	// the <section>'s own margin classes (max(28px, class), not the sum). Zero-height
+	// pseudo-elements with 28px margins collapse with the section's margins the same way.
+	&::before,
+	&::after {
+		content: "";
+		display: block;
+		height: 0;
+	}
+
+	&::before {
+		margin-bottom: 28px;
+	}
+
+	&::after {
+		margin-top: 28px;
+	}
+
+	&:has(> .is-hovered) {
+		background-color: hsla(219, 79%, 66%, 0.2);
+		border-color: hsla(219, 79%, 66%, 0.3);
+	}
+
+	&:has(> .is-selected) {
+		border: 1px dotted hsla(219, 79%, 60%, 0.5);
+	}
+
+	// A row nested inside another row's column: v1 gave nested block wrappers a dotted
+	// top/bottom border and no side borders (see .wp-block-flexlayout-row below).
+	.wp-block-flexlayout-row & {
+		border: 1px dotted hsla(219, 79%, 66%, 0.2);
+		border-left: 0;
+		border-right: 0;
+	}
+
+	// The frame carries the border the v1 block wrapper had.
+	> .wp-block-flexlayout-row.block-editor-block-list__block {
+		border-width: 0 !important;
+	}
+}
+
+// ...and its spacing: drop the generic block margins (.block-editor-block-list__block,
+// 0,1,0) from the row <section> while letting its own margin classes (.margin-*-Nx, doubled
+// to 0,2,0) still apply, as they did on the v1 inner <section>.
+section.wp-block-flexlayout-row {
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+// v1 rendered row/column/popup children inside a .block-editor-inner-blocks wrapper padded
+// 4px top and bottom (attck admin.scss); useInnerBlocksProps drops that wrapper, so the
+// element holding the inner blocks takes the padding instead.
+.wp-block-flexlayout-row > .block-editor-block-list__layout,
+.wp-block-flexlayout-column > .block-editor-block-list__layout,
+.wp-block-flexlayout-popup > .block-editor-block-list__layout {
+	padding-bottom: 4px;
+	padding-top: 4px;
+}
+
 .acf-media-modal.-edit .media-sidebar .attachment-details .setting {
 	clear: both;
 }
@@ -68,7 +152,6 @@ body {
 	// border: 1px solid hsla(0, 0%, 75%, 0.2) !important;
 
 	// Green theme
-	background-color: hsla(108, 55%, 51%, 0.1) !important;
 	border: 1px solid hsla(125, 100%, 40%, 0.2) !important;
 
 	margin-bottom: 1px;
@@ -86,7 +169,6 @@ body {
 	width: 100%;
 
 	&.is-hovered {
-		background: hsla(219, 79%, 66%, 0.2) !important;
 		border: 1px solid hsla(219, 79%, 66%, 0.3) !important;
 	}
 

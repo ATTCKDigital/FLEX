@@ -1,103 +1,70 @@
 // Block dependencies
 import classnames from 'classnames';
 import icons from '../../../js/icons.js';
+import metadata from './block.json';
 
 // Internal block libraries
 const { __ } = wp.i18n;
 
 const { registerBlockType } = wp.blocks;
 
-const { AlignmentToolbar, BlockControls, InspectorControls, InnerBlocks } =
-	wp.blockEditor;
+const {
+	AlignmentToolbar,
+	BlockControls,
+	InspectorControls,
+	InnerBlocks,
+	useBlockProps,
+	useInnerBlocksProps,
+} = wp.blockEditor;
 
 const { Button, ButtonGroup, Toolbar, Tooltip } = wp.components;
 
 const { createHigherOrderComponent } = wp.compose;
 
 // Internal dependencies
-import AnchorOptions, {
-	AnchorOptionsAttributes,
-} from '../../components/gb-component_anchor';
+import AnchorOptions from '../../components/gb-component_anchor';
 import BackgroundOptions, {
-	BackgroundOptionsAttributes,
 	BackgroundOptionsClasses,
 	BackgroundOptionsInlineStyles,
 	BackgroundOptionsVideoOutput,
 } from '../../components/gb-component_background-options';
 import BorderOptions, {
-	BorderOptionsAttributes,
 	BorderOptionsClasses,
 } from '../../components/gb-component_border';
-import DataComponentNameOptions, {
-	DataComponentNameAttributes,
-} from '../../components/gb-component_data-component-name';
+import DataComponentNameOptions from '../../components/gb-component_data-component-name';
 import MarginOptions, {
-	MarginOptionsAttributes,
 	MarginOptionsClasses,
 } from '../../components/gb-component_margin';
 import PaddingOptions, {
-	PaddingOptionsAttributes,
 	PaddingOptionsClasses,
 } from '../../components/gb-component_padding';
 import ColumnOptions, {
-	ColumnOptionsAttributes,
 	ColumnOptionsClasses,
 } from '../../components/gb-component_columns';
 
-// Register block
-export default registerBlockType( 'flexlayout/column', {
-	title: __( 'Column' ),
-	description: __(
-		'Creates a column wrapper to support inner blocks.',
-		'flexlayout'
-	),
-	category: 'layout',
-	// icon: 'columns',
-	icon: icons.columns,
-	// parent: ['flexlayout/row'],
-	keywords: [
-		__( 'Flex', 'flexlayout' ),
-		__( 'Layout', 'flexlayout' ),
-		__( 'Column', 'flexlayout' ),
-	],
-	attributes: {
-		align: {
-			type: 'string',
-			default: '',
-		},
-		verticalAlignment: {
-			type: 'string',
-			default: 'top',
-		},
-		...AnchorOptionsAttributes,
-		...BackgroundOptionsAttributes,
-		...BorderOptionsAttributes,
-		...DataComponentNameAttributes,
-		...MarginOptionsAttributes,
-		...PaddingOptionsAttributes,
-		...ColumnOptionsAttributes,
-	},
+// Editor component (named so the react-hooks lint rule recognises the hooks).
+const Edit = ( props ) => {
+	const {
+		attributes: { align, dataComponentName, dataComponentOptions },
+		setAttributes,
+	} = props;
 
-	// Forced to roll our own anchor support
-	// Due to Gutenberg core issue
-	// BUG: https://github.com/WordPress/gutenberg/issues/15240
-	// TODO: reenable this when bug is fixed
-	// supports: {
-	// 	anchor: true,
-	// },
-	edit: ( props ) => {
-		const {
-			attributes: {
-				align,
-				anchor,
-				dataComponentName,
-				dataComponentOptions,
-			},
-			setAttributes,
-		} = props;
+	// The block wrapper takes the column classes (editor.BlockListBlock filter below); the
+	// inner div holds the background and the inner blocks, as the v1 edit markup did, so the
+	// column alignment rules (which centre the wrapper's single child) keep working.
+	const blockProps = useBlockProps();
+	const { children, ...innerBlocksProps } = useInnerBlocksProps( {
+		className: `component-${ dataComponentName }`,
+		style: {
+			...BackgroundOptionsInlineStyles( props ),
+		},
+		'data-component-name': dataComponentName,
+		'data-component-options': dataComponentOptions,
+	} );
 
-		return [
-			<InspectorControls key="inspector">
+	return (
+		<>
+			<InspectorControls>
 				<BackgroundOptions { ...props } />
 				<ColumnOptions { ...props } />
 				<BorderOptions { ...props } />
@@ -105,8 +72,8 @@ export default registerBlockType( 'flexlayout/column', {
 				<PaddingOptions { ...props } />
 				<AnchorOptions { ...props } />
 				<DataComponentNameOptions { ...props } />
-			</InspectorControls>,
-			<BlockControls key="controls">
+			</InspectorControls>
+			<BlockControls>
 				<AlignmentToolbar
 					value={ align }
 					onChange={ ( nextAlign ) => {
@@ -192,22 +159,21 @@ export default registerBlockType( 'flexlayout/column', {
 						</Tooltip>
 					</ButtonGroup>
 				</Toolbar>
-			</BlockControls>,
-			<div
-				key="block"
-				id={ anchor }
-				className={ `component-${ dataComponentName }` }
-				style={ {
-					...BackgroundOptionsInlineStyles( props ),
-				} }
-				data-component-name={ dataComponentName }
-				data-component-options={ dataComponentOptions }
-			>
-				{ BackgroundOptionsVideoOutput( props ) }
-				<InnerBlocks />
-			</div>,
-		];
-	},
+			</BlockControls>
+			<div { ...blockProps }>
+				<div { ...innerBlocksProps }>
+					{ BackgroundOptionsVideoOutput( props ) }
+					{ children }
+				</div>
+			</div>
+		</>
+	);
+};
+
+// Register block
+export default registerBlockType( metadata, {
+	icon: icons.columns,
+	edit: Edit,
 
 	save() {
 		return <InnerBlocks.Content />;
@@ -222,7 +188,7 @@ const customClassName = createHigherOrderComponent( ( BlockListBlock ) => {
 					{ ...props }
 					className={ classnames(
 						'component-column',
-						`column-align-${ props.attributes.align }`,
+						`column-align-${ props.attributes.align ?? '' }`,
 						`component-column-verticalAlignment-${ props.attributes.verticalAlignment }`,
 						...BackgroundOptionsClasses( props ),
 						...BorderOptionsClasses( props ),

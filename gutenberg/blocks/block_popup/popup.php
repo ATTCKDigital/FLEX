@@ -5,23 +5,18 @@
 
 namespace FLEX_LAYOUT_SYSTEM\Blocks\Popup;
 
-use const FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\BACKGROUND_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_classes;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_inline_styles;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_mobile_styles;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_desktop_styles;
 use function FLEX_LAYOUT_SYSTEM\Components\BackgroundOptions\background_options_video_output;
 
-use const FLEX_LAYOUT_SYSTEM\Components\Border\BORDER_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Border\border_options_classes;
 
-use const FLEX_LAYOUT_SYSTEM\Components\Margin\MARGIN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Margin\margin_options_classes;
 
-use const FLEX_LAYOUT_SYSTEM\Components\Padding\PADDING_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Padding\padding_options_classes;
 
-use const FLEX_LAYOUT_SYSTEM\Components\Columns\COLUMN_OPTIONS_ATTRIBUTES;
 use function FLEX_LAYOUT_SYSTEM\Components\Columns\column_options_classes;
 
 
@@ -40,35 +35,8 @@ function register_popup_block() {
 		return;
 	}
 
-	// Hook server side rendering into render callback
-	register_block_type( 'flexlayout/popup', [
-		'attributes' => array_merge(
-			[
-				'className' => [
-					'type' => 'string',
-					'default' => '',
-				],
-				'popupName' => [
-					'type' => 'string',
-					'default' => '',
-				],
-				'backgroundOpacity' => [
-					'type' => 'Number',
-					'default' => 100,
-				],
-				'dataComponentName' => [
-					'type' => 'string',
-				],
-				'dataComponentOptions' => [
-					'type' => 'string',
-				],
-			],
-			BACKGROUND_OPTIONS_ATTRIBUTES,
-			PADDING_OPTIONS_ATTRIBUTES,
-			MARGIN_OPTIONS_ATTRIBUTES,
-			BORDER_OPTIONS_ATTRIBUTES,
-			COLUMN_OPTIONS_ATTRIBUTES
-		),
+	// Register from block.json (name + attributes); keep the server render callback.
+	register_block_type( __DIR__ . '/block.json', [
 		'render_callback' => __NAMESPACE__ . '\render_popup_block',
 	] );
 }

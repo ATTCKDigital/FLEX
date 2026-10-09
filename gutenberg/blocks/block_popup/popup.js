@@ -1,12 +1,14 @@
 // Block dependencies
 import classnames from 'classnames';
+import metadata from './block.json';
 
 // Internal block libraries
 const { __ } = wp.i18n;
 
 const { registerBlockType } = wp.blocks;
 
-const { InspectorControls, InnerBlocks } = wp.blockEditor;
+const { InspectorControls, InnerBlocks, useBlockProps, useInnerBlocksProps } =
+	wp.blockEditor;
 
 const { PanelBody, PanelRow, RangeControl, TextControl } = wp.components;
 
@@ -14,73 +16,48 @@ const { createHigherOrderComponent } = wp.compose;
 
 // Internal dependencies
 import BackgroundOptions, {
-	BackgroundOptionsAttributes,
 	BackgroundOptionsClasses,
 	BackgroundOptionsInlineStyles,
 	BackgroundOptionsVideoOutput,
 } from '../../components/gb-component_background-options';
 import BorderOptions, {
-	BorderOptionsAttributes,
 	BorderOptionsClasses,
 } from '../../components/gb-component_border';
-import DataComponentNameOptions, {
-	DataComponentNameAttributes,
-} from '../../components/gb-component_data-component-name';
+import DataComponentNameOptions from '../../components/gb-component_data-component-name';
 import MarginOptions, {
-	MarginOptionsAttributes,
 	MarginOptionsClasses,
 } from '../../components/gb-component_margin';
 import PaddingOptions, {
-	PaddingOptionsAttributes,
 	PaddingOptionsClasses,
 } from '../../components/gb-component_padding';
 import ColumnOptions, {
-	ColumnOptionsAttributes,
 	ColumnOptionsClasses,
 } from '../../components/gb-component_columns';
 
-// Register block
-export default registerBlockType( 'flexlayout/popup', {
-	title: __( 'Popup' ),
-	description: __(
-		'Works with "PopupController" FLEX component. Options format: {"popupName":"Popup Name"}.',
-		'flexlayout'
-	),
-	category: 'layout',
-	// icon: 'columns',
-	// icon: icons.columns,
-	icon: 'format-status',
-	example: {},
-	keywords: [ __( 'Popup', 'flexlayout' ) ],
-	attributes: {
-		popupName: {
-			type: 'string',
-			default: '',
+// Editor component (named so the react-hooks lint rule recognises the hooks).
+const Edit = ( props ) => {
+	const {
+		attributes: {
+			backgroundOpacity,
+			dataComponentName,
+			dataComponentOptions,
+			popupName,
 		},
-		backgroundOpacity: {
-			type: Number,
-			default: 1,
-		},
-		...BackgroundOptionsAttributes,
-		...BorderOptionsAttributes,
-		...DataComponentNameAttributes,
-		...MarginOptionsAttributes,
-		...PaddingOptionsAttributes,
-		...ColumnOptionsAttributes,
-	},
-	edit: ( props ) => {
-		const {
-			attributes: {
-				backgroundOpacity,
-				dataComponentName,
-				dataComponentOptions,
-				popupName,
-			},
-			setAttributes,
-		} = props;
+		setAttributes,
+	} = props;
 
-		return [
-			<InspectorControls key="inspector">
+	// As in v1: the block wrapper takes the popup classes (editor.BlockListBlock filter below)
+	// and an inner div holds the background video, overlay and inner blocks.
+	const blockProps = useBlockProps();
+	const { children, ...innerBlocksProps } = useInnerBlocksProps( {
+		className: `component-${ dataComponentName }`,
+		'data-component-name': dataComponentName,
+		'data-component-options': dataComponentOptions,
+	} );
+
+	return (
+		<>
+			<InspectorControls>
 				<PanelRow>
 					<TextControl
 						label="Popup Name"
@@ -111,25 +88,29 @@ export default registerBlockType( 'flexlayout/popup', {
 				<MarginOptions { ...props } />
 				<PaddingOptions { ...props } />
 				<DataComponentNameOptions { ...props } />
-			</InspectorControls>,
-			<div
-				key="block"
-				className={ `component-${ dataComponentName }` }
-				data-component-name={ dataComponentName }
-				data-component-options={ dataComponentOptions }
-			>
-				{ BackgroundOptionsVideoOutput( props ) }
-				<div
-					className="popup-background-overlay"
-					style={ {
-						opacity: backgroundOpacity ?? 1,
-						...BackgroundOptionsInlineStyles( props ),
-					} }
-				/>
-				<InnerBlocks />
-			</div>,
-		];
-	},
+			</InspectorControls>
+			<div { ...blockProps }>
+				<div { ...innerBlocksProps }>
+					{ BackgroundOptionsVideoOutput( props ) }
+					<div
+						className="popup-background-overlay"
+						style={ {
+							opacity: backgroundOpacity ?? 1,
+							...BackgroundOptionsInlineStyles( props ),
+						} }
+					/>
+					{ children }
+				</div>
+			</div>
+		</>
+	);
+};
+
+// Register block
+export default registerBlockType( metadata, {
+	icon: 'format-status',
+	example: {},
+	edit: Edit,
 
 	save() {
 		return <InnerBlocks.Content />;

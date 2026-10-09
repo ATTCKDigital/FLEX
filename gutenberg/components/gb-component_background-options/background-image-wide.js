@@ -1,9 +1,14 @@
 /**
  * Embedded style tags
- * @param {Object} props - The block object.
+ * @param {Object}        props     - The block object.
+ * @param {number|string} sectionId - The element's data-section-id to scope the styles to.
+ *                                  Defaults to the dataSectionId attribute.
  * @return {string} The style output container.
  */
-function BackgroundOptionsImageWide( props ) {
+function BackgroundOptionsImageWide(
+	props,
+	sectionId = props.attributes.dataSectionId
+) {
 	if (
 		'image' === props.attributes.backgroundType &&
 		props.attributes.backgroundImageWide &&
@@ -45,7 +50,7 @@ function BackgroundOptionsImageWide( props ) {
 
 		let styles = '';
 
-		styles += `.component-image-background.component-image-background-wide[data-section-id='${ props.attributes.dataSectionId }']:before {`;
+		styles += `.component-image-background.component-image-background-wide[data-section-id='${ sectionId }']:before {`;
 		styles += `		background-image: ${ backgroundImageMobile };`;
 		styles += `		background-size: ${ backgroundSizeMobile };`;
 		styles += `		background-repeat: ${ backgroundRepeatMobile };`;
@@ -54,7 +59,7 @@ function BackgroundOptionsImageWide( props ) {
 		styles += `}`;
 
 		styles += `@media only screen and (min-width: 768px) {`;
-		styles += `	.component-image-background.component-image-background-wide[data-section-id='${ props.attributes.dataSectionId }']:before {`;
+		styles += `	.component-image-background.component-image-background-wide[data-section-id='${ sectionId }']:before {`;
 		styles += `		background-image: url(${ backgroundImage });`;
 		styles += `		background-size: ${ backgroundSize };`;
 		styles += `		background-repeat: ${ backgroundRepeat };`;
