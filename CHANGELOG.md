@@ -2,6 +2,23 @@
 
 All notable changes to FLEX. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and FLEX uses [Semantic Versioning](https://semver.org/). Upgrade steps for every breaking change: [UPGRADING.md](UPGRADING.md).
 
+## [5.7.0] - 2026-10-08
+
+The date is the release date; the `v5.7.0` tag is applied to the merge commit on `develop`. This is a minor release. Block names, stored attributes, `save` output and PHP include paths are preserved, existing content stays valid, and the front-end output is unchanged. The editor markup of the three container blocks changes, so read [UPGRADING.md § v5.7.0](UPGRADING.md#v570) if your child theme styles the editor.
+
+### Changed
+
+- **`row`, `column` and `popup` now register from a per-block `block.json` at `apiVersion` 3.** This is batch 3b, the last of the FLEX `block.json` migration, and uses the same pattern as v5.3.0–v5.6.0. All 17 FLEX blocks are now at apiVersion 3.
+  - Attributes are the flattened JS ∪ PHP union, including the shared component sets: `row` 97, `column` 107, `popup` 105.
+  - `save` stays a bare `<InnerBlocks.Content />`, so stored content validates exactly as before. Render callbacks are untouched.
+  - The editors are named `Edit` components using `useBlockProps()` and `useInnerBlocksProps()`. The row's block root is now its `<section>`, with the inner blocks on `div.flex-grid`. `column` and `popup` keep a wrapper `div` (block props) around an inner `div` that holds the background and the inner blocks.
+  - `column.align` is declared as a string with no default; the editor class is `column-align-${align ?? ''}`, as before.
+  - `scss/_admin-styles.scss`: the editor grid CSS is rewritten for the new DOM so the editor looks the same as before (frame on core's alignment wrapper, v1 margin collapse reproduced, margin classes kept, nested-row borders).
+
+### Fixed
+
+- **`row`: opening a post no longer writes a random `dataSectionId`.** The editor set `props.attributes.dataSectionId = mtRand(10, 1000)` during every render, which changed attributes on open and gave the wide-image `<style>` a new id each time. The id now comes from `useInstanceId()` and is passed to `BackgroundOptionsImageWide()`, which takes it as an optional second argument (other callers are unchanged). `dataSectionId` is declared as a string with the default `"undefined"`, which is what it has always evaluated to; nothing on the front end reads it.
+
 ## [5.6.1] - 2026-10-08
 
 The date is the release date; the `v5.6.1` tag is applied to the merge commit on `develop`. This is a patch release for the `row` block's markup only. Nothing changes on screen, and there are no [UPGRADING.md](UPGRADING.md) steps.
