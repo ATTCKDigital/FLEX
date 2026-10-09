@@ -37,8 +37,8 @@ import PaddingOptions, {
 	PaddingOptionsClasses,
 } from '../../components/gb-component_padding';
 
-// Register image block
-export default registerBlockType( 'flexlayout/image', {
+// Register map block
+export default registerBlockType( 'flexlayout/map', {
 	title: __( 'Map', 'flexlayout' ),
 	description: __( 'Upload an image.', 'flexlayout' ),
 	category: 'common',

@@ -5,7 +5,6 @@ import 'FLEX/js/client-namespace';
  */
 import './block_animated-gif/animated-gif';
 import './block_button/button';
-// import "./block_carousel/carousel";
 import './block_column/column';
 import './block_feed/feed';
 import './block_heading/heading';
@@ -22,9 +21,6 @@ import './block_shortcode/shortcode';
 import './block_source/source';
 import './block_testimonial/testimonial';
 import './block_testimonialcarousel/testimonialcarousel';
-
-// Text block is throwing errors. Disable for now. -DP
-// import "./block_text/text";
 
 // import "./block_users/users";
 import './block_video/video';
