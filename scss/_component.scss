@@ -44,6 +44,26 @@
 	align-content: flex-start;
 }
 
+// A vertically-aligned ROW must align the CONTENT of every column it holds,
+// not only columns that opt in at the column level. Columns stretch to the
+// full row height (min-height: 100% via their background classes) and are
+// display: block, so the row's `align-items` has nothing to push and the
+// content sits at the top. Make each direct-child column a flex column and
+// justify its content to the row's alignment. Column-level verticalAlignment
+// still wins on specificity; `>` keeps nested rows unaffected. Restores the
+// pre-v5 (production) behaviour.
+.component-row-verticalAlignment-bottom > .component-column {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+.component-row-verticalAlignment-center > .component-column {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
 .component-column {
 	// Fixes 50/50% column spacing error
 	body:not(.wp-admin) & {
