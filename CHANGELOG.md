@@ -2,6 +2,14 @@
 
 All notable changes to FLEX. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and FLEX uses [Semantic Versioning](https://semver.org/). Upgrade steps for every breaking change: [UPGRADING.md](UPGRADING.md).
 
+## [5.8.1] - 2026-10-15
+
+The date is the release date; the `v5.8.1` tag is applied to the merge commit on `develop`. This is a patch release. CSS only — no block, attribute, stored markup, PHP or JS change (the child build's `main.js`/`admin.js` are byte-identical) — so existing content stays valid and there are no upgrade steps.
+
+### Fixed
+
+- **A bottom- or centre-aligned row now aligns the content of every column, not only the columns that opt in at the column level.** A column with the default (`top`) vertical alignment stretches to the full row height (`min-height: 100%` from its `component-*-background` class) and is `display: block`, so the row's `align-items` had nothing to push and the content sat at the top of the row — service-area hero headers (heading + "Start Your Project" button) sat at the top instead of the bottom. Each direct-child column of a `component-row-verticalAlignment-bottom` / `-center` row is now a flex column justified to the row's alignment. The selector doubles `.component-column` so it beats the grid's `.flex-grid.flex-grid .flex-*` `display: inline-block`, a `:not()` leaves a column that opts into a different alignment to its own rule, and the child combinator keeps nested rows unaffected. Restores the pre-v5 (production) hero layout. `scss/_component.scss`.
+
 ## [5.8.0] - 2026-10-09
 
 The date is the release date; the `v5.8.0` tag is applied to the merge commit on `develop`. This is a minor release. The two removed blocks were never loaded on any FLEX site, so nothing that currently works is removed. See [UPGRADING.md § v5.8.0](UPGRADING.md#v580).
