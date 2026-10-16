@@ -2,6 +2,14 @@
 
 All notable changes to FLEX. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and FLEX uses [Semantic Versioning](https://semver.org/). Upgrade steps for every breaking change: [UPGRADING.md](UPGRADING.md).
 
+## [5.8.2] - 2026-10-16
+
+The date is the release date; the `v5.8.2` tag is applied to the merge commit on `develop`. This is a patch release. JS only (the constellation line shader) — no block, attribute, stored markup, PHP or CSS change (the child build's `main.js`/`admin.js`/`style.css`/`admin.css` are byte-identical; only `constellation.js` changes) — so existing content stays valid and there are no upgrade steps.
+
+### Changed
+
+- **Constellation hero: the hover pulse is slower and gentler.** Hovering a dot sent a bright band racing outwards along the links and flaring the lines to full white. The ripple now travels ~4× slower (`RIPPLE_SPEED` 200 → 50) and at about half the intensity (`RIPPLE_GAIN` 12 → 6), and line brightness is clamped to 75% (`min( finalAlpha, 0.75 )`), so the pulse reads as a soft glow rather than a hard flash. `js/constellation/line-material.js` — the line fragment shader only; the resting breathing glow, the dots and the camera are unchanged.
+
 ## [5.8.1] - 2026-10-15
 
 The date is the release date; the `v5.8.1` tag is applied to the merge commit on `develop`. This is a patch release. CSS only — no block, attribute, stored markup, PHP or JS change (the child build's `main.js`/`admin.js` are byte-identical) — so existing content stays valid and there are no upgrade steps.
