@@ -3,7 +3,7 @@
  * one bright band outwards along the links. It writes gl_FragColor directly
  * (no colorspace chunk), so three.js applies no color conversion.
  */
-import { AdditiveBlending, ShaderMaterial, Vector3 } from 'three';
+import { AdditiveBlending, ShaderMaterial, Vector3 } from "three";
 
 const LINE_VERTEX_SHADER = `
 	varying float vDistance;
@@ -39,12 +39,12 @@ const LINE_FRAGMENT_SHADER = `
 	const float BREATH_DEPTH = 0.05;
 	const float REST_GLOW = 0.05;
 
-	// One-shot ripple: a bright band that travels outwards from the hovered
-	// dot once per hover, fading with distance.
-	const float RIPPLE_SPEED = 200.0;
+	// One-shot ripple: a soft band that drifts outwards from the hovered dot
+	// once per hover, fading with distance. Kept slow and gentle.
+	const float RIPPLE_SPEED = 50.0;
 	const float RIPPLE_WIDTH = 6.0;
 	const float RIPPLE_DECAY = 0.08;
-	const float RIPPLE_GAIN = 12.0;
+	const float RIPPLE_GAIN = 6.0;
 
 	float rippleGlow( float distanceToOrigin ) {
 		if ( activeParticleIndex < 0.0 ) {
@@ -61,6 +61,11 @@ const LINE_FRAGMENT_SHADER = `
 		float restAlpha = 0.05 * ( 1.0 - smoothstep( 40.0, 200.0, vDistance ) ) + REST_GLOW * breathing;
 
 		float finalAlpha = restAlpha * ( 1.0 + rippleGlow( distanceToOrigin ) * RIPPLE_GAIN );
+
+		// Cap line brightness at 75%: the additive white line's brightness
+		// tracks its alpha, so clamping alpha keeps the pulse from blowing out.
+		finalAlpha = min( finalAlpha, 0.75 );
+
 		gl_FragColor = vec4( 1.0, 1.0, 1.0, finalAlpha );
 	}
 `;
@@ -71,16 +76,16 @@ const LINE_FRAGMENT_SHADER = `
  * @return {ShaderMaterial} Material for the link LineSegments.
  */
 export function createLineMaterial() {
-	return new ShaderMaterial( {
-		uniforms: {
-			time: { value: 0 },
-			activeParticleOrigin: { value: new Vector3( 0, 0, 0 ) },
-			activeParticleIndex: { value: -1 },
-			transitionTime: { value: 0 },
-		},
-		vertexShader: LINE_VERTEX_SHADER,
-		fragmentShader: LINE_FRAGMENT_SHADER,
-		transparent: true,
-		blending: AdditiveBlending,
-	} );
+  return new ShaderMaterial({
+    uniforms: {
+      time: { value: 0 },
+      activeParticleOrigin: { value: new Vector3(0, 0, 0) },
+      activeParticleIndex: { value: -1 },
+      transitionTime: { value: 0 },
+    },
+    vertexShader: LINE_VERTEX_SHADER,
+    fragmentShader: LINE_FRAGMENT_SHADER,
+    transparent: true,
+    blending: AdditiveBlending,
+  });
 }
