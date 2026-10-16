@@ -171,24 +171,6 @@
 	width: 24px;
 	z-index: 100;
 
-	.backgroundNav & {
-		border-color: color("secondary", "white");
-
-		&::after,
-		&::before {
-			background-color: color("secondary", "white");
-		}
-	}
-
-	.backgroundNav.logoDark & {
-		border-color: color("brand", "primary");
-
-		&::after,
-		&::before {
-			background-color: color("brand", "primary");
-		}
-	}
-
 	&::after,
 	&::before {
 		background-color: color("secondary", "white");

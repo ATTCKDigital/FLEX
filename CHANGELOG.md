@@ -2,6 +2,14 @@
 
 All notable changes to FLEX. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and FLEX uses [Semantic Versioning](https://semver.org/). Upgrade steps for every breaking change: [UPGRADING.md](UPGRADING.md).
 
+## [5.8.3] - 2026-10-16
+
+The date is the release date; the `v5.8.3` tag is applied to the merge commit on `develop`. This is a patch release. CSS only (the mobile nav hamburger) — no block, attribute, stored markup, PHP or JS change (the child build's `main.js`/`admin.js` are byte-identical) — so existing content stays valid and there are no upgrade steps.
+
+### Fixed
+
+- **Mobile nav: the hamburger no longer overlaps the say-hello (chat) icon, and its bars stay white when the nav is scrolled.** `.component-header .hamburger-wrapper` had been given `right: 0` / `width` / `height`, overriding a child theme's `right: 40px` / `width: 50px` and pushing the hamburger on top of the chat icon — those three declarations are removed so the wrapper sits to the left of the icon again. `.backgroundNav.logoDark .hamburger` coloured the bars `brand-primary` when scrolled, turning them near-invisible on the dark scrolled nav — both `.backgroundNav` colour blocks are removed, so the bars fall back to white (and the `.blog` / `.black-nav` dark contexts still apply). `components/component_nav/_nav.scss`, `scss/_iconography.scss`.
+
 ## [5.8.2] - 2026-10-16
 
 The date is the release date; the `v5.8.2` tag is applied to the merge commit on `develop`. This is a patch release. JS only (the constellation line shader) — no block, attribute, stored markup, PHP or CSS change (the child build's `main.js`/`admin.js`/`style.css`/`admin.css` are byte-identical; only `constellation.js` changes) — so existing content stays valid and there are no upgrade steps.
