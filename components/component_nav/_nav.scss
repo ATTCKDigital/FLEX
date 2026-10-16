@@ -16,10 +16,6 @@
 	}
 
 	.hamburger-wrapper {
-		height: $navMobileHeight;
-		right: 0;
-		width: $navMobileHeight;
-
 		@include mediaquery(tablet-landscape) {
 			display: none;
 		}
