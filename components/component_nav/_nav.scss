@@ -179,12 +179,14 @@
 				right: 50%;
 			}
 
-			&:hover {
-				&::after {
-					background-color: color("secondary", "white");
-					left: 0%;
-					opacity: 1;
-					right: 0%;
+			@include mediaquery(tablet-landscape) {
+				&:hover {
+					&::after {
+						background-color: color("secondary", "white");
+						left: 0%;
+						opacity: 1;
+						right: 0%;
+					}
 				}
 			}
 
