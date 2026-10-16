@@ -2,6 +2,14 @@
 
 All notable changes to FLEX. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and FLEX uses [Semantic Versioning](https://semver.org/). Upgrade steps for every breaking change: [UPGRADING.md](UPGRADING.md).
 
+## [5.8.4] - 2026-10-16
+
+The date is the release date; the `v5.8.4` tag is applied to the merge commit on `develop`. This is a patch release. CSS only (the mobile nav) — no block, attribute, stored markup, PHP or JS change (the child build's `main.js`/`admin.js` are byte-identical) — so existing content stays valid and there are no upgrade steps.
+
+### Fixed
+
+- **Mobile flyout nav: tapping/hovering a menu link no longer draws an underline.** The `.menu-item a:hover` underline (the animated `::after` bar) was not behind a breakpoint, so it fired inside the mobile flyout (≤ tablet-landscape). It is now wrapped in the `tablet-landscape` (horizontal-nav) media query, so only the desktop nav shows the hover underline, matching production. `components/component_nav/_nav.scss`.
+
 ## [5.8.3] - 2026-10-16
 
 The date is the release date; the `v5.8.3` tag is applied to the merge commit on `develop`. This is a patch release. CSS only (the mobile nav hamburger) — no block, attribute, stored markup, PHP or JS change (the child build's `main.js`/`admin.js` are byte-identical) — so existing content stays valid and there are no upgrade steps.
