@@ -44,6 +44,27 @@
 	align-content: flex-start;
 }
 
+// A vertically-aligned ROW must align the CONTENT of every column it holds,
+// not only the columns that opt in at the column level. Columns are full row
+// height (min-height: 100% via their background classes) and the grid lays
+// them out as inline-block, so the row's `align-items` has nothing to push and
+// the content sits at the top. Make each direct-child column a flex column and
+// justify its content to the row's alignment. The doubled `.component-column`
+// lifts the rule above the grid's `.flex-grid.flex-grid .flex-*` display; the
+// `:not()` leaves columns that opt into a different alignment alone, and `>`
+// keeps nested rows unaffected. Restores the pre-v5 (production) hero layout.
+.component-row-verticalAlignment-bottom > .component-column.component-column:not(.component-column-verticalAlignment-center) {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+.component-row-verticalAlignment-center > .component-column.component-column:not(.component-column-verticalAlignment-bottom) {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
 .component-column {
 	// Fixes 50/50% column spacing error
 	body:not(.wp-admin) & {
