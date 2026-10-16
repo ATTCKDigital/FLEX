@@ -23,8 +23,8 @@
 					left: 0;
 					top: 50%;
 					transform: translateY(-50%);
-					width: 38px;
-					height: 38px;
+					width: 37px;
+					height: 37px;
 					border: 1px solid #000;
 					border-radius: 50%;
 					background: transparent;
@@ -34,7 +34,7 @@
 				&::after {
 					content: "";
 					position: absolute;
-					left: 12px;
+					left: 11px;
 					top: 50%;
 					width: 17px;
 					height: 1px;
@@ -49,7 +49,7 @@
 					&::before {
 						content: "";
 						position: absolute;
-						left: -64px;
+						left: -59px;
 						top: 50%;
 						width: 1px;
 						height: 17px;
