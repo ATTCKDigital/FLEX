@@ -2,6 +2,15 @@
 
 All notable changes to FLEX. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and FLEX uses [Semantic Versioning](https://semver.org/). Upgrade steps for every breaking change: [UPGRADING.md](UPGRADING.md).
 
+## [5.8.5] - 2026-10-16
+
+The date is the release date; the `v5.8.5` tag is applied to the merge commit on `develop`. This is a patch release. It fixes the accordion (+) icon alignment (CSS) and a background-options render regression (PHP). No block, attribute or **stored** markup change (the child build's `main.js`/`admin.js`/`constellation.js`/`lottie.js` are byte-identical) — so existing content stays valid and there are no upgrade steps. The background-options fix changes **rendered** output only: a dormant/default colour on a block whose background type is not `color` is no longer painted inline.
+
+### Fixed
+
+- **Accordion (+) icon alignment.** The ring and the two `+` bars were slightly oversized/offset. The ring is now `37×37` (was `38×38`), the horizontal bar sits at `left: 11px` (was `12px`) and the vertical bar at `left: -59px` (was `-64px`), centring the `+` inside the ring. CSS only. `components/component_accordion/_accordion.scss`.
+- **Background options no longer paint a dormant colour background.** `background_options_inline_styles()` emitted `background-color` whenever a `backgroundColor` value existed and the `backgroundType` was `color`, **empty, or null** — so a default/left-over colour on a block whose type was never set to `color` (e.g. a case-study testimonial/Share column carrying a stray `#ffffff`, or the colour-picker's `#1d1d1d` default) rendered as a solid background versus production, which leaves such blocks transparent. It now paints only when `backgroundType === 'color'`, matching the sibling `background_options_desktop_styles()` / `_mobile_styles()` and the pre-modernization render. Stored attributes are untouched; only the emitted inline style changes. `gutenberg/components/gb-component_background-options/inline-styles.php`.
+
 ## [5.8.4] - 2026-10-16
 
 The date is the release date; the `v5.8.4` tag is applied to the merge commit on `develop`. This is a patch release. CSS only (the mobile nav) — no block, attribute, stored markup, PHP or JS change (the child build's `main.js`/`admin.js` are byte-identical) — so existing content stays valid and there are no upgrade steps.

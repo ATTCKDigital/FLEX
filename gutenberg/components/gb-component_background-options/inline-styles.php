@@ -37,8 +37,13 @@ function background_options_inline_styles( $attributes ) {
 	$bg_color  = isset( $attributes['backgroundColor'] ) ? $attributes['backgroundColor'] : null;
 	$opacity   = isset( $attributes['backgroundOpacity'] ) ? $attributes['backgroundOpacity'] : 100;
 
-	// Even if backgroundType is null/empty, still apply color
-	if ( $bg_color && ( $bg_type === 'color' || $bg_type === '' || is_null( $bg_type ) ) ) {
+	// Only paint a colour background when the user actually chose type=color, matching
+	// background_options_desktop_styles()/_mobile_styles() below and the pre-modernization
+	// render. A dormant/default backgroundColor left on a block whose backgroundType is empty
+	// must NOT paint — that regressed columns to an unwanted solid background (e.g. the
+	// case-study testimonial/Share columns rendering white) versus production, which leaves them
+	// transparent.
+	if ( $bg_color && $bg_type === 'color' ) {
 		if ( function_exists( __NAMESPACE__ . '\\hex_to_rgba' ) ) {
 			// error_log( 'backgroundColor raw: ' . print_r( $attributes['backgroundColor'], true ) );
 			// error_log( 'backgroundOpacity raw: ' . print_r( $attributes['backgroundOpacity'], true ) );
