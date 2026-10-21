@@ -6,6 +6,9 @@
 
 .component-image-carousel {
 	--image-carousel-fade: 250ms;
+	// Two-tone focus ring: one of the two tones has ≥ 3:1 against any row.
+	--image-carousel-focus-inner: #fff;
+	--image-carousel-focus-outer: #111;
 	display: block;
 	max-width: 100%;
 	min-width: 0;
@@ -26,6 +29,8 @@
 		list-style: none;
 		margin: 0;
 		padding: 0;
+		// Horizontal swipes go to the carousel; vertical drags scroll the page.
+		touch-action: pan-y pinch-zoom;
 		width: 100%;
 	}
 
@@ -153,6 +158,16 @@
 		}
 	}
 
+	// Visible keyboard focus on light and dark rows (outline over a wider
+	// shadow: a white ring inside a near-black ring).
+	.dot__thumb:focus-visible,
+	.component-carousel .nav.nav:focus-visible {
+		box-shadow: 0 0 0 4px var(--image-carousel-focus-outer);
+		opacity: 1;
+		outline: 2px solid var(--image-carousel-focus-inner);
+		outline-offset: 0;
+	}
+
 	// Prev / next arrows (only rendered when enabled), beside the thumbnails.
 	.component-carousel .nav.nav {
 		align-self: center;
@@ -207,6 +222,24 @@
 
 		&.next::before {
 			transform: translate(-70%, -50%) rotate(45deg);
+		}
+
+		// `loop: false` at either end.
+		&:disabled,
+		&.disabled {
+			cursor: default;
+			opacity: 0.35;
+		}
+	}
+
+	// Reduced motion: no fade and no smooth thumbnail scroll.
+	@media (prefers-reduced-motion: reduce) {
+		&.is-ready .slides > .slide.slide {
+			transition: none;
+		}
+
+		.component-carousel .dots-component.dots-component--thumbs {
+			scroll-behavior: auto;
 		}
 	}
 
