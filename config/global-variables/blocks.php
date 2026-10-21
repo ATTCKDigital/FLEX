@@ -14,6 +14,7 @@ $blocks = array(
 	'flexlayout/heading',
 	'flexlayout/hr',
 	'flexlayout/image',
+	'flexlayout/image-carousel',
 	'flexlayout/list',
 	'flexlayout/paragraph',
 	'flexlayout/popup',
