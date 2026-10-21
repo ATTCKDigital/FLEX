@@ -1,0 +1,265 @@
+// Carousel block (flexlayout/image-carousel), front end and editor preview.
+// Scoped to .component-image-carousel. Where FLEX's own scss/style.scss also
+// compiles components/component_carousel/_carousel.scss (absolute .slide,
+// 1 s opacity fade, hidden .dots-component, image arrows), the selectors
+// below out-rank those rules; attck2026 does not compile _carousel.scss.
+
+.component-image-carousel {
+	--image-carousel-fade: 250ms;
+	// Two-tone focus ring: one of the two tones has ≥ 3:1 against any row.
+	--image-carousel-focus-inner: #fff;
+	--image-carousel-focus-outer: #111;
+	display: block;
+	max-width: 100%;
+	min-width: 0;
+
+	// Stage, caption row, then [prev] thumbnails [next].
+	.component-carousel {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr) auto;
+		position: relative;
+	}
+
+	// One grid cell holds every slide; only .active is opaque.
+	.component-carousel .slides.slides.slides {
+		align-items: start;
+		display: grid;
+		grid-column: 1 / -1;
+		justify-content: stretch;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		// Horizontal swipes go to the carousel; vertical drags scroll the page.
+		touch-action: pan-y pinch-zoom;
+		width: 100%;
+	}
+
+	.slides > .slide.slide {
+		grid-area: 1 / 1;
+		height: auto;
+		margin: 0;
+		opacity: 0;
+		position: relative;
+		top: auto;
+		transition: none;
+		width: 100%;
+		z-index: 1;
+
+		&.active {
+			opacity: 1;
+			z-index: 2;
+		}
+
+		&[hidden] {
+			display: none;
+		}
+	}
+
+	// The fade runs only once the component is ready (no fade on first paint).
+	&.is-ready .slides > .slide.slide {
+		transition: opacity var(--image-carousel-fade) ease;
+	}
+
+	// The stage: fixed ratio (first image, or the editor override), every
+	// slide contained and centred; empty space shows the row background.
+	.component-image-carousel__image {
+		aspect-ratio: var(--image-carousel-ratio, 16 / 9);
+		display: block;
+		height: auto;
+		max-width: 100%;
+		object-fit: contain;
+		object-position: center;
+		width: 100%;
+	}
+
+	// Below the stage, above the thumbnails; nothing is rendered when empty.
+	.component-image-carousel__caption {
+		@include primary-regular;
+		color: inherit;
+		font-size: 1rem;
+		line-height: 1.5;
+		margin: 16px 0 0;
+		text-align: center;
+	}
+
+	// Thumbnail row (nav: "thumbs").
+	.component-carousel .dots-component.dots-component--thumbs {
+		display: flex;
+		flex-wrap: nowrap;
+		gap: 8px;
+		grid-column: 2;
+		grid-row: 2;
+		justify-content: flex-start;
+		list-style: none;
+		margin: 16px 0 0;
+		max-width: 100%;
+		min-width: 0;
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		padding: 4px 4px 8px;
+		visibility: visible;
+		width: auto;
+
+		.dot.dot {
+			flex: 0 0 auto;
+			margin: 0;
+			opacity: 1;
+			padding: 0;
+		}
+	}
+
+	.dot__thumb {
+		appearance: none;
+		background: none;
+		border: 0;
+		border-radius: 0;
+		color: inherit;
+		cursor: pointer;
+		display: block;
+		margin: 0;
+		opacity: 0.6;
+		padding: 0;
+		position: relative;
+
+		img {
+			display: block;
+			height: 64px;
+			max-width: none;
+			object-fit: cover;
+			width: auto;
+
+			@include mediaquery(tablet-landscape) {
+				height: 80px;
+			}
+		}
+
+		// Active indicator: a bar in the row's text colour (light and dark rows).
+		&::after {
+			background-color: currentcolor;
+			bottom: -6px;
+			content: "";
+			height: 3px;
+			left: 0;
+			opacity: 0;
+			position: absolute;
+			right: 0;
+		}
+
+		&:hover {
+			opacity: 0.85;
+		}
+
+		&[aria-current="true"] {
+			opacity: 1;
+
+			&::after {
+				opacity: 1;
+			}
+		}
+	}
+
+	// Visible keyboard focus on light and dark rows (outline over a wider
+	// shadow: a white ring inside a near-black ring).
+	.dot__thumb:focus-visible,
+	.component-carousel .nav.nav:focus-visible {
+		box-shadow: 0 0 0 4px var(--image-carousel-focus-outer);
+		opacity: 1;
+		outline: 2px solid var(--image-carousel-focus-inner);
+		outline-offset: 0;
+	}
+
+	// Prev / next arrows (only rendered when enabled), beside the thumbnails.
+	.component-carousel .nav.nav {
+		align-self: center;
+		appearance: none;
+		background: none;
+		border: 1px solid currentcolor;
+		border-radius: 50%;
+		color: inherit;
+		cursor: pointer;
+		height: 40px;
+		margin: 16px 0 0;
+		padding: 0;
+		position: relative;
+		top: auto;
+		width: 40px;
+
+		&::before,
+		&::after {
+			background: none;
+			content: none;
+			margin: 0;
+		}
+
+		&.prev {
+			grid-column: 1;
+			grid-row: 2;
+			margin-right: 8px;
+		}
+
+		&.next {
+			grid-column: 3;
+			grid-row: 2;
+			margin-left: 8px;
+		}
+
+		// Chevron drawn with borders in currentcolor.
+		&.prev::before,
+		&.next::before {
+			border-right: 2px solid currentcolor;
+			border-top: 2px solid currentcolor;
+			content: "";
+			height: 10px;
+			left: 50%;
+			position: absolute;
+			top: 50%;
+			width: 10px;
+		}
+
+		&.prev::before {
+			transform: translate(-30%, -50%) rotate(-135deg);
+		}
+
+		&.next::before {
+			transform: translate(-70%, -50%) rotate(45deg);
+		}
+
+		// `loop: false` at either end.
+		&:disabled,
+		&.disabled {
+			cursor: default;
+			opacity: 0.35;
+		}
+	}
+
+	// Reduced motion: no fade and no smooth thumbnail scroll.
+	@media (prefers-reduced-motion: reduce) {
+		&.is-ready .slides > .slide.slide {
+			transition: none;
+		}
+
+		.component-carousel .dots-component.dots-component--thumbs {
+			scroll-behavior: auto;
+		}
+	}
+
+	// Live region: visually hidden, read by screen readers.
+	.component-image-carousel__status {
+		border: 0;
+		clip-path: inset(50%);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		white-space: nowrap;
+		width: 1px;
+	}
+}
+
+// Exactly one slide: a static figure, no controls.
+.component-image-carousel--single {
+	.component-image-carousel__slide {
+		margin: 0;
+	}
+}

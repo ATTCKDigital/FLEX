@@ -9,6 +9,7 @@ import './block_column/column';
 import './block_feed/feed';
 import './block_heading/heading';
 import './block_image/image';
+import './block_image-carousel/image-carousel';
 import './block_list/list';
 import './block_paragraph/paragraph';
 import './block_posts/posts';

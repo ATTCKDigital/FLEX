@@ -1,0 +1,86 @@
+// Carousel block (flexlayout/image-carousel), editor only: the sidebar slide
+// list, the empty state and the preview placeholders. The preview itself is
+// styled by the front-end partial (_image-carousel.scss), imported first.
+
+.wp-block-flexlayout-image-carousel {
+	.components-placeholder {
+		min-height: 200px;
+	}
+}
+
+// Missing or still-loading attachment: keep the stage ratio.
+.component-image-carousel__placeholder {
+	align-items: center;
+	background-color: rgba(127, 127, 127, 0.15);
+	display: flex;
+	font-size: 13px;
+	justify-content: center;
+}
+
+.component-image-carousel__thumb-placeholder {
+	background-color: rgba(127, 127, 127, 0.2);
+	display: block;
+	height: 64px;
+	width: 108px;
+}
+
+// Sidebar slide list.
+.image-carousel-slide-list {
+	.components-notice {
+		margin: 0 0 12px;
+	}
+}
+
+.image-carousel-slide-list__items {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.image-carousel-slide-list__item {
+	border-bottom: 1px solid #e0e0e0;
+	display: grid;
+	gap: 8px;
+	grid-template-columns: 64px minmax(0, 1fr);
+	margin: 0;
+	padding: 12px 0;
+
+	&:last-child {
+		border-bottom: 0;
+	}
+}
+
+.image-carousel-slide-list__thumb {
+	background-color: #f0f0f0;
+	border: 1px solid #ddd;
+	cursor: pointer;
+	height: 48px;
+	padding: 0;
+	width: 64px;
+
+	img {
+		display: block;
+		height: 100%;
+		object-fit: cover;
+		width: 100%;
+	}
+}
+
+.image-carousel-slide-list__body {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	min-width: 0;
+}
+
+.image-carousel-slide-list__actions {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+}
+
+.image-carousel-slide-list__missing {
+	color: #cc1818;
+	margin: 0;
+}
