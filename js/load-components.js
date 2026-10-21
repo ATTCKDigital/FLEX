@@ -24,7 +24,7 @@ import HeightMatch from '../components/component_height-match/height-match';
 import Accordion from '../components/component_accordion/accordion';
 import Bookmark from '../components/component_bookmark/bookmark';
 import '../components/component_calendar-link/calendarlink';
-import Carousel from '../components/component_carousel/carousel';
+import Carousel from '../components/component_carousel/carousel-loader';
 import CopyLink from '../components/component_copy-link/copylink';
 import Nav from '../components/component_nav/nav';
 import Reserve from '../components/component_reserve/reserve';

@@ -22,7 +22,7 @@ import { bindKeyboard } from './modules/keyboard';
 import { bindSwipe } from './modules/swipe';
 import { startAutoplay } from './modules/autoplay';
 import { bindSlideExtras } from './modules/slide-extras';
-import { registerInteractiveElements } from './modules/a11y';
+import { registerInteractiveElements, addLegacyTabStops } from './modules/a11y';
 
 /**
  * Carousel component
@@ -85,5 +85,8 @@ function Carousel( $el ) {
 
 	return this.init( $el );
 }
+
+// Used by carousel-loader.js once this chunk has initialised an instance.
+export { addLegacyTabStops };
 
 export default Carousel;
