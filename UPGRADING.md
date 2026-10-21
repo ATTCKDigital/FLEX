@@ -2,7 +2,18 @@
 
 Every breaking change in a FLEX major release and what a FLEX child theme must do about it. Newest release first; move one major version at a time.
 
-Contents: [v5.8.0](#v580) · [v5.7.0](#v570) · [v5.6.0](#v560) · [v5.5.0](#v550) · [v5.4.0](#v540) · [v5.3.0](#v530) · [v5.2.0](#v520) · [v5.0.0](#v500) · [v3 → v4.0.0](#v3--v400): [Pin v3.4.0 first](#pin-v340-first) · [Node 24](#node-24) · [FLEX no longer builds anything](#flex-no-longer-builds-anything) · [Reference child build](#reference-child-build) · [Build contract](#build-contract) · [Enqueue changes](#enqueue-changes) · [Customizer colors are printed at runtime](#customizer-colors-are-printed-at-runtime) · [jQuery, lodash and editor globals](#jquery-lodash-and-editor-globals) · [Removed packages and IE polyfills](#removed-packages-and-ie-polyfills) · [Sass](#sass) · [Font Awesome 6.7.2](#font-awesome-672) · [Removed and deprecated files](#removed-and-deprecated-files) · [Lint presets](#lint-presets) · [Git housekeeping](#git-housekeeping) · [Known issues](#known-issues)
+Contents: [v5.9.0](#v590) · [v5.8.0](#v580) · [v5.7.0](#v570) · [v5.6.0](#v560) · [v5.5.0](#v550) · [v5.4.0](#v540) · [v5.3.0](#v530) · [v5.2.0](#v520) · [v5.0.0](#v500) · [v3 → v4.0.0](#v3--v400): [Pin v3.4.0 first](#pin-v340-first) · [Node 24](#node-24) · [FLEX no longer builds anything](#flex-no-longer-builds-anything) · [Reference child build](#reference-child-build) · [Build contract](#build-contract) · [Enqueue changes](#enqueue-changes) · [Customizer colors are printed at runtime](#customizer-colors-are-printed-at-runtime) · [jQuery, lodash and editor globals](#jquery-lodash-and-editor-globals) · [Removed packages and IE polyfills](#removed-packages-and-ie-polyfills) · [Sass](#sass) · [Font Awesome 6.7.2](#font-awesome-672) · [Removed and deprecated files](#removed-and-deprecated-files) · [Lint presets](#lint-presets) · [Git housekeeping](#git-housekeeping) · [Known issues](#known-issues)
+
+## v5.9.0
+
+FLEX v5.9.0 adds the **Carousel** block (`flexlayout/image-carousel`) and lazy-loads `component_carousel` as its own `carousel` chunk. Existing content stays valid. What a child theme must do:
+
+- **Set `output.publicPath`** in the child webpack config (attck2026: `/wp-content/themes/attck/dist/`). This is **required on any project that uses `data-component-name="Carousel"`**, the block or hand-built markup, because the component is now fetched as a separate chunk. Without it the chunk URL resolves against the page (or the concatenated script under Jetpack Boost / Rocket Loader) and the carousel stays on its static first slide.
+- **Import the block's SCSS.** A child entry that does not import FLEX `scss/style.scss` must add `@import '../../FLEX/gutenberg/blocks/block_image-carousel/_image-carousel.scss';` to its `scss/style.scss`, and that partial plus `_image-carousel-admin.scss` to its `scss/admin.scss` (editor preview).
+- **Enable the block:** add `'flexlayout/image-carousel',` to the child's `config/global-variables/blocks.php` allow-list.
+- **Add a `carousel.js` budget** if your build enforces per-asset budgets (attck2026: 20,000 B), and re-measure `main.js`, which is about 4.7 KB smaller.
+- **Allow for asynchronous init.** Code that calls `FLEX.Components.Carousel` or reads its instance must not assume the component is ready synchronously. `carousel.goNext` / `carousel.goPrev` events triggered before the chunk loads are queued and replayed.
+- **Check the behaviour changes on legacy carousels** (listed under "Changed" in the CHANGELOG): ← / → only act on the focused carousel, swipe uses pointer events (no mouse-drag swipe), a visually hidden live region is appended, and autoplay does not advance under reduced motion.
 
 ## v5.8.0
 

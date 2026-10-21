@@ -25,6 +25,8 @@ Each component folder contains the following, specific to the component:
 - js file (if component has js aspect)
 - readme.md specific to component (if needed)
 
+Some components are **lazy-loaded**: `component_carousel` is registered in `main.js` as a small loader stub, and the component itself loads with a dynamic `import()` as a separate `carousel` chunk, only on pages with a `data-component-name="Carousel"` element. The child build must set `output.publicPath` so the chunk resolves (see `UPGRADING.md`, v5.9.0).
+
 See detailed README.md in [`components`[(https://github.com/ATTCKDigital/FLEX/tree/master/components)] folder.
 
 #### Including a Component
@@ -39,7 +41,7 @@ See example of how to include a template in the README.md in `components` folder
 
 Wordpress 5.0+ uses Gutenberg as an editing interface. This interface is comprised of `blocks`. FLEX uses a custom block system based on the row/column grid paradigm.
 
-The FLEX theme comes with a standard set of blocks. Per project, custom blocks can be created via ACF. See the readme in the sample child theme in the `gutenberg` folder for additional information.
+The FLEX theme comes with a standard set of blocks (see `gutenberg/blocks/README.md`), including the **Carousel** block (`flexlayout/image-carousel`, v5.9.0): a slideshow of Media Library images with a thumbnail row, optional arrows and captions, rendered on the server and driven on the front end by `component_carousel`. Per project, custom blocks can be created via ACF. See the readme in the sample child theme in the `gutenberg` folder for additional information.
 
 ### Assets
 

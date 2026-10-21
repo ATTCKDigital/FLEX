@@ -2,6 +2,40 @@
 
 All notable changes to FLEX. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and FLEX uses [Semantic Versioning](https://semver.org/). Upgrade steps for every breaking change: [UPGRADING.md](UPGRADING.md).
 
+## [5.9.0] - 2026-10-21
+
+The date is the release date; the `v5.9.0` tag is applied to the merge commit on `develop`. This is a minor release. It adds the **Carousel** block and extends `component_carousel`, which is now lazy-loaded as its own `carousel` chunk. Stored markup of existing blocks is unchanged, so existing content stays valid. A child build must set `output.publicPath` for the chunk and import the block's SCSS (see [UPGRADING.md](UPGRADING.md#v590)).
+
+### Added
+
+- **`flexlayout/image-carousel` block (title "Carousel").** A dynamic block (`save: null`, apiVersion 3, `block.json`) for a slideshow of Media Library images: multi-select, add, reorder, remove and replace slides, per-slide alt text and caption, optional arrows, loop (on by default), aspect ratio (auto, 16:9, 4:3, 1:1, 3:4) and an accessible label, plus the shared margin, padding, border and data-component-name option sets. The server render uses the attachment functions (`srcset`/`sizes`, `width`/`height`, `medium` thumbnails), loads the first slide eagerly and defers the rest, skips deleted or non-image attachments, and renders a usable first slide and caption without JavaScript. The editor preview matches the front end and never changes saved attributes. Files: `gutenberg/blocks/block_image-carousel/` (`edit/`, `render/`, `_image-carousel.scss`, `_image-carousel-admin.scss`); registered in `blocks.js`, `config/theme-configs/flex-layout-system.php` and the default `config/global-variables/blocks.php`.
+- **`component_carousel` options** (read from `data-component-options`; absent or invalid keys keep the v5.8.5 behaviour): `layout` (`"peek"` default, or `"stage"`: one slide at a time with a cross-fade), `nav` (`"dots"` default, or `"thumbs"`: thumbnail buttons with `aria-current` in a horizontally scrolling row), `arrows`, `loop` (`true` wraps, `false` clamps and disables the arrows at the ends, unset keeps the old edge rules), `autoplay` and `swipeThreshold` (px).
+- **Accessibility:** a polite live region announces "Slide N of M" (plus the caption) for user changes only (thumbnail, dot, arrow, key, swipe), never for load or autoplay; Home / End in the thumbnail layout; focus follows the active thumbnail; a two-tone focus ring on thumbnails and arrows; no animation under `prefers-reduced-motion`.
+- **Instance API:** `instance.goTo( index, { source } )`, read-only `instance.index` and `instance.count`.
+- **Deferred images:** slides load on demand with the next slide in the direction of travel preloaded (`modules/lazy-images.js`); `modules/motion.js` reads the reduced-motion setting.
+
+### Changed
+
+- **`component_carousel` is lazy-loaded.** `js/load-components.js` registers a small `carousel-loader.js` stub under the unchanged `Carousel` key; the component loads with a dynamic `import()` as the `carousel` chunk, only on pages with a Carousel element, and initialises **asynchronously**. `carousel.goNext` / `carousel.goPrev` triggered before it loads are queued and replayed. `main.js` is about 4.7 KB smaller.
+- **← / → act only on the focused carousel**, for legacy markup too. In v5.8.5 a `body` key listener moved every carousel on the page from anywhere.
+- **Swipe uses pointer events** (touch and pen; a mouse drag never swipes), with a dominant-axis check so vertical page scrolling stays free. The legacy swipe surface gets an inline `touch-action: pan-y pinch-zoom` when it has none.
+- **Legacy carousels get a live region:** a visually hidden polite region is appended to the root and announces arrow, dot, key and swipe changes.
+- **Legacy autoplay does not advance under `prefers-reduced-motion`.**
+- **`arrows: false`** in `data-component-options` now also unbinds the arrows of legacy (peek) markup.
+- **`FLEX.slideUpdate`** passes `{ id, index }` in the stage layout; the legacy payload is unchanged.
+- **Console logging removed** from `component_carousel`.
+- **Module decomposition:** the 609-line `carousel.js` is now an orchestrator plus `modules/` (`options`, `state`, `layout-peek`, `layout-stage`, `slide-classes`, `stage-mode`, `stage-nav`, `nav-arrows`, `nav-dots`, `nav-thumbs`, `keyboard`, `swipe`, `a11y`, `lazy-images`, `motion`, `autoplay`, `slide-extras`); every file is under 300 lines. Option-less markup behaves as in v5.8.5 apart from the changes above (slide order, dot state, disabled arrows, autoplay cadence, tab order and events were compared step by step).
+
+### Removed
+
+- Nothing.
+
+### Notes
+
+- **`output.publicPath` is required** for the `carousel` chunk on any project that renders `data-component-name="Carousel"` (the block, or hand-built markup). Without it the chunk URL resolves relative to the page and the carousel stays on its static first slide.
+- `components/component_carousel/_carousel.js` is not imported anywhere and is dead code; it is kept for now and flagged for removal in a later major release.
+- No `screen-reader-text` utility exists in FLEX: the block's status element and the legacy live region hide themselves.
+
 ## [5.8.5] - 2026-10-16
 
 The date is the release date; the `v5.8.5` tag is applied to the merge commit on `develop`. This is a patch release. It fixes the accordion (+) icon alignment (CSS) and a background-options render regression (PHP). No block, attribute or **stored** markup change (the child build's `main.js`/`admin.js`/`constellation.js`/`lottie.js` are byte-identical) — so existing content stays valid and there are no upgrade steps. The background-options fix changes **rendered** output only: a dormant/default colour on a block whose background type is not `color` is no longer painted inline.
