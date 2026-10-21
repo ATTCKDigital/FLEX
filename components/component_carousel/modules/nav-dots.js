@@ -20,7 +20,15 @@ export function bindDots( ctx ) {
 		const $parent = $( this ).closest( '.dots-component' );
 
 		// Get index of this dot compared to siblings
-		state.index = $parent.find( 'a' ).index( $( this ) );
+		const index = $parent.find( 'a' ).index( $( this ) );
+
+		// Stage layout: resolve through goTo (no lock, nothing pre-set).
+		if ( ctx.options.layout === 'stage' ) {
+			ctx.api.goTo( index, { source: 'dot' } );
+			return;
+		}
+
+		state.index = index;
 
 		ctx.api.goTo( state.index );
 	} );

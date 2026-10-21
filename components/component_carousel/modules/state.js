@@ -1,17 +1,26 @@
 /**
  * Index state and navigation with the legacy edge rules: next wraps to 0, prev
  * stops at 0, and the peek layout's `lastScrollableSlide` couples the two.
+ * The stage layout navigates through ./stage-nav (loop / clamp, no lock).
  */
 import { applySlideClasses } from './slide-classes';
 import { updateDots } from './nav-dots';
 import { moveSlideContainerInner } from './layout-peek';
 import { enableArrows, disableArrow } from './nav-arrows';
+import { stageGoTo } from './stage-nav';
 
 /**
  * @return {Object} Fresh per-instance state; the peek layout adds its measurements.
  */
 export function createState() {
-	return { index: 0, transitionInProgress: false };
+	return {
+		index: 0,
+		transitionInProgress: false,
+		// Stage layout: slide count, last requested index, promoted images.
+		count: 0,
+		requested: 0,
+		loaded: new Set(),
+	};
 }
 
 /**
@@ -105,10 +114,17 @@ export function goPrev( ctx, el ) {
 }
 
 /**
- * @param {Object} ctx Carousel instance context.
- * @param {number} arg Target index.
+ * @param {Object} ctx           Carousel instance context.
+ * @param {number} arg           Target index.
+ * @param {Object} [opts]        Options.
+ * @param {string} [opts.source] thumb|dot|arrow|key|swipe|autoplay|api.
+ * @return {boolean|undefined} Stage layout: whether the slide changed.
  */
-export function goTo( ctx, arg ) {
+export function goTo( ctx, arg, opts = {} ) {
+	if ( ctx.options.layout === 'stage' ) {
+		return stageGoTo( ctx, arg, opts );
+	}
+
 	const { state } = ctx;
 	// Proceed only if no CSS transition is in progress
 	if ( state.transitionInProgress ) {

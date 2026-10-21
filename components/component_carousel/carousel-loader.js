@@ -23,7 +23,10 @@ function Carousel( $el, params ) {
 		.then( ( { default: RealCarousel, addLegacyTabStops } ) => {
 			$el.off( '.pending' );
 			this.instance = new RealCarousel( $el, params );
-			addLegacyTabStops( $el );
+			// The stage layout binds no jQuery click handlers (no tab stops).
+			if ( this.instance.layout !== 'stage' ) {
+				addLegacyTabStops( $el );
+			}
 			pending.forEach( ( name ) => $el.trigger( name ) );
 		} )
 		.catch( () => {} );
