@@ -27,7 +27,12 @@ import { bindKeyboard } from './modules/keyboard';
 import { bindSwipe } from './modules/swipe';
 import { startAutoplay } from './modules/autoplay';
 import { bindSlideExtras } from './modules/slide-extras';
-import { registerInteractiveElements, addLegacyTabStops } from './modules/a11y';
+import {
+	registerInteractiveElements,
+	initLiveRegion,
+	withSource,
+	addLegacyTabStops,
+} from './modules/a11y';
 
 /**
  * Legacy `peek` layout: today's behaviour, unchanged.
@@ -49,7 +54,9 @@ function initPeek( ctx ) {
 
 	bindDots( ctx );
 	bindKeyboard( ctx );
-	bindArrows( ctx );
+	if ( ctx.options.arrows ) {
+		bindArrows( ctx );
+	}
 	bindSwipe( ctx );
 	bindPeekLayout( ctx );
 	bindTransitionLock( ctx );
@@ -57,6 +64,7 @@ function initPeek( ctx ) {
 	bindSlideExtras( ctx );
 
 	registerInteractiveElements( ctx );
+	initLiveRegion( ctx );
 
 	// Default set the prev nav item to disabled; hide dots if only one slide;
 	// initialise the active states.
@@ -80,18 +88,22 @@ function Carousel( $el, params ) {
 	const isStage = ctx.options.layout === 'stage';
 
 	// Navigation entry points for the modules. `el` is the element a request
-	// came from; a disabled element ignores it (legacy).
+	// came from (a disabled element ignores it, legacy); `opts.source` says
+	// what asked (only user sources are announced).
 	ctx.api = isStage
 		? {
-				goNext: () => stageStep( ctx, 1 ),
-				goPrev: () => stageStep( ctx, -1 ),
+				goNext: ( el, opts ) => stageStep( ctx, 1, opts ),
+				goPrev: ( el, opts ) => stageStep( ctx, -1, opts ),
 				goTo: ( index, opts ) => stageGoTo( ctx, index, opts ),
 				step: ( delta, opts ) => stageStep( ctx, delta, opts ),
 			}
 		: {
-				goNext: ( el ) => goNext( ctx, el ),
-				goPrev: ( el ) => goPrev( ctx, el ),
-				goTo: ( index ) => goTo( ctx, index ),
+				goNext: ( el, { source } = {} ) =>
+					withSource( ctx, source, () => goNext( ctx, el ) ),
+				goPrev: ( el, { source } = {} ) =>
+					withSource( ctx, source, () => goPrev( ctx, el ) ),
+				goTo: ( index, { source } = {} ) =>
+					withSource( ctx, source, () => goTo( ctx, index ) ),
 			};
 
 	Object.defineProperties( this, {

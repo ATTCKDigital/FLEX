@@ -1,9 +1,12 @@
 /**
  * Stage layout: one slide at a time with a cross-fade (CSS, under `.is-ready`).
  * No width maths and no transition lock. The incoming slide loses `hidden`
- * before its fade starts; outgoing slides get `hidden` once their fade ends.
+ * before its fade starts; outgoing slides get `hidden` once their fade ends,
+ * or at once under reduced motion (the CSS drops the fade there too).
  */
 import { applySlideClasses } from './slide-classes';
+import { loadSlide } from './lazy-images';
+import { prefersReducedMotion } from './motion';
 
 // Matches the 250 ms opacity transition in _image-carousel.scss, plus slack.
 const HIDE_FALLBACK_MS = 300;
@@ -31,25 +34,6 @@ export function initStage( ctx ) {
 }
 
 /**
- * Promote a deferred slide image (`data-src` / `data-srcset` / `data-sizes`).
- * Minimal on-demand loading; lazy-images.js (US6) adds preloading.
- *
- * @param {Element} slide Slide element.
- */
-function promoteImage( slide ) {
-	slide.querySelectorAll( 'img[data-src]' ).forEach( ( img ) => {
-		[ 'sizes', 'srcset', 'src' ].forEach( ( name ) => {
-			const value = img.getAttribute( `data-${ name }` );
-
-			if ( value ) {
-				img.setAttribute( name, value );
-			}
-			img.removeAttribute( `data-${ name }` );
-		} );
-	} );
-}
-
-/**
  * Hide every slide except the active one.
  *
  * @param {Object} state Instance state.
@@ -67,13 +51,14 @@ function hideInactive( state ) {
  *
  * @param {Object}  ctx            Carousel instance context.
  * @param {Object}  [opts]         Options.
- * @param {boolean} [opts.instant] Hide the outgoing slide at once.
+ * @param {boolean} [opts.instant] Hide the outgoing slide at once (also under
+ *                                 reduced motion).
  */
 export function showSlide( ctx, { instant = false } = {} ) {
 	const { $el, state } = ctx;
 	const incoming = state.slides[ state.index ];
 
-	promoteImage( incoming );
+	loadSlide( ctx, state.index );
 
 	if ( incoming.hidden ) {
 		incoming.hidden = false;
@@ -86,7 +71,11 @@ export function showSlide( ctx, { instant = false } = {} ) {
 
 	clearTimeout( state.hideTimer );
 
-	if ( instant || ! $el[ 0 ].classList.contains( 'is-ready' ) ) {
+	if (
+		instant ||
+		prefersReducedMotion() ||
+		! $el[ 0 ].classList.contains( 'is-ready' )
+	) {
 		hideInactive( state );
 		return;
 	}

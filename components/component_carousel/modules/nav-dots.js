@@ -1,6 +1,7 @@
 /**
  * Legacy dot navigation (`.dots-component a`).
  */
+import { withSource } from './a11y';
 
 /**
  * Dot clicks go to the slide with the same position as the dot.
@@ -30,7 +31,7 @@ export function bindDots( ctx ) {
 
 		state.index = index;
 
-		ctx.api.goTo( state.index );
+		withSource( ctx, 'dot', () => ctx.api.goTo( state.index ) );
 	} );
 }
 

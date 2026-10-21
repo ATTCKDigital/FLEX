@@ -1,6 +1,9 @@
 /**
- * Legacy prev/next arrows (`.nav.prev` / `.nav.next`).
+ * Prev / next arrows. Legacy markup: `.nav.prev` / `.nav.next` (jQuery,
+ * `.disabled` class). Stage layout: native buttons (addEventListener); with
+ * `loop: false` they are disabled at the ends. `arrows: false` binds nothing.
  */
+import { withSource } from './a11y';
 
 /**
  * Arrow clicks trigger the public carousel events on the root element.
@@ -23,7 +26,7 @@ export function bindArrows( ctx ) {
 			direction = 'carousel.goPrev';
 		}
 
-		$el.trigger( direction );
+		withSource( ctx, 'arrow', () => $el.trigger( direction ) );
 	} );
 }
 

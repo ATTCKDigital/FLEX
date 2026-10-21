@@ -8,6 +8,7 @@ import { updateDots } from './nav-dots';
 import { moveSlideContainerInner } from './layout-peek';
 import { enableArrows, disableArrow } from './nav-arrows';
 import { stageGoTo } from './stage-nav';
+import { announce } from './a11y';
 
 /**
  * @return {Object} Fresh per-instance state; the peek layout adds its measurements.
@@ -41,6 +42,9 @@ export function go( ctx ) {
 	$( document.body ).trigger( 'FLEX.slideUpdate', {
 		id: $el.attr( 'id' ),
 	} );
+
+	// Only user actions (arrow, dot, key, swipe) set a source here.
+	announce( ctx, state.source );
 }
 
 /**
