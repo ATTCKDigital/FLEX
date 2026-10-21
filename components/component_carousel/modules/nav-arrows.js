@@ -108,6 +108,18 @@ export function updateStageArrows( ctx ) {
 				: state.index >= state.count - 1;
 			const disabled = clamp && atEnd;
 
+			// A focused button that becomes disabled would drop focus to <body>:
+			// hand it to the other arrow, which is enabled at either end.
+			if ( disabled && button === button.ownerDocument.activeElement ) {
+				const other = ctx.$el[ 0 ].querySelector(
+					button.classList.contains( 'prev' )
+						? '.nav.next'
+						: '.nav.prev'
+				);
+
+				other?.focus( { preventScroll: true } );
+			}
+
 			button.disabled = disabled;
 			button.classList.toggle( 'disabled', disabled );
 		} );

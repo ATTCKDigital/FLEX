@@ -140,6 +140,12 @@ function resolve_slide( $item ): ?array {
 function resolve_slides( array $attributes ): array {
 	$items  = isset( $attributes['slides'] ) && is_array( $attributes['slides'] ) ? $attributes['slides'] : [];
 	$slides = [];
+	$ids    = array_values( array_filter( array_map( __NAMESPACE__ . '\slide_id', $items ) ) );
+
+	// One query for the posts and one for their meta, instead of two per slide.
+	if ( $ids && function_exists( '_prime_post_caches' ) ) {
+		_prime_post_caches( $ids, false, true );
+	}
 
 	foreach ( $items as $item ) {
 		$slide = resolve_slide( $item );

@@ -44,14 +44,17 @@ function isPresent( entry ) {
 }
 
 /**
- * Find the live region, or create one (legacy markup has none). A created
+ * Find the status live region, or create one (legacy markup has none). A created
  * region is visually hidden inline: no shared screen-reader utility exists.
  *
  * @param {Object} ctx Carousel instance context.
  */
 export function initLiveRegion( ctx ) {
 	const root = ctx.$el[ 0 ];
-	let region = root.querySelector( '[aria-live]' );
+	// Only the carousel's own status element; never an aria-live inside a slide.
+	let region = root.querySelector(
+		'.component-image-carousel__status, .component-carousel__status'
+	);
 
 	if ( ! region ) {
 		region = document.createElement( 'p' );
