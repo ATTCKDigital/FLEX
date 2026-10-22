@@ -80,9 +80,56 @@ export function updateThumbs( ctx ) {
 }
 
 /**
- * Scroll the thumbnail row just enough to show the active thumbnail. Uses
- * `row.scrollTo()` on the row only, so the page never scrolls (no
- * `scrollIntoView`, J-4); instant under reduced motion.
+ * A thumbnail item's start and end along the row's scroll axis, in px.
+ *
+ * @param {Element} row  The scrolling thumbnail row.
+ * @param {Element} item The thumbnail's `li.dot` (or button).
+ * @return {{start: number, end: number}} Span in scroll coordinates.
+ */
+function getItemSpan( row, item ) {
+	const rowBox = row.getBoundingClientRect();
+	const itemBox = item.getBoundingClientRect();
+	const start = itemBox.left - rowBox.left - row.clientLeft + row.scrollLeft;
+
+	return { start, end: start + itemBox.width };
+}
+
+/**
+ * The span to keep visible: the active thumbnail plus its previous and next
+ * neighbours (clamped at the ends, never wrapped), so the visitor can see
+ * there is more to select. When the three do not fit (narrow rows), the
+ * active thumbnail is centred so both neighbours peek in from the edges.
+ *
+ * @param {Element}   row   The scrolling thumbnail row.
+ * @param {Element[]} items Thumbnail items in slide order.
+ * @param {number}    index Active slide index.
+ * @return {{start: number, end: number}} Span in scroll coordinates.
+ */
+function getVisibleSpan( row, items, index ) {
+	const first = getItemSpan( row, items[ Math.max( index - 1, 0 ) ] );
+	const last = getItemSpan(
+		row,
+		items[ Math.min( index + 1, items.length - 1 ) ]
+	);
+	const span = {
+		start: first.start - SCROLL_MARGIN_PX,
+		end: last.end + SCROLL_MARGIN_PX,
+	};
+
+	if ( span.end - span.start <= row.clientWidth ) {
+		return span;
+	}
+
+	const active = getItemSpan( row, items[ index ] );
+	const start = ( active.start + active.end - row.clientWidth ) / 2;
+
+	return { start, end: start + row.clientWidth };
+}
+
+/**
+ * Scroll the thumbnail row just enough to show the active thumbnail and its
+ * neighbours. Uses `row.scrollTo()` on the row only, so the page never
+ * scrolls (no `scrollIntoView`, J-4); instant under reduced motion.
  *
  * @param {Object}  ctx            Carousel instance context.
  * @param {Object}  [opts]         Options.
@@ -90,25 +137,27 @@ export function updateThumbs( ctx ) {
  */
 export function scrollToActiveThumb( ctx, { instant = false } = {} ) {
 	const row = ctx.$el[ 0 ].querySelector( '.dots-component--thumbs' );
-	const thumb = getThumbs( ctx )[ ctx.state.index ];
+	const items = getThumbs( ctx ).map(
+		( thumb ) => thumb.closest( 'li.dot' ) || thumb
+	);
 
-	if ( ! row || ! thumb || row.scrollWidth <= row.clientWidth ) {
+	if (
+		! row ||
+		! items[ ctx.state.index ] ||
+		row.scrollWidth <= row.clientWidth
+	) {
 		return;
 	}
 
-	const item = thumb.closest( 'li.dot' ) || thumb;
-	const rowBox = row.getBoundingClientRect();
-	const itemBox = item.getBoundingClientRect();
-	const start = itemBox.left - rowBox.left - row.clientLeft + row.scrollLeft;
-	const end = start + itemBox.width;
+	const span = getVisibleSpan( row, items, ctx.state.index );
 	const viewStart = row.scrollLeft;
 	const viewEnd = viewStart + row.clientWidth;
 	let left = null;
 
-	if ( start - SCROLL_MARGIN_PX < viewStart ) {
-		left = start - SCROLL_MARGIN_PX;
-	} else if ( end + SCROLL_MARGIN_PX > viewEnd ) {
-		left = end + SCROLL_MARGIN_PX - row.clientWidth;
+	if ( span.start < viewStart ) {
+		left = span.start;
+	} else if ( span.end > viewEnd ) {
+		left = span.end - row.clientWidth;
 	}
 
 	if ( left === null ) {

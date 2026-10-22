@@ -2,6 +2,14 @@
 
 All notable changes to FLEX. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and FLEX uses [Semantic Versioning](https://semver.org/). Upgrade steps for every breaking change: [UPGRADING.md](UPGRADING.md).
 
+## [5.9.1] - 2026-10-22
+
+The date is the release date; the `v5.9.1` tag is applied to the merge commit on `develop`. This is a patch release with no markup or option changes; nothing to do when upgrading from v5.9.0.
+
+### Fixed
+
+- **Carousel thumbnails keep their neighbours in view.** When the active slide changes (thumbnail click, arrow, key or swipe), the scrolling thumbnail row now shows the previous and next thumbnails as well as the active one, so the visitor can see there is more to select without scrolling the row by hand. When three thumbnails do not fit (narrow rows), the active thumbnail is centred so both neighbours peek in from the edges. Only the row scrolls, never the page; the scroll is instant under `prefers-reduced-motion`. File: `components/component_carousel/modules/nav-thumbs.js`.
+
 ## [5.9.0] - 2026-10-21
 
 The date is the release date; the `v5.9.0` tag is applied to the merge commit on `develop`. This is a minor release. It adds the **Carousel** block and extends `component_carousel`, which is now lazy-loaded as its own `carousel` chunk. Stored markup of existing blocks is unchanged, so existing content stays valid. A child build must set `output.publicPath` for the chunk and import the block's SCSS (see [UPGRADING.md](UPGRADING.md#v590)).
