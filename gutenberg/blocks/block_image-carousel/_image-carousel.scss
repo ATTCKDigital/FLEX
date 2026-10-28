@@ -13,6 +13,13 @@
 	max-width: 100%;
 	min-width: 0;
 
+	// Dark rows: caption, arrows and the active-thumbnail bar use currentcolor.
+	// Set white here; the row's own colour comes from a palette lookup
+	// (color("text", "white")) that some child palettes do not define.
+	[data-logo-color="logo-color-light"] & {
+		color: #fff;
+	}
+
 	// Stage, caption row, then [prev] thumbnails [next].
 	.component-carousel {
 		display: grid;

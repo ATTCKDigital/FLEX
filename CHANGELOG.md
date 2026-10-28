@@ -2,6 +2,14 @@
 
 All notable changes to FLEX. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and FLEX uses [Semantic Versioning](https://semver.org/). Upgrade steps for every breaking change: [UPGRADING.md](UPGRADING.md).
 
+## [5.9.2] - 2026-10-28
+
+The date is the release date; the `v5.9.2` tag is applied to the merge commit on `develop`. This is a patch release with no markup or option changes; nothing to do when upgrading from v5.9.1.
+
+### Fixed
+
+- **Carousel captions and controls on dark rows.** In a row with light text (`data-logo-color="logo-color-light"`), the Carousel block's caption, prev/next arrows and active-thumbnail bar now render white. They use `currentcolor`, and the row's own white comes from `color("text", "white")` in `scss/_global.scss`, which child palettes without a `text.white` entry compile to nothing, so they stayed in the dark body colour. The block now sets the colour itself. File: `gutenberg/blocks/block_image-carousel/_image-carousel.scss`.
+
 ## [5.9.1] - 2026-10-22
 
 The date is the release date; the `v5.9.1` tag is applied to the merge commit on `develop`. This is a patch release with no markup or option changes; nothing to do when upgrading from v5.9.0.
