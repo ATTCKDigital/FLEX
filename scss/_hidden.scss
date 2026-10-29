@@ -61,7 +61,7 @@
 	visibility: hidden;
 
 	.wp-block & {
-		.wp-admin & {
+		@include in-editor {
 			display: inherit !important;
 			opacity: 0.5;
 			visibility: visible;
@@ -81,7 +81,7 @@
 .visibility-hidden {
 	visibility: hidden;
 
-	.wp-admin & {
+	@include in-editor {
 		opacity: 0.25;
 		visibility: visible;
 	}

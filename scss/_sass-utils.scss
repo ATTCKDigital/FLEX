@@ -41,3 +41,45 @@
 
 	@return $value;
 }
+
+/**
+ * Editor-canvas build context (feature 020, FLEX v5.10.0).
+ * WordPress 7.1+ renders the block canvas inside an iframe whose <body> is the
+ * canvas (.editor-styles-wrapper) and has no .wp-admin. A child's editor-canvas
+ * entry sets `$flex-editor-canvas: true;` before importing anything; every other
+ * entry leaves it false and compiles exactly as before.
+ */
+$flex-editor-canvas: false !default;
+
+// Ancestor for editor-only overrides: the admin <body> on the front-end/admin
+// builds, the canvas wrapper (iframe <body> or un-iframed canvas div) in the canvas build.
+$flex-editor-scope: ".wp-admin";
+
+@if $flex-editor-canvas {
+	$flex-editor-scope: ".editor-styles-wrapper";
+}
+
+// Editor-only overrides; replaces `.wp-admin & { … }`.
+@mixin in-editor {
+	#{$flex-editor-scope} & {
+		@content;
+	}
+}
+
+// Front-end-only rules; replaces `body:not(.wp-admin) & { … }`. Emits nothing in
+// the canvas build, where the iframe <body> lacks .wp-admin and would match.
+@mixin front-end-only {
+	@if not $flex-editor-canvas {
+		body:not(.wp-admin) & {
+			@content;
+		}
+	}
+}
+
+// Document-level rules (bare html / body / article). Emits nothing in the canvas
+// build, because the iframe <body> is the canvas itself.
+@mixin outside-editor-canvas {
+	@if not $flex-editor-canvas {
+		@content;
+	}
+}

@@ -67,7 +67,7 @@
 
 .component-column {
 	// Fixes 50/50% column spacing error
-	body:not(.wp-admin) & {
+	@include front-end-only {
 		font-size: 0;
 	}
 
@@ -273,7 +273,7 @@
 		height: $small-row;
 	}
 
-	.wp-admin & {
+	@include in-editor {
 		min-height: $small-row-mobile;
 		height: auto;
 
@@ -292,7 +292,7 @@
 		height: $medium-row;
 	}
 
-	.wp-admin & {
+	@include in-editor {
 		min-height: $medium-row-mobile;
 		height: auto;
 
@@ -311,7 +311,7 @@
 		height: $large-row;
 	}
 
-	.wp-admin & {
+	@include in-editor {
 		min-height: $large-row-mobile;
 		height: auto;
 
