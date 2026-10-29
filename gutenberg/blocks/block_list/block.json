@@ -16,8 +16,8 @@
 			"default": false
 		},
 		"content": {
-			"type": "array",
-			"default": []
+			"type": "string",
+			"default": ""
 		},
 		"placeholder": {
 			"type": "string"
