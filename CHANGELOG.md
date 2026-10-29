@@ -2,6 +2,14 @@
 
 All notable changes to FLEX. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and FLEX uses [Semantic Versioning](https://semver.org/). Upgrade steps for every breaking change: [UPGRADING.md](UPGRADING.md).
 
+## [5.9.3] - 2026-10-29
+
+The date is the release date; the `v5.9.3` tag is applied to the merge commit on `develop`. This is a patch release; stored content is unchanged and there is nothing to do when upgrading from v5.9.2.
+
+### Fixed
+
+- **List block renders its items again.** The block declared `content` as an array, but the editor saves list items as an HTML string of `<li>` elements, and every stored List block holds that string. WordPress drops attribute values that fail the declared type, so every list rendered as an empty `<ul>` and showed the "Write list…" placeholder in the editor. `content` is now a string, and the block renders it as FLEX v3 did: `<div class="component-list component align-…">` around a plain `<ul>`/`<ol>`, with the block's class name, spacing and border classes and text colour on the wrapper. The unreachable array-to-HTML converter and the debug `error_log` calls that ran on every render are removed. Files: `gutenberg/blocks/block_list/block.json`, `gutenberg/blocks/block_list/list.php`.
+
 ## [5.9.2] - 2026-10-28
 
 The date is the release date; the `v5.9.2` tag is applied to the merge commit on `develop`. This is a patch release with no markup or option changes; nothing to do when upgrading from v5.9.1.
