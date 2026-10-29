@@ -1,0 +1,71 @@
+// Background options, editor canvas: video and image backgrounds (editor-canvas stylesheet).
+//-----------------------------------------
+// Video Background
+//-----------------------------------------
+.component-video-background {
+	overflow: hidden;
+	overflow: visible;
+	position: relative;
+
+	.video-container {
+		height: 100%;
+		left: 50%;
+		min-height: 100%;
+		min-width: 100%;
+		object-fit: cover;
+		object-position: center center;
+		position: absolute;
+		transform: translate(-50%, -50%);
+		top: 50%;
+		width: 100%;
+		z-index: -1;
+	}
+}
+
+//-----------------------------------------
+// Image Background
+//-----------------------------------------
+.component-image-background {
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	&.component-image-background-wide {
+		&::before {
+			content: "";
+			display: block;
+			// background-color: rgba(255, 0, 0, 0.3);
+			background-repeat: no-repeat;
+			background-size: 50vh;
+			background-position: center center;
+			bottom: -100%;
+			left: 0;
+			position: absolute;
+			right: 0;
+			top: -100%;
+		}
+	}
+}
+
+$yPositions: top, center, bottom;
+$xPositions: left, right, center;
+
+@each $yPosition in $yPositions {
+	@each $xPosition in $xPositions {
+		.component-background-#{$xPosition}-#{$yPosition} {
+			background-position: #{$xPosition} #{$yPosition};
+		}
+	}
+}
+
+@each $xPosition in $xPositions {
+	.component-background-position-x-#{$xPosition} {
+		background-position-x: #{$xPosition};
+	}
+}
+
+@each $yPosition in $yPositions {
+	.component-background-position-y-#{$yPosition} {
+		background-position-y: #{$yPosition};
+	}
+}

@@ -1,0 +1,65 @@
+// Editor canvas: button and image helpers, text columns, float/clear utilities.
+// Part of _admin-canvas.scss (feature 020).
+
+.text-columns,
+.is-style-text-columns .mce-content-body {
+	@include mediaquery(tablet-landscape) {
+		break-inside: avoid;
+		column-count: 2;
+		column-gap: $gap * 15;
+	}
+}
+
+// Was `.wp-core-ui …` (outer-document ancestor, absent inside the 7.1 iframe).
+#{$flex-editor-scope} .cta,
+#{$flex-editor-scope} .cta-negative,
+#{$flex-editor-scope} .cta-solid,
+#{$flex-editor-scope} .cta-accent {
+	min-height: 0;
+}
+
+#{$flex-editor-scope} .cta {
+	border: 1px solid color("secondary", "lighterGray");
+}
+
+#{$flex-editor-scope} img {
+	width: auto;
+}
+
+// TODO: (DP) Deprecate this.
+.nofloat {
+	float: none;
+}
+
+.float-left.float-left {
+	float: left;
+}
+
+.float-none.float-none {
+	float: none;
+}
+
+.float-right.float-right {
+	float: right;
+}
+
+.clear-left.clear-left {
+	clear: left;
+}
+
+.clear-both.clear-both {
+	clear: both;
+}
+
+.clear-right.clear-right {
+	clear: right;
+}
+
+.position-relative.position-relative {
+	position: relative;
+}
+
+html :where(.editor-styles-wrapper) p {
+	font-size: inherit;
+	line-height: inherit;
+}

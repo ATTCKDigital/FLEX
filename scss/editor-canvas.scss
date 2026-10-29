@@ -1,0 +1,44 @@
+// Reference entry (FLEX has no build): block-editor canvas styles, the template for a
+// child theme's scss/editor-canvas.scss build entry (feature 020, FLEX v5.10.0).
+// FLEX loads the child's dist/editor-canvas.css on enqueue_block_assets: always in
+// the editor iframe, in the outer editor document only below WordPress 7.1.
+// The flag must come first: it rescopes `.wp-admin` overrides to
+// .editor-styles-wrapper and drops document-level html/body rules.
+$flex-editor-canvas: true;
+
+@import "sass-utils";
+@import "sizing";
+@import "media-queries";
+@import "grid";
+@import "colors";
+@import "fonts";
+@import "fonts-mixins";
+@import "typography-base";
+@import "body-text";
+@import "global";
+@import "layout";
+@import "component";
+@import "hidden";
+@import "row-theme";
+@import "../gutenberg/components/gb-component_padding/_padding";
+@import "../gutenberg/components/gb-component_margin/_margin";
+@import "../gutenberg/blocks/block_heading/_heading";
+@import "../gutenberg/blocks/block_button/_buttons";
+@import "admin-canvas";
+@import "iconography";
+@import "images";
+@import "../gutenberg/blocks/block_paragraph/_paragraph";
+@import "../gutenberg/blocks/block_list/_list";
+@import "../gutenberg/blocks/block_hr/_hr";
+@import "../gutenberg/blocks/block_popup/_popup";
+
+// Canvas halves of the editor partials
+@import "../gutenberg/components/gb-component_background-options/editor-canvas";
+@import "../gutenberg/blocks/block_video/editor-canvas";
+@import "../gutenberg/blocks/block_video/video";
+@import "../gutenberg/blocks/block_button/button-canvas";
+@import "../gutenberg/blocks/block_image/image";
+@import "../gutenberg/blocks/block_image-carousel/image-carousel";
+@import "../gutenberg/blocks/block_image-carousel/image-carousel-canvas";
+@import "../gutenberg/blocks/block_quote/_quote";
+@import "../gutenberg/blocks/block_share/_share";

@@ -1,0 +1,193 @@
+// stylelint-disable scss/at-extend-no-missing-placeholder -- extends public FLEX classes (.headline2, .headline3) that markup also uses; placeholders would change the generated selectors.
+
+// Editor chrome: the admin interface around the block canvas (sidebars, inspector
+// panels, popovers, block toolbar, inserter, meta boxes, media modals). It loads in
+// the outer admin document only (dist/admin.css). WordPress 7.1+ clones any outer
+// stylesheet that has a `.wp-block` or `.editor-styles-wrapper` selector into the
+// canvas iframe, so this file must never contain either (feature 020). Canvas rules
+// live in _admin-canvas.scss.
+
+body {
+	font-family:
+		-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
+		Ubuntu, Cantarell, "Helvetica Neue", sans-serif; //overrides theme fonts within admin
+}
+
+.acf-media-modal.-edit .media-sidebar .attachment-details .setting {
+	clear: both;
+}
+
+.block-editor-block-preview__container {
+	.block-editor-block-preview__content {
+		background: linear-gradient(45deg, #0072ff, #00c54f);
+	}
+}
+
+// NOTE: This class name might have been missing the
+// suffix as seen in the rule below. -DP
+.block-editor-block-styles {
+	background: linear-gradient(
+		45deg,
+		rgba(0, 0, 255, 0.1),
+		rgba(255, 0, 0, 0.1)
+	);
+}
+
+.block-editor-block-styles__item-preview {
+	background: linear-gradient(45deg, #0072ff, #00c54f);
+}
+
+.block-editor-block-switcher__preview__popover,
+.block-editor-block-switcher__popover__preview__parent {
+	// TODO: Figure out why the block styles preview popup loads
+	// errors instead of the block preview. -DP
+	display: none !important;
+}
+
+.components-button:disabled,
+.components-button[aria-disabled="true"] {
+	opacity: 1;
+
+	svg {
+		fill: #6495ed;
+	}
+}
+
+.block-editor-inserter__block-list {
+	.button {
+		.dashicons,
+		.dashicons-before::before {
+			font-size: 40px !important;
+			height: 40px !important;
+			width: 40px !important;
+		}
+	}
+}
+
+.components-panel {
+	p {
+		font-size: px-to-rem(10px);
+		margin-bottom: 8px;
+	}
+
+	.button {
+		.dashicons,
+		.dashicons-before::before {
+			margin-right: 8px;
+			vertical-align: middle;
+		}
+	}
+
+	.components-panel__row {
+		margin-top: 24px;
+	}
+}
+
+.components-panel__body {
+	.image-wrapper {
+		background: #d8d8d8;
+	}
+}
+
+.components-panel__row {
+	display: block;
+}
+
+//Misc styling for elements
+.components-range-control .components-base-control__label {
+	max-width: none;
+}
+
+.block-library-button__inline-link {
+	&.heading-url {
+		width: 100%;
+		margin-bottom: $gap * 4;
+
+		input {
+			width: 100%;
+		}
+	}
+}
+
+#poststuff .stuffbox > h3,
+#poststuff h2,
+#poststuff h3.hndle,
+.edit-post-meta-boxes-area #poststuff h2.hndle span {
+	color: #000;
+	font-size: 13px;
+	font-weight: 500;
+}
+
+.components-toolbar {
+	flex-wrap: wrap;
+}
+
+.components-toolbar__control {
+	&.components-button {
+		&[data-subscript] {
+			&::after {
+				bottom: 15px;
+				font-size: 12px;
+				left: initial;
+				margin-right: -14px;
+				right: initial;
+				text-align: center;
+				width: 12px;
+			}
+		}
+
+		&.has-icon {
+			.dashicon {
+				left: -4px;
+				position: relative;
+			}
+		}
+	}
+}
+
+.editor-block-list__block > .editor-block-mover,
+.block-editor-block-list__block > .block-editor-block-mover {
+	left: -4px;
+}
+
+.edit-post-sidebar {
+	.editor-block-styles__item-preview h2,
+	.block-editor-block-styles__item-preview h2 {
+		@extend .headline2 !optional;
+		color: #000;
+	}
+
+	.editor-block-styles__item-preview h3,
+	.block-editor-block-styles__item-preview h3 {
+		@extend .headline3 !optional;
+		color: #000;
+	}
+
+	.editor-block-styles__item-preview .component-heading img,
+	.block-editor-block-styles__item-preview .component-heading img {
+		display: none;
+	}
+}
+
+.editor-block-toolbar,
+.block-editor-block-toolbar {
+	border-left: 1px solid #e2e4e7;
+	box-shadow: none;
+}
+
+.components-toggle-control
+	.components-base-control__field
+	.components-toggle-control__label {
+	color: #444;
+}
+
+.components-popover,
+.components-base-control {
+	color: #000;
+}
+
+.interface-interface-skeleton__footer {
+	// bottom: 20px;
+	bottom: 0;
+	position: fixed;
+}

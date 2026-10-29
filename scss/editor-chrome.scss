@@ -1,0 +1,23 @@
+// Reference entry (FLEX has no build): block-editor chrome styles, the template for
+// a child theme's chrome-only scss/admin.scss (feature 020, FLEX v5.10.0).
+// Loaded in the outer editor document only (block_editor_styles). It must emit no
+// `.wp-block` or `.editor-styles-wrapper` selector: WordPress 7.1+ clones any such
+// outer stylesheet into the canvas iframe. Canvas styles go in editor-canvas.scss.
+@import "sass-utils";
+@import "sizing";
+@import "media-queries";
+@import "admin-chrome";
+
+// Inspector panels (GB components)
+@import "../gutenberg/components/gb-component_background-options/editor-inspector";
+@import "../gutenberg/components/gb-component_logo-color/editor";
+@import "../gutenberg/components/gb-component_margin/editor";
+@import "../gutenberg/components/gb-component_padding/editor";
+@import "../gutenberg/components/gb-component_row-height/editor";
+@import "../gutenberg/components/gb-component_scroller/editor";
+@import "../gutenberg/components/gb-component_text-colors/editor";
+
+// Inspector / popover halves of the block editor partials
+@import "../gutenberg/blocks/block_video/editor-inspector";
+@import "../gutenberg/blocks/block_button/button-inspector";
+@import "../gutenberg/blocks/block_image-carousel/image-carousel-inspector";
