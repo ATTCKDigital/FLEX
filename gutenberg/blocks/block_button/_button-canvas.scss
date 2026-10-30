@@ -1,0 +1,84 @@
+// stylelint-disable scss/at-extend-no-missing-placeholder -- extends public FLEX classes (.cta, .cta-solid, .cta-accent, .cta-negative) that markup also uses; placeholders would change the generated selectors.
+
+// Button block, editor canvas (editor-canvas stylesheet).
+// Button styles for Gutenberg Editor
+.component-button-editor {
+	.block-library-button__inline-link {
+		span.dashicons {
+			float: left;
+			margin-right: 8px;
+			padding: 8px 0 8px 0;
+		}
+	}
+
+	.cta {
+		@extend .cta;
+
+		&.is-style-cta {
+			@extend .cta;
+		}
+
+		&.is-style-cta-solid {
+			@extend .cta-solid;
+		}
+
+		&.is-style-cta-accent {
+			@extend .cta-accent;
+		}
+
+		&.is-style-cta-negative {
+			@extend .cta-negative;
+		}
+	}
+
+	.editor-rich-text__tinymce[data-is-placeholder-visible="true"].wp-block-button__link {
+		background: transparent;
+		border: 0;
+		position: absolute;
+	}
+
+	.wp-block-button__link {
+		@extend .cta;
+		overflow: inherit;
+	}
+
+	&.align-center {
+		text-align: center;
+	}
+
+	&.align-left {
+		text-align: left;
+	}
+
+	&.align-right {
+		text-align: right;
+	}
+}
+
+// Was `.wp-core-ui …` (outer-document ancestor, absent inside the 7.1 iframe).
+#{$flex-editor-scope} .component-button-editor .wp-block-button__link {
+	@extend .cta;
+
+	&.is-style-cta {
+		@extend .cta;
+	}
+
+	&.is-style-cta-solid {
+		@extend .cta-solid;
+	}
+
+	&.is-style-cta-accent {
+		@extend .cta-accent;
+	}
+
+	&.is-style-cta-negative {
+		@extend .cta-negative;
+	}
+
+	color: color("secondary", "black");
+}
+
+// Prevents button elements from taking up 100% width
+.block-editor-block-list__block[aria-label="Block: Buttons"] {
+	width: auto;
+}

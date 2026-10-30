@@ -1,0 +1,6 @@
+// Button block, link popover (outer editor document; chrome stylesheet).
+
+// Prevents checkmark submit button from breaking to new line
+form.block-library-button__inline-link {
+	display: flex;
+}

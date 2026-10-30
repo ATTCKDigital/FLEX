@@ -74,7 +74,7 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-0-24 {
 		display: none;
 
-		.wp-admin & {
+		@include in-editor {
 			// TODO: Not sure why this is here. It causes multi-column layouts to break.
 			// display: inline-block;
 			// *display: inline;
@@ -227,7 +227,7 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 	.flex-0-24imp {
 		display: none !important;
 
-		.wp-admin & {
+		@include in-editor {
 			display: inline-block;
 			*display: inline;
 			opacity: 0.5;
@@ -446,7 +446,7 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 		.flex-phone-0-24 {
 			display: none;
 
-			.wp-admin & {
+			@include in-editor {
 				display: inline-block;
 				*display: inline;
 				opacity: 0.5;
@@ -597,7 +597,7 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 		.flex-phone-0-24imp {
 			display: none !important;
 
-			.wp-admin & {
+			@include in-editor {
 				display: inline-block;
 				*display: inline;
 				opacity: 0.5;
@@ -817,7 +817,7 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 		.flex-phone-plus-0-24 {
 			display: none;
 
-			.wp-admin & {
+			@include in-editor {
 				display: inline-block;
 				*display: inline;
 				opacity: 0.5;
@@ -968,7 +968,7 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 		.flex-phone-plus-0-24imp {
 			display: none !important;
 
-			.wp-admin & {
+			@include in-editor {
 				display: inline-block;
 				*display: inline;
 				opacity: 0.5;
@@ -1188,7 +1188,7 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 		.flex-tablet-potrait-0-24 {
 			display: none;
 
-			.wp-admin & {
+			@include in-editor {
 				display: inline-block;
 				*display: inline;
 				opacity: 0.5;
@@ -1339,7 +1339,7 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 		.flex-tablet-potrait-0-24imp {
 			display: none !important;
 
-			.wp-admin & {
+			@include in-editor {
 				display: inline-block;
 				*display: inline;
 				opacity: 0.5;
@@ -1559,7 +1559,7 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 		.flex-tablet-landscape-0-24 {
 			display: none;
 
-			.wp-admin & {
+			@include in-editor {
 				display: inline-block;
 				*display: inline;
 				opacity: 0.5;
@@ -1710,7 +1710,7 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 		.flex-tablet-landscape-0-24imp {
 			display: none !important;
 
-			.wp-admin & {
+			@include in-editor {
 				display: inline-block;
 				*display: inline;
 				opacity: 0.5;
@@ -1930,7 +1930,7 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 		.flex-desktop-0-24 {
 			display: none;
 
-			.wp-admin & {
+			@include in-editor {
 				display: inline-block;
 				*display: inline;
 				opacity: 0.5;
@@ -2081,7 +2081,7 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 		.flex-desktop-0-24imp {
 			display: none !important;
 
-			.wp-admin & {
+			@include in-editor {
 				display: inline-block;
 				*display: inline;
 				opacity: 0.5;
@@ -2301,7 +2301,7 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 		.flex-xl-0-24 {
 			display: none;
 
-			.wp-admin & {
+			@include in-editor {
 				display: inline-block;
 				*display: inline;
 				opacity: 0.5;
@@ -2451,7 +2451,7 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 		.flex-xl-0-24imp {
 			display: none !important;
 
-			.wp-admin & {
+			@include in-editor {
 				display: inline-block;
 				*display: inline;
 				opacity: 0.5;
@@ -2670,7 +2670,7 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 		.flex-xl2-0-24 {
 			display: none;
 
-			.wp-admin & {
+			@include in-editor {
 				display: inline-block;
 				*display: inline;
 				opacity: 0.5;
@@ -2820,7 +2820,7 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 		.flex-xl2-0-24imp {
 			display: none !important;
 
-			.wp-admin & {
+			@include in-editor {
 				display: inline-block;
 				*display: inline;
 				opacity: 0.5;

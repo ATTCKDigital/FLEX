@@ -1,0 +1,63 @@
+// Carousel block (flexlayout/image-carousel), the sidebar slide list (outer editor
+// document; chrome stylesheet).
+
+// Sidebar slide list.
+.image-carousel-slide-list {
+	.components-notice {
+		margin: 0 0 12px;
+	}
+}
+
+.image-carousel-slide-list__items {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.image-carousel-slide-list__item {
+	border-bottom: 1px solid #e0e0e0;
+	display: grid;
+	gap: 8px;
+	grid-template-columns: 64px minmax(0, 1fr);
+	margin: 0;
+	padding: 12px 0;
+
+	&:last-child {
+		border-bottom: 0;
+	}
+}
+
+.image-carousel-slide-list__thumb {
+	background-color: #f0f0f0;
+	border: 1px solid #ddd;
+	cursor: pointer;
+	height: 48px;
+	padding: 0;
+	width: 64px;
+
+	img {
+		display: block;
+		height: 100%;
+		object-fit: cover;
+		width: 100%;
+	}
+}
+
+.image-carousel-slide-list__body {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	min-width: 0;
+}
+
+.image-carousel-slide-list__actions {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+}
+
+.image-carousel-slide-list__missing {
+	color: #cc1818;
+	margin: 0;
+}

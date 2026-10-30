@@ -2,6 +2,30 @@
 
 All notable changes to FLEX. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and FLEX uses [Semantic Versioning](https://semver.org/). Upgrade steps for every breaking change: [UPGRADING.md](UPGRADING.md).
 
+## [5.10.0] - 2026-10-30
+
+The date is the release date; the `v5.10.0` tag is applied to the merge commit on `develop`. This is a minor release: every addition is opt-in. A child theme that does not adopt the new `editor-canvas` entry keeps its current enqueues, and the deprecated single-file partials still compile to equivalent CSS. Sites on WordPress 7.1 or later should adopt it; see [UPGRADING.md](UPGRADING.md#v5100).
+
+### Added
+
+- **Editor canvas stylesheet for the iframed editor.** WordPress 7.1+ always renders the post editor's block canvas in an iframe, and core copies `block_editor_styles` (admin.css) into it, where its `body` rules showed white text on a white canvas. A child can now build its block-canvas styles as `dist/editor-canvas.css` (entry `scss/editor-canvas.scss`). FLEX loads it on `enqueue_block_assets`: always inside the editor iframe, in the outer editor document only below WordPress 7.1, never on the front end, and not at all when the child has not built it. File: `config/theme-configs/editor-canvas-styles.php` (included from `functions.php`).
+- `flex_enqueue_editor_canvas_styles()`, `flex_editor_canvas_in_outer_document()`, and the filters `flex_editor_canvas_in_outer_document` (bool) and `flex_editor_canvas_style_dependencies` (`string[] $deps, bool $iframe_pass`; only registered handles are kept).
+- Sass context flag `$flex-editor-canvas` (default `false`), the internal `$flex-editor-scope`, and the mixins `in-editor`, `front-end-only` and `outside-editor-canvas` in `scss/_sass-utils.scss`.
+- Partials split into canvas and chrome halves: `scss/_admin-chrome.scss`, `scss/_admin-canvas.scss` (+ `scss/admin-canvas/*`), `block_image-carousel/_image-carousel-canvas.scss` + `_image-carousel-inspector.scss`, `block_button/_button-canvas.scss` + `_button-inspector.scss`, `block_video/_editor-canvas.scss` + `_editor-inspector.scss`, `gb-component_background-options/_editor-canvas.scss` + `_editor-inspector.scss`. Reference entries `scss/editor-canvas.scss` and `scss/editor-chrome.scss`.
+
+### Changed
+
+- The `.wp-admin &` editor overrides (`_grid`, `_component`, `_hidden`, `_global`, `block_video/_video`) and `body:not(.wp-admin) &` (`_component`) use the new mixins. Output is unchanged unless `$flex-editor-canvas` is true.
+- Canvas rules that relied on outer-document ancestors (`.edit-post-visual-editor`, `.wp-core-ui`, `.block-editor .component-source`, `.edit-post-visual-editor__post-title-wrapper`) are scoped to `.editor-styles-wrapper` / `.editor-visual-editor__post-title-wrapper` in the canvas partials.
+
+### Deprecated (removal in v6.0.0)
+
+- `_admin-styles.scss`, `_image-carousel-admin.scss`, `_button-admin.scss`, `block_video/_editor.scss` and `gb-component_background-options/_editor.scss` as single files. Each is now a shim that imports its canvas and inspector halves. The shims compile to **equivalent** CSS (same rules and declarations); the order of some rules differs from v5.9.3, so the output is not byte-identical.
+
+### Fixed
+
+- **Block editor on WordPress 7.1+.** With the `editor-canvas` entry adopted, block content in the editor is styled as on 6.8 (fonts, dark text, grid, row themes, ACF block previews) instead of white-on-white text.
+
 ## [5.9.3] - 2026-10-29
 
 The date is the release date; the `v5.9.3` tag is applied to the merge commit on `develop`. This is a patch release; stored content is unchanged and there is nothing to do when upgrading from v5.9.2.

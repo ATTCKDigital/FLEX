@@ -1,0 +1,22 @@
+// Video block, editor canvas (editor-canvas stylesheet).
+//-----------------------------------------
+// Video
+//-----------------------------------------
+.component-video {
+	overflow: hidden;
+	position: relative;
+
+	.video-container {
+		height: 100%;
+		left: 50%;
+		min-height: 100%;
+		min-width: 100%;
+		object-fit: cover;
+		object-position: center center;
+		position: absolute;
+		transform: translate(-50%, -50%);
+		top: 50%;
+		width: 100%;
+		z-index: -1;
+	} // .video-container
+} // .has-video-background

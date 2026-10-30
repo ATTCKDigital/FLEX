@@ -68,6 +68,7 @@ include_once(locate_template('config/theme-configs/custom-nav-classes.php')); //
 include_once(locate_template('config/theme-configs/customizer-colors.php')); //REQUIRED
 include_once(locate_template('config/theme-configs/enable-gutenberg-blocks.php')); //REQUIRED
 include_once(locate_template('config/theme-configs/enqueue-scripts-styles.php')); //REQUIRED
+include_once(locate_template('config/theme-configs/editor-canvas-styles.php')); //REQUIRED
 include_once(locate_template('config/theme-configs/flex-layout-system.php')); //REQUIRED
 include_once(locate_template('config/theme-configs/flex-meta-boxes.php')); //REQUIRED
 include_once(locate_template('config/theme-configs/nav-walker.php')); //REQUIRED

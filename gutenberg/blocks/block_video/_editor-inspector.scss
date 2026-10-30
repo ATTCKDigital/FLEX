@@ -1,0 +1,29 @@
+// Video block, inspector panel (outer editor document; chrome stylesheet).
+//--------------------------------------------------------------
+// Editor Styles
+// Additional styles necessary to assist the editor.
+// Enqueued after style.scss.
+//--------------------------------------------------------------
+.media-upload-wrapper,
+.media-button-wrapper {
+	.blocks-base-control {
+		width: 100%;
+	} // .blocks-base-control
+
+	.components-button {
+		svg {
+			position: relative;
+			top: 5px;
+		} // svg
+	} // .components-button
+} // .wds-background-options
+
+.flexlayout-video-settings {
+	.media-upload-wrapper {
+		margin-bottom: 20px;
+	}
+
+	.components-text-control__input {
+		margin-bottom: 20px;
+	}
+}

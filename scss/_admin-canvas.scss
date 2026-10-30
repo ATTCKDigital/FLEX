@@ -1,0 +1,8 @@
+// Editor canvas: block-list styles for the block editor canvas (the iframe <body>
+// on WordPress 7.1+, the canvas div below 7.1). Imported by a child's
+// editor-canvas entry, never by the chrome stylesheet (feature 020).
+@import "admin-canvas/blocks";
+@import "admin-canvas/layout";
+@import "admin-canvas/title";
+@import "admin-canvas/utilities";
+@import "admin-canvas/legacy";
