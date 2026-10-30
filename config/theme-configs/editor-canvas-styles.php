@@ -13,6 +13,11 @@
  *
  * It also fires on the front end, where this stylesheet must never load.
  *
+ * The iframe-pass test relies on that core behaviour. Other admin screens that
+ * fire the hook (widgets, site editor) also get the sheet; admin-ajax requests
+ * such as ACF's block preview fetch do not print styles. The Customizer preview
+ * is a front-end request, so nothing loads there.
+ *
  * The child theme builds the stylesheet as dist/editor-canvas.css (entry
  * `editor-canvas`); a child that has not built it is unaffected. Editor chrome
  * (dist/admin.css, `block_editor_styles`) stays on `enqueue_block_editor_assets`.
@@ -58,17 +63,15 @@ function flex_enqueue_editor_canvas_styles() {
 		return false;
 	}
 
+	// A child that has not adopted the editor-canvas entry is unaffected (and not logged).
+	if ( ! is_readable( get_stylesheet_directory() . '/dist/editor-canvas.css' ) ) {
+		return false;
+	}
+
 	$asset = flex_get_asset_manifest( 'editor-canvas' );
 
 	// The manifest helper has already logged a missing or invalid manifest.
 	if ( null === $asset['version'] ) {
-		return false;
-	}
-
-	if ( ! is_readable( get_stylesheet_directory() . '/dist/editor-canvas.css' ) ) {
-		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-			error_log( 'FLEX: dist/editor-canvas.css missing; run the child theme build.' );
-		}
 		return false;
 	}
 
