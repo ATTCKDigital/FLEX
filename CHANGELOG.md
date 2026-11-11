@@ -2,6 +2,14 @@
 
 All notable changes to FLEX. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and FLEX uses [Semantic Versioning](https://semver.org/). Upgrade steps for every breaking change: [UPGRADING.md](UPGRADING.md).
 
+## [5.10.1] - 2026-11-11
+
+The date is the release date; the `v5.10.1` tag is applied to the merge commit on `develop`. Patch release, no upgrade steps.
+
+### Fixed
+
+- **YouTube embeds show "Error 153" on some phones.** The video block's YouTube player now passes `origin` and `widget_referrer` (the page URL) in `playerVars`, so YouTube can identify the embedding site when the browser strips the `Referer` header from the cross-origin iframe (seen in iOS browsers). File: `gutenberg/blocks/block_video/play-video.js`.
+
 ## [5.10.0] - 2026-10-30
 
 The date is the release date; the `v5.10.0` tag is applied to the merge commit on `develop`. This is a minor release: every addition is opt-in. A child theme that does not adopt the new `editor-canvas` entry keeps its current enqueues, and the deprecated single-file partials still compile to equivalent CSS. Sites on WordPress 7.1 or later should adopt it; see [UPGRADING.md](UPGRADING.md#v5100).
