@@ -2,6 +2,14 @@
 
 All notable changes to FLEX. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and FLEX uses [Semantic Versioning](https://semver.org/). Upgrade steps for every breaking change: [UPGRADING.md](UPGRADING.md).
 
+## [5.10.2] - 2026-11-11
+
+The date is the release date; the `v5.10.2` tag is applied to the merge commit on `develop`. Patch release, no upgrade steps.
+
+### Fixed
+
+- **Two play buttons on YouTube videos without a thumbnail.** The video block drew its own play and close buttons over the YouTube player even when no thumbnail was chosen, so YouTube's play button showed with FLEX's circle on top. Those buttons are now rendered only when the block has a thumbnail (they start the video from the thumbnail) or for uploaded and Brightcove videos, as before. A thumbnail now counts only when it has a URL. File: `gutenberg/blocks/block_video/video.php`.
+
 ## [5.10.1] - 2026-11-11
 
 The date is the release date; the `v5.10.1` tag is applied to the merge commit on `develop`. Patch release, no upgrade steps.

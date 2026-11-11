@@ -50,7 +50,7 @@ function render_video_block($attributes, $content) {
     $isUploadedVideo = array_key_exists('uploadVideo', $attributes);
     $isYouTubeVideo = array_key_exists('youtubeVideo', $attributes);
     $hasYouTubeVideoURL = ($attributes['youtubeVideo'] !== '');
-    $hasVideoThumbnail = array_key_exists('videoThumbnail', $attributes);
+    $hasVideoThumbnail = ! empty($attributes['videoThumbnail']['url']);
     // $controls = $attributes['controls'];
 
     // print_r($attributes);
@@ -106,8 +106,11 @@ function render_video_block($attributes, $content) {
 	$output .= 		"<div class=\"video-wrapper\" data-video-type=\"{$attributes['videoType']}\">";
 	$output .= 			"{$thumbnail}";
 	
-	// Prevent player controls from showing
-	if (!$isAutoplay) {
+	// Prevent player controls from showing. A YouTube video without a chosen
+	// thumbnail shows YouTube's own play button, so skip ours to avoid a second one.
+	$usesNativeYouTubeControls = $isYouTubeVideo && $hasYouTubeVideoURL && !$hasVideoThumbnail;
+
+	if (!$isAutoplay && !$usesNativeYouTubeControls) {
 		$output .= 			"<mark class=\"playVideo play\" data-video-id=\"{$videoId}\" tabindex=\"0\"></mark>";
 		$output .= 			"<mark class=\"pauseVideo close\" data-video-id=\"{$videoId}\" tabindex=\"0\"></mark>";
 	}
