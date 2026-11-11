@@ -67,6 +67,14 @@ function Video( $el ) {
 				height: '390',
 				width: '640',
 				videoId,
+				// Identify the embedding page explicitly. Browsers that strip the
+				// Referer from cross-origin iframes (some iOS browsers and privacy
+				// settings) otherwise get YouTube "Error 153: Video player
+				// configuration error".
+				playerVars: {
+					origin: window.location.origin,
+					widget_referrer: window.location.href,
+				},
 				events: {
 					onReady: onPlayerReady,
 					onStateChange: onPlayerStateChange,
